@@ -1,9 +1,8 @@
+import argparse
 import importlib
 import pkgutil
-import argparse
 
-from . import checks
-from . import tools
+from . import checks, tools
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)

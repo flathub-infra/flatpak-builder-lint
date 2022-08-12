@@ -1,8 +1,9 @@
+import errno
 import json
+import os
 import subprocess
 import typing
-import os
-import errno
+
 
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder.

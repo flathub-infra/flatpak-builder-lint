@@ -1,5 +1,6 @@
-from . import Check
 from collections import defaultdict
+
+from . import Check
 
 
 class FinishArgsCheck(Check):
