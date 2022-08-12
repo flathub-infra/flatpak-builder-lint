@@ -10,7 +10,9 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="A linter for flatpak-builder manifests")
+    parser = argparse.ArgumentParser(
+        description="A linter for flatpak-builder manifests"
+    )
     parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
     args = parser.parse_args()
 
@@ -20,6 +22,7 @@ def main():
 
         if check.type == "manifest":
             check.check(manifest)
+
 
 if __name__ == "__main__":
     main()

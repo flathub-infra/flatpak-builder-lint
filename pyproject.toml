@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "flatpak-builder-lint"
+name = "flatpak_builder_lint"
 version = "0.0.1"
 description = "A linter for flatpak-builder manifests"
 authors = ["Bartłomiej Piotrowski <b@bpiotrowski.pl>"]
@@ -16,6 +16,9 @@ pytest = "^7.1.2"
 pyflakes = "^2.5.0"
 mypy = "^0.971"
 pylint = "^2.14.5"
+
+[tool.poetry.scripts]
+flatpak-builder-lint = "flatpak_builder_lint.cli:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
