@@ -37,7 +37,7 @@ class FinishArgsCheck(Check):
 
             for fs in fa["filesystem"]:
                 if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
-                    self.errors.append("finish-args-unnecessary-xdg-dir-access")
+                    self.errors.append(f"finish-args-unnecessary-{xdg_dir}-access")
 
         for own_name in fa["own-name"]:
             if own_name.startswith("org.kde.StatusNotifierItem"):
