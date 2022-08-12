@@ -1,10 +1,15 @@
 import json
 import subprocess
 import typing
+import os
+import errno
 
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder.
 def show_manifest(filename: str) -> typing.Dict:
+    if not os.path.exists(filename):
+        raise OSError(errno.ENOENT)
+
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename], capture_output=True
     )
