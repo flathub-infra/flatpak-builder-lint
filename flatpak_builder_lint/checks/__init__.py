@@ -1,3 +1,5 @@
+from typing import List, Optional
+
 ALL = []
 
 
@@ -11,5 +13,5 @@ class CheckMeta(type):
 
 
 class Check(metaclass=CheckMeta):
-    warnings = []
-    errors = []
+    warnings: List[Optional[str]] = []
+    errors: List[Optional[str]] = []
