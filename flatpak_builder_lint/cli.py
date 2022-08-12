@@ -15,7 +15,7 @@ def main():
     parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
     args = parser.parse_args()
 
-    manifest = tools.show_manifest(args.manifest)
+    manifest = tools.show_manifest(args.manifest[0])
     for checkclass in checks.ALL:
         check = checkclass()
 
