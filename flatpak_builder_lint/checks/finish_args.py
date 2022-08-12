@@ -8,8 +8,13 @@ class FinishArgsCheck(Check):
 
     def check(self, manifest):
         finish_args_list = manifest.get("finish-args")
-        if not finish_args_list and not manifest.get("build-extension"):
+        build_extension = manifest.get("build-extension")
+
+        if not finish_args_list and not build_extension:
             self.errors.append("finish-args-not-defined")
+            return
+
+        if build_extension:
             return
 
         fa = defaultdict(set)
