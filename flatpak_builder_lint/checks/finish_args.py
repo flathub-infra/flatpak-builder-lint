@@ -26,16 +26,13 @@ class FinishArgsCheck(Check):
             if "ipc" not in fa["share"]:
                 self.errors.append("finish-args-x11-without-ipc")
 
-        if "xdg-config" in fa["filesystem"]:
-            self.errors.append("finish-args-arbitrary-xdg-config-access")
+        for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
+            if xdg_dir in fa["filesystem"]:
+                self.errors.append(f"finish-args-arbitrary-{xdg_dir}-access")
 
-        for fs in fa["filesystem"]:
-            for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
-                if fs.startswith(f"{xdg_dir}") and fs.endswith(":create"):
+            for fs in fa["filesystem"]:
+                if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
                     self.errors.append("finish-args-unnecessary-xdg-dir-access")
-
-        if "xdg-data" in fa["filesystem"]:
-            self.errors.append("finish-args-arbitrary-xdg-data-access")
 
         for own_name in fa["own-name"]:
             if own_name.startswith("org.kde.StatusNotifierItem"):
