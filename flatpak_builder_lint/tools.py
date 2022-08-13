@@ -19,4 +19,6 @@ def show_manifest(filename: str) -> typing.Dict:
         raise Exception(ret.stderr.decode("utf-8"))
 
     manifest = ret.stdout.decode("utf-8")
-    return json.loads(manifest)
+    manifest_json = json.loads(manifest)
+    manifest_json["x-manifest-filename"] = filename
+    return manifest_json
