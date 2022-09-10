@@ -24,5 +24,8 @@ class AppIDCheck(Check):
         if split[-1] == "desktop":
             self.errors.append("appid-ends-with-lowercase-desktop")
 
-        if split[1].lower() in ("github", "gitlab") and split[0].lower() != "io":
-            self.warnings.append("appid-uses-code-hosting-domain")
+        if split[1].lower() in ("github", "gitlab"):
+            if split[0].lower() != "io":
+                self.warnings.append("appid-uses-code-hosting-domain")
+            if len(split) < 4:
+                self.errors.append("appid-code-hosting-too-few-components")
