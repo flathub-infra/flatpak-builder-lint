@@ -1,4 +1,5 @@
 
+from .. import checks
 from . import Check
 
 class TopLevelCheck(Check):
@@ -26,3 +27,15 @@ class TopLevelCheck(Check):
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
             self.errors.append("toplevel-cleanup-debug")
+
+        modules = manifest.get("modules")
+        if not modules:
+            self.errors.append("toplevel-no-modules")
+        else:
+            for module in modules:
+                for checkclass in checks.ALL:
+                    check = checkclass()
+
+                    if check.type == "module":
+                        check.check(module)
+
