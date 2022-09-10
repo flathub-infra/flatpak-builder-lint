@@ -30,8 +30,15 @@ class ModuleCheck(Check):
             pass
         elif buildsystem == "qmake":
             pass
-        else:
+        elif buildsystem == "simple":
             pass
+        else:
+            config_opts = module.get("config-opts")
+            for opt in config_opts:
+                if opt.startswith("--prefix="):
+                    self.errors.append("module-autotools-redundant-prefix")
+                elif opt.startswith("--enable-debug"):
+                    self.errors.append("module-autotools-non-release-build")
 
         sources = module.get("sources")
         if not sources:
