@@ -1,6 +1,6 @@
-
 from .. import checks
 from . import Check
+
 
 class TopLevelCheck(Check):
     type = "manifest"
@@ -38,4 +38,3 @@ class TopLevelCheck(Check):
 
                     if check.type == "module":
                         check.check(module)
-
