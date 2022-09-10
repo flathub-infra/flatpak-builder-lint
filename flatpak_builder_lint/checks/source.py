@@ -1,14 +1,14 @@
-
 from . import Check
 
-class SoureCheck(Check):
+
+class SourceCheck(Check):
     type = "source"
 
     def check(self, source):
         source_type = source.get("type")
 
         dest_filename = source.get("dest-filename")
-        if dest_filename and dest_filename.find('/') != -1:
+        if dest_filename and dest_filename.find("/") != -1:
             self.errors.append("source-dest-filename-is-path")
 
         if source_type == "archive" or source_type == "file":
