@@ -7,6 +7,7 @@ class FinishArgsCheck(Check):
     type = "manifest"
 
     def check(self, manifest):
+        appid = manifest.get("id")
         finish_args_list = manifest.get("finish-args")
         build_extension = manifest.get("build-extension")
 
@@ -39,13 +40,20 @@ class FinishArgsCheck(Check):
                 if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
                     self.errors.append(f"finish-args-unnecessary-{xdg_dir}-access")
 
+        if "home" in fa["filesystem"] and "host" in fa["filesystem"]:
+            self.errors.append("finish-args-redundant-home-and-host")
+
         for own_name in fa["own-name"]:
             if own_name.startswith("org.kde.StatusNotifierItem"):
                 self.errors.append("finish-args-broken-kde-tray-permission")
-                break
+            elif own_name.startswith(appid):
+                self.errors.append("finish-args-unnecessary-appid-own-name")
 
         if (
             "xdg-config/autostart" in fa["filesystem"]
             or "xdg-config/autostart:create" in fa["filesystem"]
         ):
             self.errors.append("finish-args-arbitrary-autostart-access")
+
+        if fa["system-bus"] or fa["session-bus"]:
+            self.errors.append(f"finish-args-arbitrary-dbus-access")
