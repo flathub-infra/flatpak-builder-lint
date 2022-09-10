@@ -1,3 +1,5 @@
+import os
+
 from . import Check
 
 
@@ -10,7 +12,9 @@ class AppIDCheck(Check):
             self.errors.append("appid-not-defined")
             return
 
-        if appid != manifest.get("x-manifest-filename"):
+        (manifest_filename, _) = os.path.splitext(manifest.get("x-manifest-filename"))
+        manifest_filename = os.path.basename(manifest_filename)
+        if appid != manifest_filename:
             self.errors.append("appid-filename-mismatch")
 
         split = appid.split(".")
