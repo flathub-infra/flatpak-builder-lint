@@ -56,4 +56,14 @@ class FinishArgsCheck(Check):
             self.errors.append("finish-args-arbitrary-autostart-access")
 
         if fa["system-bus"] or fa["session-bus"]:
-            self.errors.append(f"finish-args-arbitrary-dbus-access")
+            self.errors.append("finish-args-arbitrary-dbus-access")
+
+        if "org.gtk.vfs" in fa["talk-name"]:
+            # https://github.com/flathub/flathub/issues/2180#issuecomment-811984901
+            self.errors.append("finish-args-incorrect-dbus-gvfs")
+
+        if "shm" in fa["device"]:
+            self.warnings.append("finish-args-deprecated-shm")
+
+        if "all" in fa["device"] and len(fa["device"]) > 1:
+            self.errors.append("finish-args-redundant-device-all")
