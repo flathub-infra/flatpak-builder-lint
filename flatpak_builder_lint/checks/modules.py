@@ -1,4 +1,5 @@
 
+from .. import checks
 from . import Check
 
 class ModuleCheck(Check):
@@ -31,3 +32,14 @@ class ModuleCheck(Check):
             pass
         else:
             pass
+
+        sources = module.get("sources")
+        if not sources:
+            self.errors.append("module-no-sources")
+        else:
+            for source in sources:
+                for checkclass in checks.ALL:
+                    check = checkclass()
+
+                    if check.type == "source":
+                        check.check(source)
