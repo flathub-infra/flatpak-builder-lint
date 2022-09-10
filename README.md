@@ -6,7 +6,7 @@ This is a linter for flatpak manifests.
 Requirements:
 
 - poetry
-- python3
+- python 3.8
 - flatpak-builder
 
 
