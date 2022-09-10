@@ -26,3 +26,6 @@ class TopLevelCheck(Check):
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
             self.errors.append("toplevel-cleanup-debug")
+
+        if not manifest.get("modules"):
+            self.errors.append("toplevel-no-modules")

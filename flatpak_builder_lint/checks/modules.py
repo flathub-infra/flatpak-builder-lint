@@ -72,5 +72,3 @@ class ModuleCheck(Check):
         if modules := manifest.get("modules"):
             for module in modules:
                 self.check_module(module)
-        else:
-            self.errors.append("toplevel-no-modules")
