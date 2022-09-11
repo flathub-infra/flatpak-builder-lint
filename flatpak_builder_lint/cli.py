@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import json
 import pkgutil
 import sys
 
@@ -14,6 +15,7 @@ def main():
         description="A linter for flatpak-builder manifests"
     )
     parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
+    parser.add_argument("--json", help="Output in JSON format", action="store_true")
     args = parser.parse_args()
     exit_code = 0
 
@@ -24,13 +26,17 @@ def main():
         if check.type == "manifest":
             check.check(manifest)
 
+    output = {}
     if errors := checks.Check.errors:
         exit_code = 1
-        print(f"errors: {errors}")
-
+        output["errors"] = errors
     if warnings := checks.Check.warnings:
-        print(f"warnings: {warnings}")
+        output["warnings"] = warnings
 
+    if args.json:
+        output = json.dumps(output, indent=4)
+
+    print(output)
     sys.exit(exit_code)
 
 
