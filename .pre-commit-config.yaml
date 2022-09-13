@@ -17,3 +17,7 @@ repos:
     rev: 'v0.971'
     hooks:
     - id: mypy
+  - repo: https://github.com/john-hen/Flake8-pyproject
+    rev: 1.1.0
+    hooks:
+    - id: Flake8-pyproject
