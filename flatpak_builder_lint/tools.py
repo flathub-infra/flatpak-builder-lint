@@ -22,7 +22,7 @@ def show_manifest(filename: str) -> dict:
     manifest_json = json.loads(manifest)
     manifest_json["x-manifest-filename"] = filename
 
-    manifest_basedir = os.path.basename(filename)
+    manifest_basedir = os.path.dirname(filename)
     flathub_json_path = os.path.join(manifest_basedir, "flathub.json")
     if os.path.exists(flathub_json_path):
         with open(flathub_json_path, "r") as f:
