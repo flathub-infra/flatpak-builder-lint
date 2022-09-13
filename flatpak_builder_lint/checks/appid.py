@@ -6,16 +6,18 @@ from . import Check
 class AppIDCheck(Check):
     type = "manifest"
 
-    def check(self, manifest):
+    def check(self, manifest: dict) -> None:
         appid = manifest.get("id")
         if not appid:
             self.errors.append("appid-not-defined")
             return
 
-        (manifest_filename, _) = os.path.splitext(manifest.get("x-manifest-filename"))
-        manifest_filename = os.path.basename(manifest_filename)
-        if appid != manifest_filename:
-            self.errors.append("appid-filename-mismatch")
+        if filename := manifest.get("x-manifest-filename"):
+            (manifest_basename, _) = os.path.splitext(filename)
+            manifest_basename = os.path.basename(manifest_basename)
+
+            if appid != manifest_basename:
+                self.errors.append("appid-filename-mismatch")
 
         split = appid.split(".")
         if len(split) < 3:
