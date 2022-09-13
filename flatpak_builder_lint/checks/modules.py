@@ -4,7 +4,7 @@ from . import Check
 class ModuleCheck(Check):
     type = "manifest"
 
-    def check_source(self, module_name, source):
+    def check_source(self, module_name: str, source: dict) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
 
@@ -30,7 +30,7 @@ class ModuleCheck(Check):
             elif not url.startswith("https:") and not url.startswith("http:"):
                 self.errors.append(f"module-{module_name}-source-git-url-not-http")
 
-    def check_module(self, module):
+    def check_module(self, module: dict) -> None:
         name = module.get("name")
         buildsystem = module.get("buildsystem", "autotools")
 
@@ -60,7 +60,8 @@ class ModuleCheck(Check):
 
         if sources := module.get("sources"):
             for source in sources:
-                self.check_source(module.get("name"), source)
+                if name := module.get("name"):
+                    self.check_source(name, source)
         else:
             self.errors.append(f"module-{name}-no-sources")
 
@@ -68,7 +69,7 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
-    def check(self, manifest):
+    def check(self, manifest: dict) -> None:
         if modules := manifest.get("modules"):
             for module in modules:
                 self.check_module(module)
