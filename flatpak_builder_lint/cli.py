@@ -10,7 +10,24 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
-def main():
+def run_checks(manifest_filename: str) -> dict:
+    manifest = tools.show_manifest(manifest_filename)
+    for checkclass in checks.ALL:
+        check = checkclass()
+
+        if check.type == "manifest":
+            check.check(manifest)
+
+    results = {}
+    if errors := checks.Check.errors:
+        results["errors"] = errors
+    if warnings := checks.Check.warnings:
+        results["warnings"] = warnings
+
+    return results
+
+
+def main() -> int:
     parser = argparse.ArgumentParser(
         description="A linter for flatpak-builder manifests"
     )
@@ -19,22 +36,13 @@ def main():
     args = parser.parse_args()
     exit_code = 0
 
-    manifest = tools.show_manifest(args.manifest[0])
-    for checkclass in checks.ALL:
-        check = checkclass()
-
-        if check.type == "manifest":
-            check.check(manifest)
-
-    output = {}
-    if errors := checks.Check.errors:
+    results = run_checks(args.manifest[0])
+    if "errors" in results:
         exit_code = 1
-        output["errors"] = errors
-    if warnings := checks.Check.warnings:
-        output["warnings"] = warnings
 
+    output = str(results)
     if args.json:
-        output = json.dumps(output, indent=4)
+        output = json.dumps(results, indent=4)
 
     print(output)
     sys.exit(exit_code)
