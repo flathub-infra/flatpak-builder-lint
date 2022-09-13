@@ -112,6 +112,34 @@ testing = ["pytest-timeout (>=2.1)", "pytest-cov (>=3)", "pytest (>=7.1.2)", "co
 docs = ["sphinx-autodoc-typehints (>=1.19.1)", "sphinx (>=5.1.1)", "furo (>=2022.6.21)"]
 
 [[package]]
+name = "flake8"
+version = "5.0.4"
+description = "the modular source code checker: pep8 pyflakes and co"
+category = "dev"
+optional = false
+python-versions = ">=3.6.1"
+
+[package.dependencies]
+mccabe = ">=0.7.0,<0.8.0"
+pycodestyle = ">=2.9.0,<2.10.0"
+pyflakes = ">=2.5.0,<2.6.0"
+
+[[package]]
+name = "flake8-pyproject"
+version = "1.1.0.post0"
+description = "Flake8 plug-in loading the configuration from pyproject.toml"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Flake8 = ">=5,<6"
+TOMLi = {version = "*", markers = "python_version < \"3.11\""}
+
+[package.extras]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "identify"
 version = "2.5.3"
 description = "File identification library for Python"
@@ -262,6 +290,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "pycodestyle"
+version = "2.9.1"
+description = "Python style guide checker"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "pyflakes"
 version = "2.5.0"
 description = "passive checker of Python programs"
@@ -391,7 +427,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b127dd0d00a4ba8e998a8fce05fe810241413139f3bed33496dd8743a5fb265c"
+content-hash = "7b19340eb95eac72554ebe66498ac00cfdd5e15179d6eb885c644155ee50167a"
 
 [metadata.files]
 astroid = []
@@ -437,6 +473,8 @@ dill = [
 ]
 distlib = []
 filelock = []
+flake8 = []
+flake8-pyproject = []
 identify = []
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -516,6 +554,7 @@ py = [
     {file = "py-1.11.0-py2.py3-none-any.whl", hash = "sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378"},
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
 ]
+pycodestyle = []
 pyflakes = []
 pylint = []
 pyparsing = [
