@@ -4,7 +4,7 @@ from . import Check
 class TopLevelCheck(Check):
     type = "manifest"
 
-    def check(self, manifest):
+    def check(self, manifest: dict) -> None:
         build_extension = manifest.get("build-extension")
 
         if not build_extension:
