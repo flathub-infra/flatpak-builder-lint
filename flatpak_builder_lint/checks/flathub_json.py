@@ -1,4 +1,4 @@
-from . import Check
+from . import ARCHES, Check
 
 
 class FlathubJsonCheck(Check):
@@ -43,3 +43,23 @@ class FlathubJsonCheck(Check):
                 if modules := manifest.get("modules"):
                     if self._check_if_extra_data(modules):
                         self.errors.append("flathub-json-modified-publish-delay")
+
+        if only_arches := flathub_json.get("only-arches"):
+            if "arm" in only_arches:
+                self.warnings.append("flathub-json-deprecated-arm-arch-included")
+            if "i386" in only_arches:
+                self.warnings.append("flathub-json-deprecated-i386-arch-included")
+            if len(only_arches) == 0:
+                self.errors.append("flathub-json-only-arches-empty")
+            if len(ARCHES.intersection(only_arches)) == len(ARCHES):
+                self.warnings.append("flathub-json-redundant-only-arches")
+
+        if exclude_arches := flathub_json.get("exclude-arches"):
+            if "arm" in exclude_arches:
+                self.warnings.append("flathub-json-deprecated-arm-arch-excluded")
+            if "i386" in exclude_arches:
+                self.warnings.append("flathub-json-deprecated-i386-arch-excluded")
+            if len(exclude_arches) == 0:
+                self.warnings.append("flathub-json-exclude-arches-empty")
+            if len(ARCHES.intersection(exclude_arches)) == len(ARCHES):
+                self.errors.append("flathub-json-excluded-all-arches")
