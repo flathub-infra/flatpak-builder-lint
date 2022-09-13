@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: setup poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+
+    - uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
+    - name: install dependencies
+      run: |
+        poetry install
+
+    - name: check module sort order
+      run: poetry run isort --check-only flatpak_builder_lint
+
+    - name: check code formatting
+      run: poetry run black --check flatpak_builder_lint
+
+    - name: check code errors
+      run: poetry run flake8p flatpak_builder_lint
+
+    - name: check python types
+      run: poetry run mypy flatpak_builder_lint
