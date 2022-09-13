@@ -36,15 +36,15 @@ def main() -> int:
     args = parser.parse_args()
     exit_code = 0
 
-    results = run_checks(args.manifest[0])
-    if "errors" in results:
-        exit_code = 1
+    if results := run_checks(args.manifest[0]):
+        if "errors" in results:
+            exit_code = 1
 
-    output = str(results)
-    if args.json:
-        output = json.dumps(results, indent=4)
+        output = str(results)
+        if args.json:
+            output = json.dumps(results, indent=4)
+        print(output)
 
-    print(output)
     sys.exit(exit_code)
 
 
