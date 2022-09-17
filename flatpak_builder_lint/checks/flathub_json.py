@@ -25,8 +25,8 @@ class FlathubJsonCheck(Check):
             if not manifest.get("build-extension"):
                 self.errors.append("flathub-json-skip-appstream-check")
 
-        eol = manifest.get("end-of-life")
-        eol_rebase = manifest.get("end-of-life-rebase")
+        eol = flathub_json.get("end-of-life")
+        eol_rebase = flathub_json.get("end-of-life-rebase")
 
         if eol and not eol_rebase:
             self.errors.append("flathub-json-eol-message-without-rebase")
@@ -41,7 +41,7 @@ class FlathubJsonCheck(Check):
         if publish_delay := flathub_json.get("publish-delay-hours"):
             if publish_delay < 3:
                 if modules := manifest.get("modules"):
-                    if self._check_if_extra_data(modules):
+                    if not self._check_if_extra_data(modules):
                         self.errors.append("flathub-json-modified-publish-delay")
 
         if only_arches := flathub_json.get("only-arches"):
