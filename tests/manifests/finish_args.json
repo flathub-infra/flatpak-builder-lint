@@ -1,0 +1,18 @@
+{
+    "app-id": "org.flathub.finish_args",
+    "finish-args": [
+        "--device=all",
+        "--device=shm",
+        "--filesystem=home",
+        "--filesystem=host",
+        "--filesystem=xdg-config/autostart",
+        "--filesystem=xdg-data",
+        "--filesystem=xdg-data/foo:create",
+        "--own-name=org.flathub.finish_args",
+        "--own-name=org.kde.StatusNotifierItem",
+        "--share=session-bus",
+        "--socket=wayland",
+        "--socket=x11",
+        "--talk-name=org.gtk.vfs"
+    ]
+}

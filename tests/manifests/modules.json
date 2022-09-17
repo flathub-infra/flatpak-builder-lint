@@ -1,0 +1,37 @@
+{
+    "app-id": "org.flathub.modules",
+    "modules": [
+        {
+            "name": "module1",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_INSTALL_PREFIX=/app"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "path": "."
+                },
+                {
+                    "type": "git",
+                    "url": "ssh://foobar.git",
+                    "tag": "foo",
+                    "dest-filename": "foo/bar"
+                },
+                {
+                    "type": "archive",
+                    "url": "https://example.com/foo.tar.gz",
+                    "sha1": "deadbeef"
+                }
+            ]
+        },
+        {
+            "name": "module2",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--prefix=/app"
+            ]
+        }
+    ]
+}
