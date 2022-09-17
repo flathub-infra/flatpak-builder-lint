@@ -20,9 +20,6 @@ class AppIDCheck(Check):
                 self.errors.append("appid-filename-mismatch")
 
         split = appid.split(".")
-        if len(split) < 3:
-            self.errors.append("appid-too-few-components")
-
         if split[-1] == "desktop":
             self.errors.append("appid-ends-with-lowercase-desktop")
 
