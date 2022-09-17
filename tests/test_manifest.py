@@ -92,3 +92,13 @@ def test_modules() -> None:
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
+
+
+def test_exceptions() -> None:
+    ret = run_checks("tests/manifests/exceptions.json")
+    found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
+
+    assert "appid-filename-mismatch" not in found_errors
+    assert "toplevel-no-command" not in found_errors
+    assert "flathub-json-deprecated-i386-arch-included" not in found_warnings

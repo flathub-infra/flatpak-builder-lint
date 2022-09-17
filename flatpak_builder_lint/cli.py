@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import importlib.resources
 import json
 import pkgutil
 import sys
@@ -23,6 +24,17 @@ def run_checks(manifest_filename: str) -> dict:
         results["errors"] = errors
     if warnings := checks.Check.warnings:
         results["warnings"] = warnings
+
+    if appid := manifest.get("id"):
+        with importlib.resources.open_text(__package__, "exceptions.json") as f:
+            exceptions = json.load(f)
+
+        if app_exceptions := exceptions.get(appid):
+            for exc in app_exceptions:
+                if exc in results["errors"]:
+                    results["errors"].remove(exc)
+                if exc in results["warnings"]:
+                    results["warnings"].remove(exc)
 
     return results
 
