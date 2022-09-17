@@ -43,7 +43,7 @@ class ModuleCheck(Check):
                         self.errors.append(f"module-{name}-autotools-non-release-build")
 
         if buildsystem == "cmake":
-            self.warnings.append("module-buildsystem-is-cmake")
+            self.warnings.append(f"module-{name}-buildsystem-is-plain-cmake")
 
         if buildsystem in ("cmake-ninja", "cmake"):
             if config_opts := module.get("config-opts"):
