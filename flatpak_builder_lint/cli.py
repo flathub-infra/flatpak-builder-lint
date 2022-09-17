@@ -21,20 +21,17 @@ def run_checks(manifest_filename: str) -> dict:
 
     results = {}
     if errors := checks.Check.errors:
-        results["errors"] = errors
+        results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
-        results["warnings"] = warnings
+        results["warnings"] = list(warnings)
 
     if appid := manifest.get("id"):
         with importlib.resources.open_text(__package__, "exceptions.json") as f:
             exceptions = json.load(f)
 
         if app_exceptions := exceptions.get(appid):
-            for exc in app_exceptions:
-                if exc in results["errors"]:
-                    results["errors"].remove(exc)
-                if exc in results["warnings"]:
-                    results["warnings"].remove(exc)
+            results["errors"] = list(errors - set(app_exceptions))
+            results["warnings"] = list(warnings - set(app_exceptions))
 
     return results
 

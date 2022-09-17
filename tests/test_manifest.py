@@ -96,8 +96,8 @@ def test_modules() -> None:
 
 def test_exceptions() -> None:
     ret = run_checks("tests/manifests/exceptions.json")
-    found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
+    found_errors = ret["errors"]
+    found_warnings = ret["warnings"]
 
     assert "appid-filename-mismatch" not in found_errors
     assert "toplevel-no-command" not in found_errors
