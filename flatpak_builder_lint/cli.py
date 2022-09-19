@@ -14,12 +14,14 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 
 def get_local_exceptions(appid: str) -> set:
-    ret = []
     with importlib.resources.open_text(__package__, "exceptions.json") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid)
 
-    return set(ret)
+    if ret:
+        return set(ret)
+
+    return set()
 
 
 def get_remote_exceptions(
