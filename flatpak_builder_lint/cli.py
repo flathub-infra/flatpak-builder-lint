@@ -1,8 +1,11 @@
 import argparse
 import importlib
+import importlib.resources
 import json
 import pkgutil
 import sys
+
+import requests
 
 from . import checks, tools
 
@@ -10,7 +13,31 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
-def run_checks(manifest_filename: str) -> dict:
+def get_local_exceptions(appid: str) -> set:
+    with importlib.resources.open_text(__package__, "exceptions.json") as f:
+        exceptions = json.load(f)
+        ret = exceptions.get(appid)
+
+    if ret:
+        return set(ret)
+
+    return set()
+
+
+def get_remote_exceptions(
+    appid: str, api_url: str = "http://localhost:8000/exceptions"
+) -> set:
+    try:
+        r = requests.get(f"{api_url}/{appid}")
+        r.raise_for_status()
+        ret = set(r.json())
+    except requests.exceptions.HTTPError:
+        ret = set()
+
+    return ret
+
+
+def run_checks(manifest_filename: str, use_remote_exceptions: bool = False) -> dict:
     manifest = tools.show_manifest(manifest_filename)
     for checkclass in checks.ALL:
         check = checkclass()
@@ -20,9 +47,21 @@ def run_checks(manifest_filename: str) -> dict:
 
     results = {}
     if errors := checks.Check.errors:
-        results["errors"] = errors
+        results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
-        results["warnings"] = warnings
+        results["warnings"] = list(warnings)
+
+    if appid := manifest.get("id"):
+        exceptions = None
+        if use_remote_exceptions:
+            exceptions = get_remote_exceptions(appid)
+
+        if not exceptions:
+            exceptions = get_local_exceptions(appid)
+
+        if exceptions:
+            results["errors"] = list(errors - set(exceptions))
+            results["warnings"] = list(warnings - set(exceptions))
 
     return results
 
@@ -33,16 +72,21 @@ def main() -> int:
     )
     parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
     parser.add_argument("--json", help="Output in JSON format", action="store_true")
+    parser.add_argument(
+        "--remote-exceptions", help="Fetch exceptions from Flathub", action="store_true"
+    )
     args = parser.parse_args()
     exit_code = 0
 
-    if results := run_checks(args.manifest[0]):
+    if results := run_checks(args.manifest[0], args.remote_exceptions):
         if "errors" in results:
             exit_code = 1
 
-        output = str(results)
         if args.json:
             output = json.dumps(results, indent=4)
+        else:
+            output = str(results)
+
         print(output)
 
     sys.exit(exit_code)

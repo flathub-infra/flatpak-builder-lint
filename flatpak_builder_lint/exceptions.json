@@ -1,0 +1,7 @@
+{
+    "org.flathub.exceptions": {
+	"appid-filename-mismatch": "required as I like pies",
+	"toplevel-no-command": "another nonsensical reason",
+	"flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
+    }
+}

@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional, Set
 
 ALL = []
 
@@ -15,5 +15,5 @@ class CheckMeta(type):
 
 
 class Check(metaclass=CheckMeta):
-    warnings: List[Optional[str]] = []
-    errors: List[Optional[str]] = []
+    warnings: Set[Optional[str]] = set()
+    errors: Set[Optional[str]] = set()
