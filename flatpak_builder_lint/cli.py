@@ -7,14 +7,14 @@ import sys
 
 import requests
 
-from . import checks, tools
+from . import checks, staticfiles, tools
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
 def get_local_exceptions(appid: str) -> set:
-    with importlib.resources.open_text(__package__, "exceptions.json") as f:
+    with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid)
 
