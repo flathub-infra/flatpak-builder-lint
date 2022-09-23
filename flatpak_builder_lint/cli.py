@@ -50,6 +50,8 @@ def run_checks(manifest_filename: str, use_remote_exceptions: bool = False) -> d
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
         results["warnings"] = list(warnings)
+    if jsonschema := checks.Check.jsonschema:
+        results["jsonschema"] = list(jsonschema)
 
     if appid := manifest.get("id"):
         exceptions = None

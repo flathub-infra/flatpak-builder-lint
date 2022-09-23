@@ -17,3 +17,4 @@ class CheckMeta(type):
 class Check(metaclass=CheckMeta):
     warnings: Set[Optional[str]] = set()
     errors: Set[Optional[str]] = set()
+    jsonschema: Set[Optional[str]] = set()

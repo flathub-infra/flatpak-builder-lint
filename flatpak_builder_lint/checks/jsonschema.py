@@ -12,12 +12,15 @@ class JSONSchemaCheck(Check):
     type = "manifest"
 
     def check(self, manifest: dict) -> None:
-        with importlib.resources.open_text(staticfiles, "flatpak-manifest.schema.json") as f:
+        with importlib.resources.open_text(
+            staticfiles, "flatpak-manifest.schema.json"
+        ) as f:
             schema = json.load(f)
 
         try:
             jsonschema.validate(manifest, schema)
         except jsonschema.exceptions.SchemaError:
-            pass
-        except jsonschema.exceptions.ValidationError:
-            self.errors.append("jsonschema-validation-error")
+            self.errors.add("jsonschema-schema-error")
+        except jsonschema.exceptions.ValidationError as exc:
+            self.errors.add("jsonschema-validation-error")
+            self.jsonschema.add(exc.message)
