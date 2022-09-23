@@ -7,14 +7,14 @@ import sys
 
 import requests
 
-from . import checks, tools
+from . import checks, staticfiles, tools
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
 def get_local_exceptions(appid: str) -> set:
-    with importlib.resources.open_text(__package__, "exceptions.json") as f:
+    with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid)
 
@@ -50,6 +50,8 @@ def run_checks(manifest_filename: str, use_remote_exceptions: bool = False) -> d
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
         results["warnings"] = list(warnings)
+    if jsonschema := checks.Check.jsonschema:
+        results["jsonschema"] = list(jsonschema)
 
     if appid := manifest.get("id"):
         exceptions = None
