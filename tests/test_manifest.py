@@ -57,6 +57,7 @@ def test_finish_args() -> None:
         "finish-args-arbitrary-autostart-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-device-all",
+        "finish-args-flatpak-spawn-access",
     }
 
     warnings = {"finish-args-deprecated-shm"}

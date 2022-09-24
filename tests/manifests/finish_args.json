@@ -13,6 +13,7 @@
         "--share=session-bus",
         "--socket=wayland",
         "--socket=x11",
-        "--talk-name=org.gtk.vfs"
+        "--talk-name=org.gtk.vfs",
+        "--talk-name=org.freedesktop.Flatpak"
     ]
 }
