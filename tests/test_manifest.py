@@ -96,7 +96,7 @@ def test_modules() -> None:
 
 
 def test_exceptions() -> None:
-    ret = run_checks("tests/manifests/exceptions.json")
+    ret = run_checks("tests/manifests/exceptions.json", enable_exceptions=True)
     found_errors = ret["errors"]
     found_warnings = ret["warnings"]
 

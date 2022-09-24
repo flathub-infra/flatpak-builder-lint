@@ -31,13 +31,13 @@ def get_remote_exceptions(
         r = requests.get(f"{api_url}/{appid}")
         r.raise_for_status()
         ret = set(r.json())
-    except requests.exceptions.HTTPError:
+    except requests.exceptions.RequestException:
         ret = set()
 
     return ret
 
 
-def run_checks(manifest_filename: str, use_remote_exceptions: bool = False) -> dict:
+def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
     manifest = tools.show_manifest(manifest_filename)
     for checkclass in checks.ALL:
         check = checkclass()
@@ -53,13 +53,12 @@ def run_checks(manifest_filename: str, use_remote_exceptions: bool = False) -> d
     if jsonschema := checks.Check.jsonschema:
         results["jsonschema"] = list(jsonschema)
 
-    if appid := manifest.get("id"):
+    if enable_exceptions:
         exceptions = None
-        if use_remote_exceptions:
+        if appid := manifest.get("id"):
             exceptions = get_remote_exceptions(appid)
-
-        if not exceptions:
-            exceptions = get_local_exceptions(appid)
+            if not exceptions:
+                exceptions = get_local_exceptions(appid)
 
         if exceptions:
             results["errors"] = list(errors - set(exceptions))
@@ -75,12 +74,12 @@ def main() -> int:
     parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
     parser.add_argument("--json", help="Output in JSON format", action="store_true")
     parser.add_argument(
-        "--remote-exceptions", help="Fetch exceptions from Flathub", action="store_true"
+        "--exceptions", help="Skip allowed warnings or errors", action="store_true"
     )
     args = parser.parse_args()
     exit_code = 0
 
-    if results := run_checks(args.manifest[0], args.remote_exceptions):
+    if results := run_checks(args.manifest[0], args.exceptions):
         if "errors" in results:
             exit_code = 1
 
