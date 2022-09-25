@@ -7,7 +7,7 @@ import sys
 
 import requests
 
-from . import checks, staticfiles, tools
+from . import __version__, checks, staticfiles, tools
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
@@ -76,6 +76,10 @@ def main() -> int:
     parser.add_argument(
         "--exceptions", help="Skip allowed warnings or errors", action="store_true"
     )
+    parser.add_argument(
+        "--version", action="version", version=f"flatpak-builder-lint {__version__}"
+    )
+
     args = parser.parse_args()
     exit_code = 0
 
