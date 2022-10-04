@@ -62,8 +62,7 @@ def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
 
         if exceptions:
             if "*" in exceptions:
-                results["errors"] = []
-                results["warnings"] = []
+                return {}
             else:
                 results["errors"] = list(errors - set(exceptions))
                 results["warnings"] = list(warnings - set(exceptions))

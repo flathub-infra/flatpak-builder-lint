@@ -107,8 +107,4 @@ def test_exceptions() -> None:
 
 def test_exceptions_wildcard() -> None:
     ret = run_checks("tests/manifests/exceptions_wildcard.json", enable_exceptions=True)
-    found_errors = ret["errors"]
-    found_warnings = ret["warnings"]
-
-    assert len(found_errors) == 0
-    assert len(found_warnings) == 0
+    assert ret == {}
