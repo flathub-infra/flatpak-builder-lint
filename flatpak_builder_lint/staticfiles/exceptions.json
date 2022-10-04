@@ -1117,6 +1117,9 @@
     "org.kde.kdevelop": {
 	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.mozilla.Thunderbird": {
+        "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
+    },
     "org.octave.Octave": {
 	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
