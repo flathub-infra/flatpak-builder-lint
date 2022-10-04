@@ -65,7 +65,12 @@ def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
                 return {}
             else:
                 results["errors"] = list(errors - set(exceptions))
+                if not len(results["errors"]):
+                    results.pop("errors")
+
                 results["warnings"] = list(warnings - set(exceptions))
+                if not len(results["warnings"]):
+                    results.pop("warnings")
 
     return results
 
