@@ -72,19 +72,18 @@ def test_finish_args() -> None:
 
 def test_modules() -> None:
     errors = {
-        "module-module1-cmake-redundant-prefix",
         "module-module1-source-git-no-commit-or-tag",
         "module-module1-source-git-local-path",
         "module-module1-source-git-no-url",
         "module-module1-source-git-url-not-http",
         "module-module1-source-sha1-deprecated",
-        "module-module2-autotools-redundant-prefix",
-        # "module-module2-no-sources",
     }
 
     warnings = {
         "module-module1-buildsystem-is-plain-cmake",
         "module-module1-cmake-no-debuginfo",
+        "module-module2-autotools-redundant-prefix",
+        "module-module1-cmake-redundant-prefix",
     }
 
     ret = run_checks("tests/manifests/modules.json")
