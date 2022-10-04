@@ -42,7 +42,7 @@ class ModuleCheck(Check):
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
                     if opt.startswith("--prefix="):
-                        self.errors.add(f"module-{name}-autotools-redundant-prefix")
+                        self.warnings.add(f"module-{name}-autotools-redundant-prefix")
                     elif opt.startswith("--enable-debug"):
                         self.errors.add(f"module-{name}-autotools-non-release-build")
 
@@ -53,7 +53,7 @@ class ModuleCheck(Check):
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
                     if opt.startswith("-DCMAKE_INSTALL_PREFIX"):
-                        self.errors.add(f"module-{name}-cmake-redundant-prefix")
+                        self.warnings.add(f"module-{name}-cmake-redundant-prefix")
                     elif opt.startswith("-DCMAKE_BUILD_TYPE"):
                         split = opt.split("=")
                         if split[1] == "Release":
