@@ -62,8 +62,8 @@ class ModuleCheck(Check):
             for source in sources:
                 if name := module.get("name"):
                     self.check_source(name, source)
-        else:
-            self.errors.add(f"module-{name}-no-sources")
+        # else:
+        #     self.errors.add(f"module-{name}-no-sources")
 
         if nested_modules := module.get("modules"):
             for nested_module in nested_modules:
