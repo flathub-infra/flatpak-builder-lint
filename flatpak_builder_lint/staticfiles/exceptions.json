@@ -232,7 +232,8 @@
 	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Eloston.UngoogledChromium": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
+	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "com.github.elth0r0.iqpuzzle": {
 	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1155,5 +1156,23 @@
     },
     "space.crankshaft.Crankshaft": {
 	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+    },
+    "com.google.Chrome": {
+	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+    },
+    "com.google.ChromeDev": {
+	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+    },
+    "org.chromium.Chromium": {
+	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+    },
+    "net.scribus.Scribus": {
+	"finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
+    },
+    "com.valvesoftware.Steam": {
+	"finish-args-contains-both-x11-and-wayland": "not every game supports wayland"
+    },
+    "org.inkscape.Inkscape": {
+	"finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
     }
 }
