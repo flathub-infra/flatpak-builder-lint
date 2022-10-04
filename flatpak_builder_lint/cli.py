@@ -98,9 +98,18 @@ def main() -> int:
         if args.json:
             output = json.dumps(results, indent=4)
         else:
-            output = str(results)
+            # we default to JSON output anyway as it's nicely formatted
+            # TODO: make the output more human readable
+            output = json.dumps(results, indent=4)
 
         print(output)
+
+        if args.exceptions and not args.json:
+            print("")
+            print(
+                "If you think problems listed above are a false positive, please report it here:"
+            )
+            print("  https://github.com/flathub/flatpak-builder-lint")
 
     sys.exit(exit_code)
 
