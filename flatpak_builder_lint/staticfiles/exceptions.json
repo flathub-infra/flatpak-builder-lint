@@ -1085,8 +1085,7 @@
 	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.flatpak.Builder": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule",
-	"flathub-json-skip-appstream-check": "CLI tool"
+	"*": "used by flathub infra"
     },
     "org.freecadweb.FreeCAD": {
 	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
