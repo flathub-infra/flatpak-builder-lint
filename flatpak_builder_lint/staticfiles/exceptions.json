@@ -1121,7 +1121,7 @@
         "flathub-json-modified-publish-delay": "This flatpak is used in infra"
     },
     "org.freecadweb.FreeCAD": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
     },
     "org.freedesktop.fwupd": {
         "flathub-json-skip-appstream-check": "It is a command line package"
