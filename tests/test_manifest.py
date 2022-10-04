@@ -103,3 +103,12 @@ def test_exceptions() -> None:
     assert "appid-filename-mismatch" not in found_errors
     assert "toplevel-no-command" not in found_errors
     assert "flathub-json-deprecated-i386-arch-included" not in found_warnings
+
+
+def test_exceptions_wildcard() -> None:
+    ret = run_checks("tests/manifests/exceptions_wildcard.json", enable_exceptions=True)
+    found_errors = ret["errors"]
+    found_warnings = ret["warnings"]
+
+    assert len(found_errors) == 0
+    assert len(found_warnings) == 0

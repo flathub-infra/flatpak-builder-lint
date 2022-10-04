@@ -4,6 +4,9 @@
 	"toplevel-no-command": "another nonsensical reason",
 	"flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
     },
+    "org.flathub.exceptions_wildcard": {
+	"*": "ignore all errors and warnings"
+    },
     "com.github._0negal.Viper": {
 	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
