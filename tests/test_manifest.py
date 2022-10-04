@@ -79,7 +79,7 @@ def test_modules() -> None:
         "module-module1-source-git-url-not-http",
         "module-module1-source-sha1-deprecated",
         "module-module2-autotools-redundant-prefix",
-        "module-module2-no-sources",
+        # "module-module2-no-sources",
     }
 
     warnings = {

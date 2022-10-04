@@ -61,8 +61,12 @@ def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
                 exceptions = get_local_exceptions(appid)
 
         if exceptions:
-            results["errors"] = list(errors - set(exceptions))
-            results["warnings"] = list(warnings - set(exceptions))
+            if "*" in exceptions:
+                results["errors"] = []
+                results["warnings"] = []
+            else:
+                results["errors"] = list(errors - set(exceptions))
+                results["warnings"] = list(warnings - set(exceptions))
 
     return results
 
