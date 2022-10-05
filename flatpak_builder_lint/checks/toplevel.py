@@ -17,11 +17,7 @@ class TopLevelCheck(Check):
         branch = manifest.get("branch")
 
         if branch == "stable" or branch == "master":
-            self.errors.add("toplevel-unecessary-branch")
-
-        default_branch = manifest.get("default-branch")
-        if default_branch == "stable" or default_branch == "master":
-            self.errors.add("toplevel-unecessary-default-branch")
+            self.warnings.add("toplevel-unecessary-branch")
 
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
