@@ -38,7 +38,8 @@ class FlathubJsonCheck(Check):
             if eol_rebase not in eol:
                 self.errors.add("flathub-json-eol-rebase-misses-new-id")
 
-        if publish_delay := flathub_json.get("publish-delay-hours"):
+        publish_delay = flathub_json.get("publish-delay-hours")
+        if isinstance(publish_delay, int):
             if publish_delay < 3:
                 if modules := manifest.get("modules"):
                     if not self._check_if_extra_data(modules):
