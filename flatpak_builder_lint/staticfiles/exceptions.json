@@ -1,1179 +1,1412 @@
 {
     "org.flathub.exceptions": {
-	"appid-filename-mismatch": "required as I like pies",
-	"toplevel-no-command": "another nonsensical reason",
-	"flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
+        "appid-filename-mismatch": "required as I like pies",
+        "toplevel-no-command": "another nonsensical reason",
+        "flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
     },
     "org.flathub.exceptions_wildcard": {
-	"*": "ignore all errors and warnings"
+        "*": "ignore all errors and warnings"
     },
     "com.github._0negal.Viper": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github._4lex4.ScanTailor-Advanced": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ADBeveridge.Raider": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.afrantzis.Bless": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.aharotias2.parapara": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ahrm.sioyek": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.akiraux.akira": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alainm23.byte": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alainm23.planner": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alecaddd.sequeler": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexhuntley.Plots": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.astronum": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.desktop-files-creator": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.dice": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.dwxmlcreator": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.easter": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.forgetpass": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.goldsearch": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.notepad": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.recorder": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.relaxator": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.somafm": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.alexkdeveloper.sudoku": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.AlizaMedicalImaging.AlizaMS": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.AmatCoder.mednaffe": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.amikha1lov.RecApp": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Anuken.Mindustry": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.appadeia.Taigo": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.arminstraub.krop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.arshubham.cipher": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.arshubham.gitignore": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.graphui": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.playmymusic": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.playmyvideos": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.regextester": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.avojak.paint-spill": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.avojak.warble": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.babluboy.bookworm": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bajoja.indicator-kdeconnect": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bcedu.valasimplehttpserver": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bcedu.vgrive": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.benpocalypse.Huely": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.birros.WebArchives": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bjaraujo.Bombermaaan": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bleakgrey.tootle": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Bleuzen.FFaudioConverter": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bluesabre.darkbar": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.buddhi1980.mandelbulber2": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bvschaik.julius": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.calo001.fondo": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.calo001.luna": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.carlos157oliveira.Calculus": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.cassidyjames.clairvoyant": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.cassidyjames.dippi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.cfcurtis.pdfstitcher": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.childishgiant.mixer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.chipmuenk.pyfda": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.christianrauch.Jahresarbeit-2003": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.corna.Vivado": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.coslyk.MoonPlayer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.cubitect.cubiomes-viewer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.d4nj1.tlpui": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.dahenson.agenda": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dail8859.NotepadNext": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Darazaki.Spedread": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dariasteam.cowsrevenge": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dawidd6.checksumo": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.debauchee.barrier": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.devalien.workspaces": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.dimkr.gplaces": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.donadigo.appeditor": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dynobo.normcap": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.edenalencar.identifications": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.elfenware.badger": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Eloston.UngoogledChromium": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "com.github.elth0r0.iqpuzzle": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.emmanueltouzery.cigale": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.emmanueltouzery.hotwire": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.emmanueltouzery.projectpad": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.eneshecan.WhatsAppForLinux": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.fabiocolacio.marker": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.finefindus.eyedropper": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Flacon": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.flxzt.rnote": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.fontmatrix.Fontmatrix": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.fries1234.ncsa-mosaic": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.fushinari.Wordbook": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.gabutakut.gabutdm": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.geigi.cozy": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.giacomogroppi.writernote-qt": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.gijsgoudzwaard.image-optimizer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.git_cola.git-cola": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.gmg137.netease-cloud-music-gtk": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.gpuvis.Gpuvis": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.GradienceTeam.Gradience": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557"
     },
     "com.github.gyunaev.spivak": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.hluk.copyq": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.hopsan.Hopsan": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.horaciodrs.tradesim": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.hugolabe.Wike": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.huluti.Coulr": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.huluti.Curtail": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.HypatiaProject.hypatia": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ilai_deutel.kibi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.inercia.k3x": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.iortcw.iortcw": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.IsmaelMartinez.teams_for_linux": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.itext.i7j_rups": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.iwalton3.jellyfin-media-player": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.iwalton3.jellyfin-mpv-shim": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.JannikHv.Gydl": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jeromerobert.pdfarranger": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jkotra.eovpn": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jkotra.unlockr": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jmlich.geotagging": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jms55.Sandbox": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.johnfactotum.Foliate": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.johnfactotum.QuickLookup": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Johnn3y.Forklift": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.joseexposito.touche": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.jpakkane.glyphtracer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.junrrein.PDFSlicer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.juzzlin.DustRacing2D": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.k4zmu2a.spacecadetpinball": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.github.kagami.boram": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.kalibari.audok": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.keriew.augustus": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.kmwallio.thiefmd": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.KRTirtho.Spotube": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.labyrinth_team.labyrinth": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.lachhebo.Gabtag": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.lainsce.yishu": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.libresprite.LibreSprite": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.liferooter.textpieces": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.louis77.tuner": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.lxgr_linux.pokete": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.makhber.Makhber": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.maoschanz.drawing": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.maoschanz.DynamicWallpaperEditor": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.marhkb.Pods": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.marinm.songrec": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.marktext.marktext": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.matfantinel.moneta": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.matfantinel.reminduck": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Matoking.protontricks": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mdh34.hackup": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mdh34.quickdocs": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mgropp.PdfJumbler": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.micahflee.torbrowser-launcher": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.miguelmota.Cointop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mikacousin.olc": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mtkennerly.ludusavi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.muriloventuroso.easyssh": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.muriloventuroso.givemelyrics": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.muriloventuroso.pdftricks": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Murmele.Gittyup": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.Murmele.scram": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.naaando.lyrics": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.needleandthread.vocal": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.neithern.g4music": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.nihui.waifu2x-ncnn-vulkan": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.nrittsti.NTag": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ojubaorg.Othman": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.opentyrian.OpenTyrian": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.github.optyfr.JRomManager": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.paolostivanin.OTPClient": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.petebuffon.yafc": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.phase1geo.minder": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.philip_scott.notes-up": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.philip_scott.spice-up": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.PintaProject.Pinta": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.polymeilex.neothesia": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.PopoutApps.popout3d": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.powertab.powertabeditor": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.qarmin.czkawka": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.qarmin.szyszka": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.quaternion": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Qv2ray": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rafostar.Clapper": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.raibtoffoletto.litteris": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rajsolai.response": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rajsolai.textsnatcher": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ransome1.sleek": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.reds.LogisimEvolution": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.reduz.ChibiTracker": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rhyme_player.rhyme": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rkoesters.xkcd-gtk": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.robertsanseries.ciano": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rogercrocker.badabib": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Rosalie241.RMG": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rssguard": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ryanakca.slingshot": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ryonakano.konbucase": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ryonakano.pinit": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ryonakano.reco": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.sakya.corechess": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.scrivanolabs.scrivano": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.sdv43.whaler": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.shonumi.gbe-plus": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.skullernet.q2pro": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.skylot.jadx": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.subhadeepjasu.pebbles": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.suzie97.communique": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.taiko2k.avvie": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.taiko2k.tauonmb": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.tchx84.Flatseal": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.tenderowl.frog": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.tenderowl.norka": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.tglima.Myfluttercrypto": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.theCalcaholic.StreamDeck": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.theironrobin.siglo": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.themix_project.Oomox": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.tmewett.BrogueCE": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.treagod.spectator": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.djpdf": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.RemoteTouchpad": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.VideoDownloader": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.utsushi.Utsushi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.varnholt.dynablaster_revenge": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.vikdevelop.photopea_app": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.vikdevelop.timer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.vikdevelop.VCalculator": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.virtual_puppet_project.vpuppr": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.vkohaupt.vokoscreenNG": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.vladimiry.ElectronMail": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.weclaw1.ImageRoll": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.wwmm.easyeffects": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.wwmm.pulseeffects": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.wwmm.pulseeffects.plugin.lsp-plugins": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Xenoveritas.abuse": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.xournalpp.xournalpp": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.yucefsourani.albasheer-electronic-quran-browser": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.zadam.trilium": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.z.Cumulonimbus": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.zocker_160.SyncThingy": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.ztefn.haguichi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "app.organicmaps.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "chat.delta.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "chat.schildi.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.bitwarden.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.irccloud.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.jgraph.drawio.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "org.kiwix.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "org.telegram.desktop": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.adnan338.Invoicer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.adnan338.Nixwriter": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.azymohliad.Qwertone": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.bitseater.meteo": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.ColinDuquesnoy.MellowPlayer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.coringao.cavestory-nx": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.coringao.JAG": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.cunidev.Gestures": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.gitlab.cunidev.Workflow": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.cutecom.cutecom": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.davem.ClamTk": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.guillermop.MasterKey": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.inendi.Inspector": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.j0chn.nextcloud_password_client": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdAnimatedImageEditor": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdAppdataEdit": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.gitlab.JakobDev.jdDiff": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdEolConverter": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdMinecraftLauncher": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.jakobdev.jdnbtexplorer": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdReplace": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.JakobDev.jdTextEdit": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.gitlab.kendellfab.restscope": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.librebob.Athenaeum": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.gitlab.maevemi.publictransport": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.Murmele.UDPLogger": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.newsflash": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.sat_metalab.Splash": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.tipp10.tipp10": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.zehkira.Myuzi": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "org.codeberg.dimkard.glossaico": {
-	"appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "io.qt.qdbusviewer": {
-	"finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "io.github.bothlab.syntalos": {
-	"finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.gnome.dspy": {
-	"finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.gnome.dfeet": {
-	"finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.freedesktop.Bustle": {
-	"finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.gnome.Builder": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.fcitx.Fcitx5": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "com.jetbrains.PyCharm-Community": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "com.jetbrains.PyCharm-Professional": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.Rider": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.RubyMine": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.st.STM32CubeIDE": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "io.brackets.Brackets": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "org.codeblocks.codeblocks": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "org.eclipse.Committers": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "org.eclipse.Java": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "org.eclipse.Javascript": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "re.sonny.Workbench": {
-	"finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "com.hack_computer.Clubhouse": {
-	"finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "ca.desrt.dconf-editor": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "cc.nift.nsm": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.axosoft.GitKraken": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.borgbase.Vorta": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.chatterino.chatterino": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.georgefb.quickaccess": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.getmailspring.Mailspring": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.google.AndroidStudio": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.CLion": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.DataGrip": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.IntelliJ-IDEA-Community": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.PhpStorm": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.WebStorm": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.leinardi.gkraken": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.leinardi.gst": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.leinardi.gwe": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.leinardi.gx52": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.notepadqq.Notepadqq": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.prusa3d.PrusaSlicer": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.raggesilver.BlackBox": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.rawtherapee.RawTherapee": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.syntevo.SmartSynchronize": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.ulduzsoft.Birdtray": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.unity.UnityHub": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.visualstudio.code": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.visualstudio.code.insiders": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.visualstudio.code-oss": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.vscodium.codium": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "dev.boxi.Boxi": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "dev.goats.xivlauncher": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "dev.lapce.lapce": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "edu.stanford.Almond": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "es.estoes.wallpaperDownloader": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "eu.skribisto.skribisto": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.atom.Atom": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.achetagames.epic_asset_manager": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.am2r_community_developers.AM2RLauncher": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.congard.qnvsm": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.dummerle.rare": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.giantpinkrobots.bootqt": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.jeffshee.Hidamari": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.jliljebl.Flowblade": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.maurycyliebner.enve": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.mightycreak.Diffuse": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.mpobaschnig.Vaults": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.philipk.boilr": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.prateekmedia.appimagepool": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.realmazharhussain.GdmSettings": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.shiftey.Desktop": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.howl.Editor": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.podman_desktop.PodmanDesktop": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.stoplight.studio": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "net.cozic.joplin_desktop": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "net.davidotek.pupgui2": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "net.lutris.Lutris": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.cockpit_project.CockpitClient": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.contourterminal.Contour": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.coolero.Coolero": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.cryptomator.Cryptomator": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.flatpak.Builder": {
-	"*": "used by flathub infra"
+        "*": "used by flathub infra"
     },
     "org.freecadweb.FreeCAD": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gabmus.gfeeds": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gabmus.hydrapaper": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gabmus.unifydmin": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gnome.Games": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gnome.Lollypop": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gnome.World.PikaBackup": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.godotengine.Godot": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.jabref.jabref": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.kde.kdevelop": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.mozilla.Thunderbird": {
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
     },
     "org.octave.Octave": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.openshot.OpenShot": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.pegasus_frontend.Pegasus": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.sil.FieldWorks": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.texstudio.TeXstudio": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.vim.Vim": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.wezfurlong.wezterm": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.worldpossible.ScriptLauncher": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.zim_wiki.Zim": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "pm.mirko.Atoms": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "re.sonny.Junction": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "space.crankshaft.Crankshaft": {
-	"finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.google.Chrome": {
-	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.google.ChromeDev": {
-	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+        "flathub-json-modified-publish-delay": "extra-data"
     },
     "org.chromium.Chromium": {
-	"finish-args-contains-both-x11-and-wayland": "optional wayland support"
+        "finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "net.scribus.Scribus": {
-	"finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
+        "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
     },
     "com.valvesoftware.Steam": {
-	"finish-args-contains-both-x11-and-wayland": "not every game supports wayland"
+        "finish-args-contains-both-x11-and-wayland": "not every game supports wayland"
     },
     "org.inkscape.Inkscape": {
-	"finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
+        "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
+    },
+    "at.vintagestory.VintageStory": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "chat.tandem.Client": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.adobe.Flash-Player-Projector": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.airtame.Client": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.albiononline.AlbionOnline": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.amazon.Workspaces": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.anydesk.Anydesk": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.avocode.Avocode": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.behringer.XAirEdit": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.bluejeans.BlueJeans": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.dropbox.Client": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.elsevier.MendeleyDesktop": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.etlegacy.ETLegacy": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.flashforge.FlashPrint": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.getpostman.Postman": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.hamrick.VueScan": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.icons8.Lunacy": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.jagex.RuneScape": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.kolor.AutopanoPro": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.lunarclient.LunarClient": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.microsoft.Edge": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.microsoft.Teams": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.mojang.Minecraft": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.musixmatch.Musixmatch": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.netease.CloudMusic": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.nordpass.NordPass": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.parsecgaming.parsec": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.qq.QQmusic": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.quixel.Bridge": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.sevenkfans.sevenkaa": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.skype.Client": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.slack.Slack": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.spotify.Client": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.sublimemerge.App": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.sublimetext.three": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.synology.CloudStationBackup": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.synology.SynologyAssistant": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.synology.SynologyDrive": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.syntevo.SmartGit": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.tdameritrade.ThinkOrSwim": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.teamspeak.TeamSpeak": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.tencent.wemeet": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.thebrokenrail.MCPIReborn": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.ticktick.TickTick": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.todoist.Todoist": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.tracktion.Waveform": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.viber.Viber": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.wps.Office": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.xunlei.Thunder": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "fr.free.hxc2001.HxCFloppyEmulator.Extension.capslib": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "gg.guilded.Guilded": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "il.co.ravkavonline.RavKavOnline": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.botfather.Botfather": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.designer.GravitDesigner": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.exodus.Exodus": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.github.Fndroid.clash_for_windows": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.github.ihhub.Fheroes2": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.github.peazip.PeaZip.Addon.i386": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "io.wavebox.Wavebox": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "jp.yvt.OpenSpades": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net._86box._86Box.ROMs": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net.blix.BlueMail": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net.codeindustry.MasterPDFEditor": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net.gaijin.WarThunder": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net.xmind.XMind8": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "net.zgcoder.skycheckers": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "nl.lostboys.rollemup": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.chocolate_doom.ChocolateDoom": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.firestormviewer.FirestormViewer": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.freedownloadmanager.Manager": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.freefilesync.FreeFileSync": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.geogebra.GeoGebra": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.jdownloader.JDownloader": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.srb2.SRB2": {
+        "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "org.srb2.SRB2Kart": {
+        "flathub-json-modified-publish-delay": "extra-data"
     }
 }
