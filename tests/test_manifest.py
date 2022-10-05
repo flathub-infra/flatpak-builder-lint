@@ -4,15 +4,19 @@ from flatpak_builder_lint.cli import run_checks
 def test_toplevel() -> None:
     errors = {
         "toplevel-no-command",
-        "toplevel-unecessary-branch",
-        "toplevel-unecessary-default-branch",
         "toplevel-cleanup-debug",
         "toplevel-no-modules",
+    }
+    warnings = {
+        "toplevel-unecessary-branch",
     }
 
     ret = run_checks("tests/manifests/toplevel.json")
     found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
+
     assert errors.issubset(found_errors)
+    assert warnings.issubset(found_warnings)
 
 
 def test_appid() -> None:
@@ -47,20 +51,22 @@ def test_flathub_json() -> None:
 
 def test_finish_args() -> None:
     errors = {
-        "finish-args-contains-both-x11-and-wayland",
-        "finish-args-x11-without-ipc",
-        "finish-args-arbitrary-xdg-data-access",
-        "finish-args-unnecessary-xdg-data-access",
-        "finish-args-redundant-home-and-host",
-        "finish-args-unnecessary-appid-own-name",
-        "finish-args-broken-kde-tray-permission",
         "finish-args-arbitrary-autostart-access",
+        "finish-args-arbitrary-xdg-data-access",
+        "finish-args-broken-kde-tray-permission",
+        "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-device-all",
-        "finish-args-flatpak-spawn-access",
+        "finish-args-redundant-home-and-host",
+        "finish-args-unnecessary-appid-own-name",
+        "finish-args-unnecessary-xdg-data-access",
     }
 
-    warnings = {"finish-args-deprecated-shm"}
+    warnings = {
+        "finish-args-contains-both-x11-and-wayland",
+        "finish-args-deprecated-shm",
+        "finish-args-x11-without-ipc",
+    }
 
     ret = run_checks("tests/manifests/finish_args.json")
     found_errors = set(ret["errors"])
@@ -76,7 +82,6 @@ def test_modules() -> None:
         "module-module1-source-git-local-path",
         "module-module1-source-git-no-url",
         "module-module1-source-git-url-not-http",
-        "module-module1-source-sha1-deprecated",
     }
 
     warnings = {
@@ -84,6 +89,7 @@ def test_modules() -> None:
         "module-module1-cmake-no-debuginfo",
         "module-module2-autotools-redundant-prefix",
         "module-module1-cmake-redundant-prefix",
+        "module-module1-source-sha1-deprecated",
     }
 
     ret = run_checks("tests/manifests/modules.json")
