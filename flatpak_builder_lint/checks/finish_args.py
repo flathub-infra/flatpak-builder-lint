@@ -27,7 +27,7 @@ class FinishArgsCheck(Check):
                 fa[key].add(value)
 
         if "x11" in fa["socket"] and "wayland" in fa["socket"]:
-            self.errors.add("finish-args-contains-both-x11-and-wayland")
+            self.warnings.add("finish-args-contains-both-x11-and-wayland")
 
         if "x11" in fa["socket"] or "fallback-x11" in fa["socket"]:
             if "ipc" not in fa["share"]:
