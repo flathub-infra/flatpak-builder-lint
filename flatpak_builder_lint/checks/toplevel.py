@@ -14,10 +14,9 @@ class TopLevelCheck(Check):
             elif command.startswith("/"):
                 self.warnings.add("toplevel-command-is-path")
 
-        branch = manifest.get("branch")
-
-        if branch == "stable" or branch == "master":
-            self.warnings.add("toplevel-unecessary-branch")
+            branch = manifest.get("branch")
+            if branch == "stable" or branch == "master":
+                self.warnings.add("toplevel-unecessary-branch")
 
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
