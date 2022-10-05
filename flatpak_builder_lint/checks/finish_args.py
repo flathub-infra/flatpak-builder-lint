@@ -31,7 +31,7 @@ class FinishArgsCheck(Check):
 
         if "x11" in fa["socket"] or "fallback-x11" in fa["socket"]:
             if "ipc" not in fa["share"]:
-                self.errors.add("finish-args-x11-without-ipc")
+                self.warnings.add("finish-args-x11-without-ipc")
 
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
             if xdg_dir in fa["filesystem"]:
