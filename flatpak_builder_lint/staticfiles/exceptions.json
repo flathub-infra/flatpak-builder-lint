@@ -1408,5 +1408,10 @@
     },
     "org.srb2.SRB2Kart": {
         "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.riverbankcomputing.PyQt.BaseApp": {
+        "flathub-json-modified-publish-delay": "This is a BaseApp",
+        "flathub-json-skip-appstream-check": "This is a BaseApp",
+        "finish-args-not-defined": "This is a BaseApp"
     }
 }
