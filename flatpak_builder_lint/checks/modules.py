@@ -13,9 +13,9 @@ class ModuleCheck(Check):
 
         if source_type == "archive" or source_type == "file":
             if source.get("sha1"):
-                self.errors.add(f"module-{module_name}-source-sha1-deprecated")
+                self.warnings.add(f"module-{module_name}-source-sha1-deprecated")
             if source.get("md5"):
-                self.errors.add(f"module-{module_name}-source-md5-deprecated")
+                self.warnings.add(f"module-{module_name}-source-md5-deprecated")
 
         if source_type == "git":
             if branch := source.get("branch"):
