@@ -21,8 +21,10 @@ class FlathubJsonCheck(Check):
         if not flathub_json:
             return
 
+        appid = manifest.get("id", "")
         if flathub_json.get("skip-appstream-check"):
-            if not manifest.get("build-extension"):
+            is_baseapp = appid.endswith(".BaseApp")
+            if not (manifest.get("build-extension") or is_baseapp):
                 self.errors.add("flathub-json-skip-appstream-check")
 
         eol = flathub_json.get("end-of-life")
