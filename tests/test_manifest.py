@@ -20,16 +20,14 @@ def test_toplevel() -> None:
 
 
 def test_appid() -> None:
-    errors = {"appid-filename-mismatch", "appid-code-hosting-too-few-components"}
-
-    warnings = {"appid-uses-code-hosting-domain"}
-
+    errors = {
+        "appid-filename-mismatch",
+        "appid-code-hosting-too-few-components",
+        "appid-uses-code-hosting-domain",
+    }
     ret = run_checks("tests/manifests/appid.json")
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
-
     assert errors.issubset(found_errors)
-    assert warnings.issubset(found_warnings)
 
 
 def test_flathub_json() -> None:
