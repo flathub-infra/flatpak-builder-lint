@@ -8,10 +8,15 @@ class FinishArgsCheck(Check):
 
     def check(self, manifest: dict) -> None:
         appid = manifest.get("id")
+        if isinstance(appid, str):
+            is_baseapp = appid.endswith(".BaseApp")
+        else:
+            is_baseapp = False
+
         finish_args_list = manifest.get("finish-args")
         build_extension = manifest.get("build-extension")
 
-        if not finish_args_list and not build_extension:
+        if not finish_args_list and not (build_extension or is_baseapp):
             self.errors.add("finish-args-not-defined")
             return
 
