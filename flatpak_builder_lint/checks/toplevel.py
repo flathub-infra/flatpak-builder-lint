@@ -15,7 +15,7 @@ class TopLevelCheck(Check):
                 self.warnings.add("toplevel-command-is-path")
 
             branch = manifest.get("branch")
-            if branch == "stable" or branch == "master":
+            if branch in ("stable", "master"):
                 self.warnings.add("toplevel-unecessary-branch")
 
         cleanup = manifest.get("cleanup")

@@ -105,7 +105,7 @@ def main() -> int:
         print(output)
 
         if args.exceptions and not args.json:
-            print("")
+            print()
             print(
                 "If you think problems listed above are a false positive, please report it here:"
             )

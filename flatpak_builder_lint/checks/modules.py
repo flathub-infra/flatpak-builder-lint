@@ -11,7 +11,7 @@ class ModuleCheck(Check):
         if dest_filename and dest_filename.find("/") != -1:
             self.errors.add(f"module-{module_name}-source-dest-filename-is-path")
 
-        if source_type == "archive" or source_type == "file":
+        if source_type in ("archive", "file"):
             if source.get("sha1"):
                 self.warnings.add(f"module-{module_name}-source-sha1-deprecated")
             if source.get("md5"):
