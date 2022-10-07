@@ -1103,6 +1103,9 @@
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.freedesktop.fwupd": {
+        "flathub-json-skip-appstream-check": "It is a command line package"
+    },
     "org.gabmus.gfeeds": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
