@@ -104,6 +104,12 @@ def test_modules() -> None:
     assert warnings.issubset(found_warnings)
 
 
+def test_modules_git() -> None:
+    ret = run_checks("tests/manifests/modules_git.json")
+    found_errors = set(ret["errors"])
+    assert not [x for x in found_errors if x.startswith("module-")]
+
+
 def test_exceptions() -> None:
     ret = run_checks("tests/manifests/exceptions.json", enable_exceptions=True)
     found_errors = ret["errors"]

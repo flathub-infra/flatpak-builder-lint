@@ -1,0 +1,46 @@
+{
+    "app-id": "org.flathub.modules2",
+    "modules": [
+        {
+            "name": "module1",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://foobar2.git",
+                    "branch": "master",
+                    "commit": "1234567890abcdef1234567890abcdef12345678"
+                }
+            ]
+        },
+        {
+            "name": "module2",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://foobar2.git",
+                    "branch": "f49cf6381e322b147053b74e4500af8533ac1e4c"
+                }
+            ]
+        },
+        {
+            "name": "module3",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://foobar2.git",
+                    "tag": "1234567890abcdef1234567890abcdef12345678"
+                }
+            ]
+        },
+        {
+            "name": "module4",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://foobar2.git",
+                    "tag": "1234567890abcdef1234567890abcdef12345678"
+                }
+            ]
+        }
+    ]
+}
