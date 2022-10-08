@@ -1,4 +1,10 @@
-from flatpak_builder_lint.cli import run_checks
+from flatpak_builder_lint import checks, cli
+
+
+def run_checks(filename: str, enable_exceptions: bool = False) -> dict:
+    checks.Check.errors = set()
+    checks.Check.warnings = set()
+    return cli.run_checks(filename, enable_exceptions)
 
 
 def test_toplevel() -> None:
@@ -101,7 +107,7 @@ def test_modules() -> None:
 def test_exceptions() -> None:
     ret = run_checks("tests/manifests/exceptions.json", enable_exceptions=True)
     found_errors = ret["errors"]
-    found_warnings = ret["warnings"]
+    found_warnings = ret.get("warnings", {})
 
     assert "appid-filename-mismatch" not in found_errors
     assert "toplevel-no-command" not in found_errors
