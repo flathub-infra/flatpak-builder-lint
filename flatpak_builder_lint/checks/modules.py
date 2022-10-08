@@ -18,12 +18,20 @@ class ModuleCheck(Check):
                 self.warnings.add(f"module-{module_name}-source-md5-deprecated")
 
         if source_type == "git":
-            if branch := source.get("branch"):
-                if len(branch) != 40 or not (source.get("tag") or source.get("commit")):
-                    self.errors.add(f"module-{module_name}-source-git-branch")
-            else:
-                if not source.get("tag") and not source.get("commit"):
-                    self.errors.add(f"module-{module_name}-source-git-no-commit-or-tag")
+            commit = source.get("commit")
+            branch = source.get("branch")
+            tag = source.get("tag")
+            branch_commitish = False
+
+            if not commit:
+                if branch:
+                    if len(branch) != 40:
+                        self.errors.add(f"module-{module_name}-source-git-branch")
+                    else:
+                        branch_commitish = True
+
+            if not branch_commitish and not commit and not tag:
+                self.errors.add(f"module-{module_name}-source-git-no-commit-or-tag")
 
             if source.get("path"):
                 self.errors.add(f"module-{module_name}-source-git-local-path")
