@@ -54,7 +54,11 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-broken-kde-tray-permission")
 
             if appid:
-                if own_name.startswith(appid):
+                # Values not allowed: appid or appid.*
+                # See https://github.com/flathub/flatpak-builder-lint/issues/33
+                if own_name == appid or (
+                    own_name.startswith(appid) and own_name[len(appid)] == "."
+                ):
                     self.errors.add("finish-args-unnecessary-appid-own-name")
 
         if (

@@ -1,0 +1,7 @@
+{
+    "app-id": "org.flathub.finish_args",
+    "finish-args": [
+        "--own-name=org.flathub.finish_argsIpc0",
+        "--own-name=org.kde.StatusNotifierItem"
+    ]
+}

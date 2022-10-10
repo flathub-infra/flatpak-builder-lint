@@ -79,6 +79,15 @@ def test_finish_args() -> None:
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
 
+def test_finish_args_issue_33() -> None:
+    ret = run_checks("tests/manifests/own_name_substring.json")
+    found_errors = set(ret["errors"])
+    print(found_errors)
+    assert "finish-args-unnecessary-appid-own-name" not in found_errors
+
+    ret = run_checks("tests/manifests/own_name_substring2.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-unnecessary-appid-own-name" in found_errors
 
 def test_modules() -> None:
     errors = {
