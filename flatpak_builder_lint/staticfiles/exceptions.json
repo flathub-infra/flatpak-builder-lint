@@ -382,6 +382,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.k4zmu2a.spacecadetpinball": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.github.kagami.boram": {
