@@ -991,10 +991,12 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.visualstudio.code": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.visualstudio.code.insiders": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
     "com.visualstudio.code-oss": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
