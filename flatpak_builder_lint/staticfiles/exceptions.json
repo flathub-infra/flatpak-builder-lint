@@ -996,7 +996,8 @@
     },
     "com.visualstudio.code.insiders": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.visualstudio.code-oss": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
