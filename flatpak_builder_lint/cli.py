@@ -25,7 +25,7 @@ def get_local_exceptions(appid: str) -> set:
 
 
 def get_remote_exceptions(
-    appid: str, api_url: str = "http://localhost:8000/exceptions"
+    appid: str, api_url: str = "https://flathub.org/api/v2/exceptions"
 ) -> set:
     try:
         r = requests.get(f"{api_url}/{appid}")
