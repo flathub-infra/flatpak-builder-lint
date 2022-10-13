@@ -1039,7 +1039,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.ezQuake": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
     "io.github.giantpinkrobots.bootqt": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
