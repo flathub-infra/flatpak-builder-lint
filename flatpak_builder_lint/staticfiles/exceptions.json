@@ -1077,6 +1077,9 @@
     "io.gitlab.Goodvibes": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
+    "io.gitlab.librewolf-community": {
+        "appid-code-hosting-too-few-components": "the app predates this linter rule"
+    },
     "io.howl.Editor": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
