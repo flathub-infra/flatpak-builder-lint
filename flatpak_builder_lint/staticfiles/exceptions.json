@@ -7,6 +7,9 @@
     "org.flathub.exceptions_wildcard": {
         "*": "ignore all errors and warnings"
     },
+    "com.github.sixpounder.GameOfLife": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
     "com.github._0negal.Viper": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
