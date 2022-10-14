@@ -1107,6 +1107,10 @@
     "org.flatpak.Builder": {
         "*": "used by flathub infra"
     },
+    "org.flathub.flatpak-external-data-checker": {
+        "flathub-json-skip-appstream-check": "It is a command line package",
+        "flathub-json-modified-publish-delay": "This flatpak is used in infra"
+    },
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
