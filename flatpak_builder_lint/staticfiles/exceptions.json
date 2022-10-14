@@ -750,7 +750,9 @@
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
     "org.telegram.desktop": {
-        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
+        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
+        "flathub-json-skip-appstream-check": "Metainfo contains programmatically generated changelog we have no control over",
+        "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless"
     },
     "com.gitlab.adnan338.Invoicer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
