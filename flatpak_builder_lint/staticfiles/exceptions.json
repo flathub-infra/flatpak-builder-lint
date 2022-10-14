@@ -1155,6 +1155,9 @@
     "org.jabref.jabref": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.kde.dolphin": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+    },
     "org.kde.kdevelop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
