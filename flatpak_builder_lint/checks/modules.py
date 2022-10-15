@@ -64,11 +64,13 @@ class ModuleCheck(Check):
                         self.warnings.add(f"module-{name}-cmake-redundant-prefix")
                     elif opt.startswith("-DCMAKE_BUILD_TYPE"):
                         split = opt.split("=")
-                        if split[1] == "Release":
-                            # we shouldn't emit this on an extension
-                            self.warnings.add(f"module-{name}-cmake-no-debuginfo")
-                        elif split[1] != "RelWithDebInfo":
-                            self.errors.add(f"module-{name}-cmake-non-release-build")
+                        # There is too many possible choices and customizations.
+                        # So just make this a warning.
+                        # Issues:
+                        #  https://github.com/flathub/flatpak-builder-lint/issues/47
+                        #  https://github.com/flathub/flatpak-builder-lint/issues/41
+                        if split[1] not in ("Release", "RelWithDebInfo", "MinSizeRel"):
+                            self.warnings.add(f"module-{name}-cmake-non-release-build")
 
         if sources := module.get("sources"):
             for source in sources:
