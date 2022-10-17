@@ -67,7 +67,7 @@ class FinishArgsCheck(Check):
         ):
             self.errors.add("finish-args-arbitrary-autostart-access")
 
-        if fa["system-bus"] or fa["session-bus"]:
+        if "system-bus" in fa["socket"] or "session-bus" in fa["socket"]:
             self.errors.add("finish-args-arbitrary-dbus-access")
 
         if "org.gtk.vfs" in fa["talk-name"]:

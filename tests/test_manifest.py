@@ -56,6 +56,7 @@ def test_flathub_json() -> None:
 def test_finish_args() -> None:
     errors = {
         "finish-args-arbitrary-autostart-access",
+        "finish-args-arbitrary-dbus-access",
         "finish-args-arbitrary-xdg-data-access",
         "finish-args-broken-kde-tray-permission",
         "finish-args-flatpak-spawn-access",
