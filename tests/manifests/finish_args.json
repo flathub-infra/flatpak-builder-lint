@@ -10,7 +10,7 @@
         "--filesystem=xdg-data/foo:create",
         "--own-name=org.flathub.finish_args",
         "--own-name=org.kde.StatusNotifierItem",
-        "--share=session-bus",
+        "--socket=session-bus",
         "--socket=wayland",
         "--socket=x11",
         "--socket=fallback-x11",
