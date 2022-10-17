@@ -1157,10 +1157,10 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.kde.dolphin": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.kde.kdevelop": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.mozilla.Thunderbird": {
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
