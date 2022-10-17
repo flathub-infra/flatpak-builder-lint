@@ -58,6 +58,7 @@ def test_finish_args() -> None:
         "finish-args-arbitrary-autostart-access",
         "finish-args-arbitrary-xdg-data-access",
         "finish-args-broken-kde-tray-permission",
+        "finish-args-contains-both-x11-and-fallback",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-device-all",
