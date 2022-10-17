@@ -1165,7 +1165,13 @@
     "org.kde.dolphin": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
+    "org.kde.kate": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
     "org.kde.kdevelop": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
+    "org.kde.konsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.mozilla.Thunderbird": {
