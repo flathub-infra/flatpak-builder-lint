@@ -1074,6 +1074,9 @@
     "io.github.prateekmedia.appimagepool": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "io.github.Qalculate": {
+        "appid-code-hosting-too-few-components": "the app predates this linter rule"
+    },
     "io.github.realmazharhussain.GdmSettings": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
