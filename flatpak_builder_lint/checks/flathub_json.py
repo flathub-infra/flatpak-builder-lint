@@ -30,9 +30,6 @@ class FlathubJsonCheck(Check):
         eol = flathub_json.get("end-of-life")
         eol_rebase = flathub_json.get("end-of-life-rebase")
 
-        if eol and not eol_rebase:
-            self.errors.add("flathub-json-eol-message-without-rebase")
-
         if eol_rebase and not eol:
             self.errors.add("flathub-json-eol-rebase-without-message")
 
