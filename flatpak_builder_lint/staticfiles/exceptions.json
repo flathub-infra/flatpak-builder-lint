@@ -941,6 +941,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.google.AndroidStudio": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jetbrains.CLion": {
