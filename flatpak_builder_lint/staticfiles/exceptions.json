@@ -1456,4 +1456,7 @@
     "org.srb2.SRB2Kart": {
         "flathub-json-modified-publish-delay": "extra-data"
     }
+    "io.github.hakandundar34coding.system-monitoring-center": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+    }
 }
