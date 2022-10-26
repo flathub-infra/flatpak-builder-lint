@@ -779,7 +779,8 @@
     },
     "com.gitlab.cunidev.Gestures": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-access": "Requires XDG config access to configure a separate system-level service"
     },
     "com.gitlab.cunidev.Workflow": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
