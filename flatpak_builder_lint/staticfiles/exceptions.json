@@ -1108,6 +1108,9 @@
     "net.lutris.Lutris": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.veloren.veloren": {
+        "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build."
+    },
     "org.cockpit_project.CockpitClient": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
