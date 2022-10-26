@@ -51,7 +51,7 @@ class ModuleCheck(Check):
                 for opt in config_opts:
                     if opt.startswith("--prefix="):
                         self.warnings.add(f"module-{name}-autotools-redundant-prefix")
-                    elif opt.startswith("--enable-debug"):
+                    elif opt.startswith("--enable-debug") and not opt.endswith("=no"):
                         self.errors.add(f"module-{name}-autotools-non-release-build")
 
         if buildsystem == "cmake":
