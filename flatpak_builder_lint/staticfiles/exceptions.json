@@ -260,7 +260,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Flacon": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "com.github.flxzt.rnote": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
