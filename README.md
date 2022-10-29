@@ -25,3 +25,16 @@ $ poetry run flatpak-builder-lint MANIFEST
 ```
 
 where MANIFEST is the manifest to check.
+
+Flatpak
+-------
+
+This tool is part of the flatpak-builder flatpak
+`org.flatpak.Builder`. After installing you can run the linter from
+the command-line:
+
+```shell
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder MANIFEST
+```
+
+(`MANIFEST` is the path to the manifest to lint, same as above).
