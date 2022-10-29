@@ -1467,7 +1467,7 @@
     },
     "org.xfce.ristretto": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/issues/2770"
-    }
+    },
     "io.github.hakandundar34coding.system-monitoring-center": {
         "finish-args-flatpak-spawn-access": "required for host shell access for getting system information such as processes, services, number of packages, etc."
     }
