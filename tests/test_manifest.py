@@ -62,7 +62,6 @@ def test_finish_args() -> None:
         "finish-args-contains-both-x11-and-fallback",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
-        "finish-args-redundant-device-all",
         "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-xdg-data-access",
@@ -72,6 +71,7 @@ def test_finish_args() -> None:
         "finish-args-contains-both-x11-and-wayland",
         "finish-args-deprecated-shm",
         "finish-args-x11-without-ipc",
+        "finish-args-redundant-device-all",
     }
 
     ret = run_checks("tests/manifests/finish_args.json")
