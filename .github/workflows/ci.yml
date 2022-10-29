@@ -51,4 +51,4 @@ jobs:
         run: poetry run pytest -v tests
 
       - name: Validate exceptions.json
-        run: jq . <<< flatpak_builder_lint/staticfiles/exceptions.json
+        run: jq . < flatpak_builder_lint/staticfiles/exceptions.json
