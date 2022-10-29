@@ -19,7 +19,7 @@ jobs:
       - name: Install flatpak-builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak-builder
+          sudo apt-get install -y flatpak-builder jq
 
       - name: Setup Poetry
         run: |
@@ -49,3 +49,6 @@ jobs:
 
       - name: Run test suite
         run: poetry run pytest -v tests
+
+      - name: Validate exceptions.json
+        run: jq . <<< flatpak_builder_lint/staticfiles/exceptions.json
