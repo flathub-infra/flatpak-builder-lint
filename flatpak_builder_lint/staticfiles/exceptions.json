@@ -37,6 +37,9 @@
     "com.github.alainm23.planner": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "com.github.Alcaro.Flips": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
     "com.github.alecaddd.sequeler": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
