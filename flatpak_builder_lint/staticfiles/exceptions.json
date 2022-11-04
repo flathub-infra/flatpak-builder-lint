@@ -1282,6 +1282,9 @@
     "com.etlegacy.ETLegacy": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "com.fightcade.Fightcade": {
+        "flathub-json-modified-publish-delay": "Client version must be in sync with server to function"
+    },
     "com.flashforge.FlashPrint": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
