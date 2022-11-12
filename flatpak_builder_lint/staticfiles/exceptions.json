@@ -1480,5 +1480,8 @@
     },
     "de.mediathekview.MediathekView": {
         "finish-args-flatpak-spawn-access": "required to start VLC flatpak to view videos and live streams"
+    },
+    "io.github.fsobolev.TimeSwitch": {
+        "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host"
     }
 }
