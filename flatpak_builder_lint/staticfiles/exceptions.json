@@ -1427,6 +1427,9 @@
     "jp.yvt.OpenSpades": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "me.dusansimic.DynamicWallpaper": {
+        "finish-args-unnecessary-xdg-data-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
+    },
     "net._86box._86Box.ROMs": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
