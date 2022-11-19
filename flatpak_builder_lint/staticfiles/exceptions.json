@@ -1486,5 +1486,8 @@
     },
     "io.github.fsobolev.TimeSwitch": {
         "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host"
+    },
+    "com.rtosta.zapzap":{
+        "finish-args-arbitrary-autostart-access": "required to create the autostart file"
     }
 }
