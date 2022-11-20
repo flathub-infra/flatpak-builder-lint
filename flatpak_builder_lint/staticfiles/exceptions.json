@@ -1486,5 +1486,9 @@
     },
     "io.github.fsobolev.TimeSwitch": {
         "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host"
+    },
+    "de.schmidhuberj.tubefeeder": {
+        "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
+        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
     }
 }
