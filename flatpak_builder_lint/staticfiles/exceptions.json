@@ -512,6 +512,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.opentyrian.OpenTyrian": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.github.optyfr.JRomManager": {
