@@ -1492,5 +1492,8 @@
     },
     "io.github.fsobolev.TimeSwitch": {
         "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host"
+    },
+    "org.gnome_terminator.Terminator2": {
+        "finish-args-flatpak-spawn-access": "required for host shell access"
     }
 }
