@@ -1500,5 +1500,9 @@
     "de.schmidhuberj.tubefeeder": {
         "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
         "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
+    },
+    "io.gitlab.JakobDev.jdSimpleAutostart": {
+        "finish-args-arbitrary-autostart-access": "This Program is for managing the Autostart",
+        "finish-args-unnecessary-xdg-config-access": "This Program is for managing the Autostart"
     }
 }
