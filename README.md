@@ -26,6 +26,19 @@ $ poetry run flatpak-builder-lint MANIFEST
 
 where MANIFEST is the manifest to check.
 
+Installing
+-------
+
+You can install flatpak-builder-lint directly from githHub by running this command
+```shell
+$ pip install -U git+https://github.com/flathub/flatpak-builder-lint.git
+```
+
+You can run it anywhere with
+```shell
+$ flatpak-builder-lint MANIFEST
+```
+
 Flatpak
 -------
 
