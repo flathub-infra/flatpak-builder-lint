@@ -5,9 +5,15 @@ class TopLevelCheck(Check):
     type = "manifest"
 
     def check(self, manifest: dict) -> None:
+        appid = manifest.get("id")
+        if isinstance(appid, str):
+            is_baseapp = appid.endswith(".BaseApp")
+        else:
+            is_baseapp = False
+
         build_extension = manifest.get("build-extension")
 
-        if not build_extension:
+        if not build_extension and not is_baseapp:
             command = manifest.get("command")
             if not command:
                 self.errors.add("toplevel-no-command")
