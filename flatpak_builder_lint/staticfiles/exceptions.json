@@ -594,7 +594,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rssguard": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "com.github.ryanakca.slingshot": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
