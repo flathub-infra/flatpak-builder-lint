@@ -228,6 +228,9 @@
     "com.github.donadigo.appeditor": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "io.github.dosbox-staging": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
     "com.github.dynobo.normcap": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
