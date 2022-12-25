@@ -32,7 +32,7 @@ class FinishArgsCheck(Check):
                 fa[key].add(value)
 
         if "x11" in fa["socket"] and "fallback-x11" in fa["socket"]:
-            self.errors.add("finish-args-contains-both-x11-and-fallback")
+            self.warnings.add("finish-args-contains-both-x11-and-fallback")
 
         if "x11" in fa["socket"] and "wayland" in fa["socket"]:
             self.warnings.add("finish-args-contains-both-x11-and-wayland")
