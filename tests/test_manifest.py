@@ -59,7 +59,6 @@ def test_finish_args() -> None:
         "finish-args-arbitrary-dbus-access",
         "finish-args-arbitrary-xdg-data-access",
         "finish-args-broken-kde-tray-permission",
-        "finish-args-contains-both-x11-and-fallback",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-home-and-host",
@@ -72,6 +71,7 @@ def test_finish_args() -> None:
         "finish-args-deprecated-shm",
         "finish-args-x11-without-ipc",
         "finish-args-redundant-device-all",
+        "finish-args-contains-both-x11-and-fallback",
     }
 
     ret = run_checks("tests/manifests/finish_args.json")
@@ -80,6 +80,7 @@ def test_finish_args() -> None:
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
+
 
 def test_finish_args_issue_33() -> None:
     ret = run_checks("tests/manifests/own_name_substring.json")
@@ -90,6 +91,7 @@ def test_finish_args_issue_33() -> None:
     ret = run_checks("tests/manifests/own_name_substring2.json")
     found_errors = set(ret["errors"])
     assert "finish-args-unnecessary-appid-own-name" in found_errors
+
 
 def test_modules() -> None:
     errors = {
