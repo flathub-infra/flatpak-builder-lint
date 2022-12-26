@@ -96,6 +96,14 @@ def test_finish_args_issue_33() -> None:
     found_errors = set(ret["errors"])
     assert "finish-args-unnecessary-appid-own-name" in found_errors
 
+def test_finish_args_empty() -> None:
+    ret = run_checks("tests/manifests/finish_args_empty.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-not-defined" not in found_errors
+
+    ret = run_checks("tests/manifests/finish_args_missing.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-not-defined" in found_errors
 
 def test_modules() -> None:
     errors = {

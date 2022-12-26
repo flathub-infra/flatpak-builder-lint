@@ -16,7 +16,7 @@ class FinishArgsCheck(Check):
         finish_args_list = manifest.get("finish-args")
         build_extension = manifest.get("build-extension")
 
-        if not finish_args_list and not (build_extension or is_baseapp):
+        if finish_args_list is None and not (build_extension or is_baseapp):
             self.errors.add("finish-args-not-defined")
             return
 
