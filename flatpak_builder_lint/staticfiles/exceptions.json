@@ -1010,7 +1010,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.unity.UnityHub": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor"
     },
     "com.visualstudio.code": {
         "flathub-json-modified-publish-delay": "extra-data",
