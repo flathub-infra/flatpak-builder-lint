@@ -1509,5 +1509,8 @@
     "io.gitlab.JakobDev.jdSimpleAutostart": {
         "finish-args-arbitrary-autostart-access": "This Program is for managing the Autostart",
         "finish-args-unnecessary-xdg-config-access": "This Program is for managing the Autostart"
+    },
+    "com.helix_editor.Helix": {
+        "finish-args-flatpak-spawn-access": "required to access language servers installed on host"
     }
 }
