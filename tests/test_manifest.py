@@ -24,6 +24,10 @@ def test_toplevel() -> None:
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
 
+    ret = run_checks("tests/manifests/base_app.json")
+    found_errors = set(ret["errors"])
+
+    assert "toplevel-no-command" not in found_errors
 
 def test_appid() -> None:
     errors = {

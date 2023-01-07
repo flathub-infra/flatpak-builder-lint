@@ -6,8 +6,14 @@ class TopLevelCheck(Check):
 
     def check(self, manifest: dict) -> None:
         build_extension = manifest.get("build-extension")
+        # This logic copied from finish_args.py
+        appid = manifest.get("id")
+        if isinstance(appid, str):
+            is_baseapp = appid.endswith(".BaseApp")
+        else:
+            is_baseapp = False
 
-        if not build_extension:
+        if not build_extension and not is_baseapp:
             command = manifest.get("command")
             if not command:
                 self.errors.add("toplevel-no-command")
