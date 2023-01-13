@@ -1512,5 +1512,8 @@
     },
     "com.helix_editor.Helix": {
         "finish-args-flatpak-spawn-access": "required to access language servers installed on host"
+    },
+    "codes.merritt.Nyrna": {
+        "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
     }
 }
