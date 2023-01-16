@@ -1193,6 +1193,9 @@
     "org.kde.kdevelop": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
+    "org.kde.kile": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
     "org.kde.konsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
