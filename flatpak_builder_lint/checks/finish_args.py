@@ -53,7 +53,10 @@ class FinishArgsCheck(Check):
             self.errors.add("finish-args-redundant-home-and-host")
 
         for own_name in fa["own-name"]:
-            if own_name.startswith("org.kde.StatusNotifierItem"):
+            if (
+                own_name.startswith("org.kde.StatusNotifierItem")
+                or own_name == "org.kde.*"
+            ):
                 self.errors.add("finish-args-broken-kde-tray-permission")
 
             if appid:
