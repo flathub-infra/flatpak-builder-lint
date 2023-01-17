@@ -1518,5 +1518,8 @@
     },
     "codes.merritt.Nyrna": {
         "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
+    },
+    "io.github.kotatogram": {
+        "appid-code-hosting-too-few-components": "the app predates this linter rule"
     }
 }
