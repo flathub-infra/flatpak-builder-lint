@@ -1521,5 +1521,29 @@
     },
     "io.github.kotatogram": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
+    },
+    "io.github.Hexchat": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.ImEditor": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.OpenToonz": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.Pithos": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.Soundux": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.qnapi": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.TransmissionRemoteGtk": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "io.github.Turtlico": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     }
 }
