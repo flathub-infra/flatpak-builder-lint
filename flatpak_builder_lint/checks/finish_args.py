@@ -54,7 +54,7 @@ class FinishArgsCheck(Check):
 
         for own_name in fa["own-name"]:
             if own_name.startswith("org.kde.StatusNotifierItem"):
-                self.errors.add("finish-args-broken-kde-tray-permission")
+                self.warnings.add("finish-args-broken-kde-tray-permission")
 
             if appid:
                 # Values not allowed: appid or appid.*
