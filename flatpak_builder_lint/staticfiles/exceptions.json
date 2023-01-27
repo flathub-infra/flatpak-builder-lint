@@ -1545,5 +1545,8 @@
     },
     "io.github.Turtlico": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
+    "com.diffingo.fwbackups": {
+        "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
     }
 }
