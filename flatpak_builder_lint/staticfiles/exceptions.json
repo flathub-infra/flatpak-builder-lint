@@ -426,6 +426,9 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.github.LongSoft.UEFITool": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
     "com.github.louis77.tuner": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
