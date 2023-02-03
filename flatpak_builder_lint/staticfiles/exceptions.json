@@ -1007,6 +1007,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.syntevo.SmartSynchronize": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.ulduzsoft.Birdtray": {
