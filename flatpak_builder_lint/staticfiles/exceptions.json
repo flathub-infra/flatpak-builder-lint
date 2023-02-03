@@ -1551,5 +1551,8 @@
     },
     "com.diffingo.fwbackups": {
         "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+    },
+    "io.github.betaflight.BetaflightConfigurator": {
+        "finish-args-arbitrary-dbus-access": "App needs to access dbus to interact with UPower"
     }
 }
