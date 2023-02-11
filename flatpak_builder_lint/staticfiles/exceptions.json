@@ -873,6 +873,9 @@
     "io.github.bothlab.syntalos": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
+    "org.gnome.Contacts": {
+        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
+    },
     "org.gnome.dspy": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
