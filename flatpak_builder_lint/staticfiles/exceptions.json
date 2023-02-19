@@ -1206,6 +1206,9 @@
     "org.kde.konsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
+    "org.kde.qmlkonsole": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
     "org.kde.ruqola": {
         "flathub-json-skip-appstream-check": "the app predates this linter rule"
     },
