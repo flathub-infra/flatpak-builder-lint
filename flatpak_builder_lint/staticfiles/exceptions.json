@@ -1558,5 +1558,8 @@
     },
     "com.diffingo.fwbackups": {
         "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+    },
+    "page.codeberg.JakobDev.jdAppStreamEdit": {
+        "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     }
 }
