@@ -1558,5 +1558,8 @@
     },
     "com.diffingo.fwbackups": {
         "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+    },
+    "org.gnome.font-viewer": {
+        "finish-args-unnecessary-xdg-data-access": "required to save fonts"
     }
 }
