@@ -1186,7 +1186,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.godotengine.Godot3": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
     },
     "org.hydrogenmusic.Hydrogen": {
         "flathub-json-skip-appstream-check": "appstream file has GPL license, upstream hasn't fixed it"
