@@ -1567,5 +1567,8 @@
     },
     "hu.kramo.Cartridges": {
         "finish-args-flatpak-spawn-access": "required to launch games on the host"
+    },
+    "page.codeberg.JakobDev.jdAppStreamEdit": {
+        "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     }
 }
