@@ -1185,6 +1185,9 @@
     "org.godotengine.Godot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.godotengine.Godot3": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+    },
     "org.hydrogenmusic.Hydrogen": {
         "flathub-json-skip-appstream-check": "appstream file has GPL license, upstream hasn't fixed it"
     },
@@ -1558,6 +1561,12 @@
     },
     "com.diffingo.fwbackups": {
         "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+    },
+    "org.gnome.font-viewer": {
+        "finish-args-unnecessary-xdg-data-access": "required to save fonts"
+    },
+    "hu.kramo.Cartridges": {
+        "finish-args-flatpak-spawn-access": "required to launch games on the host"
     },
     "page.codeberg.JakobDev.jdAppStreamEdit": {
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
