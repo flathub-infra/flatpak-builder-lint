@@ -558,7 +558,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.quaternion": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "com.github.Qv2ray": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
