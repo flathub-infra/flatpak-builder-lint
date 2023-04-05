@@ -1571,5 +1571,8 @@
     },
     "page.codeberg.JakobDev.jdAppStreamEdit": {
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
+    },
+    "page.codeberg.JakobDev.jdFlatpakSnapshot": {
+        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
     }
 }
