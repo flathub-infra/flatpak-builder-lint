@@ -1575,4 +1575,7 @@
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
     }
+    "io.github.mmstick.FontFinder": {
+        "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory"
+    }
 }
