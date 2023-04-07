@@ -1161,9 +1161,9 @@
         "flathub-json-skip-appstream-check": "It is a command line package"
     },
     "org.freedesktop.LinuxAudio.BaseExtension": {
-      "toplevel-no-command": "It is a base app without anything to run",
-      "finish-args-not-defined": "It is a base app without anything to run",
-      "flathub-json-skip-appstream-check": "No appstream either"
+        "toplevel-no-command": "It is a base app without anything to run",
+        "finish-args-not-defined": "It is a base app without anything to run",
+        "flathub-json-skip-appstream-check": "No appstream either"
     },
     "org.gabmus.gfeeds": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1574,5 +1574,8 @@
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
+    },
+    "com.github.zyedidia.micro": {
+        "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
     }
 }
