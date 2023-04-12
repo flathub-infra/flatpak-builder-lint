@@ -1045,6 +1045,9 @@
     "dev.lapce.lapce": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "dev.salaniLeo.immagini": {
+        "finish-args-flatpak-spawn-access": "needed to start applications"
+    },
     "edu.stanford.Almond": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
