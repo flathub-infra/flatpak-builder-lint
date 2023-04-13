@@ -1580,7 +1580,7 @@
     },
     "com.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
-    }
+    },
     "io.github.mmstick.FontFinder": {
         "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory"
     }
