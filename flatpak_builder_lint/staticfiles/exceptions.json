@@ -1578,7 +1578,7 @@
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
     },
-    "com.github.zyedidia.micro": {
+    "io.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
     },
     "io.github.mmstick.FontFinder": {
