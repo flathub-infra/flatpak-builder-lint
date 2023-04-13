@@ -1583,5 +1583,8 @@
     },
     "io.github.mmstick.FontFinder": {
         "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory"
+    },
+    "com.dec05eba.gpu_screen_recorder": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn to capture a monitor on AMD/Intel GPUs"
     }
 }
