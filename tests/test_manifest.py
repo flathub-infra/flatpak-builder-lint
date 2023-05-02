@@ -14,7 +14,7 @@ def test_toplevel() -> None:
         "toplevel-no-modules",
     }
     warnings = {
-        "toplevel-unecessary-branch",
+        "toplevel-unnecessary-branch",
     }
 
     ret = run_checks("tests/manifests/toplevel.json")

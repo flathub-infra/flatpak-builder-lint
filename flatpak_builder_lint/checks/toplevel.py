@@ -22,7 +22,7 @@ class TopLevelCheck(Check):
 
             branch = manifest.get("branch")
             if branch in ("stable", "master"):
-                self.warnings.add("toplevel-unecessary-branch")
+                self.warnings.add("toplevel-unnecessary-branch")
 
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
