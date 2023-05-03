@@ -757,6 +757,9 @@
     "com.irccloud.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
+    "com.jetpackduba.Gitnuro": {
+        "finish-args-flatpak-spawn-access": "required to access external terminal emulators and run external credentials managers for Git"
+    },
     "com.jgraph.drawio.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
