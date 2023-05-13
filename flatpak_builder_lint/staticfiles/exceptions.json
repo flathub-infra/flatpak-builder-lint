@@ -160,6 +160,9 @@
     "com.github.bvschaik.julius": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "com.github.bytezz.IPLookup": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
     "com.github.calo001.fondo": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
