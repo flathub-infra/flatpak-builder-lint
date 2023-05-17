@@ -1593,5 +1593,8 @@
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "finish-args-arbitrary-autostart-access": "the app predates this linter rule",
         "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule"
+    },
+    "org.fkoehler.KTailctl": {
+        "finish-args-flatpak-spawn-access": "Needed to run the tailscale CLI tool outside which provides the information used by the App"
     }
 }
