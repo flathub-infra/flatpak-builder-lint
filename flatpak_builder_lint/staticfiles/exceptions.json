@@ -1593,5 +1593,8 @@
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "finish-args-arbitrary-autostart-access": "the app predates this linter rule",
         "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule"
+    },
+    "page.codeberg.JakobDev.jdMinecraftLauncher": {
+        "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications"
     }
 }
