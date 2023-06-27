@@ -305,7 +305,7 @@
     "com.github.GradienceTeam.Gradience": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app needs to change host gsettings to automatically select gnome shell theme"
     },
     "com.github.gyunaev.spivak": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
