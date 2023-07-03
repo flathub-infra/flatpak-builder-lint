@@ -1599,5 +1599,8 @@
     },
     "it.mijorus.gearlever": {
         "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu"
+    },
+    "page.codeberg.JakobDev.jdTextEdit": {
+        "finish-args-flatpak-spawn-access": "Neded to execute external commands"
     }
 }
