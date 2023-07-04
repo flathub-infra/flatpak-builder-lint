@@ -763,6 +763,9 @@
     "com.jgraph.drawio.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
+    "org.bluesabre.MenuLibre": {
+        "finish-args-unnecessary-xdg-data-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications"
+    },
     "org.kiwix.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
