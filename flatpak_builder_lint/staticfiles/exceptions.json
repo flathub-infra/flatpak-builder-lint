@@ -1183,6 +1183,9 @@
     "org.gnome.Games": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.gnome.gitg": {
+        "finish-args-flatpak-spawn-access": "gitg wants to run git on host for git hooks"
+    },
     "org.gnome.Lollypop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
