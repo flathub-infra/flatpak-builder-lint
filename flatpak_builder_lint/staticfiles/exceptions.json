@@ -1606,5 +1606,8 @@
     "io.missioncenter.MissionCenter": {
         "finish-args-flatpak-spawn-access": "access to /proc is required in order to list running processes and their respective resource usage; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670",
         "finish-args-unnecessary-xdg-data-access": "read-only access to xdg-data/flatpak{,/exports/share} is required to query installed apps on the system and present the ones that are running to the user; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
+    },
+    "io.github.unrud.RecentFilter": {
+        "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel"
     }
 }
