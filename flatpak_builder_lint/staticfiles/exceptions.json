@@ -862,6 +862,9 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
+    "io.gitlab.Turtlico": {
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+    },
     "com.gitlab.sat_metalab.Splash": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
