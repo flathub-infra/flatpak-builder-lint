@@ -1616,4 +1616,7 @@
     "io.github.unrud.RecentFilter": {
         "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel"
     }
+    "io.github.giantpinkrobots.flatsweep": {
+        "finish-args-flatpak-spawn-access": "This application needs to execute commands using flatpak-spawn. Specifically, the flatpak list command to get a list of all Flatpaks that are installed on the user's system, so it can remove only the files that are leftover from the Flatpaks that are no longer installed."
+    }
 }
