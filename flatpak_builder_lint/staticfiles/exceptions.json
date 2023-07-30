@@ -1618,5 +1618,8 @@
     },
     "io.github.unrud.RecentFilter": {
         "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel"
+    },
+    "org.gnu.emacs": {
+        "finish-args-flatpak-spawn-access": "required to access external tools since the Emacs ecosystem expects to lean heavily on them"
     }
 }
