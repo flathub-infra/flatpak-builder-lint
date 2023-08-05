@@ -1621,5 +1621,8 @@
     },
     "org.gnu.emacs": {
         "finish-args-flatpak-spawn-access": "required to access external tools since the Emacs ecosystem expects to lean heavily on them"
+    },
+    "io.github.nokse22.inspector": {
+        "finish-args-flatpak-spawn-access": "Neded to execute external commands to show informations about your computer"
     }
 }
