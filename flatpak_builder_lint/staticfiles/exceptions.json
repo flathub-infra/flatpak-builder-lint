@@ -1228,6 +1228,9 @@
     "org.kde.ruqola": {
         "flathub-json-skip-appstream-check": "the app predates this linter rule"
     },
+    "org.kde.yakuake": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
     "org.mozilla.Thunderbird": {
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
     },
