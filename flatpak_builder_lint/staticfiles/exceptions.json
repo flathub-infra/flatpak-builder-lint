@@ -304,7 +304,8 @@
     },
     "com.github.GradienceTeam.Gradience": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557"
+        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557",
+        "finish-args-flatpak-spawn-access": "required to change the gnome-shell theme via gsettings"
     },
     "com.github.gyunaev.spivak": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
