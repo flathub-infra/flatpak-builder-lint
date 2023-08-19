@@ -904,7 +904,9 @@
         "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream"
     },
     "org.fcitx.Fcitx5": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-unnecessary-xdg-config-access": "need for simulating ibus daemon and changing kde system xkb settings",
+        "finish-args-unnecessary-xdg-cache-access": "need for simulating ibus daemon"
     },
     "com.jetbrains.PyCharm-Community": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
