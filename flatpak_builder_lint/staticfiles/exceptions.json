@@ -1631,5 +1631,8 @@
     },
     "io.github.Youda008.DoomRunner": {
         "finish-args-flatpak-spawn-access": "Needed to execute external game engines"
-    }
+    },
+    "io.github.Bavarder.Bavarder": {
+        "finish-args-flatpak-spawn-access": "required to execute external commands"
+    },
 }
