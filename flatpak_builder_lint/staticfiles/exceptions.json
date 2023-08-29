@@ -1634,5 +1634,8 @@
     },
     "xyz.tytanium.DoorKnocker": {
         "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
+    },
+    "page.codeberg.JakobDev.jdDBusDebugger": {
+        "finish-args-arbitrary-dbus-access": "It's a D-Bus Debugger"
     }
 }
