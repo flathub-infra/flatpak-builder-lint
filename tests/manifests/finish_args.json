@@ -8,6 +8,7 @@
         "--filesystem=xdg-config/autostart",
         "--filesystem=xdg-data",
         "--filesystem=xdg-data/foo:create",
+        "--filesystem=xdg-cache:create",
         "--own-name=org.flathub.finish_args",
         "--own-name=org.kde.StatusNotifierItem",
         "--socket=session-bus",
