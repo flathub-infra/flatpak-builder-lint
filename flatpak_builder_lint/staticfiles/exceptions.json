@@ -1637,5 +1637,8 @@
     },
     "page.codeberg.JakobDev.jdDBusDebugger": {
         "finish-args-arbitrary-dbus-access": "It's a D-Bus Debugger"
+    },
+    "com.pojtinger.felicitas.Multiplex": {
+        "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
     }
 }
