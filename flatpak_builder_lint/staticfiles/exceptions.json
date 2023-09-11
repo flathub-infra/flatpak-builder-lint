@@ -1641,7 +1641,7 @@
     "com.pojtinger.felicitas.Multiplex": {
         "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
     },
-    "io.github.gssh-linux.gssh": {
+    "io.github.gssh_linux.gssh": {
     "finish-args-flatpak-spawn-access": "I need it to launch the gnome-terminal from the app. My app uses it to connect to the ssh server the user wants."
     }
 }
