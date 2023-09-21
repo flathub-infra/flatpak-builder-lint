@@ -1632,6 +1632,15 @@
     "io.github.Youda008.DoomRunner": {
         "finish-args-flatpak-spawn-access": "Needed to execute external game engines"
     },
+    "xyz.tytanium.DoorKnocker": {
+        "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
+    },
+    "page.codeberg.JakobDev.jdDBusDebugger": {
+        "finish-args-arbitrary-dbus-access": "It's a D-Bus Debugger"
+    },
+    "com.pojtinger.felicitas.Multiplex": {
+        "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
+    },
     "io.github.Bavarder.Bavarder": {
         "finish-args-flatpak-spawn-access": "required to execute external commands"
     },
