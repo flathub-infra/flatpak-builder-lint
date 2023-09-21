@@ -1644,4 +1644,7 @@
     "io.github.Bavarder.Bavarder": {
         "finish-args-flatpak-spawn-access": "required to execute external commands"
     },
+    "xyz.tytanium.DoorKnocker": {
+        "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
+    }
 }
