@@ -1470,6 +1470,9 @@
     "io.github.peazip.PeaZip.Addon.i386": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "io.github.MakovWait.Godots": {
+        "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
+    },
     "io.wavebox.Wavebox": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
