@@ -4,9 +4,22 @@ from . import Check
 
 
 class AppIDCheck(Check):
-    type = "manifest"
+    def _validate(self, appid: str) -> None:
+        split = appid.split(".")
+        if split[-1] == "desktop":
+            self.errors.add("appid-ends-with-lowercase-desktop")
 
-    def check(self, manifest: dict) -> None:
+        domain = split[1].lower()
+        tld = split[0].lower()
+        if domain in ("github", "gitlab", "codeberg"):
+            if tld != "io" and domain in ("github", "gitlab"):
+                self.errors.add("appid-uses-code-hosting-domain")
+            if tld != "page" and domain == "codeberg":
+                self.errors.add("appid-uses-code-hosting-domain")
+            if len(split) < 4:
+                self.errors.add("appid-code-hosting-too-few-components")
+
+    def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
         if not appid:
             self.errors.add("appid-not-defined")
@@ -19,17 +32,4 @@ class AppIDCheck(Check):
             if appid != manifest_basename:
                 self.errors.add("appid-filename-mismatch")
 
-        split = appid.split(".")
-        if split[-1] == "desktop":
-            self.errors.add("appid-ends-with-lowercase-desktop")
-
-        domain = split[1].lower()
-        tld = split[0].lower()
-        if domain in ("github", "gitlab", "codeberg"):
-            if tld != "io" and domain in ("github", "gitlab"):
-                self.errors.add("appid-uses-code-hosting-domain")
-            # Codeberg: https://codeberg.page/
-            if tld != "page" and domain == "codeberg":
-                self.errors.add("appid-uses-code-hosting-domain")
-            if len(split) < 4:
-                self.errors.add("appid-code-hosting-too-few-components")
+        self._validate(appid)
