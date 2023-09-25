@@ -1,8 +1,10 @@
-from . import ARCHES, Check
+from typing import Set
+
+from . import Check
 
 
 class FlathubJsonCheck(Check):
-    type = "manifest"
+    arches: Set[str] = {"x86_64", "aarch64"}
 
     def _check_if_extra_data(self, modules: list) -> bool:
         for module in modules:
@@ -16,15 +18,12 @@ class FlathubJsonCheck(Check):
 
         return False
 
-    def check(self, manifest: dict) -> None:
-        flathub_json = manifest.get("x-flathub")
-        if not flathub_json:
-            return
-
-        appid = manifest.get("id", "")
+    def validate(
+        self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
+    ) -> None:
         if flathub_json.get("skip-appstream-check"):
             is_baseapp = appid.endswith(".BaseApp")
-            if not (manifest.get("build-extension") or is_baseapp):
+            if not (is_extension or is_baseapp):
                 self.errors.add("flathub-json-skip-appstream-check")
 
         eol = flathub_json.get("end-of-life")
@@ -37,13 +36,6 @@ class FlathubJsonCheck(Check):
             if eol_rebase not in eol:
                 self.errors.add("flathub-json-eol-rebase-misses-new-id")
 
-        publish_delay = flathub_json.get("publish-delay-hours")
-        if isinstance(publish_delay, int):
-            if publish_delay < 3:
-                if modules := manifest.get("modules"):
-                    if not self._check_if_extra_data(modules):
-                        self.errors.add("flathub-json-modified-publish-delay")
-
         if only_arches := flathub_json.get("only-arches"):
             if "arm" in only_arches:
                 self.warnings.add("flathub-json-deprecated-arm-arch-included")
@@ -51,7 +43,7 @@ class FlathubJsonCheck(Check):
                 self.warnings.add("flathub-json-deprecated-i386-arch-included")
             if len(only_arches) == 0:
                 self.errors.add("flathub-json-only-arches-empty")
-            if len(ARCHES.intersection(only_arches)) == len(ARCHES):
+            if len(self.arches.intersection(only_arches)) == len(self.arches):
                 self.warnings.add("flathub-json-redundant-only-arches")
 
         if exclude_arches := flathub_json.get("exclude-arches"):
@@ -61,5 +53,26 @@ class FlathubJsonCheck(Check):
                 self.warnings.add("flathub-json-deprecated-i386-arch-excluded")
             if len(exclude_arches) == 0:
                 self.warnings.add("flathub-json-exclude-arches-empty")
-            if len(ARCHES.intersection(exclude_arches)) == len(ARCHES):
+            if len(self.arches.intersection(exclude_arches)) == len(self.arches):
                 self.errors.add("flathub-json-excluded-all-arches")
+
+        publish_delay = flathub_json.get("publish-delay-hours")
+        if isinstance(publish_delay, int):
+            if publish_delay < 3 and is_extra_data:
+                self.errors.add("flathub-json-modified-publish-delay")
+
+    def check(self, manifest: dict) -> None:
+        flathub_json = manifest.get("x-flathub")
+        if not flathub_json:
+            return
+
+        appid = manifest.get("id")
+        if not appid:
+            return
+
+        if modules := manifest.get("modules"):
+            is_extra_data = self._check_if_extra_data(modules)
+
+        is_extension = manifest.get("build-extension", False)
+
+        self.validate(appid, flathub_json, is_extra_data, is_extension)

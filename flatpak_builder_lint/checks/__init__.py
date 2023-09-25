@@ -2,8 +2,6 @@ from typing import Optional, Set
 
 ALL = []
 
-ARCHES = {"x86_64", "aarch64"}
-
 
 class CheckMeta(type):
     def __init__(cls, *args, **kwargs) -> None:  # type: ignore
