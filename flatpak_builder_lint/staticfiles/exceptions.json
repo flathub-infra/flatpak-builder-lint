@@ -1641,4 +1641,7 @@
     "com.pojtinger.felicitas.Multiplex": {
         "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
     }
+    "io.github.jean28518.Linux-Assistant": {
+        "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
+    }
 }
