@@ -38,21 +38,22 @@ def get_remote_exceptions(
 
 
 def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
-    if kind == "manifest":
-        manifest = tools.show_manifest(path)
-        appid = manifest.get("id")
-
-    if kind == "build":
-        appid = tools.get_appid_from_build(path)
+    match kind:
+        case "manifest":
+            check_method_name = "check_manifest"
+            infer_appid_func = tools.infer_appid_from_manifest
+        case "build":
+            check_method_name = "check_build"
+            infer_appid_func = tools.infer_appid_from_build
+        case _:
+            raise ValueError(f"Unknown kind: {kind}")
 
     for checkclass in checks.ALL:
         check = checkclass()
 
-        if check.type == "manifest":
-            check.check(manifest)
-
-        if check.type == "build":
-            check.check(path)
+        if check_method := getattr(check, check_method_name, None):
+            if callable(check_method):
+                check_method(path)
 
     results = {}
     if errors := checks.Check.errors:
@@ -64,6 +65,8 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
 
     if enable_exceptions:
         exceptions = None
+
+        appid = infer_appid_func(path)
 
         if appid:
             exceptions = get_remote_exceptions(appid)
