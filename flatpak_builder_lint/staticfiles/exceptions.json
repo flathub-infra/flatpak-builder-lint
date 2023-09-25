@@ -1645,5 +1645,8 @@
     },
     "io.github.flattool.Warehouse": {
         "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host"
+    },
+    "io.github.jean28518.Linux-Assistant": {
+        "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
     }
 }
