@@ -42,9 +42,11 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
         case "manifest":
             check_method_name = "check_manifest"
             infer_appid_func = tools.infer_appid_from_manifest
+            check_method_arg = tools.show_manifest(path)
         case "build":
             check_method_name = "check_build"
-            infer_appid_func = tools.infer_appid_from_build
+            infer_appid_func = tools.infer_appid_from_metadata
+            check_method_arg = path
         case _:
             raise ValueError(f"Unknown kind: {kind}")
 
@@ -53,9 +55,10 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
 
         if check_method := getattr(check, check_method_name, None):
             if callable(check_method):
-                check_method(path)
+                check_method(check_method_arg)
 
     results = {}
+    print(results)
     if errors := checks.Check.errors:
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
