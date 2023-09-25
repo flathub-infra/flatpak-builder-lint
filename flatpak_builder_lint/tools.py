@@ -3,6 +3,8 @@ import json
 import os
 import subprocess
 
+from typing import Optional
+
 
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
@@ -32,3 +34,8 @@ def show_manifest(filename: str) -> dict:
     # mypy does not support circular types
     # https://github.com/python/typing/issues/182
     return manifest_json  # type: ignore
+
+
+def infer_appid_from_manifest(filename: str) -> Optional[str]:
+    manifest = show_manifest(filename)
+    return manifest.get("id")
