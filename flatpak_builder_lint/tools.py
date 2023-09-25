@@ -109,3 +109,11 @@ def get_metadata(builddir: str):
         metadata["extra-data"] = dict(parser["Extra Data"])
 
     return metadata
+
+
+def infer_appid_from_metadata(builddir: str):
+    metadata = get_metadata(builddir)
+    if metadata:
+        return metadata.get("name")
+
+    return None
