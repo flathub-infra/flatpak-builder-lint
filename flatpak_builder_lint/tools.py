@@ -56,7 +56,7 @@ def get_metadata(builddir: str) -> dict:
 
     if "Application" in parser:
         metadata: dict = dict(parser["Application"])
-        metadata["type"] = "app"
+        metadata["type"] = "application"
     elif "Runtime" in parser:
         metadata = dict(parser["Runtime"])
         metadata["type"] = "runtime"
