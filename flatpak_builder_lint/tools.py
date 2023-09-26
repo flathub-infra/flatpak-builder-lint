@@ -52,6 +52,7 @@ def get_metadata(builddir: str) -> dict:
         raise OSError(errno.ENOENT)
 
     parser = ConfigParser()
+    parser.optionxform = str
     parser.read(metadata_path)
 
     if "Application" in parser:
@@ -67,7 +68,7 @@ def get_metadata(builddir: str) -> dict:
         tags = [x for x in metadata["tags"].split(";") if x]
         metadata["tags"] = tags
 
-    permissions = {}
+    permissions = defaultdict(set)
 
     if "Context" in parser:
         for key in parser["Context"]:
@@ -80,9 +81,7 @@ def get_metadata(builddir: str) -> dict:
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
-            bus[f"{bus_permission}-name"].append(busname)
-
-        permissions["session-bus"] = bus
+            permissions[f"{bus_permission}-name"].add(busname)
 
     if "System Bus Policy" in parser:
         bus_metadata = parser["System Bus Policy"]
@@ -90,9 +89,7 @@ def get_metadata(builddir: str) -> dict:
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
-            bus[f"system-{bus_permission}-name"].append(busname)
-
-        permissions["system-bus"] = bus
+            permissions[f"system-{bus_permission}-name"].add(busname)
 
     if "shared" in permissions:
         permissions["share"] = permissions.pop("shared")
