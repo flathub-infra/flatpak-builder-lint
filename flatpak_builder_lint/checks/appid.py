@@ -1,10 +1,16 @@
 import os
+from typing import Optional
 
+from .. import tools
 from . import Check
 
 
 class AppIDCheck(Check):
-    def _validate(self, appid: str) -> None:
+    def _validate(self, appid: Optional[str]) -> None:
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
+
         split = appid.split(".")
         if split[-1] == "desktop":
             self.errors.add("appid-ends-with-lowercase-desktop")
@@ -21,9 +27,6 @@ class AppIDCheck(Check):
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
-        if not appid:
-            self.errors.add("appid-not-defined")
-            return
 
         if filename := manifest.get("x-manifest-filename"):
             (manifest_basename, _) = os.path.splitext(filename)
@@ -32,4 +35,12 @@ class AppIDCheck(Check):
             if appid != manifest_basename:
                 self.errors.add("appid-filename-mismatch")
 
+        self._validate(appid)
+
+    def check_build(self, path: str) -> None:
+        metadata = tools.get_metadata(path)
+        if metadata.get("type") != "application":
+            return
+
+        appid = metadata.get("name")
         self._validate(appid)
