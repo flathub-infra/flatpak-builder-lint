@@ -4,6 +4,7 @@ import importlib.resources
 import json
 import pkgutil
 import sys
+from typing import Union
 
 import requests
 
@@ -42,7 +43,7 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
         case "manifest":
             check_method_name = "check_manifest"
             infer_appid_func = tools.infer_appid_from_manifest
-            check_method_arg = tools.show_manifest(path)
+            check_method_arg: Union[str, dict] = tools.show_manifest(path)
         case "build":
             check_method_name = "check_build"
             infer_appid_func = tools.infer_appid_from_metadata
