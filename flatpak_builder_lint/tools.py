@@ -77,7 +77,6 @@ def get_metadata(builddir: str) -> dict:
 
     if "Session Bus Policy" in parser:
         bus_metadata = parser["Session Bus Policy"]
-        bus = defaultdict(list)
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
@@ -85,7 +84,6 @@ def get_metadata(builddir: str) -> dict:
 
     if "System Bus Policy" in parser:
         bus_metadata = parser["System Bus Policy"]
-        bus = defaultdict(list)
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
