@@ -38,8 +38,8 @@ def show_manifest(filename: str) -> dict:
     return manifest_json  # type: ignore
 
 
-def infer_appid_from_manifest(filename: str) -> Optional[str]:
-    manifest = show_manifest(filename)
+def infer_appid_from_manifest(path: str) -> Optional[str]:
+    manifest = show_manifest(path)
     return manifest.get("id")
 
 
@@ -52,7 +52,7 @@ def get_metadata(builddir: str) -> dict:
         raise OSError(errno.ENOENT)
 
     parser = ConfigParser()
-    parser.optionxform = str
+    parser.optionxform = type(str)  # type: ignore
     parser.read(metadata_path)
 
     if "Application" in parser:
@@ -68,7 +68,7 @@ def get_metadata(builddir: str) -> dict:
         tags = [x for x in metadata["tags"].split(";") if x]
         metadata["tags"] = tags
 
-    permissions = defaultdict(set)
+    permissions: dict = defaultdict(set)
 
     if "Context" in parser:
         for key in parser["Context"]:
@@ -123,8 +123,8 @@ def get_metadata(builddir: str) -> dict:
     return metadata
 
 
-def infer_appid_from_metadata(builddir: str) -> Optional[str]:
-    metadata = get_metadata(builddir)
+def infer_appid_from_metadata(path: str) -> Optional[str]:
+    metadata = get_metadata(path)
     if metadata:
         return metadata.get("name")
 
