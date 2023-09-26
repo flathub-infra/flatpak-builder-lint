@@ -52,7 +52,7 @@ def get_metadata(builddir: str) -> dict:
         raise OSError(errno.ENOENT)
 
     parser = ConfigParser()
-    parser.optionxform = type(str)  # type: ignore
+    parser.optionxform = str  # type: ignore
     parser.read(metadata_path)
 
     if "Application" in parser:

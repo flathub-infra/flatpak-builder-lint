@@ -58,10 +58,10 @@ class FlathubJsonCheck(Check):
 
         publish_delay = flathub_json.get("publish-delay-hours")
         if isinstance(publish_delay, int):
-            if publish_delay < 3 and is_extra_data:
+            if publish_delay < 3 and not is_extra_data:
                 self.errors.add("flathub-json-modified-publish-delay")
 
-    def check(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict) -> None:
         flathub_json = manifest.get("x-flathub")
         if not flathub_json:
             return
@@ -70,6 +70,7 @@ class FlathubJsonCheck(Check):
         if not appid:
             return
 
+        is_extra_data = False
         if modules := manifest.get("modules"):
             is_extra_data = self._check_if_extra_data(modules)
 
