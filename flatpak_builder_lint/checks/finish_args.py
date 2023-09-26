@@ -17,6 +17,12 @@ class FinishArgsCheck(Check):
             if "ipc" not in finish_args["share"]:
                 self.warnings.add("finish-args-x11-without-ipc")
 
+        if (
+            "fallback-x11" in finish_args["socket"]
+            and "wayland" not in finish_args["socket"]
+        ):
+            self.errors.add("finish-args-fallback-x11-without-wayland")
+
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
             if xdg_dir in finish_args["filesystem"]:
                 self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
