@@ -103,7 +103,7 @@ class FinishArgsCheck(Check):
         else:
             is_baseapp = False
 
-        permissions = metadata.get("permissions")
+        permissions = metadata.get("permissions", {})
         if not permissions and not is_baseapp:
             self.errors.add("finish-args-not-defined")
             return
