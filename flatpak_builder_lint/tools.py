@@ -15,7 +15,8 @@ def show_manifest(filename: str) -> dict:
         raise OSError(errno.ENOENT)
 
     ret = subprocess.run(
-        ["flatpak-builder", "--show-manifest", filename], capture_output=True,
+        ["flatpak-builder", "--show-manifest", filename],
+        capture_output=True,
     )
 
     if ret.returncode != 0:
@@ -42,7 +43,7 @@ def infer_appid_from_manifest(filename: str) -> Optional[str]:
     return manifest.get("id")
 
 
-def get_metadata(builddir: str):
+def get_metadata(builddir: str) -> dict:
     if not os.path.exists(builddir):
         raise OSError(errno.ENOENT)
 
@@ -53,10 +54,14 @@ def get_metadata(builddir: str):
     parser = ConfigParser()
     parser.read(metadata_path)
 
-    if "Application" not in parser:
-        return None
-
-    metadata = dict(parser["Application"])
+    if "Application" in parser:
+        metadata: dict = dict(parser["Application"])
+        metadata["type"] = "app"
+    elif "Runtime" in parser:
+        metadata = dict(parser["Runtime"])
+        metadata["type"] = "runtime"
+    else:
+        return {}
 
     if "tags" in metadata:
         tags = [x for x in metadata["tags"].split(";") if x]
@@ -75,7 +80,7 @@ def get_metadata(builddir: str):
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
-            bus[bus_permission].append(busname)
+            bus[f"{bus_permission}-name"].append(busname)
 
         permissions["session-bus"] = bus
 
@@ -85,9 +90,21 @@ def get_metadata(builddir: str):
 
         for busname in bus_metadata:
             bus_permission = bus_metadata[busname]
-            bus[bus_permission].append(busname)
+            bus[f"system-{bus_permission}-name"].append(busname)
 
         permissions["system-bus"] = bus
+
+    if "shared" in permissions:
+        permissions["share"] = permissions.pop("shared")
+
+    if "filesystems" in permissions:
+        permissions["filesystem"] = permissions.pop("filesystems")
+
+    if "sockets" in permissions:
+        permissions["socket"] = permissions.pop("sockets")
+
+    if "devices" in permissions:
+        permissions["device"] = permissions.pop("devices")
 
     metadata["permissions"] = permissions
 
@@ -111,7 +128,7 @@ def get_metadata(builddir: str):
     return metadata
 
 
-def infer_appid_from_metadata(builddir: str):
+def infer_appid_from_metadata(builddir: str) -> Optional[str]:
     metadata = get_metadata(builddir)
     if metadata:
         return metadata.get("name")
