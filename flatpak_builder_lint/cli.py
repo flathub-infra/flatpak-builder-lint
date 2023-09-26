@@ -58,7 +58,6 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
                 check_method(check_method_arg)
 
     results = {}
-    print(results)
     if errors := checks.Check.errors:
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
