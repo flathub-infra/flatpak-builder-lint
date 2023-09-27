@@ -2,7 +2,7 @@ import json
 import os
 from typing import Set
 
-from .. import builddir
+from .. import builddir, ostree
 from . import Check
 
 
@@ -88,7 +88,6 @@ class FlathubJsonCheck(Check):
 
         is_extra_data = bool(metadata.get("extra-data", False))
         is_extension = metadata.get("type", False) != "application"
-        print(is_extra_data, is_extension)
 
         self._validate(appid, flathub_json, is_extra_data, is_extension)
 
@@ -108,5 +107,27 @@ class FlathubJsonCheck(Check):
         flathub_json_path = f"{path}/files/manifest.json"
         if not os.path.exists(flathub_json_path):
             return
+
+        self._check_metadata(metadata, flathub_json)
+
+    def check_repo(self, path: str) -> None:
+        self._populate_ref(path)
+
+        if not self.repo_primary_ref:
+            return
+
+        metadata = ostree.get_metadata(path)
+        if not metadata:
+            return
+
+        flathub_json_path = "/files/manifest.json"
+        flathub_json_raw = ostree.get_text_file(
+            path, self.repo_primary_ref, flathub_json_path
+        )
+        if not flathub_json_raw:
+            return
+
+        flathub_json = json.loads(flathub_json_raw)
+        flathub_json = flathub_json.get("x-flathub")
 
         self._check_metadata(metadata, flathub_json)
