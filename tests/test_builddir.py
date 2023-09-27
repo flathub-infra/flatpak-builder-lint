@@ -1,24 +1,24 @@
 from flatpak_builder_lint import checks, cli
 
 
-def run_checks(filename: str, enable_exceptions: bool = False) -> dict:
+def run_checks(filename: str) -> dict:
     checks.Check.errors = set()
     checks.Check.warnings = set()
-    return cli.run_checks("build", filename, enable_exceptions)
+    return cli.run_checks("builddir", filename)
 
 
-def test_metadata_appid() -> None:
+def test_builddir_appid() -> None:
     errors = {
             'appid-ends-with-lowercase-desktop',
             'appid-uses-code-hosting-domain',
             'finish-args-not-defined'
             }
-    ret = run_checks("tests/metadata/appid")
+    ret = run_checks("tests/builddir/appid")
     found_errors = set(ret["errors"])
     assert errors.issubset(found_errors)
 
 
-def test_metadata_finish_args() -> None:
+def test_builddir_finish_args() -> None:
     errors = {
         "finish-args-arbitrary-autostart-access",
         "finish-args-arbitrary-dbus-access",
@@ -39,7 +39,7 @@ def test_metadata_finish_args() -> None:
         "finish-args-contains-both-x11-and-fallback",
     }
 
-    ret = run_checks("tests/metadata/finish_args")
+    ret = run_checks("tests/builddir/finish_args")
     found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
 
@@ -47,7 +47,7 @@ def test_metadata_finish_args() -> None:
     assert warnings.issubset(found_warnings)
 
 
-def test_metadata_finish_args_missing() -> None:
-     ret = run_checks("tests/metadata/finish_args_missing")
+def test_builddir_finish_args_missing() -> None:
+     ret = run_checks("tests/builddir/finish_args_missing")
      found_errors = set(ret["errors"])
      assert "finish-args-not-defined" in found_errors
