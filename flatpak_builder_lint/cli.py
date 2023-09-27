@@ -4,11 +4,11 @@ import importlib.resources
 import json
 import pkgutil
 import sys
-from typing import Union
+from typing import Optional, Union
 
 import requests
 
-from . import __version__, checks, staticfiles, tools
+from . import __version__, builddir, checks, manifest, ostree, staticfiles
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
@@ -38,15 +38,21 @@ def get_remote_exceptions(
     return ret
 
 
-def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
+def run_checks(
+    kind: str, path: str, enable_exceptions: bool = False, appid: Optional[str] = None
+) -> dict:
     match kind:
         case "manifest":
             check_method_name = "check_manifest"
-            infer_appid_func = tools.infer_appid_from_manifest
-            check_method_arg: Union[str, dict] = tools.show_manifest(path)
-        case "build":
+            infer_appid_func = manifest.infer_appid
+            check_method_arg: Union[str, dict] = manifest.show_manifest(path)
+        case "builddir":
             check_method_name = "check_build"
-            infer_appid_func = tools.infer_appid_from_metadata
+            infer_appid_func = builddir.infer_appid
+            check_method_arg = path
+        case "repo":
+            check_method_name = "check_repo"
+            infer_appid_func = ostree.infer_appid
             check_method_arg = path
         case _:
             raise ValueError(f"Unknown kind: {kind}")
@@ -69,7 +75,10 @@ def run_checks(kind: str, path: str, enable_exceptions: bool = False) -> dict:
     if enable_exceptions:
         exceptions = None
 
-        appid = infer_appid_func(path)
+        if appid:
+            appid = appid[0]
+        else:
+            appid = infer_appid_func(path)
 
         if appid:
             exceptions = get_remote_exceptions(appid)
@@ -102,9 +111,12 @@ def main() -> int:
     parser.add_argument(
         "--exceptions", help="skip allowed warnings or errors", action="store_true"
     )
+    parser.add_argument("--appid", help="override app ID", type=str, nargs=1)
 
     parser.add_argument(
-        "type", help="type of artifact to lint", choices=["build", "manifest"]
+        "type",
+        help="type of artifact to lint",
+        choices=["builddir", "repo", "manifest"],
     )
     parser.add_argument(
         "path",
@@ -117,7 +129,7 @@ def main() -> int:
 
     exit_code = 0
 
-    if results := run_checks(args.type, args.path[0], args.exceptions):
+    if results := run_checks(args.type, args.path[0], args.exceptions, args.appid):
         if "errors" in results:
             exit_code = 1
 

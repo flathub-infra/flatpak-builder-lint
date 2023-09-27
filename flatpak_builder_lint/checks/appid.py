@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-from .. import tools
+from .. import builddir, ostree
 from . import Check
 
 
@@ -38,8 +38,16 @@ class AppIDCheck(Check):
         self._validate(appid)
 
     def check_build(self, path: str) -> None:
-        metadata = tools.get_metadata(path)
-        if metadata.get("type") != "application":
+        metadata = builddir.get_metadata(path)
+        if not metadata:
+            return
+
+        appid = metadata.get("name")
+        self._validate(appid)
+
+    def check_repo(self, path: str) -> None:
+        metadata = ostree.get_metadata(path)
+        if not metadata:
             return
 
         appid = metadata.get("name")

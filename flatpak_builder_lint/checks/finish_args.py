@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Optional, Set
 
-from .. import tools
+from .. import builddir, ostree
 from . import Check
 
 
@@ -99,8 +99,26 @@ class FinishArgsCheck(Check):
         self._validate(appid, fa)
 
     def check_build(self, path: str) -> None:
-        metadata = tools.get_metadata(path)
-        if metadata.get("type") != "application":
+        metadata = builddir.get_metadata(path)
+        if not metadata:
+            return
+
+        appid = metadata.get("name")
+        if isinstance(appid, str):
+            is_baseapp = appid.endswith(".BaseApp")
+        else:
+            is_baseapp = False
+
+        permissions = metadata.get("permissions", {})
+        if not permissions and not is_baseapp:
+            self.errors.add("finish-args-not-defined")
+            return
+
+        self._validate(appid, permissions)
+
+    def check_repo(self, path: str) -> None:
+        metadata = ostree.get_metadata(path)
+        if not metadata:
             return
 
         appid = metadata.get("name")
