@@ -1,5 +1,8 @@
+import json
+import os
 from typing import Set
 
+from .. import builddir
 from . import Check
 
 
@@ -18,7 +21,7 @@ class FlathubJsonCheck(Check):
 
         return False
 
-    def validate(
+    def _validate(
         self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
     ) -> None:
         if flathub_json.get("skip-appstream-check"):
@@ -76,4 +79,34 @@ class FlathubJsonCheck(Check):
 
         is_extension = manifest.get("build-extension", False)
 
-        self.validate(appid, flathub_json, is_extra_data, is_extension)
+        self._validate(appid, flathub_json, is_extra_data, is_extension)
+
+    def _check_metadata(self, metadata: dict, flathub_json: dict) -> None:
+        appid = metadata.get("name")
+        if not appid:
+            return
+
+        is_extra_data = bool(metadata.get("extra-data", False))
+        is_extension = metadata.get("type", False) != "application"
+        print(is_extra_data, is_extension)
+
+        self._validate(appid, flathub_json, is_extra_data, is_extension)
+
+    def check_build(self, path: str) -> None:
+        metadata = builddir.get_metadata(path)
+        if not metadata:
+            return
+
+        flathub_json_path = f"{path}/files/manifest.json"
+        if not os.path.exists(flathub_json_path):
+            return
+
+        with open(flathub_json_path, "r") as f:
+            flathub_json = json.load(f)
+        flathub_json = flathub_json.get("x-flathub")
+
+        flathub_json_path = f"{path}/files/manifest.json"
+        if not os.path.exists(flathub_json_path):
+            return
+
+        self._check_metadata(metadata, flathub_json)
