@@ -42,6 +42,14 @@ def get_primary_ref(repo: str) -> Optional[str]:
     return None
 
 
+def get_text_file(repo: str, ref: str, path: str) -> Optional[str]:
+    cmd = cli(repo, "cat", ref, path)
+    if cmd["returncode"] == 0:
+        return cmd["stdout"]
+
+    return None
+
+
 def get_metadata(repo: str) -> Optional[dict]:
     ref = get_primary_ref(repo)
     if not ref:
