@@ -51,3 +51,20 @@ def test_builddir_finish_args_missing() -> None:
      ret = run_checks("tests/builddir/finish_args_missing")
      found_errors = set(ret["errors"])
      assert "finish-args-not-defined" in found_errors
+
+
+def test_builddir_flathub_json() -> None:
+    errors = {
+        "flathub-json-skip-appstream-check",
+        "flathub-json-eol-rebase-misses-new-id",
+        "flathub-json-modified-publish-delay",
+    }
+
+    warnings = {"flathub-json-deprecated-i386-arch-included"}
+
+    ret = run_checks("tests/builddir/flathub_json")
+    found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
+
+    assert errors.issubset(found_errors)
+    assert warnings.issubset(found_warnings)
