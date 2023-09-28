@@ -35,6 +35,7 @@ def get_primary_ref(repo: str) -> Optional[str]:
         raise RuntimeError("Failed to list refs")
 
     refs = refs_cmd["stdout"].splitlines()
+    ref: str
 
     for ref in refs:
         if ref.startswith("app/"):
@@ -65,9 +66,9 @@ def get_metadata(repo: str) -> Optional[dict]:
 
 
 def infer_appid(path: str) -> Optional[str]:
-    metadata = get_metadata(path)
-    if metadata:
-        return metadata.get("name")
+    ref = get_primary_ref(path)
+    if ref:
+        return ref.split("/")[1]
 
     return None
 
