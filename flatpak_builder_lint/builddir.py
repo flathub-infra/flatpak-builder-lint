@@ -108,6 +108,6 @@ def get_flathub_json(path: str) -> Optional[dict]:
 
     with open(manifest_path, "r") as f:
         manifest = json.load(f)
-    flathub_json = manifest.get("x-flathub")
+    flathub_json: dict = manifest.get("x-flathub")
 
     return flathub_json
