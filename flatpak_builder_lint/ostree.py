@@ -81,6 +81,19 @@ def get_flathub_json(repo: str, ref: str) -> Optional[dict]:
         return None
 
     manifest = json.loads(manifest_raw)
-    flathub_json = manifest.get("x-flathub")
+    flathub_json: dict = manifest.get("x-flathub")
 
     return flathub_json
+
+
+def extract_subpath(repo: str, ref: str, subpath: str, dest: str) -> CliResult:
+    cmd = cli(
+        repo,
+        "checkout",
+        "--union-add",
+        "--user-mode",
+        f"--subpath={subpath}",
+        ref,
+        dest,
+    )
+    return cmd
