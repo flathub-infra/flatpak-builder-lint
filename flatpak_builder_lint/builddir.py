@@ -1,4 +1,5 @@
 import errno
+import json
 import os
 from collections import defaultdict
 from configparser import ConfigParser
@@ -98,3 +99,15 @@ def infer_appid(path: str) -> Optional[str]:
         return metadata.get("name")
 
     return None
+
+
+def get_flathub_json(path: str) -> Optional[dict]:
+    manifest_path = f"{path}/files/manifest.json"
+    if not os.path.exists(manifest_path):
+        return None
+
+    with open(manifest_path, "r") as f:
+        manifest = json.load(f)
+    flathub_json = manifest.get("x-flathub")
+
+    return flathub_json

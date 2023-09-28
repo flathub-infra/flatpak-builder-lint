@@ -1,4 +1,5 @@
 import errno
+import json
 import os
 import subprocess
 from typing import Optional, TypedDict
@@ -69,3 +70,16 @@ def infer_appid(path: str) -> Optional[str]:
         return metadata.get("name")
 
     return None
+
+
+def get_flathub_json(repo: str, ref: str) -> Optional[dict]:
+    manifest_path = "/files/manifest.json"
+    manifest_raw = get_text_file(repo, ref, manifest_path)
+
+    if not manifest_raw:
+        return None
+
+    manifest = json.loads(manifest_raw)
+    flathub_json = manifest.get("x-flathub")
+
+    return flathub_json

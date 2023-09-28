@@ -96,16 +96,8 @@ class FlathubJsonCheck(Check):
         if not metadata:
             return
 
-        flathub_json_path = f"{path}/files/manifest.json"
-        if not os.path.exists(flathub_json_path):
-            return
-
-        with open(flathub_json_path, "r") as f:
-            flathub_json = json.load(f)
-        flathub_json = flathub_json.get("x-flathub")
-
-        flathub_json_path = f"{path}/files/manifest.json"
-        if not os.path.exists(flathub_json_path):
+        flathub_json = builddir.get_flathub_json(path)
+        if not flathub_json:
             return
 
         self._check_metadata(metadata, flathub_json)
@@ -120,14 +112,8 @@ class FlathubJsonCheck(Check):
         if not metadata:
             return
 
-        flathub_json_path = "/files/manifest.json"
-        flathub_json_raw = ostree.get_text_file(
-            path, self.repo_primary_ref, flathub_json_path
-        )
-        if not flathub_json_raw:
+        flathub_json = ostree.get_flathub_json(path, self.repo_primary_ref)
+        if not flathub_json:
             return
-
-        flathub_json = json.loads(flathub_json_raw)
-        flathub_json = flathub_json.get("x-flathub")
 
         self._check_metadata(metadata, flathub_json)
