@@ -1,5 +1,3 @@
-import json
-import os
 from typing import Set
 
 from .. import builddir, ostree
