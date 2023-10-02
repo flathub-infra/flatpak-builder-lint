@@ -2,8 +2,6 @@ from . import Check
 
 
 class ModuleCheck(Check):
-    type = "manifest"
-
     def check_source(self, module_name: str, source: dict) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
@@ -83,7 +81,7 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
-    def check(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict) -> None:
         if modules := manifest.get("modules"):
             for module in modules:
                 self.check_module(module)

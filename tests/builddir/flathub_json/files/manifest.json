@@ -1,0 +1,9 @@
+{
+    "x-flathub": {
+	"skip-appstream-check": "true",
+	"end-of-life": "message",
+	"end-of-life-rebase": "foo",
+	"publish-delay-hours": 2,
+	"only-arches": ["x86_64", "i386"]
+    }
+}
