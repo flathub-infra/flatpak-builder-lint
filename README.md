@@ -6,6 +6,17 @@ for other Flatpak repositories.
 
 ## Installation
 
+### Docker
+
+The latest build of flatpak-builder-linter can be used with Docker.
+
+```
+docker run --rm -it ghcr.io/flathub/flatpak-builder-lint:latest
+```
+
+You may need to pass the local data using `--volume` to check the chosen file
+or repo.
+
 ### Flatpak
 
 flatpak-builder-lint is part of the `org.flatpak.Builder` flatpak package
@@ -17,7 +28,7 @@ flatpak install flathub -y org.flatpak.Builder
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder --help
 ```
 
-The flatpak package uses the git commit currently used on the Flathub
+The flatpak package tracks the git commit currently used on the Flathub
 infrastructure.
 
 ### Local environment
