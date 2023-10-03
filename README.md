@@ -21,10 +21,10 @@ $ poetry install
 
 To run
 ```shell
-$ poetry run flatpak-builder-lint MANIFEST
+$ poetry run flatpak-builder-lint KIND MANIFEST
 ```
 
-where MANIFEST is the manifest to check.
+where KIND is the kind of manifest to check (e.g. `manifest`, `repo` or `builddir`) and MANIFEST is the path to the manifest to check.
 
 Flatpak
 -------
