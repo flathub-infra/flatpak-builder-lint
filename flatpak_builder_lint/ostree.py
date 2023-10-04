@@ -97,3 +97,8 @@ def extract_subpath(repo: str, ref: str, subpath: str, dest: str) -> CliResult:
         dest,
     )
     return cmd
+
+
+def list_ref(repo: str, ref: str) -> CliResult:
+    cmd = cli(repo, "ls", "--R", ref)
+    return cmd
