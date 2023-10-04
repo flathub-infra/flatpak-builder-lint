@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.10"
 jsonschema = "^4.16.0"
 requests = "^2.28.1"
+lxml = "^4.9.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
