@@ -68,14 +68,14 @@
       "sources": [
         {
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/2e/b5/bb6d90878ef8df7df279af68379266285eff135dfa7fe9985e19e10b1a43/rpds_py-0.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-          "sha256": "a771417c9c06c56c9d53d11a5b084d1de75de82978e23c544270ab25e7c066ff",
+          "url": "https://files.pythonhosted.org/packages/2f/a7/e15caccbd5e5b863385f840546553b74174569e6969844d2d867e29d5609/rpds_py-0.10.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "sha256": "ef750a20de1b65657a1425f77c525b0183eac63fe7b8f5ac0dd16f3668d3e64f",
           "only-arches": ["x86_64"]
         },
         {
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/8e/6b/dd06a25dce66d54a8bedc271d3952e5c22dd95553adc3264185302fb23e3/rpds_py-0.10.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
-          "sha256": "d3b52a67ac66a3a64a7e710ba629f62d1e26ca0504c29ee8cbd99b97df7079a8",
+          "url": "https://files.pythonhosted.org/packages/e3/0c/dabedf5f5634d028a329adc4ea3ddb673b671826ae57b6c42671205e0f54/rpds_py-0.10.3-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "sha256": "e626b864725680cd3904414d72e7b0bd81c0e5b2b53a5b30b4273034253bb41f",
           "only-arches": ["aarch64"]
         }
       ]
