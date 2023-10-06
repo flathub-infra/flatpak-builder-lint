@@ -30,7 +30,8 @@ class ScreenshotsCheck(Check):
         with tempfile.TemporaryDirectory() as tmpdir:
             ret = ostree.extract_subpath(path, ref, "files/share/app-info", tmpdir)
             if ret["returncode"] != 0:
-                raise RuntimeError("Failed to extract ostree repo")
+                self.errors.add("appstream-missing-appinfo")
+                return
 
             appstream_path = f"{tmpdir}/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
@@ -48,7 +49,7 @@ class ScreenshotsCheck(Check):
             if type not in ("desktop", "desktop-application", "console-application"):
                 return
 
-            screenshots = components[0].xpath("screenshots/screenshot")
+            screenshots = components[0].xpath("screenshots/screenshot/image")
             if not screenshots:
                 self.errors.add("appstream-missing-screenshots")
                 return
@@ -64,19 +65,19 @@ class ScreenshotsCheck(Check):
             ostree_screenshots = []
             for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():
                 mode, _, _, _, ostree_screenshot_filename = ostree_screenshot.split()
-                if mode != "-":
+                if mode[0] != "-":
                     continue
                 ostree_screenshots.append(ostree_screenshot_filename[1:])
 
-            print(ostree_screenshots)
-
             for screenshot in screenshots:
-                if not screenshot.startswith("https://dl.flathub.org/repo/screenshots"):
-                    self.errors.add("appstream-external-screenshot-url")
-                    return
+                if screenshot.attrib.get("type") != "source":
+                    if not screenshot.text.startswith(
+                        "https://dl.flathub.org/repo/screenshots"
+                    ):
+                        self.errors.add("appstream-external-screenshot-url")
+                        return
 
-                screenshot_filename = "/".join(screenshot.split("/")[5:])
-                print(screenshot_filename)
-                if f"/{screenshot_filename}" not in ostree_screenshots:
-                    self.errors.add("appstream-screenshots-not-mirrored")
-                    return
+                    screenshot_filename = "/".join(screenshot.text.split("/")[5:])
+                    if f"{screenshot_filename}" not in ostree_screenshots:
+                        self.errors.add("appstream-screenshots-not-mirrored")
+                        return
