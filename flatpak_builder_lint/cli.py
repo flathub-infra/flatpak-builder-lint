@@ -2,6 +2,7 @@ import argparse
 import importlib
 import importlib.resources
 import json
+import os
 import pkgutil
 import sys
 from typing import Optional, Union
@@ -111,6 +112,11 @@ def main() -> int:
         "--exceptions", help="skip allowed warnings or errors", action="store_true"
     )
     parser.add_argument("--appid", help="override app ID", type=str, nargs=1)
+    parser.add_argument(
+        "--cwd",
+        help="override the path parameter with current working directory",
+        action="store_true",
+    )
 
     parser.add_argument(
         "type",
@@ -125,10 +131,14 @@ def main() -> int:
     )
 
     args = parser.parse_args()
-
     exit_code = 0
 
-    if results := run_checks(args.type, args.path[0], args.exceptions, args.appid):
+    if args.cwd:
+        path = os.getcwd()
+    else:
+        path = args.path[0]
+
+    if results := run_checks(args.type, path, args.exceptions, args.appid):
         if "errors" in results:
             exit_code = 1
 
