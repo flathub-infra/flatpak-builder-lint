@@ -102,12 +102,11 @@ def infer_appid(path: str) -> Optional[str]:
 
 
 def get_flathub_json(path: str) -> Optional[dict]:
-    manifest_path = f"{path}/files/manifest.json"
-    if not os.path.exists(manifest_path):
+    flathub_json_path = f"{path}/files/flathub.json"
+    if not os.path.exists(flathub_json_path):
         return None
 
-    with open(manifest_path, "r") as f:
-        manifest = json.load(f)
-    flathub_json: dict = manifest.get("x-flathub")
+    with open(flathub_json_path, "r") as f:
+        flathub_json: dict = json.load(f)
 
     return flathub_json

@@ -74,15 +74,13 @@ def infer_appid(path: str) -> Optional[str]:
 
 
 def get_flathub_json(repo: str, ref: str) -> Optional[dict]:
-    manifest_path = "/files/manifest.json"
-    manifest_raw = get_text_file(repo, ref, manifest_path)
+    flathub_json_path = "/files/flathub.json"
+    flathub_json_raw = get_text_file(repo, ref, flathub_json_path)
 
-    if not manifest_raw:
+    if not flathub_json_raw:
         return None
 
-    manifest = json.loads(manifest_raw)
-    flathub_json: dict = manifest.get("x-flathub")
-
+    flathub_json: dict = json.loads(flathub_json_raw)
     return flathub_json
 
 
