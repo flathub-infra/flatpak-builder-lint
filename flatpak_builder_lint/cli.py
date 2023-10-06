@@ -104,7 +104,6 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="A linter for Flatpak builds and flatpak-builder manifests"
     )
-    parser.add_argument("--json", help="output in JSON format", action="store_true")
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
     )
@@ -133,13 +132,7 @@ def main() -> int:
         if "errors" in results:
             exit_code = 1
 
-        if args.json:
-            output = json.dumps(results, indent=4)
-        else:
-            # we default to JSON output anyway as it's nicely formatted
-            # TODO: make the output more human readable
-            output = json.dumps(results, indent=4)
-
+        output = json.dumps(results, indent=4)
         print(output)
 
         if args.exceptions and not args.json:
