@@ -145,7 +145,7 @@ def main() -> int:
         output = json.dumps(results, indent=4)
         print(output)
 
-        if args.exceptions and not args.json:
+        if args.exceptions:
             print()
             print(
                 "If you think problems listed above are a false positive, please report it here:"
