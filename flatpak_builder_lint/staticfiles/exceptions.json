@@ -1135,6 +1135,9 @@
     "io.stoplight.studio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.ankiweb.Anki": {
+        "finish-args-contains-both-x11-and-wayland": "Required for Wayland support in tandem with X11"
+    },
     "net.cozic.joplin_desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
