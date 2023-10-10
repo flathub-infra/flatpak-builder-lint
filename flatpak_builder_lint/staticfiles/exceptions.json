@@ -1648,5 +1648,8 @@
     },
     "io.github.jean28518.Linux-Assistant": {
         "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
+    },
+    "net.nokyan.Resources": {
+        "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
     }
 }
