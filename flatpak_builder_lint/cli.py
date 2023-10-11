@@ -117,6 +117,13 @@ def main() -> int:
         help="override the path parameter with current working directory",
         action="store_true",
     )
+    parser.add_argument(
+        "--ref",
+        help="override the primary ref detection",
+        type=str,
+        nargs=1,
+        default=None,
+    )
 
     parser.add_argument(
         "type",
@@ -137,6 +144,9 @@ def main() -> int:
         path = os.getcwd()
     else:
         path = args.path[0]
+
+    if args.ref:
+        checks.Check.repo_primary_ref = args.ref[0]
 
     if results := run_checks(args.type, path, args.exceptions, args.appid):
         if "errors" in results:
