@@ -1648,7 +1648,7 @@
     },
     "io.github.jean28518.Linux-Assistant": {
         "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
-    }
+    },
     "io.github.everestapi.Olympus": {
         "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
     }
