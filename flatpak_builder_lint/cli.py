@@ -104,7 +104,7 @@ def run_checks(
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="A linter for Flatpak builds and flatpak-builder manifests",
-        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",
+        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",  # noqa: E501
     )
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
