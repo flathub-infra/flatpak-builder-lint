@@ -103,7 +103,8 @@ def run_checks(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="A linter for Flatpak builds and flatpak-builder manifests"
+        description="A linter for Flatpak builds and flatpak-builder manifests",
+        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",
     )
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
@@ -154,13 +155,6 @@ def main() -> int:
 
         output = json.dumps(results, indent=4)
         print(output)
-
-        if args.exceptions:
-            print()
-            print(
-                "If you think problems listed above are a false positive, please report it here:"
-            )
-            print("  https://github.com/flathub/flatpak-builder-lint")
 
     sys.exit(exit_code)
 
