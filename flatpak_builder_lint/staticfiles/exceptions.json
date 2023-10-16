@@ -1669,6 +1669,18 @@
     "engineer.atlas.Nyxt": {
         "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
     },
+    "org.freedesktop.Platform.VulkanInfo": {
+        "flathub-json-skip-appstream-check": "It is a command line package"
+    },
+    "org.freedesktop.Platform.VaInfo": {
+        "flathub-json-skip-appstream-check": "It is a command line package"
+    },
+    "org.freedesktop.Platform.ClInfo": {
+        "flathub-json-skip-appstream-check": "It is a command line package"
+    },
+    "org.freedesktop.Platform.GlxInfo": {
+        "flathub-json-skip-appstream-check": "It is a command line package"
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
