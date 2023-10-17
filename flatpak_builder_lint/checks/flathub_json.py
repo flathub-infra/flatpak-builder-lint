@@ -106,7 +106,7 @@ class FlathubJsonCheck(Check):
         if not self.repo_primary_ref:
             return
 
-        metadata = ostree.get_metadata(path)
+        metadata = ostree.get_metadata(path, self.repo_primary_ref)
         if not metadata:
             return
 
