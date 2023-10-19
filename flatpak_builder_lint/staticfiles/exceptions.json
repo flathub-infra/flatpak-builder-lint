@@ -1204,6 +1204,9 @@
     "org.godotengine.Godot3": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
     },
+    "org.godotengine.GodotSharp": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+    },
     "org.hydrogenmusic.Hydrogen": {
         "flathub-json-skip-appstream-check": "appstream file has GPL license, upstream hasn't fixed it"
     },
