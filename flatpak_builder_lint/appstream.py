@@ -8,7 +8,7 @@ def validate(path: str) -> dict:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
     cmd = subprocess.run(
-        ["appstream-util", "validate", path],
+        ["appstream-util", "validate", "--nonet", path],
         capture_output=True,
     )
 
