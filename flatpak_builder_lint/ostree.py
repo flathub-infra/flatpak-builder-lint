@@ -52,10 +52,13 @@ def get_text_file(repo: str, ref: str, path: str) -> Optional[str]:
     return None
 
 
-def get_metadata(repo: str) -> Optional[dict]:
-    ref = get_primary_ref(repo)
-    if not ref:
-        return None
+def get_metadata(repo: str, primary_ref: Optional[str]) -> Optional[dict]:
+    if not primary_ref:
+        ref = get_primary_ref(repo)
+        if not ref:
+            return None
+    else:
+        ref = primary_ref
 
     cat_metadata_cmd = cli(repo, "cat", ref, "/metadata")
     if cat_metadata_cmd["returncode"] == 0:
