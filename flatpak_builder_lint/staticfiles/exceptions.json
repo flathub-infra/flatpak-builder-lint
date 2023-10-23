@@ -1662,5 +1662,8 @@
     },
     "io.github.thetumultuousunicornofdarkness.cpu-x": {
         "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
+    },
+    "engineer.atlas.Nyxt": {
+        "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
     }
 }
