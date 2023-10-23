@@ -1660,5 +1660,8 @@
     },
     "com.obsproject.Studio": {
         "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
+    },
+    "engineer.atlas.Nyxt": {
+        "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
     }
 }
