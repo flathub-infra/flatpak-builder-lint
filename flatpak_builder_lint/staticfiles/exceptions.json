@@ -1651,5 +1651,8 @@
     },
     "net.nokyan.Resources": {
         "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
+    },
+    "io.github.everestapi.Olympus": {
+        "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
     }
 }
