@@ -39,7 +39,7 @@ class MetainfoCheck(Check):
                     self.errors.add("appstream-failed-validation")
 
                 if not appstream.is_developer_name_present(appstream_path):
-                    self.errors.add("appstream-missing-developer-name")
+                    self.warnings.add("appstream-missing-developer-name")
 
         if not flathub_json.get("skip-icons-check"):
             if not os.path.exists(icon_path):
