@@ -46,7 +46,7 @@ class FlatManagerCheck(Check):
                     f"Failed to fetch build info from flat-manager: {r.status_code}"
                 )
 
-            build_info = r.json()
+            build_info = r.json()["build"]
             token_type = build_info.get("token_type")
             target_repo = build_info.get("target_repo")
 
