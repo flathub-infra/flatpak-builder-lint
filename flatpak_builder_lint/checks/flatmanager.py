@@ -8,9 +8,18 @@ from . import Check
 
 class FlatManagerCheck(Check):
     def check_repo(self, path: str) -> None:
+        flathub_hooks_cfg_paths = [
+            "/run/host/etc/flathub-hooks.json",
+            "/etc/flathub-hooks.json",
+        ]
+
         if build_id := os.getenv("FLAT_MANAGER_BUILD_ID"):
-            with open("/etc/flathub-hooks.json") as f:
-                flathub_hooks_cfg = json.load(f)
+            flathub_hooks_cfg = {}
+            for flathub_hooks_cfg_path in flathub_hooks_cfg_paths:
+                if os.path.exists(flathub_hooks_cfg_path):
+                    with open(flathub_hooks_cfg_path) as f:
+                        flathub_hooks_cfg = json.load(f)
+                    break
 
             flatmgr_url = os.getenv("FLAT_MANAGER_URL")
             if not flatmgr_url:
