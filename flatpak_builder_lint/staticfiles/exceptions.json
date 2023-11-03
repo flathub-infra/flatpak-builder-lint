@@ -1660,5 +1660,8 @@
     },
     "com.obsproject.Studio": {
         "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
+    },
+    "io.github.thetumultuousunicornofdarkness.cpu-x": {
+        "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
     }
 }
