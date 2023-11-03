@@ -46,14 +46,15 @@ class FlatManagerCheck(Check):
                     f"Failed to fetch build info from flat-manager: {r.status_code}"
                 )
 
-            build_info = r.json()["build"]
-            token_type = build_info.get("token_type")
-            target_repo = build_info.get("target_repo")
+            build_extended = r.json()
+            build_info = build_extended["build"]
+            token_type = build_info["token_type"]
+            target_repo = build_info["repo"]
 
             if token_type == "app":
                 refs = [
                     build_ref["ref_name"]
-                    for build_ref in build_info.get("build_refs", [])
+                    for build_ref in build_extended.get("build_refs", [])
                 ]
                 has_app_ref = any(ref.startswith("app/") for ref in refs)
                 if not has_app_ref:
