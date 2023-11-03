@@ -51,11 +51,12 @@ class FlatManagerCheck(Check):
             token_type = build_info["token_type"]
             target_repo = build_info["repo"]
 
+            refs = [
+                build_ref["ref_name"]
+                for build_ref in build_extended.get("build_refs", [])
+            ]
+
             if token_type == "app":
-                refs = [
-                    build_ref["ref_name"]
-                    for build_ref in build_extended.get("build_refs", [])
-                ]
                 has_app_ref = any(ref.startswith("app/") for ref in refs)
                 if not has_app_ref:
                     self.errors.add("flat-manager-no-app-ref-uploaded")
@@ -65,3 +66,20 @@ class FlatManagerCheck(Check):
                     if ref_branch != target_repo:
                         self.errors.add("flat-manager-branch-repo-mismatch")
                         break
+            else:
+                appref_list = [ref for ref in refs if ref.startswith("app/")]
+                if not appref_list:
+                    return
+
+                appref = appref_list[0]
+                _, appid, _, branch = appref.split("/")
+
+                if (
+                    not (
+                        appid.split(".")[-1] == "BaseApp"
+                        or appid.startswith("org.freedesktop.Platform.")
+                        or appid == "org.winehq.Wine"
+                    )
+                    and branch != target_repo
+                ):
+                    self.errors.add("flat-manager-branch-repo-mismatch")
