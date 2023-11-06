@@ -8,8 +8,12 @@ import sys
 from typing import Optional, Union
 
 import requests
+import sentry_sdk
 
 from . import __version__, builddir, checks, manifest, ostree, staticfiles
+
+if sentry_dsn := os.getenv("SENTRY_DSN"):
+    sentry_sdk.init(sentry_dsn)
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
