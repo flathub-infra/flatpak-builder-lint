@@ -68,7 +68,11 @@ def parse_metadata(ini: str) -> dict:
     if "sockets" in permissions:
         permissions["socket"] = permissions.pop("sockets")
 
-    if "x11" in permissions["socket"] and "fallback-x11" in permissions["socket"]:
+    if (
+        "sockets" in permissions
+        and "x11" in permissions["socket"]
+        and "fallback-x11" in permissions["socket"]
+    ):
         permissions["socket"].remove("x11")
 
     if "devices" in permissions:

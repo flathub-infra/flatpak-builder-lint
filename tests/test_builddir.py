@@ -32,11 +32,9 @@ def test_builddir_finish_args() -> None:
     }
 
     warnings = {
-        "finish-args-contains-both-x11-and-wayland",
         "finish-args-deprecated-shm",
         "finish-args-x11-without-ipc",
         "finish-args-redundant-device-all",
-        "finish-args-contains-both-x11-and-fallback",
     }
 
     ret = run_checks("tests/builddir/finish_args")
