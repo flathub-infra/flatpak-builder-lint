@@ -53,7 +53,7 @@ class ScreenshotsCheck(Check):
                 self.errors.add("appstream-missing-screenshots")
                 return
 
-            arches = {ref.split("/")[2] for ref in refs}
+            arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
             for arch in arches:
                 if f"screenshots/{arch}" not in refs:
                     self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
