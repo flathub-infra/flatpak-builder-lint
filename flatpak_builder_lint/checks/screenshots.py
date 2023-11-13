@@ -80,5 +80,7 @@ class ScreenshotsCheck(Check):
 
                     screenshot_filename = "/".join(screenshot.text.split("/")[5:])
                     if f"{screenshot_filename}" not in ostree_screenshots:
-                        self.warnings.add("appstream-screenshots-files-not-found-in-ostree")
+                        self.warnings.add(
+                            "appstream-screenshots-files-not-found-in-ostree"
+                        )
                         return
