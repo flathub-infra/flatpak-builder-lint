@@ -37,7 +37,6 @@ class ScreenshotsCheck(Check):
             if not os.path.exists(appstream_path):
                 self.errors.add("appstream-missing-appinfo-file")
 
-            #   import ipdb; ipdb.set_trace()
             root = etree.parse(appstream_path)
             components = root.xpath("/components/component")
 
@@ -54,9 +53,11 @@ class ScreenshotsCheck(Check):
                 self.errors.add("appstream-missing-screenshots")
                 return
 
-            if "screenshots/x86_64" not in refs:
-                self.errors.add("appstream-screenshots-not-mirrored")
-                return
+            arches = {ref.split("/")[2] for ref in refs}
+            for arch in arches:
+                if f"screenshots/{arch}" not in refs:
+                    self.errors.add("appstream-screenshots-not-mirrored")
+                    return
 
             ostree_screenshots_cmd = ostree.cli(path, "ls", "-R", "screenshots/x86_64")
             if ostree_screenshots_cmd["returncode"] != 0:
