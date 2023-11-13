@@ -1449,6 +1449,9 @@
     "gg.guilded.Guilded": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "gg.minion.Minion": {
+        "finish-args-unnecessary-xdg-data-access": "This application manages AddOns in folders of game launchers and/or the folders within wine prefixes."
+    },
     "il.co.ravkavonline.RavKavOnline": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
