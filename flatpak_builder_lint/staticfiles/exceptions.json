@@ -1665,5 +1665,8 @@
     },
     "engineer.atlas.Nyxt": {
         "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "io.qt.qtwebengine.BaseApp": {
+        "*": "This is a baseapp"
     }
 }
