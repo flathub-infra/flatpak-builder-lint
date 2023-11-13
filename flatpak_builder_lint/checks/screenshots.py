@@ -56,7 +56,7 @@ class ScreenshotsCheck(Check):
             arches = {ref.split("/")[2] for ref in refs}
             for arch in arches:
                 if f"screenshots/{arch}" not in refs:
-                    self.errors.add("appstream-screenshots-not-mirrored")
+                    self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
                     return
 
             ostree_screenshots_cmd = ostree.cli(path, "ls", "-R", "screenshots/x86_64")
@@ -80,5 +80,5 @@ class ScreenshotsCheck(Check):
 
                     screenshot_filename = "/".join(screenshot.text.split("/")[5:])
                     if f"{screenshot_filename}" not in ostree_screenshots:
-                        self.errors.add("appstream-screenshots-not-mirrored")
+                        self.warnings.add("appstream-screenshots-files-not-found-in-ostree")
                         return
