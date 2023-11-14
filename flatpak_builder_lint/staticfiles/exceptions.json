@@ -1512,6 +1512,9 @@
     "org.freefilesync.FreeFileSync": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "org.gimp.GIMP": {
+        "finish-args-unnecessary-xdg-config-access": "The option was created for us originally. See #328"
+    },
     "org.geogebra.GeoGebra": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
