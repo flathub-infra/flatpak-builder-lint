@@ -1,4 +1,3 @@
-import re
 from collections import defaultdict
 from typing import Optional, Set
 
@@ -25,12 +24,11 @@ class FinishArgsCheck(Check):
             self.errors.add("finish-args-fallback-x11-without-wayland")
 
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
-            regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
-            regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
+            if xdg_dir in finish_args["filesystem"]:
+                self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
+
             for fs in finish_args["filesystem"]:
-                if re.match(regexp_arbitrary, fs):
-                    self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
-                elif re.match(regexp_unnecessary, fs):
+                if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
                     self.errors.add(f"finish-args-unnecessary-{xdg_dir}-access")
 
         if "home" in finish_args["filesystem"] and "host" in finish_args["filesystem"]:
