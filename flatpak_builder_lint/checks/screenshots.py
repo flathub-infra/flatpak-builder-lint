@@ -45,7 +45,7 @@ class ScreenshotsCheck(Check):
                 return
 
             type = components[0].get("type")
-            if type not in ("desktop", "desktop-application", "console-application"):
+            if type not in ("desktop", "desktop-application"):
                 return
 
             screenshots = components[0].xpath("screenshots/screenshot/image")
