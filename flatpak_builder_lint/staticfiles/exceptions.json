@@ -1668,5 +1668,8 @@
     },
     "engineer.atlas.Nyxt": {
         "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "page.codeberg.JakobDev.jdProcessFileWatcher": {
+        "finish-args-flatpak-spawn-access": "Run strace on the Host"
     }
 }
