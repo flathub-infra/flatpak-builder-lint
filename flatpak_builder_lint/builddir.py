@@ -38,6 +38,9 @@ def parse_metadata(ini: str) -> dict:
         tags = [x for x in metadata["tags"].split(";") if x]
         metadata["tags"] = tags
 
+    if "ExtensionOf" in parser:
+        metadata["extension"] = "yes"
+
     permissions: dict = defaultdict(set)
 
     if "Context" in parser:
