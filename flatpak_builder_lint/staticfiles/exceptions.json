@@ -1668,5 +1668,8 @@
     },
     "engineer.atlas.Nyxt": {
         "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "io.github.sigmasd.IRust": {
+        "finish-args-not-defined": "It is a terminal tui app with no extra permissions required"
     }
 }
