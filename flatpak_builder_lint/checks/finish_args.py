@@ -109,8 +109,10 @@ class FinishArgsCheck(Check):
         else:
             is_baseapp = False
 
+        is_extension = metadata.get("extension")
+
         permissions = metadata.get("permissions", {})
-        if not permissions and not is_baseapp:
+        if not permissions and not (is_baseapp or is_extension):
             self.errors.add("finish-args-not-defined")
             return
 
