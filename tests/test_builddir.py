@@ -10,8 +10,7 @@ def run_checks(filename: str) -> dict:
 def test_builddir_appid() -> None:
     errors = {
             'appid-ends-with-lowercase-desktop',
-            'appid-uses-code-hosting-domain',
-            'finish-args-not-defined'
+            'appid-uses-code-hosting-domain'
             }
     ret = run_checks("tests/builddir/appid")
     found_errors = set(ret["errors"])
@@ -81,8 +80,7 @@ def test_builddir_baseapp() -> None:
 def test_builddir_extension() -> None:
     errors = {
         "appstream-missing-appinfo-file",
-        "appstream-metainfo-missing",
-        "finish-args-not-defined"
+        "appstream-metainfo-missing"
     }
 
     ret = run_checks("tests/builddir/extension")
