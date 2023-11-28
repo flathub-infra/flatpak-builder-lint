@@ -67,13 +67,21 @@ class ScreenshotsCheck(Check):
                     self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
                     return
 
-                ostree_screenshots_cmd = ostree.cli(path, "ls", "-R", "screenshots/{arch}")
+                ostree_screenshots_cmd = ostree.cli(
+                    path, "ls", "-R", "screenshots/{arch}"
+                )
                 if ostree_screenshots_cmd["returncode"] != 0:
                     raise RuntimeError("Failed to list screenshots")
 
                 ostree_screenshots = []
                 for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():
-                    mode, _, _, _, ostree_screenshot_filename = ostree_screenshot.split()
+                    (
+                        mode,
+                        _,
+                        _,
+                        _,
+                        ostree_screenshot_filename,
+                    ) = ostree_screenshot.split()
                     if mode[0] != "-":
                         continue
                     ostree_screenshots.append(ostree_screenshot_filename[1:])
