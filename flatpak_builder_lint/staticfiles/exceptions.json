@@ -1668,5 +1668,41 @@
     },
     "engineer.atlas.Nyxt": {
         "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "com.riverbankcomputing.PyQt.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebengine.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.godotengine.godot.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.mozilla.firefox.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.electronjs.Electron2.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebkit.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.chromium.Chromium.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.sugarlabs.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.atom.electron.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.Loki.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.liri.BaseApp": {
+        "*": "This is a baseapp"
     }
 }
