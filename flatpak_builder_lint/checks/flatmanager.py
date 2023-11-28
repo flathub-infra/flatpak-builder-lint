@@ -56,6 +56,8 @@ class FlatManagerCheck(Check):
                 for build_ref in build_extended.get("build_refs", [])
             ]
 
+            ref_allowed_mismatches = ("stable", "beta")
+
             if token_type == "app":
                 has_app_ref = any(ref.startswith("app/") for ref in refs)
                 if not has_app_ref:
@@ -63,7 +65,19 @@ class FlatManagerCheck(Check):
 
                 for ref in refs:
                     ref_branch = ref.split("/")[-1]
-                    if ref_branch != target_repo:
+
+                    if ref_branch == "stable" and target_repo == "beta":
+                        self.errors.add("flat-manager-stable-ref-beta-target-repo")
+                        break
+
+                    if ref_branch == "beta" and target_repo == "stable":
+                        self.errors.add("flat-manager-beta-ref-stable-target-repo")
+                        break
+
+                    if (
+                        ref_branch != target_repo
+                        and ref_branch not in ref_allowed_mismatches
+                    ):
                         self.errors.add("flat-manager-branch-repo-mismatch")
                         break
             else:
@@ -74,6 +88,14 @@ class FlatManagerCheck(Check):
                 appref = appref_list[0]
                 _, appid, _, branch = appref.split("/")
 
+                if branch == "stable" and target_repo == "beta":
+                    self.errors.add("flat-manager-stable-ref-beta-target-repo")
+                    return
+
+                if branch == "beta" and target_repo == "stable":
+                    self.errors.add("flat-manager-beta-ref-stable-target-repo")
+                    return
+
                 if (
                     not (
                         appid.split(".")[-1] == "BaseApp"
@@ -81,5 +103,6 @@ class FlatManagerCheck(Check):
                         or appid == "org.winehq.Wine"
                     )
                     and branch != target_repo
+                    and ref_branch not in ref_allowed_mismatches
                 ):
                     self.errors.add("flat-manager-branch-repo-mismatch")
