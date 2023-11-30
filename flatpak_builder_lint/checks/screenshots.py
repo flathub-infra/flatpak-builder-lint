@@ -68,7 +68,7 @@ class ScreenshotsCheck(Check):
                     return
 
                 ostree_screenshots_cmd = ostree.cli(
-                    path, "ls", "-R", "screenshots/{arch}"
+                    path, "ls", "-R", f"screenshots/{arch}"
                 )
                 if ostree_screenshots_cmd["returncode"] != 0:
                     raise RuntimeError("Failed to list screenshots")
