@@ -75,11 +75,14 @@ class FlatManagerCheck(Check):
                 _, appid, _, branch = appref.split("/")
 
                 if (
-                    not (
-                        appid.split(".")[-1] == "BaseApp"
-                        or appid.startswith("org.freedesktop.Platform.")
-                        or appid == "org.winehq.Wine"
-                    )
-                    and branch != target_repo
+                    appid.split(".")[-1] == "BaseApp"
+                    or appid.startswith("org.freedesktop.Platform.")
+                    or appid == "org.winehq.Wine"
                 ):
+                    return
+
+                if target_repo == "test" and branch in ("stable", "beta", "test"):
+                    return
+
+                if branch != target_repo:
                     self.errors.add("flat-manager-branch-repo-mismatch")
