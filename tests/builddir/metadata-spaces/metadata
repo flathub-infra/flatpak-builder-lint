@@ -1,0 +1,15 @@
+[Application]
+name=org.flathub.example-spaces
+command=example spaces
+
+[Context]
+persistent=.foo bar
+filesystems=~/foo bar
+
+[Extra Data]
+name=example spaces.ext
+uri=https://example.org/foo%20bar.ext
+name1=example%20spaces.ext
+size1=1
+; invalid uri
+uri1=https://example.org/foo bar.ext
