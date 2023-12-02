@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flatpak_builder_lint"
-version = "2.0.24"
+version = "2.0.25"
 description = "A linter for flatpak-builder manifests"
 authors = ["Bartłomiej Piotrowski <b@bpiotrowski.pl>"]
 license = "MIT"
