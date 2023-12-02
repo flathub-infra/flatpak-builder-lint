@@ -21,7 +21,7 @@ def get_metadata(builddir: str) -> dict:
 
 
 def parse_metadata(ini: str) -> dict:
-    parser = ConfigParser()
+    parser = ConfigParser(interpolation=None)
     parser.optionxform = str  # type: ignore
     parser.read_string(ini)
 

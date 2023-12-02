@@ -98,3 +98,6 @@ def test_builddir_console() -> None:
     found_errors = set(ret["errors"])
 
     assert errors == found_errors
+
+def test_builddir_metadata_spaces() -> None:
+    ret = run_checks("tests/builddir/metadata-spaces")
