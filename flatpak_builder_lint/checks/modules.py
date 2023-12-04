@@ -1,3 +1,5 @@
+import re
+
 from . import Check
 
 
@@ -47,7 +49,7 @@ class ModuleCheck(Check):
         if buildsystem == "autotools":
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
-                    if opt.startswith("--prefix="):
+                    if re.match("^--prefix=(/(usr|app)|\\${FLATPAK_DEST})/?$", opt):
                         self.warnings.add(f"module-{name}-autotools-redundant-prefix")
                     elif opt.startswith("--enable-debug") and not opt.endswith("=no"):
                         self.errors.add(f"module-{name}-autotools-non-release-build")
@@ -58,7 +60,10 @@ class ModuleCheck(Check):
         if buildsystem in ("cmake-ninja", "cmake"):
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
-                    if opt.startswith("-DCMAKE_INSTALL_PREFIX"):
+                    if re.match(
+                        "^-DCMAKE_INSTALL_PREFIX(:PATH)?=(/(usr|app)|\\${FLATPAK_DEST})/?$",
+                        opt,
+                    ):
                         self.warnings.add(f"module-{name}-cmake-redundant-prefix")
                     elif opt.startswith("-DCMAKE_BUILD_TYPE"):
                         split = opt.split("=")
