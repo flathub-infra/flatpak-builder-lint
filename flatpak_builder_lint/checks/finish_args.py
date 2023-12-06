@@ -31,6 +31,25 @@ class FinishArgsCheck(Check):
                 if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
                     self.errors.add(f"finish-args-unnecessary-{xdg_dir}-access")
 
+        for fs in finish_args["filesystem"]:
+            for resv_dir in [
+                ".flatpak-info",
+                "app",
+                "dev",
+                "etc",
+                "lib",
+                "lib32",
+                "lib64",
+                "proc",
+                "root",
+                "run/flatpak",
+                "run/host",
+                "sbin",
+                "usr",
+            ]:
+                if fs.startswith(f"/{resv_dir}"):
+                    self.errors.add(f"finish-args-reserved-{resv_dir}")
+
         if "home" in finish_args["filesystem"] and "host" in finish_args["filesystem"]:
             self.errors.add("finish-args-redundant-home-and-host")
 
