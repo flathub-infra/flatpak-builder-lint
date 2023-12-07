@@ -49,6 +49,8 @@ class FinishArgsCheck(Check):
             ]:
                 if fs.startswith(f"/{resv_dir}"):
                     self.errors.add(f"finish-args-reserved-{resv_dir}")
+            if fs.startswith("/home") or fs.startswith("/var/home"):
+                self.errors.add("finish-args-absolute-home-path")
 
         if "home" in finish_args["filesystem"] and "host" in finish_args["filesystem"]:
             self.errors.add("finish-args-redundant-home-and-host")
