@@ -43,7 +43,6 @@ def test_manifest_appid() -> None:
 def test_manifest_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
-        "flathub-json-eol-rebase-misses-new-id",
         "flathub-json-modified-publish-delay",
     }
 

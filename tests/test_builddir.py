@@ -53,7 +53,6 @@ def test_builddir_finish_args_missing() -> None:
 def test_builddir_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
-        "flathub-json-eol-rebase-misses-new-id",
         "flathub-json-modified-publish-delay",
     }
 
