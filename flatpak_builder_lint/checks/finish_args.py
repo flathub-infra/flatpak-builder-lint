@@ -28,6 +28,10 @@ class FinishArgsCheck(Check):
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
             regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
             for fs in finish_args["filesystem"]:
+                # This is inherited by apps from the KDE runtime
+                if fs == "xdg-config/kdeglobals:ro":
+                    continue
+
                 if re.match(regexp_arbitrary, fs):
                     self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
                 elif re.match(regexp_unnecessary, fs):
