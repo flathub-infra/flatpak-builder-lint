@@ -259,6 +259,9 @@
     "com.github.eneshecan.WhatsAppForLinux": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "io.github.erkin.ponysay": {
+	"finish-args-not-defined": "Terminal only, predates the linter"
+    },
     "com.github.fabiocolacio.marker": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
