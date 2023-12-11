@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 from typing import Optional, Set
 
@@ -24,12 +25,38 @@ class FinishArgsCheck(Check):
             self.errors.add("finish-args-fallback-x11-without-wayland")
 
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
-            if xdg_dir in finish_args["filesystem"]:
-                self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
-
+            regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
+            regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
             for fs in finish_args["filesystem"]:
-                if fs.startswith(f"{xdg_dir}/") and fs.endswith(":create"):
+                # This is inherited by apps from the KDE runtime
+                if fs == "xdg-config/kdeglobals:ro":
+                    continue
+
+                if re.match(regexp_arbitrary, fs):
+                    self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
+                elif re.match(regexp_unnecessary, fs):
                     self.errors.add(f"finish-args-unnecessary-{xdg_dir}-access")
+
+        for fs in finish_args["filesystem"]:
+            for resv_dir in [
+                ".flatpak-info",
+                "app",
+                "dev",
+                "etc",
+                "lib",
+                "lib32",
+                "lib64",
+                "proc",
+                "root",
+                "run/flatpak",
+                "run/host",
+                "sbin",
+                "usr",
+            ]:
+                if fs.startswith(f"/{resv_dir}"):
+                    self.errors.add(f"finish-args-reserved-{resv_dir}")
+            if fs.startswith("/home") or fs.startswith("/var/home"):
+                self.errors.add("finish-args-absolute-home-path")
 
         if "home" in finish_args["filesystem"] and "host" in finish_args["filesystem"]:
             self.errors.add("finish-args-redundant-home-and-host")
@@ -109,8 +136,10 @@ class FinishArgsCheck(Check):
         else:
             is_baseapp = False
 
+        is_extension = metadata.get("extension")
+
         permissions = metadata.get("permissions", {})
-        if not permissions and not is_baseapp:
+        if not permissions and not (is_baseapp or is_extension):
             self.errors.add("finish-args-not-defined")
             return
 

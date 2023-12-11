@@ -21,7 +21,7 @@ def get_metadata(builddir: str) -> dict:
 
 
 def parse_metadata(ini: str) -> dict:
-    parser = ConfigParser()
+    parser = ConfigParser(interpolation=None)
     parser.optionxform = str  # type: ignore
     parser.read_string(ini)
 
@@ -37,6 +37,9 @@ def parse_metadata(ini: str) -> dict:
     if "tags" in metadata:
         tags = [x for x in metadata["tags"].split(";") if x]
         metadata["tags"] = tags
+
+    if "ExtensionOf" in parser:
+        metadata["extension"] = "yes"
 
     permissions: dict = defaultdict(set)
 
@@ -68,12 +71,8 @@ def parse_metadata(ini: str) -> dict:
     if "sockets" in permissions:
         permissions["socket"] = permissions.pop("sockets")
 
-    if (
-        "sockets" in permissions
-        and "x11" in permissions["socket"]
-        and "fallback-x11" in permissions["socket"]
-    ):
-        permissions["socket"].remove("x11")
+        if "x11" in permissions["socket"] and "fallback-x11" in permissions["socket"]:
+            permissions["socket"].remove("x11")
 
     if "devices" in permissions:
         permissions["device"] = permissions.pop("devices")
