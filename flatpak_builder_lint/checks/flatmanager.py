@@ -60,8 +60,11 @@ class FlatManagerCheck(Check):
                 has_app_ref = any(ref.startswith("app/") for ref in refs)
                 if not has_app_ref:
                     self.errors.add("flat-manager-no-app-ref-uploaded")
+                    return
 
                 for ref in refs:
+                    if ref.startswith("screenshots/"):
+                        continue
                     ref_branch = ref.split("/")[-1]
                     if ref_branch != target_repo:
                         self.errors.add("flat-manager-branch-repo-mismatch")
