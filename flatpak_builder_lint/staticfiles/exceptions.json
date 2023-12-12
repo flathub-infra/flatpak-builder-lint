@@ -1051,6 +1051,9 @@
     "com.vscodium.codium": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.vscodium.codium-insiders": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+    },
     "dev.boxi.Boxi": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
