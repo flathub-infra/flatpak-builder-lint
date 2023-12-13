@@ -1258,7 +1258,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.ultimatepp.TheIDE": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "required to execute various host binaries, including compiler, debugger, and git within the application"
     },
     "org.vim.Vim": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
