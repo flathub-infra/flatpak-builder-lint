@@ -1257,6 +1257,9 @@
     "org.texstudio.TeXstudio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.ultimatepp.TheIDE": {
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+    },
     "org.vim.Vim": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
