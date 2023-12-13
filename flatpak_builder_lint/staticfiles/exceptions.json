@@ -1602,7 +1602,8 @@
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
-        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
+        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
+        "finish-args-unnecessary-xdg-data-access": "Needs access to the Flatpak directory"
     },
     "io.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
