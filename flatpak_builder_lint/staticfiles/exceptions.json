@@ -259,6 +259,9 @@
     "com.github.eneshecan.WhatsAppForLinux": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "io.github.erkin.ponysay": {
+	"finish-args-not-defined": "Terminal only, predates the linter"
+    },
     "com.github.fabiocolacio.marker": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
@@ -904,7 +907,9 @@
         "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream"
     },
     "org.fcitx.Fcitx5": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "finish-args-unnecessary-xdg-config-access": "need for simulating ibus daemon and changing kde system xkb settings",
+        "finish-args-unnecessary-xdg-cache-access": "need for simulating ibus daemon"
     },
     "com.jetbrains.PyCharm-Community": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1161,8 +1166,7 @@
         "*": "used by flathub infra"
     },
     "org.flathub.flatpak-external-data-checker": {
-        "flathub-json-skip-appstream-check": "It is a command line package",
-        "flathub-json-modified-publish-delay": "This flatpak is used in infra"
+        "*": "used by flathub infra"
     },
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
@@ -1200,6 +1204,9 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.godotengine.Godot3": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+    },
+    "org.godotengine.GodotSharp": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
     },
     "org.hydrogenmusic.Hydrogen": {
@@ -1466,6 +1473,9 @@
     "io.github.peazip.PeaZip.Addon.i386": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "io.github.MakovWait.Godots": {
+        "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
+    },
     "io.wavebox.Wavebox": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
@@ -1592,7 +1602,8 @@
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
-        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
+        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
+        "finish-args-unnecessary-xdg-data-access": "Needs access to the Flatpak directory"
     },
     "io.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
@@ -1640,5 +1651,66 @@
     },
     "com.pojtinger.felicitas.Multiplex": {
         "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
+    },
+    "io.github.flattool.Warehouse": {
+        "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host"
+    },
+    "io.github.jean28518.Linux-Assistant": {
+        "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
+    },
+    "net.nokyan.Resources": {
+        "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
+    },
+    "io.github.everestapi.Olympus": {
+        "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
+    },
+    "com.obsproject.Studio": {
+        "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
+    },
+    "io.github.thetumultuousunicornofdarkness.cpu-x": {
+        "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
+    },
+    "engineer.atlas.Nyxt": {
+        "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "page.codeberg.JakobDev.jdProcessFileWatcher": {
+        "finish-args-flatpak-spawn-access": "Run strace on the Host",
+        "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
+    },
+    "com.riverbankcomputing.PyQt.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebengine.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.godotengine.godot.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.mozilla.firefox.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.electronjs.Electron2.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebkit.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.chromium.Chromium.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.sugarlabs.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.atom.electron.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.Loki.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.liri.BaseApp": {
+        "*": "This is a baseapp"
     }
 }

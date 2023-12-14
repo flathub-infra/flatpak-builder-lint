@@ -1,9 +1,9 @@
+import re
+
 from . import Check
 
 
 class ModuleCheck(Check):
-    type = "manifest"
-
     def check_source(self, module_name: str, source: dict) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
@@ -49,7 +49,7 @@ class ModuleCheck(Check):
         if buildsystem == "autotools":
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
-                    if opt.startswith("--prefix="):
+                    if re.match("^--prefix=(/(usr|app)|\\${FLATPAK_DEST})/?$", opt):
                         self.warnings.add(f"module-{name}-autotools-redundant-prefix")
                     elif opt.startswith("--enable-debug") and not opt.endswith("=no"):
                         self.errors.add(f"module-{name}-autotools-non-release-build")
@@ -60,7 +60,10 @@ class ModuleCheck(Check):
         if buildsystem in ("cmake-ninja", "cmake"):
             if config_opts := module.get("config-opts"):
                 for opt in config_opts:
-                    if opt.startswith("-DCMAKE_INSTALL_PREFIX"):
+                    if re.match(
+                        "^-DCMAKE_INSTALL_PREFIX(:PATH)?=(/(usr|app)|\\${FLATPAK_DEST})/?$",
+                        opt,
+                    ):
                         self.warnings.add(f"module-{name}-cmake-redundant-prefix")
                     elif opt.startswith("-DCMAKE_BUILD_TYPE"):
                         split = opt.split("=")
@@ -83,7 +86,7 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
-    def check(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict) -> None:
         if modules := manifest.get("modules"):
             for module in modules:
                 self.check_module(module)

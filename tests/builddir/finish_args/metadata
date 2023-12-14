@@ -1,0 +1,13 @@
+[Application]
+name=org.flathub.finish_args
+
+[Context]
+sockets=x11;wayland;session-bus;fallback-x11;
+devices=all;shm;
+filesystems=home;xdg-data;xdg-config/autostart;host;xdg-data/foo:create;
+
+[Session Bus Policy]
+org.freedesktop.Flatpak=talk
+org.flathub.finish_args=own
+org.kde.StatusNotifierItem=own
+org.gtk.vfs=talk

@@ -2,11 +2,8 @@ from . import Check
 
 
 class TopLevelCheck(Check):
-    type = "manifest"
-
-    def check(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict) -> None:
         build_extension = manifest.get("build-extension")
-        # This logic copied from finish_args.py
         appid = manifest.get("id")
         if isinstance(appid, str):
             is_baseapp = appid.endswith(".BaseApp")

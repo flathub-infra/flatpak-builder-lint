@@ -2,12 +2,18 @@ import argparse
 import importlib
 import importlib.resources
 import json
+import os
 import pkgutil
 import sys
+from typing import Optional, Union
 
 import requests
+import sentry_sdk
 
-from . import __version__, checks, staticfiles, tools
+from . import __version__, builddir, checks, manifest, ostree, staticfiles
+
+if sentry_dsn := os.getenv("SENTRY_DSN"):
+    sentry_sdk.init(sentry_dsn)
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
@@ -37,13 +43,31 @@ def get_remote_exceptions(
     return ret
 
 
-def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
-    manifest = tools.show_manifest(manifest_filename)
+def run_checks(
+    kind: str, path: str, enable_exceptions: bool = False, appid: Optional[str] = None
+) -> dict:
+    match kind:
+        case "manifest":
+            check_method_name = "check_manifest"
+            infer_appid_func = manifest.infer_appid
+            check_method_arg: Union[str, dict] = manifest.show_manifest(path)
+        case "builddir":
+            check_method_name = "check_build"
+            infer_appid_func = builddir.infer_appid
+            check_method_arg = path
+        case "repo":
+            check_method_name = "check_repo"
+            infer_appid_func = ostree.infer_appid
+            check_method_arg = path
+        case _:
+            raise ValueError(f"Unknown kind: {kind}")
+
     for checkclass in checks.ALL:
         check = checkclass()
 
-        if check.type == "manifest":
-            check.check(manifest)
+        if check_method := getattr(check, check_method_name, None):
+            if callable(check_method):
+                check_method(check_method_arg)
 
     results = {}
     if errors := checks.Check.errors:
@@ -55,7 +79,13 @@ def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
 
     if enable_exceptions:
         exceptions = None
-        if appid := manifest.get("id"):
+
+        if appid:
+            appid = appid[0]
+        else:
+            appid = infer_appid_func(path)
+
+        if appid:
             exceptions = get_remote_exceptions(appid)
             if not exceptions:
                 exceptions = get_local_exceptions(appid)
@@ -77,39 +107,58 @@ def run_checks(manifest_filename: str, enable_exceptions: bool = False) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="A linter for flatpak-builder manifests"
-    )
-    parser.add_argument("manifest", help="Manifest file to lint", type=str, nargs=1)
-    parser.add_argument("--json", help="Output in JSON format", action="store_true")
-    parser.add_argument(
-        "--exceptions", help="Skip allowed warnings or errors", action="store_true"
+        description="A linter for Flatpak builds and flatpak-builder manifests",
+        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",  # noqa: E501
     )
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
+    )
+    parser.add_argument(
+        "--exceptions", help="skip allowed warnings or errors", action="store_true"
+    )
+    parser.add_argument("--appid", help="override app ID", type=str, nargs=1)
+    parser.add_argument(
+        "--cwd",
+        help="override the path parameter with current working directory",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--ref",
+        help="override the primary ref detection",
+        type=str,
+        nargs=1,
+        default=None,
+    )
+
+    parser.add_argument(
+        "type",
+        help="type of artifact to lint",
+        choices=["builddir", "repo", "manifest"],
+    )
+    parser.add_argument(
+        "path",
+        help="path to flatpak-builder manifest or Flatpak build directory",
+        type=str,
+        nargs=1,
     )
 
     args = parser.parse_args()
     exit_code = 0
 
-    if results := run_checks(args.manifest[0], args.exceptions):
+    if args.cwd:
+        path = os.getcwd()
+    else:
+        path = args.path[0]
+
+    if args.ref:
+        checks.Check.repo_primary_ref = args.ref[0]
+
+    if results := run_checks(args.type, path, args.exceptions, args.appid):
         if "errors" in results:
             exit_code = 1
 
-        if args.json:
-            output = json.dumps(results, indent=4)
-        else:
-            # we default to JSON output anyway as it's nicely formatted
-            # TODO: make the output more human readable
-            output = json.dumps(results, indent=4)
-
+        output = json.dumps(results, indent=4)
         print(output)
-
-        if args.exceptions and not args.json:
-            print()
-            print(
-                "If you think problems listed above are a false positive, please report it here:"
-            )
-            print("  https://github.com/flathub/flatpak-builder-lint")
 
     sys.exit(exit_code)
 

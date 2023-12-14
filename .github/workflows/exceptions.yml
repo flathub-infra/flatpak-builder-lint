@@ -1,0 +1,23 @@
+name: Validate exceptions.json
+
+on:
+  push:
+    paths:
+      - flatpak_builder_lint/staticfiles/exceptions.json
+  pull_request:
+    paths:
+      - flatpak_builder_lint/staticfiles/exceptions.json
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak-builder jq
+
+      - name: Validate exceptions.json
+        run: jq . < flatpak_builder_lint/staticfiles/exceptions.json

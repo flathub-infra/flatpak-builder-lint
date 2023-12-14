@@ -1,8 +1,8 @@
 from typing import Optional, Set
 
-ALL = []
+from .. import ostree
 
-ARCHES = {"x86_64", "aarch64"}
+ALL = []
 
 
 class CheckMeta(type):
@@ -18,3 +18,8 @@ class Check(metaclass=CheckMeta):
     warnings: Set[Optional[str]] = set()
     errors: Set[Optional[str]] = set()
     jsonschema: Set[Optional[str]] = set()
+    repo_primary_ref: Optional[str] = None
+
+    def _populate_ref(self, repo: str) -> None:
+        if self.repo_primary_ref is None:
+            self.repo_primary_ref = ostree.get_primary_ref(repo)
