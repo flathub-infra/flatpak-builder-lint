@@ -1147,6 +1147,10 @@
     "net.lutris.Lutris": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.retrodeck.retrodeck": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/4786",
+    },
     "net.veloren.veloren": {
         "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build."
     },
