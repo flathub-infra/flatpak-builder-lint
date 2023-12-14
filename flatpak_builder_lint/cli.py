@@ -76,6 +76,8 @@ def run_checks(
         results["warnings"] = list(warnings)
     if jsonschema := checks.Check.jsonschema:
         results["jsonschema"] = list(jsonschema)
+    if appstream := checks.Check.appstream:
+        results["appstream"] = list(appstream)
 
     if enable_exceptions:
         exceptions = None
