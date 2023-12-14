@@ -1622,6 +1622,7 @@
         "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications"
     },
     "it.mijorus.gearlever": {
+	"finish-args-unnecessary-xdg-data-access": "Required to add desktop files to the app menu",
         "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu"
     },
     "page.codeberg.JakobDev.jdTextEdit": {
