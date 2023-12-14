@@ -1716,5 +1716,4 @@
     "io.liri.BaseApp": {
         "*": "This is a baseapp"
     }
-
 }
