@@ -7,6 +7,9 @@
     "org.flathub.exceptions_wildcard": {
         "*": "ignore all errors and warnings"
     },
+    "page.codeberg.libre_menu_editor.LibreMenuEditor": {
+        "finish-args-unnecessary-xdg-data-access": "app-id predates this linter rule"
+    },
     "com.github.sixpounder.GameOfLife": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
