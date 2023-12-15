@@ -1680,6 +1680,9 @@
         "finish-args-flatpak-spawn-access": "Run strace on the Host",
         "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
     },
+    "com.calibre_ebook.calibre": {
+        "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
