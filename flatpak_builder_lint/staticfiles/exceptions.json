@@ -1687,6 +1687,9 @@
     "com.calibre_ebook.calibre": {
         "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
     },
+    "org.ryujinx.Ryujinx": {
+        "finish-args-unnecessary-xdg-config-access": "Required for GTK3 theme access"
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
