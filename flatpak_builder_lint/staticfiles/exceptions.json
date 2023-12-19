@@ -1487,6 +1487,9 @@
     "io.exodus.Exodus": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "io.github.Archeb.opentrace.metainfo": {
+        "finish-args-flatpak-spawn-access": "This app uses org.freedesktop.Flatpak to provide ability to run nexttrace with cap_net_raw, which is necessary for a traceroute app"
+    },
     "io.github.Fndroid.clash_for_windows": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
