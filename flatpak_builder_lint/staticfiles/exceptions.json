@@ -1690,6 +1690,9 @@
         "finish-args-flatpak-spawn-access": "Run strace on the Host",
         "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
     },
+    "io.github.dvlv.boxbuddyrs": {
+        "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
+    },
     "com.calibre_ebook.calibre": {
         "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
     },
