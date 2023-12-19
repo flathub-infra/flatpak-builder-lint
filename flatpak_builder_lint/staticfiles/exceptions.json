@@ -1308,6 +1308,10 @@
     "chat.tandem.Client": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "com.adamcake.Bolt": {
+        "finish-args-unnecessary-xdg-data-access": "individual games' window icons need to be downloaded and copied to xdg-data/icons as the user installs or updates them",
+        "finish-args-contains-both-x11-and-wayland": "some games support wayland and some don't"
+    },
     "com.adobe.Flash-Player-Projector": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
