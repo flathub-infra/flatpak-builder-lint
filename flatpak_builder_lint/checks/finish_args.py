@@ -62,9 +62,6 @@ class FinishArgsCheck(Check):
             self.errors.add("finish-args-redundant-home-and-host")
 
         for own_name in finish_args["own-name"]:
-            if own_name.startswith("org.kde.StatusNotifierItem"):
-                self.errors.add("finish-args-broken-kde-tray-permission")
-
             if appid:
                 # Values not allowed: appid or appid.*
                 # See https://github.com/flathub/flatpak-builder-lint/issues/33

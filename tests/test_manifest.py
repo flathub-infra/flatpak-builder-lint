@@ -62,7 +62,6 @@ def test_manifest_finish_args() -> None:
         "finish-args-arbitrary-dbus-access",
         "finish-args-arbitrary-xdg-data-access",
         "finish-args-arbitrary-xdg-cache-access",
-        "finish-args-broken-kde-tray-permission",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-home-and-host",
