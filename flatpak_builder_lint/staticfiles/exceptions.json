@@ -1054,6 +1054,9 @@
     "com.vscodium.codium": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.vscodium.codium-insiders": {
+        "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc"
+    },
     "dev.boxi.Boxi": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
