@@ -1230,6 +1230,9 @@
     "org.kde.dolphin": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
+    "org.kde.gwenview": {
+        "finish-args-unnecessary-xdg-data-access": "required for access to Trash until Portal support is added"
+    },
     "org.kde.kate": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
