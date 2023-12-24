@@ -10,8 +10,7 @@ def run_checks(filename: str) -> dict:
 def test_builddir_appid() -> None:
     errors = {
             'appid-ends-with-lowercase-desktop',
-            'appid-uses-code-hosting-domain',
-            'finish-args-not-defined'
+            'appid-uses-code-hosting-domain'
             }
     ret = run_checks("tests/builddir/appid")
     found_errors = set(ret["errors"])
@@ -23,7 +22,6 @@ def test_builddir_finish_args() -> None:
         "finish-args-arbitrary-autostart-access",
         "finish-args-arbitrary-dbus-access",
         "finish-args-arbitrary-xdg-data-access",
-        "finish-args-broken-kde-tray-permission",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-home-and-host",
@@ -32,11 +30,9 @@ def test_builddir_finish_args() -> None:
     }
 
     warnings = {
-        "finish-args-contains-both-x11-and-wayland",
         "finish-args-deprecated-shm",
         "finish-args-x11-without-ipc",
         "finish-args-redundant-device-all",
-        "finish-args-contains-both-x11-and-fallback",
     }
 
     ret = run_checks("tests/builddir/finish_args")
@@ -56,7 +52,6 @@ def test_builddir_finish_args_missing() -> None:
 def test_builddir_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
-        "flathub-json-eol-rebase-misses-new-id",
         "flathub-json-modified-publish-delay",
     }
 
@@ -68,3 +63,39 @@ def test_builddir_flathub_json() -> None:
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
+
+def test_builddir_baseapp() -> None:
+    errors = {
+        "appstream-missing-appinfo-file",
+        "appstream-metainfo-missing"
+    }
+
+    ret = run_checks("tests/builddir/baseapp")
+    found_errors = set(ret["errors"])
+
+    assert errors == found_errors
+
+def test_builddir_extension() -> None:
+    errors = {
+        "appstream-missing-appinfo-file",
+        "appstream-metainfo-missing"
+    }
+
+    ret = run_checks("tests/builddir/extension")
+    found_errors = set(ret["errors"])
+
+    assert errors == found_errors
+
+def test_builddir_console() -> None:
+    errors = {
+        "appstream-metainfo-missing",
+        "finish-args-not-defined"
+    }
+
+    ret = run_checks("tests/builddir/console")
+    found_errors = set(ret["errors"])
+
+    assert errors == found_errors
+
+def test_builddir_metadata_spaces() -> None:
+    ret = run_checks("tests/builddir/metadata-spaces")

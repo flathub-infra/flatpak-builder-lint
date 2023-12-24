@@ -7,6 +7,9 @@
     "org.flathub.exceptions_wildcard": {
         "*": "ignore all errors and warnings"
     },
+    "page.codeberg.libre_menu_editor.LibreMenuEditor": {
+        "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak"
+    },
     "com.github.sixpounder.GameOfLife": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
@@ -258,6 +261,9 @@
     },
     "com.github.eneshecan.WhatsAppForLinux": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
+    "io.github.erkin.ponysay": {
+	"finish-args-not-defined": "Terminal only, predates the linter"
     },
     "com.github.fabiocolacio.marker": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1048,6 +1054,9 @@
     "com.vscodium.codium": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.vscodium.codium-insiders": {
+        "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc"
+    },
     "dev.boxi.Boxi": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
@@ -1144,6 +1153,9 @@
     "net.lutris.Lutris": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.retrodeck.retrodeck": {
+        "finish-args-unnecessary-xdg-data-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803"
+    },
     "net.veloren.veloren": {
         "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build."
     },
@@ -1163,8 +1175,7 @@
         "*": "used by flathub infra"
     },
     "org.flathub.flatpak-external-data-checker": {
-        "flathub-json-skip-appstream-check": "It is a command line package",
-        "flathub-json-modified-publish-delay": "This flatpak is used in infra"
+        "*": "used by flathub infra"
     },
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
@@ -1202,6 +1213,12 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.godotengine.Godot3": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+    },
+    "org.godotengine.Godot3Sharp": {
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+    },
+    "org.godotengine.GodotSharp": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
     },
     "org.hydrogenmusic.Hydrogen": {
@@ -1252,6 +1269,9 @@
     "org.texstudio.TeXstudio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.ultimatepp.TheIDE": {
+        "finish-args-flatpak-spawn-access": "required to execute various host binaries, including compiler, debugger, and git within the application"
+    },
     "org.vim.Vim": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
@@ -1296,6 +1316,10 @@
     },
     "chat.tandem.Client": {
         "flathub-json-modified-publish-delay": "extra-data"
+    },
+    "com.adamcake.Bolt": {
+        "finish-args-unnecessary-xdg-data-access": "individual games' window icons need to be downloaded and copied to xdg-data/icons as the user installs or updates them",
+        "finish-args-contains-both-x11-and-wayland": "some games support wayland and some don't"
     },
     "com.adobe.Flash-Player-Projector": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1468,6 +1492,9 @@
     "io.github.peazip.PeaZip.Addon.i386": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "io.github.MakovWait.Godots": {
+        "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
+    },
     "io.wavebox.Wavebox": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
@@ -1588,13 +1615,15 @@
         "finish-args-unnecessary-xdg-data-access": "required to save fonts"
     },
     "hu.kramo.Cartridges": {
-        "finish-args-flatpak-spawn-access": "required to launch games on the host"
+        "finish-args-flatpak-spawn-access": "required to launch games on the host",
+        "finish-args-unnecessary-xdg-data-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
     },
     "page.codeberg.JakobDev.jdAppStreamEdit": {
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
-        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
+        "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
+        "finish-args-unnecessary-xdg-data-access": "Needs access to the Flatpak directory"
     },
     "io.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
@@ -1607,7 +1636,8 @@
     },
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "finish-args-arbitrary-autostart-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule"
+        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
     },
     "page.codeberg.JakobDev.jdMinecraftLauncher": {
         "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications"
@@ -1651,5 +1681,63 @@
     },
     "net.nokyan.Resources": {
         "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
+    },
+    "io.github.everestapi.Olympus": {
+        "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
+    },
+    "com.obsproject.Studio": {
+        "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
+    },
+    "io.github.thetumultuousunicornofdarkness.cpu-x": {
+        "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
+    },
+    "engineer.atlas.Nyxt": {
+        "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
+    },
+    "page.codeberg.JakobDev.jdProcessFileWatcher": {
+        "finish-args-flatpak-spawn-access": "Run strace on the Host",
+        "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
+    },
+    "io.github.dvlv.boxbuddyrs": {
+        "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
+    },
+    "com.calibre_ebook.calibre": {
+        "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
+    },
+    "com.riverbankcomputing.PyQt.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebengine.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.godotengine.godot.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.mozilla.firefox.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.electronjs.Electron2.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.qt.qtwebkit.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.chromium.Chromium.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.sugarlabs.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.atom.electron.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.elementary.Loki.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "io.liri.BaseApp": {
+        "*": "This is a baseapp"
     }
 }

@@ -33,10 +33,6 @@ class FlathubJsonCheck(Check):
         if eol_rebase and not eol:
             self.errors.add("flathub-json-eol-rebase-without-message")
 
-        if eol and eol_rebase:
-            if eol_rebase not in eol:
-                self.errors.add("flathub-json-eol-rebase-misses-new-id")
-
         if only_arches := flathub_json.get("only-arches"):
             if "arm" in only_arches:
                 self.warnings.add("flathub-json-deprecated-arm-arch-included")
@@ -106,7 +102,7 @@ class FlathubJsonCheck(Check):
         if not self.repo_primary_ref:
             return
 
-        metadata = ostree.get_metadata(path)
+        metadata = ostree.get_metadata(path, self.repo_primary_ref)
         if not metadata:
             return
 

@@ -43,7 +43,6 @@ def test_manifest_appid() -> None:
 def test_manifest_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
-        "flathub-json-eol-rebase-misses-new-id",
         "flathub-json-modified-publish-delay",
     }
 
@@ -62,7 +61,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-arbitrary-autostart-access",
         "finish-args-arbitrary-dbus-access",
         "finish-args-arbitrary-xdg-data-access",
-        "finish-args-broken-kde-tray-permission",
+        "finish-args-arbitrary-xdg-cache-access",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-home-and-host",
@@ -89,7 +88,6 @@ def test_manifest_finish_args() -> None:
 def test_manifest_finish_args_issue_33() -> None:
     ret = run_checks("tests/manifests/own_name_substring.json")
     found_errors = set(ret["errors"])
-    print(found_errors)
     assert "finish-args-unnecessary-appid-own-name" not in found_errors
 
     ret = run_checks("tests/manifests/own_name_substring2.json")

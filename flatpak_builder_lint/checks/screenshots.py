@@ -37,7 +37,6 @@ class ScreenshotsCheck(Check):
             if not os.path.exists(appstream_path):
                 self.errors.add("appstream-missing-appinfo-file")
 
-            #   import ipdb; ipdb.set_trace()
             root = etree.parse(appstream_path)
             components = root.xpath("/components/component")
 
@@ -46,28 +45,13 @@ class ScreenshotsCheck(Check):
                 return
 
             type = components[0].get("type")
-            if type not in ("desktop", "desktop-application", "console-application"):
+            if type not in ("desktop", "desktop-application"):
                 return
 
             screenshots = components[0].xpath("screenshots/screenshot/image")
             if not screenshots:
                 self.errors.add("appstream-missing-screenshots")
                 return
-
-            if "screenshots/x86_64" not in refs:
-                self.errors.add("appstream-screenshots-not-mirrored")
-                return
-
-            ostree_screenshots_cmd = ostree.cli(path, "ls", "-R", "screenshots/x86_64")
-            if ostree_screenshots_cmd["returncode"] != 0:
-                raise RuntimeError("Failed to list screenshots")
-
-            ostree_screenshots = []
-            for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():
-                mode, _, _, _, ostree_screenshot_filename = ostree_screenshot.split()
-                if mode[0] != "-":
-                    continue
-                ostree_screenshots.append(ostree_screenshot_filename[1:])
 
             for screenshot in screenshots:
                 if screenshot.attrib.get("type") != "source":
@@ -77,7 +61,36 @@ class ScreenshotsCheck(Check):
                         self.errors.add("appstream-external-screenshot-url")
                         return
 
-                    screenshot_filename = "/".join(screenshot.text.split("/")[5:])
-                    if f"{screenshot_filename}" not in ostree_screenshots:
-                        self.errors.add("appstream-screenshots-not-mirrored")
-                        return
+            arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
+            for arch in arches:
+                if f"screenshots/{arch}" not in refs:
+                    self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
+                    return
+
+                ostree_screenshots_cmd = ostree.cli(
+                    path, "ls", "-R", f"screenshots/{arch}"
+                )
+                if ostree_screenshots_cmd["returncode"] != 0:
+                    raise RuntimeError("Failed to list screenshots")
+
+                ostree_screenshots = []
+                for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():
+                    (
+                        mode,
+                        _,
+                        _,
+                        _,
+                        ostree_screenshot_filename,
+                    ) = ostree_screenshot.split()
+                    if mode[0] != "-":
+                        continue
+                    ostree_screenshots.append(ostree_screenshot_filename[1:])
+
+                for screenshot in screenshots:
+                    if screenshot.attrib.get("type") != "source":
+                        screenshot_filename = "/".join(screenshot.text.split("/")[5:])
+                        if f"{screenshot_filename}" not in ostree_screenshots:
+                            self.warnings.add(
+                                "appstream-screenshots-files-not-found-in-ostree"
+                            )
+                            return

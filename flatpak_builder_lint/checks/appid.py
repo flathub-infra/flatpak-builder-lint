@@ -46,7 +46,7 @@ class AppIDCheck(Check):
         self._validate(appid)
 
     def check_repo(self, path: str) -> None:
-        metadata = ostree.get_metadata(path)
+        metadata = ostree.get_metadata(path, self.repo_primary_ref)
         if not metadata:
             return
 

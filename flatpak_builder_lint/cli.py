@@ -8,8 +8,12 @@ import sys
 from typing import Optional, Union
 
 import requests
+import sentry_sdk
 
 from . import __version__, builddir, checks, manifest, ostree, staticfiles
+
+if sentry_dsn := os.getenv("SENTRY_DSN"):
+    sentry_sdk.init(sentry_dsn)
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
@@ -72,6 +76,8 @@ def run_checks(
         results["warnings"] = list(warnings)
     if jsonschema := checks.Check.jsonschema:
         results["jsonschema"] = list(jsonschema)
+    if appstream := checks.Check.appstream:
+        results["appstream"] = list(appstream)
 
     if enable_exceptions:
         exceptions = None
@@ -103,7 +109,8 @@ def run_checks(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="A linter for Flatpak builds and flatpak-builder manifests"
+        description="A linter for Flatpak builds and flatpak-builder manifests",
+        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",  # noqa: E501
     )
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
@@ -116,6 +123,13 @@ def main() -> int:
         "--cwd",
         help="override the path parameter with current working directory",
         action="store_true",
+    )
+    parser.add_argument(
+        "--ref",
+        help="override the primary ref detection",
+        type=str,
+        nargs=1,
+        default=None,
     )
 
     parser.add_argument(
@@ -138,19 +152,15 @@ def main() -> int:
     else:
         path = args.path[0]
 
+    if args.ref:
+        checks.Check.repo_primary_ref = args.ref[0]
+
     if results := run_checks(args.type, path, args.exceptions, args.appid):
         if "errors" in results:
             exit_code = 1
 
         output = json.dumps(results, indent=4)
         print(output)
-
-        if args.exceptions:
-            print()
-            print(
-                "If you think problems listed above are a false positive, please report it here:"
-            )
-            print("  https://github.com/flathub/flatpak-builder-lint")
 
     sys.exit(exit_code)
 

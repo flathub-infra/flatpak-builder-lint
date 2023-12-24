@@ -199,6 +199,20 @@
           "sha256": "ef16afa8ba34a1f989db38e1dbbe0c302e4289a47856990d0682e374563ce35e"
         }
       ]
+    },
+    {
+        "name": "python3-sentry-sdk",
+        "buildsystem": "simple",
+        "build-commands": [
+            "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"sentry-sdk\" --no-build-isolation"
+        ],
+        "sources": [
+            {
+                "type": "file",
+                "url": "https://files.pythonhosted.org/packages/56/f7/d1d459caa0468217ab2638112c5ab31cde516aa3986f2ca292661644e6b8/sentry_sdk-1.34.0-py2.py3-none-any.whl",
+                "sha256": "76dd087f38062ac6c1e30ed6feb533ee0037ff9e709974802db7b5dbf2e5db21"
+            }
+        ]
     }
   ]
 }
