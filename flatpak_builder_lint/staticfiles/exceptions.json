@@ -1057,6 +1057,9 @@
     "com.vscodium.codium-insiders": {
         "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc"
     },
+    "dev.ksylvestre.MightyGrepDemo": {
+        "finish-args-flatpak-spawn-access": "needed for user specified 'Open in editor' and 'Open file location' commands"
+    },
     "dev.boxi.Boxi": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
