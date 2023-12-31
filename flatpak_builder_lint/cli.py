@@ -78,6 +78,8 @@ def run_checks(
         results["jsonschema"] = list(jsonschema)
     if appstream := checks.Check.appstream:
         results["appstream"] = list(appstream)
+    if desktopfile := checks.Check.desktopfile:
+        results["desktopfile"] = list(desktopfile)
 
     if enable_exceptions:
         exceptions = None

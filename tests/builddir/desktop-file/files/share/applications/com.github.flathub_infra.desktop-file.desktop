@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Desktop application
+Comment=A desktop application
+# Empty has flatpak run
+Exec=/usr/bin/flatpak run foo
+# Icon does not match app-id
+Icon=org.flathub.foo
+Terminal=false
+Type=Application
+Hidden=true
