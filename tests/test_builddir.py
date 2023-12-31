@@ -99,3 +99,15 @@ def test_builddir_console() -> None:
 
 def test_builddir_metadata_spaces() -> None:
     ret = run_checks("tests/builddir/metadata-spaces")
+    
+def test_builddir_desktop_file() -> None:
+    ret = run_checks("tests/builddir/desktop-file")
+    errors = { 
+        "desktop-file-icon-key-wrong-value",
+        "desktop-file-is-hidden",
+        "desktop-file-exec-has-flatpak-run"
+    }
+    found_errors = set(ret["errors"])
+
+    for err in errors:
+        assert err in found_errors
