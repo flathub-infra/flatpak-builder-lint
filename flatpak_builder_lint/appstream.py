@@ -43,6 +43,12 @@ def is_developer_name_present(path: str) -> bool:
     return bool(developer)
 
 
+def is_project_license_present(path: str) -> bool:
+    plicense = components(path)[0].xpath("project_license")
+
+    return bool(plicense)
+
+
 def component_type(path: str) -> str:
 
     return str(components(path)[0].attrib.get("type"))

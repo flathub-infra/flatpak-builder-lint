@@ -118,7 +118,8 @@ def test_builddir_quality_guidelines() -> None:
         "appstream-missing-developer-name",
         "appstream-name-too-long",
         "appstream-screenshot-missing-caption",
-        "appstream-summary-too-long"
+        "appstream-summary-too-long",
+        "appstream-missing-project-license"
     }
     found_warnings = set(ret["warnings"])
     for w in warnings:
