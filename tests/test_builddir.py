@@ -99,10 +99,10 @@ def test_builddir_console() -> None:
 
 def test_builddir_metadata_spaces() -> None:
     ret = run_checks("tests/builddir/metadata-spaces")
-    
+
 def test_builddir_desktop_file() -> None:
     ret = run_checks("tests/builddir/desktop-file")
-    errors = { 
+    errors = {
         "desktop-file-icon-key-wrong-value",
         "desktop-file-is-hidden",
         "desktop-file-exec-has-flatpak-run"
@@ -111,3 +111,15 @@ def test_builddir_desktop_file() -> None:
 
     for err in errors:
         assert err in found_errors
+
+def test_builddir_quality_guidelines() -> None:
+    ret = run_checks("tests/builddir/appdata-quality")
+    warnings = {
+        "appstream-missing-developer-name",
+        "appstream-name-too-long",
+        "appstream-screenshot-missing-caption",
+        "appstream-summary-too-long"
+    }
+    found_warnings = set(ret["warnings"])
+    for w in warnings:
+        assert w in found_warnings
