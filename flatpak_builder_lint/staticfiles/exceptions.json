@@ -1684,7 +1684,8 @@
         "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
     },
     "net.nokyan.Resources": {
-        "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
+        "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc",
+        "finish-args-unnecessary-xdg-data-access": "Required to detect user-wide installed Flatpak applications by searching for .desktop files"
     },
     "io.github.everestapi.Olympus": {
         "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
