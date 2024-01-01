@@ -19,7 +19,7 @@ jobs:
       - name: Install flatpak-builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak-builder jq
+          sudo apt-get install -y flatpak-builder jq appstream-util
 
       - name: Setup Poetry
         run: |
