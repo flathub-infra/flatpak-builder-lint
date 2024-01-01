@@ -1,7 +1,7 @@
 import os
 import tempfile
 
-from lxml import etree  # type: ignore
+from lxml import etree
 
 from .. import ostree
 from . import Check
