@@ -4,6 +4,7 @@ import subprocess
 from lxml import etree  # type: ignore
 
 
+
 def validate(path: str) -> dict:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
@@ -21,26 +22,26 @@ def validate(path: str) -> dict:
     return ret
 
 
-def parse_appinfo_xml(path: str) -> list:
-    if not os.path.isfile(path):
-        raise FileNotFoundError("AppStream app-info file not found")
+def parse_xml(path: str): # type: ignore
 
-    root = etree.parse(path)
-    components = root.xpath("/components/component")
+    return etree.parse(path)
 
+
+def components(path: str) -> list:
+
+    components = parse_xml(path).xpath("/components/component")
     return list(components)
 
 
 def is_developer_name_present(path: str) -> bool:
-    developer = parse_appinfo_xml(path)[0].xpath("developer_name")
+    developer = components(path)[0].xpath("developer_name")
 
     return bool(developer)
 
 
 def component_type(path: str) -> str:
-    type = parse_appinfo_xml(path)[0].attrib.get("type")
 
-    return str(type)
+    return str(components(path)[0].attrib.get("type"))
 
 
 def is_console(path: str) -> bool:
