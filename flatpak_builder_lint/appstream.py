@@ -1,8 +1,11 @@
 import os
 import subprocess
 
-from lxml import etree  # type: ignore
+from lxml import etree
 
+# for mypy
+Element = etree._Element
+ElementTree = etree._ElementTree
 
 
 def validate(path: str) -> dict:
@@ -22,7 +25,7 @@ def validate(path: str) -> dict:
     return ret
 
 
-def parse_xml(path: str): # type: ignore
+def parse_xml(path: str) -> ElementTree:
 
     return etree.parse(path)
 

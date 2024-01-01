@@ -3,7 +3,7 @@ import subprocess
 import tempfile
 from typing import Optional
 
-from lxml import etree  # type: ignore
+from lxml import etree
 
 from .. import builddir, ostree
 from . import Check
