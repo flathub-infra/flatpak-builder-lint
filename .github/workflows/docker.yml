@@ -7,6 +7,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
 
@@ -33,6 +35,29 @@ jobs:
           bash -x ./build.sh
 
       - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: docker
+          file: docker/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Login to ghcr.io using Flathub credentials
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.FLATHUB_ORG_USER }}
+          password: ${{ secrets.FLATHUB_ORG_TOKEN }}
+
+      - name: Build and push Docker image to the old location
         uses: docker/build-push-action@v5
         with:
           context: docker
