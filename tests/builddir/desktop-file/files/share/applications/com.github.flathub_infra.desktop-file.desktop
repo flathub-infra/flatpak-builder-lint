@@ -9,3 +9,4 @@ Icon=org.flathub.foo
 Terminal=false
 Type=Application
 Hidden=true
+Categories=GTK;Qt

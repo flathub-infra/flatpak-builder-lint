@@ -89,7 +89,9 @@ def test_builddir_desktop_file() -> None:
         "desktop-file-exec-has-flatpak-run"
     }
     found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
 
+    assert "desktop-file-low-quality-category" in found_warnings
     for err in errors:
         assert err in found_errors
 
