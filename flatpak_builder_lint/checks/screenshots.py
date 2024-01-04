@@ -1,9 +1,7 @@
 import os
 import tempfile
 
-from lxml import etree
-
-from .. import ostree
+from .. import appstream, ostree
 from . import Check
 
 
@@ -37,18 +35,19 @@ class ScreenshotsCheck(Check):
             if not os.path.exists(appstream_path):
                 self.errors.add("appstream-missing-appinfo-file")
 
-            root = etree.parse(appstream_path)
-            components = root.xpath("/components/component")
-
-            if len(components) != 1:
+            if len(appstream.components(appstream_path)) != 1:
                 self.errors.add("appstream-multiple-components")
                 return
 
-            type = components[0].get("type")
-            if type not in ("desktop", "desktop-application"):
+            if appstream.component_type(appstream_path) not in (
+                "desktop",
+                "desktop-application",
+            ):
                 return
 
-            screenshots = components[0].xpath("screenshots/screenshot/image")
+            screenshots = appstream.components(appstream_path)[0].xpath(
+                "screenshots/screenshot/image"
+            )
             if not screenshots:
                 self.errors.add("appstream-missing-screenshots")
                 return
