@@ -67,12 +67,12 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-metainfo-missing")
             return
 
-        appinfo_validation = appstream.validate(metainfo_path)
-        if appinfo_validation["returncode"] != 0:
+        metainfo_validation = appstream.validate(metainfo_path)
+        if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
-        for err in appinfo_validation["stderr"].split(":", 1)[1:]:
+        for err in metainfo_validation["stderr"].split(":", 1)[1:]:
             self.appstream.add(err.strip())
-        for out in appinfo_validation["stdout"].splitlines()[1:]:
+        for out in metainfo_validation["stdout"].splitlines()[1:]:
             self.appstream.add(re.sub("^\u2022", "", out).strip())
 
     def check_build(self, path: str) -> None:
