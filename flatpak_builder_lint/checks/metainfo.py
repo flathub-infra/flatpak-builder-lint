@@ -15,7 +15,6 @@ class MetainfoCheck(Check):
             f"{path}/files/share/appdata",
         ]
         metainfo_exts = [".appdata.xml", ".metainfo.xml"]
-        metainfo_path = None
 
         if appid.endswith(".BaseApp"):
             return
@@ -54,32 +53,32 @@ class MetainfoCheck(Check):
         if not appstream.check_caption(appstream_path):
             self.warnings.add("appstream-screenshot-missing-caption")
 
+        metainfo_path = None
         for metainfo_dir in metainfo_dirs:
             for ext in metainfo_exts:
                 metainfo_dirext = f"{metainfo_dir}/{appid}{ext}"
                 if os.path.exists(metainfo_dirext):
                     metainfo_path = metainfo_dirext
 
-        if not os.path.exists(appstream_path):
-            self.errors.add("appstream-missing-appinfo-file")
+        if metainfo_path is None:
+            return
 
-            if not metainfo_path:
-                self.errors.add("appstream-metainfo-missing")
+        if not os.path.exists(metainfo_path):
+            self.errors.add("appstream-metainfo-missing")
+            return
 
-            if metainfo_path is not None:
-                appinfo_validation = appstream.validate(metainfo_path)
-                if appinfo_validation["returncode"] != 0:
-                    self.errors.add("appstream-failed-validation")
-                    for err in appinfo_validation["stderr"].split(":", 1)[1:]:
-                        self.appstream.add(err.strip())
-                    for out in appinfo_validation["stdout"].splitlines()[1:]:
-                        self.appstream.add(re.sub("^\u2022", "", out).strip())
+        appinfo_validation = appstream.validate(metainfo_path)
+        if appinfo_validation["returncode"] != 0:
+            self.errors.add("appstream-failed-validation")
+        for err in appinfo_validation["stderr"].split(":", 1)[1:]:
+            self.appstream.add(err.strip())
+        for out in appinfo_validation["stdout"].splitlines()[1:]:
+            self.appstream.add(re.sub("^\u2022", "", out).strip())
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
         if not appid:
             return
-
         metadata = builddir.get_metadata(path)
         if not metadata:
             return
