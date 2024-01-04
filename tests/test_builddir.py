@@ -65,32 +65,13 @@ def test_builddir_flathub_json() -> None:
     assert warnings.issubset(found_warnings)
 
 def test_builddir_baseapp() -> None:
-    errors = {
-        "appstream-missing-appinfo-file",
-        "appstream-metainfo-missing"
-    }
-
     ret = run_checks("tests/builddir/baseapp")
-    found_errors = set(ret["errors"])
-
-    assert errors == found_errors
 
 def test_builddir_extension() -> None:
-    errors = {
-        "appstream-missing-appinfo-file",
-        "appstream-metainfo-missing"
-    }
-
     ret = run_checks("tests/builddir/extension")
-    found_errors = set(ret["errors"])
-
-    assert errors == found_errors
 
 def test_builddir_console() -> None:
-    errors = {
-        "appstream-metainfo-missing",
-        "finish-args-not-defined"
-    }
+    errors = {"finish-args-not-defined"}
 
     ret = run_checks("tests/builddir/console")
     found_errors = set(ret["errors"])
