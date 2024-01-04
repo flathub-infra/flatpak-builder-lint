@@ -1,7 +1,7 @@
 import os
 import subprocess
 import tempfile
-from typing import Optional
+from typing import Optional, Set
 
 from lxml import etree  # type: ignore
 
@@ -113,6 +113,19 @@ class DesktopfileCheck(Check):
                 nodisplay = d["Desktop Entry"]["NoDisplay"]
                 if nodisplay == "true":
                     self.errors.add("desktop-file-is-hidden")
+            except KeyError:
+                pass
+
+            try:
+                # https://github.com/ximion/appstream/blob/146099484012397f166cd428c56f230487b2d1fc/src/as-desktop-entry.c#L144-L154
+                # appstreamcli filters these out during compose, "GUI"
+                # is caught by desktop-file-validate
+                block = {"KDE", "GTK", "Qt", "Application", "GNOME"}
+                catgr: Set[str] = set(
+                    filter(None, d["Desktop Entry"]["Categories"].split(";"))
+                )
+                if len(catgr) > 0 and catgr.issubset(block):
+                    self.warnings.add("desktop-file-low-quality-category")
             except KeyError:
                 pass
 
