@@ -1,19 +1,13 @@
 import os
 import re
 import tempfile
-from typing import Optional
 
 from .. import appstream, builddir, ostree
 from . import Check
 
 
 class MetainfoCheck(Check):
-    def _validate(self, path: str, appid: str, flathub_json: Optional[dict]) -> None:
-        if not flathub_json:
-            flathub_json = {}
-        skip_appstream_check = flathub_json.get("skip-appstream-check")
-        skip_icons_check = flathub_json.get("skip-icons-check")
-
+    def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
         icon_path = f"{path}/files/share/app-info/icons/flatpak/128x128/{appid}.png"
         metainfo_dirs = [
@@ -31,9 +25,8 @@ class MetainfoCheck(Check):
                 if os.path.exists(metainfo_dirext):
                     metainfo_path = metainfo_dirext
 
-        if not skip_appstream_check:
-            if not os.path.exists(appstream_path):
-                self.errors.add("appstream-missing-appinfo-file")
+        if not os.path.exists(appstream_path):
+            self.errors.add("appstream-missing-appinfo-file")
 
             if not metainfo_path:
                 self.errors.add("appstream-metainfo-missing")
@@ -62,10 +55,9 @@ class MetainfoCheck(Check):
                         for out in appinfo_validation["stdout"].splitlines()[1:]:
                             self.appstream.add(re.sub("^\u2022", "", out).strip())
 
-        if not (skip_icons_check or skip_appstream_check):
-            if not os.path.exists(icon_path):
-                if not is_baseapp:
-                    self.errors.add("appstream-missing-icon-file")
+        if not os.path.exists(icon_path):
+            if not is_baseapp:
+                self.errors.add("appstream-missing-icon-file")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
@@ -77,8 +69,7 @@ class MetainfoCheck(Check):
             return
         is_extension = metadata.get("extension")
 
-        flathub_json = builddir.get_flathub_json(path)
-        self._validate(f"{path}", appid, flathub_json)
+        self._validate(f"{path}", appid)
 
         if is_extension:
             self.errors.discard("appstream-failed-validation")
@@ -95,13 +86,11 @@ class MetainfoCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        flathub_json = ostree.get_flathub_json(path, ref)
-
         with tempfile.TemporaryDirectory() as tmpdir:
             ret = ostree.extract_subpath(path, ref, "/", tmpdir)
             if ret["returncode"] != 0:
                 raise RuntimeError("Failed to extract ostree repo")
             appstream_path = f"{tmpdir}/files/share/app-info/xmls/{appid}.xml.gz"
-            self._validate(tmpdir, appid, flathub_json)
+            self._validate(tmpdir, appid)
             if os.path.exists(appstream_path) and appstream.is_console(appstream_path):
                 self.errors.discard("appstream-missing-icon-file")
