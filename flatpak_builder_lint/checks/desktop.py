@@ -3,9 +3,7 @@ import subprocess
 import tempfile
 from typing import Optional
 
-from lxml import etree
-
-from .. import builddir, ostree
+from .. import appstream, builddir, ostree
 from . import Check
 
 
@@ -19,18 +17,17 @@ class DesktopfileCheck(Check):
 
         if not os.path.exists(appstream_path):
             self.errors.add("appstream-missing-appinfo-file")
+            return None
 
-        if os.path.exists(appstream_path):
-            root = etree.parse(appstream_path)
-            components = root.xpath("/components/component")
+        if len(appstream.components(appstream_path)) != 1:
+            self.errors.add("appstream-multiple-components")
+            return None
 
-            if len(components) != 1:
-                self.errors.add("appstream-multiple-components")
-                return None
-
-            type = components[0].get("type")
-            if type not in ("desktop", "desktop-application"):
-                return None
+        if appstream.component_type(appstream_path) not in (
+            "desktop",
+            "desktop-application",
+        ):
+            return None
 
         if not os.path.exists(desktop_path):
             self.errors.add("desktop-file-not-installed")
