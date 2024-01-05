@@ -932,6 +932,9 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "org.libreoffice.LibreOffice": {
+        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule"
+    },
     "com.st.STM32CubeIDE": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
@@ -1747,8 +1750,5 @@
     },
     "io.liri.BaseApp": {
         "*": "This is a baseapp"
-    },
-    "org.libreoffice.LibreOffice": {
-        "linter-error": "deliberate finish-args-unnecessary-xdg-config-access violations"
     }
 }
