@@ -15,6 +15,9 @@ class ScreenshotsCheck(Check):
             return
         appid = ref.split("/")[1]
 
+        if appid.endswith(".BaseApp"):
+            return
+
         flathub_json = ostree.get_flathub_json(path, ref)
         if not flathub_json:
             flathub_json = {}
