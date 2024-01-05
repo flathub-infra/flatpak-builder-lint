@@ -1747,5 +1747,8 @@
     },
     "io.liri.BaseApp": {
         "*": "This is a baseapp"
+    },
+    "org.libreoffice.LibreOffice": {
+        "linter-error": "deliberate finish-args-unnecessary-xdg-config-access violations"
     }
 }
