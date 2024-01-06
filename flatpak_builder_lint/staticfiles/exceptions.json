@@ -1715,6 +1715,9 @@
     "com.calibre_ebook.calibre": {
         "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
     },
+    "app.drey.KeyRack": {
+        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
