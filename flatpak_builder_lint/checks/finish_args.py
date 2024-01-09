@@ -127,16 +127,17 @@ class FinishArgsCheck(Check):
         if not metadata:
             return
 
+        if metadata.get("type", False) != "application":
+            return
+
         appid = metadata.get("name")
         if isinstance(appid, str):
             is_baseapp = appid.endswith(".BaseApp")
         else:
             is_baseapp = False
 
-        is_extension = metadata.get("extension")
-
         permissions = metadata.get("permissions", {})
-        if not permissions and not (is_baseapp or is_extension):
+        if not permissions and not is_baseapp:
             self.errors.add("finish-args-not-defined")
             return
 

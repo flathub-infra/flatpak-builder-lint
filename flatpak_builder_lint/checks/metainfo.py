@@ -82,7 +82,7 @@ class MetainfoCheck(Check):
         metadata = builddir.get_metadata(path)
         if not metadata:
             return
-        if metadata.get("extension"):
+        if metadata.get("type", False) != "application":
             return
 
         self._validate(f"{path}", appid)
