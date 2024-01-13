@@ -1753,6 +1753,9 @@
     "us.zoom.Zoom": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
     },
+    "org.gnome.World.PikaBackup": {
+        "finish-args-unnecessary-xdg-data-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
