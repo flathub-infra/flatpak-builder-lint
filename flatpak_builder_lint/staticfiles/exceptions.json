@@ -1191,7 +1191,6 @@
         "flathub-json-skip-appstream-check": "It is a command line package"
     },
     "se.emijoh.mpw": {
-        "flathub-json-skip-appstream-check": "It is a command line package",
 	"finish-args-not-defined": "It is a command line package"
     },
     "org.freedesktop.LinuxAudio.BaseExtension": {
