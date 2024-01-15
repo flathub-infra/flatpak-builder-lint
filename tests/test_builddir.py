@@ -24,6 +24,9 @@ def test_builddir_finish_args() -> None:
         "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-xdg-data-access",
+        "finish-args-wildcard-freedesktop-talk-name",
+        "finish-args-wildcard-gnome-own-name",
+        "finish-args-wildcard-kde-own-name",
     }
 
     warnings = {

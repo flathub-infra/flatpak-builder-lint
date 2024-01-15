@@ -17,6 +17,9 @@
         "--socket=x11",
         "--socket=fallback-x11",
         "--talk-name=org.gtk.vfs",
-        "--talk-name=org.freedesktop.Flatpak"
+        "--talk-name=org.freedesktop.Flatpak",
+        "--talk-name=org.kde.*",
+        "--own-name=org.gnome.*",
+        "--talk-name=org.freedesktop.*"
     ]
 }
