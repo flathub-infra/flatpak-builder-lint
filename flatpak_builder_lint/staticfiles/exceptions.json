@@ -1190,6 +1190,9 @@
     "org.freedesktop.appstream-glib": {
         "flathub-json-skip-appstream-check": "It is a command line package"
     },
+    "se.emijoh.mpw": {
+        "finish-args-not-defined": "It is a command line package"
+    },
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "toplevel-no-command": "It is a base app without anything to run",
         "finish-args-not-defined": "It is a base app without anything to run",
