@@ -8,10 +8,7 @@ def run_checks(filename: str) -> dict:
 
 
 def test_builddir_appid() -> None:
-    errors = {
-            'appid-ends-with-lowercase-desktop',
-            'appid-uses-code-hosting-domain'
-            }
+    errors = {"appid-ends-with-lowercase-desktop", "appid-uses-code-hosting-domain"}
     ret = run_checks("tests/builddir/appid")
     found_errors = set(ret["errors"])
     assert errors.issubset(found_errors)
@@ -44,9 +41,9 @@ def test_builddir_finish_args() -> None:
 
 
 def test_builddir_finish_args_missing() -> None:
-     ret = run_checks("tests/builddir/finish_args_missing")
-     found_errors = set(ret["errors"])
-     assert "finish-args-not-defined" in found_errors
+    ret = run_checks("tests/builddir/finish_args_missing")
+    found_errors = set(ret["errors"])
+    assert "finish-args-not-defined" in found_errors
 
 
 def test_builddir_flathub_json() -> None:
@@ -64,11 +61,14 @@ def test_builddir_flathub_json() -> None:
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
 
+
 def test_builddir_baseapp() -> None:
     ret = run_checks("tests/builddir/baseapp")
 
+
 def test_builddir_extension() -> None:
     ret = run_checks("tests/builddir/extension")
+
 
 def test_builddir_console() -> None:
     errors = {"finish-args-not-defined"}
@@ -78,15 +78,17 @@ def test_builddir_console() -> None:
 
     assert errors == found_errors
 
+
 def test_builddir_metadata_spaces() -> None:
     ret = run_checks("tests/builddir/metadata-spaces")
+
 
 def test_builddir_desktop_file() -> None:
     ret = run_checks("tests/builddir/desktop-file")
     errors = {
         "desktop-file-icon-key-wrong-value",
         "desktop-file-is-hidden",
-        "desktop-file-exec-has-flatpak-run"
+        "desktop-file-exec-has-flatpak-run",
     }
     found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
@@ -95,6 +97,7 @@ def test_builddir_desktop_file() -> None:
     for err in errors:
         assert err in found_errors
 
+
 def test_builddir_quality_guidelines() -> None:
     ret = run_checks("tests/builddir/appdata-quality")
     warnings = {
@@ -102,7 +105,7 @@ def test_builddir_quality_guidelines() -> None:
         "appstream-name-too-long",
         "appstream-screenshot-missing-caption",
         "appstream-summary-too-long",
-        "appstream-missing-project-license"
+        "appstream-missing-project-license",
     }
     found_warnings = set(ret["warnings"])
     for w in warnings:
