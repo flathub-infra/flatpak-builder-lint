@@ -51,7 +51,8 @@ class ScreenshotsCheck(Check):
             screenshots = appstream.components(appstream_path)[0].xpath(
                 "screenshots/screenshot/image"
             )
-            if screenshots is None:
+            thumbnails = [elem for elem in screenshots if elem.attrib.get("type") == "thumbnail"]
+            if not thumbnails:
                 self.errors.add("appstream-missing-screenshots")
                 return
 
