@@ -7,6 +7,9 @@
     "org.flathub.exceptions_wildcard": {
         "*": "ignore all errors and warnings"
     },
+    "info.cemu.Cemu": {
+        "finish-args-unnecessary-xdg-data-access": "the app allows the user to create desktop files to launch games directly"
+    },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak"
     },
