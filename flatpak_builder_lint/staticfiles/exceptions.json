@@ -1721,6 +1721,24 @@
     "app.drey.KeyRack": {
         "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
     },
+    "com.discordapp.Discord": {
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation"
+    },
+    "com.discordapp.DiscordCanary": {
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation"
+    },
+    "com.hunterwittenborn.Celeste": {
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
+    },
+    "org.tribler.Tribler": {
+        "finish-args-wildcard-kde-own-name": "Initial import, Qsystemtrayicon still uses legacy StatusNotifier implementation"
+    },
+    "com.dropbox.Client": {
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
+    },
+    "us.zoom.Zoom": {
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
+    },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
     },
