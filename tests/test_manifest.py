@@ -71,6 +71,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-talk-name",
+        "finish-args-portal-own-name",
     }
 
     warnings = {
