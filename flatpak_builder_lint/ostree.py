@@ -15,7 +15,7 @@ class CliResult(TypedDict):
 
 def cli(repo: str, *args: str) -> CliResult:
     if not os.path.exists(repo):
-        raise OSError(errno.ENOENT)
+        raise OSError(errno.ENOENT, f"No such ostree repo: {repo}")
 
     ret = subprocess.run(
         ["ostree", f"--repo={repo}", *args],
