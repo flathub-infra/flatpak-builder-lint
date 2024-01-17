@@ -29,6 +29,7 @@ def test_manifest_toplevel() -> None:
 
     assert "toplevel-no-command" not in found_errors
 
+
 def test_manifest_appid() -> None:
     errors = {
         "appid-filename-mismatch",
@@ -94,6 +95,7 @@ def test_manifest_finish_args_issue_33() -> None:
     found_errors = set(ret["errors"])
     assert "finish-args-unnecessary-appid-own-name" in found_errors
 
+
 def test_manifest_finish_args_empty() -> None:
     ret = run_checks("tests/manifests/finish_args_empty.json")
     found_errors = set(ret["errors"])
@@ -102,6 +104,7 @@ def test_manifest_finish_args_empty() -> None:
     ret = run_checks("tests/manifests/finish_args_missing.json")
     found_errors = set(ret["errors"])
     assert "finish-args-not-defined" in found_errors
+
 
 def test_manifest_modules() -> None:
     errors = {

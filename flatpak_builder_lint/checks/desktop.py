@@ -54,10 +54,13 @@ class DesktopfileCheck(Check):
         if appstream.component_type(appstream_path) not in (
             "desktop",
             "desktop-application",
+            "console-application",
         ):
             return None
 
-        if not len(desktop_files) > 0:
+        is_console = appstream.component_type(appstream_path) == "console-application"
+
+        if not (len(desktop_files) > 0 or is_console):
             self.errors.add("desktop-file-not-installed")
 
         for file in desktop_files:
@@ -87,7 +90,8 @@ class DesktopfileCheck(Check):
                     if len(icon) > 0 and icon != appid:
                         self.errors.add("desktop-file-icon-key-wrong-value")
                 except KeyError:
-                    self.errors.add("desktop-file-icon-key-absent")
+                    if not is_console:
+                        self.errors.add("desktop-file-icon-key-absent")
                     pass
 
                 try:
@@ -120,12 +124,29 @@ class DesktopfileCheck(Check):
                 except KeyError:
                     pass
 
-                try:
-                    nodisplay = d["Desktop Entry"]["NoDisplay"]
-                    if nodisplay == "true":
-                        self.errors.add("desktop-file-is-hidden")
-                except KeyError:
-                    pass
+                if not is_console:
+
+                    try:
+                        nodisplay = d["Desktop Entry"]["NoDisplay"]
+                        if nodisplay == "true":
+                            self.errors.add("desktop-file-is-nodisplay")
+                    except KeyError:
+                        pass
+
+                # check only when console application does not hide
+                # desktop file
+                # desktop-file-validate fails on empty value of terminal key
+                if is_console and d["Desktop Entry"].get("NoDisplay") not in (
+                    "true",
+                    None,
+                ):
+                    try:
+                        terminal = d["Desktop Entry"]["Terminal"]
+                        if terminal == "false":
+                            self.errors.add("desktop-file-terminal-key-false")
+                    except KeyError:
+                        self.errors.add("desktop-file-terminal-key-absent")
+                        pass
 
                 try:
                     # https://github.com/ximion/appstream/blob/146099484012397f166cd428c56f230487b2d1fc/src/as-desktop-entry.c#L144-L154

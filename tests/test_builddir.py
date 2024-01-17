@@ -71,7 +71,12 @@ def test_builddir_extension() -> None:
 
 
 def test_builddir_console() -> None:
-    errors = {"finish-args-not-defined"}
+    errors = {
+        "finish-args-not-defined",
+        "desktop-file-exec-key-absent",
+        "desktop-file-is-hidden",
+        "desktop-file-terminal-key-absent",
+    }
 
     ret = run_checks("tests/builddir/console")
     found_errors = set(ret["errors"])
