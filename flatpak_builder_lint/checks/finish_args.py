@@ -75,6 +75,8 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-wildcard-gnome-own-name")
             if own_name == "org.kde.*":
                 self.errors.add("finish-args-wildcard-kde-own-name")
+            if own_name.startswith("org.freedesktop.portal."):
+                self.errors.add("finish-args-portal-own-name")
 
         for talk_name in finish_args["talk-name"]:
             if talk_name == "org.freedesktop.*":
@@ -83,6 +85,8 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-wildcard-gnome-talk-name")
             if talk_name == "org.kde.*":
                 self.errors.add("finish-args-wildcard-kde-talk-name")
+            if talk_name.startswith("org.freedesktop.portal."):
+                self.errors.add("finish-args-portal-talk-name")
 
         if (
             "xdg-config/autostart" in finish_args["filesystem"]

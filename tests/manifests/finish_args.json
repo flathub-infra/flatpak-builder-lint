@@ -20,6 +20,7 @@
         "--talk-name=org.freedesktop.Flatpak",
         "--talk-name=org.kde.*",
         "--own-name=org.gnome.*",
-        "--talk-name=org.freedesktop.*"
+        "--talk-name=org.freedesktop.*",
+        "--own-name=org.freedesktop.portal.Foo"
     ]
 }

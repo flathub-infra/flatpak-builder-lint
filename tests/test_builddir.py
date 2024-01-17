@@ -27,6 +27,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-own-name",
+        "finish-args-portal-talk-name",
     }
 
     warnings = {
