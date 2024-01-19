@@ -76,67 +76,69 @@ class DesktopfileCheck(Check):
                     self.errors.add("desktop-file-failed-validation")
                     for p in cmd.stdout.decode("utf-8").split(f"{file}:")[1:]:
                         self.desktopfile.add(p.strip())
-                d = self._load(f"{desktopfiles_path}/{file}")
-                if d is not None:
-                    try:
-                        icon = d["Desktop Entry"]["Icon"]
-                        if not len(icon) > 0:
-                            self.errors.add("desktop-file-icon-key-empty")
-                        if len(icon) > 0 and icon != appid:
-                            self.errors.add("desktop-file-icon-key-wrong-value")
-                    except KeyError:
-                        self.errors.add("desktop-file-icon-key-absent")
-                        pass
 
-                    try:
-                        exect = d["Desktop Entry"]["Exec"]
-                        # https://github.com/flatpak/flatpak/commit/298286be2d8ceacc426dedecc0e38a3f82d8aedc
-                        # Flatpak allows exporting empty Exec key because it is
-                        # going to be rewritten w/o command and command in
-                        # manifest is going to be used as default. Rely on
-                        # fallback but also warn
-                        if not len(exect) > 0:
-                            self.warnings.add("desktop-file-exec-key-empty")
-                        # desktop files are rewritten only on (re)install, neither
-                        # exported ref or builddir should have "flatpak run"
-                        # unless manually added in desktop-file
-                        # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
-                        # flatpak-dir.c: export_desktop_file < rewrite_export_dir
-                        # < flatpak_rewrite_export_dir < flatpak_dir_deploy
-                        # < flatpak_dir_deploy_install < flatpak_dir_install
-                        if len(exect) > 0 and "flatpak run" in exect:
-                            self.errors.add("desktop-file-exec-has-flatpak-run")
-                    except KeyError:
-                        # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
-                        self.errors.add("desktop-file-exec-key-absent")
-                        pass
+        if os.path.exists(f"{desktopfiles_path}/{appid}.desktop"):
+            d = self._load(f"{desktopfiles_path}/{appid}.desktop")
+            if d is not None:
+                try:
+                    icon = d["Desktop Entry"]["Icon"]
+                    if not len(icon) > 0:
+                        self.errors.add("desktop-file-icon-key-empty")
+                    if len(icon) > 0 and icon != appid:
+                        self.errors.add("desktop-file-icon-key-wrong-value")
+                except KeyError:
+                    self.errors.add("desktop-file-icon-key-absent")
+                    pass
 
-                    try:
-                        hidden = d["Desktop Entry"]["Hidden"]
-                        if hidden == "true":
-                            self.errors.add("desktop-file-is-hidden")
-                    except KeyError:
-                        pass
+                try:
+                    exect = d["Desktop Entry"]["Exec"]
+                    # https://github.com/flatpak/flatpak/commit/298286be2d8ceacc426dedecc0e38a3f82d8aedc
+                    # Flatpak allows exporting empty Exec key because it is
+                    # going to be rewritten w/o command and command in
+                    # manifest is going to be used as default. Rely on
+                    # fallback but also warn
+                    if not len(exect) > 0:
+                        self.warnings.add("desktop-file-exec-key-empty")
+                    # desktop files are rewritten only on (re)install, neither
+                    # exported ref or builddir should have "flatpak run"
+                    # unless manually added in desktop-file
+                    # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
+                    # flatpak-dir.c: export_desktop_file < rewrite_export_dir
+                    # < flatpak_rewrite_export_dir < flatpak_dir_deploy
+                    # < flatpak_dir_deploy_install < flatpak_dir_install
+                    if len(exect) > 0 and "flatpak run" in exect:
+                        self.errors.add("desktop-file-exec-has-flatpak-run")
+                except KeyError:
+                    # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
+                    self.errors.add("desktop-file-exec-key-absent")
+                    pass
 
-                    try:
-                        nodisplay = d["Desktop Entry"]["NoDisplay"]
-                        if nodisplay == "true":
-                            self.errors.add("desktop-file-is-hidden")
-                    except KeyError:
-                        pass
+                try:
+                    hidden = d["Desktop Entry"]["Hidden"]
+                    if hidden == "true":
+                        self.errors.add("desktop-file-is-hidden")
+                except KeyError:
+                    pass
 
-                    try:
-                        # https://github.com/ximion/appstream/blob/146099484012397f166cd428c56f230487b2d1fc/src/as-desktop-entry.c#L144-L154
-                        # appstreamcli filters these out during compose, "GUI"
-                        # is caught by desktop-file-validate
-                        block = {"KDE", "GTK", "Qt", "Application", "GNOME"}
-                        catgr: Set[str] = set(
-                            filter(None, d["Desktop Entry"]["Categories"].split(";"))
-                        )
-                        if len(catgr) > 0 and catgr.issubset(block):
-                            self.warnings.add("desktop-file-low-quality-category")
-                    except KeyError:
-                        pass
+                try:
+                    nodisplay = d["Desktop Entry"]["NoDisplay"]
+                    if nodisplay == "true":
+                        self.errors.add("desktop-file-is-hidden")
+                except KeyError:
+                    pass
+
+                try:
+                    # https://github.com/ximion/appstream/blob/146099484012397f166cd428c56f230487b2d1fc/src/as-desktop-entry.c#L144-L154
+                    # appstreamcli filters these out during compose, "GUI"
+                    # is caught by desktop-file-validate
+                    block = {"KDE", "GTK", "Qt", "Application", "GNOME"}
+                    catgr: Set[str] = set(
+                        filter(None, d["Desktop Entry"]["Categories"].split(";"))
+                    )
+                    if len(catgr) > 0 and catgr.issubset(block):
+                        self.warnings.add("desktop-file-low-quality-category")
+                except KeyError:
+                    pass
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
