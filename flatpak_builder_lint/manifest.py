@@ -10,7 +10,7 @@ from typing import Optional
 # for modules stored in external files.
 def show_manifest(filename: str) -> dict:
     if not os.path.exists(filename):
-        raise OSError(errno.ENOENT)
+        raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename],
