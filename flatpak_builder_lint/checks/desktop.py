@@ -84,7 +84,9 @@ class DesktopfileCheck(Check):
                     icon = d["Desktop Entry"]["Icon"]
                     if not len(icon) > 0:
                         self.errors.add("desktop-file-icon-key-empty")
-                    if len(icon) > 0 and icon != appid:
+                    if len(icon) > 0 and not re.match(
+                        rf"^{appid}([-.].*)?$", f"{icon}"
+                    ):
                         self.errors.add("desktop-file-icon-key-wrong-value")
                 except KeyError:
                     self.errors.add("desktop-file-icon-key-absent")
