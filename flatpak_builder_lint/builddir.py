@@ -8,11 +8,11 @@ from typing import Optional
 
 def get_metadata(builddir: str) -> dict:
     if not os.path.exists(builddir):
-        raise OSError(errno.ENOENT)
+        raise OSError(errno.ENOENT, f"No such build directory: {builddir}")
 
     metadata_path = os.path.join(builddir, "metadata")
     if not os.path.exists(metadata_path):
-        raise OSError(errno.ENOENT)
+        raise OSError(errno.ENOENT, f"No metadata file in build directory: {builddir}")
 
     with open(metadata_path, "r") as f:
         metadata = parse_metadata(f.read())
