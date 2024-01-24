@@ -1677,6 +1677,9 @@
     "io.github.Youda008.DoomRunner": {
         "finish-args-flatpak-spawn-access": "Needed to execute external game engines"
     },
+    "io.github.santiagocezar.maniatic-launcher": {
+        "finish-args-unnecessary-xdg-data-access": "Needed to copy the assets from ~/.local/share/Steam/steamapps/common/Sonic Mania/Data.rsdk into the CWD"
+    },
     "xyz.tytanium.DoorKnocker": {
         "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
     },
