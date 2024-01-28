@@ -1286,7 +1286,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.wezfurlong.wezterm": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
+        "finish-args-unnecessary-xdg-config-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270"
     },
     "org.worldpossible.ScriptLauncher": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
