@@ -1,4 +1,4 @@
-FROM freedesktopsdk/platform:23.08
+FROM docker.io/freedesktopsdk/sdk:23.08
 ADD org.flatpak.Builder/builddir/files /app
 
 ENV PYTHONPATH=/app/lib/python3.11/site-packages
