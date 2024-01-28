@@ -67,6 +67,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-xdg-data-access",
+        "finish-args-unnecessary-gamescope"
     }
 
     warnings = {
