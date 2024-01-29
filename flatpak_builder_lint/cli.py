@@ -163,6 +163,11 @@ def main() -> int:
 
         output = json.dumps(results, indent=4)
         print(output)
+        if len(output) != 0:
+            print(
+                "\nPlease consult the documentation at"
+                " https://docs.flathub.org/docs/for-app-authors/linter"
+            )
 
     sys.exit(exit_code)
 
