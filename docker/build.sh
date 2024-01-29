@@ -14,3 +14,4 @@ cd org.flatpak.Builder
 flatpak-builder --user --verbose --force-clean --repo=repo \
     --ccache --install-deps-from=flathub \
     builddir org.flatpak.Builder.json
+rm -rf files/lib/debug
