@@ -62,12 +62,14 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-missing-icon-file")
 
         if not appstream.is_developer_name_present(appstream_path):
-            self.warnings.add("appstream-missing-developer-name")
+            self.errors.add("appstream-missing-developer-name")
         if not appstream.is_project_license_present(appstream_path):
-            self.warnings.add("appstream-missing-project-license")
+            self.errors.add("appstream-missing-project-license")
+
         # for mypy
         name = appstream.name(appstream_path)
         summary = appstream.summary(appstream_path)
+
         if name is not None and len(name) > 20:
             self.warnings.add("appstream-name-too-long")
         if summary is not None and len(summary) > 35:
