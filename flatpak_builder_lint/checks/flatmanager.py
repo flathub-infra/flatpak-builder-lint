@@ -1,14 +1,13 @@
+import gzip
 import json
 import os
+import shutil
+import tempfile
 
 import requests
 
-import tempfile
-import shutil
-import gzip
-
-from . import Check
 from .. import appstream
+from . import Check
 
 
 class FlatManagerCheck(Check):
