@@ -3,7 +3,12 @@ import os
 
 import requests
 
+import tempfile
+import shutil
+import gzip
+
 from . import Check
+from .. import appstream
 
 
 class FlatManagerCheck(Check):
@@ -55,6 +60,7 @@ class FlatManagerCheck(Check):
                 build_ref["ref_name"]
                 for build_ref in build_extended.get("build_refs", [])
             ]
+            arches = set(ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4)
 
             if token_type == "app":
                 has_app_ref = any(ref.startswith("app/") for ref in refs)
@@ -69,6 +75,17 @@ class FlatManagerCheck(Check):
                     if ref_branch != target_repo:
                         self.errors.add("flat-manager-branch-repo-mismatch")
                         break
+
+                with tempfile.TemporaryDirectory() as tmpdir:
+                    with gzip.open(
+                        f"{path}/appstream/{arches.pop()}/appstream.xml.gz", "rb"
+                    ) as appstream_gz:
+                        with open(f"{tmpdir}/appstream.xml", "wb") as appstream_file:
+                            shutil.copyfileobj(appstream_gz, appstream_file)
+
+                    if not appstream.has_manifest_key(f"{tmpdir}/appstream.xml"):
+                        self.errors.add("appstream-no-flathub-manifest-key")
+
             else:
                 appref_list = [ref for ref in refs if ref.startswith("app/")]
                 if not appref_list:

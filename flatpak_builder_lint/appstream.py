@@ -27,30 +27,25 @@ def validate(path: str) -> dict:
 
 
 def parse_xml(path: str) -> ElementTree:
-
     return etree.parse(path)
 
 
 def components(path: str) -> list:
-
     components = parse_xml(path).xpath("/components/component")
     return list(components)
 
 
 def is_developer_name_present(path: str) -> bool:
     developer = components(path)[0].xpath("developer_name")
-
     return bool(developer)
 
 
 def is_project_license_present(path: str) -> bool:
     plicense = components(path)[0].xpath("project_license")
-
     return bool(plicense)
 
 
 def component_type(path: str) -> str:
-
     return str(components(path)[0].attrib.get("type"))
 
 
@@ -70,5 +65,12 @@ def summary(path: str) -> Optional[str]:
 
 def check_caption(path: str) -> bool:
     exp = "//screenshot[not(caption/text()) or not(caption)]"
-
     return not any(e is not None for e in parse_xml(path).xpath(exp))
+
+
+def has_manifest_key(path: str) -> bool:
+    metadata = parse_xml(path).xpath("/components/component/metadata")
+    for key in metadata:
+        if key.attrib.get("key") == "flathub::manifest":
+            return True
+    return False
