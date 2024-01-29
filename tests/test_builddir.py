@@ -106,12 +106,12 @@ def test_builddir_quality_guidelines() -> None:
     ret = run_checks("tests/builddir/appdata-quality")
     errors = {
         "appstream-missing-developer-name",
+        "appstream-missing-project-license",
     }
     warnings = {
         "appstream-name-too-long",
         "appstream-screenshot-missing-caption",
         "appstream-summary-too-long",
-        "appstream-missing-project-license",
     }
     found_warnings = set(ret["warnings"])
     found_errors = set(ret["errors"])
