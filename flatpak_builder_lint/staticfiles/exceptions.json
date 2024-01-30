@@ -1716,6 +1716,9 @@
     "io.github.dvlv.boxbuddyrs": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
     },
+    "io.kapsa.drive": {
+        "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system"
+    },
     "com.calibre_ebook.calibre": {
         "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
     },
