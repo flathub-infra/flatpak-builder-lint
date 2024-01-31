@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 import tempfile
@@ -9,7 +10,11 @@ from . import Check
 class MetainfoCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
-        icon_path = f"{path}/files/share/app-info/icons/flatpak/128x128/{appid}.png"
+        appinfo_icon_path = (
+            f"{path}/files/share/app-info/icons/flatpak/128x128/{appid}.png"
+        )
+        icon_path = f"{path}/files/share/icons/hicolor"
+        glob_path = f"{icon_path}/*/apps/*"
         metainfo_dirs = [
             f"{path}/files/share/metainfo",
             f"{path}/files/share/appdata",
@@ -56,10 +61,23 @@ class MetainfoCheck(Check):
         ):
             return
 
-        if not os.path.exists(icon_path) and appstream.component_type(
-            appstream_path
-        ) in ("desktop", "desktop-application"):
-            self.errors.add("appstream-missing-icon-file")
+        if appstream.component_type(appstream_path) in (
+            "desktop",
+            "desktop-application",
+        ):
+            if not os.path.exists(appinfo_icon_path):
+                self.errors.add("appstream-missing-icon-file")
+            if os.path.exists(icon_path):
+                icon_list = [
+                    os.path.basename(file)
+                    for file in glob.glob(glob_path)
+                    if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
+                    and os.path.isfile(file)
+                ]
+            else:
+                icon_list = []
+            if not len(icon_list) > 0:
+                self.errors.add("no-exportable-icon-installed")
 
         if not appstream.is_developer_name_present(appstream_path):
             self.errors.add("appstream-missing-developer-name")
