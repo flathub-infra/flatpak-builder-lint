@@ -107,6 +107,7 @@ def test_builddir_quality_guidelines() -> None:
     errors = {
         "appstream-missing-developer-name",
         "appstream-missing-project-license",
+        "no-exportable-icon-installed",
     }
     warnings = {
         "appstream-name-too-long",
