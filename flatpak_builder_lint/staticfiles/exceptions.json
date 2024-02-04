@@ -1073,6 +1073,9 @@
     "dev.salaniLeo.immagini": {
         "finish-args-flatpak-spawn-access": "needed to start applications"
     },
+    "dev.k8slens.OpenLens": {
+        "finish-args-unnecessary-xdg-config-access": "this program needs write-access to xdg-config/gcloud"
+    },
     "edu.stanford.Almond": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
