@@ -92,8 +92,10 @@ class MetainfoCheck(Check):
             self.warnings.add("appstream-name-too-long")
         if summary is not None and len(summary) > 35:
             self.warnings.add("appstream-summary-too-long")
-        if not appstream.check_caption(appstream_path):
-            self.warnings.add("appstream-screenshot-missing-caption")
+
+    # https://github.com/flathub-infra/flatpak-builder-lint/issues/280
+    #        if not appstream.check_caption(appstream_path):
+    #            self.warnings.add("appstream-screenshot-missing-caption")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
