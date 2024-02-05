@@ -1518,6 +1518,9 @@
     "me.dusansimic.DynamicWallpaper": {
         "finish-args-unnecessary-xdg-data-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
     },
+    "me.timschneeberger.GalaxyBudsClient": {
+        "finish-args-wildcard-kde-own-name": "The used version of the toolkit Avalonia only supports legacy KDE system tray icons: https://github.com/AvaloniaUI/Avalonia/issues/13782"
+    },
     "net._86box._86Box.ROMs": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
