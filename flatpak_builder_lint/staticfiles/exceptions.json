@@ -1404,6 +1404,9 @@
     "com.netease.CloudMusic": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "com.nextcloud.desktopclient.nextcloud": {
+        "desktop-file-failed-validation": "the validation tool is not exactly conformant yet as Implements values are allowed"
+    },
     "com.nordpass.NordPass": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
