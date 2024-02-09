@@ -1444,7 +1444,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.synology.SynologyDrive": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
     },
     "com.syntevo.SmartGit": {
         "flathub-json-modified-publish-delay": "extra-data"
