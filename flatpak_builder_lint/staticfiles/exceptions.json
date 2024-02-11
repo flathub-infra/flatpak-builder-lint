@@ -910,6 +910,9 @@
     "org.gnome.Totem.Devel": {
         "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream"
     },
+    "org.gimp.GIMP": {
+	"finish-args-unnecessary-xdg-config-access": "gtk-3.0 and GIMP config."
+    },
     "org.fcitx.Fcitx5": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-unnecessary-xdg-config-access": "need for simulating ibus daemon and changing kde system xkb settings",
