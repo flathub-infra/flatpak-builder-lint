@@ -49,6 +49,18 @@ def component_type(path: str) -> str:
     return str(components(path)[0].attrib.get("type"))
 
 
+def is_valid_component_type(path: str) -> bool:
+    if component_type(path) in (
+        "addon",
+        "console-application",
+        "desktop",
+        "desktop-application",
+        "runtime",
+    ):
+        return True
+    return False
+
+
 def name(path: str) -> Optional[str]:
     for name in parse_xml(path).findall("component/name"):
         if not name.attrib.get(r"{http://www.w3.org/XML/1998/namespace}lang"):
