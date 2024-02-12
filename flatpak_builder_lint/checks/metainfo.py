@@ -54,6 +54,9 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-multiple-components")
             return
 
+        if not appstream.is_valid_component_type(appstream_path):
+            self.errors.add("appstream-unsupported-component-type")
+
         if appstream.component_type(appstream_path) not in (
             "desktop",
             "desktop-application",
