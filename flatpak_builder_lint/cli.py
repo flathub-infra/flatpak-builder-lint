@@ -5,7 +5,7 @@ import json
 import os
 import pkgutil
 import sys
-from typing import Optional, Union
+from typing import Dict, List, Optional, Union
 
 import requests
 import sentry_sdk
@@ -69,7 +69,7 @@ def run_checks(
             if callable(check_method):
                 check_method(check_method_arg)
 
-    results = {}
+    results: Dict[str, Union[str, List[Optional[str]]]] = {}
     if errors := checks.Check.errors:
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:
@@ -105,6 +105,14 @@ def run_checks(
             results["warnings"] = list(warnings - set(exceptions))
             if not results["warnings"]:
                 results.pop("warnings")
+
+    help = (
+        "Please consult the documentation at "
+        "https://docs.flathub.org/docs/for-app-authors/linter"
+    )
+
+    if "errors" in results or "warnings" in results:
+        results["message"] = help
 
     return results
 
@@ -163,11 +171,6 @@ def main() -> int:
 
         output = json.dumps(results, indent=4)
         print(output)
-        if len(output) != 0:
-            print(
-                "\nPlease consult the documentation at"
-                " https://docs.flathub.org/docs/for-app-authors/linter"
-            )
 
     sys.exit(exit_code)
 
