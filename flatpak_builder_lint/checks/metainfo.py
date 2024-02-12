@@ -46,6 +46,11 @@ class MetainfoCheck(Check):
         for out in metainfo_validation["stdout"].splitlines()[1:]:
             self.appstream.add(re.sub("^\u2022", "", out).strip())
 
+        component = appstream.parse_xml(metainfo_path).xpath("/component")
+
+        if component[0].attrib.get("type") is None:
+            self.errors.add("metainfo-missing-component-type")
+
         if not os.path.exists(appstream_path):
             self.errors.add("appstream-missing-appinfo-file")
             return
