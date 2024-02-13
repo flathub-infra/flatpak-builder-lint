@@ -47,7 +47,7 @@ Additional tools are required by subcommands and checks:
 
 - `flatpak-builder` for validating flatpak-builder manifests,
 - `ostree` for validating ostree repositories containing builds,
-- `appstream-util` from `appstream-glib` for validating AppStream.
+- `appstreamcli` from `appstream` for validating AppStream.
 
 ### Usage
 

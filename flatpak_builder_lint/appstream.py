@@ -12,8 +12,33 @@ ElementTree = etree._ElementTree
 def validate(path: str) -> dict:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
+
+    overrides = {
+        "all-categories-ignored": "error",
+        "category-invalid": "error",
+        "cid-desktopapp-is-not-rdns": "error",
+        "cid-has-number-prefix": "error",
+        "cid-maybe-not-rdns": "error",
+        "cid-missing-affiliation-gnome": "error",
+        "cid-rnds-contains-hyphen": "error",
+        "content-rating-missing": "error",
+        "desktop-app-launchable-omitted": "error",
+        "desktop-file-not-found": "error",
+        "developer-id-missing": "error",
+        "invalid-child-tag-name": "error",
+        "metainfo-filename-cid-mismatch": "error",
+        "metainfo-legacy-path": "error",
+        "metainfo-multiple-components": "error",
+        "name-has-dot-suffix": "error",
+        "releases-info-missing": "error",
+        "spdx-license-unknown": "error",
+        "unknown-tag": "error",
+    }
+
+    overrides_value = ",".join([f"{k}={v}" for k, v in overrides.items()])
+
     cmd = subprocess.run(
-        ["appstream-util", "validate", "--nonet", path],
+        ["appstreamcli", "validate", f"--override={overrides_value}", path],
         capture_output=True,
     )
 
