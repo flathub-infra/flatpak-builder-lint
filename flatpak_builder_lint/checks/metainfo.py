@@ -39,10 +39,11 @@ class MetainfoCheck(Check):
         metainfo_validation = appstream.validate(metainfo_path)
         if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
-        for err in metainfo_validation["stderr"].split(":", 1)[1:]:
-            self.appstream.add(err.strip())
-        for out in metainfo_validation["stdout"].splitlines()[1:]:
-            self.appstream.add(re.sub("^\u2022", "", out).strip())
+
+            for err in metainfo_validation["stderr"].split(":", 1)[1:]:
+                self.appstream.add(err.strip())
+            for out in metainfo_validation["stdout"].splitlines()[1:]:
+                self.appstream.add(re.sub("^\u2022", "", out).strip())
 
         component = appstream.parse_xml(metainfo_path).xpath("/component")
 
