@@ -20,7 +20,7 @@ def validate(path: str) -> dict:
         "cid-has-number-prefix": "error",
         "cid-maybe-not-rdns": "error",
         "cid-missing-affiliation-gnome": "error",
-        "cid-rnds-contains-hyphen": "error",
+        "cid-rdns-contains-hyphen": "error",
         "content-rating-missing": "error",
         "desktop-app-launchable-omitted": "error",
         "desktop-file-not-found": "error",
