@@ -63,9 +63,11 @@ class ScreenshotsCheck(Check):
 
             for screenshot in screenshots:
                 if screenshot.attrib.get("type") != "source":
-                    if not screenshot.text.startswith(
-                        "https://dl.flathub.org/repo/screenshots"
-                    ):
+                    allowed_urls = [
+                        "https://dl.flathub.org/repo/screenshots",
+                        "https://dl.flathub.org/media",
+                    ]
+                    if not any(screenshot.text.startswith(url) for url in allowed_urls):
                         self.errors.add("appstream-external-screenshot-url")
                         return
 
