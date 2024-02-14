@@ -61,8 +61,9 @@ def components(path: str) -> list:
 
 
 def is_developer_name_present(path: str) -> bool:
-    developer = components(path)[0].xpath("developer_name")
-    return bool(developer)
+    developer_name = components(path)[0].xpath("developer/name")
+    legacy_developer_name = components(path)[0].xpath("developer_name")
+    return bool(developer_name or legacy_developer_name)
 
 
 def is_project_license_present(path: str) -> bool:
