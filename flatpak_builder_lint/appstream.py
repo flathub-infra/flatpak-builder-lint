@@ -111,3 +111,9 @@ def has_manifest_key(path: str) -> bool:
         if key.attrib.get("key") == "flathub::manifest":
             return True
     return False
+
+
+def get_icon_filename(path: str) -> Optional[str]:
+    if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
+        return icons[0].text
+    return None
