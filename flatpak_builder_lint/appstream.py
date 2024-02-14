@@ -38,7 +38,7 @@ def validate(path: str) -> dict:
     overrides_value = ",".join([f"{k}={v}" for k, v in overrides.items()])
 
     cmd = subprocess.run(
-        ["appstreamcli", "validate", f"--override={overrides_value}", path],
+        ["appstreamcli", "validate", "--no-net", f"--override={overrides_value}", path],
         capture_output=True,
     )
 
