@@ -10,9 +10,7 @@ from . import Check
 class MetainfoCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
-        appinfo_icon_path = (
-            f"{path}/files/share/app-info/icons/flatpak/128x128/{appid}.png"
-        )
+        appinfo_icon_dir = f"{path}/files/share/app-info/icons/flatpak/128x128/"
         icon_path = f"{path}/files/share/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
         metainfo_dirs = [
@@ -73,8 +71,12 @@ class MetainfoCheck(Check):
             "desktop",
             "desktop-application",
         ):
+            icon_filename = appstream.get_icon_filename(appstream_path)
+            appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
+
             if not os.path.exists(appinfo_icon_path):
                 self.errors.add("appstream-missing-icon-file")
+
             if os.path.exists(icon_path):
                 icon_list = [
                     os.path.basename(file)
