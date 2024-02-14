@@ -116,5 +116,5 @@ def has_manifest_key(path: str) -> bool:
 
 def get_icon_filename(path: str) -> Optional[str]:
     if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
-        return icons[0].text
+        return str(icons[0].text)
     return None
