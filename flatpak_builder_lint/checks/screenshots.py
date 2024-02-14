@@ -97,9 +97,13 @@ class ScreenshotsCheck(Check):
                     ostree_screenshots.append(ostree_screenshot_filename[1:])
 
                 for screenshot in screenshots:
-                    if screenshot.attrib.get("type") != "source":
-                        screenshot_filename = "/".join(screenshot.text.split("/")[5:])
-                        if f"{screenshot_filename}" not in ostree_screenshots:
+                    if screenshot.attrib.get("type") == "thumbnail":
+                        if screenshot.text.startswith("https://dl.flathub.org/media/"):
+                            screenshot_fn = "/".join(screenshot.text.split("/")[4:])
+                        else:
+                            screenshot_fn = "/".join(screenshot.text.split("/")[5:])
+
+                        if f"{screenshot_fn}" not in ostree_screenshots:
                             self.warnings.add(
                                 "appstream-screenshots-files-not-found-in-ostree"
                             )
