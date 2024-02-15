@@ -45,7 +45,10 @@ class MetainfoCheck(Check):
                 self.appstream.add(err.strip())
 
             stdout: List[str] = list(
-                filter(None, metainfo_validation["stdout"].splitlines()[:-1])
+                filter(
+                    lambda x: x.startswith(("E:", "W:")),
+                    metainfo_validation["stdout"].splitlines()[:-1],
+                )
             )
             for out in stdout:
                 self.appstream.add(out.strip())
