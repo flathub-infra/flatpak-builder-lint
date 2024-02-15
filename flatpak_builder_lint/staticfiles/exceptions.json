@@ -1788,5 +1788,601 @@
     },
     "io.liri.BaseApp": {
         "*": "This is a baseapp"
+    },
+    "org.kde.Ikona": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.SymbolEditor": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.akregator": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.alligator": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.angelfish": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.arianna": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ark": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.artikulate": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.atlantik": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.audiotube": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.blinken": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.bomber": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.bovo": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.cantor": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.choqok": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.digikam": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.dolphin": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.elisa": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.falkon": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.filelight": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.francis": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.gcompris": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.granatier": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.gwenview": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.haruna": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.index": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.isoimagewriter": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.itinerary": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.juk": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kaffeine": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kalgebra": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kalk": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kalzium": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kamoso": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kanagram": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kapman": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kasts": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.katomic": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kbibtex": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kblackbox": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kblocks": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kbounce": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kbreakout": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kbruch": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kcachegrind": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kcalc": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kclock": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kcolorchooser": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kdenlive": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kdevelop": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kdiamond": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kdiff3": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.keysmith": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kfind": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kfourinline": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kgeography": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kgeotag": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kget": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kgoldrunner": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kgraphviewer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.khangman": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kid3": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kig": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kigo": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kile": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.killbots": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kimagemapeditor": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kiriki": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kiten": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kjumpingcube": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kleopatra": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.klettres": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.klickety": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.klines": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kmahjongg": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kmines": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kmplayer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kmplot": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kmymoney": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.knavalbattle": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.knetwalk": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.knights": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.koko": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kolf": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kollision": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kolourpaint": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kommit": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kompare": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kongress": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.konquest": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.konsole": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kontact": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kontrast": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.konversation": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kpat": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kphotoalbum": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.krdc": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.krename": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kreversi": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.krita": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kronometer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kruler": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ksirk": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ksnakeduel": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ksquares": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kst": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kstars": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ksudoku": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kteatime": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ktimetracker": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ktorrent": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ktouch": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ktrip": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ktuberling": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kturtle": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kubrick": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kuiviewer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kwalletmanager5": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kweather": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kwordquiz": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kwrite": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.kxstitch": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.labplot2": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.lokalize": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.lskat": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.marble": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.massif-visualizer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.minuet": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.neochat": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.okteta": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.okular": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.palapeli": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.parley": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.peruse": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.picmi": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.pix": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.plasmatube": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.qmlkonsole": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.rocs": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.ruqola": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.skanpage": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.skrooge": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.subtitlecomposer": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.tellico": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.telly-skout": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.tokodon": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.umbrello": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.vvave": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.yakuake": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     }
 }
