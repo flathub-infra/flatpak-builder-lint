@@ -52,6 +52,10 @@ class MetainfoCheck(Check):
 
         component = appstream.parse_xml(metainfo_path).xpath("/component")
 
+        if not component:
+            self.errors.add("metainfo-missing-component-tag")
+            return
+
         if component[0].attrib.get("type") is None:
             self.errors.add("metainfo-missing-component-type")
 
