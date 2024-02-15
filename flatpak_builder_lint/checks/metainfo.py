@@ -2,6 +2,7 @@ import glob
 import os
 import re
 import tempfile
+from typing import List
 
 from .. import appstream, builddir, ostree
 from . import Check
@@ -40,10 +41,14 @@ class MetainfoCheck(Check):
         if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
 
-            for err in metainfo_validation["stderr"].split(":", 1)[1:]:
+            for err in metainfo_validation["stderr"].splitlines():
                 self.appstream.add(err.strip())
-            for out in metainfo_validation["stdout"].splitlines()[1:]:
-                self.appstream.add(re.sub("^\u2022", "", out).strip())
+
+            stdout: List[str] = list(
+                filter(None, metainfo_validation["stdout"].splitlines()[:-1])
+            )
+            for out in stdout:
+                self.appstream.add(out.strip())
 
         component = appstream.parse_xml(metainfo_path).xpath("/component")
 
