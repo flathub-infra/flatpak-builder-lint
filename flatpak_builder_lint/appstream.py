@@ -23,6 +23,7 @@ def validate(path: str) -> dict:
         "cid-rdns-contains-hyphen": "error",
         "console-app-no-binary": "info",
         "content-rating-missing": "error",
+        "desktop-app-launchable-omitted": "error",
         "desktop-file-not-found": "error",
         "developer-id-missing": "error",
         "invalid-child-tag-name": "error",
