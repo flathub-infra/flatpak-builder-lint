@@ -9,8 +9,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    container:
-      image: debian:testing
     steps:
       - uses: actions/checkout@v3
 
@@ -20,13 +18,13 @@ jobs:
 
       - name: Install flatpak-builder
         run: |
-          apt-get update
-          apt-get install -y flatpak-builder jq appstream curl
+          sudo apt-get update
+          sudo apt-get install -y flatpak-builder jq appstream curl
 
       - name: Setup Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
-          ln -s /github/home/.local/bin/poetry /usr/bin/poetry
+          sudo ln -s /github/home/.local/bin/poetry /usr/bin/poetry
 
       - uses: actions/cache@v3
         with:
