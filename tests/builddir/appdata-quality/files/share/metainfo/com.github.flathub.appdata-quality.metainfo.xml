@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--This file should pass validation using appstreamcli of linter-->
 <component>
   <id>com.github.flathub.appdata-quality</id>
   <name>Example</name>
@@ -21,6 +22,6 @@
     <keyword>Foo</keyword>
   </keywords>
   <categories>
-    <category>Foo</category>
+    <category>Utility</category>
   </categories>
 </component>

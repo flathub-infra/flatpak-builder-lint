@@ -120,3 +120,6 @@ def test_builddir_quality_guidelines() -> None:
         assert w in found_warnings
     for e in errors:
         assert e in found_errors
+    # If present, it means a metainfo file that was validating
+    # correctly broke and that should be fixed
+    assert "appstream-failed-validation" not in found_errors
