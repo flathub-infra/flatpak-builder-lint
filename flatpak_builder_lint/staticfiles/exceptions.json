@@ -2391,5 +2391,8 @@
     "org.kde.kopete": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "io.github.Sunderland93.sway-input-config": {
+        "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
     }
 }
