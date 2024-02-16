@@ -18,7 +18,6 @@ def validate(path: str) -> dict:
         "category-invalid": "error",
         "cid-desktopapp-is-not-rdns": "error",
         "cid-has-number-prefix": "error",
-        "cid-maybe-not-rdns": "error",
         "cid-missing-affiliation-gnome": "error",
         "cid-rdns-contains-hyphen": "error",
         "content-rating-missing": "error",
@@ -31,7 +30,6 @@ def validate(path: str) -> dict:
         "metainfo-multiple-components": "error",
         "name-has-dot-suffix": "error",
         "releases-info-missing": "error",
-        "spdx-license-unknown": "error",
         "unknown-tag": "error",
     }
 
