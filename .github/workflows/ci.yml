@@ -19,7 +19,13 @@ jobs:
       - name: Install flatpak-builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak-builder jq appstream curl
+          sudo apt-get install -y flatpak flatpak-builder jq curl dbus-daemon
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.flatpak.Builder//stable
+          echo '#!/bin/sh' > /usr/local/bin/appstreamcli
+          echo "exec dbus-run-session flatpak run --filesystem=/tmp --command=appstreamcli org.flatpak.Builder \${@}" >> /usr/local/bin/appstreamcli
+          chmod +x /usr/local/bin/appstreamcli
+          appstreamcli --version
 
       - name: Setup Poetry
         run: |
