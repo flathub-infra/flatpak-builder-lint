@@ -21,7 +21,6 @@ def validate(path: str) -> dict:
         "cid-maybe-not-rdns": "error",
         "cid-missing-affiliation-gnome": "error",
         "cid-rdns-contains-hyphen": "error",
-        "console-app-no-binary": "info",
         "content-rating-missing": "error",
         "desktop-app-launchable-omitted": "error",
         "desktop-file-not-found": "error",
