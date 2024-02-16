@@ -112,6 +112,24 @@ def has_manifest_key(path: str) -> bool:
     return False
 
 
+def has_icon_key(path: str) -> bool:
+    return bool(components(path)[0].xpath("icon"))
+
+
+def icon_no_type(path: str) -> bool:
+    for icon in parse_xml(path).findall("component/icon"):
+        if icon.attrib.get("type") is None:
+            return True
+    return False
+
+
+def is_remote_icon_mirrored(path: str) -> bool:
+    remote_icons = parse_xml(path).xpath("//icon[@type='remote']/text()")
+    return all(
+        icon.startswith("https://dl.flathub.org/media/") for icon in remote_icons
+    )
+
+
 def get_icon_filename(path: str) -> Optional[str]:
     if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
         return str(icons[0].text)

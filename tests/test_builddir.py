@@ -126,3 +126,20 @@ def test_builddir_quality_guidelines() -> None:
     # If present, it means a metainfo file that was validating
     # correctly broke and that should be fixed
     assert "appstream-failed-validation" not in found_errors
+
+
+def test_builddir_broken_icon() -> None:
+    ret = run_checks("tests/builddir/appstream-broken-icon")
+    errors = {
+        "appstream-icon-key-no-type",
+        # Expected failure with appstreamcli validate
+        "appstream-failed-validation",
+        "appstream-remote-icon-not-mirrored",
+        "no-exportable-icon-installed",
+        "appstream-missing-icon-file",
+        "finish-args-not-defined",
+        "desktop-file-not-installed",
+    }
+    found_errors = set(ret["errors"])
+    for e in errors:
+        assert e in found_errors

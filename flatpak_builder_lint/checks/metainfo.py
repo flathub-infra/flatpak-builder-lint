@@ -89,6 +89,12 @@ class MetainfoCheck(Check):
 
             if not os.path.exists(appinfo_icon_path):
                 self.errors.add("appstream-missing-icon-file")
+            if not appstream.has_icon_key(appstream_path):
+                self.errors.add("appstream-missing-icon-key")
+            if appstream.icon_no_type(appstream_path):
+                self.errors.add("appstream-icon-key-no-type")
+            if not appstream.is_remote_icon_mirrored(appstream_path):
+                self.errors.add("appstream-remote-icon-not-mirrored")
 
             if os.path.exists(icon_path):
                 icon_list = [
