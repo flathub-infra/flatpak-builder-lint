@@ -119,9 +119,8 @@ class MetainfoCheck(Check):
             if summary.endswith("."):
                 self.warnings.add("appstream-summary-ends-in-dot")
 
-    # https://github.com/flathub-infra/flatpak-builder-lint/issues/280
-    #        if not appstream.check_caption(appstream_path):
-    #            self.warnings.add("appstream-screenshot-missing-caption")
+        if not appstream.check_caption(appstream_path):
+            self.warnings.add("appstream-screenshot-missing-caption")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
