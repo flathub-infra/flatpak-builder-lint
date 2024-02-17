@@ -114,6 +114,7 @@ def test_builddir_quality_guidelines() -> None:
     warnings = {
         "appstream-name-too-long",
         "appstream-summary-too-long",
+        "appstream-summary-ends-in-dot",
     }
     found_warnings = set(ret["warnings"])
     found_errors = set(ret["errors"])
