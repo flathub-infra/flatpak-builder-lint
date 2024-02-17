@@ -5,6 +5,7 @@
         "--device=shm",
         "--filesystem=home",
         "--filesystem=host",
+        "--filesystem=/run/media:ro",
         "--filesystem=xdg-cache:create",
         "--filesystem=xdg-config/autostart",
         "--filesystem=xdg-config/kdeglobals:ro",

@@ -88,6 +88,7 @@ def test_manifest_finish_args() -> None:
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
+    assert "finish-args-absolute-run-media-path" not in found_errors
 
 
 def test_manifest_finish_args_issue_33() -> None:

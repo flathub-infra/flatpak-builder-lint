@@ -28,6 +28,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-own-name",
         "finish-args-portal-talk-name",
+        "finish-args-absolute-run-media-path",
     }
 
     warnings = {
