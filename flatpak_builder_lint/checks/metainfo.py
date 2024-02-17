@@ -113,8 +113,11 @@ class MetainfoCheck(Check):
 
         if name is not None and len(name) > 20:
             self.warnings.add("appstream-name-too-long")
-        if summary is not None and len(summary) > 35:
-            self.warnings.add("appstream-summary-too-long")
+        if summary is not None:
+            if len(summary) > 35:
+                self.warnings.add("appstream-summary-too-long")
+            if summary.endswith("."):
+                self.warnings.add("appstream-summary-ends-in-dot")
 
     # https://github.com/flathub-infra/flatpak-builder-lint/issues/280
     #        if not appstream.check_caption(appstream_path):
