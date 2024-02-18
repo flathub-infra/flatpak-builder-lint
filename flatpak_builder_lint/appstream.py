@@ -9,7 +9,7 @@ Element = etree._Element
 ElementTree = etree._ElementTree
 
 
-def validate(path: str) -> dict:
+def validate(path: str, *args: str) -> dict:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
 
@@ -36,7 +36,7 @@ def validate(path: str) -> dict:
     overrides_value = ",".join([f"{k}={v}" for k, v in overrides.items()])
 
     cmd = subprocess.run(
-        ["appstreamcli", "validate", "--no-net", f"--override={overrides_value}", path],
+        ["appstreamcli", "validate", f"--override={overrides_value}", *args, path],
         capture_output=True,
     )
 

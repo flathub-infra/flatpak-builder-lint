@@ -37,7 +37,7 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-metainfo-missing")
             return
 
-        metainfo_validation = appstream.validate(metainfo_path)
+        metainfo_validation = appstream.validate(metainfo_path, "--no-net")
         if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
 

@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Union
 import requests
 import sentry_sdk
 
-from . import __version__, builddir, checks, manifest, ostree, staticfiles
+from . import __version__, appstream, builddir, checks, manifest, ostree, staticfiles
 
 if sentry_dsn := os.getenv("SENTRY_DSN"):
     sentry_sdk.init(sentry_dsn)
@@ -145,11 +145,11 @@ def main() -> int:
     parser.add_argument(
         "type",
         help="type of artifact to lint",
-        choices=["builddir", "repo", "manifest"],
+        choices=["builddir", "repo", "manifest", "appstream"],
     )
     parser.add_argument(
         "path",
-        help="path to flatpak-builder manifest or Flatpak build directory",
+        help="path to artifact",
         type=str,
         nargs=1,
     )
@@ -165,12 +165,18 @@ def main() -> int:
     if args.ref:
         checks.Check.repo_primary_ref = args.ref[0]
 
-    if results := run_checks(args.type, path, args.exceptions, args.appid):
-        if "errors" in results:
-            exit_code = 1
+    if args.type != "appstream":
+        if results := run_checks(args.type, path, args.exceptions, args.appid):
+            if "errors" in results:
+                exit_code = 1
 
-        output = json.dumps(results, indent=4)
-        print(output)
+            output = json.dumps(results, indent=4)
+            print(output)
+    else:
+        appstream_results = appstream.validate(path, "--explain")
+        print(appstream_results["stdout"])
+        print(appstream_results["stderr"])
+        exit_code = appstream_results["returncode"]
 
     sys.exit(exit_code)
 
