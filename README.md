@@ -47,26 +47,30 @@ Additional tools are required by subcommands and checks:
 
 - `flatpak-builder` for validating flatpak-builder manifests,
 - `ostree` for validating ostree repositories containing builds,
-- `appstreamcli` from `appstream` for validating AppStream.
+- `appstreamcli` from `appstream` for validating AppStream files.
 
 ### Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--json] [--version] [--exceptions] [--appid APPID] {builddir,repo,manifest} path
+usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--appid APPID] [--cwd] [--ref REF]
+                            {builddir,repo,manifest,appstream} path
 
 A linter for Flatpak builds and flatpak-builder manifests
 
 positional arguments:
-  {builddir,repo,manifest}
+  {builddir,repo,manifest,appstream}
                         type of artifact to lint
-  path                  path to flatpak-builder manifest or Flatpak build directory
+  path                  path to artifact
 
 options:
   -h, --help            show this help message and exit
-  --json                output in JSON format
   --version             show program's version number and exit
   --exceptions          skip allowed warnings or errors
   --appid APPID         override app ID
+  --cwd                 override the path parameter with current working directory
+  --ref REF             override the primary ref detection
+
+If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint
 ```
 
 [poetry]: https://python-poetry.org/docs/#installation
