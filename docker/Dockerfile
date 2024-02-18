@@ -1,5 +1,15 @@
+FROM ubuntu as builder
+
+RUN apt-get update && apt-get install -y bzip2 flatpak-builder git python3 python3-requirement-parser python3-toml
+
+RUN mkdir -p /build
+COPY build.sh rewrite-manifest.py flatpak-builder-lint-deps.json /build/
+WORKDIR /build
+RUN bash -x ./build.sh
+
+
 FROM docker.io/freedesktopsdk/sdk:23.08
-ADD org.flatpak.Builder/builddir/files /app
+COPY --from=builder /build/org.flatpak.Builder/builddir/files /app
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
