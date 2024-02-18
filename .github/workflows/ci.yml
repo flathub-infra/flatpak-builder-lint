@@ -19,7 +19,7 @@ jobs:
       - name: Install flatpak-builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder jq curl dbus-daemon
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y flathub org.flatpak.Builder//stable
           echo '#!/bin/sh' > /usr/local/bin/appstreamcli
@@ -57,4 +57,4 @@ jobs:
         run: poetry run pytest -v tests
 
       - name: Validate exceptions.json
-        run: jq . < flatpak_builder_lint/staticfiles/exceptions.json
+        run: python3 validator.py
