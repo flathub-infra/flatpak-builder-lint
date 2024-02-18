@@ -1248,7 +1248,9 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kate": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kdevelop": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
