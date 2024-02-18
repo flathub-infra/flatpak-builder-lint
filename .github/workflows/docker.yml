@@ -20,6 +20,8 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --allow-insecure-entitlement security.insecure
 
       - name: Login to ghcr.io
         uses: docker/login-action@v3
@@ -34,6 +36,7 @@ jobs:
           context: docker
           file: docker/Dockerfile
           platforms: linux/amd64,linux/arm64
+          allow: security.insecure
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
@@ -58,6 +61,7 @@ jobs:
           context: docker
           file: docker/Dockerfile
           platforms: linux/amd64,linux/arm64
+          allow: security.insecure
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}

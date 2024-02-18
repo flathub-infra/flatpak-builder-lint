@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1-labs
 FROM ubuntu as builder
 
 RUN apt-get update && apt-get install -y bzip2 flatpak-builder git python3 python3-requirement-parser python3-toml
@@ -5,7 +6,7 @@ RUN apt-get update && apt-get install -y bzip2 flatpak-builder git python3 pytho
 RUN mkdir -p /build
 COPY build.sh rewrite-manifest.py flatpak-builder-lint-deps.json /build/
 WORKDIR /build
-RUN bash -x ./build.sh
+RUN --security=insecure bash -x ./build.sh
 
 
 FROM docker.io/freedesktopsdk/sdk:23.08
