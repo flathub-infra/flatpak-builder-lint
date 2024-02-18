@@ -29,6 +29,7 @@ flatpak-builder-lint = "flatpak_builder_lint.cli:main"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+ruff = "^0.2.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
