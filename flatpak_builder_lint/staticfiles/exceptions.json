@@ -1217,7 +1217,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gnome.World.PikaBackup": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-data-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
     },
     "org.godotengine.Godot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1378,7 +1379,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.dropbox.Client": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
     },
     "com.elsevier.MendeleyDesktop": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1765,14 +1767,8 @@
     "org.tribler.Tribler": {
         "finish-args-wildcard-kde-own-name": "Initial import, Qsystemtrayicon still uses legacy StatusNotifier implementation"
     },
-    "com.dropbox.Client": {
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
-    },
     "us.zoom.Zoom": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
-    },
-    "org.gnome.World.PikaBackup": {
-        "finish-args-unnecessary-xdg-data-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
     },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
