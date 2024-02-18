@@ -1238,31 +1238,47 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.kde.dolphin": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.gwenview": {
-        "finish-args-unnecessary-xdg-data-access": "required for access to Trash until Portal support is added"
+        "finish-args-unnecessary-xdg-data-access": "required for access to Trash until Portal support is added",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kate": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.kde.kdevelop": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kile": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.konsole": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.qmlkonsole": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.ruqola": {
-        "flathub-json-skip-appstream-check": "the app predates this linter rule"
+        "flathub-json-skip-appstream-check": "the app predates this linter rule",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.yakuake": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.mozilla.Thunderbird": {
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
@@ -1856,10 +1872,6 @@
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
-    "org.kde.dolphin": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.elisa": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
@@ -1881,10 +1893,6 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.granatier": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
-    "org.kde.gwenview": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
@@ -1988,10 +1996,6 @@
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
-    "org.kde.kdevelop": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.kdiamond": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
@@ -2045,10 +2049,6 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kigo": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
-    "org.kde.kile": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
@@ -2149,10 +2149,6 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.konquest": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
-    "org.kde.konsole": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
@@ -2340,15 +2336,7 @@
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
-    "org.kde.qmlkonsole": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.rocs": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
-    "org.kde.ruqola": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
@@ -2381,10 +2369,6 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.vvave": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
-    "org.kde.yakuake": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
