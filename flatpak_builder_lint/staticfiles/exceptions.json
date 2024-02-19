@@ -1200,11 +1200,6 @@
     "se.emijoh.mpw": {
         "finish-args-not-defined": "It is a command line package"
     },
-    "org.freedesktop.LinuxAudio.BaseExtension": {
-        "toplevel-no-command": "It is a base app without anything to run",
-        "finish-args-not-defined": "It is a base app without anything to run",
-        "flathub-json-skip-appstream-check": "No appstream either"
-    },
     "org.gabmus.gfeeds": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
@@ -1808,6 +1803,9 @@
         "*": "This is a baseapp"
     },
     "io.liri.BaseApp": {
+        "*": "This is a baseapp"
+    },
+    "org.freedesktop.LinuxAudio.BaseExtension": {
         "*": "This is a baseapp"
     },
     "org.kde.Ikona": {
