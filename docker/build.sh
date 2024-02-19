@@ -14,10 +14,10 @@ mv flatpak-builder-lint-deps.json org.flatpak.Builder/flatpak-builder-lint-deps.
 python3 rewrite-manifest.py
 
 case $1 in
-    linux/amd64)
+    amd64)
         arch=x86_64
         ;;
-    linux/arm64)
+    arm64)
         arch=aarch64
         ;;
 esac

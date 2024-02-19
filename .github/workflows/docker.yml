@@ -14,7 +14,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        platform: [linux/amd64, linux/arm64]
+        platform: [amd64, arm64]
     steps:
       - uses: actions/checkout@v3
 
@@ -47,7 +47,7 @@ jobs:
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: ${{ matrix.platform }}
+          platforms: linux/${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
@@ -69,7 +69,7 @@ jobs:
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: ${{ matrix.platform }}
+          platforms: linux/${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
