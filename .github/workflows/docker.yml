@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64]
     steps:
       - uses: actions/checkout@v3
 
@@ -20,8 +23,6 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          buildkitd-flags: --allow-insecure-entitlement security.insecure
 
       - name: Login to ghcr.io
         uses: docker/login-action@v3
@@ -30,17 +31,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build flatpak-builder-lint
+        run: |
+          cd docker
+          bash -x ./build.sh ${{ matrix.platform }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          allow: security.insecure
+          platforms: ${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
-            ghcr.io/flathub-infra/flatpak-builder-lint:latest
+            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
@@ -60,12 +65,11 @@ jobs:
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          allow: security.insecure
+          platforms: ${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
-            ghcr.io/flathub/flatpak-builder-lint:latest
+            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/flathub/flatpak-builder-lint:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
