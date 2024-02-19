@@ -41,7 +41,7 @@ jobs:
           context: docker
           file: docker/Dockerfile
           platforms: linux/${{ matrix.platform }}
-          load: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
           labels: |
@@ -50,6 +50,7 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
 
   docker-manifest:
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     needs:
       - docker
@@ -69,20 +70,17 @@ jobs:
             ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} \
             --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
             --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
-            --annotation "index:org.opencontainers.image.revision=${{ github.sha }}" \
-            --annotation "index:org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git" \
-            --annotation "index:org.opencontainers.image.url=https://github.com/${{ github.repository }}"
 
           docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
 
-      - name: Tag and push latest
-        if: ${{ github.event_name != 'pull_request' }}
-        run: |
-          docker tag ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} ghcr.io/flathub-infra/flatpak-builder-lint:latest
-          docker push ghcr.io/flathub-infra/flatpak-builder-lint:latest
+          docker manifest create \
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:latest
 
       - name: Login to ghcr.io using Flathub credentials
-        if: ${{ github.event_name != 'pull_request' }}
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -90,10 +88,17 @@ jobs:
           password: ${{ secrets.FLATHUB_ORG_TOKEN }}
 
       - name: Push image to the old location
-        if: ${{ github.event_name != 'pull_request' }}
         run: |
-          docker tag ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
-          docker push ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
+          docker manifest create \
+            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }} \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
 
-          docker tag ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} ghcr.io/flathub/flatpak-builder-lint:latest
-          docker push ghcr.io/flathub/flatpak-builder-lint:latest
+          docker manifest push ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
+
+          docker manifest create \
+            ghcr.io/flathub/flatpak-builder-lint:latest \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub/flatpak-builder-lint:latest
