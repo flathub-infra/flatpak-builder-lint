@@ -900,6 +900,10 @@
     "org.gnome.dfeet": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
+    "org.gnome.FontManager": {
+        "finish-args-unnecessary-xdg-config-access": "Needed for supporting system-wide font config",
+        "finish-args-unnecessary-xdg-data-access": "Needed for supporting system-wide font installations"
+    },
     "org.freedesktop.Bustle": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
