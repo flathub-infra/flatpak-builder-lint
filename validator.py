@@ -1,22 +1,34 @@
-import collections
+import argparse
 import json
-import sys
+from typing import Any, Sequence
 
-def check_duplicates(pairs):
-    count = collections.Counter(i for i,j in pairs)
-    duplicates = ", ".join(i for i,j in count.items() if j>1)
+def check_duplicates(
+    pairs: list[tuple[str, Any]],
+) -> dict[str, Any]:
+    d = {}
+    for key, val in pairs:
+        if key in d:
+            raise ValueError(f"Duplicate key(s) found: {key}")
+        else:
+            d[key] = val
+    return d
 
-    if len(duplicates) != 0:
-        print("Duplicate keys found: {}".format(duplicates))
-        sys.exit(1)
 
-def validate(pairs):
-    check_duplicates(pairs)
-    return dict(pairs)
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filenames", nargs="*", help="Input filenames")
+    args = parser.parse_args(argv)
 
-with open("flatpak_builder_lint/staticfiles/exceptions.json", "r") as file:
-    try:
-        obj = json.load(file, object_pairs_hook=validate)
-    except ValueError as e:
-        print("Invalid json: %s" % e)
-        sys.exit(1)
+    exit_code = 0
+    for filename in args.filenames:
+        with open(filename, "r") as f:
+            try:
+                json.load(f, object_pairs_hook=check_duplicates)
+            except ValueError as err:
+                print(f"{filename}: Failed to decode: {err}")
+                exit_code = 1
+    return exit_code
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
