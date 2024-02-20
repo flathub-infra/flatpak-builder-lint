@@ -2,6 +2,26 @@ import argparse
 import json
 from typing import Any, Sequence
 
+known_exceptions = {
+    "appid-code-hosting-too-few-components",
+    "appid-ends-with-lowercase-desktop",
+    "appid-uses-code-hosting-domain",
+    "appstream-failed-validation",
+    "appstream-missing-developer-name",
+    "desktop-file-failed-validation",
+    "finish-args-arbitrary-autostart-access",
+    "finish-args-arbitrary-dbus-access",
+    "finish-args-arbitrary-xdg-data-access",
+    "finish-args-contains-both-x11-and-wayland",
+    "finish-args-flatpak-spawn-access",
+    "finish-args-not-defined",
+    "finish-args-unnecessary-xdg-cache-access",
+    "finish-args-unnecessary-xdg-config-access",
+    "finish-args-unnecessary-xdg-data-access",
+    "finish-args-wildcard-kde-own-name",
+    "flathub-json-modified-publish-delay",
+}
+
 def check_duplicates(
     pairs: list[tuple[str, Any]],
 ) -> dict[str, Any]:
