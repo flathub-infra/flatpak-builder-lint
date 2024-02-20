@@ -4,9 +4,6 @@
         "toplevel-no-command": "another nonsensical reason",
         "flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
     },
-    "org.flathub.exceptions_wildcard": {
-        "*": "ignore all errors and warnings"
-    },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak"
     },
