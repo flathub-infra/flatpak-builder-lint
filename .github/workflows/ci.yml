@@ -71,4 +71,4 @@ jobs:
         run: poetry run pytest -v tests
 
       - name: Validate exceptions.json
-        run: python3 validator.py
+        run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json
