@@ -2,23 +2,19 @@ name: Docker
 
 on:
   push:
-    branches: 
+    branches:
       - master
-  pull_request:
-    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     permissions:
       packages: write
+    strategy:
+      matrix:
+        platform: [amd64, arm64]
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -33,29 +29,32 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build flatpak
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak-builder
-          cd docker
-          bash -x ./build.sh
+      - name: Cache flatpak build
+        uses: actions/cache@v3
+        with:
+          path: docker/.flatpak-builder
+          key: fb-${{ matrix.platform }}-${{ hashFiles('poetry.lock') }}
 
-      - name: Build and push Docker image
+      - name: Build flatpak-builder-lint
+        run: |
+          cd docker
+          bash -x ./build.sh ${{ matrix.platform }}
+
+      - name: Build and push image
         uses: docker/build-push-action@v5
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
+          provenance: false
           tags: |
-            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
-            ghcr.io/flathub-infra/flatpak-builder-lint:latest
+            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Login to ghcr.io using Flathub credentials
         uses: docker/login-action@v3
@@ -69,14 +68,68 @@ jobs:
         with:
           context: docker
           file: docker/Dockerfile
-          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
+          provenance: false
           tags: |
-            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
-            ghcr.io/flathub/flatpak-builder-lint:latest
+            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/flathub/flatpak-builder-lint:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  docker-manifest:
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    needs:
+      - docker
+    permissions:
+      packages: write
+    steps:
+      - name: Login to ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push manifest
+        run: |
+          docker manifest create \
+            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
+
+          docker manifest create \
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:latest
+
+      - name: Login to ghcr.io using Flathub credentials
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.FLATHUB_ORG_USER }}
+          password: ${{ secrets.FLATHUB_ORG_TOKEN }}
+
+      - name: Push manifest to the old location
+        run: |
+          docker manifest create \
+            ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }} \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }}
+
+          docker manifest create \
+            ghcr.io/flathub/flatpak-builder-lint:latest \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
+            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+
+          docker manifest push ghcr.io/flathub/flatpak-builder-lint:latest
