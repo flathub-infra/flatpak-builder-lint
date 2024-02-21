@@ -101,6 +101,28 @@ def test_manifest_finish_args_issue_33() -> None:
     assert "finish-args-unnecessary-appid-own-name" in found_errors
 
 
+def test_manifest_display_stuff() -> None:
+
+    absents = {
+        "finish-args-fallback-x11-without-wayland",
+        "finish-args-only-wayland",
+    }
+
+    for file in (
+        "display-supported1.json",
+        "display-supported2.json",
+        "display-supported3.json",
+    ):
+        ret = run_checks(f"tests/manifests/{file}")
+        found_errors = set(ret["errors"])
+        for a in absents:
+            assert a not in found_errors
+
+    ret = run_checks("tests/manifests/display-only-wayland.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-only-wayland" in found_errors
+
+
 def test_manifest_finish_args_empty() -> None:
     ret = run_checks("tests/manifests/finish_args_empty.json")
     found_errors = set(ret["errors"])

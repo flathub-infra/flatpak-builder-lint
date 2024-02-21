@@ -1,0 +1,6 @@
+[Application]
+name=org.flathub.display_supported
+
+[Context]
+sockets=fallback-x11;wayland;
+

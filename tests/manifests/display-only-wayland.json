@@ -1,0 +1,6 @@
+{
+    "app-id": "org.flathub.display_only_wayland",
+    "finish-args": [
+        "--socket=wayland"
+    ]
+}
