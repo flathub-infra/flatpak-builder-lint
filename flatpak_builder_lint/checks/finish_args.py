@@ -24,6 +24,12 @@ class FinishArgsCheck(Check):
         ):
             self.errors.add("finish-args-fallback-x11-without-wayland")
 
+        if "wayland" in finish_args["socket"] and (
+            "x11" not in finish_args["socket"]
+            and "fallback-x11" not in finish_args["socket"]
+        ):
+            self.errors.add("finish-args-only-wayland")
+
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
             regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
