@@ -30,6 +30,21 @@ class FinishArgsCheck(Check):
         ):
             self.errors.add("finish-args-only-wayland")
 
+        for socket in finish_args["socket"]:
+            if socket.startswith("!"):
+                soc = socket.removeprefix("!")
+                self.errors.add(f"finish-args-has-nosocket-{soc}")
+
+        for share in finish_args["share"]:
+            if share.startswith("!"):
+                shr = share.removeprefix("!")
+                self.errors.add(f"finish-args-has-unshare-{shr}")
+
+        for dev in finish_args["device"]:
+            if dev.startswith("!"):
+                dv = dev.removeprefix("!")
+                self.errors.add(f"finish-args-has-nodevice-{dv}")
+
         for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
             regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
@@ -144,6 +159,15 @@ class FinishArgsCheck(Check):
                 split = arg.split("=")
                 key = split[0].removeprefix("--")
                 value = "=".join(split[1:])
+                if key == "nodevice":
+                    key = "device"
+                    value = "!" + value
+                if key == "nosocket":
+                    key = "socket"
+                    value = "!" + value
+                if key == "unshare":
+                    key = "share"
+                    value = "!" + value
                 fa[key].add(value)
 
         self._validate(appid, fa)

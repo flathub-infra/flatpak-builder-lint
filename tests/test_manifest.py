@@ -72,6 +72,9 @@ def test_manifest_finish_args() -> None:
         "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-talk-name",
         "finish-args-portal-own-name",
+        "finish-args-has-nodevice-dri",
+        "finish-args-has-unshare-network",
+        "finish-args-has-nosocket-cups",
     }
 
     warnings = {
@@ -82,13 +85,20 @@ def test_manifest_finish_args() -> None:
         "finish-args-contains-both-x11-and-fallback",
     }
 
+    expected_absents = {
+        "finish-args-absolute-run-media-path",
+        "finish-args-has-nodevice-shm",
+        "finish-args-has-nosocket-fallback-x11",
+    }
+
     ret = run_checks("tests/manifests/finish_args.json")
     found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
-    assert "finish-args-absolute-run-media-path" not in found_errors
+    for a in expected_absents:
+        assert a not in found_errors
 
 
 def test_manifest_finish_args_issue_33() -> None:

@@ -29,6 +29,9 @@ def test_builddir_finish_args() -> None:
         "finish-args-wildcard-kde-own-name",
         "finish-args-portal-talk-name",
         "finish-args-absolute-run-media-path",
+        "finish-args-has-nodevice-dri",
+        "finish-args-has-unshare-network",
+        "finish-args-has-nosocket-cups",
     }
 
     warnings = {
@@ -37,12 +40,19 @@ def test_builddir_finish_args() -> None:
         "finish-args-redundant-device-all",
     }
 
+    expected_absents = {
+        "finish-args-has-nodevice-shm",
+        "finish-args-has-nosocket-fallback-x11",
+    }
+
     ret = run_checks("tests/builddir/finish_args")
     found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
+    for a in expected_absents:
+        assert a not in found_errors
 
 
 def test_builddir_display_supported() -> None:
