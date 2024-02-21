@@ -3,6 +3,7 @@
     "finish-args": [
         "--device=all",
         "--device=shm",
+        "--nodevice=dri",
         "--filesystem=home",
         "--filesystem=host",
         "--filesystem=/run/media:ro",
@@ -17,11 +18,13 @@
         "--socket=wayland",
         "--socket=x11",
         "--socket=fallback-x11",
+        "--nosocket=cups",
         "--talk-name=org.gtk.vfs",
         "--talk-name=org.freedesktop.Flatpak",
         "--talk-name=org.kde.*",
         "--own-name=org.gnome.*",
         "--talk-name=org.freedesktop.*",
-        "--own-name=org.freedesktop.portal.Foo"
+        "--own-name=org.freedesktop.portal.Foo",
+        "--unshare=network"
     ]
 }
