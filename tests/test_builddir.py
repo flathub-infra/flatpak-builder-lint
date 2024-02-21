@@ -45,6 +45,19 @@ def test_builddir_finish_args() -> None:
     assert warnings.issubset(found_warnings)
 
 
+def test_builddir_display_supported() -> None:
+
+    absents = {
+        "finish-args-fallback-x11-without-wayland",
+        "finish-args-only-wayland",
+    }
+
+    ret = run_checks("tests/builddir/display-supported")
+    found_errors = set(ret["errors"])
+    for a in absents:
+        assert a not in found_errors
+
+
 def test_builddir_finish_args_missing() -> None:
     ret = run_checks("tests/builddir/finish_args_missing")
     found_errors = set(ret["errors"])
