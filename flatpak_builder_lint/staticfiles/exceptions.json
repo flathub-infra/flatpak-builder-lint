@@ -1683,7 +1683,8 @@
         "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
     },
     "page.codeberg.JakobDev.jdMinecraftLauncher": {
-        "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications"
+        "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications",
+        "finish-args-contains-both-x11-and-wayland": "Not all Minecraft versions support Wayland"
     },
     "it.mijorus.gearlever": {
         "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu"
