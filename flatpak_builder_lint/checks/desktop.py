@@ -20,8 +20,8 @@ class DesktopfileCheck(Check):
                     group = line[1:-1]
                     data[group] = {}
                 if "=" in line:
-                    key = line.split("=", 1)[0]
-                    value = line.split("=", 1)[1]
+                    key = line.split("=", 1)[0].strip()
+                    value = line.split("=", 1)[1].strip()
                     data[group][key] = value
             return data
         return None
