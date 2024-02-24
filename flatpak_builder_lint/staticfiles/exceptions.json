@@ -1808,6 +1808,9 @@
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "*": "This is a baseapp"
     },
+    "org.flatpak.Builder.BaseApp": {
+        "*": "This is a baseapp used by infra"
+    },
     "org.kde.Ikona": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
