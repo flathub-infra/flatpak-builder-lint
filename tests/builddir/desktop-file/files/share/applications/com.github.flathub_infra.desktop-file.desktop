@@ -8,5 +8,6 @@ Exec=/usr/bin/flatpak run foo
 Icon=org.flathub.foo
 Terminal=false
 Type=Application
-Hidden=true
+# Intentional whitespace
+Hidden = true
 Categories=GTK;Qt
