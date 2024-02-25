@@ -1135,7 +1135,8 @@
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
     "io.github.realmazharhussain.GdmSettings": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-access": "required for 'apply current display settings to GDM' feature"
     },
     "io.github.shiftey.Desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
