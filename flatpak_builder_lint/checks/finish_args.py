@@ -1,4 +1,5 @@
 import re
+import tempfile
 from collections import defaultdict
 from typing import Optional, Set
 
@@ -194,19 +195,26 @@ class FinishArgsCheck(Check):
         self._validate(appid, permissions)
 
     def check_repo(self, path: str) -> None:
-        metadata = ostree.get_metadata(path, self.repo_primary_ref)
-        if not metadata:
+        self._populate_ref(path)
+        ref = self.repo_primary_ref
+        if not ref:
             return
+        appid = ref.split("/")[1]
 
-        appid = metadata.get("name")
-        if isinstance(appid, str):
-            is_baseapp = appid.endswith(".BaseApp")
-        else:
-            is_baseapp = False
+        is_baseapp = appid.endswith(".BaseApp")
 
-        permissions = metadata.get("permissions", {})
-        if not permissions and not is_baseapp:
-            self.errors.add("finish-args-not-defined")
-            return
+        with tempfile.TemporaryDirectory() as tmpdir:
+            ret = ostree.extract_subpath(path, ref, "/metadata", tmpdir)
+            if ret["returncode"] != 0:
+                raise RuntimeError("Failed to extract ostree repo")
 
-        self._validate(appid, permissions)
+            metadata = builddir.parse_metadata(tmpdir)
+            if not metadata:
+                return
+
+            permissions = metadata["permissions"]
+            if not permissions and not is_baseapp:
+                self.errors.add("finish-args-not-defined")
+                return
+
+            self._validate(appid, permissions)
