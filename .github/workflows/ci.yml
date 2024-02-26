@@ -5,6 +5,8 @@ on:
     branches: master
   pull_request:
     branches: master
+    paths-ignore:
+      - 'flatpak_builder_lint/staticfiles/exceptions.json'
 
 jobs:
   lint:
@@ -16,14 +18,28 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install flatpak-builder
+      - name: Set up dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
+
+      - name: Allow file:// clones with git>=2.38.1
+        run: |
+          git config --global protocol.file.allow always
+
+      - name: Build and test org.flatpak.Builder
+        run: |
+          git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git && cd org.flatpak.Builder
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-          flatpak install --user -y flathub org.flatpak.Builder//stable
+          flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
+            --install-deps-from=flathub --default-branch=localtest --ccache \
+            --install builddir org.flatpak.Builder.json
+          flatpak run org.flatpak.Builder//localtest --version
+
+      - name: Set up appstreamcli
+        run: |
           echo '#!/bin/sh' > /usr/local/bin/appstreamcli
-          echo "exec dbus-run-session flatpak run --filesystem=/tmp --command=appstreamcli org.flatpak.Builder \${@}" >> /usr/local/bin/appstreamcli
+          echo "exec dbus-run-session flatpak run --branch=localtest --command=appstreamcli org.flatpak.Builder \${@}" >> /usr/local/bin/appstreamcli
           chmod +x /usr/local/bin/appstreamcli
           appstreamcli --version
 
@@ -57,4 +73,4 @@ jobs:
         run: poetry run pytest -v tests
 
       - name: Validate exceptions.json
-        run: python3 validator.py
+        run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json

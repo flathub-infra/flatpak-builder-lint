@@ -20,10 +20,12 @@ def validate(path: str, *args: str) -> dict:
         "cid-has-number-prefix": "error",
         "cid-missing-affiliation-gnome": "error",
         "cid-rdns-contains-hyphen": "error",
+        "component-name-too-long": "info",
         "content-rating-missing": "error",
         "description-has-plaintext-url": "info",
         "desktop-app-launchable-omitted": "error",
         "desktop-file-not-found": "error",
+        "developer-id-invalid": "info",
         "developer-id-missing": "error",
         "invalid-child-tag-name": "error",
         "metainfo-filename-cid-mismatch": "error",
@@ -31,6 +33,7 @@ def validate(path: str, *args: str) -> dict:
         "metainfo-multiple-components": "error",
         "name-has-dot-suffix": "error",
         "releases-info-missing": "error",
+        "summary-too-long": "info",
         "unknown-tag": "error",
     }
 

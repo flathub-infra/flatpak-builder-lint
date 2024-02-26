@@ -1135,7 +1135,8 @@
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
     "io.github.realmazharhussain.GdmSettings": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-access": "required for 'apply current display settings to GDM' feature"
     },
     "io.github.shiftey.Desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1808,6 +1809,9 @@
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "*": "This is a baseapp"
     },
+    "org.flatpak.Builder.BaseApp": {
+        "*": "This is a baseapp used by infra"
+    },
     "org.kde.Ikona": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
@@ -2378,6 +2382,13 @@
     },
     "org.kde.kdf": {
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.nota": {
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes"
+    },
+    "org.kde.skanlite": {
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes"
     },
     "io.github.Sunderland93.sway-input-config": {
         "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
