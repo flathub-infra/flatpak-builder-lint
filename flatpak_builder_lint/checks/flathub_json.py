@@ -1,3 +1,4 @@
+import tempfile
 from typing import Set
 
 from .. import builddir, ostree
@@ -98,16 +99,20 @@ class FlathubJsonCheck(Check):
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
-
-        if not self.repo_primary_ref:
+        ref = self.repo_primary_ref
+        if not ref:
             return
 
-        metadata = ostree.get_metadata(path, self.repo_primary_ref)
-        if not metadata:
-            return
-
-        flathub_json = ostree.get_flathub_json(path, self.repo_primary_ref)
+        flathub_json = ostree.get_flathub_json(path, ref)
         if not flathub_json:
             return
 
-        self._check_metadata(metadata, flathub_json)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            ret = ostree.extract_subpath(path, ref, "/metadata", tmpdir)
+            if ret["returncode"] != 0:
+                raise RuntimeError("Failed to extract ostree repo")
+
+            metadata = builddir.parse_metadata(tmpdir)
+            if not metadata:
+                return
+            self._check_metadata(metadata, flathub_json)
