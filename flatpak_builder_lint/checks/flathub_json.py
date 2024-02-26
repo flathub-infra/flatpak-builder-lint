@@ -86,7 +86,7 @@ class FlathubJsonCheck(Check):
         self._validate(appid, flathub_json, is_extra_data, is_extension)
 
     def check_build(self, path: str) -> None:
-        metadata = builddir.get_metadata(path)
+        metadata = builddir.parse_metadata(path)
         if not metadata:
             return
 
