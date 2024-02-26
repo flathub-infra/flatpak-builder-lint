@@ -133,10 +133,20 @@ class DesktopfileCheck(Check):
                     pass
 
                 try:
-                    # https://github.com/ximion/appstream/blob/146099484012397f166cd428c56f230487b2d1fc/src/as-desktop-entry.c#L144-L154
+                    # https://github.com/ximion/appstream/blob/a98d98ec1b75d7e9402d8d103802992415075d2f/src/as-utils.c#L1337-L1364
                     # appstreamcli filters these out during compose, "GUI"
                     # is caught by desktop-file-validate
-                    block = {"KDE", "GTK", "Qt", "Application", "GNOME"}
+                    block = {
+                        "GTK",
+                        "Qt",
+                        "KDE",
+                        "GNOME",
+                        "Motif",
+                        "Java",
+                        "Application",
+                        "XFCE",
+                        "DDE",
+                    }
                     catgr: Set[str] = set(
                         filter(None, d["Desktop Entry"]["Categories"].split(";"))
                     )
