@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-from .. import builddir, ostree
+from .. import builddir
 from . import Check
 
 
@@ -46,9 +46,9 @@ class AppIDCheck(Check):
         self._validate(appid)
 
     def check_repo(self, path: str) -> None:
-        metadata = ostree.get_metadata(path, self.repo_primary_ref)
-        if not metadata:
+        self._populate_ref(path)
+        ref = self.repo_primary_ref
+        if not ref:
             return
-
-        appid = metadata.get("name")
+        appid = ref.split("/")[1]
         self._validate(appid)
