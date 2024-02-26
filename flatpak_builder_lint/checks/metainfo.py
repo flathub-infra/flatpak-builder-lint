@@ -31,9 +31,6 @@ class MetainfoCheck(Check):
                     metainfo_path = metainfo_dirext
 
         if metainfo_path is None:
-            return
-
-        if not os.path.exists(metainfo_path):
             self.errors.add("appstream-metainfo-missing")
             return
 
