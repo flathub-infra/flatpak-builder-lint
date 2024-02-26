@@ -21,7 +21,7 @@ jobs:
       - name: Set up dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon git
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
 
       - name: Allow file:// clones with git>=2.38.1
         run: |

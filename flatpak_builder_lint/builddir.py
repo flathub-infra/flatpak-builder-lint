@@ -2,11 +2,12 @@ import errno
 import json
 import os
 from collections import defaultdict
-from configparser import ConfigParser
 from typing import Optional
 
+from gi.repository import GLib
 
-def get_metadata(builddir: str) -> dict:
+
+def parse_metadata(builddir: str) -> dict:
     if not os.path.exists(builddir):
         raise OSError(errno.ENOENT, f"No such build directory: {builddir}")
 
@@ -14,50 +15,36 @@ def get_metadata(builddir: str) -> dict:
     if not os.path.exists(metadata_path):
         raise OSError(errno.ENOENT, f"No metadata file in build directory: {builddir}")
 
-    with open(metadata_path, "r") as f:
-        metadata = parse_metadata(f.read())
+    key_file = GLib.KeyFile.new()
+    key_file.load_from_file(metadata_path, GLib.KeyFileFlags.NONE)
 
-    return metadata
+    metadata: dict = {}
 
-
-def parse_metadata(ini: str) -> dict:
-    parser = ConfigParser(interpolation=None)
-    parser.optionxform = str  # type: ignore
-    parser.read_string(ini)
-
-    if "Application" in parser:
-        metadata: dict = dict(parser["Application"])
+    if key_file.get_start_group() == "Application":
         metadata["type"] = "application"
-    elif "Runtime" in parser:
-        metadata = dict(parser["Runtime"])
+        metadata["name"] = key_file.get_value("Application", "name")
+    elif key_file.get_start_group() == "Runtime":
         metadata["type"] = "runtime"
+        metadata["name"] = key_file.get_value("Runtime", "name")
     else:
-        return {}
+        raise GLib.Error("Unknown start group in metadata.")
 
-    if "tags" in metadata:
-        tags = [x for x in metadata["tags"].split(";") if x]
-        metadata["tags"] = tags
-
+    environment: dict = defaultdict(set)
     permissions: dict = defaultdict(set)
 
-    if "Context" in parser:
-        for key in parser["Context"]:
-            permissions[key] = [x for x in parser["Context"][key].split(";") if x]
-        parser.remove_section("Context")
+    if key_file.has_group("Context"):
+        for key in key_file.get_keys("Context")[0]:
+            permissions[key] = key_file.get_string_list("Context", key)
 
-    if "Session Bus Policy" in parser:
-        bus_metadata = parser["Session Bus Policy"]
+    if key_file.has_group("Session Bus Policy"):
+        for key in key_file.get_keys("Session Bus Policy")[0]:
+            bus_val = key_file.get_value("Session Bus Policy", key)
+            permissions[f"{bus_val}-name"].add(key)
 
-        for busname in bus_metadata:
-            bus_permission = bus_metadata[busname]
-            permissions[f"{bus_permission}-name"].add(busname)
-
-    if "System Bus Policy" in parser:
-        bus_metadata = parser["System Bus Policy"]
-
-        for busname in bus_metadata:
-            bus_permission = bus_metadata[busname]
-            permissions[f"system-{bus_permission}-name"].add(busname)
+    if key_file.has_group("System Bus Policy"):
+        for key in key_file.get_keys("System Bus Policy")[0]:
+            bus_val = key_file.get_value("System Bus Policy", key)
+            permissions[f"system-{bus_val}-name"].add(key)
 
     if "shared" in permissions:
         permissions["share"] = permissions.pop("shared")
@@ -76,28 +63,20 @@ def parse_metadata(ini: str) -> dict:
 
     metadata["permissions"] = permissions
 
-    extensions = {}
-    for section in parser:
-        if section.startswith("Extension "):
-            extname = section[10:]
-            extensions[extname] = dict(parser[section])
+    if key_file.has_group("Environment"):
+        for key in key_file.get_keys("Environment")[0]:
+            environment[key] = key_file.get_string_list("Environment", key)
 
-    if extensions:
-        metadata["extensions"] = extensions
+    metadata["environment"] = environment
 
-    if "Build" in parser:
-        metadata["built-extensions"] = [
-            x for x in parser.get("Build", "built-extensions").split(";") if x
-        ]
-
-    if "Extra Data" in parser:
-        metadata["extra-data"] = dict(parser["Extra Data"])
+    if key_file.has_group("Extra Data"):
+        metadata["extra-data"] = "yes"
 
     return metadata
 
 
 def infer_appid(path: str) -> Optional[str]:
-    metadata = get_metadata(path)
+    metadata = parse_metadata(path)
     if metadata:
         return metadata.get("name")
 

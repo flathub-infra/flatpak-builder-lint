@@ -38,7 +38,7 @@ class AppIDCheck(Check):
         self._validate(appid)
 
     def check_build(self, path: str) -> None:
-        metadata = builddir.get_metadata(path)
+        metadata = builddir.parse_metadata(path)
         if not metadata:
             return
 

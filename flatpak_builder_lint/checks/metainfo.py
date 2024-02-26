@@ -132,7 +132,7 @@ class MetainfoCheck(Check):
         appid = builddir.infer_appid(path)
         if not appid:
             return
-        metadata = builddir.get_metadata(path)
+        metadata = builddir.parse_metadata(path)
         if not metadata:
             return
         if metadata.get("type", False) != "application":
