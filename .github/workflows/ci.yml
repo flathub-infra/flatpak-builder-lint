@@ -19,7 +19,7 @@ jobs:
       - name: Install flatpak-builder
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y flathub org.flatpak.Builder//stable
           echo '#!/bin/sh' > /usr/local/bin/appstreamcli
