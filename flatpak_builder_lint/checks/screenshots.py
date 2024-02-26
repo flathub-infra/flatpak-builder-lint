@@ -16,17 +16,10 @@ class ScreenshotsCheck(Check):
         if appid.endswith(".BaseApp"):
             return
 
-        flathub_json = ostree.get_flathub_json(path, ref)
-        if not flathub_json:
-            flathub_json = {}
-
         refs_cmd = ostree.cli(path, "refs", "--list")
         if refs_cmd["returncode"] != 0:
             raise RuntimeError("Failed to list refs")
         refs = refs_cmd["stdout"].splitlines()
-
-        if flathub_json.get("skip-appstream-check"):
-            return
 
         with tempfile.TemporaryDirectory() as tmpdir:
             ret = ostree.extract_subpath(path, ref, "files/share/app-info", tmpdir)
