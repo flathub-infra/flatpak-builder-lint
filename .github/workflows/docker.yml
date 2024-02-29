@@ -32,7 +32,7 @@ jobs:
       - name: Cache flatpak build
         uses: actions/cache@v3
         with:
-          path: docker/.flatpak-builder
+          path: ${{ github.workspace }}/.flatpak-builder
           key: fb-${{ matrix.platform }}-${{ hashFiles('poetry.lock') }}
 
       - name: Build flatpak-builder-lint
