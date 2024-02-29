@@ -52,6 +52,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "flathub-json-deprecated-i386-arch-included",
                     "toplevel-no-command",
                     "flathub-json-skip-appstream-check",
+                    "appstream-missing-appinfo-file",
                 }
                 if not found_exceptions.issubset(known_exceptions):
                     print("Exception not found in known exceptions list", found_exceptions - known_exceptions)
