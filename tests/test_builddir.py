@@ -170,3 +170,22 @@ def test_builddir_broken_icon() -> None:
     found_errors = set(ret["errors"])
     for e in errors:
         assert e in found_errors
+
+
+def test_min_success_metadata() -> None:
+
+    # Illustrate the minimum metadata required to pass linter
+    # These should not be broken
+    for builddir in (
+        "org.flathub.example.BaseApp",
+        "org.flathub.example.extentsion",
+        "org.flathub.example.gui",
+    ):
+        ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}")
+        assert "errors" not in ret
+
+    ret = run_checks(f"tests/builddir/min_success_metadata/org.flathub.example.cli")
+    found_errors = set(ret["errors"])
+    # CLI applications are allowed to have no finish-args with exceptions
+    accepted = {"finish-args-not-defined"}
+    assert len(found_errors - accepted) == 0
