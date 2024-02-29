@@ -2392,5 +2392,20 @@
     },
     "io.github.Sunderland93.sway-input-config": {
         "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
+    },
+    "org.freedesktop.Platform.VulkanInfo": {
+        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
+    },
+    "org.freedesktop.Platform.VdpauInfo": {
+        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
+    },
+    "org.freedesktop.Platform.ClInfo": {
+        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
+    },
+    "org.freedesktop.Platform.GlxInfo": {
+        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
+    },
+    "org.freedesktop.Platform.VaInfo": {
+        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
     }
 }
