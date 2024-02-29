@@ -1342,6 +1342,7 @@
         "finish-args-contains-both-x11-and-wayland": "not every game supports wayland"
     },
     "org.inkscape.Inkscape": {
+        "finish-args-unnecessary-xdg-config-access": "Access xdg-config/gtk-3.0 for bookmarks",
         "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
     },
     "at.vintagestory.VintageStory": {
