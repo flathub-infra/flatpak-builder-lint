@@ -2408,5 +2408,8 @@
     },
     "org.freedesktop.Platform.VaInfo": {
         "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
+    },
+    "org.linuxshowplayer.LinuxShowPlayer": {
+        "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"
     }
 }
