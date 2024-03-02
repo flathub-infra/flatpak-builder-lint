@@ -109,11 +109,11 @@ def check_caption(path: str) -> bool:
 
 
 def has_manifest_key(path: str) -> bool:
-    metadata = parse_xml(path).xpath("/components/component/metadata")
-    for key in metadata:
-        if key.attrib.get("key") == "flathub::manifest":
-            return True
-    return False
+    custom = parse_xml(path).xpath("//custom/value[@key='flathub::manifest']/text()")
+    metadata = parse_xml(path).xpath(
+        "//metadata/value[@key='flathub::manifest']/text()"
+    )
+    return bool(custom or metadata)
 
 
 def has_icon_key(path: str) -> bool:
