@@ -2411,5 +2411,8 @@
     },
     "org.linuxshowplayer.LinuxShowPlayer": {
         "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"
+    },
+    "org.DolphinEmu.dolphin-emu": {
+        "appstream-failed-validation": "app-id predates this linter rule"
     }
 }
