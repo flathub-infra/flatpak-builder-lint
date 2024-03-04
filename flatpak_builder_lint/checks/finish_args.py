@@ -82,7 +82,8 @@ class FinishArgsCheck(Check):
             if re.match(r"^/run/media(?=/\w).+$", fs):
                 self.errors.add("finish-args-absolute-run-media-path")
 
-        if "home" in finish_args["filesystem"] and "host" in finish_args["filesystem"]:
+        pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
+        if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
             self.errors.add("finish-args-redundant-home-and-host")
 
         for own_name in finish_args["own-name"]:

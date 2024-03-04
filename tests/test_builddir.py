@@ -75,6 +75,13 @@ def test_builddir_display_supported() -> None:
         assert a not in found_errors
 
 
+def test_manifest_finish_args_home_host() -> None:
+
+    ret = run_checks(f"tests/builddir/finish_args_home_host")
+    found_errors = set(ret["errors"])
+    assert "finish-args-redundant-home-and-host" not in found_errors
+
+
 def test_builddir_finish_args_missing() -> None:
     ret = run_checks("tests/builddir/finish_args_missing")
     found_errors = set(ret["errors"])

@@ -118,6 +118,25 @@ def test_manifest_finish_args_shm() -> None:
     assert "finish-args-deprecated-shm" in found_warnings
 
 
+def test_manifest_finish_args_home_host() -> None:
+
+    for file in (
+        "finish_args-home_host1.json",
+        "finish_args-home_host2.json",
+    ):
+        ret = run_checks(f"tests/manifests/{file}")
+        found_errors = set(ret["errors"])
+        assert "finish-args-redundant-home-and-host" in found_errors
+
+    for file in (
+        "finish_args-home_host3.json",
+        "finish_args-home_host4.json",
+    ):
+        ret = run_checks(f"tests/manifests/{file}")
+        found_errors = set(ret["errors"])
+        assert "finish-args-redundant-home-and-host" not in found_errors
+
+
 def test_manifest_display_stuff() -> None:
 
     absents = {
