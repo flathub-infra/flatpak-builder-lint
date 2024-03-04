@@ -2,7 +2,6 @@
     "app-id": "org.flathub.finish_args",
     "finish-args": [
         "--device=all",
-        "--device=shm",
         "--nodevice=dri",
         "--filesystem=home",
         "--filesystem=host",

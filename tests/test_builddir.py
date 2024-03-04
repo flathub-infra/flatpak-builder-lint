@@ -35,7 +35,6 @@ def test_builddir_finish_args() -> None:
     }
 
     warnings = {
-        "finish-args-deprecated-shm",
         "finish-args-x11-without-ipc",
         "finish-args-redundant-device-all",
     }
@@ -53,6 +52,14 @@ def test_builddir_finish_args() -> None:
     assert warnings.issubset(found_warnings)
     for a in expected_absents:
         assert a not in found_errors
+
+
+def test_manifest_finish_args_shm() -> None:
+
+    ret = run_checks("tests/builddir/finish_args_shm")
+    found_warnings = set(ret["warnings"])
+
+    assert "finish-args-deprecated-shm" in found_warnings
 
 
 def test_builddir_display_supported() -> None:
