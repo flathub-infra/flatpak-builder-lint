@@ -1,0 +1,5 @@
+[Application]
+name=org.flathub.finish_args_home_host
+
+[Context]
+filesystems=host:ro;home;
