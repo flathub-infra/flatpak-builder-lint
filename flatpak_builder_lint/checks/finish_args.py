@@ -132,7 +132,8 @@ class FinishArgsCheck(Check):
             self.warnings.add("finish-args-deprecated-shm")
 
         if "all" in finish_args["device"] and len(finish_args["device"]) > 1:
-            self.warnings.add("finish-args-redundant-device-all")
+            if "shm" not in finish_args["device"]:
+                self.warnings.add("finish-args-redundant-device-all")
 
         if "org.freedesktop.Flatpak" in finish_args["talk-name"]:
             self.errors.add("finish-args-flatpak-spawn-access")

@@ -4,7 +4,7 @@ name=org.flathub.finish_args
 [Context]
 share=!network;
 sockets=x11;wayland;session-bus;fallback-x11;!cups;
-devices=all;shm;!dri;
+devices=all;!dri;
 filesystems=home;xdg-data;xdg-config/autostart;host;xdg-data/foo:create;/run/media/foo;
 
 [Session Bus Policy]
