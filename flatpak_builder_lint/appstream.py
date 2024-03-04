@@ -17,6 +17,7 @@ def validate(path: str, *args: str) -> dict:
         "all-categories-ignored": "error",
         "category-invalid": "error",
         "cid-desktopapp-is-not-rdns": "error",
+        "cid-domain-not-lowercase": "info",
         "cid-has-number-prefix": "error",
         "cid-missing-affiliation-gnome": "error",
         "cid-rdns-contains-hyphen": "error",
