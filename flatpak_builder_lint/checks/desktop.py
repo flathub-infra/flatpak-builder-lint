@@ -2,30 +2,14 @@ import os
 import re
 import subprocess
 import tempfile
-from typing import Optional, Set
+
+from gi.repository import GLib
 
 from .. import appstream, builddir, ostree
 from . import Check
 
 
 class DesktopfileCheck(Check):
-    def _load(self, filename: str) -> Optional[dict]:
-        data: dict[str, dict[str, int | str]] = {}
-        with open(filename, "r", encoding="utf-8") as file:
-            for line in file:
-                line = line.strip()
-                if line.startswith("#") or line == "" or line == "\n":
-                    continue
-                if line.startswith("[") and line.endswith("]"):
-                    group = line[1:-1]
-                    data[group] = {}
-                if "=" in line:
-                    key = line.split("=", 1)[0].strip()
-                    value = line.split("=", 1)[1].strip()
-                    data[group][key] = value
-            return data
-        return None
-
     def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
         desktopfiles_path = f"{path}/files/share/applications"
@@ -81,29 +65,44 @@ class DesktopfileCheck(Check):
                         self.desktopfile.add(p.strip())
 
         if os.path.exists(f"{desktopfiles_path}/{appid}.desktop"):
-            d = self._load(f"{desktopfiles_path}/{appid}.desktop")
-            if d is not None:
-                try:
-                    icon = d["Desktop Entry"]["Icon"]
-                    if not len(icon) > 0:
-                        self.errors.add("desktop-file-icon-key-empty")
-                    if len(icon) > 0 and not re.match(
-                        rf"^{appid}([-.].*)?$", f"{icon}"
-                    ):
-                        self.errors.add("desktop-file-icon-key-wrong-value")
-                except KeyError:
-                    self.errors.add("desktop-file-icon-key-absent")
-                    pass
+            key_file = GLib.KeyFile.new()
+            key_file.load_from_file(
+                f"{desktopfiles_path}/{appid}.desktop", GLib.KeyFileFlags.NONE
+            )
 
-                try:
-                    exect = d["Desktop Entry"]["Exec"]
+            if key_file.get_start_group() != "Desktop Entry":
+                raise GLib.Error("Unknown start group in desktop file.")
+
+            try:
+                icon = key_file.get_string("Desktop Entry", "Icon")
+            except GLib.Error:
+                icon = None
+
+            if icon is None:
+                self.errors.add("desktop-file-icon-key-absent")
+            else:
+                if not len(icon) > 0:
+                    self.errors.add("desktop-file-icon-key-empty")
+                if len(icon) > 0 and not re.match(rf"^{appid}([-.].*)?$", f"{icon}"):
+                    self.errors.add("desktop-file-icon-key-wrong-value")
+
+            try:
+                exect = key_file.get_string("Desktop Entry", "Exec")
+            except GLib.Error:
+                exect = None
+
+            if exect is None:
+                # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
+                self.errors.add("desktop-file-exec-key-absent")
+            else:
+                if not len(exect) > 0:
                     # https://github.com/flatpak/flatpak/commit/298286be2d8ceacc426dedecc0e38a3f82d8aedc
                     # Flatpak allows exporting empty Exec key because it is
                     # going to be rewritten w/o command and command in
                     # manifest is going to be used as default. Rely on
                     # fallback but also warn
-                    if not len(exect) > 0:
-                        self.warnings.add("desktop-file-exec-key-empty")
+                    self.warnings.add("desktop-file-exec-key-empty")
+                if len(exect) > 0 and "flatpak run" in exect:
                     # desktop files are rewritten only on (re)install, neither
                     # exported ref or builddir should have "flatpak run"
                     # unless manually added in desktop-file
@@ -111,49 +110,45 @@ class DesktopfileCheck(Check):
                     # flatpak-dir.c: export_desktop_file < rewrite_export_dir
                     # < flatpak_rewrite_export_dir < flatpak_dir_deploy
                     # < flatpak_dir_deploy_install < flatpak_dir_install
-                    if len(exect) > 0 and "flatpak run" in exect:
-                        self.errors.add("desktop-file-exec-has-flatpak-run")
-                except KeyError:
-                    # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
-                    self.errors.add("desktop-file-exec-key-absent")
-                    pass
+                    self.errors.add("desktop-file-exec-has-flatpak-run")
 
-                try:
-                    hidden = d["Desktop Entry"]["Hidden"]
-                    if hidden == "true":
-                        self.errors.add("desktop-file-is-hidden")
-                except KeyError:
-                    pass
+            try:
+                hidden = key_file.get_boolean("Desktop Entry", "Hidden")
+            except GLib.Error:
+                hidden = None
 
-                try:
-                    nodisplay = d["Desktop Entry"]["NoDisplay"]
-                    if nodisplay == "true":
-                        self.errors.add("desktop-file-is-hidden")
-                except KeyError:
-                    pass
+            if hidden is True:
+                self.errors.add("desktop-file-is-hidden")
 
-                try:
-                    # https://github.com/ximion/appstream/blob/a98d98ec1b75d7e9402d8d103802992415075d2f/src/as-utils.c#L1337-L1364
-                    # appstreamcli filters these out during compose, "GUI"
-                    # is caught by desktop-file-validate
-                    block = {
-                        "GTK",
-                        "Qt",
-                        "KDE",
-                        "GNOME",
-                        "Motif",
-                        "Java",
-                        "Application",
-                        "XFCE",
-                        "DDE",
-                    }
-                    catgr: Set[str] = set(
-                        filter(None, d["Desktop Entry"]["Categories"].split(";"))
-                    )
-                    if len(catgr) > 0 and catgr.issubset(block):
-                        self.warnings.add("desktop-file-low-quality-category")
-                except KeyError:
-                    pass
+            try:
+                nodisplay = key_file.get_boolean("Desktop Entry", "NoDisplay")
+            except GLib.Error:
+                nodisplay = None
+
+            if nodisplay is True:
+                self.errors.add("desktop-file-is-hidden")
+
+            try:
+                cats = set(key_file.get_string_list("Desktop Entry", "Categories"))
+            except GLib.Error:
+                cats = None
+
+            # https://github.com/ximion/appstream/blob/a98d98ec1b75d7e9402d8d103802992415075d2f/src/as-utils.c#L1337-L1364
+            # appstreamcli filters these out during compose, "GUI"
+            # is caught by desktop-file-validate
+            block = {
+                "GTK",
+                "Qt",
+                "KDE",
+                "GNOME",
+                "Motif",
+                "Java",
+                "Application",
+                "XFCE",
+                "DDE",
+            }
+            if cats is not None and len(cats) > 0 and cats.issubset(block):
+                self.warnings.add("desktop-file-low-quality-category")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
