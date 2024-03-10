@@ -2411,5 +2411,8 @@
     },
     "org.linuxshowplayer.LinuxShowPlayer": {
         "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"
+    },
+    "dev.neovide.Neovide": {
+        "finish-args-flatpak-spawn-access": "required to allow spawning neovim on the host"
     }
 }
