@@ -912,6 +912,9 @@
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "org.gnome.Ptyxis": {
+        "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
+    },
     "org.gnome.Totem.Devel": {
         "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream"
     },
