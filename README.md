@@ -6,6 +6,8 @@ for other Flatpak repositories.
 
 ## Installation
 
+The only supported ways to install and use it are Docker and Flatpak.
+
 ### Docker
 
 The latest build of flatpak-builder-linter can be used with Docker.
@@ -33,9 +35,10 @@ infrastructure.
 
 ### Local environment
 
-Due to soft requirements for versions of external tools, flatpak-builder-lint
-locally is not recommended. If you know what you're doing, it can be installed
-using [Poetry][poetry].
+Installing flatpak-builder-lint locally with [Poetry][poetry] or pip is
+not recommended unless for development purposes. It depends on patches
+that are found in the `org.flatpak.Builder` flatpak package
+and on external tools.
 
 ```bash
 git clone https://github.com/flathub/flatpak-builder-lint
@@ -47,7 +50,8 @@ Additional tools are required by subcommands and checks:
 
 - `flatpak-builder` for validating flatpak-builder manifests,
 - `ostree` for validating ostree repositories containing builds,
-- `appstreamcli` from `appstream` for validating AppStream files.
+- `appstreamcli` from `org.flatpak.Builder` for validating MetaInfo files,
+- `desktop-file-validate` to validate desktop files.
 
 ### Usage
 
