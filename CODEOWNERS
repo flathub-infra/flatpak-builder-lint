@@ -1,1 +1,1 @@
-/staticfiles/exceptions.json @flathub/admins @flathub/reviewers @flathub/trusted-maintainers
+/staticfiles/exceptions.json @flathub-infra/reviewers
