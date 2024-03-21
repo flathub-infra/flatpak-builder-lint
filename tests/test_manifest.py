@@ -193,10 +193,16 @@ def test_manifest_modules() -> None:
     assert warnings.issubset(found_warnings)
 
 
-def test_manifest_modules_git() -> None:
-    ret = run_checks("tests/manifests/modules_git.json")
+def test_manifest_modules_git_allowed() -> None:
+    ret = run_checks("tests/manifests/modules_git_allowed.json")
     found_errors = set(ret["errors"])
     assert not [x for x in found_errors if x.startswith("module-")]
+
+
+def test_manifest_modules_git_disallowed() -> None:
+    ret = run_checks("tests/manifests/modules_git_disallowed.json")
+    found_errors = set(ret["errors"])
+    assert [x for x in found_errors if x.startswith("module-")]
 
 
 def test_manifest_exceptions() -> None:

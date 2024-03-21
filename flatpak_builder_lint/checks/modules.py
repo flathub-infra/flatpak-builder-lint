@@ -23,12 +23,11 @@ class ModuleCheck(Check):
             tag = source.get("tag")
             branch_committish = False
 
-            if not commit:
-                if branch:
-                    if len(branch) != 40:
-                        self.errors.add(f"module-{module_name}-source-git-branch")
-                    else:
-                        branch_committish = True
+            if branch:
+                if len(branch) != 40:
+                    self.errors.add(f"module-{module_name}-source-git-branch")
+                else:
+                    branch_committish = True
 
             if not branch_committish and not commit and not tag:
                 self.errors.add(f"module-{module_name}-source-git-no-commit-or-tag")
