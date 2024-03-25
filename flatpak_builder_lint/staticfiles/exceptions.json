@@ -1764,9 +1764,6 @@
     "com.discordapp.Discord": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation"
     },
-    "com.discordapp.DiscordCanary": {
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation"
-    },
     "com.hunterwittenborn.Celeste": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
     },
