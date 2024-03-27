@@ -166,7 +166,9 @@ def test_builddir_quality_guidelines() -> None:
         assert e in found_errors
     # If present, it means a metainfo file that was validating
     # correctly broke and that should be fixed
-    assert "appstream-failed-validation" not in found_errors
+    not_founds = {"appstream-failed-validation" "appstream-id-mismatch-flatpak-id"}
+    for e in not_founds:
+        assert e not in found_errors
 
 
 def test_builddir_broken_icon() -> None:
@@ -203,3 +205,9 @@ def test_min_success_metadata() -> None:
     # CLI applications are allowed to have no finish-args with exceptions
     accepted = {"finish-args-not-defined"}
     assert len(found_errors - accepted) == 0
+
+
+def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
+    ret = run_checks("tests/builddir/appstream-cid-mismatch-flatpak-id")
+    found_errors = set(ret["errors"])
+    assert "appstream-id-mismatch-flatpak-id" in found_errors
