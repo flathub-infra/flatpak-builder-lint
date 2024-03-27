@@ -63,6 +63,11 @@ def components(path: str) -> list:
     return list(components)
 
 
+def appstream_id(path: str) -> Optional[str]:
+    aps_cid = components(path)[0].xpath("id/text()")[0]
+    return str(aps_cid)
+
+
 def is_developer_name_present(path: str) -> bool:
     developer_name = components(path)[0].xpath("developer/name")
     legacy_developer_name = components(path)[0].xpath("developer_name")

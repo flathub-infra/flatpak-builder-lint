@@ -70,6 +70,10 @@ class MetainfoCheck(Check):
         if not appstream.is_valid_component_type(appstream_path):
             self.errors.add("appstream-unsupported-component-type")
 
+        aps_cid = appstream.appstream_id(appstream_path)
+        if aps_cid != appid:
+            self.errors.add("appstream-id-mismatch-flatpak-id")
+
         if appstream.component_type(appstream_path) not in (
             "desktop",
             "desktop-application",
