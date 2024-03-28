@@ -7,6 +7,7 @@ known_exceptions = {
     "appid-ends-with-lowercase-desktop",
     "appid-uses-code-hosting-domain",
     "appstream-failed-validation",
+    "appstream-id-mismatch-flatpak-id",
     "appstream-missing-developer-name",
     "desktop-file-failed-validation",
     "finish-args-arbitrary-autostart-access",
