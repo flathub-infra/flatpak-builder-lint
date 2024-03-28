@@ -6,9 +6,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://foobar2.git",
-                    "branch": "master",
-                    "commit": "1234567890abcdef1234567890abcdef12345678"
+                    "url": "https://foobar2.git"
                 }
             ]
         },
@@ -17,8 +15,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://foobar2.git",
-                    "branch": "f49cf6381e322b147053b74e4500af8533ac1e4c"
+                    "path": "../"
                 }
             ]
         },
@@ -26,9 +23,7 @@
             "name": "module3",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://foobar2.git",
-                    "tag": "1234567890abcdef1234567890abcdef12345678"
+                    "type": "git"
                 }
             ]
         },
@@ -37,8 +32,18 @@
             "sources": [
                 {
                     "type": "git",
+                    "url": "ssh://foobar2.git",
+                    "commit": "8bdc272f381e2633b96d1846994c7cb0f90f079f"
+                }
+            ]
+        },
+        {
+            "name": "module5",
+            "sources": [
+                {
+                    "type": "git",
                     "url": "https://foobar2.git",
-                    "tag": "1234567890abcdef1234567890abcdef12345678"
+                    "branch": "branch_name"
                 }
             ]
         }
