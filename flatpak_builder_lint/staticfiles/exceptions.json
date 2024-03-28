@@ -92,13 +92,15 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.amikha1lov.RecApp": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.Anuken.Mindustry": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.appadeia.Taigo": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.arminstraub.krop": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -131,7 +133,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.bajoja.indicator-kdeconnect": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.bcedu.valasimplehttpserver": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -143,10 +146,12 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.birros.WebArchives": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.bjaraujo.Bombermaaan": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.bleakgrey.tootle": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -213,7 +218,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dariasteam.cowsrevenge": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.dawidd6.checksumo": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -230,7 +236,8 @@
         "finish-args-flatpak-spawn-access": "required to handle unsupported MIME types and URLs"
     },
     "com.github.donadigo.appeditor": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.dosbox-staging": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -249,7 +256,8 @@
         "finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "com.github.elth0r0.iqpuzzle": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.emmanueltouzery.cigale": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -267,7 +275,8 @@
 	"finish-args-not-defined": "Terminal only, predates the linter"
     },
     "com.github.fabiocolacio.marker": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.finefindus.eyedropper": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -319,7 +328,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.hluk.copyq": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.hopsan.Hopsan": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -331,7 +341,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.huluti.Coulr": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.huluti.Curtail": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -343,7 +354,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.inercia.k3x": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.iortcw.iortcw": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -361,7 +373,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.JannikHv.Gydl": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.jeromerobert.pdfarranger": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -414,7 +427,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.kmwallio.thiefmd": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.KRTirtho.Spotube": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -433,7 +447,8 @@
     },
     "com.github.liferooter.textpieces": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.LongSoft.UEFITool": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -451,7 +466,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.maoschanz.DynamicWallpaperEditor": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.marhkb.Pods": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -484,10 +500,12 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.miguelmota.Cointop": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.mikacousin.olc": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.mtkennerly.ludusavi": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -534,7 +552,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.paolostivanin.OTPClient": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.petebuffon.yafc": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -568,7 +587,8 @@
     },
     "com.github.quaternion": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.Qv2ray": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -673,7 +693,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.theironrobin.siglo": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.themix_project.Oomox": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -721,16 +742,19 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.wwmm.easyeffects": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.wwmm.pulseeffects": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.wwmm.pulseeffects.plugin.lsp-plugins": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Xenoveritas.abuse": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.xournalpp.xournalpp": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -793,7 +817,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.bitseater.meteo": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.gitlab.ColinDuquesnoy.MellowPlayer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -802,7 +827,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.coringao.JAG": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.gitlab.cunidev.Gestures": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -872,7 +898,8 @@
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "io.gitlab.Turtlico": {
-        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.gitlab.sat_metalab.Splash": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -894,10 +921,12 @@
     },
     "org.gnome.Contacts": {
         "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-cache-access": "the app predates this linter rule, used for evolution data server"
+        "finish-args-unnecessary-xdg-cache-access": "the app predates this linter rule, used for evolution data server",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.dspy": {
-        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.dfeet": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -911,7 +940,8 @@
     },
     "org.gnome.Builder": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Ptyxis": {
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
@@ -945,7 +975,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "org.libreoffice.LibreOffice": {
-        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule"
+        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.st.STM32CubeIDE": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -970,10 +1001,12 @@
     },
     "com.hack_computer.Clubhouse": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "ca.desrt.dconf-editor": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "cc.nift.nsm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -985,7 +1018,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.chatterino.chatterino": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.georgefb.quickaccess": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -995,7 +1029,8 @@
     },
     "com.google.AndroidStudio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.jetbrains.CLion": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1021,16 +1056,20 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.leinardi.gkraken": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.leinardi.gst": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.leinardi.gwe": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.leinardi.gx52": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.notepadqq.Notepadqq": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1086,7 +1125,8 @@
         "finish-args-flatpak-spawn-access": "needed to start applications"
     },
     "edu.stanford.Almond": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "es.estoes.wallpaperDownloader": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1095,7 +1135,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.atom.Atom": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.achetagames.epic_asset_manager": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1174,7 +1215,8 @@
         "finish-args-unnecessary-xdg-data-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803"
     },
     "net.veloren.veloren": {
-        "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build."
+        "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build.",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.cockpit_project.CockpitClient": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1213,7 +1255,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.gabmus.unifydmin": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Games": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1226,7 +1269,8 @@
         "finish-args-unnecessary-xdg-data-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
     },
     "org.godotengine.Godot": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.godotengine.Godot3": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
@@ -1246,12 +1290,14 @@
     "org.kde.dolphin": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.gwenview": {
         "finish-args-unnecessary-xdg-data-access": "required for access to Trash until Portal support is added",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kate": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
@@ -1261,7 +1307,8 @@
     "org.kde.kdevelop": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kile": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
@@ -1271,7 +1318,8 @@
     "org.kde.konsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.qmlkonsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
@@ -1281,18 +1329,21 @@
     "org.kde.ruqola": {
         "flathub-json-skip-appstream-check": "the app predates this linter rule",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.yakuake": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.mozilla.Thunderbird": {
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
     },
     "org.octave.Octave": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.openshot.OpenShot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1310,20 +1361,23 @@
         "finish-args-flatpak-spawn-access": "required to execute various host binaries, including compiler, debugger, and git within the application"
     },
     "org.vim.Vim": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.wezfurlong.wezterm": {
         "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
         "finish-args-unnecessary-xdg-config-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270"
     },
     "org.worldpossible.ScriptLauncher": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.zim_wiki.Zim": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "pm.mirko.Atoms": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "re.sonny.Junction": {
         "finish-args-flatpak-spawn-access": "required to launch apps",
@@ -1368,13 +1422,15 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.albiononline.AlbionOnline": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.amazon.Workspaces": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.anydesk.Anydesk": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.avocode.Avocode": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1387,10 +1443,12 @@
     },
     "com.dropbox.Client": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.elsevier.MendeleyDesktop": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.etlegacy.ETLegacy": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1411,7 +1469,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.jagex.RuneScape": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.kolor.AutopanoPro": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1453,7 +1512,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.skype.Client": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.slack.Slack": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1502,7 +1562,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.viber.Viber": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.wps.Office": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1520,13 +1581,15 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "io.botfather.Botfather": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.designer.GravitDesigner": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "io.exodus.Exodus": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.Archeb.opentrace": {
         "finish-args-flatpak-spawn-access": "This app uses org.freedesktop.Flatpak to provide ability to run nexttrace with cap_net_raw, which is necessary for a traceroute app"
@@ -1586,10 +1649,12 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "org.freefilesync.FreeFileSync": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.geogebra.GeoGebra": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.jdownloader.JDownloader": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1604,7 +1669,8 @@
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/issues/2770"
     },
     "io.github.hakandundar34coding.system-monitoring-center": {
-        "finish-args-flatpak-spawn-access": "required for host shell access for getting system information such as processes, services, number of packages, etc."
+        "finish-args-flatpak-spawn-access": "required for host shell access for getting system information such as processes, services, number of packages, etc.",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "de.mediathekview.MediathekView": {
         "finish-args-flatpak-spawn-access": "required to start VLC flatpak to view videos and live streams"
@@ -1639,7 +1705,8 @@
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "io.github.ImEditor": {
-        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.OpenToonz": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -1660,7 +1727,8 @@
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "com.diffingo.fwbackups": {
-        "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+        "finish-args-flatpak-spawn-access": "required to backup and restore installed packages",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.font-viewer": {
         "finish-args-unnecessary-xdg-data-access": "required to save fonts"
@@ -1680,7 +1748,8 @@
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
     },
     "io.github.mmstick.FontFinder": {
-        "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory"
+        "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.dec05eba.gpu_screen_recorder": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn to capture a monitor on AMD/Intel GPUs"
@@ -1704,13 +1773,15 @@
         "finish-args-unnecessary-xdg-data-access": "read-only access to xdg-data/flatpak{,/exports/share} is required to query installed apps on the system and present the ones that are running to the user; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
     },
     "io.github.unrud.RecentFilter": {
-        "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel"
+        "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnu.emacs": {
         "finish-args-flatpak-spawn-access": "required to access external tools since the Emacs ecosystem expects to lean heavily on them"
     },
     "io.github.nokse22.inspector": {
-        "finish-args-flatpak-spawn-access": "Needed to execute external commands to show informations about your computer"
+        "finish-args-flatpak-spawn-access": "Needed to execute external commands to show informations about your computer",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.Youda008.DoomRunner": {
         "finish-args-flatpak-spawn-access": "Needed to execute external game engines"
@@ -1725,7 +1796,8 @@
         "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
     },
     "io.github.flattool.Warehouse": {
-        "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host"
+        "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.jean28518.Linux-Assistant": {
         "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
@@ -1763,7 +1835,8 @@
         "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
     },
     "com.discordapp.Discord": {
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation"
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.hunterwittenborn.Celeste": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
@@ -1772,7 +1845,8 @@
         "finish-args-wildcard-kde-own-name": "Initial import, Qsystemtrayicon still uses legacy StatusNotifier implementation"
     },
     "us.zoom.Zoom": {
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
+        "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.riverbankcomputing.PyQt.BaseApp": {
         "*": "This is a baseapp"
@@ -1822,11 +1896,13 @@
     },
     "org.kde.SymbolEditor": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.akregator": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.alligator": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1842,11 +1918,13 @@
     },
     "org.kde.ark": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.artikulate": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.atlantik": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1858,39 +1936,48 @@
     },
     "org.kde.blinken": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.bomber": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.bovo": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.cantor": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.choqok": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.digikam": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.elisa": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.falkon": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.filelight": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.francis": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1898,11 +1985,13 @@
     },
     "org.kde.gcompris": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.granatier": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.haruna": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1910,11 +1999,13 @@
     },
     "org.kde.index": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.isoimagewriter": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.itinerary": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1922,11 +2013,13 @@
     },
     "org.kde.juk": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kaffeine": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kalgebra": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1938,19 +2031,23 @@
     },
     "org.kde.kalzium": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kamoso": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kanagram": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kapman": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kasts": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1958,39 +2055,48 @@
     },
     "org.kde.katomic": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kbibtex": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kblackbox": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kblocks": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kbounce": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kbreakout": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kbruch": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kcachegrind": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kcalc": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kclock": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -1998,19 +2104,23 @@
     },
     "org.kde.kcolorchooser": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kdenlive": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kdiamond": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kdiff3": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.keysmith": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2018,15 +2128,18 @@
     },
     "org.kde.kfind": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kfourinline": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kgeography": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kgeotag": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2038,27 +2151,33 @@
     },
     "org.kde.kgoldrunner": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kgraphviewer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.khangman": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kid3": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kig": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kigo": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.killbots": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2066,31 +2185,38 @@
     },
     "org.kde.kimagemapeditor": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kiriki": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kiten": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kjumpingcube": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kleopatra": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.klettres": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.klickety": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.klines": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2098,11 +2224,13 @@
     },
     "org.kde.kmahjongg": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmines": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmplayer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2110,59 +2238,73 @@
     },
     "org.kde.kmplot": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmymoney": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knavalbattle": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knetwalk": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knights": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.koko": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kolf": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kollision": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kolourpaint": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kommit": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kompare": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kongress": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.konquest": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kontact": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kontrast": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2170,7 +2312,8 @@
     },
     "org.kde.konversation": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kpat": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2182,15 +2325,18 @@
     },
     "org.kde.krdc": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.krename": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kreversi": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.krita": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2198,23 +2344,28 @@
     },
     "org.kde.kronometer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kruler": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksirk": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksnakeduel": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksquares": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kst": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2222,27 +2373,33 @@
     },
     "org.kde.kstars": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksudoku": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kteatime": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ktimetracker": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ktorrent": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ktouch": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ktrip": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2250,15 +2407,18 @@
     },
     "org.kde.ktuberling": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kturtle": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kubrick": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kuiviewer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2274,39 +2434,48 @@
     },
     "org.kde.kwordquiz": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kwrite": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kxstitch": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.labplot2": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.lokalize": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.lskat": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.marble": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.massif-visualizer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.minuet": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.neochat": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2314,31 +2483,38 @@
     },
     "org.kde.okteta": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.okular": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.palapeli": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.parley": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.peruse": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.picmi": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.pix": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.plasmatube": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2346,11 +2522,13 @@
     },
     "org.kde.rocs": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.skanpage": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.skrooge": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2362,7 +2540,8 @@
     },
     "org.kde.tellico": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.telly-skout": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2374,11 +2553,13 @@
     },
     "org.kde.umbrello": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.vvave": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kopete": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2430,5 +2611,578 @@
     },
     "com.brave.Browser": {
         "flathub-json-modified-publish-delay": "Allow setting the delay to 0 to ensure users get the latest version as soon as possible"
+    },
+    "app.lith.Lith": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "ar.com.softwareperonista.Rockarrolla": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "art.taunoerik.tauno-monitor": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "br.app.pw3270.terminal": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "ca._0ldsk00l.Nestopia": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "cc.arduino.arduinoide": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.bixense.PasswordCalculator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.bladecoder.adventure-editor": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.dosbox.DOSBox": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.doycho.euterpe.gtk": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.ekonomikas.merkato": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.endlessm.photos": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.frac_tion.teleport": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.googleplaymusicdesktopplayer.GPMDP": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.hack_computer.OperatingSystemApp": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.hack_computer.Sidetrack": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.kavilgroup.gelectrical": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.kavilgroup.gestimator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.lettier.movie-monad": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.mattjakeman.ExtensionManager": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.ozmartians.VidCutter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.realm667.Wolfenstein_Blade_of_Agony": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.rosegardenmusic.rosegarden": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.sourcepole.kadas": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.teeworlds.Teeworlds": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.toggl.TogglDesktop": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.ultimaker.cura": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.uploadedlobster.peek": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.vixalien.decibels": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.wings3d.WINGS": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.zquestclassic.ZQuest": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "de.gunibert.Hackgregator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "de.philippun1.Snoop": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "dev.jamiethalacker.window_painter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "de.wwwtech.ColorMate": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "de.zwarf.picplanner": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "eu.ad5001.LogarithmPlotter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "id.sideka.App": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "im.gitter.Gitter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "info.bibletime.BibleTime": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "info.olasagasti.revelation": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.aerocyber.sitemarker": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.amit9838.mousam": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.betaflight.BetaflightConfigurator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.dida_code.OpstaKultura": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.diegoivanme.flowtime": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.diegoivan.pdf_metadata_editor": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.diegopvlk.Dosage": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.dyegoaurelio.simple-wireplumber-gui": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.FailurePoint.RandomNumberFive": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.fizzyizzy05.binary": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.hakandundar34coding.mini-system-monitor": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.leonardschardijn.Chirurgien": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.limads.Queries": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.lxndr.gswatcher": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.martinrotter.textosaurus": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.mki1967.mki3dgame": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nate_xyz.Chromatic": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nate_xyz.Conjure": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nate_xyz.Paleta": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nate_xyz.Resonance": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.NhekoReborn.Nheko": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nokse22.asciidraw": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nokse22.minitext": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nokse22.teleprompter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nokse22.trivia-quiz": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nokse22.ultimate-tic-tac-toe": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.orontee.Argos": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.phastmike.tags": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.qwersyk.Newelle": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.Rirusha.Cassette": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.RodZill4.Material-Maker": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.thiefmd.themegenerator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.gitlab.celleron56.libretile": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.gitlab.gregorni.Calligraphy": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.gitlab.gregorni.Letterpress": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.gitlab.gwendalj.package-transporter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.liri.Calculator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.mgba.mGBA": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.otsaloma.gaupol": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.otsaloma.nfoview": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "it.mijorus.collector": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "it.mijorus.smile": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "it.mijorus.whisper": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "me.hergert.Schemes": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "me.iepure.devtoolbox": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "me.sanchezrodriguez.passes": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.bartkessels.getit": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.danigm.loop": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.lugsole.bible_gui": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.mediaarea.AVIMetaEdit": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.mediaarea.DVAnalyzer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.mediaarea.MediaConch": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.mediaarea.MOVMetaEdit": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.mediaarea.QCTools": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.meijn.onvifviewer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.oz9aec.Gpredict": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.redeclipse.RedEclipse": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.runelite.RuneLite": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sf.fuse_emulator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.Chessx": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.DuneLegacy": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.electrip.Electrip": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.Fillets": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.projectM": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "net.sourceforge.Teo": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.adishatz.syncpasswd": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.apache.netbeans": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.chrisoft.qmidiplayer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.davmail.DavMail": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.develz.Crawl": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.eclipse.iot.fourdiac.Ide": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.emilien.Password": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.emilien.SpaceLaunch": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.fedoraproject.MediaWriter": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.fritzing.Fritzing": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gahshomar.Gahshomar": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnode.NixView": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Boxes": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Calculator": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Calendar": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Characters": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Cheese": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.ColorViewer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Connections": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Devhelp": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.eog": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Epiphany": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Evolution": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.frogr": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gbrainy": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Geary": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gedit": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gitlab.bazylevnik0.Convolution": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gitlab.Cowsay": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gitlab.johannesjh.favagtk": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.gThumb": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.HexGL": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Loupe": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.meld": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.moserial": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Music": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.NetworkDisplays": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Nibbles": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Notes": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.OfficeRunner": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Polari": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.PowerStats": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Recipes": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Rhythmbox3": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Shotwell": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.SoundJuicer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.SoundRecorder": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.SwellFoop": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.TextEditor": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.gnome.Totem": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.keepassxc.KeePassXC": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.KekikAkademi.BTKSorgu": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kekikakademi.eFatura": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kekikakademi.ntvHaber": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.libsdl.Maelstrom": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.mapeditor.Tiled": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.neverball.Neverball": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.nickvision.cavalier": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.openclonk.OpenClonk": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.openfodder.OpenFodder": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.openmw.OpenMW": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.openttd.OpenTTD": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.parlatype.Parlatype": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.processing.processingide": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.pyzo.pyzo": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.qgis.qgis": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.quassel_irc.QuasselClient": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.quetoo.Quetoo": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.raceintospace.Raceintospace": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.remmina.Remmina": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.sauerbraten.Sauerbraten": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.shadered.SHADERed": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.solarus_games.solarus.Launcher": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.sparkleshare.SparkleShare": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.tabos.maxcontrol": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.tabos.saldo": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.thonny.Thonny": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.xonotic.Xonotic": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "page.codeberg.Imaginer.Imaginer": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "re.sonny.Retro": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "se.manyver.Manyverse": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "work.openpaper.Paperwork": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "ws.openarena.OpenArena": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "xyz.slothlife.Jogger": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kde.kshisen": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     }
 }
