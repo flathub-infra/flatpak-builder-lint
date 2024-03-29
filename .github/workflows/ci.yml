@@ -21,7 +21,7 @@ jobs:
       - name: Set up dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev jq
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
 
       - name: Allow file:// clones with git>=2.38.1
         run: |
@@ -29,17 +29,18 @@ jobs:
 
       - name: Build and test org.flatpak.Builder
         run: |
-          git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git && cd org.flatpak.Builder
+          git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
+          cd build && python3 ../docker/rewrite-manifest.py && cd org.flatpak.Builder
+          rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/flatpak-builder-lint-deps.json .
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-          jq '(.modules[]| select(.name == "flatpak-builder-lint")).sources |= [{"type" : "dir", "path" : "../"}]' org.flatpak.Builder.json >> org.flatpak.Builder-modified.json
           flatpak-builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --default-branch=localtest --ccache \
-            --install builddir org.flatpak.Builder-modified.json
+            --install builddir org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
 
       - name: Sanity check the linter
         run: |
-          cd org.flatpak.Builder
+          cd build/org.flatpak.Builder
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
