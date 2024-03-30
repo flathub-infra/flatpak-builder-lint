@@ -2416,5 +2416,8 @@
     },
     "dev.neovide.Neovide": {
         "finish-args-flatpak-spawn-access": "required to allow spawning neovim on the host"
+    },
+    "com.core447.StreamController": {
+        "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host"
     }
 }
