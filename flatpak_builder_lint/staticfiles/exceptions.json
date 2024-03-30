@@ -1326,7 +1326,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "re.sonny.Junction": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "required to launch apps",
+        "finish-args-unnecessary-xdg-data-access": "required to list apps"
     },
     "space.crankshaft.Crankshaft": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
