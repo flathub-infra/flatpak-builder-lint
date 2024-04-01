@@ -125,6 +125,14 @@ def test_builddir_console() -> None:
     assert errors == found_errors
 
 
+def test_builddir_appstream_unsupported_ctype() -> None:
+
+    ret = run_checks("tests/builddir/appstream-unsupported-ctype")
+    found_errors = set(ret["errors"])
+
+    assert "appstream-unsupported-component-type" in found_errors
+
+
 def test_builddir_metadata_spaces() -> None:
     ret = run_checks("tests/builddir/metadata-spaces")
 
