@@ -30,6 +30,7 @@ class ScreenshotsCheck(Check):
             appstream_path = f"{tmpdir}/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
                 self.errors.add("appstream-missing-appinfo-file")
+                return
 
             if len(appstream.components(appstream_path)) != 1:
                 self.errors.add("appstream-multiple-components")
