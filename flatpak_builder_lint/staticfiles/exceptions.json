@@ -2421,6 +2421,10 @@
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host"
     },
+    "page.kramo.Cartridges": {
+        "finish-args-flatpak-spawn-access": "required to launch games on the host",
+        "finish-args-unnecessary-xdg-data-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
+    },
     "page.codeberg.JakobDev.jdMacroPlayer": {
         "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
     }
