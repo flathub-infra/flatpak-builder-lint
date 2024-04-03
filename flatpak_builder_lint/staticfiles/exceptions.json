@@ -2420,5 +2420,8 @@
     },
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host"
+    },
+    "page.codeberg.JakobDev.jdMacroPlayer": {
+        "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
     }
 }
