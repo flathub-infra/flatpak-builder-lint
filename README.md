@@ -79,3 +79,8 @@ If you consider the detected issues incorrect, please report it here: https://gi
 
 [poetry]: https://python-poetry.org/docs/#installation
 [flatpak_setup]: https://flathub.org/setup
+
+## Documentation
+
+A list of errors and warnings and their explanations are available in thE
+[Flatpak builder lint page](https://docs.flathub.org/docs/for-app-authors/linter).
