@@ -82,5 +82,5 @@ If you consider the detected issues incorrect, please report it here: https://gi
 
 ## Documentation
 
-A list of errors and warnings and their explanations are available in thE
+A list of errors and warnings and their explanations are available in the
 [Flatpak builder lint page](https://docs.flathub.org/docs/for-app-authors/linter).
