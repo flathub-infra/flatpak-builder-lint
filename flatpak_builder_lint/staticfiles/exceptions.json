@@ -2427,5 +2427,8 @@
     },
     "page.codeberg.JakobDev.jdMacroPlayer": {
         "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
+    },
+    "com.brave.Browser": {
+        "flathub-json-modified-publish-delay": "Allow setting the delay to 0 to ensure users get the latest version as soon as possible"
     }
 }
