@@ -3184,5 +3184,8 @@
     },
     "org.kde.kshisen": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "com.oyajun.ColorCode": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     }
 }
