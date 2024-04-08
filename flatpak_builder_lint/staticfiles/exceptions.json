@@ -1546,6 +1546,9 @@
     "com.teamspeak.TeamSpeak": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
+    "com.tencent.WeChat": {
+        "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
+    },
     "com.tencent.wemeet": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
