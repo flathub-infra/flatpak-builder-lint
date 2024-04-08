@@ -120,21 +120,42 @@ def test_manifest_finish_args_shm() -> None:
 
 def test_manifest_finish_args_home_host() -> None:
 
-    for file in (
-        "finish_args-home_host1.json",
-        "finish_args-home_host2.json",
-    ):
-        ret = run_checks(f"tests/manifests/{file}")
+    for N in range(1, 8):
+        ret = run_checks(
+            f"tests/manifests/redundant-paths/incorrects/finish_args-home_host{N}.json"
+        )
         found_errors = set(ret["errors"])
         assert "finish-args-redundant-home-and-host" in found_errors
 
-    for file in (
-        "finish_args-home_host3.json",
-        "finish_args-home_host4.json",
-    ):
-        ret = run_checks(f"tests/manifests/{file}")
+    for N in range(8, 11):
+        ret = run_checks(
+            f"tests/manifests/redundant-paths/incorrects/finish_args-home_host{N}.json"
+        )
         found_errors = set(ret["errors"])
-        assert "finish-args-redundant-home-and-host" not in found_errors
+        assert "finish-args-redundant-home-path" in found_errors
+
+    ret = run_checks(
+        "tests/manifests/redundant-paths/incorrects/finish_args-home_host11.json"
+    )
+    found_errors = set(ret["errors"])
+    assert (
+        "finish-args-redundant-host-create"
+        and "finish-args-redundant-home-create" in found_errors
+    )
+
+    for N in range(1, 10):
+        ret = run_checks(
+            f"tests/manifests/redundant-paths/corrects/finish_args-home_host{N}.json"
+        )
+        found_errors = set(ret["errors"])
+        errors = {
+            "finish-args-redundant-home-and-host",
+            "finish-args-redundant-home-path",
+            "finish-args-redundant-host-create",
+            "finish-args-redundant-home-create",
+        }
+        for e in errors:
+            assert e not in found_errors
 
 
 def test_manifest_display_stuff() -> None:

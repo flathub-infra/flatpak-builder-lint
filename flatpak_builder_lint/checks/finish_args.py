@@ -81,8 +81,81 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-absolute-home-path")
             if re.match(r"^/run/media(?=/\w).+$", fs):
                 self.errors.add("finish-args-absolute-run-media-path")
+            if fs.startswith("host") and fs.endswith(":create"):
+                self.errors.add("finish-args-redundant-host-create")
+            if fs.startswith("home") and fs.endswith(":create") and "/" not in fs:
+                self.errors.add("finish-args-redundant-home-create")
+            if any(
+                [
+                    i in finish_args["filesystem"]
+                    for i in (
+                        "host",
+                        "host:rw",
+                        "host-etc",
+                        "host-etc:rw",
+                        "host-os",
+                        "host-os:rw",
+                    )
+                ]
+            ):
+                # :create might be needed for some apps, for example
+                # ~/Mail:create. They will go through exceptions
+                if fs.startswith(("home", "~")) and not fs.endswith(":ro"):
+                    self.errors.add("finish-args-redundant-home-and-host")
+            if any(
+                [
+                    i in finish_args["filesystem"]
+                    for i in (
+                        "host:ro" "host-etc:ro",
+                        "host-os:ro",
+                    )
+                ]
+            ):
+                if fs.startswith(("home", "~")) and fs.endswith(":ro"):
+                    self.errors.add("finish-args-redundant-home-and-host")
+            if any(
+                [
+                    i in finish_args["filesystem"]
+                    for i in (
+                        "home",
+                        "home:rw",
+                    )
+                ]
+            ):
+                # :create might be needed for some apps, for example
+                # ~/Mail:create. They will go through exceptions
+                if fs.startswith("~") and not fs.endswith(":ro"):
+                    self.errors.add("finish-args-redundant-home-path")
+            if "home:ro" in finish_args["filesystem"]:
+                if fs.startswith("~") and fs.endswith(":ro"):
+                    self.errors.add("finish-args-redundant-home-path")
 
-        pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
+        pairs = (
+            ("host", "home"),
+            ("host", "home:rw"),
+            ("host:rw", "home"),
+            ("host:rw", "home:rw"),
+            ("host:ro", "home:ro"),
+            ("host-etc", "home"),
+            ("host-etc:rw", "home:rw"),
+            ("host-etc", "home:rw"),
+            ("host-etc:rw", "home"),
+            ("host-etc:ro", "home:ro"),
+            ("host-os", "home"),
+            ("host-os", "home:rw"),
+            ("host-os:rw", "home"),
+            ("host-os:rw", "home:rw"),
+            ("host-os:ro", "home:ro"),
+            # writeable host implies writeable home
+            # :ro is meaningless with home in that case
+            # as host rw takes precedence
+            ("host", "home:ro"),
+            ("host:rw", "home:ro"),
+            ("host-etc", "home:ro"),
+            ("host-etc:rw", "home:ro"),
+            ("host-os", "home:ro"),
+            ("host-os:rw", "home:ro"),
+        )
         if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
             self.errors.add("finish-args-redundant-home-and-host")
 
