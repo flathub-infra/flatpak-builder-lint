@@ -21,6 +21,7 @@ known_exceptions = {
     "finish-args-unnecessary-xdg-data-access",
     "finish-args-wildcard-kde-own-name",
     "flathub-json-modified-publish-delay",
+    "finish-args-wildcard-kde-talk-name",
 }
 
 def check_duplicates(
