@@ -3190,5 +3190,8 @@
     },
     "com.oyajun.ColorCode": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "io.github.nyre221.kiview": {
+        "finish-args-wildcard-kde-talk-name": "Required to send commands to the active dolphin window."
     }
 }
