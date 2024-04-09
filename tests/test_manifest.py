@@ -143,7 +143,7 @@ def test_manifest_finish_args_home_host() -> None:
         and "finish-args-redundant-home-create" in found_errors
     )
 
-    for N in range(1, 10):
+    for N in range(1, 12):
         ret = run_checks(
             f"tests/manifests/redundant-paths/corrects/finish_args-home_host{N}.json"
         )

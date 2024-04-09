@@ -100,7 +100,11 @@ class FinishArgsCheck(Check):
             ):
                 # :create might be needed for some apps, for example
                 # ~/Mail:create. They will go through exceptions
-                if fs.startswith(("home", "~")) and not fs.endswith(":ro"):
+                if (
+                    fs.startswith(("home", "~"))
+                    and not fs.endswith(":ro")
+                    and not fs.startswith(("~/.var/app/", "home/.var/app/"))
+                ):
                     self.errors.add("finish-args-redundant-home-and-host")
             if any(
                 [
@@ -111,7 +115,11 @@ class FinishArgsCheck(Check):
                     )
                 ]
             ):
-                if fs.startswith(("home", "~")) and fs.endswith(":ro"):
+                if (
+                    fs.startswith(("home", "~"))
+                    and fs.endswith(":ro")
+                    and not fs.startswith(("~/.var/app/", "home/.var/app/"))
+                ):
                     self.errors.add("finish-args-redundant-home-and-host")
             if any(
                 [
@@ -124,10 +132,18 @@ class FinishArgsCheck(Check):
             ):
                 # :create might be needed for some apps, for example
                 # ~/Mail:create. They will go through exceptions
-                if fs.startswith("~") and not fs.endswith(":ro"):
+                if (
+                    fs.startswith("~")
+                    and not fs.endswith(":ro")
+                    and not fs.startswith(("~/.var/app/", "home/.var/app/"))
+                ):
                     self.errors.add("finish-args-redundant-home-path")
             if "home:ro" in finish_args["filesystem"]:
-                if fs.startswith("~") and fs.endswith(":ro"):
+                if (
+                    fs.startswith("~")
+                    and fs.endswith(":ro")
+                    and not fs.startswith(("~/.var/app/", "home/.var/app/"))
+                ):
                     self.errors.add("finish-args-redundant-home-path")
 
         pairs = (
