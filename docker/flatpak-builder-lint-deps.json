@@ -49,13 +49,13 @@
       "name": "python3-charset-normalizer",
       "buildsystem": "simple",
       "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"charset-normalizer==3.2.0\" --no-build-isolation"
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"charset-normalizer==2.1.1\" --no-build-isolation"
       ],
       "sources": [
         {
           "type": "file",
-          "url": "https://files.pythonhosted.org/packages/bf/a0/188f223c7d8b924fb9b554b9d27e0e7506fd5bf9cfb6dbacb2dfd5832b53/charset_normalizer-3.2.0-py3-none-any.whl",
-          "sha256": "8e098148dd37b4ce3baca71fb394c81dc5d9c7728c95df695d2dca218edf40e6"
+          "url": "https://files.pythonhosted.org/packages/db/51/a507c856293ab05cdc1db77ff4bc1268ddd39f29e7dc4919aa497f0adbec/charset_normalizer-2.1.1-py3-none-any.whl",
+          "sha256": "83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f"
         }
       ]
     },
