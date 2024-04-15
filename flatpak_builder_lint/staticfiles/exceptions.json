@@ -1212,7 +1212,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "net.retrodeck.retrodeck": {
-        "finish-args-unnecessary-xdg-data-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803"
+        "finish-args-unnecessary-xdg-data-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
+        "finish-args-unnecessary-xdg-config-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803"    
     },
     "net.veloren.veloren": {
         "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build.",
