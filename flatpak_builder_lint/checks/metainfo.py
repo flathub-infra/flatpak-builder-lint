@@ -10,13 +10,13 @@ from . import Check
 
 class MetainfoCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
-        appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
-        appinfo_icon_dir = f"{path}/files/share/app-info/icons/flatpak/128x128/"
-        icon_path = f"{path}/files/share/icons/hicolor"
+        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
+        appinfo_icon_dir = f"{path}/app-info/icons/flatpak/128x128/"
+        icon_path = f"{path}/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
         metainfo_dirs = [
-            f"{path}/files/share/metainfo",
-            f"{path}/files/share/appdata",
+            f"{path}/metainfo",
+            f"{path}/appdata",
         ]
         metainfo_exts = [".appdata.xml", ".metainfo.xml"]
 
@@ -149,7 +149,7 @@ class MetainfoCheck(Check):
         appid = ref.split("/")[1]
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ret = ostree.extract_subpath(path, ref, "/", tmpdir)
+            ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
             if ret["returncode"] != 0:
                 raise RuntimeError("Failed to extract ostree repo")
 
