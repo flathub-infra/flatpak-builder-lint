@@ -11,8 +11,8 @@ from . import Check
 
 class DesktopfileCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
-        appstream_path = f"{path}/files/share/app-info/xmls/{appid}.xml.gz"
-        desktopfiles_path = f"{path}/files/share/applications"
+        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
+        desktopfiles_path = f"{path}/applications"
 
         if os.path.exists(desktopfiles_path):
             desktop_files = [
@@ -160,7 +160,7 @@ class DesktopfileCheck(Check):
         if metadata.get("type", False) != "application":
             return
 
-        self._validate(f"{path}", appid)
+        self._validate(f"{path}/files/share", appid)
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
@@ -170,7 +170,7 @@ class DesktopfileCheck(Check):
         appid = ref.split("/")[1]
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ret = ostree.extract_subpath(path, ref, "/", tmpdir)
+            ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
             if ret["returncode"] != 0:
                 raise RuntimeError("Failed to extract ostree repo")
             self._validate(tmpdir, appid)
