@@ -139,7 +139,7 @@ class MetainfoCheck(Check):
         if metadata.get("type", False) != "application":
             return
 
-        self._validate(f"{path}", appid)
+        self._validate(f"{path}/files/share", appid)
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
