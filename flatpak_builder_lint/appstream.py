@@ -68,6 +68,11 @@ def appstream_id(path: str) -> Optional[str]:
     return str(aps_cid)
 
 
+def get_launchable(path: str) -> list:
+    launchable = components(path)[0].xpath("launchable[@type='desktop-id']/text()")
+    return list(launchable)
+
+
 def is_developer_name_present(path: str) -> bool:
     developer_name = components(path)[0].xpath("developer/name")
     legacy_developer_name = components(path)[0].xpath("developer_name")

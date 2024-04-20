@@ -151,6 +151,7 @@ def test_builddir_quality_guidelines() -> None:
         "appstream-missing-project-license",
         "no-exportable-icon-installed",
         "metainfo-missing-component-type",
+        "appstream-launchable-file-missing",
     }
     warnings = {
         "appstream-name-too-long",
@@ -166,7 +167,11 @@ def test_builddir_quality_guidelines() -> None:
         assert e in found_errors
     # If present, it means a metainfo file that was validating
     # correctly broke and that should be fixed
-    not_founds = {"appstream-failed-validation" "appstream-id-mismatch-flatpak-id"}
+    not_founds = {
+        "appstream-failed-validation",
+        "appstream-id-mismatch-flatpak-id",
+        "metainfo-missing-launchable-tag",
+    }
     for e in not_founds:
         assert e not in found_errors
 
@@ -205,6 +210,7 @@ def test_min_success_metadata() -> None:
     # CLI applications are allowed to have no finish-args with exceptions
     accepted = {"finish-args-not-defined"}
     assert len(found_errors - accepted) == 0
+    assert "metainfo-missing-launchable-tag" not in found_errors
 
 
 def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
