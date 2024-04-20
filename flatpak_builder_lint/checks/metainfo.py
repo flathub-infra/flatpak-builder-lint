@@ -21,9 +21,6 @@ class MetainfoCheck(Check):
         ]
         metainfo_exts = [".appdata.xml", ".metainfo.xml"]
 
-        if appid.endswith(".BaseApp"):
-            return
-
         metainfo_path = None
         for metainfo_dir in metainfo_dirs:
             for ext in metainfo_exts:
@@ -148,6 +145,8 @@ class MetainfoCheck(Check):
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
         if not appid:
+            return
+        if appid.endswith(".BaseApp"):
             return
         metadata = builddir.parse_metadata(path)
         if not metadata:
