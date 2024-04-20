@@ -82,51 +82,6 @@ class MetainfoCheck(Check):
         ):
             return
 
-        if appstream.component_type(appstream_path) in (
-            "desktop",
-            "desktop-application",
-        ):
-
-            if not appstream.get_launchable(appstream_path):
-                self.errors.add("metainfo-missing-launchable-tag")
-
-            if appstream.get_launchable(appstream_path):
-                launchable_value = appstream.get_launchable(appstream_path)[0]
-                launchable_file_path = f"{launchable_dir}/{launchable_value}"
-                if not os.path.exists(launchable_file_path):
-                    self.errors.add("appstream-launchable-file-missing")
-
-            icon_filename = appstream.get_icon_filename(appstream_path)
-            appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
-
-            if not os.path.exists(appinfo_icon_path):
-                self.errors.add("appstream-missing-icon-file")
-            if not appstream.has_icon_key(appstream_path):
-                self.errors.add("appstream-missing-icon-key")
-            if appstream.icon_no_type(appstream_path):
-                self.errors.add("appstream-icon-key-no-type")
-            if not appstream.is_remote_icon_mirrored(appstream_path):
-                self.errors.add("appstream-remote-icon-not-mirrored")
-
-            if os.path.exists(icon_path):
-                icon_list = [
-                    os.path.basename(file)
-                    for file in glob.glob(glob_path)
-                    if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
-                    and os.path.isfile(file)
-                ]
-            else:
-                icon_list = []
-            if not len(icon_list) > 0:
-                self.errors.add("no-exportable-icon-installed")
-            if not appstream.is_categories_present(appstream_path):
-                self.errors.add("appstream-missing-categories")
-
-        if not appstream.is_developer_name_present(appstream_path):
-            self.errors.add("appstream-missing-developer-name")
-        if not appstream.is_project_license_present(appstream_path):
-            self.errors.add("appstream-missing-project-license")
-
         # for mypy
         name = appstream.name(appstream_path)
         summary = appstream.summary(appstream_path)
@@ -139,8 +94,56 @@ class MetainfoCheck(Check):
             if summary.endswith("."):
                 self.warnings.add("appstream-summary-ends-in-dot")
 
+        if not appstream.is_developer_name_present(appstream_path):
+            self.errors.add("appstream-missing-developer-name")
+        if not appstream.is_project_license_present(appstream_path):
+            self.errors.add("appstream-missing-project-license")
+
         if not appstream.check_caption(appstream_path):
             self.warnings.add("appstream-screenshot-missing-caption")
+
+        if appstream.component_type(appstream_path) in (
+            "desktop",
+            "desktop-application",
+        ):
+            if os.path.exists(icon_path):
+                icon_list = [
+                    os.path.basename(file)
+                    for file in glob.glob(glob_path)
+                    if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
+                    and os.path.isfile(file)
+                ]
+            else:
+                icon_list = []
+            if not len(icon_list) > 0:
+                self.errors.add("no-exportable-icon-installed")
+
+            if not appstream.get_launchable(appstream_path):
+                self.errors.add("metainfo-missing-launchable-tag")
+
+            if appstream.get_launchable(appstream_path):
+                launchable_value = appstream.get_launchable(appstream_path)[0]
+                launchable_file_path = f"{launchable_dir}/{launchable_value}"
+                if not os.path.exists(launchable_file_path):
+                    self.errors.add("appstream-launchable-file-missing")
+                    return
+
+            # the checks below depend on launchable being present
+
+            icon_filename = appstream.get_icon_filename(appstream_path)
+            appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
+
+            if not os.path.exists(appinfo_icon_path):
+                self.errors.add("appstream-missing-icon-file")
+            if not appstream.has_icon_key(appstream_path):
+                self.errors.add("appstream-missing-icon-key")
+                return
+            if appstream.icon_no_type(appstream_path):
+                self.errors.add("appstream-icon-key-no-type")
+            if not appstream.is_remote_icon_mirrored(appstream_path):
+                self.errors.add("appstream-remote-icon-not-mirrored")
+            if not appstream.is_categories_present(appstream_path):
+                self.errors.add("appstream-missing-categories")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
