@@ -12,6 +12,7 @@ class MetainfoCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
         appinfo_icon_dir = f"{path}/app-info/icons/flatpak/128x128/"
+        launchable_dir = f"{path}/applications"
         icon_path = f"{path}/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
         metainfo_dirs = [
@@ -85,6 +86,16 @@ class MetainfoCheck(Check):
             "desktop",
             "desktop-application",
         ):
+
+            if not appstream.get_launchable(appstream_path):
+                self.errors.add("metainfo-missing-launchable-tag")
+
+            if appstream.get_launchable(appstream_path):
+                launchable_value = appstream.get_launchable(appstream_path)[0]
+                launchable_file_path = f"{launchable_dir}/{launchable_value}"
+                if not os.path.exists(launchable_file_path):
+                    self.errors.add("appstream-launchable-file-missing")
+
             icon_filename = appstream.get_icon_filename(appstream_path)
             appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
 
