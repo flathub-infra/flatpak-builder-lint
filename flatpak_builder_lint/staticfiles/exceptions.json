@@ -1177,6 +1177,9 @@
     "io.github.prateekmedia.appimagepool": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "io.github.randovania.Randovania": {
+        "finish-args-unnecessary-xdg-config-access": "required to export a randomizer to the host's Ryujinx settings"
+    },
     "io.github.Qalculate": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
