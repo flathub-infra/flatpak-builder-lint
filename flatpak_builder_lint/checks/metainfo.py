@@ -119,6 +119,8 @@ class MetainfoCheck(Check):
                 icon_list = []
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
+            if not appstream.is_categories_present(appstream_path):
+                self.errors.add("appstream-missing-categories")
 
         if not appstream.is_developer_name_present(appstream_path):
             self.errors.add("appstream-missing-developer-name")

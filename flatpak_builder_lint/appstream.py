@@ -73,6 +73,11 @@ def get_launchable(path: str) -> list:
     return list(launchable)
 
 
+def is_categories_present(path: str) -> bool:
+    categories = components(path)[0].xpath("categories")
+    return bool(categories)
+
+
 def is_developer_name_present(path: str) -> bool:
     developer_name = components(path)[0].xpath("developer/name")
     legacy_developer_name = components(path)[0].xpath("developer_name")

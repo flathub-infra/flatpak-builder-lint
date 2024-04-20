@@ -142,6 +142,7 @@ def test_builddir_desktop_file() -> None:
     assert "desktop-file-low-quality-category" in found_warnings
     for err in errors:
         assert err in found_errors
+    assert "appstream-missing-categories" not in found_errors
 
 
 def test_builddir_quality_guidelines() -> None:
@@ -187,6 +188,7 @@ def test_builddir_broken_icon() -> None:
         "appstream-missing-icon-file",
         "finish-args-not-defined",
         "desktop-file-not-installed",
+        "appstream-missing-categories",
     }
     found_errors = set(ret["errors"])
     for e in errors:
