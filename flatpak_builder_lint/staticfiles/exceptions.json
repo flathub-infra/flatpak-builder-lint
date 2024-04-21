@@ -3200,5 +3200,8 @@
     },
     "org.kde.ghostwriter": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.goldendict.GoldenDict": {
+        "module-goldendict-source-git-branch": "Needed for x-checker as upstream does not tag releaases."
     }
 }
