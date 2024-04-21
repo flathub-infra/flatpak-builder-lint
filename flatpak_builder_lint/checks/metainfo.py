@@ -121,9 +121,14 @@ class MetainfoCheck(Check):
             if appstream.get_launchable(appstream_path):
                 launchable_value = appstream.get_launchable(appstream_path)[0]
                 launchable_file_path = f"{launchable_dir}/{launchable_value}"
-                if not os.path.exists(launchable_file_path):
-                    self.errors.add("appstream-launchable-file-missing")
-                    return
+            else:
+                launchable_file_path = None
+
+            if launchable_file_path is not None and not os.path.exists(
+                launchable_file_path
+            ):
+                self.errors.add("appstream-launchable-file-missing")
+                return
 
             # the checks below depend on launchable being present
 
