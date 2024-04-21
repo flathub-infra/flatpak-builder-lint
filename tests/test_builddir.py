@@ -180,19 +180,30 @@ def test_builddir_quality_guidelines() -> None:
 def test_builddir_broken_icon() -> None:
     ret = run_checks("tests/builddir/appstream-broken-icon")
     errors = {
-        "appstream-icon-key-no-type",
         # Expected failure with appstreamcli validate
         "appstream-failed-validation",
-        "appstream-remote-icon-not-mirrored",
         "no-exportable-icon-installed",
-        "appstream-missing-icon-file",
+        "metainfo-launchable-tag-wrong-value",
         "finish-args-not-defined",
         "desktop-file-not-installed",
-        "appstream-missing-categories",
     }
     found_errors = set(ret["errors"])
     for e in errors:
         assert e in found_errors
+
+
+def test_builddir_broken_remote_icon() -> None:
+    ret = run_checks("tests/builddir/appstream-broken-remote-icon")
+    found_errors = set(ret["errors"])
+    errors = {
+        "appstream-icon-key-no-type",
+        "appstream-remote-icon-not-mirrored",
+        "appstream-missing-icon-file",
+        "appstream-missing-categories",
+    }
+    for e in errors:
+        assert e in found_errors
+    assert "metainfo-launchable-tag-wrong-value" not in found_errors
 
 
 def test_min_success_metadata() -> None:
