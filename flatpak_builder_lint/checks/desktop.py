@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 import subprocess
@@ -13,6 +14,8 @@ class DesktopfileCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
         appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
         desktopfiles_path = f"{path}/applications"
+        icon_path = f"{path}/icons/hicolor"
+        glob_path = f"{icon_path}/*/apps/*"
 
         if os.path.exists(desktopfiles_path):
             desktop_files = [
@@ -43,6 +46,18 @@ class DesktopfileCheck(Check):
             "desktop-application",
         ):
             return None
+
+        if os.path.exists(icon_path):
+            icon_list = [
+                os.path.basename(file)
+                for file in glob.glob(glob_path)
+                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
+                and os.path.isfile(file)
+            ]
+        else:
+            icon_list = []
+        if not len(icon_list) > 0:
+            self.errors.add("no-exportable-icon-installed")
 
         if not len(desktop_files) > 0:
             self.errors.add("desktop-file-not-installed")
@@ -83,8 +98,14 @@ class DesktopfileCheck(Check):
             else:
                 if not len(icon) > 0:
                     self.errors.add("desktop-file-icon-key-empty")
-                if len(icon) > 0 and not re.match(rf"^{appid}([-.].*)?$", f"{icon}"):
-                    self.errors.add("desktop-file-icon-key-wrong-value")
+                if len(icon) > 0:
+                    if not re.match(rf"^{appid}([-.].*)?$", f"{icon}"):
+                        self.errors.add("desktop-file-icon-key-wrong-value")
+                    if icon_list:
+                        if not any(
+                            k in icon_list for k in (icon, icon + ".png", icon + ".svg")
+                        ):
+                            self.errors.add("desktop-file-icon-not-installed")
 
             try:
                 exect = key_file.get_string("Desktop Entry", "Exec")

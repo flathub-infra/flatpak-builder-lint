@@ -135,6 +135,7 @@ def test_builddir_desktop_file() -> None:
         "desktop-file-icon-key-wrong-value",
         "desktop-file-is-hidden",
         "desktop-file-exec-has-flatpak-run",
+        "desktop-file-icon-not-installed",
     }
     found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
