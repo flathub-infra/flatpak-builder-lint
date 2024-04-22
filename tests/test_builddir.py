@@ -197,14 +197,24 @@ def test_builddir_broken_remote_icon() -> None:
     ret = run_checks("tests/builddir/appstream-broken-remote-icon")
     found_errors = set(ret["errors"])
     errors = {
-        "appstream-icon-key-no-type",
         "appstream-remote-icon-not-mirrored",
-        "appstream-missing-icon-file",
         "appstream-missing-categories",
     }
     for e in errors:
         assert e in found_errors
     assert "metainfo-launchable-tag-wrong-value" not in found_errors
+
+
+def test_builddir_appstream_no_icon_file() -> None:
+    ret = run_checks("tests/builddir/appstream-no-icon-file")
+    found_errors = set(ret["errors"])
+    assert "appstream-missing-icon-file" in found_errors
+
+
+def test_builddir_appstream_icon_key_no_typee() -> None:
+    ret = run_checks("tests/builddir/appstream-icon-key-no-type")
+    found_errors = set(ret["errors"])
+    assert "appstream-icon-key-no-type" in found_errors
 
 
 def test_min_success_metadata() -> None:
