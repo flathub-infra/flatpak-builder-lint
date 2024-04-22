@@ -56,8 +56,7 @@ Additional tools are required by subcommands and checks:
 ### Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--appid APPID] [--cwd] [--ref REF]
-                            {builddir,repo,manifest,appstream} path
+usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--appid APPID] [--cwd] [--ref REF] {builddir,repo,manifest,appstream} path
 
 A linter for Flatpak builds and flatpak-builder manifests
 
