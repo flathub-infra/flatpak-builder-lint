@@ -3203,5 +3203,8 @@
     },
     "org.goldendict.GoldenDict": {
         "module-goldendict-source-git-branch": "Needed for x-checker as upstream does not tag releaases."
+    },
+    "net.rpcs3.RPCS3": {
+        "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
     }
 }
