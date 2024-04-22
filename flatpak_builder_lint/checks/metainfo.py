@@ -141,6 +141,9 @@ class MetainfoCheck(Check):
 
             # the checks below depend on launchable being present
 
+            if not appstream.is_categories_present(appstream_path):
+                self.errors.add("appstream-missing-categories")
+
             icon_filename = appstream.get_icon_filename(appstream_path)
             appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
 
@@ -153,8 +156,6 @@ class MetainfoCheck(Check):
                 self.errors.add("appstream-icon-key-no-type")
             if not appstream.is_remote_icon_mirrored(appstream_path):
                 self.errors.add("appstream-remote-icon-not-mirrored")
-            if not appstream.is_categories_present(appstream_path):
-                self.errors.add("appstream-missing-categories")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
