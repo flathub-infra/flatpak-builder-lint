@@ -149,6 +149,7 @@ class MetainfoCheck(Check):
 
             if not os.path.exists(appinfo_icon_path):
                 self.errors.add("appstream-missing-icon-file")
+                return
             if not appstream.has_icon_key(appstream_path):
                 self.errors.add("appstream-missing-icon-key")
                 return

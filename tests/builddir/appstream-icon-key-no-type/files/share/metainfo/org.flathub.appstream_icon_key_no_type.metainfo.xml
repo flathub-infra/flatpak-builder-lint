@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.flathub.appstream_icon_key_no_type</id>
+  <name>Broken Icon</name>
+  <summary>Has a broken icon key in appstream</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>Has a broken icon key in appstream. A long description. An even longer description</p>
+    <p>Also has an icon with no type</p>
+  </description>
+  <developer id="flathub.org">
+    <name>Flathub</name>
+  </developer>
+  <launchable type="desktop-id">org.flathub.appstream_icon_key_no_type.desktop</launchable>
+  <icon>https://example.org/icon1.png</icon>
+  <icon type="remote" width="128" height="128">https://example.org/icon2.png</icon>
+  <icon type="remote" width="128" height="128">https://dl.flathub.org/media/org/flathub/appstream_broken_icon/7934ba328ca1b4a3f35dade2bbc3073e/icons/128x128/org.flathub.appstream_broken_icon.png</icon>
+  <icon type="stock">org.flathub.appstream_icon_key_no_type</icon>
+  <url type="homepage">https://flathub.org</url>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <caption>A test caption</caption>
+      <image type="source" width="1920" height="1034">https://dl.flathub.org/media/org/flathub/broken/e59abd56b026a909d6d2d683ef0b07d6/screenshots/image-1_orig.png</image>
+      <image type="thumbnail" width="1248" height="672">https://dl.flathub.org/media/org/flathub/broken/e59abd56b026a909d6d2d683ef0b07d6/screenshots/image-1_1248x700@1.png</image>
+    </screenshot>
+  </screenshots>
+  <keywords>
+    <keyword>test</keyword>
+  </keywords>
+  <releases>
+    <release type="stable" version="0.0.1" timestamp="1706745600"/>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>
