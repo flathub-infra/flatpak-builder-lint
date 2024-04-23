@@ -141,6 +141,9 @@ class FinishArgsCheck(Check):
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
         if isinstance(appid, str):
             is_baseapp = appid.endswith(".BaseApp")
         else:
@@ -184,6 +187,9 @@ class FinishArgsCheck(Check):
             return
 
         appid = metadata.get("name")
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
         if isinstance(appid, str):
             is_baseapp = appid.endswith(".BaseApp")
         else:
@@ -202,6 +208,9 @@ class FinishArgsCheck(Check):
         if not ref:
             return
         appid = ref.split("/")[1]
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
 
         is_baseapp = appid.endswith(".BaseApp")
 

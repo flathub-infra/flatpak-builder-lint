@@ -66,6 +66,7 @@ class FlathubJsonCheck(Check):
 
         appid = manifest.get("id")
         if not appid:
+            self.errors.add("appid-not-defined")
             return
 
         is_extra_data = False
@@ -79,6 +80,7 @@ class FlathubJsonCheck(Check):
     def _check_metadata(self, metadata: dict, flathub_json: dict) -> None:
         appid = metadata.get("name")
         if not appid:
+            self.errors.add("appid-not-defined")
             return
 
         is_extra_data = bool(metadata.get("extra-data", False))

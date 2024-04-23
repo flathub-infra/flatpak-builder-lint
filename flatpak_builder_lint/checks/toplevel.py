@@ -5,6 +5,10 @@ class TopLevelCheck(Check):
     def check_manifest(self, manifest: dict) -> None:
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
+
         if isinstance(appid, str):
             is_baseapp = appid.endswith(".BaseApp")
         else:

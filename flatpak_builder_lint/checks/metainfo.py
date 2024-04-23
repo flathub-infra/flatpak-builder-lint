@@ -161,6 +161,7 @@ class MetainfoCheck(Check):
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
         if not appid:
+            self.errors.add("appid-not-defined")
             return
         if appid.endswith(".BaseApp"):
             return
@@ -178,6 +179,9 @@ class MetainfoCheck(Check):
         if not ref:
             return
         appid = ref.split("/")[1]
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
 
         if appid.endswith(".BaseApp"):
             return

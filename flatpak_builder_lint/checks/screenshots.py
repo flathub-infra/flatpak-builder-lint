@@ -12,6 +12,9 @@ class ScreenshotsCheck(Check):
         if not ref:
             return
         appid = ref.split("/")[1]
+        if not appid:
+            self.errors.add("appid-not-defined")
+            return
 
         if appid.endswith(".BaseApp"):
             return
