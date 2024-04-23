@@ -24,8 +24,7 @@ class ScreenshotsCheck(Check):
         with tempfile.TemporaryDirectory() as tmpdir:
             ret = ostree.extract_subpath(path, ref, "files/share/app-info", tmpdir)
             if ret["returncode"] != 0:
-                self.errors.add("appstream-missing-appinfo")
-                return
+                raise RuntimeError("Failed to extract ostree repo")
 
             appstream_path = f"{tmpdir}/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
