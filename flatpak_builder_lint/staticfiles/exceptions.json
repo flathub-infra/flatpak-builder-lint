@@ -3206,5 +3206,8 @@
     },
     "net.rpcs3.RPCS3": {
         "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
+    },
+    "io.github.waylyrics.Waylyrics": {
+        "finish-args-wildcard-kde-talk-name": "Required to show the tray icon"
     }
 }
