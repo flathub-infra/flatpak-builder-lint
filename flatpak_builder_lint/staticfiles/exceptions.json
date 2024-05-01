@@ -1197,6 +1197,9 @@
     "io.gitlab.librewolf-community": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
+    "io.gitlab.liferooter.textpieces": {
+        "finish-args-flatpak-spawn-access": "required for running user-defined text actions in host environment"
+    },
     "io.howl.Editor": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
