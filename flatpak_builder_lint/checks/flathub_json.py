@@ -30,6 +30,11 @@ class FlathubJsonCheck(Check):
 
         eol = flathub_json.get("end-of-life")
         eol_rebase = flathub_json.get("end-of-life-rebase")
+        automerge = flathub_json.get("automerge-flathubbot-prs")
+
+        if isinstance(automerge, bool):
+            if automerge and not is_extra_data:
+                self.errors.add("flathub-json-automerge-enabled")
 
         if eol_rebase and not eol:
             self.errors.add("flathub-json-eol-rebase-without-message")
