@@ -947,7 +947,8 @@
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
     },
     "org.gnome.Totem.Devel": {
-        "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream"
+        "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gimp.GIMP": {
 	"finish-args-unnecessary-xdg-config-access": "gtk-3.0 and GIMP config."
@@ -1306,7 +1307,8 @@
     "org.kde.kate": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
+        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kdevelop": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
@@ -2568,6 +2570,21 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "org.kde.trojita": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kde.spectacle": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kde.ktechlab": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kde.krusader": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
+    "org.kde.amarok": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
     "org.kde.kopete": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
@@ -2580,7 +2597,8 @@
         "appstream-failed-validation": "grandfathered due to unannounced linter changes"
     },
     "org.kde.skanlite": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes"
+        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.Sunderland93.sway-input-config": {
         "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
