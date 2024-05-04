@@ -3227,5 +3227,8 @@
     },
     "net.rpcs3.RPCS3": {
         "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
+    },
+    "io.github.elevenhsoft.WebApps": {
+        "finish-args-unnecessary-xdg-data-access": "WebApps need rw permission for xdg-data to be able to create new profiles for web browsers to isolate them as well as create new desktop files."
     }
 }
