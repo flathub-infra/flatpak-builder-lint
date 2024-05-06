@@ -8,7 +8,8 @@
         "*": "ignore all errors and warnings"
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
-        "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak"
+        "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-config-access": "this program needs write-access to xdg-config/mimeapps.list"
     },
     "com.github.sixpounder.GameOfLife": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
