@@ -63,6 +63,7 @@ class FinishArgsCheck(Check):
             for resv_dir in [
                 ".flatpak-info",
                 "app",
+                "bin",
                 "dev",
                 "etc",
                 "lib",
