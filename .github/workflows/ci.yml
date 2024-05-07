@@ -18,6 +18,35 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Validate exceptions.json
+        run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json
+
+      - name: Setup Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          sudo ln -s /github/home/.local/bin/poetry /usr/bin/poetry
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
+      - name: Install python dependencies
+        run: |
+          poetry install
+
+      - name: Check module sort order
+        run: poetry run ruff check --select I flatpak_builder_lint
+
+      - name: Check code formatting
+        run: poetry run black --check flatpak_builder_lint
+
+      - name: Check code errors
+        run: poetry run flake8p flatpak_builder_lint
+
+      - name: Check python types
+        run: poetry run mypy flatpak_builder_lint
+
       - name: Set up dependencies
         run: |
           sudo apt-get update
@@ -52,34 +81,5 @@ jobs:
           chmod +x /usr/local/bin/appstreamcli
           appstreamcli --version
 
-      - name: Setup Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          sudo ln -s /github/home/.local/bin/poetry /usr/bin/poetry
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pypoetry
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-
-      - name: Install dependencies
-        run: |
-          poetry install
-
-      - name: Check module sort order
-        run: poetry run ruff check --select I flatpak_builder_lint
-
-      - name: Check code formatting
-        run: poetry run black --check flatpak_builder_lint
-
-      - name: Check code errors
-        run: poetry run flake8p flatpak_builder_lint
-
-      - name: Check python types
-        run: poetry run mypy flatpak_builder_lint
-
       - name: Run test suite
         run: poetry run pytest -v tests
-
-      - name: Validate exceptions.json
-        run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json
