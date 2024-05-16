@@ -1554,7 +1554,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.teamspeak.TeamSpeak": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-unnecessary-xdg-config-access": "TeamSpeak 5 plugins installation directory."
     },
     "com.tencent.WeChat": {
         "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
