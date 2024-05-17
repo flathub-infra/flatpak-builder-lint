@@ -21,6 +21,11 @@ jobs:
       - name: Validate exceptions.json
         run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json
 
+      - name: Set up dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
+
       - name: Setup Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -46,11 +51,6 @@ jobs:
 
       - name: Check python types
         run: poetry run mypy flatpak_builder_lint
-
-      - name: Set up dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
 
       - name: Allow file:// clones with git>=2.38.1
         run: |
