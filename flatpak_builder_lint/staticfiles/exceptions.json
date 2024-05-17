@@ -3229,5 +3229,9 @@
     },
     "net.rpcs3.RPCS3": {
         "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
+    },
+    "io.github.loot.loot": {
+	"finish-args-unnecessary-xdg-config-access": "Needed to detect games installed through Heroic Games Launcher.",
+        "finish-args-unnecessary-xdg-data-access": "Needed to detect and make changes to games installed through Steam."
     }
 }
