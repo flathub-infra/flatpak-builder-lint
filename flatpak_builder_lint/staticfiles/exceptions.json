@@ -3233,5 +3233,8 @@
     "io.github.loot.loot": {
         "finish-args-unnecessary-xdg-config-access": "Needed to detect games installed through Heroic Games Launcher.",
         "finish-args-unnecessary-xdg-data-access": "Needed to detect and make changes to games installed through Steam."
+    },
+    "io.github.pantheon_tweaks.pantheon-tweaks": {
+        "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings."
     }
 }
