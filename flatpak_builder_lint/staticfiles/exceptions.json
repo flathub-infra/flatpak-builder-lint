@@ -3800,5 +3800,8 @@
     "io.github.vikdevelop.SaveDesktop": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule"
+    },
+    "dev.bsnes.bsnes": {
+        "finish-args-unnecessary-xdg-config-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
     }
 }
