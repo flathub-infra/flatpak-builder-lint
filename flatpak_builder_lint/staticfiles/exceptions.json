@@ -3236,5 +3236,8 @@
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings."
+    },
+    "dev.bsnes.bsnes": {
+        "finish-args-unnecessary-xdg-config-access": "needs access to xdg-config/gtk-3.0 for appropriate theming"
     }
 }
