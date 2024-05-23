@@ -3182,6 +3182,9 @@
     "org.sparkleshare.SparkleShare": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "org.subsurface_divelog.Subsurface": {
+        "module-subsurface-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
+    },
     "org.tabos.maxcontrol": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
