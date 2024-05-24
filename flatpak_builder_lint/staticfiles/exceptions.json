@@ -3236,5 +3236,8 @@
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings."
+    },
+    "io.github.ryanabx.flatrun": {
+        "finish-args-flatpak-spawn-access": "Required to install runtimes and launch flatpak bundles with the system's flatpak binary."
     }
 }
