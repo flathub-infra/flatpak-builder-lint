@@ -22,6 +22,7 @@ known_exceptions = {
     "finish-args-wildcard-kde-own-name",
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
+    "flathub-json-automerge-enabled",
 }
 
 def check_duplicates(
