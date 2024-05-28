@@ -179,7 +179,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.cassidyjames.clairvoyant": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.github.cassidyjames.dippi": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -471,7 +472,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.marhkb.Pods": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.github.marinm.songrec": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -560,7 +562,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.phase1geo.minder": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.github.philip_scott.notes-up": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -806,7 +809,8 @@
     "org.telegram.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
         "flathub-json-skip-appstream-check": "Metainfo contains programmatically generated changelog we have no control over",
-        "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless"
+        "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.gitlab.adnan338.Invoicer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -852,7 +856,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.gitlab.j0chn.nextcloud_password_client": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.gitlab.JakobDev.jdAnimatedImageEditor": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1359,7 +1364,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.pegasus_frontend.Pegasus": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.sil.FieldWorks": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1376,7 +1382,8 @@
     },
     "org.wezfurlong.wezterm": {
         "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
-        "finish-args-unnecessary-xdg-config-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270"
+        "finish-args-unnecessary-xdg-config-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.worldpossible.ScriptLauncher": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1713,7 +1720,8 @@
         "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
     },
     "io.github.kotatogram": {
-        "appid-code-hosting-too-few-components": "the app predates this linter rule"
+        "appid-code-hosting-too-few-components": "the app predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "io.github.Hexchat": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -1729,7 +1737,8 @@
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "io.github.Soundux": {
-        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "io.github.qnapi": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -1850,7 +1859,8 @@
     },
     "com.discordapp.Discord": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.hunterwittenborn.Celeste": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
@@ -2640,7 +2650,8 @@
         "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
     },
     "com.brave.Browser": {
-        "flathub-json-modified-publish-delay": "Allow setting the delay to 0 to ensure users get the latest version as soon as possible"
+        "flathub-json-modified-publish-delay": "Allow setting the delay to 0 to ensure users get the latest version as soon as possible",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "app.lith.Lith": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3168,7 +3179,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.remmina.Remmina": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.sauerbraten.Sauerbraten": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3189,7 +3201,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.thonny.Thonny": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.xonotic.Xonotic": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3239,5 +3252,146 @@
     },
     "io.github.ryanabx.flatrun": {
         "finish-args-flatpak-spawn-access": "Required to install runtimes and launch flatpak bundles with the system's flatpak binary."
+    },
+    "ch.tlaun.TL": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.adilhanney.ricochlime": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.adilhanney.saber": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.adilhanney.super_nonogram": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.atlauncher.ATLauncher": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.cassidyjames.butler": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.cassidyjames.plausible": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.inochi2d.inochi-creator": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.quexten.Goldwarden": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.redis.RedisInsight": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.steamgriddb.SGDBoop": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.steamgriddb.steam-rom-manager": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "com.tominlab.wonderpen": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "dev.schlaubi.Tonbrett": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "dev.serebit.Waycheck": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "dev.skynomads.Seabird": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "dev.storyapps.starc": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "eu.quelltext.open_chakra_toning": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "eu.vcmi.VCMI": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "fi.skyjake.Lagrange": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "im.fluffychat.Fluffychat": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "info.portfolio_performance.PortfolioPerformance": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.gopher64.gopher64": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.kukuruzka165.materialgram": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.nearinfinitybrowser.nearinfinity": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.sharkwouter.Minigalaxy": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.simple64.simple64": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.tdesktop_x64.TDesktop": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.waylyrics.Waylyrics": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.wiiznokes.fan-control": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "io.github.xiaoyifang.goldendict_ng": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "md.obsidian.Obsidian": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "net.werwolv.ImHex": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "network.loki.Session": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org._2009scape.Launcher": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.easyrpg.player": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.freedesktop.Sdk.Extension.golang": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.freedesktop.Sdk.Extension.rust-stable": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.librepcb.LibrePCB": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.naev.Naev": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.otfried.Ipe": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.prismlauncher.PrismLauncher": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.purei.Play": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.radare.iaito": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "org.zrythm.Zrythm": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "rocks.koreader.KOReader": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "xyz.armcord.ArmCord": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     }
 }
