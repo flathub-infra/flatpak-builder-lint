@@ -694,8 +694,7 @@
     },
     "com.github.theCalcaholic.StreamDeck": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-         "finish-args-unnecessary-xdg-data-access": "Temporary exception needed to EOL"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.github.theironrobin.siglo": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
