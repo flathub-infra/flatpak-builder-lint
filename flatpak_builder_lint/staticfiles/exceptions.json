@@ -949,6 +949,9 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "app.devsuite.Manuals": {
+        "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation"
+    },
     "app.devsuite.Ptyxis": {
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
     },
