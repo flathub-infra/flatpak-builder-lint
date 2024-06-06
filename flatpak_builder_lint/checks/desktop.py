@@ -164,7 +164,7 @@ class DesktopfileCheck(Check):
                     # so symlinks might be broken and we cannot
                     # error on that
                     if not os.path.lexists(f"{bin_path}/{binary}"):
-                        self.errors.add("desktop-file-exec-not-found")
+                        self.errors.add("desktop-file-exec-not-in-app-bin")
 
             try:
                 hidden = key_file.get_boolean("Desktop Entry", "Hidden")

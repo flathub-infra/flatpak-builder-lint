@@ -150,7 +150,7 @@ def test_builddir_desktop_no_exec() -> None:
     ret = run_checks("tests/builddir/desktop-file-no-exec")
     found_errors = set(ret["errors"])
 
-    assert "desktop-file-exec-not-found" in found_errors
+    assert "desktop-file-exec-not-in-app-bin" in found_errors
 
 
 def test_builddir_desktop_exec() -> None:
