@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Example
+GenericName=Example
+Comment=Example
+Exec=foo
+Icon=org.flathub.example.desktop-file-no-exec
+Type=Application
+Categories=Network;
+Version=1.1
