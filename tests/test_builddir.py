@@ -146,6 +146,19 @@ def test_builddir_desktop_file() -> None:
     assert "appstream-missing-categories" not in found_errors
 
 
+def test_builddir_desktop_no_exec() -> None:
+    ret = run_checks("tests/builddir/desktop-file-no-exec")
+    found_errors = set(ret["errors"])
+
+    assert "desktop-file-exec-not-found" in found_errors
+
+
+def test_builddir_desktop_exec() -> None:
+    ret = run_checks("tests/builddir/desktop-file-exec")
+
+    assert "errors" not in ret
+
+
 def test_builddir_quality_guidelines() -> None:
     ret = run_checks("tests/builddir/appdata-quality")
     errors = {
