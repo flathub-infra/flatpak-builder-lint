@@ -141,7 +141,7 @@ class DesktopfileCheck(Check):
                         # < flatpak_rewrite_export_dir < flatpak_dir_deploy
                         # < flatpak_dir_deploy_install < flatpak_dir_install
                         self.errors.add("desktop-file-exec-has-flatpak-run")
-                    env_re = r"(?:(?:\benv\b)?\s*[A-Z0-9_]+\s*\=\s*[A-Z0-9_]+\s*)"
+                    env_re = r"(?:(?:\benv\b)?\s*[A-Za-z0-9_]+\s*\=\s*[A-Za-z0-9_]+\s*)"
                     binary = re.sub(env_re, "", exect)
                     for i in (
                         "%f",

@@ -2,7 +2,7 @@
 Name=Example
 GenericName=Example
 Comment=Example
-Exec=env FOO=BAR foo %u
+Exec=env FOO=bar foo %u
 Icon=org.flathub.example.desktop-file-exec
 Type=Application
 Categories=Network;
