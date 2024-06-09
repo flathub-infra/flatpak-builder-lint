@@ -159,6 +159,17 @@ def test_builddir_desktop_exec() -> None:
     assert "errors" not in ret
 
 
+def test_builddir_misplaced_icons() -> None:
+    ret = run_checks("tests/builddir/misplaced-icons")
+    errors = {
+        "non-png-icon-in-hicolor-subfolder",
+        "non-svg-icon-in-scalable-folder",
+    }
+    found_errors = set(ret["errors"])
+    for err in errors:
+        assert err in found_errors
+
+
 def test_builddir_quality_guidelines() -> None:
     ret = run_checks("tests/builddir/appdata-quality")
     errors = {
