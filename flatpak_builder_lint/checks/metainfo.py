@@ -14,7 +14,9 @@ class MetainfoCheck(Check):
         appinfo_icon_dir = f"{path}/app-info/icons/flatpak/128x128/"
         launchable_dir = f"{path}/applications"
         icon_path = f"{path}/icons/hicolor"
-        glob_path = f"{icon_path}/*/apps/*"
+        svg_icon_path = f"{icon_path}/scalable/apps"
+        svg_glob_path = f"{icon_path}/scalable/apps/*"
+        png_glob_path = f"{icon_path}/[!scalable]*/apps/*"
         metainfo_dirs = [
             f"{path}/metainfo",
             f"{path}/appdata",
@@ -103,15 +105,30 @@ class MetainfoCheck(Check):
             "desktop",
             "desktop-application",
         ):
-            if os.path.exists(icon_path):
-                icon_list = [
+            if os.path.exists(svg_icon_path):
+                svg_icon_list = [
                     os.path.basename(file)
-                    for file in glob.glob(glob_path)
+                    for file in glob.glob(svg_glob_path)
                     if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                     and os.path.isfile(file)
                 ]
             else:
-                icon_list = []
+                svg_icon_list = []
+            if not all(i.endswith(".svg") for i in svg_icon_list):
+                self.errors.add("non-svg-icon-in-scalable-folder")
+
+            if os.path.exists(icon_path):
+                png_icon_list = [
+                    os.path.basename(file)
+                    for file in glob.glob(png_glob_path)
+                    if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
+                    and os.path.isfile(file)
+                ]
+            else:
+                png_icon_list = []
+            if not all(i.endswith(".png") for i in png_icon_list):
+                self.errors.add("non-png-icon-in-hicolor-subfolder")
+            icon_list = svg_icon_list + png_icon_list
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
 
