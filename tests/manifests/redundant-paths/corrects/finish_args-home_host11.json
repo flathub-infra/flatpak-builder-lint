@@ -2,6 +2,6 @@
     "app-id": "org.flathub.finish_args-home_host",
     "finish-args": [
         "--filesystem=home",
-        "--filesystem=host:ro"
+        "--filesystem=~/.var/app/foo"
     ]
 }
