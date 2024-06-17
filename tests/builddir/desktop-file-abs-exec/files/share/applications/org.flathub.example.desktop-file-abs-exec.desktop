@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Example
+GenericName=Example
+Comment=Example
+Exec=/app/bin/foo %u
+Icon=org.flathub.example.desktop-file-abs-exec
+Type=Application
+Categories=Network;
+Version=1.1

@@ -159,6 +159,12 @@ def test_builddir_desktop_exec() -> None:
     assert "errors" not in ret
 
 
+def test_builddir_desktop_abs_exec() -> None:
+    ret = run_checks("tests/builddir/desktop-file-abs-exec")
+
+    assert "errors" not in ret
+
+
 def test_builddir_misplaced_icons() -> None:
     ret = run_checks("tests/builddir/misplaced-icons")
     errors = {
