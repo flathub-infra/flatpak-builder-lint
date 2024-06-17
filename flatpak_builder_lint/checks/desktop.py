@@ -143,6 +143,8 @@ class DesktopfileCheck(Check):
                         self.errors.add("desktop-file-exec-has-flatpak-run")
                     env_re = r"(?:(?:\benv\b)?\s*[A-Za-z0-9_]+\s*\=\s*[A-Za-z0-9_]+\s*)"
                     binary = re.sub(env_re, "", exect)
+                    if binary.startswith("/"):
+                        binary = os.path.basename(binary)
                     for i in (
                         "%f",
                         "%F",
