@@ -23,6 +23,8 @@ known_exceptions = {
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
+    "non-svg-icon-in-scalable-folder",
+    "non-png-icon-in-hicolor-size-folder",
 }
 
 def check_duplicates(
