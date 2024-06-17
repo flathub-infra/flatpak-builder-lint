@@ -11,18 +11,10 @@ from . import Check
 
 
 class DesktopfileCheck(Check):
-    def _validate(self, path: str, appid: str, is_repo: bool) -> None:
-        if is_repo:
-            bin_path = f"{path}"
-            appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
-            desktopfiles_path = f"{path}/applications"
-            icon_path = f"{path}/icons/hicolor"
-        else:
-            bin_path = f"{path}/bin"
-            appstream_path = f"{path}/share/app-info/xmls/{appid}.xml.gz"
-            desktopfiles_path = f"{path}/share/applications"
-            icon_path = f"{path}/share/icons/hicolor"
-
+    def _validate(self, path: str, appid: str) -> None:
+        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
+        desktopfiles_path = f"{path}/applications"
+        icon_path = f"{path}/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
 
         if os.path.exists(desktopfiles_path):
@@ -131,44 +123,15 @@ class DesktopfileCheck(Check):
                     # manifest is going to be used as default. Rely on
                     # fallback but also warn
                     self.warnings.add("desktop-file-exec-key-empty")
-                if len(exect) > 0:
-                    if "flatpak run" in exect:
-                        # desktop files are rewritten only on (re)install, neither
-                        # exported ref or builddir should have "flatpak run"
-                        # unless manually added in desktop-file
-                        # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
-                        # flatpak-dir.c: export_desktop_file < rewrite_export_dir
-                        # < flatpak_rewrite_export_dir < flatpak_dir_deploy
-                        # < flatpak_dir_deploy_install < flatpak_dir_install
-                        self.errors.add("desktop-file-exec-has-flatpak-run")
-                    env_re = r"(?:(?:\benv\b)?\s*[A-Za-z0-9_]+\s*\=\s*[A-Za-z0-9_]+\s*)"
-                    binary = re.sub(env_re, "", exect)
-                    if binary.startswith('"') and binary.endswith('"'):
-                        binary = binary[1:-1]
-                    if binary.startswith("/"):
-                        binary = os.path.basename(binary)
-                    for i in (
-                        "%f",
-                        "%F",
-                        "%u",
-                        "%U",
-                        "%d",
-                        "%D",
-                        "%n",
-                        "%N",
-                        "%i",
-                        "%c",
-                        "%k",
-                        "%v",
-                        "%m",
-                    ):
-                        if i in binary:
-                            binary = binary.replace(i, "").strip()
-                    # linter is run outside of flatpak's context
-                    # so symlinks might be broken and we cannot
-                    # error on that
-                    if not os.path.lexists(f"{bin_path}/{binary}"):
-                        self.errors.add("desktop-file-exec-not-in-app-bin")
+                if len(exect) > 0 and "flatpak run" in exect:
+                    # desktop files are rewritten only on (re)install, neither
+                    # exported ref or builddir should have "flatpak run"
+                    # unless manually added in desktop-file
+                    # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
+                    # flatpak-dir.c: export_desktop_file < rewrite_export_dir
+                    # < flatpak_rewrite_export_dir < flatpak_dir_deploy
+                    # < flatpak_dir_deploy_install < flatpak_dir_install
+                    self.errors.add("desktop-file-exec-has-flatpak-run")
 
             try:
                 hidden = key_file.get_boolean("Desktop Entry", "Hidden")
@@ -218,7 +181,7 @@ class DesktopfileCheck(Check):
         if metadata.get("type", False) != "application":
             return
 
-        self._validate(f"{path}/files", appid, is_repo=False)
+        self._validate(f"{path}/files/share", appid)
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
@@ -241,7 +204,6 @@ class DesktopfileCheck(Check):
                 return
 
             ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
-            ret_b = ostree.extract_subpath(path, ref, "files/bin", tmpdir)
-            if ret["returncode"] != 0 or ret_b["returncode"] != 0:
+            if ret["returncode"] != 0:
                 raise RuntimeError("Failed to extract ostree repo")
-            self._validate(tmpdir, appid, is_repo=True)
+            self._validate(tmpdir, appid)

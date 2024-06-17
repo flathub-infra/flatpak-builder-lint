@@ -146,25 +146,6 @@ def test_builddir_desktop_file() -> None:
     assert "appstream-missing-categories" not in found_errors
 
 
-def test_builddir_desktop_no_exec() -> None:
-    ret = run_checks("tests/builddir/desktop-file-no-exec")
-    found_errors = set(ret["errors"])
-
-    assert "desktop-file-exec-not-in-app-bin" in found_errors
-
-
-def test_builddir_desktop_exec() -> None:
-    ret = run_checks("tests/builddir/desktop-file-exec")
-
-    assert "errors" not in ret
-
-
-def test_builddir_desktop_abs_exec() -> None:
-    ret = run_checks("tests/builddir/desktop-file-abs-exec")
-
-    assert "errors" not in ret
-
-
 def test_builddir_misplaced_icons() -> None:
     ret = run_checks("tests/builddir/misplaced-icons")
     errors = {

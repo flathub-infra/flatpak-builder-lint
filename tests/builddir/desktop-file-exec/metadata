@@ -1,8 +1,0 @@
-[Application]
-name=org.flathub.example.desktop-file-exec
-runtime=org.gnome.Platform/x86_64/45
-sdk=org.gnome.Sdk/x86_64/45
-command=foo
-
-[Context]
-filesystems=xdg-download;
