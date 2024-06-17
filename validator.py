@@ -25,6 +25,7 @@ known_exceptions = {
     "flathub-json-automerge-enabled",
     "non-svg-icon-in-scalable-folder",
     "non-png-icon-in-hicolor-size-folder",
+    "appstream-missing-screenshots",
 }
 
 def check_duplicates(

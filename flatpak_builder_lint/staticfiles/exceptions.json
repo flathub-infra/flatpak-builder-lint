@@ -2377,7 +2377,8 @@
     "org.kde.kruler": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "appstream-missing-screenshots": "Screenshot has too small dimensions to generate thumbnails"
     },
     "org.kde.ksirk": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
