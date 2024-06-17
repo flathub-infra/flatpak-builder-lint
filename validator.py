@@ -23,6 +23,7 @@ known_exceptions = {
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
+    "desktop-file-exec-not-in-app-bin",
 }
 
 def check_duplicates(
