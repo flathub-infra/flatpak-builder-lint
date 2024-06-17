@@ -114,7 +114,7 @@ class MetainfoCheck(Check):
                 ]
             else:
                 svg_icon_list = []
-            if not all(i.endswith(".svg") for i in svg_icon_list):
+            if not all(i.endswith((".svg", ".svgz")) for i in svg_icon_list):
                 self.errors.add("non-svg-icon-in-scalable-folder")
 
             if os.path.exists(icon_path):
