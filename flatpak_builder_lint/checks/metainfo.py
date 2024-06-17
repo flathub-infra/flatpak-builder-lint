@@ -127,7 +127,7 @@ class MetainfoCheck(Check):
             else:
                 png_icon_list = []
             if not all(i.endswith(".png") for i in png_icon_list):
-                self.errors.add("non-png-icon-in-hicolor-subfolder")
+                self.errors.add("non-png-icon-in-hicolor-size-folder")
             icon_list = svg_icon_list + png_icon_list
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")

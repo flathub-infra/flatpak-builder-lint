@@ -162,7 +162,7 @@ def test_builddir_desktop_exec() -> None:
 def test_builddir_misplaced_icons() -> None:
     ret = run_checks("tests/builddir/misplaced-icons")
     errors = {
-        "non-png-icon-in-hicolor-subfolder",
+        "non-png-icon-in-hicolor-size-folder",
         "non-svg-icon-in-scalable-folder",
     }
     found_errors = set(ret["errors"])
