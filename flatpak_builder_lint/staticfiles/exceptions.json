@@ -1867,48 +1867,6 @@
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "com.riverbankcomputing.PyQt.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.qt.qtwebengine.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.godotengine.godot.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.mozilla.firefox.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.electronjs.Electron2.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.qt.qtwebkit.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.chromium.Chromium.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.sugarlabs.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.elementary.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.atom.electron.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.elementary.Loki.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "io.liri.BaseApp": {
-        "*": "This is a baseapp"
-    },
-    "org.freedesktop.LinuxAudio.BaseExtension": {
-        "*": "This is a baseapp"
-    },
-    "org.flatpak.Builder.BaseApp": {
-        "*": "This is a baseapp used by infra"
-    },
     "org.kde.Ikona": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
