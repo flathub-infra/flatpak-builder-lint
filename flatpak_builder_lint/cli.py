@@ -114,12 +114,16 @@ def run_checks(
             if "desktop-file-failed-validation" in set(exceptions):
                 results.pop("desktopfile")
 
-            results["info"] = [
-                i
-                for i in info
-                for j in set(exceptions)
-                if i is not None and not i.startswith(j)
-            ]
+            results["info"] = list(
+                set(
+                    [
+                        i
+                        for i in set(info)
+                        for j in set(exceptions)
+                        if i is not None and not i.startswith(j)
+                    ]
+                )
+            )
             if not results["info"]:
                 results.pop("info")
 
