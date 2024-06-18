@@ -25,11 +25,19 @@ class ScreenshotsCheck(Check):
             ret = ostree.extract_subpath(path, ref, "files/share/app-info", tmpdir)
             if ret["returncode"] != 0:
                 self.errors.add("appstream-missing-appinfo")
+                self.info.add(
+                    "appstream-missing-appinfo: files/share/app-info directory is missing"
+                    + " Perhaps no Metainfo file was supplied"
+                )
                 return
 
             appstream_path = f"{tmpdir}/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
                 self.errors.add("appstream-missing-appinfo-file")
+                self.info.add(
+                    "appstream-missing-appinfo-file: Appstream catalogue file is missing."
+                    + " Perhaps no Metainfo file was installed with correct name"
+                )
                 return
 
             if len(appstream.components(appstream_path)) != 1:
@@ -38,6 +46,10 @@ class ScreenshotsCheck(Check):
 
             if not appstream.is_valid_component_type(appstream_path):
                 self.errors.add("appstream-unsupported-component-type")
+                self.info.add(
+                    "appstream-unsupported-component-type: Component type must be one of"
+                    + " addon, console-application, desktop, desktop-application or runtime"
+                )
 
             if appstream.component_type(appstream_path) not in (
                 "desktop",
@@ -63,6 +75,10 @@ class ScreenshotsCheck(Check):
                     ]
                     if not any(screenshot.text.startswith(url) for url in allowed_urls):
                         self.errors.add("appstream-external-screenshot-url")
+                        self.info.add(
+                            "appstream-external-screenshot-url: Screenshots are not mirrored to"
+                            + " https://dl.flathub.org/media"
+                        )
                         return
 
             arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}

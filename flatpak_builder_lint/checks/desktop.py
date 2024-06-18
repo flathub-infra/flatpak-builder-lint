@@ -17,6 +17,7 @@ class DesktopfileCheck(Check):
         icon_path = f"{path}/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
 
+        desktop_files = []
         if os.path.exists(desktopfiles_path):
             desktop_files = [
                 file
@@ -24,14 +25,16 @@ class DesktopfileCheck(Check):
                 if os.path.isfile(f"{desktopfiles_path}/{file}")
                 and re.match(rf"^{appid}([-.].*)?\.desktop$", file)
             ]
-        else:
-            desktop_files = []
 
         if appid.endswith(".BaseApp"):
             return None
 
         if not os.path.exists(appstream_path):
             self.errors.add("appstream-missing-appinfo-file")
+            self.info.add(
+                "appstream-missing-appinfo-file: Appstream catalogue file is missing."
+                + " Perhaps no Metainfo file was installed with correct name"
+            )
             return None
 
         if len(appstream.components(appstream_path)) != 1:
@@ -40,6 +43,10 @@ class DesktopfileCheck(Check):
 
         if not appstream.is_valid_component_type(appstream_path):
             self.errors.add("appstream-unsupported-component-type")
+            self.info.add(
+                "appstream-unsupported-component-type: Component type must be one of"
+                + " addon, console-application, desktop, desktop-application or runtime"
+            )
 
         if appstream.component_type(appstream_path) not in (
             "desktop",
@@ -47,20 +54,30 @@ class DesktopfileCheck(Check):
         ):
             return None
 
+        icon_list = []
+        icon_files_list = []
         if os.path.exists(icon_path):
             icon_list = [
-                os.path.basename(file)
+                file
                 for file in glob.glob(glob_path)
                 if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                 and os.path.isfile(file)
             ]
-        else:
-            icon_list = []
+            icon_files_list = [os.path.basename(i) for i in icon_list]
         if not len(icon_list) > 0:
             self.errors.add("no-exportable-icon-installed")
+            self.info.add(
+                "no-exportable-icon-installed: No PNG or SVG icons named by FLATPAK_ID"
+                + " were found in /app/share/icons/hicolor/$size/apps"
+                + " or /app/share/icons/hicolor/scalable/apps"
+            )
 
         if not len(desktop_files) > 0:
             self.errors.add("desktop-file-not-installed")
+            self.info.add(
+                "desktop-file-not-installed: No desktop file matching FLATPAK_ID"
+                + " was found in /app/share/applications"
+            )
 
         for file in desktop_files:
             if os.path.exists(f"{desktopfiles_path}/{file}"):
@@ -76,6 +93,10 @@ class DesktopfileCheck(Check):
                 )
                 if cmd.returncode != 0:
                     self.errors.add("desktop-file-failed-validation")
+                    self.info.add(
+                        f"desktop-file-failed-validation: Desktop file: {file}"
+                        + " has failed validation. Please see the errors in desktopfile block"
+                    )
                     for p in cmd.stdout.decode("utf-8").split(f"{file}:")[1:]:
                         self.desktopfile.add(p.strip())
 
@@ -101,11 +122,27 @@ class DesktopfileCheck(Check):
                 if len(icon) > 0:
                     if not re.match(rf"^{appid}([-.].*)?$", f"{icon}"):
                         self.errors.add("desktop-file-icon-key-wrong-value")
-                    if icon_list:
+                        self.info.add(
+                            "desktop-file-icon-key-wrong-value: Icon key in desktop file has"
+                            + f" wrong value: {icon}"
+                        )
+                    if icon_files_list:
+                        found_icons = set(icon_files_list)
                         if not any(
-                            k in icon_list for k in (icon, icon + ".png", icon + ".svg")
+                            k in icon_files_list
+                            for k in (
+                                icon,
+                                icon + ".png",
+                                icon + ".svg",
+                                icon + ".svgz",
+                            )
                         ):
                             self.errors.add("desktop-file-icon-not-installed")
+                            self.info.add(
+                                "desktop-file-icon-not-installed: An icon named by value of"
+                                + f" icon key in desktop file: {icon} was not found."
+                                + f" Found icons: {found_icons}"
+                            )
 
             try:
                 exect = key_file.get_string("Desktop Entry", "Exec")
@@ -132,6 +169,10 @@ class DesktopfileCheck(Check):
                     # < flatpak_rewrite_export_dir < flatpak_dir_deploy
                     # < flatpak_dir_deploy_install < flatpak_dir_install
                     self.errors.add("desktop-file-exec-has-flatpak-run")
+                    self.info.add(
+                        f"desktop-file-exec-has-flatpak-run: Exec key: {exect}"
+                        + " uses flatpak run in it"
+                    )
 
             try:
                 hidden = key_file.get_boolean("Desktop Entry", "Hidden")
@@ -169,7 +210,12 @@ class DesktopfileCheck(Check):
                 "DDE",
             }
             if cats is not None and len(cats) > 0 and cats.issubset(block):
+                found_cats = cats.intersection(block)
                 self.warnings.add("desktop-file-low-quality-category")
+                self.info.add(
+                    "desktop-file-low-quality-category: A low quality category was found"
+                    + f"in the desktop file: {found_cats}"
+                )
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)

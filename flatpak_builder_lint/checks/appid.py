@@ -20,8 +20,10 @@ class AppIDCheck(Check):
         if domain in ("github", "gitlab", "codeberg"):
             if tld != "io" and domain in ("github", "gitlab"):
                 self.errors.add("appid-uses-code-hosting-domain")
+                self.info.add(f"appid-uses-code-hosting-domain: {domain}.{tld}")
             if tld != "page" and domain == "codeberg":
                 self.errors.add("appid-uses-code-hosting-domain")
+                self.info.add(f"appid-uses-code-hosting-domain: {domain}.{tld}")
             if len(split) < 4:
                 self.errors.add("appid-code-hosting-too-few-components")
 
@@ -34,6 +36,10 @@ class AppIDCheck(Check):
 
             if appid != manifest_basename:
                 self.errors.add("appid-filename-mismatch")
+                self.info.add(
+                    f"appid-filename-mismatch: Appid is {appid} but"
+                    + f" Manifest filename is: {manifest_basename}"
+                )
 
         self._validate(appid)
 

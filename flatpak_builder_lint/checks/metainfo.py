@@ -32,11 +32,19 @@ class MetainfoCheck(Check):
 
         if metainfo_path is None:
             self.errors.add("appstream-metainfo-missing")
+            self.info.add(
+                "appstream-metainfo-missing: No metainfo file was found in"
+                + " /app/share/metainfo or /app/share/appdata"
+            )
             return
 
         metainfo_validation = appstream.validate(metainfo_path, "--no-net")
         if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
+            self.info.add(
+                "appstream-failed-validation: Metainfo file failed validation"
+                + " Please see the errors in appstream block"
+            )
 
             for err in metainfo_validation["stderr"].splitlines():
                 self.appstream.add(err.strip())
@@ -61,6 +69,10 @@ class MetainfoCheck(Check):
 
         if not os.path.exists(appstream_path):
             self.errors.add("appstream-missing-appinfo-file")
+            self.info.add(
+                "appstream-missing-appinfo-file: Appstream catalogue file is missing."
+                + " Perhaps no Metainfo file was installed with correct name"
+            )
             return
 
         if len(appstream.components(appstream_path)) != 1:
@@ -69,10 +81,18 @@ class MetainfoCheck(Check):
 
         if not appstream.is_valid_component_type(appstream_path):
             self.errors.add("appstream-unsupported-component-type")
+            self.info.add(
+                "appstream-unsupported-component-type: Component type must be one of"
+                + " addon, console-application, desktop, desktop-application or runtime"
+            )
 
         aps_cid = appstream.appstream_id(appstream_path)
         if aps_cid != appid:
             self.errors.add("appstream-id-mismatch-flatpak-id")
+            self.info.add(
+                f"appstream-id-mismatch-flatpak-id: The value of ID tag: {aps_cid} in Metainfo"
+                + f" does not match the FLATPAK_ID: {appid}. Please see the docs for more details"
+            )
 
         if appstream.component_type(appstream_path) not in (
             "desktop",
@@ -105,32 +125,38 @@ class MetainfoCheck(Check):
             "desktop",
             "desktop-application",
         ):
+            svg_icon_list = []
             if os.path.exists(svg_icon_path):
                 svg_icon_list = [
-                    os.path.basename(file)
+                    file
                     for file in glob.glob(svg_glob_path)
                     if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                     and os.path.isfile(file)
                 ]
-            else:
-                svg_icon_list = []
             if not all(i.endswith((".svg", ".svgz")) for i in svg_icon_list):
                 self.errors.add("non-svg-icon-in-scalable-folder")
+                self.info.add(f"non-svg-icon-in-scalable-folder: {svg_icon_list}")
 
+            png_icon_list = []
             if os.path.exists(icon_path):
                 png_icon_list = [
-                    os.path.basename(file)
+                    file
                     for file in glob.glob(png_glob_path)
                     if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                     and os.path.isfile(file)
                 ]
-            else:
-                png_icon_list = []
             if not all(i.endswith(".png") for i in png_icon_list):
                 self.errors.add("non-png-icon-in-hicolor-size-folder")
+                self.info.add(f"non-png-icon-in-hicolor-size-folder: {png_icon_list}")
             icon_list = svg_icon_list + png_icon_list
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
+                self.info.add(
+                    "no-exportable-icon-installed: No PNG or SVG icons named by FLATPAK_ID"
+                    + " were found in /app/share/icons/hicolor/$size/apps"
+                    + " or /app/share/icons/hicolor/scalable/apps"
+                    + f" Found icons: {icon_list}"
+                )
 
             if not appstream.get_launchable(appstream_path):
                 self.errors.add("metainfo-missing-launchable-tag")
@@ -148,24 +174,41 @@ class MetainfoCheck(Check):
             # metainfo per the spec
             if launchable_value is not None and launchable_value != appid + ".desktop":
                 self.errors.add("metainfo-launchable-tag-wrong-value")
+                self.info.add(
+                    "metainfo-launchable-tag-wrong-value: The value of launchable tag in Metainfo"
+                    + f" is wrong: {launchable_value}"
+                )
                 return
 
             if launchable_file_path is not None and not os.path.exists(
                 launchable_file_path
             ):
                 self.errors.add("appstream-launchable-file-missing")
+                self.info.add(
+                    f"appstream-launchable-file-missing: The launchable file {launchable_value}"
+                    + " was not found in /app/share/applications"
+                )
                 return
 
             # the checks below depend on launchable being present
 
             if not appstream.is_categories_present(appstream_path):
                 self.errors.add("appstream-missing-categories")
+                self.info.add(
+                    "appstream-missing-categories: The catalogue file is missing categories"
+                    + " Perhaps low quality categories were filtered or"
+                    + " none were found in desktop file"
+                )
 
             icon_filename = appstream.get_icon_filename(appstream_path)
             appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
 
             if not os.path.exists(appinfo_icon_path):
                 self.errors.add("appstream-missing-icon-file")
+                self.info.add(
+                    "appstream-missing-icon-file: No icon was generated by appstream."
+                    + " Perhaps a >=128px PNG or SVG was not installed correctly"
+                )
                 return
             if not appstream.has_icon_key(appstream_path):
                 self.errors.add("appstream-missing-icon-key")
@@ -174,6 +217,10 @@ class MetainfoCheck(Check):
                 self.errors.add("appstream-icon-key-no-type")
             if not appstream.is_remote_icon_mirrored(appstream_path):
                 self.errors.add("appstream-remote-icon-not-mirrored")
+                self.info.add(
+                    "appstream-remote-icon-not-mirrored: Remote icons are not mirrored to Flathub"
+                    + " Please see the docs for more information"
+                )
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
