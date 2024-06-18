@@ -108,6 +108,15 @@ def run_checks(
             if not results["warnings"]:
                 results.pop("warnings")
 
+            results["info"] = [
+                i
+                for i in info
+                for j in set(exceptions)
+                if i is not None and not i.startswith(j)
+            ]
+            if not results["info"]:
+                results.pop("info")
+
     help = (
         "Please consult the documentation at "
         "https://docs.flathub.org/docs/for-app-authors/linter"
