@@ -20,6 +20,7 @@ class Check(metaclass=CheckMeta):
     jsonschema: Set[Optional[str]] = set()
     appstream: Set[Optional[str]] = set()
     desktopfile: Set[Optional[str]] = set()
+    info: Set[Optional[str]] = set()
     repo_primary_ref: Optional[str] = None
 
     def _populate_ref(self, repo: str) -> None:

@@ -80,6 +80,8 @@ def run_checks(
         results["appstream"] = list(appstream)
     if desktopfile := checks.Check.desktopfile:
         results["desktopfile"] = list(desktopfile)
+    if info := checks.Check.info:
+        results["info"] = list(info)
 
     if enable_exceptions:
         exceptions = None

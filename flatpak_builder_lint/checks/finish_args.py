@@ -24,12 +24,20 @@ class FinishArgsCheck(Check):
             and "wayland" not in finish_args["socket"]
         ):
             self.errors.add("finish-args-fallback-x11-without-wayland")
+            self.info.add(
+                "finish-args-fallback-x11-without-wayland: finish-args has fallback-x11"
+                + " but no wayland socket"
+            )
 
         if "wayland" in finish_args["socket"] and (
             "x11" not in finish_args["socket"]
             and "fallback-x11" not in finish_args["socket"]
         ):
             self.errors.add("finish-args-only-wayland")
+            self.info.add(
+                "finish-args-only-wayland: finish-args has only wayland socket"
+                + " but no x11 or fallback-x11 socket"
+            )
 
         for socket in finish_args["socket"]:
             if socket.startswith("!"):

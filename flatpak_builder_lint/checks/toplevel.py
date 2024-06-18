@@ -16,10 +16,18 @@ class TopLevelCheck(Check):
                 self.errors.add("toplevel-no-command")
             elif command.startswith("/"):
                 self.warnings.add("toplevel-command-is-path")
+                self.info.add(
+                    "toplevel-command-is-path: Command in manifest is a path"
+                    + f" {command}"
+                )
 
             branch = manifest.get("branch")
             if branch in ("stable", "master"):
                 self.warnings.add("toplevel-unnecessary-branch")
+                self.info.add(
+                    "toplevel-unnecessary-branch: Found an unnecessary use of"
+                    + " branch property in the manifest"
+                )
 
         cleanup = manifest.get("cleanup")
         if cleanup and "/lib/debug" in cleanup:
