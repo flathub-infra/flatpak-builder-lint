@@ -155,7 +155,6 @@ class MetainfoCheck(Check):
                     "no-exportable-icon-installed: No PNG or SVG icons named by FLATPAK_ID"
                     + " were found in /app/share/icons/hicolor/$size/apps"
                     + " or /app/share/icons/hicolor/scalable/apps"
-                    + f" Found icons: {icon_list}"
                 )
 
             if not appstream.get_launchable(appstream_path):
