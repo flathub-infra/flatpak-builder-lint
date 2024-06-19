@@ -2089,27 +2089,15 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.klettres": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.klickety": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.kde.klines": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.kmahjongg": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmines": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmplayer": {
@@ -2127,33 +2115,21 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knavalbattle": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knetwalk": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knights": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.koko": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kolf": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kollision": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kolourpaint": {
@@ -2167,18 +2143,12 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kompare": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kongress": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.konquest": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kontact": {
@@ -2186,18 +2156,10 @@
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.kde.kontrast": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.konversation": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "org.kde.kpat": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kphotoalbum": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2214,13 +2176,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kreversi": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "org.kde.krita": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kronometer": {
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
@@ -2228,8 +2184,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kruler": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "appstream-missing-screenshots": "Screenshot has too small dimensions to generate thumbnails"
     },
@@ -2239,13 +2193,9 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksnakeduel": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksquares": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kst": {
@@ -2258,8 +2208,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.ksudoku": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kteatime": {
