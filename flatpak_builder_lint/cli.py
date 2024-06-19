@@ -19,6 +19,19 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
+def _filter(info: set, excepts: set) -> list:
+    final = set()
+    for i in info:
+        count = False
+        for j in excepts:
+            if i is not None and i.startswith(j):
+                count = True
+                break
+        if not count:
+            final.add(i)
+    return list(final)
+
+
 def get_local_exceptions(appid: str) -> set:
     with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
@@ -114,16 +127,7 @@ def run_checks(
             if "desktop-file-failed-validation" in set(exceptions):
                 results.pop("desktopfile", None)
 
-            results["info"] = list(
-                set(
-                    [
-                        i
-                        for i in set(info)
-                        for j in set(exceptions)
-                        if i is not None and not i.startswith(j)
-                    ]
-                )
-            )
+            results["info"] = _filter(set(info), set(exceptions))
             if not results["info"]:
                 results.pop("info")
 
