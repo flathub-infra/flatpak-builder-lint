@@ -132,7 +132,7 @@ def run_checks(
         "https://docs.flathub.org/docs/for-app-authors/linter"
     )
 
-    if "errors" in results or "warnings" in results:
+    if "errors" in results or "warnings" in results or "info" in results:
         results["message"] = help
 
     return results
