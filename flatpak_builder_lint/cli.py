@@ -109,10 +109,10 @@ def run_checks(
                 results.pop("warnings")
 
             if "appstream-failed-validation" in set(exceptions):
-                results.pop("appstream")
+                results.pop("appstream", None)
 
             if "desktop-file-failed-validation" in set(exceptions):
-                results.pop("desktopfile")
+                results.pop("desktopfile", None)
 
             results["info"] = list(
                 set(
