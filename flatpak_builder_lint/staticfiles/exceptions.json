@@ -1466,7 +1466,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.fightcade.Fightcade": {
-        "flathub-json-modified-publish-delay": "Client version must be in sync with server to function"
+        "flathub-json-modified-publish-delay": "Client version must be in sync with server to function",
+        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
     },
     "com.flashforge.FlashPrint": {
         "flathub-json-modified-publish-delay": "extra-data"
