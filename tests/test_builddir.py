@@ -233,7 +233,7 @@ def test_builddir_appstream_no_icon_file() -> None:
     assert "appstream-missing-icon-file" in found_errors
 
 
-def test_builddir_appstream_icon_key_no_typee() -> None:
+def test_builddir_appstream_icon_key_no_type() -> None:
     ret = run_checks("tests/builddir/appstream-icon-key-no-type")
     found_errors = set(ret["errors"])
     assert "appstream-icon-key-no-type" in found_errors
