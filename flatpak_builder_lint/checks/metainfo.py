@@ -126,6 +126,7 @@ class MetainfoCheck(Check):
             "desktop-application",
         ):
             svg_icon_list = []
+            wrong_svgs = []
             if os.path.exists(svg_icon_path):
                 svg_icon_list = [
                     file
@@ -133,11 +134,15 @@ class MetainfoCheck(Check):
                     if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                     and os.path.isfile(file)
                 ]
+                wrong_svgs = [
+                    i for i in svg_icon_list if not i.endswith((".svg", ".svgz"))
+                ]
             if not all(i.endswith((".svg", ".svgz")) for i in svg_icon_list):
                 self.errors.add("non-svg-icon-in-scalable-folder")
-                self.info.add(f"non-svg-icon-in-scalable-folder: {svg_icon_list}")
+                self.info.add(f"non-svg-icon-in-scalable-folder: {wrong_svgs}")
 
             png_icon_list = []
+            wrong_pngs = []
             if os.path.exists(icon_path):
                 png_icon_list = [
                     file
@@ -145,9 +150,10 @@ class MetainfoCheck(Check):
                     if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
                     and os.path.isfile(file)
                 ]
+                wrong_pngs = [i for i in png_icon_list if not i.endswith(".png")]
             if not all(i.endswith(".png") for i in png_icon_list):
                 self.errors.add("non-png-icon-in-hicolor-size-folder")
-                self.info.add(f"non-png-icon-in-hicolor-size-folder: {png_icon_list}")
+                self.info.add(f"non-png-icon-in-hicolor-size-folder: {wrong_pngs}")
             icon_list = svg_icon_list + png_icon_list
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
