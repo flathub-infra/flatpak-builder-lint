@@ -30,23 +30,10 @@ class DesktopfileCheck(Check):
             return None
 
         if not os.path.exists(appstream_path):
-            self.errors.add("appstream-missing-appinfo-file")
-            self.info.add(
-                "appstream-missing-appinfo-file: Appstream catalogue file is missing."
-                + " Perhaps no Metainfo file was installed with correct name"
-            )
             return None
 
         if len(appstream.components(appstream_path)) != 1:
-            self.errors.add("appstream-multiple-components")
             return None
-
-        if not appstream.is_valid_component_type(appstream_path):
-            self.errors.add("appstream-unsupported-component-type")
-            self.info.add(
-                "appstream-unsupported-component-type: Component type must be one of"
-                + " addon, console-application, desktop, desktop-application or runtime"
-            )
 
         if appstream.component_type(appstream_path) not in (
             "desktop",

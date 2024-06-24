@@ -22,34 +22,16 @@ class ScreenshotsCheck(Check):
         refs = refs_cmd["stdout"].splitlines()
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ret = ostree.extract_subpath(path, ref, "files/share/app-info", tmpdir)
+            ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
             if ret["returncode"] != 0:
-                self.errors.add("appstream-missing-appinfo")
-                self.info.add(
-                    "appstream-missing-appinfo: files/share/app-info directory is missing"
-                    + " Perhaps no Metainfo file was supplied"
-                )
-                return
+                raise RuntimeError("Failed to extract ostree repo")
 
-            appstream_path = f"{tmpdir}/xmls/{appid}.xml.gz"
+            appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
-                self.errors.add("appstream-missing-appinfo-file")
-                self.info.add(
-                    "appstream-missing-appinfo-file: Appstream catalogue file is missing."
-                    + " Perhaps no Metainfo file was installed with correct name"
-                )
                 return
 
             if len(appstream.components(appstream_path)) != 1:
-                self.errors.add("appstream-multiple-components")
                 return
-
-            if not appstream.is_valid_component_type(appstream_path):
-                self.errors.add("appstream-unsupported-component-type")
-                self.info.add(
-                    "appstream-unsupported-component-type: Component type must be one of"
-                    + " addon, console-application, desktop, desktop-application or runtime"
-                )
 
             if appstream.component_type(appstream_path) not in (
                 "desktop",
