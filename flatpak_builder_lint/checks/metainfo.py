@@ -33,7 +33,7 @@ class MetainfoCheck(Check):
         if metainfo_path is None:
             self.errors.add("appstream-metainfo-missing")
             self.info.add(
-                "appstream-metainfo-missing: No metainfo file was found in"
+                f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
                 + " /app/share/metainfo or /app/share/appdata"
             )
             return
@@ -42,7 +42,7 @@ class MetainfoCheck(Check):
         if metainfo_validation["returncode"] != 0:
             self.errors.add("appstream-failed-validation")
             self.info.add(
-                "appstream-failed-validation: Metainfo file failed validation"
+                f"appstream-failed-validation: Metainfo file {metainfo_path} has failed validation."
                 + " Please see the errors in appstream block"
             )
 
@@ -107,19 +107,37 @@ class MetainfoCheck(Check):
 
         if name is not None and len(name) > 20:
             self.warnings.add("appstream-name-too-long")
+            self.info.add(
+                "appstream-name-too-long: The value of name tag in metainfo"
+                + " is more than 20 characters"
+            )
         if summary is not None:
             if len(summary) > 35:
                 self.warnings.add("appstream-summary-too-long")
+                self.info.add(
+                    "appstream-summary-too-long: The value of summary tag in metainfo"
+                    + " is more than 35 characters"
+                )
             if summary.endswith("."):
                 self.warnings.add("appstream-summary-ends-in-dot")
 
         if not appstream.is_developer_name_present(appstream_path):
             self.errors.add("appstream-missing-developer-name")
+            self.info.add(
+                "appstream-missing-developer-name: No developer tag found in Metainfo file"
+            )
         if not appstream.is_project_license_present(appstream_path):
             self.errors.add("appstream-missing-project-license")
+            self.info.add(
+                "appstream-missing-project-license: No project_license tag found in Metainfo file"
+            )
 
         if not appstream.check_caption(appstream_path):
             self.warnings.add("appstream-screenshot-missing-caption")
+            self.info.add(
+                "appstream-screenshot-missing-caption: One or more screenshots are missing"
+                + " captions in the Metainfo file"
+            )
 
         if appstream.component_type(appstream_path) in (
             "desktop",
@@ -158,7 +176,7 @@ class MetainfoCheck(Check):
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
                 self.info.add(
-                    "no-exportable-icon-installed: No PNG or SVG icons named by FLATPAK_ID"
+                    f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
                     + " were found in /app/share/icons/hicolor/$size/apps"
                     + " or /app/share/icons/hicolor/scalable/apps"
                 )
@@ -200,9 +218,9 @@ class MetainfoCheck(Check):
             if not appstream.is_categories_present(appstream_path):
                 self.errors.add("appstream-missing-categories")
                 self.info.add(
-                    "appstream-missing-categories: The catalogue file is missing categories"
+                    "appstream-missing-categories: The catalogue file is missing categories."
                     + " Perhaps low quality categories were filtered or"
-                    + " none were found in desktop file"
+                    + " none is present in desktop or metainfo file"
                 )
 
             icon_filename = appstream.get_icon_filename(appstream_path)
@@ -223,7 +241,7 @@ class MetainfoCheck(Check):
             if not appstream.is_remote_icon_mirrored(appstream_path):
                 self.errors.add("appstream-remote-icon-not-mirrored")
                 self.info.add(
-                    "appstream-remote-icon-not-mirrored: Remote icons are not mirrored to Flathub"
+                    "appstream-remote-icon-not-mirrored: Remote icons are not mirrored to Flathub."
                     + " Please see the docs for more information"
                 )
 

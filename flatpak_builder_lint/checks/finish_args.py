@@ -64,8 +64,16 @@ class FinishArgsCheck(Check):
 
                 if re.match(regexp_arbitrary, fs):
                     self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
+                    self.info.add(
+                        f"finish-args-arbitrary-{xdg_dir}-access: finish-args has access to"
+                        + f" full {xdg_dir}"
+                    )
                 elif re.match(regexp_unnecessary, fs):
                     self.errors.add(f"finish-args-unnecessary-{xdg_dir}-access")
+                    self.info.add(
+                        f"finish-args-unnecessary-{xdg_dir}-access: finish-args has access to"
+                        + f" a subpath of {xdg_dir}"
+                    )
 
         for fs in finish_args["filesystem"]:
             for resv_dir in [
@@ -86,14 +94,30 @@ class FinishArgsCheck(Check):
             ]:
                 if fs.startswith(f"/{resv_dir}"):
                     self.errors.add(f"finish-args-reserved-{resv_dir}")
+                    self.info.add(
+                        f"finish-args-reserved-{resv_dir}: finish-args has filesystem access"
+                        + f" to {resv_dir} which is reserved internally for Flatpak"
+                    )
             if fs.startswith("/home") or fs.startswith("/var/home"):
                 self.errors.add("finish-args-absolute-home-path")
+                self.info.add(
+                    "finish-args-absolute-home-path: finish-args has filesystem access"
+                    + " starting with /home or /var/home"
+                )
             if re.match(r"^/run/media(?=/\w).+$", fs):
                 self.errors.add("finish-args-absolute-run-media-path")
+                self.info.add(
+                    "finish-args-absolute-home-path: finish-args has filesystem access"
+                    + " that is a subdirectory of /run/media"
+                )
 
         pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
         if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
             self.errors.add("finish-args-redundant-home-and-host")
+            self.info.add(
+                "finish-args-redundant-home-and-host: finish-args has both host and home"
+                + " filesystem access"
+            )
 
         for own_name in finish_args["own-name"]:
             if appid:
@@ -111,6 +135,10 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-wildcard-kde-own-name")
             if own_name.startswith("org.freedesktop.portal."):
                 self.errors.add("finish-args-portal-own-name")
+                self.info.add(
+                    "finish-args-portal-own-name: finish-args has own-name access"
+                    + " to portal sub-bus org.freedesktop.portal"
+                )
 
         for talk_name in finish_args["talk-name"]:
             if talk_name == "org.freedesktop.*":
@@ -121,22 +149,38 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-wildcard-kde-talk-name")
             if talk_name.startswith("org.freedesktop.portal."):
                 self.errors.add("finish-args-portal-talk-name")
+                self.info.add(
+                    "finish-args-portal-talk-name: finish-args has talk-name access"
+                    + " to portal sub-bus org.freedesktop.portal"
+                )
 
         if (
             "xdg-config/autostart" in finish_args["filesystem"]
             or "xdg-config/autostart:create" in finish_args["filesystem"]
         ):
             self.errors.add("finish-args-arbitrary-autostart-access")
+            self.info.add(
+                "finish-args-arbitrary-autostart-access: finish-args has filesystem access to"
+                + " xdg-config/autostart"
+            )
 
         if (
             "system-bus" in finish_args["socket"]
             or "session-bus" in finish_args["socket"]
         ):
             self.errors.add("finish-args-arbitrary-dbus-access")
+            self.info.add(
+                "finish-args-arbitrary-dbus-access: finish-args has socket access to"
+                + " full system or session bus"
+            )
 
         if "org.gtk.vfs" in finish_args["talk-name"]:
             # https://github.com/flathub/flathub/issues/2180#issuecomment-811984901
             self.errors.add("finish-args-incorrect-dbus-gvfs")
+            self.info.add(
+                "finish-args-incorrect-dbus-gvfs: finish-args has talk-name access"
+                + " for org.gtk.vfs"
+            )
 
         if "shm" in finish_args["device"]:
             self.warnings.add("finish-args-deprecated-shm")
@@ -147,6 +191,10 @@ class FinishArgsCheck(Check):
 
         if "org.freedesktop.Flatpak" in finish_args["talk-name"]:
             self.errors.add("finish-args-flatpak-spawn-access")
+            self.info.add(
+                "finish-args-flatpak-spawn-access: finish-args has a talk-name access"
+                + " for org.freedesktop.Flatpak"
+            )
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")

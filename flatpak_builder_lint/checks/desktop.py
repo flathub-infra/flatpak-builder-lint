@@ -54,7 +54,7 @@ class DesktopfileCheck(Check):
         if not len(icon_list) > 0:
             self.errors.add("no-exportable-icon-installed")
             self.info.add(
-                "no-exportable-icon-installed: No PNG or SVG icons named by FLATPAK_ID"
+                f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
                 + " were found in /app/share/icons/hicolor/$size/apps"
                 + " or /app/share/icons/hicolor/scalable/apps"
             )
@@ -62,7 +62,7 @@ class DesktopfileCheck(Check):
         if not len(desktop_files) > 0:
             self.errors.add("desktop-file-not-installed")
             self.info.add(
-                "desktop-file-not-installed: No desktop file matching FLATPAK_ID"
+                f"desktop-file-not-installed: No desktop file matching {appid}"
                 + " was found in /app/share/applications"
             )
 
@@ -168,6 +168,9 @@ class DesktopfileCheck(Check):
 
             if hidden is True:
                 self.errors.add("desktop-file-is-hidden")
+                self.info.add(
+                    "desktop-file-is-hidden: Desktop file has the Hidden key set to true"
+                )
 
             try:
                 nodisplay = key_file.get_boolean("Desktop Entry", "NoDisplay")
@@ -176,6 +179,9 @@ class DesktopfileCheck(Check):
 
             if nodisplay is True:
                 self.errors.add("desktop-file-is-hidden")
+                self.info.add(
+                    "desktop-file-is-hidden: Desktop file has the NoDisplay key set to true"
+                )
 
             try:
                 cats = set(key_file.get_string_list("Desktop Entry", "Categories"))
