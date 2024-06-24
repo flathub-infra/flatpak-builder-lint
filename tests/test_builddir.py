@@ -12,6 +12,7 @@ def test_builddir_appid() -> None:
     ret = run_checks("tests/builddir/appid")
     found_errors = set(ret["errors"])
     assert errors.issubset(found_errors)
+    assert "appstream-metainfo-missing" in found_errors
 
 
 def test_builddir_finish_args() -> None:
@@ -116,7 +117,6 @@ def test_builddir_console() -> None:
     errors = {
         "finish-args-not-defined",
         "appstream-unsupported-component-type",
-        "appstream-metainfo-missing",
     }
 
     ret = run_checks("tests/builddir/console")
