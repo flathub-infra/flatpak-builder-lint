@@ -39,29 +39,37 @@ class ScreenshotsCheck(Check):
             ):
                 return
 
+            sc_allowed_urls = (
+                "https://dl.flathub.org/repo/screenshots",
+                "https://dl.flathub.org/media",
+            )
+
             screenshots = appstream.components(appstream_path)[0].xpath(
                 "screenshots/screenshot/image"
             )
-            thumbnails = [
-                elem for elem in screenshots if elem.attrib.get("type") == "thumbnail"
-            ]
-            if not thumbnails:
+
+            sc_values = list(
+                appstream.components(appstream_path)[0].xpath(
+                    "screenshots/screenshot/image/text()"
+                )
+            )
+
+            if not sc_values:
                 self.errors.add("appstream-missing-screenshots")
+                self.info.add(
+                    "appstream-missing-screenshots: Catalogue has no screenshots."
+                    + " Please check if screenshot URLs are reachable and the Metainfo file"
+                    + " has no validation errors related to screenshots"
+                )
                 return
 
-            for screenshot in screenshots:
-                if screenshot.attrib.get("type") != "source":
-                    allowed_urls = [
-                        "https://dl.flathub.org/repo/screenshots",
-                        "https://dl.flathub.org/media",
-                    ]
-                    if not any(screenshot.text.startswith(url) for url in allowed_urls):
-                        self.errors.add("appstream-external-screenshot-url")
-                        self.info.add(
-                            "appstream-external-screenshot-url: Screenshots are not mirrored to"
-                            + " https://dl.flathub.org/media"
-                        )
-                        return
+            if not any(s.startswith(sc_allowed_urls) for s in sc_values):
+                self.errors.add("appstream-external-screenshot-url")
+                self.info.add(
+                    "appstream-external-screenshot-url: Screenshots are not mirrored to"
+                    + " https://dl.flathub.org/media"
+                )
+                return
 
             arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
             for arch in arches:
