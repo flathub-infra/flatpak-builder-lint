@@ -1858,6 +1858,9 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
+    "com.discordapp.DiscordCanary": {
+        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update"
+    },
     "com.hunterwittenborn.Celeste": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation"
     },
