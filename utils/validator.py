@@ -28,6 +28,7 @@ known_exceptions = {
     "appstream-missing-screenshots",
 }
 
+
 def check_duplicates(
     pairs: list[tuple[str, Any]],
 ) -> dict[str, Any]:
@@ -45,6 +46,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("filenames", nargs="*", help="Input filenames")
     args = parser.parse_args(argv)
 
+    if not args.filenames:
+        args.filenames = ["flatpak_builder_lint/staticfiles/exceptions.json"]
+
     exit_code = 0
     for filename in args.filenames:
         with open(filename, "r") as f:
@@ -61,7 +65,10 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "appstream-missing-appinfo-file",
                 }
                 if not found_exceptions.issubset(known_exceptions):
-                    print("Exception not found in known exceptions list", found_exceptions - known_exceptions)
+                    print(
+                        "Exception not found in known exceptions list",
+                        found_exceptions - known_exceptions,
+                    )
                     exit_code = 1
             except ValueError as err:
                 print(f"{filename}: Failed to decode: {err}")

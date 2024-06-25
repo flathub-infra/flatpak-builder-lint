@@ -19,7 +19,7 @@ jobs:
           python-version: "3.10"
 
       - name: Validate exceptions.json
-        run: python3 validator.py flatpak_builder_lint/staticfiles/exceptions.json
+        run: python3 utils/validator.py
 
       - name: Set up dependencies
         run: |
