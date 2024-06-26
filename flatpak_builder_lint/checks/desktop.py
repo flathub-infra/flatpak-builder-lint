@@ -26,6 +26,17 @@ class DesktopfileCheck(Check):
                 and re.match(rf"^{appid}([-.].*)?\.desktop$", file)
             ]
 
+        icon_list = []
+        icon_files_list = []
+        if os.path.exists(icon_path):
+            icon_list = [
+                file
+                for file in glob.glob(glob_path)
+                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
+                and os.path.isfile(file)
+            ]
+            icon_files_list = [os.path.basename(i) for i in icon_list]
+
         if appid.endswith(".BaseApp"):
             return None
 
@@ -38,33 +49,27 @@ class DesktopfileCheck(Check):
         if appstream.component_type(appstream_path) not in (
             "desktop",
             "desktop-application",
+            "console-application",
         ):
             return None
 
-        icon_list = []
-        icon_files_list = []
-        if os.path.exists(icon_path):
-            icon_list = [
-                file
-                for file in glob.glob(glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
-                and os.path.isfile(file)
-            ]
-            icon_files_list = [os.path.basename(i) for i in icon_list]
-        if not len(icon_list) > 0:
-            self.errors.add("no-exportable-icon-installed")
-            self.info.add(
-                f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
-                + " were found in /app/share/icons/hicolor/$size/apps"
-                + " or /app/share/icons/hicolor/scalable/apps"
-            )
+        is_console = appstream.component_type(appstream_path) == "console-application"
 
-        if not len(desktop_files) > 0:
-            self.errors.add("desktop-file-not-installed")
-            self.info.add(
-                f"desktop-file-not-installed: No desktop file matching {appid}"
-                + " was found in /app/share/applications"
-            )
+        if not is_console:
+            if not len(icon_list) > 0:
+                self.errors.add("no-exportable-icon-installed")
+                self.info.add(
+                    f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
+                    + " were found in /app/share/icons/hicolor/$size/apps"
+                    + " or /app/share/icons/hicolor/scalable/apps"
+                )
+
+            if not len(desktop_files) > 0:
+                self.errors.add("desktop-file-not-installed")
+                self.info.add(
+                    f"desktop-file-not-installed: No desktop file matching {appid}"
+                    + " was found in /app/share/applications"
+                )
 
         for file in desktop_files:
             if os.path.exists(f"{desktopfiles_path}/{file}"):
@@ -102,7 +107,8 @@ class DesktopfileCheck(Check):
                 icon = None
 
             if icon is None:
-                self.errors.add("desktop-file-icon-key-absent")
+                if not is_console:
+                    self.errors.add("desktop-file-icon-key-absent")
             else:
                 if not len(icon) > 0:
                     self.errors.add("desktop-file-icon-key-empty")
@@ -169,7 +175,8 @@ class DesktopfileCheck(Check):
             if hidden is True:
                 self.errors.add("desktop-file-is-hidden")
                 self.info.add(
-                    "desktop-file-is-hidden: Desktop file has the Hidden key set to true"
+                    "desktop-file-is-hidden: Desktop file has the Hidden key set to true."
+                    + " Console applications should use NoDisplay=true to hide desktop files"
                 )
 
             try:
@@ -177,12 +184,31 @@ class DesktopfileCheck(Check):
             except GLib.Error:
                 nodisplay = None
 
-            if nodisplay is True:
-                self.errors.add("desktop-file-is-hidden")
+            if nodisplay is True and not is_console:
+                self.errors.add("desktop-file-is-nodisplay")
                 self.info.add(
-                    "desktop-file-is-hidden: Desktop file has the NoDisplay key set to true"
+                    "desktop-file-is-nodisplay: Desktop file has the NoDisplay key set to true"
                 )
 
+            # check only when console application does not hide
+            # the desktop file. desktop-file-validate fails on empty
+            # value of terminal key
+            if is_console and nodisplay in (
+                False,
+                None,
+            ):
+
+                try:
+                    terminal = key_file.get_boolean("Desktop Entry", "Terminal")
+                except GLib.Error:
+                    terminal = None
+
+                if terminal in (False, None):
+                    self.errors.add("desktop-file-terminal-key-not-true")
+                    self.info.add(
+                        "desktop-file-terminal-key-not-true: Desktop file for console application"
+                        + " is set to display but does not have Terminal=true"
+                    )
             try:
                 cats = set(key_file.get_string_list("Desktop Entry", "Categories"))
             except GLib.Error:
