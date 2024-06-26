@@ -808,7 +808,6 @@
     },
     "org.telegram.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "flathub-json-skip-appstream-check": "Metainfo contains programmatically generated changelog we have no control over",
         "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
@@ -1256,12 +1255,6 @@
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
     },
-    "org.freedesktop.fwupd": {
-        "flathub-json-skip-appstream-check": "It is a command line package"
-    },
-    "org.freedesktop.appstream-glib": {
-        "flathub-json-skip-appstream-check": "It is a command line package"
-    },
     "se.emijoh.mpw": {
         "finish-args-not-defined": "It is a command line package"
     },
@@ -1297,9 +1290,6 @@
     },
     "org.godotengine.GodotSharp": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
-    },
-    "org.hydrogenmusic.Hydrogen": {
-        "flathub-json-skip-appstream-check": "appstream file has GPL license, upstream hasn't fixed it"
     },
     "org.jabref.jabref": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1339,7 +1329,6 @@
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.kde.ruqola": {
-        "flathub-json-skip-appstream-check": "the app predates this linter rule",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2372,21 +2361,6 @@
     },
     "io.github.Sunderland93.sway-input-config": {
         "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
-    },
-    "org.freedesktop.Platform.VulkanInfo": {
-        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
-    },
-    "org.freedesktop.Platform.VdpauInfo": {
-        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
-    },
-    "org.freedesktop.Platform.ClInfo": {
-        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
-    },
-    "org.freedesktop.Platform.GlxInfo": {
-        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
-    },
-    "org.freedesktop.Platform.VaInfo": {
-        "appstream-missing-appinfo-file": "grandfathered due to unannounced linter changes"
     },
     "org.linuxshowplayer.LinuxShowPlayer": {
         "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"

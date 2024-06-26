@@ -23,9 +23,6 @@ known_exceptions = {
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
-    "non-svg-icon-in-scalable-folder",
-    "non-png-icon-in-hicolor-size-folder",
-    "appstream-missing-screenshots",
 }
 
 
@@ -61,8 +58,6 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "appid-filename-mismatch",
                     "flathub-json-deprecated-i386-arch-included",
                     "toplevel-no-command",
-                    "flathub-json-skip-appstream-check",
-                    "appstream-missing-appinfo-file",
                 }
                 if not found_exceptions.issubset(known_exceptions):
                     print(
