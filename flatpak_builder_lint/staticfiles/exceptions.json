@@ -1217,6 +1217,9 @@
     "io.stoplight.studio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.codelogistics.webapps": {
+        "finish-args-arbitrary-xdg-data-access": "The app creates and removes desktop files in ~/.local/share/applications."
+    },
     "net.cozic.joplin_desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
