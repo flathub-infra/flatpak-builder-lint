@@ -215,25 +215,6 @@
       ]
     },
     {
-        "name": "python3-python-whois",
-        "buildsystem": "simple",
-        "build-commands": [
-            "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"python-whois\" --no-build-isolation"
-        ],
-        "sources": [
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
-                "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
-            },
-            {
-                "type": "file",
-                "url": "https://files.pythonhosted.org/packages/23/ad/c03f9618486ffb07c67f443012374f1acf3781074e0935bff553a87eb6eb/python_whois-0.9.4-py3-none-any.whl",
-                "sha256": "17d60f25524fc811a1f6a66f0298c1e5534551d7a01a77dd5f6406426da734e1"
-            }
-        ]
-    },
-    {
         "name": "python3-sentry-sdk",
         "buildsystem": "simple",
         "build-commands": [
