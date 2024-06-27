@@ -23,6 +23,7 @@ known_exceptions = {
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
+    "appid-too-many-components-for-app",
 }
 
 
