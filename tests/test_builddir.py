@@ -15,6 +15,12 @@ def test_builddir_appid() -> None:
     assert "appstream-metainfo-missing" in found_errors
 
 
+def test_builddir_appid_code_host_not_reachable() -> None:
+    ret = run_checks("tests/builddir/wrong-rdns-appid")
+    found_errors = set(ret["errors"])
+    assert "appid-code-host-not-reachable" in found_errors
+
+
 def test_builddir_finish_args() -> None:
     errors = {
         "finish-args-arbitrary-autostart-access",
@@ -210,9 +216,16 @@ def test_builddir_broken_icon() -> None:
         "finish-args-not-defined",
         "desktop-file-not-installed",
     }
+    not_founds = {
+        "appid-domain-not-found",
+        "appid-domain-not-registered",
+        "appid-domain-not-resolvable",
+    }
     found_errors = set(ret["errors"])
     for e in errors:
         assert e in found_errors
+    for n in not_founds:
+        assert n not in found_errors
 
 
 def test_builddir_broken_remote_icon() -> None:
@@ -256,10 +269,35 @@ def test_min_success_metadata() -> None:
     # CLI applications are allowed to have no finish-args with exceptions
     accepted = {"finish-args-not-defined"}
     assert len(found_errors - accepted) == 0
-    assert "metainfo-missing-launchable-tag" not in found_errors
+    not_founds = {
+        "appid-too-many-components-for-app",
+        "metainfo-missing-launchable-tag",
+        "appid-code-host-not-found",
+        "appid-code-host-not-reachable",
+        "appid-domain-not-found",
+        "appid-code-host-not-reachable",
+        "appid-domain-not-resolvable",
+        "appid-domain-not-registered",
+    }
+    for n in not_founds:
+        assert n not in found_errors
 
 
 def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
     ret = run_checks("tests/builddir/appstream-cid-mismatch-flatpak-id")
     found_errors = set(ret["errors"])
     assert "appstream-id-mismatch-flatpak-id" in found_errors
+
+
+def test_builddir_domain_check_skip_baseapp() -> None:
+    ret = run_checks("tests/builddir/min_success_metadata/org.flathub.example.BaseApp")
+    info = set(ret["info"])
+    assert "Domain check skipped for runtimes and baseapps" in info
+
+
+def test_builddir_domain_check_skip_extension() -> None:
+    ret = run_checks(
+        "tests/builddir/min_success_metadata/org.flathub.example.extentsion"
+    )
+    info = set(ret["info"])
+    assert "Domain check skipped for runtimes and baseapps" in info

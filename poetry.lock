@@ -1040,6 +1040,34 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+description = "Extensions to the standard Python datetime module"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+files = [
+    {file = "python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"},
+    {file = "python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"},
+]
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "python-whois"
+version = "0.9.4"
+description = "Whois querying and parsing of domain registration information."
+optional = false
+python-versions = "*"
+files = [
+    {file = "python_whois-0.9.4-py3-none-any.whl", hash = "sha256:17d60f25524fc811a1f6a66f0298c1e5534551d7a01a77dd5f6406426da734e1"},
+    {file = "python_whois-0.9.4.tar.gz", hash = "sha256:77bc7347bf815d65ccd196711c29837652f07585aedad3c3c04dd885651fd7a7"},
+]
+
+[package.dependencies]
+python-dateutil = "*"
+
+[[package]]
 name = "pyyaml"
 version = "6.0.1"
 description = "YAML parser and emitter for Python"
@@ -1612,4 +1640,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a114ef9112b263440b5c529ae3fa8187f624c4aa1e39acc1b3b8034b396d6d33"
+content-hash = "ed7438785ef2bafb38f581106eb33505922f89fc909c61691949a3ad454a88b9"

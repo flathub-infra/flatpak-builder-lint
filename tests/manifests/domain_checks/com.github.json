@@ -1,0 +1,13 @@
+{
+    "app-id": "com.github",
+    "runtime": "foo",
+    "sdk": "bar",
+    "command": "foo",
+    "finish-args": ["--foo=bar"],
+    "modules": [
+        {
+            "name": "module2",
+            "buildsystem": "autotools"
+        }
+    ]
+}
