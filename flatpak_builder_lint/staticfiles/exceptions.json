@@ -811,6 +811,9 @@
         "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
+    "org.telegram.desktop.webview": {
+        "flathub-json-automerge-enabled": "Predates the linter rule, addon for org.telegram.desktop"
+    },
     "com.gitlab.adnan338.Invoicer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
