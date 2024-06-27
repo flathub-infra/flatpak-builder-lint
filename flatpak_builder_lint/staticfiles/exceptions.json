@@ -3125,5 +3125,11 @@
     },
     "xyz.armcord.ArmCord": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
+    "uk.org.greenend.chiark.sgtatham.putty": {
+        "appid-too-many-components-for-app": "Predates the linter rule"
+    },
+    "uk.org.greenend.chiark.sgtatham.puzzles": {
+        "appid-too-many-components-for-app": "Predates the linter rule"
     }
 }
