@@ -1,0 +1,13 @@
+{
+    "app-id": "org.gnome.gitlab.YaLTeR.Identity",
+    "runtime": "foo",
+    "sdk": "bar",
+    "command": "foo",
+    "finish-args": ["--foo=bar"],
+    "modules": [
+        {
+            "name": "module2",
+            "buildsystem": "autotools"
+        }
+    ]
+}

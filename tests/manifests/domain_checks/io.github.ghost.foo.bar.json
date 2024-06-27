@@ -1,0 +1,13 @@
+{
+    "app-id": "io.github.ghost.foo.bar",
+    "runtime": "foo",
+    "sdk": "bar",
+    "command": "foo",
+    "finish-args": ["--foo=bar"],
+    "modules": [
+        {
+            "name": "module2",
+            "buildsystem": "autotools"
+        }
+    ]
+}
