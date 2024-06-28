@@ -1255,6 +1255,9 @@
     "org.flatpak.Builder": {
         "*": "used by flathub infra"
     },
+    "org.flatpak.Builder.BaseApp": {
+        "*": "used by flathub infra"
+    },
     "org.flathub.flatpak-external-data-checker": {
         "*": "used by flathub infra"
     },
