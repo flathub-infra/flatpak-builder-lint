@@ -1,6 +1,0 @@
-[Application]
-name=org.flathub.example.cli
-runtime=org.freedesktop.Platform/x86_64/23.08
-sdk=org.freedesktop.Sdk/x86_64/23.08
-command=foo
-

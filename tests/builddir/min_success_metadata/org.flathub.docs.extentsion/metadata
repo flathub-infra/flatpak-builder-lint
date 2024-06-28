@@ -1,0 +1,11 @@
+[Runtime]
+name=org.flathub.docs.extentsion
+sdk=org.freedesktop.Sdk/x86_64/23.08
+
+[ExtensionOf]
+ref=app/org.flathub.docs.example/x86_64/stable
+runtime=org.freedesktop.Sdk/x86_64/23.08
+
+[Session Bus Policy]
+org.freedesktop.ScreenSaver=talk
+org.freedesktop.PowerManagement=talk

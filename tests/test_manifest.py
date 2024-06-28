@@ -7,6 +7,76 @@ def run_checks(filename: str, enable_exceptions: bool = False) -> dict:
     return cli.run_checks("manifest", filename, enable_exceptions)
 
 
+def test_appid_too_few_cpts() -> None:
+    ret = run_checks("tests/manifests/domain_checks/com.github.json")
+    errors = set(ret["errors"])
+    assert {"appid-less-than-3-components"} == errors
+
+
+def test_appid_wrong_syntax() -> None:
+    ret = run_checks("tests/manifests/domain_checks/com.--github--.flathub.json")
+    errors = set(ret["errors"])
+    assert {"appid-component-wrong-syntax"} == errors
+
+
+def test_appid_too_many_cpts() -> None:
+    ret = run_checks(
+        "tests/manifests/domain_checks/org.gnome.gitlab.user.project.foo.bar.json"
+    )
+    errors = set(ret["errors"])
+    assert {"appid-too-many-components-for-app"} == errors
+
+
+def test_appid_code_host_not_reachable() -> None:
+    for i in (
+        "tests/manifests/domain_checks/io.github.ghost.bar.json",
+        "tests/manifests/domain_checks/io.github.ghost.foo.bar.json",
+        "tests/manifests/domain_checks/org.freedesktop.gitlab.foo.bar.json",
+        "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
+    ):
+        ret = run_checks(i)
+        errors = set(ret["errors"])
+        assert {"appid-code-host-not-reachable"} == errors
+
+
+def test_appid_code_host_is_reachable() -> None:
+    for i in (
+        "tests/manifests/domain_checks/io.github.flathub.flathub.json",
+        "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
+    ):
+        ret = run_checks(i)
+        assert "errors" not in ret
+
+
+def test_appid_url_not_reachable() -> None:
+    ret = run_checks("tests/manifests/domain_checks/ch.wwwwww.bar.json")
+    errors = set(ret["errors"])
+    assert {"appid-url-not-reachable"} == errors
+
+
+def test_appid_on_flathub() -> None:
+    ret = run_checks("tests/manifests/domain_checks/org.freedesktop.appstream.cli.json")
+    info = set(ret["info"])
+    assert "errors" not in ret
+    assert "Domain check skipped, app is on Flathub" in info
+
+
+def test_appid_skip_domain_checks_extension() -> None:
+    ret = run_checks(
+        "tests/manifests/domain_checks/io.github.ghost.foo.bar.extension.json"
+    )
+    info = set(ret["info"])
+    assert "errors" not in ret
+    assert "Domain check skipped for runtimes and baseapps" in info
+
+
+def test_appid_skip_domain_checks_baseapp() -> None:
+    ret = run_checks("tests/manifests/domain_checks/io.qt.coolbaseapp.BaseApp.json")
+    info = set(ret["info"])
+    assert "errors" not in ret
+    assert "Domain check skipped for runtimes and baseapps" in info
+
+
 def test_manifest_toplevel() -> None:
     errors = {
         "toplevel-no-command",
