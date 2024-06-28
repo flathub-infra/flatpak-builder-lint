@@ -40,12 +40,20 @@ not recommended unless for development purposes. It depends on patches
 that are found in the `org.flatpak.Builder` flatpak package
 and on external tools.
 
+For development purposes it can be installed with:
+
 ```bash
 git clone https://github.com/flathub/flatpak-builder-lint
 cd flatpak-builder-lint
 poetry install
 poetry run flatpak-builder-lint --help
 ```
+
+The following Python dependencies are needed to run
+`jsonschema==4.19.1, requests==2.32.2, lxml==5.2.2, sentry-sdk==1.34.0,
+PyGObject==3.46.0`. Additionally `poetry-core>=1.0.0` is necessary
+to build.
+
 Additional tools are required by subcommands and checks:
 
 - `flatpak-builder` for validating flatpak-builder manifests
