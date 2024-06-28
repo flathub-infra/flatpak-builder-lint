@@ -55,10 +55,8 @@ class AppIDCheck(Check):
 
         if appid:
             if is_extension or is_baseapp:
-                self.info.add("Domain check skipped for runtimes and baseapps")
                 return
             if domainutils.is_app_on_flathub(appid):
-                self.info.add("Domain check skipped, app is on Flathub")
                 return
             if appid.startswith(
                 (

@@ -1,5 +1,5 @@
 {
-    "app-id": "io.github.ghost.foo.bar.extension",
+    "app-id": "org.gtk.Gtk33theme.Helium-dark",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

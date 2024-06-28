@@ -1,9 +1,9 @@
 [Runtime]
-name=org.flathub.docs.extentsion
+name=org.gtk.Gtk33theme.Helium-dark
 sdk=org.freedesktop.Sdk/x86_64/23.08
 
 [ExtensionOf]
-ref=app/org.flathub.docs.example/x86_64/stable
+ref=app/org.foo.bar/x86_64/stable
 runtime=org.freedesktop.Sdk/x86_64/23.08
 
 [Session Bus Policy]

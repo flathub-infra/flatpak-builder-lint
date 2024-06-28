@@ -258,8 +258,8 @@ def test_min_success_metadata() -> None:
     # Illustrate the minimum metadata required to pass linter
     # These should not be broken
     for builddir in (
-        "org.flathub.BaseApp",
-        "org.flathub.docs.extentsion",
+        "org.electronjs.Electron200.BaseApp",
+        "org.gtk.Gtk33theme.Helium-dark",
         "org.flathub.gui",
     ):
         ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}")
@@ -277,8 +277,7 @@ def test_min_success_metadata() -> None:
         "appid-code-host-not-reachable",
         "appid-domain-not-found",
         "appid-code-host-not-reachable",
-        "appid-domain-not-resolvable",
-        "appid-domain-not-registered",
+        "appid-url-not-reachable",
     }
     for n in not_founds:
         assert n not in found_errors
@@ -288,15 +287,3 @@ def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
     ret = run_checks("tests/builddir/appstream-cid-mismatch-flatpak-id")
     found_errors = set(ret["errors"])
     assert "appstream-id-mismatch-flatpak-id" in found_errors
-
-
-def test_builddir_domain_check_skip_baseapp() -> None:
-    ret = run_checks("tests/builddir/min_success_metadata/org.flathub.BaseApp")
-    info = set(ret["info"])
-    assert "Domain check skipped for runtimes and baseapps" in info
-
-
-def test_builddir_domain_check_skip_extension() -> None:
-    ret = run_checks("tests/builddir/min_success_metadata/org.flathub.docs.extentsion")
-    info = set(ret["info"])
-    assert "Domain check skipped for runtimes and baseapps" in info

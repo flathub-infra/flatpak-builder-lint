@@ -1,4 +1,4 @@
 [Application]
-name=org.flathub.BaseApp
+name=org.electronjs.Electron200.BaseApp
 runtime=org.freedesktop.Platform/x86_64/23.08
 sdk=org.freedesktop.Sdk/x86_64/23.08

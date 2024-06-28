@@ -55,26 +55,23 @@ def test_appid_url_not_reachable() -> None:
 
 
 def test_appid_on_flathub() -> None:
-    ret = run_checks("tests/manifests/domain_checks/org.freedesktop.appstream.cli.json")
-    info = set(ret["info"])
+    # encom.eu.org does not exist
+    ret = run_checks("tests/manifests/domain_checks/org.eu.encom.spectral.json")
     assert "errors" not in ret
-    assert "Domain check skipped, app is on Flathub" in info
 
 
 def test_appid_skip_domain_checks_extension() -> None:
     ret = run_checks(
-        "tests/manifests/domain_checks/io.github.ghost.foo.bar.extension.json"
+        "tests/manifests/domain_checks/org.gtk.Gtk33theme.Helium-dark.json"
     )
-    info = set(ret["info"])
     assert "errors" not in ret
-    assert "Domain check skipped for runtimes and baseapps" in info
 
 
 def test_appid_skip_domain_checks_baseapp() -> None:
-    ret = run_checks("tests/manifests/domain_checks/io.qt.coolbaseapp.BaseApp.json")
-    info = set(ret["info"])
+    ret = run_checks(
+        "tests/manifests/domain_checks/org.electronjs.Electron200.BaseApp.json"
+    )
     assert "errors" not in ret
-    assert "Domain check skipped for runtimes and baseapps" in info
 
 
 def test_manifest_toplevel() -> None:

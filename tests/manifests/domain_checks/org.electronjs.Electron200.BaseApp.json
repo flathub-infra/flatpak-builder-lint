@@ -1,5 +1,5 @@
 {
-    "app-id": "io.qt.coolbaseapp.BaseApp",
+    "app-id": "org.electronjs.Electron200.BaseApp",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",
