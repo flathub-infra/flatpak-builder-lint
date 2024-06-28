@@ -76,7 +76,7 @@ class AppIDCheck(Check):
                 if appid_code_host is None:
                     self.errors.add("appid-code-host-not-found")
                     self.info.add(
-                        f"appid-code-hosting-url-not-found: Code hosting url for {appid}"
+                        f"appid-code-host-not-found: Code hosting url for {appid}"
                         + " cannot be determined"
                     )
                     return
