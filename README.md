@@ -43,15 +43,17 @@ and on external tools.
 ```bash
 git clone https://github.com/flathub/flatpak-builder-lint
 cd flatpak-builder-lint
-poetry install 
+poetry install
 poetry run flatpak-builder-lint --help
 ```
 Additional tools are required by subcommands and checks:
 
-- `flatpak-builder` for validating flatpak-builder manifests,
-- `ostree` for validating ostree repositories containing builds,
-- `appstreamcli` from `org.flatpak.Builder` for validating MetaInfo files,
-- `desktop-file-validate` to validate desktop files.
+- `flatpak-builder` for validating flatpak-builder manifests
+- `ostree` for validating ostree repositories containing builds
+- `appstreamcli` from `org.flatpak.Builder` for validating MetaInfo files
+- `desktop-file-validate` to validate desktop files
+- `git` to fetch remote references, used for validating appids using
+  code hosting prefixes
 
 ### Usage
 
