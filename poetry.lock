@@ -965,16 +965,20 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pygobject"
-version = "3.46.0"
+version = "3.48.2"
 description = "Python bindings for GObject Introspection"
 optional = false
-python-versions = ">=3.8, <4"
+python-versions = "<4,>=3.8"
 files = [
-    {file = "PyGObject-3.46.0.tar.gz", hash = "sha256:481437b05af0a66b7c366ea052710eb3aacbb979d22d30b797f7ec29347ab1e6"},
+    {file = "pygobject-3.48.2.tar.gz", hash = "sha256:c3c0a7afbe5b2c1c64dc0530109b4dd571085153dbedfbccb8ec7c5ad233f977"},
 ]
 
 [package.dependencies]
-pycairo = ">=1.16,<2.0"
+pycairo = ">=1.16"
+
+[package.extras]
+dev = ["flake8", "pytest", "pytest-cov"]
+docs = ["sphinx (>=4.0,<5.0)", "sphinx-rtd-theme (>=0.5,<2.0)"]
 
 [[package]]
 name = "pygobject-stubs"
@@ -1612,4 +1616,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a114ef9112b263440b5c529ae3fa8187f624c4aa1e39acc1b3b8034b396d6d33"
+content-hash = "67d40c7ede5676a9bc59b785a21053683778adb00fbc74e8124c42d42c4fba2c"
