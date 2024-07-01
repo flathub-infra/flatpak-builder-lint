@@ -1,5 +1,5 @@
 {
-    "app-id": "io.github.ghost.foo.bar",
+    "app-id": "io.sourceforge.xampp.bar",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

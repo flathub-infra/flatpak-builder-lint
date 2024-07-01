@@ -29,11 +29,15 @@ def test_appid_too_many_cpts() -> None:
 
 def test_appid_url_not_reachable() -> None:
     for i in (
-        "tests/manifests/domain_checks/io.github.ghost.bar.json",
-        "tests/manifests/domain_checks/io.github.ghost.foo.bar.json",
-        "tests/manifests/domain_checks/io.gitlab.foo.bar.json",
+        "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.bar.json",
+        "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.foo.bar.json",
+        "tests/manifests/domain_checks/io.gitlab.wwwwwwwwwwwww.bar.json",
         "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
         "tests/manifests/domain_checks/ch.wwwwww.bar.json",
+        "tests/manifests/domain_checks/org.gnome.gitlab.wwwwwwwwwwwww.bar.json",
+        "tests/manifests/domain_checks/org.freedesktop.gitlab.wwwwwwwwwwwww.bar.json",
+        "tests/manifests/domain_checks/io.frama.wwwwwwwwwwwww.bar.json",
+        "tests/manifests/domain_checks/page.codeberg.wwwwwwwwwwwww.foo.json",
     ):
         ret = run_checks(i)
         errors = set(ret["errors"])
@@ -44,6 +48,12 @@ def test_appid_url_is_reachable() -> None:
     for i in (
         "tests/manifests/domain_checks/io.github.flatpak.flatpak.json",
         "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
+        "tests/manifests/domain_checks/org.gnome.gitlab.World.Identity.json",
+        "tests/manifests/domain_checks/io.gitlab.flathub.foo.json",
+        "tests/manifests/domain_checks/org.freedesktop.gitlab.mesa.foo.json",
+        "tests/manifests/domain_checks/org.freedesktop.gitlab.bbhtt.foo.json",
+        "tests/manifests/domain_checks/page.codeberg.forgejo.foo.json",
+        "tests/manifests/domain_checks/io.sourceforge.xampp.bar.json",
     ):
         ret = run_checks(i)
         assert "errors" not in ret

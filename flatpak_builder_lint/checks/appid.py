@@ -58,37 +58,68 @@ class AppIDCheck(Check):
                 return
             if domainutils.is_app_on_flathub(appid):
                 return
-            appid_domain = domainutils.get_domain(appid)
-            if appid_domain is None:
-                self.errors.add("appid-domain-not-found")
-                self.info.add(
-                    f"appid-domain-not-found: Domain for {appid}"
-                    + " cannot be determined"
+            if (
+                appid.startswith(
+                    (
+                        "io.github.",
+                        "page.codeberg.",
+                        "io.sourceforge.",
+                        "net.sourceforge.",
+                    )
                 )
-                return
-            else:
-                url_http = f"http://{appid_domain}"
-                url_https = f"https://{appid_domain}"
-                if appid_domain.endswith(
-                    (".github.io", ".gitlab.io", ".codeberg.io", ".frama.io")
-                ) or appid_domain.startswith("sourceforge.net/projects/"):
-                    if appid_domain.endswith(".gitlab.io"):
-                        if not domainutils.check_url_ok(url_https):
-                            self.errors.add("appid-url-not-reachable")
-                            self.info.add(f"appid-url-not-reachable: Tried {url_https}")
-                    else:
-                        if not domainutils.check_url(url_https):
-                            self.errors.add("appid-url-not-reachable")
-                            self.info.add(f"appid-url-not-reachable: Tried {url_https}")
-                else:
+                and domainutils.get_user_url(appid) is not None
+            ):
+                url = f"https://{domainutils.get_user_url(appid)}"
+                if not domainutils.check_url(url):
+                    self.errors.add("appid-url-not-reachable")
+                    self.info.add(f"appid-url-not-reachable: Tried {url}")
+            if appid.startswith(
+                (
+                    "io.gitlab.",
+                    "io.frama.",
+                    "org.gnome.gitlab.",
+                    "org.freedesktop.gitlab.",
+                )
+            ):
+                # Toplevel group names cannot be the same as username
+                if (
+                    domainutils.get_gitlab_user(appid) is not None
+                    and domainutils.get_gitlab_group(appid) is not None
+                ):
+                    url_user = f"https://{domainutils.get_gitlab_user(appid)}"
+                    url_group = f"https://{domainutils.get_gitlab_group(appid)}"
                     if not (
-                        domainutils.check_url(url_https)
-                        or domainutils.check_url(url_http)
+                        domainutils.check_gitlab_user(url_user)
+                        or domainutils.check_gitlab_group(url_group)
                     ):
                         self.errors.add("appid-url-not-reachable")
                         self.info.add(
-                            f"appid-url-not-reachable: Tried {url_http}, {url_https}"
+                            f"appid-url-not-reachable: Tried {url_user}, {url_group}"
                         )
+            if (
+                not appid.startswith(
+                    (
+                        "io.github.",
+                        "io.frama.",
+                        "page.codeberg.",
+                        "io.sourceforge.",
+                        "net.sourceforge.",
+                        "io.gitlab.",
+                        "org.gnome.gitlab.",
+                        "org.freedesktop.gitlab.",
+                    )
+                )
+                and domainutils.get_domain(appid) is not None
+            ):
+                url_http = f"http://{domainutils.get_domain(appid)}"
+                url_https = f"https://{domainutils.get_domain(appid)}"
+                if not (
+                    domainutils.check_url(url_https) or domainutils.check_url(url_http)
+                ):
+                    self.errors.add("appid-url-not-reachable")
+                    self.info.add(
+                        f"appid-url-not-reachable: Tried {url_http}, {url_https}"
+                    )
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
