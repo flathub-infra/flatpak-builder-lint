@@ -35,8 +35,8 @@ def test_appid_code_host_not_reachable() -> None:
         "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
     ):
         ret = run_checks(i)
-        errors = set(ret["errors"])
-        assert {"appid-code-host-not-reachable"} == errors
+        warnings = set(ret["warnings"])
+        assert "appid-code-host-not-reachable" in warnings
 
 
 def test_appid_code_host_is_reachable() -> None:

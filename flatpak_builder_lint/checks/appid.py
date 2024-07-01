@@ -84,7 +84,7 @@ class AppIDCheck(Check):
                             domainutils.check_git(appid_code_host[0])
                             or domainutils.check_git(appid_code_host[1])
                         ):
-                            self.errors.add("appid-code-host-not-reachable")
+                            self.warnings.add("appid-code-host-not-reachable")
                             self.info.add(
                                 f"appid-code-host-not-reachable: {appid_code_host} not reachable"
                             )
@@ -93,14 +93,14 @@ class AppIDCheck(Check):
                             "https://sourceforge.net/projects/"
                         ):
                             if not domainutils.check_url(appid_code_host):
-                                self.errors.add("appid-code-host-not-reachable")
+                                self.warnings.add("appid-code-host-not-reachable")
                                 self.info.add(
                                     f"appid-code-host-not-reachable: {appid_code_host}"
                                     + " not reachable"
                                 )
                         else:
                             if not domainutils.check_git(appid_code_host):
-                                self.errors.add("appid-code-host-not-reachable")
+                                self.warnings.add("appid-code-host-not-reachable")
                                 self.info.add(
                                     f"appid-code-host-not-reachable: {appid_code_host}"
                                     + " not reachable"
