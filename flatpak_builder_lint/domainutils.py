@@ -17,18 +17,19 @@ def check_url(url: str) -> bool:
 
 
 def check_git(url: str) -> bool:
+    success = False
     try:
-        subprocess.check_call(
+        ret = subprocess.run(
             ["git", "ls-remote", "-q", "--exit-code", url, "HEAD"],
             timeout=10,
-            start_new_session=True,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            capture_output=True,
         )
-        return True
+        if ret.returncode == 0:
+            success = True
     except (subprocess.TimeoutExpired, subprocess.CalledProcessError) as err:
         print(err)
-        return False
+
+    return success
 
 
 def demangle(name: str) -> str:
