@@ -1621,6 +1621,9 @@
     "io.github.MakovWait.Godots": {
         "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
     },
+    "com.github.yairm210.unciv": {
+        "flathub-json-automerge-enabled": "Semiweekly release"
+    },
     "io.wavebox.Wavebox": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
