@@ -15,10 +15,10 @@ def test_builddir_appid() -> None:
     assert "appstream-metainfo-missing" in found_errors
 
 
-def test_builddir_appid_code_host_not_reachable() -> None:
+def test_builddir_url_not_reachable() -> None:
     ret = run_checks("tests/builddir/wrong-rdns-appid")
-    found_warnings = set(ret["warnings"])
-    assert "appid-code-host-not-reachable" in found_warnings
+    found_errors = set(ret["errors"])
+    assert "appid-url-not-reachable" in found_errors
 
 
 def test_builddir_finish_args() -> None:
@@ -273,7 +273,6 @@ def test_min_success_metadata() -> None:
     not_founds = {
         "appid-too-many-components-for-app",
         "metainfo-missing-launchable-tag",
-        "appid-code-host-not-found",
         "appid-domain-not-found",
         "appid-url-not-reachable",
     }

@@ -1,5 +1,5 @@
 {
-    "app-id": "org.freedesktop.gitlab.foo.bar",
+    "app-id": "io.gitlab.foo.bar",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

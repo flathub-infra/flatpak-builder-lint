@@ -1,5 +1,5 @@
 {
-    "app-id": "io.github.flathub.flathub",
+    "app-id": "io.github.flatpak.flatpak",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

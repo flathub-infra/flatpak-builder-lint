@@ -1,6 +1,3 @@
-import subprocess
-from typing import List
-
 import requests
 
 
@@ -16,20 +13,16 @@ def check_url(url: str) -> bool:
     return ret
 
 
-def check_git(url: str) -> bool:
-    success = False
+def check_url_ok(url: str) -> bool:
+    assert url.endswith(".gitlab.io")
+    ret = False
     try:
-        ret = subprocess.run(
-            ["git", "ls-remote", "-q", "--exit-code", url, "HEAD"],
-            timeout=10,
-            capture_output=True,
-        )
-        if ret.returncode == 0:
-            success = True
-    except (subprocess.TimeoutExpired, subprocess.CalledProcessError) as err:
-        print(err)
-
-    return success
+        r = requests.get(url, allow_redirects=False, timeout=10)
+        if r.status_code == 200:
+            ret = True
+    except requests.exceptions.RequestException:
+        pass
+    return ret
 
 
 def demangle(name: str) -> str:
@@ -40,27 +33,21 @@ def demangle(name: str) -> str:
 
 
 def get_domain(appid: str) -> str | None:
-    assert not appid.startswith(
-        (
-            "io.github.",
-            "io.gitlab.",
-            "io.frama.",
-            "page.codeberg.",
-            "io.sourceforge.",
-            "net.sourceforge.",
-            "org.gnome.gitlab.",
-            "org.freedesktop.gitlab.",
-        )
-    )
     domain = None
-    if appid.startswith("org.gnome.") and not appid.startswith("org.gnome.gitlab."):
+    if appid.startswith("org.gnome."):
         domain = "gnome.org"
     elif appid.startswith("org.kde."):
         domain = "kde.org"
-    elif appid.startswith("org.freedesktop.") and not appid.startswith(
-        "org.freedesktop.gitlab."
-    ):
+    elif appid.startswith("org.freedesktop."):
         domain = "freedesktop.org"
+    elif appid.startswith(("io.github.", "io.gitlab.", "page.codeberg.", "io.frama.")):
+        tld = appid.split(".")[0]
+        demangled = [demangle(i) for i in appid.split(".")[1:3]]
+        demangled.insert(0, tld)
+        domain = ".".join(reversed(demangled)).lower()
+    elif appid.startswith(("io.sourceforge.", "net.sourceforge.")):
+        proj = demangle(appid.split(".")[2])
+        domain = f"sourceforge.net/projects/{proj}".lower()
     else:
         tld = appid.split(".")[0]
         demangled = [demangle(i) for i in appid.split(".")[:-1][1:]]
@@ -68,74 +55,6 @@ def get_domain(appid: str) -> str | None:
         domain = ".".join(reversed(demangled)).lower()
 
     return domain
-
-
-def get_code_hosting_url(appid: str) -> str | List[str] | None:
-    assert appid.startswith(
-        (
-            "io.github.",
-            "io.gitlab.",
-            "io.frama.",
-            "page.codeberg.",
-            "io.sourceforge.",
-            "net.sourceforge.",
-            "org.gnome.gitlab.",
-            "org.freedesktop.gitlab.",
-        )
-    )
-    code_host: str | None | List[str] = None
-    if appid.startswith(("io.sourceforge.", "net.sourceforge.")):
-        sf_proj = appid.split(".")[2:3][0]
-        code_host = f"https://sourceforge.net/projects/{sf_proj}".lower()
-    if appid.startswith("org.gnome.gitlab."):
-        [user, proj] = appid.split(".")[3:5]
-        user = demangle(user)
-        code_host = f"https://gitlab.gnome.org/{user}/{proj}.git".lower()
-    if appid.startswith("org.freedesktop.gitlab."):
-        [user, proj] = appid.split(".")[3:5]
-        user = demangle(user)
-        code_host = f"https://gitlab.freedesktop.org/{user}/{proj}.git".lower()
-    if len(appid.split(".")) == 4:
-        [sld, user, proj] = appid.split(".")[1:4]
-        sld = demangle(sld)
-        user = demangle(user)
-
-        if appid.startswith("io.github."):
-            code_host = f"https://github.com/{user}/{proj}.git".lower()
-        if appid.startswith("io.gitlab."):
-            code_host = f"https://gitlab.com/{user}/{proj}.git".lower()
-        if appid.startswith("io.frama."):
-            code_host = f"https://framagit.org/{user}/{proj}.git".lower()
-        if appid.startswith("page.codeberg."):
-            code_host = f"https://codeberg.org/{user}/{proj}.git".lower()
-
-    if len(appid.split(".")) == 5:
-        [sld, user, proj1, proj2] = appid.split(".")[1:5]
-        sld = demangle(sld)
-        user = demangle(user)
-        proj1 = demangle(proj1)
-
-        if appid.startswith("io.github."):
-            code_host = [
-                f"https://github.com/{user}/{proj1}.git".lower(),
-                f"https://github.com/{user}/{proj2}.git".lower(),
-            ]
-        if appid.startswith("io.gitlab."):
-            code_host = [
-                f"https://gitlab.com/{user}/{proj1}.git".lower(),
-                f"https://gitlab.com/{user}/{proj2}.git".lower(),
-            ]
-        if appid.startswith("io.frama."):
-            code_host = [
-                f"https://framagit.org/{user}/{proj1}.git".lower(),
-                f"https://framagit.org/{user}/{proj2}.git".lower(),
-            ]
-        if appid.startswith("page.codeberg."):
-            code_host = [
-                f"https://codeberg.org/{user}/{proj1}.git".lower(),
-                f"https://codeberg.org/{user}/{proj2}.git".lower(),
-            ]
-    return code_host
 
 
 def is_app_on_flathub(appid: str) -> bool:

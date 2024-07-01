@@ -58,65 +58,29 @@ class AppIDCheck(Check):
                 return
             if domainutils.is_app_on_flathub(appid):
                 return
-            if appid.startswith(
-                (
-                    "io.github.",
-                    "io.gitlab.",
-                    "io.frama.",
-                    "page.codeberg.",
-                    "io.sourceforge.",
-                    "net.sourceforge.",
-                    "org.gnome.gitlab.",
-                    "org.freedesktop.gitlab.",
+            appid_domain = domainutils.get_domain(appid)
+            if appid_domain is None:
+                self.errors.add("appid-domain-not-found")
+                self.info.add(
+                    f"appid-domain-not-found: Domain for {appid}"
+                    + " cannot be determined"
                 )
-            ):
-                appid_code_host = domainutils.get_code_hosting_url(appid)
-                if appid_code_host is None:
-                    self.errors.add("appid-code-host-not-found")
-                    self.info.add(
-                        f"appid-code-host-not-found: Code hosting url for {appid}"
-                        + " cannot be determined"
-                    )
-                    return
-                else:
-                    if isinstance(appid_code_host, list):
-                        if not (
-                            domainutils.check_git(appid_code_host[0])
-                            or domainutils.check_git(appid_code_host[1])
-                        ):
-                            self.warnings.add("appid-code-host-not-reachable")
-                            self.info.add(
-                                f"appid-code-host-not-reachable: {appid_code_host} not reachable"
-                            )
-                    else:
-                        if appid_code_host.startswith(
-                            "https://sourceforge.net/projects/"
-                        ):
-                            if not domainutils.check_url(appid_code_host):
-                                self.warnings.add("appid-code-host-not-reachable")
-                                self.info.add(
-                                    f"appid-code-host-not-reachable: {appid_code_host}"
-                                    + " not reachable"
-                                )
-                        else:
-                            if not domainutils.check_git(appid_code_host):
-                                self.warnings.add("appid-code-host-not-reachable")
-                                self.info.add(
-                                    f"appid-code-host-not-reachable: {appid_code_host}"
-                                    + " not reachable"
-                                )
+                return
             else:
-                appid_domain = domainutils.get_domain(appid)
-                if appid_domain is None:
-                    self.errors.add("appid-domain-not-found")
-                    self.info.add(
-                        f"appid-domain-not-found: Domain for {appid}"
-                        + " cannot be determined"
-                    )
-                    return
+                url_http = f"http://{appid_domain}"
+                url_https = f"https://{appid_domain}"
+                if appid_domain.endswith(
+                    (".github.io", ".gitlab.io", ".codeberg.io", ".frama.io")
+                ) or appid_domain.startswith("sourceforge.net/projects/"):
+                    if appid_domain.endswith(".gitlab.io"):
+                        if not domainutils.check_url_ok(url_https):
+                            self.errors.add("appid-url-not-reachable")
+                            self.info.add(f"appid-url-not-reachable: Tried {url_https}")
+                    else:
+                        if not domainutils.check_url(url_https):
+                            self.errors.add("appid-url-not-reachable")
+                            self.info.add(f"appid-url-not-reachable: Tried {url_https}")
                 else:
-                    url_http = f"http://{appid_domain}"
-                    url_https = f"https://{appid_domain}"
                     if not (
                         domainutils.check_url(url_https)
                         or domainutils.check_url(url_http)

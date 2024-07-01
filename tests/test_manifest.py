@@ -27,31 +27,26 @@ def test_appid_too_many_cpts() -> None:
     assert {"appid-too-many-components-for-app"} == errors
 
 
-def test_appid_code_host_not_reachable() -> None:
+def test_appid_url_not_reachable() -> None:
     for i in (
         "tests/manifests/domain_checks/io.github.ghost.bar.json",
         "tests/manifests/domain_checks/io.github.ghost.foo.bar.json",
-        "tests/manifests/domain_checks/org.freedesktop.gitlab.foo.bar.json",
+        "tests/manifests/domain_checks/io.gitlab.foo.bar.json",
         "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
+        "tests/manifests/domain_checks/ch.wwwwww.bar.json",
     ):
         ret = run_checks(i)
-        warnings = set(ret["warnings"])
-        assert "appid-code-host-not-reachable" in warnings
+        errors = set(ret["errors"])
+        assert "appid-url-not-reachable" in errors
 
 
-def test_appid_code_host_is_reachable() -> None:
+def test_appid_url_is_reachable() -> None:
     for i in (
-        "tests/manifests/domain_checks/io.github.flathub.flathub.json",
+        "tests/manifests/domain_checks/io.github.flatpak.flatpak.json",
         "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
     ):
         ret = run_checks(i)
         assert "errors" not in ret
-
-
-def test_appid_url_not_reachable() -> None:
-    ret = run_checks("tests/manifests/domain_checks/ch.wwwwww.bar.json")
-    errors = set(ret["errors"])
-    assert {"appid-url-not-reachable"} == errors
 
 
 def test_appid_on_flathub() -> None:
