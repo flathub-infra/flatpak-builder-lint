@@ -26,7 +26,8 @@ def check_git(url: str) -> bool:
             stderr=subprocess.DEVNULL,
         )
         return True
-    except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
+    except (subprocess.TimeoutExpired, subprocess.CalledProcessError) as err:
+        print(err)
         return False
 
 
