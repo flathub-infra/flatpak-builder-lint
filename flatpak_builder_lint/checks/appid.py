@@ -69,7 +69,7 @@ class AppIDCheck(Check):
                         "net.sourceforge.",
                     )
                 )
-                and domainutils.get_user_url(appid) is not None
+                and domainutils.get_user_url(appid)
             ):
                 url = f"https://{domainutils.get_user_url(appid)}"
                 if not domainutils.check_url(url):
@@ -86,8 +86,8 @@ class AppIDCheck(Check):
             ):
                 # Toplevel group names cannot be the same as username
                 if (
-                    domainutils.get_gitlab_user(appid) is not None
-                    and domainutils.get_gitlab_group(appid) is not None
+                    domainutils.get_gitlab_user(appid)
+                    and domainutils.get_gitlab_group(appid)
                 ):
                     url_user = f"https://{domainutils.get_gitlab_user(appid)}"
                     url_group = f"https://{domainutils.get_gitlab_group(appid)}"
@@ -113,7 +113,7 @@ class AppIDCheck(Check):
                         "org.freedesktop.gitlab.",
                     )
                 )
-                and domainutils.get_domain(appid) is not None
+                and domainutils.get_domain(appid)
             ):
                 url_http = f"http://{domainutils.get_domain(appid)}"
                 url_https = f"https://{domainutils.get_domain(appid)}"
