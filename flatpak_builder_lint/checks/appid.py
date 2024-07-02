@@ -29,7 +29,7 @@ class AppIDCheck(Check):
 
         is_baseapp = appid.endswith(".BaseApp")
 
-        if not (is_extension or is_baseapp) and len(split) >= 6:
+        if not (is_extension or is_baseapp) and len(split) > 6:
             self.errors.add("appid-too-many-components-for-app")
             self.info.add(
                 "appid-too-many-components-for-app: appid has 6 or more"
@@ -58,68 +58,30 @@ class AppIDCheck(Check):
                 return
             if domainutils.is_app_on_flathub(appid):
                 return
-            if (
-                appid.startswith(
-                    (
-                        "io.github.",
-                        "page.codeberg.",
-                        "io.sourceforge.",
-                        "net.sourceforge.",
-                    )
-                )
-                and domainutils.get_user_url(appid) is not None
-            ):
-                url = f"https://{domainutils.get_user_url(appid)}"
-                if not domainutils.check_url(url):
-                    self.errors.add("appid-url-not-reachable")
-                    self.info.add(f"appid-url-not-reachable: Tried {url}")
-            if appid.startswith(
-                (
-                    "io.gitlab.",
-                    "io.frama.",
-                    "org.gnome.gitlab.",
-                    "org.freedesktop.gitlab.",
-                )
-            ):
-                # Toplevel group names cannot be the same as username
-                if (
-                    domainutils.get_gitlab_user(appid) is not None
-                    and domainutils.get_gitlab_group(appid) is not None
-                ):
-                    url_user = f"https://{domainutils.get_gitlab_user(appid)}"
-                    url_group = f"https://{domainutils.get_gitlab_group(appid)}"
+            if appid.startswith(domainutils.code_hosts):
+                if domainutils.get_proj_url(appid) is None:
+                    self.errors.add("appid-url-check-internal-error")
+                    return
+                else:
+                    url = f"https://{domainutils.get_proj_url(appid)}"
+                    if not domainutils.check_url(url, strict=True):
+                        self.errors.add("appid-url-not-reachable")
+                        self.info.add(f"appid-url-not-reachable: Tried {url}")
+            else:
+                if domainutils.get_domain(appid) is None:
+                    self.errors.add("appid-url-check-internal-error")
+                    return
+                else:
+                    url_http = f"http://{domainutils.get_domain(appid)}"
+                    url_https = f"https://{domainutils.get_domain(appid)}"
                     if not (
-                        domainutils.check_gitlab_user(url_user)
-                        or domainutils.check_gitlab_group(url_group)
+                        domainutils.check_url(url_https, strict=False)
+                        or domainutils.check_url(url_http, strict=False)
                     ):
                         self.errors.add("appid-url-not-reachable")
                         self.info.add(
-                            f"appid-url-not-reachable: Tried {url_user}, {url_group}"
+                            f"appid-url-not-reachable: Tried {url_http}, {url_https}"
                         )
-            if (
-                not appid.startswith(
-                    (
-                        "io.github.",
-                        "io.frama.",
-                        "page.codeberg.",
-                        "io.sourceforge.",
-                        "net.sourceforge.",
-                        "io.gitlab.",
-                        "org.gnome.gitlab.",
-                        "org.freedesktop.gitlab.",
-                    )
-                )
-                and domainutils.get_domain(appid) is not None
-            ):
-                url_http = f"http://{domainutils.get_domain(appid)}"
-                url_https = f"https://{domainutils.get_domain(appid)}"
-                if not (
-                    domainutils.check_url(url_https) or domainutils.check_url(url_http)
-                ):
-                    self.errors.add("appid-url-not-reachable")
-                    self.info.add(
-                        f"appid-url-not-reachable: Tried {url_http}, {url_https}"
-                    )
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")

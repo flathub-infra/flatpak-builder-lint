@@ -1,36 +1,28 @@
 import requests
 
+code_hosts = (
+    "io.github.",
+    "io.frama.",
+    "io.gitlab.",
+    "page.codeberg.",
+    "io.sourceforge.",
+    "net.sourceforge.",
+    "org.gnome.gitlab.",
+    "org.freedesktop.gitlab.",
+)
 
-def check_url(url: str) -> bool:
+
+def check_url(url: str, strict: bool) -> bool:
     assert url.startswith(("https://", "http://"))
     ret = False
     try:
         r = requests.get(url, allow_redirects=False, timeout=10)
-        if r.ok:
+        if r.ok and not strict:
             ret = True
-    except requests.exceptions.RequestException:
-        pass
-    return ret
-
-
-def check_gitlab_user(url: str) -> bool:
-    assert url.startswith("https://")
-    ret = False
-    try:
-        r = requests.get(url, allow_redirects=False, timeout=10)
-        if len(r.json()) > 0 and isinstance(r.json()[0].get("id"), int):
-            ret = True
-    except requests.exceptions.RequestException:
-        pass
-    return ret
-
-
-def check_gitlab_group(url: str) -> bool:
-    assert url.startswith("https://")
-    ret = False
-    try:
-        r = requests.get(url, allow_redirects=False, timeout=10)
-        if len(r.json()) > 0 and isinstance(r.json().get("id"), int):
+        # For known code hosting sites
+        # they return 300s on non-existent repo/users
+        # 200 is the only way to make sure target exists
+        if strict and r.status_code == 200:
             ret = True
     except requests.exceptions.RequestException:
         pass
@@ -44,100 +36,89 @@ def demangle(name: str) -> str:
     return name
 
 
-def get_user_url(appid: str) -> str | None:
-    assert appid.startswith(
-        ("io.github.", "page.codeberg.", "io.sourceforge.", "net.sourceforge.")
-    )
-    assert appid.count(".") >= 2
+def get_proj_url(appid: str) -> str | None:
+    assert appid.startswith(code_hosts)
+    assert appid.count(".") >= 3
 
     url = None
-    # None of these have subdomains so all
-    # we need is the third or fourth component of appid
-    # to get user url
-    # as long as the user exists, only they can deploy a pages site
-    # at user.github.io
-    third_cpt = demangle(appid.split(".")[2]).lower()
 
-    if appid.startswith("io.github."):
-        url = f"github.com/{third_cpt}"
+    if appid.startswith(("io.sourceforge.", "net.sourceforge.")):
+        second_cpt = demangle(appid.split(".")[2])
+        # needs root path "/" otherwise HTTP 302
+        # not case-sensitive
+        url = f"sourceforge.net/projects/{second_cpt}/".lower()
+
+    # not case-sensitive -> lower
+    elif appid.startswith("io.github."):
+        second_cpt = demangle(appid.split(".")[2])
+        if appid.count(".") == 3:
+            third_cpt = appid.split(".")[3]
+            url = f"github.com/{second_cpt}/{third_cpt}".lower()
+        else:
+            third_cpt = demangle(appid.split(".")[3])
+            url = f"github.com/{second_cpt}/{third_cpt}".lower()
+
+    # not case-sensitive -> lower
     elif appid.startswith("page.codeberg."):
-        url = f"codeberg.org/{third_cpt}"
-    # third component is project name in case of sourceforge
-    elif appid.startswith(("io.sourceforge.", "net.sourceforge.")):
-        url = f"sourceforge.net/projects/{third_cpt}"
+        second_cpt = demangle(appid.split(".")[2])
+        if appid.count(".") == 3:
+            third_cpt = appid.split(".")[3]
+            url = f"codeberg.org/{second_cpt}/{third_cpt}".lower()
+        else:
+            third_cpt = demangle(appid.split(".")[3])
+            url = f"codeberg.org/{second_cpt}/{third_cpt}".lower()
 
-    return url
+    # Gitlab is case-sensitive, so no lower()
+    # gitlab.gnome.org/world is a 302, World is 200
+    elif appid.startswith(("io.gitlab.", "io.frama.")):
+        second_cpt = demangle(appid.split(".")[2])
+        if appid.startswith("io.gitlab."):
+            if appid.count(".") == 3:
+                third_cpt = appid.split(".")[3]
+                url = f"gitlab.com/{second_cpt}/{third_cpt}"
+            else:
+                demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
+                demangled.insert(len(demangled), appid.split(".")[-1])
+                proj = "/".join(demangled)
+                url = f"gitlab.com/{proj}"
 
+        if appid.startswith("io.frama."):
+            if appid.count(".") == 3:
+                third_cpt = appid.split(".")[3]
+                url = f"framagit.org/{second_cpt}/{third_cpt}"
+            else:
+                demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
+                demangled.insert(len(demangled), appid.split(".")[-1])
+                proj = "/".join(demangled)
+                url = f"framagit.org/{proj}"
 
-def get_gitlab_user(appid: str) -> str | None:
-    assert appid.startswith(
-        ("io.gitlab.", "io.frama.", "org.gnome.gitlab.", "org.freedesktop.gitlab.")
-    )
-    assert appid.count(".") >= 2
+    elif appid.startswith(("org.gnome.gitlab.", "org.freedesktop.gitlab.")):
+        third_cpt = demangle(appid.split(".")[3])
+        if appid.startswith("org.gnome.gitlab."):
+            if appid.count(".") == 4:
+                fourth_cpt = appid.split(".")[4]
+                url = f"gitlab.gnome.org/{third_cpt}/{fourth_cpt}"
+            else:
+                demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]
+                demangled.insert(len(demangled), appid.split(".")[-1])
+                proj = "/".join(demangled)
+                url = f"gitlab.gnome.org/{proj}"
 
-    url = None
-    third_cpt = demangle(appid.split(".")[2]).lower()
-    fourth_cpt = demangle(appid.split(".")[3]).lower()
-
-    # The third component/fourth component can be the username
-    # or a toplevel group name.  Return the username API url here
-
-    # API is used because gitlab returns HTTP 200 on non existent
-    # user URLs. This is to be passed in check_gitlab_user()
-
-    if appid.startswith("io.gitlab."):
-        url = f"gitlab.com/api/v4/users?username={third_cpt}"
-    elif appid.startswith("io.frama."):
-        url = f"framagit.org/api/v4/users?username={third_cpt}"
-    elif appid.startswith("org.gnome.gitlab."):
-        url = f"gitlab.gnome.org/api/v4/users?username={fourth_cpt}"
-    elif appid.startswith("org.freedesktop.gitlab."):
-        url = f"gitlab.freedesktop.org/api/v4/users?username={fourth_cpt}"
-
-    return url
-
-
-def get_gitlab_group(appid: str) -> str | None:
-    assert appid.startswith(
-        ("io.gitlab.", "io.frama.", "org.gnome.gitlab.", "org.freedesktop.gitlab.")
-    )
-    assert appid.count(".") >= 2
-
-    url = None
-    third_cpt = demangle(appid.split(".")[2]).lower()
-    fourth_cpt = demangle(appid.split(".")[3]).lower()
-
-    # The third component/fourth component can be the toplevel
-    # group name. Return the groupname API url here
-
-    # API is used because gitlab returns HTTP 200 on non existent
-    # user URLs. This is to be passed in check_gitlab_group()
-
-    if appid.startswith("io.gitlab."):
-        url = f"gitlab.com/api/v4/groups/{third_cpt}"
-    elif appid.startswith("io.frama."):
-        url = f"framagit.org/api/v4/groups/{third_cpt}"
-    elif appid.startswith("org.gnome.gitlab."):
-        url = f"gitlab.gnome.org/api/v4/groups/{fourth_cpt}"
-    elif appid.startswith("org.freedesktop.gitlab."):
-        url = f"gitlab.freedesktop.org/api/v4/groups/{fourth_cpt}"
+        if appid.startswith("org.freedesktop.gitlab."):
+            if appid.count(".") == 4:
+                fourth_cpt = appid.split(".")[4]
+                url = f"gitlab.freedesktop.org/{third_cpt}/{fourth_cpt}"
+            else:
+                demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]
+                demangled.insert(len(demangled), appid.split(".")[-1])
+                proj = "/".join(demangled)
+                url = f"gitlab.freedesktop.org/{proj}"
 
     return url
 
 
 def get_domain(appid: str) -> str | None:
-    assert not appid.startswith(
-        (
-            "io.github.",
-            "io.frama.",
-            "io.gitlab.",
-            "page.codeberg.",
-            "io.sourceforge.",
-            "net.sourceforge.",
-            "org.gnome.gitlab.",
-            "org.freedesktop.gitlab.",
-        )
-    )
+    assert not appid.startswith(code_hosts)
     assert appid.count(".") >= 2
 
     domain = None
@@ -150,13 +131,11 @@ def get_domain(appid: str) -> str | None:
     ):
         domain = "freedesktop.org"
     else:
-        tld = appid.split(".")[0]
-        demangled = [demangle(i) for i in appid.split(".")[:-1][1:]]
-        demangled.insert(0, tld)
+        demangled = [demangle(i) for i in appid.split(".")[:-1]]
         domain = ".".join(reversed(demangled)).lower()
 
     return domain
 
 
 def is_app_on_flathub(appid: str) -> bool:
-    return check_url(f"https://flathub.org/api/v2/summary/{appid}")
+    return check_url(f"https://flathub.org/api/v2/summary/{appid}", strict=True)
