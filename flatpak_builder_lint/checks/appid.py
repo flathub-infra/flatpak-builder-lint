@@ -100,30 +100,35 @@ class AppIDCheck(Check):
                             f"appid-url-not-reachable: Tried {url_user}, {url_group}"
                         )
 
-            if (
-                not appid.startswith(
-                    (
-                        "io.github.",
-                        "io.frama.",
-                        "page.codeberg.",
-                        "io.sourceforge.",
-                        "net.sourceforge.",
-                        "io.gitlab.",
-                        "org.gnome.gitlab.",
-                        "org.freedesktop.gitlab.",
-                    )
+            if not appid.startswith(
+                (
+                    "io.github.",
+                    "io.frama.",
+                    "page.codeberg.",
+                    "io.sourceforge.",
+                    "net.sourceforge.",
+                    "io.gitlab.",
+                    "org.gnome.gitlab.",
+                    "org.freedesktop.gitlab.",
                 )
-                and domainutils.get_domain(appid)
             ):
-                url_http = f"http://{domainutils.get_domain(appid)}"
-                url_https = f"https://{domainutils.get_domain(appid)}"
-                if not (
-                    domainutils.check_url(url_https) or domainutils.check_url(url_http)
-                ):
-                    self.errors.add("appid-url-not-reachable")
-                    self.info.add(
-                        f"appid-url-not-reachable: Tried {url_http}, {url_https}"
-                    )
+                if domains := domainutils.get_domains(appid):
+                    found_reachable = False
+                    for domain in domains:
+                        url_http = f"http://{domain}"
+                        url_https = f"https://{domain}"
+                        if (
+                            domainutils.check_url(url_https)
+                            or domainutils.check_url(url_http)
+                        ):
+                            found_reachable = True
+
+                    if not found_reachable:
+                        tried_domains = ", ".join(domains)
+                        self.errors.add("appid-url-not-reachable")
+                        self.info.add(
+                            f"appid-url-not-reachable: Tried {tried_domains}"
+                        )
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")

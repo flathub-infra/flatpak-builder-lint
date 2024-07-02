@@ -125,7 +125,7 @@ def get_gitlab_group(appid: str) -> str | None:
     return url
 
 
-def get_domain(appid: str) -> str | None:
+def get_domains(appid: str) -> tuple[str]:
     assert not appid.startswith(
         (
             "io.github.",
@@ -140,22 +140,28 @@ def get_domain(appid: str) -> str | None:
     )
     assert appid.count(".") >= 2
 
-    domain = None
+    domains = []
     if appid.startswith("org.gnome.") and not appid.startswith("org.gnome.gitlab."):
-        domain = "gnome.org"
+        domains.append("gnome.org")
     elif appid.startswith("org.kde."):
-        domain = "kde.org"
+        domains.append("kde.org")
     elif appid.startswith("org.freedesktop.") and not appid.startswith(
         "org.freedesktop.gitlab."
     ):
-        domain = "freedesktop.org"
+        domains.append("freedesktop.org")
     else:
         tld = appid.split(".")[0]
         demangled = [demangle(i) for i in appid.split(".")[:-1][1:]]
         demangled.insert(0, tld)
-        domain = ".".join(reversed(demangled)).lower()
+        demangled_domain = ".".join(reversed(demangled)).lower()
+        domains.append(demangled_domain)
 
-    return domain
+    if appid.count(".") == 2:
+        demangled = [demangle(i) for i in appid.split(".")[:-1]]
+        demangled_domain = ".".join(reversed(demangled)).lower()
+        domains.append(demangled_domain)
+
+    return tuple(domains)
 
 
 def is_app_on_flathub(appid: str) -> bool:
