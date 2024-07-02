@@ -56,8 +56,10 @@ class AppIDCheck(Check):
         if appid:
             if is_extension or is_baseapp:
                 return
+
             if domainutils.is_app_on_flathub(appid):
                 return
+
             if (
                 appid.startswith(
                     (
@@ -73,6 +75,7 @@ class AppIDCheck(Check):
                 if not domainutils.check_url(url):
                     self.errors.add("appid-url-not-reachable")
                     self.info.add(f"appid-url-not-reachable: Tried {url}")
+
             if appid.startswith(
                 (
                     "io.gitlab.",
@@ -96,6 +99,7 @@ class AppIDCheck(Check):
                         self.info.add(
                             f"appid-url-not-reachable: Tried {url_user}, {url_group}"
                         )
+
             if (
                 not appid.startswith(
                     (
