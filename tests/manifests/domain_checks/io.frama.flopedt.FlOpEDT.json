@@ -1,5 +1,5 @@
 {
-    "app-id": "org.freedesktop.gitlab.mesa.foo",
+    "app-id": "io.frama.flopedt.FlOpEDT",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

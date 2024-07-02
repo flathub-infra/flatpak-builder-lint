@@ -1,5 +1,5 @@
 {
-    "app-id": "io.gitlab.flathub.foo",
+    "app-id": "page.codeberg.forgejo.code-of-conduct",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

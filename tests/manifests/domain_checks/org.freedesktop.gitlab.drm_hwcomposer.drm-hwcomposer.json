@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.gitlab.World.Identity",
+    "app-id": "org.freedesktop.gitlab.drm_hwcomposer.drm-hwcomposer",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

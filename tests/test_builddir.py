@@ -273,7 +273,7 @@ def test_min_success_metadata() -> None:
     not_founds = {
         "appid-too-many-components-for-app",
         "metainfo-missing-launchable-tag",
-        "appid-domain-not-found",
+        "appid-url-check-internal-error",
         "appid-url-not-reachable",
     }
     for n in not_founds:

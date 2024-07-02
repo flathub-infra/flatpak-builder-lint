@@ -1,5 +1,5 @@
 {
-    "app-id": "page.codeberg.forgejo.foo",
+    "app-id": "org.gnome.gitlab.World.design.vector-slicer",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

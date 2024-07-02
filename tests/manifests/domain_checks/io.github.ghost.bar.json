@@ -1,5 +1,5 @@
 {
-    "app-id": "org.freedesktop.gitlab.bbhtt.foo",
+    "app-id": "io.github.ghost.bar",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",
