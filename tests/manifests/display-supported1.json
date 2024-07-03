@@ -1,7 +1,0 @@
-{
-    "app-id": "org.flathub.display_supported",
-    "finish-args": [
-        "--socket=x11",
-        "--socket=wayland"
-    ]
-}

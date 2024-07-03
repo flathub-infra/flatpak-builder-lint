@@ -155,7 +155,6 @@ def test_manifest_finish_args() -> None:
     }
 
     warnings = {
-        "finish-args-contains-both-x11-and-wayland",
         "finish-args-x11-without-ipc",
         "finish-args-redundant-device-all",
         "finish-args-contains-both-x11-and-fallback",
@@ -175,6 +174,12 @@ def test_manifest_finish_args() -> None:
     assert warnings.issubset(found_warnings)
     for a in expected_absents:
         assert a not in found_errors
+
+
+def test_manifest_finish_args_issue_wayland_x11() -> None:
+    ret = run_checks("tests/manifests/finish_args-wayland-x11.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-contains-both-x11-and-wayland" in found_errors
 
 
 def test_manifest_finish_args_issue_33() -> None:
@@ -219,10 +224,10 @@ def test_manifest_display_stuff() -> None:
     absents = {
         "finish-args-fallback-x11-without-wayland",
         "finish-args-only-wayland",
+        "finish-args-contains-both-x11-and-wayland",
     }
 
     for file in (
-        "display-supported1.json",
         "display-supported2.json",
         "display-supported3.json",
     ):

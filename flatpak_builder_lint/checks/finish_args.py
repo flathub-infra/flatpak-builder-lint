@@ -13,7 +13,7 @@ class FinishArgsCheck(Check):
             self.warnings.add("finish-args-contains-both-x11-and-fallback")
 
         if "x11" in finish_args["socket"] and "wayland" in finish_args["socket"]:
-            self.warnings.add("finish-args-contains-both-x11-and-wayland")
+            self.errors.add("finish-args-contains-both-x11-and-wayland")
 
         if "x11" in finish_args["socket"] or "fallback-x11" in finish_args["socket"]:
             if "ipc" not in finish_args["share"]:
