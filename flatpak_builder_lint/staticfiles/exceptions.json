@@ -1133,6 +1133,9 @@
     "dev.lapce.lapce": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "dev.lizardbyte.app.Sunshine": {
+        "finish-args-flatpak-spawn-access": "needed to start applications"
+    },
     "dev.salaniLeo.immagini": {
         "finish-args-flatpak-spawn-access": "needed to start applications"
     },
