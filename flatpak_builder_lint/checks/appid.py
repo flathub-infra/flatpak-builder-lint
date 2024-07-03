@@ -56,6 +56,8 @@ class AppIDCheck(Check):
         if appid:
             if is_extension or is_baseapp:
                 return
+            if split[-1] == "Devel":
+                return
             if domainutils.is_app_on_flathub(appid):
                 return
             if appid.startswith(domainutils.code_hosts):
