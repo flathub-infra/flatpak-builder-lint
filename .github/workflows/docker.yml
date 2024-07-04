@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache flatpak build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.flatpak-builder
           key: fb-${{ matrix.platform }}-${{ hashFiles('poetry.lock') }}
