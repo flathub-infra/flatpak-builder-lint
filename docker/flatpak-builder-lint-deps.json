@@ -33,7 +33,7 @@
                 {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/92/48/32bed868dd4e7d16e26457cc0b8634d6b16cb0e082a93f044ef5f7c77361/rpds_py-0.18.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
-                    "sha256": "3c20f05e8e3d4fc76875fc9cb8cf24b90a63f5a1b4c5b9273f0e8225e169b100",
+                    "sha256": "154bf5c93d79558b44e5b50cc354aa0459e518e83677791e6adb0b039b7aa6a7",
                     "only-arches": ["aarch64"]
                 }
             ]
