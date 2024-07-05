@@ -1456,7 +1456,8 @@
     },
     "com.google.ChromeDev": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.chromium.Chromium": {
         "finish-args-contains-both-x11-and-wayland": "optional wayland support"
@@ -1492,7 +1493,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.amazon.Workspaces": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.anydesk.Anydesk": {
         "flathub-json-modified-publish-delay": "extra-data",
@@ -1524,31 +1526,37 @@
         "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
     },
     "com.flashforge.FlashPrint": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.getpostman.Postman": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.hamrick.VueScan": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.icons8.Lunacy": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.jagex.RuneScape": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.kolor.AutopanoPro": {
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.lunarclient.LunarClient": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.microsoft.Edge": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.microsoft.Teams": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1675,7 +1683,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "io.github.ihhub.Fheroes2": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "io.github.peazip.PeaZip.Addon.i386": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -1684,7 +1693,8 @@
         "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
     },
     "io.wavebox.Wavebox": {
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "jp.yvt.OpenSpades": {
         "flathub-json-modified-publish-delay": "extra-data",
@@ -1734,7 +1744,8 @@
     "org.geogebra.GeoGebra": {
         "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.jdownloader.JDownloader": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -3300,7 +3311,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.microsoft.EdgeDev": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.milesalan.mepo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3751,5 +3763,8 @@
     },
     "xyz.stuerz.BilligSweeper": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "io.enpass.Enpass": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     }
 }
