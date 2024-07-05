@@ -33,7 +33,7 @@ class FlathubJsonCheck(Check):
         automerge = flathub_json.get("automerge-flathubbot-prs")
 
         if isinstance(automerge, bool):
-            if automerge and not is_extra_data:
+            if automerge:
                 self.errors.add("flathub-json-automerge-enabled")
 
         if eol_rebase and not eol:
