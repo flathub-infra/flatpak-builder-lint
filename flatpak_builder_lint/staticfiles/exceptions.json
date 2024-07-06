@@ -3766,5 +3766,8 @@
     },
     "io.enpass.Enpass": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
-    }
+    },
+    "io.github.fabrialberio.pinapp": {
+        "finish-args-unnecessary-xdg-data-access": "This program needs read-write-access to xdg-data/applications and read-access to xdg-data/flatpak"
+    },
 }
