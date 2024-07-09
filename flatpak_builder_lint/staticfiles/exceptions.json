@@ -3253,12 +3253,6 @@
     "xyz.armcord.ArmCord": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
-    "uk.org.greenend.chiark.sgtatham.putty": {
-        "appid-too-many-components-for-app": "Predates the linter rule"
-    },
-    "uk.org.greenend.chiark.sgtatham.puzzles": {
-        "appid-too-many-components-for-app": "Predates the linter rule"
-    },
     "app.rednotebook.RedNotebook": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
