@@ -24,6 +24,8 @@ known_exceptions = {
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
     "appid-too-many-components-for-app",
+    "finish-args-direct-dconf-path",
+    "finish-args-dconf-talk-name",
 }
 
 
