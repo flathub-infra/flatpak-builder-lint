@@ -284,3 +284,14 @@ def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
     ret = run_checks("tests/builddir/appstream-cid-mismatch-flatpak-id")
     found_errors = set(ret["errors"])
     assert "appstream-id-mismatch-flatpak-id" in found_errors
+
+
+def test_builddir_dconf_access() -> None:
+    ret = run_checks("tests/builddir/dconf-access")
+    found_errors = set(ret["errors"])
+    errors = {
+        "finish-args-dconf-talk-name",
+        "finish-args-direct-dconf-path",
+    }
+    for e in errors:
+        assert e in found_errors

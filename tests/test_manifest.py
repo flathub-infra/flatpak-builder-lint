@@ -300,3 +300,15 @@ def test_manifest_exceptions() -> None:
 def test_manifest_exceptions_wildcard() -> None:
     ret = run_checks("tests/manifests/exceptions_wildcard.json", enable_exceptions=True)
     assert ret == {}
+
+
+def test_manifest_direct_dconf_access() -> None:
+    ret = run_checks("tests/manifests/dconf.json")
+    found_errors = ret["errors"]
+    errors = {
+        "finish-args-direct-dconf-path",
+        "finish-args-dconf-talk-name",
+        "finish-args-dconf-own-name",
+    }
+    for e in errors:
+        assert e in found_errors

@@ -1,0 +1,19 @@
+{
+    "app-id": "org.flathub.dconf-access",
+    "runtime": "foo",
+    "sdk": "bar",
+    "command": "foo",
+    "finish-args": [
+		"--filesystem=xdg-run/dconf:ro",
+		"--filesystem=~/.config/dconf:ro",
+		"--filesystem=/run/user/1000/dconf/foo:ro",
+		"--talk-name=ca.desrt.dconf",
+		"--own-name=ca.desrt.dconf"
+    ],
+    "modules": [
+        {
+            "name": "module2",
+            "buildsystem": "autotools"
+        }
+    ]
+}
