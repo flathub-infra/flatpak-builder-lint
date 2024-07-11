@@ -3796,5 +3796,9 @@
     "ru.yandex.Browser": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule"
+    },
+    "io.github.vikdevelop.SaveDesktop": {
+        "finish-args-dconf-talk-name": "Predates the linter rule",
+        "finish-args-direct-dconf-path": "Predates the linter rule"
     }
 }
