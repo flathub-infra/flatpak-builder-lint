@@ -1,0 +1,8 @@
+[Application]
+name=org.flathub.dconf-access
+
+[Context]
+filesystems=xdg-run/dconf;xdg-config/dconf;
+
+[Session Bus Policy]
+ca.desrt.dconf=talk

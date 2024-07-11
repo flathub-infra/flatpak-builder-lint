@@ -110,6 +110,14 @@ class FinishArgsCheck(Check):
                     "finish-args-absolute-home-path: finish-args has filesystem access"
                     + " that is a subdirectory of /run/media"
                 )
+            if fs.startswith(
+                ("xdg-run/dconf", "~/.config/dconf", "xdg-config/dconf", "home/dconf")
+            ) or re.match("^/run/user/.*/dconf", fs):
+                self.errors.add("finish-args-direct-dconf-path")
+                self.info.add(
+                    "finish-args-direct-dconf-path: finish-args"
+                    + " has direct access to host dconf path"
+                )
 
         pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
         if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
@@ -139,6 +147,8 @@ class FinishArgsCheck(Check):
                     "finish-args-portal-own-name: finish-args has own-name access"
                     + " to portal sub-bus org.freedesktop.portal"
                 )
+            if own_name.startswith("ca.desrt.dconf"):
+                self.errors.add("finish-args-dconf-own-name")
 
         for talk_name in finish_args["talk-name"]:
             if talk_name == "org.freedesktop.*":
@@ -153,6 +163,8 @@ class FinishArgsCheck(Check):
                     "finish-args-portal-talk-name: finish-args has talk-name access"
                     + " to portal sub-bus org.freedesktop.portal"
                 )
+            if talk_name.startswith("ca.desrt.dconf"):
+                self.errors.add("finish-args-dconf-talk-name")
 
         if (
             "xdg-config/autostart" in finish_args["filesystem"]
