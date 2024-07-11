@@ -3816,5 +3816,8 @@
     },
     "dev.bsnes.bsnes": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
+    },
+    "dev.edfloreshz.Tasks": {
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     }
 }
