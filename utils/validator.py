@@ -12,13 +12,9 @@ known_exceptions = {
     "desktop-file-failed-validation",
     "finish-args-arbitrary-autostart-access",
     "finish-args-arbitrary-dbus-access",
-    "finish-args-arbitrary-xdg-data-access",
     "finish-args-contains-both-x11-and-wayland",
     "finish-args-flatpak-spawn-access",
     "finish-args-not-defined",
-    "finish-args-unnecessary-xdg-cache-access",
-    "finish-args-unnecessary-xdg-config-access",
-    "finish-args-unnecessary-xdg-data-access",
     "finish-args-wildcard-kde-own-name",
     "flathub-json-modified-publish-delay",
     "finish-args-wildcard-kde-talk-name",
@@ -55,7 +51,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             try:
                 data = json.load(f, object_pairs_hook=check_duplicates)
                 found_exceptions = {
-                    j for i in data.values() for j in i if not j.startswith("module-")
+                    j
+                    for i in data.values()
+                    for j in i
+                    if not j.startswith(
+                        (
+                            "module-",
+                            "finish-args-arbitrary-xdg-",
+                            "finish-args-unnecessary-xdg-",
+                        )
+                    )
                 } - {
                     "*",
                     "appid-filename-mismatch",

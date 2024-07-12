@@ -8,8 +8,9 @@
         "*": "ignore all errors and warnings"
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
-        "finish-args-unnecessary-xdg-data-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
-        "finish-args-unnecessary-xdg-config-access": "this program needs write-access to xdg-config/mimeapps.list"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-data-applications-rw-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-config-mimeapps.list-rw-access": "this program needs write-access to xdg-config/mimeapps.list"
     },
     "com.github.sixpounder.GameOfLife": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -333,9 +334,10 @@
     },
     "com.github.GradienceTeam.Gradience": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flathub/issues/3557",
         "finish-args-flatpak-spawn-access": "required to change the gnome-shell theme via gsettings",
-        "finish-args-unnecessary-xdg-config-access": "Required to change gtk configuration on host"
+        "finish-args-unnecessary-xdg-config-gtk-4.0-rw-access": "Required to change gtk configuration on host",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "Required to change gtk configuration on host",
+        "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flathub/issues/3557"
     },
     "com.github.gyunaev.spivak": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -708,7 +710,8 @@
     },
     "com.github.tchx84.Flatseal": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "https://github.com/flathub/flatpak-builder-lint/issues/51"
+        "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "https://github.com/flathub/flatpak-builder-lint/issues/51"
     },
     "com.github.tenderowl.frog": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -831,7 +834,8 @@
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
     "org.bluesabre.MenuLibre": {
-        "finish-args-unnecessary-xdg-data-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications"
     },
     "org.kiwix.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
@@ -871,7 +875,8 @@
     "com.gitlab.cunidev.Gestures": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-access": "Requires XDG config access to configure a separate system-level service"
+        "finish-args-unnecessary-xdg-config-libinput-gestures.conf.bak-create-access": "Requires XDG config access to configure a separate system-level service",
+        "finish-args-unnecessary-xdg-config-libinput-gestures.conf-create-access": "Requires XDG config access to configure a separate system-level service"
     },
     "com.gitlab.cunidev.Workflow": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -907,7 +912,7 @@
     },
     "com.gitlab.JakobDev.jdMinecraftLauncher": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications"
+        "finish-args-unnecessary-xdg-data-applications-create-access": "jdMinecraftLauncher creates .desktop files in share/applications"
     },
     "com.gitlab.jakobdev.jdnbtexplorer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -961,8 +966,8 @@
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.gnome.Contacts": {
-        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-cache-access": "the app predates this linter rule, used for evolution data server",
+        "finish-args-unnecessary-xdg-data-pixmaps-create-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-cache-evolution-ro-access": "the app predates this linter rule, used for evolution data server",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.dspy": {
@@ -973,8 +978,8 @@
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.gnome.FontManager": {
-        "finish-args-unnecessary-xdg-config-access": "Needed for supporting system-wide font config",
-        "finish-args-unnecessary-xdg-data-access": "Needed for supporting system-wide font installations"
+        "finish-args-unnecessary-xdg-config-fontconfig-rw-access": "Needed for supporting system-wide font config",
+        "finish-args-unnecessary-xdg-data-fonts-rw-access": "Needed for supporting system-wide font installations"
     },
     "org.freedesktop.Bustle": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -995,12 +1000,16 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gimp.GIMP": {
-        "finish-args-unnecessary-xdg-config-access": "gtk-3.0 and GIMP config."
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
+        "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config."
     },
     "org.fcitx.Fcitx5": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-        "finish-args-unnecessary-xdg-config-access": "need for simulating ibus daemon and changing kde system xkb settings",
-        "finish-args-unnecessary-xdg-cache-access": "need for simulating ibus daemon"
+        "finish-args-unnecessary-xdg-config-fcitx-create-access": "need for simulating ibus daemon and changing kde system xkb settings",
+        "finish-args-unnecessary-xdg-config-kxkbrc-rw-access": "Predates the linter rule",
+        "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "Predates the linter rule",
+        "finish-args-unnecessary-xdg-cache-ibus-create-access": "Predates the linter rule",
+        "finish-args-unnecessary-xdg-config-ibus-create-access": "Predates the linter rule"
     },
     "com.jetbrains.PyCharm-Community": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1020,7 +1029,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "org.libreoffice.LibreOffice": {
-        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.st.STM32CubeIDE": {
@@ -1239,14 +1249,14 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.randovania.Randovania": {
-        "finish-args-unnecessary-xdg-config-access": "required to export a randomizer to the host's Ryujinx settings"
+        "finish-args-unnecessary-xdg-config-Ryujinx-rw-access": "required to export a randomizer to the host's Ryujinx settings"
     },
     "io.github.Qalculate": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
     },
     "io.github.realmazharhussain.GdmSettings": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-access": "required for 'apply current display settings to GDM' feature"
+        "finish-args-unnecessary-xdg-config-monitors.xml-ro-access": "required for 'apply current display settings to GDM' feature"
     },
     "io.github.shiftey.Desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1271,7 +1281,7 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "net.codelogistics.webapps": {
-        "finish-args-arbitrary-xdg-data-access": "The app creates and removes desktop files in ~/.local/share/applications."
+        "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
     },
     "net.cozic.joplin_desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1285,8 +1295,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "net.retrodeck.retrodeck": {
-        "finish-args-unnecessary-xdg-data-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
-        "finish-args-unnecessary-xdg-config-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "net.veloren.veloren": {
@@ -1339,7 +1349,7 @@
     },
     "org.gnome.World.PikaBackup": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups."
     },
     "org.godotengine.Godot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1362,7 +1372,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.gwenview": {
-        "finish-args-unnecessary-xdg-data-access": "required for access to Trash until Portal support is added",
+        "finish-args-unnecessary-xdg-data-Trash-rw-access": "required for access to Trash until Portal support is added",
         "appstream-failed-validation": "grandfathered due to unannounced linter changes",
         "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1430,7 +1440,7 @@
     },
     "org.wezfurlong.wezterm": {
         "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
-        "finish-args-unnecessary-xdg-config-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270",
+        "finish-args-unnecessary-xdg-config-wezterm-rw-access": "required to access host configs, repos, workspaces and so on. https://github.com/flathub-infra/flatpak-builder-lint/issues/270",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.worldpossible.ScriptLauncher": {
@@ -1447,7 +1457,8 @@
     },
     "re.sonny.Junction": {
         "finish-args-flatpak-spawn-access": "required to launch apps",
-        "finish-args-unnecessary-xdg-data-access": "required to list apps"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "required to list apps",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "required to list apps"
     },
     "space.crankshaft.Crankshaft": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1475,7 +1486,7 @@
         "finish-args-contains-both-x11-and-wayland": "not every game supports wayland"
     },
     "org.inkscape.Inkscape": {
-        "finish-args-unnecessary-xdg-config-access": "Access xdg-config/gtk-3.0 for bookmarks",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "Access xdg-config/gtk-3.0 for bookmarks",
         "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
     },
     "at.vintagestory.VintageStory": {
@@ -1485,7 +1496,7 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.adamcake.Bolt": {
-        "finish-args-unnecessary-xdg-data-access": "individual games' window icons need to be downloaded and copied to xdg-data/icons as the user installs or updates them",
+        "finish-args-unnecessary-xdg-data-icons-create-access": "individual games' window icons need to be downloaded and copied to xdg-data/icons as the user installs or updates them",
         "finish-args-contains-both-x11-and-wayland": "some games support wayland and some don't"
     },
     "com.adobe.Flash-Player-Projector": {
@@ -1632,7 +1643,7 @@
     },
     "com.teamspeak.TeamSpeak": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-unnecessary-xdg-config-access": "TeamSpeak 5 plugins installation directory."
+        "finish-args-unnecessary-xdg-config-TeamSpeak-rw-access": "TeamSpeak 5 plugins installation directory."
     },
     "com.tencent.WeChat": {
         "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
@@ -1709,7 +1720,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "me.dusansimic.DynamicWallpaper": {
-        "finish-args-unnecessary-xdg-data-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
+        "finish-args-unnecessary-xdg-data-backgrounds-create-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5",
+        "finish-args-unnecessary-xdg-data-gnome-background-properties-create-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
     },
     "me.timschneeberger.GalaxyBudsClient": {
         "finish-args-wildcard-kde-own-name": "The used version of the toolkit Avalonia only supports legacy KDE system tray icons: https://github.com/AvaloniaUI/Avalonia/issues/13782"
@@ -1782,11 +1794,10 @@
     },
     "de.schmidhuberj.tubefeeder": {
         "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
-        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
+        "finish-args-unnecessary-xdg-data-tubefeeder-create-access": "the app predates this linter rule"
     },
     "io.gitlab.JakobDev.jdSimpleAutostart": {
-        "finish-args-arbitrary-autostart-access": "This Program is for managing the Autostart",
-        "finish-args-unnecessary-xdg-config-access": "This Program is for managing the Autostart"
+        "finish-args-unnecessary-xdg-config-autostart-create-access": "This Program is for managing the Autostart"
     },
     "com.helix_editor.Helix": {
         "finish-args-flatpak-spawn-access": "required to access language servers installed on host"
@@ -1833,24 +1844,24 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.font-viewer": {
-        "finish-args-unnecessary-xdg-data-access": "required to save fonts"
+        "finish-args-unnecessary-xdg-data-fonts-create-access": "required to save fonts"
     },
     "hu.kramo.Cartridges": {
         "finish-args-flatpak-spawn-access": "required to launch games on the host",
-        "finish-args-unnecessary-xdg-data-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
     },
     "page.codeberg.JakobDev.jdAppStreamEdit": {
         "finish-args-flatpak-spawn-access": "required for preview in Gnome Software"
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
-        "finish-args-unnecessary-xdg-data-access": "Needs access to the Flatpak directory"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs access to the Flatpak directory"
     },
     "io.github.zyedidia.micro": {
         "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
     },
     "io.github.mmstick.FontFinder": {
-        "finish-args-unnecessary-xdg-data-access": "This program is designed to store font files in the font directory",
+        "finish-args-unnecessary-xdg-data-fonts-create-access": "This program is designed to store font files in the font directory",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
@@ -1859,12 +1870,12 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "page.codeberg.JakobDev.jdSimpleAutostart": {
-        "finish-args-arbitrary-autostart-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
+        "finish-args-unnecessary-xdg-config-autostart-create-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Needs to read desktop files"
     },
     "page.codeberg.JakobDev.jdMinecraftLauncher": {
-        "finish-args-unnecessary-xdg-data-access": "jdMinecraftLauncher creates .desktop files in share/applications",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "jdMinecraftLauncher creates .desktop files in share/applications",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "it.mijorus.gearlever": {
@@ -1875,10 +1886,10 @@
     },
     "io.missioncenter.MissionCenter": {
         "finish-args-flatpak-spawn-access": "access to /proc is required in order to list running processes and their respective resource usage; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670",
-        "finish-args-unnecessary-xdg-data-access": "read-only access to xdg-data/flatpak{,/exports/share} is required to query installed apps on the system and present the ones that are running to the user; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "read-only access to xdg-data/flatpak{,/exports/share} is required to query installed apps on the system and present the ones that are running to the user; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
     },
     "io.github.unrud.RecentFilter": {
-        "finish-args-arbitrary-xdg-data-access": "Requires full access to xdg-data/recently-used.xbel",
+        "finish-args-arbitrary-xdg-data-rw-access": "Requires full access to xdg-data/recently-used.xbel",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnu.emacs": {
@@ -1909,7 +1920,7 @@
     },
     "net.nokyan.Resources": {
         "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc",
-        "finish-args-unnecessary-xdg-data-access": "Required to detect user-wide installed Flatpak applications by searching for .desktop files"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to detect user-wide installed Flatpak applications by searching for .desktop files"
     },
     "io.github.everestapi.Olympus": {
         "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
@@ -1926,7 +1937,8 @@
     },
     "page.codeberg.JakobDev.jdProcessFileWatcher": {
         "finish-args-flatpak-spawn-access": "Run strace on the Host",
-        "finish-args-unnecessary-xdg-data-access": "Needs to read desktop files"
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Needs to read desktop files",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs to read desktop files"
     },
     "io.github.dvlv.boxbuddyrs": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
@@ -1935,10 +1947,10 @@
         "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system"
     },
     "com.calibre_ebook.calibre": {
-        "finish-args-unnecessary-xdg-data-access": "Needs direct trash access, doesn't use portal"
+        "finish-args-unnecessary-xdg-data-Trash-rw-access": "Needs direct trash access, doesn't use portal"
     },
     "app.drey.KeyRack": {
-        "finish-args-unnecessary-xdg-data-access": "the app predates this linter rule"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule"
     },
     "com.discordapp.Discord": {
         "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation",
@@ -2464,7 +2476,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.Sunderland93.sway-input-config": {
-        "finish-args-unnecessary-xdg-config-access": "Required to access Sway configuration on host"
+        "finish-args-unnecessary-xdg-config-sway-rw-access": "Required to access Sway configuration on host"
     },
     "org.linuxshowplayer.LinuxShowPlayer": {
         "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"
@@ -2477,7 +2489,7 @@
     },
     "page.kramo.Cartridges": {
         "finish-args-flatpak-spawn-access": "required to launch games on the host",
-        "finish-args-unnecessary-xdg-data-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
     },
     "page.codeberg.JakobDev.jdMacroPlayer": {
         "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
@@ -3114,8 +3126,9 @@
         "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
     },
     "io.github.loot.loot": {
-        "finish-args-unnecessary-xdg-config-access": "Needed to detect games installed through Heroic Games Launcher.",
-        "finish-args-unnecessary-xdg-data-access": "Needed to detect and make changes to games installed through Steam."
+        "finish-args-unnecessary-xdg-config-heroic-ro-access": "Needed to detect games installed through Heroic Games Launcher.",
+        "finish-args-unnecessary-xdg-data-Steam-ro-access": "Needed to detect and make changes to games installed through Steam.",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "Needed to detect and make changes to games installed through Steam."
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings.",
@@ -3802,6 +3815,6 @@
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "dev.bsnes.bsnes": {
-        "finish-args-unnecessary-xdg-config-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
+        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
     }
 }
