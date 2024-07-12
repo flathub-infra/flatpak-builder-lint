@@ -1,0 +1,26 @@
+{
+    "app-id": "xdg-dirs-access",
+    "runtime": "foo",
+    "sdk": "bar",
+    "command": "foo",
+    "finish-args": [
+        "--filesystem=xdg-config:ro",
+        "--filesystem=xdg-cache:ro",
+        "--filesystem=xdg-data:ro",
+        "--filesystem=xdg-config",
+        "--filesystem=xdg-cache",
+        "--filesystem=xdg-data",
+        "--filesystem=xdg-config:create",
+        "--filesystem=xdg-cache:create",
+        "--filesystem=xdg-data:create",
+        "--filesystem=xdg-cache/electron:create",
+        "--filesystem=xdg-config/fonts",
+        "--filesystem=xdg-data/gvfs/foo:ro"
+    ],
+    "modules": [
+        {
+            "name": "module2",
+            "buildsystem": "autotools"
+        }
+    ]
+}
