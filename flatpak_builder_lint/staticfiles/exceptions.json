@@ -1363,7 +1363,8 @@
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
     },
     "org.godotengine.GodotSharp": {
-        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it",
+        "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Godot will fail to start up in Wayland sessions as X11 is still the default."
     },
     "org.jabref.jabref": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
