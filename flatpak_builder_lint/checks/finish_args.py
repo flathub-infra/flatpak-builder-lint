@@ -54,7 +54,9 @@ class FinishArgsCheck(Check):
                 dv = dev.removeprefix("!")
                 self.errors.add(f"finish-args-has-nodevice-{dv}")
 
-        for xdg_dir in ["xdg-data", "xdg-config", "xdg-cache"]:
+        modes = (":ro", ":rw", ":create")
+        xdgdirs = ("xdg-data", "xdg-config", "xdg-cache")
+        for xdg_dir in xdgdirs:
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
             regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
             for fs in finish_args["filesystem"]:
@@ -62,17 +64,21 @@ class FinishArgsCheck(Check):
                 if fs == "xdg-config/kdeglobals:ro":
                     continue
 
+                mode_suffix = "rw"
+                if fs.startswith(xdgdirs) and fs.endswith(modes):
+                    mode_src = [i for i in modes if fs.endswith(i)][0]
+                    mode_suffix = mode_src.split(":", 1)[1]
+
                 if re.match(regexp_arbitrary, fs):
-                    self.errors.add(f"finish-args-arbitrary-{xdg_dir}-access")
-                    self.info.add(
-                        f"finish-args-arbitrary-{xdg_dir}-access: finish-args has access to"
-                        + f" full {xdg_dir}"
+                    self.errors.add(
+                        f"finish-args-arbitrary-{xdg_dir}-{mode_suffix}-access"
                     )
                 elif re.match(regexp_unnecessary, fs):
-                    self.errors.add(f"finish-args-unnecessary-{xdg_dir}-access")
-                    self.info.add(
-                        f"finish-args-unnecessary-{xdg_dir}-access: finish-args has access to"
-                        + f" a subpath of {xdg_dir}"
+                    subdir = fs.split("/")[1]
+                    if subdir.endswith(modes):
+                        subdir = subdir.split(":", 1)[0]
+                    self.errors.add(
+                        f"finish-args-unnecessary-{xdg_dir}-{subdir}-{mode_suffix}-access"
                     )
 
         for fs in finish_args["filesystem"]:
@@ -111,7 +117,7 @@ class FinishArgsCheck(Check):
                     + " that is a subdirectory of /run/media"
                 )
             if fs.startswith(
-                ("xdg-run/dconf", "~/.config/dconf", "xdg-config/dconf", "home/dconf")
+                ("xdg-run/dconf", "~/.config/dconf", "home/dconf")
             ) or re.match("^/run/user/.*/dconf", fs):
                 self.errors.add("finish-args-direct-dconf-path")
                 self.info.add(
@@ -165,16 +171,6 @@ class FinishArgsCheck(Check):
                 )
             if talk_name.startswith("ca.desrt.dconf"):
                 self.errors.add("finish-args-dconf-talk-name")
-
-        if (
-            "xdg-config/autostart" in finish_args["filesystem"]
-            or "xdg-config/autostart:create" in finish_args["filesystem"]
-        ):
-            self.errors.add("finish-args-arbitrary-autostart-access")
-            self.info.add(
-                "finish-args-arbitrary-autostart-access: finish-args has filesystem access to"
-                + " xdg-config/autostart"
-            )
 
         if (
             "system-bus" in finish_args["socket"]

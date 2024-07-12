@@ -1,0 +1,5 @@
+[Application]
+name=org.flathub.finish_args_xdg_dirs
+
+[Context]
+filesystems=xdg-config:ro;xdg-cache:ro;xdg-data:ro;xdg-config;xdg-cache;xdg-data;xdg-config:create;xdg-cache:create;xdg-data:create;xdg-cache/electron:create;xdg-config/fonts;xdg-data/gvfs/foo:ro;

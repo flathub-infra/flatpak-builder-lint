@@ -23,14 +23,11 @@ def test_builddir_url_not_reachable() -> None:
 
 def test_builddir_finish_args() -> None:
     errors = {
-        "finish-args-arbitrary-autostart-access",
         "finish-args-arbitrary-dbus-access",
-        "finish-args-arbitrary-xdg-data-access",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
-        "finish-args-unnecessary-xdg-data-access",
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-own-name",
@@ -59,6 +56,10 @@ def test_builddir_finish_args() -> None:
     assert warnings.issubset(found_warnings)
     for a in expected_absents:
         assert a not in found_errors
+    for err in found_errors:
+        assert not err.startswith(
+            ("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-")
+        )
 
 
 def test_manifest_finish_args_shm() -> None:
@@ -292,6 +293,27 @@ def test_builddir_dconf_access() -> None:
     errors = {
         "finish-args-dconf-talk-name",
         "finish-args-direct-dconf-path",
+    }
+    for e in errors:
+        assert e in found_errors
+
+
+def test_builddir_xdg_dir_access() -> None:
+    ret = run_checks("tests/builddir/finish_args_xdg_dirs")
+    found_errors = set(ret["errors"])
+    errors = {
+        "finish-args-arbitrary-xdg-config-ro-access",
+        "finish-args-arbitrary-xdg-cache-ro-access",
+        "finish-args-arbitrary-xdg-data-ro-access",
+        "finish-args-arbitrary-xdg-config-rw-access",
+        "finish-args-arbitrary-xdg-cache-rw-access",
+        "finish-args-arbitrary-xdg-data-rw-access",
+        "finish-args-arbitrary-xdg-config-create-access",
+        "finish-args-arbitrary-xdg-cache-create-access",
+        "finish-args-arbitrary-xdg-data-create-access",
+        "finish-args-unnecessary-xdg-cache-electron-create-access",
+        "finish-args-unnecessary-xdg-config-fonts-rw-access",
+        "finish-args-unnecessary-xdg-data-gvfs-ro-access",
     }
     for e in errors:
         assert e in found_errors
