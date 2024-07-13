@@ -3824,5 +3824,8 @@
     },
     "dev.mariinkys.Oboete": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "dev.mariinkys.StarryDex": {
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     }
 }
