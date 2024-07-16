@@ -3141,6 +3141,9 @@
     "io.github.ryanabx.flatrun": {
         "finish-args-flatpak-spawn-access": "Required to install runtimes and launch flatpak bundles with the system's flatpak binary."
     },
+    "org.kuchelmeister.ToolboxTuner": {
+        "finish-args-flatpak-spawn-access": "Requires access to toolbox and podman on the host"
+    },
     "ch.tlaun.TL": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
