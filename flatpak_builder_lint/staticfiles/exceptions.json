@@ -3257,6 +3257,9 @@
     "org.freedesktop.Sdk.Extension.rust-stable": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
+    "org.freedesktop.Sdk.Extension.rust-nightly": {
+        "flathub-json-automerge-enabled": "Exempted as x-checker is run weekly and uses extra-data"
+    },
     "org.librepcb.LibrePCB": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
