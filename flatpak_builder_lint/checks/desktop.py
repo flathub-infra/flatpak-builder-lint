@@ -233,7 +233,7 @@ class DesktopfileCheck(Check):
                 self.warnings.add("desktop-file-low-quality-category")
                 self.info.add(
                     "desktop-file-low-quality-category: A low quality category was found"
-                    + f"in the desktop file: {found_cats}"
+                    + f" in the desktop file: {found_cats}"
                 )
 
     def check_build(self, path: str) -> None:

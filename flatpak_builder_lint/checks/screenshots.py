@@ -57,7 +57,7 @@ class ScreenshotsCheck(Check):
             if not sc_values:
                 self.errors.add("appstream-missing-screenshots")
                 self.info.add(
-                    "appstream-missing-screenshots: Catalogue has no screenshots."
+                    "appstream-missing-screenshots: Catalogue file has no screenshots."
                     + " Please check if screenshot URLs are reachable and the Metainfo file"
                     + " has no validation errors related to screenshots"
                 )
