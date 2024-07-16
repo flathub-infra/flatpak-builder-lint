@@ -9,7 +9,7 @@
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
-        "finish-args-unnecessary-xdg-data-applications-rw-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
         "finish-args-unnecessary-xdg-config-mimeapps.list-rw-access": "this program needs write-access to xdg-config/mimeapps.list",
         "finish-args-flatpak-spawn-access": "this program needs to read environment variables on the host system"
     },
