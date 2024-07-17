@@ -2400,6 +2400,9 @@
     "org.kde.okular": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "org.kde.okular.kirigami": {
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+    },
     "org.kde.palapeli": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
