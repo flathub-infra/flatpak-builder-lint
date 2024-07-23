@@ -38,7 +38,7 @@ def demangle(name: str) -> str:
 
 def get_proj_url(appid: str) -> str | None:
     assert appid.startswith(code_hosts)
-    assert appid.count(".") >= 3
+    assert appid.count(".") >= 2
 
     url = None
 
