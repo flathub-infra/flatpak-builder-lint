@@ -17,9 +17,12 @@
         "--talk-name=org.gtk.vfs",
         "--talk-name=org.freedesktop.Flatpak",
         "--talk-name=org.kde.*",
+        "--talk-name=org.freedesktop.DBus.foo",
+        "--system-talk-name=org.kde.*",
         "--own-name=org.gnome.*",
         "--talk-name=org.freedesktop.*",
         "--own-name=org.freedesktop.portal.Foo",
+        "--system-talk-name=org.freedesktop.DBus.foo",
         "--unshare=network"
     ]
 }

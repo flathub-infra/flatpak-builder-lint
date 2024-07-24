@@ -16,3 +16,8 @@ org.freedesktop.Flatpak=talk
 org.flathub.finish_args=own
 org.kde.StatusNotifierItem=own
 org.gtk.vfs=talk
+org.freedesktop.DBus.foo=talk
+
+[System Bus Policy]
+org.gnome.*=own
+org.freedesktop.DBus.foo=talk

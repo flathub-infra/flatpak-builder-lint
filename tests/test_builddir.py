@@ -36,6 +36,9 @@ def test_builddir_finish_args() -> None:
         "finish-args-has-nodevice-dri",
         "finish-args-has-unshare-network",
         "finish-args-has-nosocket-cups",
+        "finish-args-freedesktop-dbus-talk-name",
+        "finish-args-wildcard-gnome-system-own-name",
+        "finish-args-freedesktop-dbus-system-talk-name",
     }
 
     warnings = {

@@ -148,6 +148,9 @@ def test_manifest_finish_args() -> None:
         "finish-args-has-nodevice-dri",
         "finish-args-has-unshare-network",
         "finish-args-has-nosocket-cups",
+        "finish-args-freedesktop-dbus-talk-name",
+        "finish-args-freedesktop-dbus-system-talk-name",
+        "finish-args-wildcard-kde-system-talk-name",
     }
 
     warnings = {

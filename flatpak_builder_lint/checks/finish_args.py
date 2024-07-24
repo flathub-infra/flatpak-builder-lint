@@ -151,10 +151,24 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-portal-own-name")
                 self.info.add(
                     "finish-args-portal-own-name: finish-args has own-name access"
-                    + " to portal sub-bus org.freedesktop.portal"
+                    + " to XDG Portal busnames"
                 )
-            if own_name.startswith("ca.desrt.dconf"):
+            if own_name == "ca.desrt.dconf" or own_name.startswith("ca.desrt.dconf."):
                 self.errors.add("finish-args-dconf-own-name")
+            if own_name == "org.freedesktop.DBus" or own_name.startswith(
+                "org.freedesktop.DBus."
+            ):
+                self.errors.add("finish-args-freedesktop-dbus-own-name")
+                self.info.add(
+                    "finish-args-freedesktop-dbus-own-name: finish-args has own-name access to"
+                    + " org.freedesktop.DBus or its sub-bus name"
+                )
+            if own_name == "org.gtk.vfs":
+                self.errors.add("finish-args-gvfs-own-name")
+            if own_name == "org.freedesktop.Flatpak" or own_name.startswith(
+                "org.freedesktop.Flatpak."
+            ):
+                self.errors.add("finish-args-flatpak-own-name")
 
         for talk_name in finish_args["talk-name"]:
             if talk_name == "org.freedesktop.*":
@@ -167,10 +181,70 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-portal-talk-name")
                 self.info.add(
                     "finish-args-portal-talk-name: finish-args has talk-name access"
-                    + " to portal sub-bus org.freedesktop.portal"
+                    + " to XDG Portal busnames"
                 )
-            if talk_name.startswith("ca.desrt.dconf"):
+            if talk_name == "ca.desrt.dconf" or talk_name.startswith("ca.desrt.dconf."):
                 self.errors.add("finish-args-dconf-talk-name")
+            if talk_name == "org.freedesktop.DBus" or talk_name.startswith(
+                "org.freedesktop.DBus."
+            ):
+                self.errors.add("finish-args-freedesktop-dbus-talk-name")
+                self.info.add(
+                    "finish-args-freedesktop-dbus-talk-name: finish-args has talk-name access to"
+                    + " org.freedesktop.DBus or its sub-bus name"
+                )
+            if talk_name == "org.gtk.vfs":
+                self.errors.add("finish-args-incorrect-dbus-gvfs")
+            if talk_name in ("org.freedesktop.Flatpak", "org.freedesktop.Flatpak.*"):
+                self.errors.add("finish-args-flatpak-spawn-access")
+                self.info.add(
+                    "finish-args-flatpak-spawn-access: finish-args has access"
+                    + " to flatpak-spawn"
+                )
+            if talk_name != "org.freedesktop.Flatpak.*" and talk_name.startswith(
+                "org.freedesktop.Flatpak."
+            ):
+                self.errors.add("finish-args-flatpak-talk-name")
+
+        for sys_own_name in finish_args["system-own-name"]:
+            if sys_own_name == "org.freedesktop.*":
+                self.errors.add("finish-args-wildcard-freedesktop-system-own-name")
+            if sys_own_name == "org.gnome.*":
+                self.errors.add("finish-args-wildcard-gnome-system-own-name")
+            if sys_own_name == "org.kde.*":
+                self.errors.add("finish-args-wildcard-kde-system-own-name")
+            if sys_own_name == "org.freedesktop.DBus" or sys_own_name.startswith(
+                "org.freedesktop.DBus."
+            ):
+                self.errors.add("finish-args-freedesktop-dbus-system-own-name")
+                self.info.add(
+                    "finish-args-freedesktop-dbus-system-own-name: finish-args has system own-name"
+                    + " access to org.freedesktop.DBus or its sub-bus name"
+                )
+            if sys_own_name == "org.freedesktop.Flatpak" or sys_own_name.startswith(
+                "org.freedesktop.Flatpak."
+            ):
+                self.errors.add("finish-args-flatpak-system-own-name")
+
+        for sys_talk_name in finish_args["system-talk-name"]:
+            if sys_talk_name == "org.freedesktop.*":
+                self.errors.add("finish-args-wildcard-freedesktop-system-talk-name")
+            if sys_talk_name == "org.gnome.*":
+                self.errors.add("finish-args-wildcard-gnome-system-talk-name")
+            if sys_talk_name == "org.kde.*":
+                self.errors.add("finish-args-wildcard-kde-system-talk-name")
+            if sys_talk_name == "org.freedesktop.DBus" or sys_talk_name.startswith(
+                "org.freedesktop.DBus."
+            ):
+                self.errors.add("finish-args-freedesktop-dbus-system-talk-name")
+                self.info.add(
+                    "finish-args-freedesktop-dbus-system-talk-name: finish-args has system"
+                    + " talk-name access to org.freedesktop.DBus or its sub-bus name"
+                )
+            if sys_talk_name == "org.freedesktop.Flatpak" or sys_talk_name.startswith(
+                "org.freedesktop.Flatpak."
+            ):
+                self.errors.add("finish-args-flatpak-system-talk-name")
 
         if (
             "system-bus" in finish_args["socket"]
@@ -182,27 +256,12 @@ class FinishArgsCheck(Check):
                 + " full system or session bus"
             )
 
-        if "org.gtk.vfs" in finish_args["talk-name"]:
-            # https://github.com/flathub/flathub/issues/2180#issuecomment-811984901
-            self.errors.add("finish-args-incorrect-dbus-gvfs")
-            self.info.add(
-                "finish-args-incorrect-dbus-gvfs: finish-args has talk-name access"
-                + " for org.gtk.vfs"
-            )
-
         if "shm" in finish_args["device"]:
             self.warnings.add("finish-args-deprecated-shm")
 
         if "all" in finish_args["device"] and len(finish_args["device"]) > 1:
             if "shm" not in finish_args["device"]:
                 self.warnings.add("finish-args-redundant-device-all")
-
-        if "org.freedesktop.Flatpak" in finish_args["talk-name"]:
-            self.errors.add("finish-args-flatpak-spawn-access")
-            self.info.add(
-                "finish-args-flatpak-spawn-access: finish-args has a talk-name access"
-                + " for org.freedesktop.Flatpak"
-            )
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
