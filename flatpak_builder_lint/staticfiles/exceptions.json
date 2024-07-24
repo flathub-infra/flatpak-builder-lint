@@ -1192,6 +1192,9 @@
     "dev.lizardbyte.app.Sunshine": {
         "finish-args-flatpak-spawn-access": "needed to start applications"
     },
+    "dev.zed.Zed": {
+        "finish-args-flatpak-spawn-access": "application won't open without this permission set; also needed to spawn several tools and commands from the host"
+    },
     "dev.salaniLeo.immagini": {
         "finish-args-flatpak-spawn-access": "needed to start applications"
     },
