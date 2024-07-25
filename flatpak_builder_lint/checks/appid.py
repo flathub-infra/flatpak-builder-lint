@@ -58,7 +58,7 @@ class AppIDCheck(Check):
                 return
             if split[-1] == "Devel":
                 return
-            if domainutils.is_app_on_flathub(appid):
+            if domainutils.is_appid_on_flathub(appid):
                 return
             if appid.startswith(domainutils.code_hosts):
                 if domainutils.get_proj_url(appid) is None:

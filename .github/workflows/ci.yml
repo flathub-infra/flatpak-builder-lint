@@ -24,7 +24,7 @@ jobs:
       - name: Set up dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev
+          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev gir1.2-ostree-1.0
 
       - name: Setup Poetry
         run: |
@@ -56,12 +56,16 @@ jobs:
         run: |
           git config --global protocol.file.allow always
 
+      - name: Set up flathub remote
+        run: |
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak remote-add --user --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
       - name: Build and test org.flatpak.Builder
         run: |
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
           cd build && python3 ../docker/rewrite-manifest.py && cd org.flatpak.Builder
           rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/flatpak-builder-lint-deps.json .
-          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak-builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --default-branch=localtest --ccache \
             --install builddir org.flatpak.Builder.json
