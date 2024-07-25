@@ -35,11 +35,19 @@ def ignore_ref(ref: str) -> bool:
 @cache
 def get_appid(remote: str) -> set:
 
+    flatpak_user_env_path = GLib.getenv("FLATPAK_USER_DIR")
+    flatpak_system_env_path = GLib.getenv("FLATPAK_SYSTEM_DIR")
     flatpak_user_path = os.path.join(GLib.get_user_data_dir(), "flatpak", "repo")
     flatpak_system_path = "/var/lib/flatpak/repo"
     repo_path = None
 
-    if os.path.exists(flatpak_user_path):
+    if isinstance(flatpak_user_env_path, str) and os.path.exists(flatpak_user_env_path):
+        repo_path = flatpak_user_env_path
+    elif isinstance(flatpak_system_env_path, str) and os.path.exists(
+        flatpak_system_env_path
+    ):
+        repo_path = flatpak_system_env_path
+    elif os.path.exists(flatpak_user_path):
         repo_path = flatpak_user_path
     elif os.path.exists(flatpak_system_path):
         repo_path = flatpak_system_path
@@ -50,7 +58,10 @@ def get_appid(remote: str) -> set:
 
     repo_file = Gio.File.new_for_path(repo_path)
     repo = OSTree.Repo.new(repo_file)
-    repo.open(None)
+    try:
+        repo.open(None)
+    except GLib.Error:
+        raise GLib.Error(f"Can't open Flatpak repo at: {repo_path}")
 
     _, summary, _ = repo.remote_fetch_summary(remote, None)
     data = GLib.Variant.new_from_bytes(
