@@ -58,10 +58,7 @@ def get_appid(remote: str) -> set:
 
     repo_file = Gio.File.new_for_path(repo_path)
     repo = OSTree.Repo.new(repo_file)
-    try:
-        repo.open(None)
-    except GLib.Error:
-        raise GLib.Error(f"Can't open Flatpak repo at: {repo_path}")
+    repo.open(None)
 
     _, summary, _ = repo.remote_fetch_summary(remote, None)
     data = GLib.Variant.new_from_bytes(
