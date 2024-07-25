@@ -142,7 +142,8 @@
     },
     "com.github.bajoja.indicator-kdeconnect": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "com.github.bcedu.valasimplehttpserver": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -539,7 +540,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.github.muriloventuroso.givemelyrics": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "com.github.muriloventuroso.pdftricks": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1059,7 +1061,8 @@
     "com.hack_computer.Clubhouse": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "ca.desrt.dconf-editor": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1074,7 +1077,8 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.borgbase.Vorta": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "com.chatterino.chatterino": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1141,7 +1145,8 @@
     },
     "com.prusa3d.PrusaSlicer": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "com.raggesilver.BlackBox": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -3360,7 +3365,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.mousepawmedia.omission": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "com.notesnook.Notesnook": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3496,10 +3502,12 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.github.rinigus.OSMScoutServer": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "io.github.rinigus.PureMaps": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "io.github.slgobinath.SafeEyes": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3661,7 +3669,9 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.gnome.OCRFeeder": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "org.gnome.Tau": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3703,7 +3713,9 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.openchemistry.Avogadro2": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule",
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "org.openkj.OpenKJ": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3837,5 +3849,14 @@
     },
     "dev.mariinkys.StarryDex": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "org.gnome.Tomboy": {
+        "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule"
+    },
+    "com.codemouse92.timecard": {
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
+    },
+    "moe.tundra.Tundra": {
+        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     }
 }

@@ -22,6 +22,8 @@ known_exceptions = {
     "appid-too-many-components-for-app",
     "finish-args-direct-dconf-path",
     "finish-args-dconf-talk-name",
+    "finish-args-freedesktop-dbus-system-talk-name",
+    "finish-args-freedesktop-dbus-talk-name",
 }
 
 
