@@ -1,4 +1,5 @@
 import os
+from functools import cache
 
 import gi
 import requests
@@ -31,6 +32,7 @@ def ignore_ref(ref: str) -> bool:
     return False
 
 
+@cache
 def get_appid(remote: str) -> set:
 
     flatpak_user_path = os.path.join(GLib.get_user_data_dir(), "flatpak", "repo")
@@ -199,6 +201,7 @@ def is_app_on_flathub(appid: str) -> bool:
     return check_url(f"https://flathub.org/api/v2/summary/{appid}", strict=True)
 
 
+@cache
 def is_appid_on_flathub(appid: str) -> bool:
 
     all_appids = get_appid("flathub") | get_appid("flathub-beta")
