@@ -2,6 +2,7 @@ from functools import cache
 
 import gi
 import requests
+from requests_cache import CachedSession
 
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
@@ -37,7 +38,10 @@ def get_appid(url: str) -> set:
     appids = set()
     summary = None
     try:
-        r = requests.get(url, allow_redirects=False, timeout=(120.05, None))
+        session = CachedSession(
+            "cache", backend="sqlite", use_temp=True, cache_control=True
+        )
+        r = session.get(url, allow_redirects=False, timeout=(120.05, None))
         if r.status_code == 200 and isinstance(r.content, bytes):
             summary = GLib.Bytes.new(r.content)
     except requests.exceptions.RequestException:
