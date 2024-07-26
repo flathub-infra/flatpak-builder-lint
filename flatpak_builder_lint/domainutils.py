@@ -1,11 +1,10 @@
-import os
 from functools import cache
 
 import gi
 import requests
 
 gi.require_version("OSTree", "1.0")
-from gi.repository import Gio, GLib, OSTree  # noqa: E402
+from gi.repository import GLib, OSTree  # noqa: E402
 
 code_hosts = (
     "io.github.",
@@ -33,49 +32,32 @@ def ignore_ref(ref: str) -> bool:
 
 
 @cache
-def get_appid(remote: str) -> set:
+def get_appid(url: str) -> set:
 
-    flatpak_user_env_path = GLib.getenv("FLATPAK_USER_DIR")
-    flatpak_system_env_path = GLib.getenv("FLATPAK_SYSTEM_DIR")
-    flatpak_user_path = os.path.join(GLib.get_user_data_dir(), "flatpak", "repo")
-    flatpak_system_path = "/var/lib/flatpak/repo"
-    repo_path = None
+    appids = set()
+    summary = None
+    try:
+        r = requests.get(url, allow_redirects=False, timeout=(120.05, None))
+        if r.status_code == 200 and isinstance(r.content, bytes):
+            summary = GLib.Bytes.new(r.content)
+    except requests.exceptions.RequestException:
+        raise
 
-    if isinstance(flatpak_user_env_path, str) and os.path.exists(flatpak_user_env_path):
-        repo_path = flatpak_user_env_path
-    elif isinstance(flatpak_system_env_path, str) and os.path.exists(
-        flatpak_system_env_path
-    ):
-        repo_path = flatpak_system_env_path
-    elif os.path.exists(flatpak_user_path):
-        repo_path = flatpak_user_path
-    elif os.path.exists(flatpak_system_path):
-        repo_path = flatpak_system_path
-    else:
-        raise FileNotFoundError(
-            "Flatpak repo does not exist at system or user location"
-        )
+    if summary is None:
+        raise Exception("Failed to fetch summary file")
 
-    repo_file = Gio.File.new_for_path(repo_path)
-    repo = OSTree.Repo.new(repo_file)
-    repo.open(None)
-
-    _, summary, _ = repo.remote_fetch_summary(remote, None)
     data = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
     )
 
     refs, _ = data.unpack()
 
-    appids = set()
-
-    for ref, _ in refs:
-
-        if ignore_ref(ref):
-            continue
-
-        appid = ref.split("/")[1]
-        appids.add(appid)
+    if refs:
+        for ref, _ in refs:
+            if ignore_ref(ref):
+                continue
+            appid = ref.split("/")[1]
+            appids.add(appid)
 
     return appids
 
@@ -205,14 +187,19 @@ def get_domain(appid: str) -> str | None:
     return domain
 
 
-def is_app_on_flathub(appid: str) -> bool:
+def is_app_on_flathub_api(appid: str) -> bool:
     return check_url(f"https://flathub.org/api/v2/summary/{appid}", strict=True)
 
 
 @cache
-def is_appid_on_flathub(appid: str) -> bool:
+def is_app_on_flathub_summary(appid: str) -> bool:
 
-    all_appids = get_appid("flathub") | get_appid("flathub-beta")
-    if appid in all_appids:
+    stable = get_appid("https://dl.flathub.org/repo/summary")
+    if appid in stable:
         return True
+    else:
+        beta = get_appid("https://dl.flathub.org/beta-repo/summary")
+        if appid in beta:
+            return True
+
     return False
