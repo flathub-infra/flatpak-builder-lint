@@ -18,6 +18,8 @@ code_hosts = (
     "org.freedesktop.gitlab.",
 )
 
+session = CachedSession("cache", backend="sqlite", use_temp=True, cache_control=True)
+
 
 def ignore_ref(ref: str) -> bool:
     ref_splits = ref.split("/")
@@ -33,22 +35,27 @@ def ignore_ref(ref: str) -> bool:
 
 
 @cache
-def get_appid(url: str) -> set:
+def fetch_summary_bytes(url: str) -> bytes:
+    summary_bytes = b""
+
+    r = session.get(url, allow_redirects=False, timeout=(120.05, None))
+    if (
+        r.status_code == 200
+        and r.headers.get("Content-Type") == "application/octet-stream"
+    ):
+        summary_bytes = r.content
+
+    if not summary_bytes:
+        raise Exception("Failed to fetch summary")
+
+    return summary_bytes
+
+
+@cache
+def get_appids_from_summary(url: str) -> set:
 
     appids = set()
-    summary = None
-    try:
-        session = CachedSession(
-            "cache", backend="sqlite", use_temp=True, cache_control=True
-        )
-        r = session.get(url, allow_redirects=False, timeout=(120.05, None))
-        if r.status_code == 200 and isinstance(r.content, bytes):
-            summary = GLib.Bytes.new(r.content)
-    except requests.exceptions.RequestException:
-        raise
-
-    if summary is None:
-        raise Exception("Failed to fetch summary file")
+    summary = GLib.Bytes.new(fetch_summary_bytes(url))
 
     data = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
@@ -64,6 +71,13 @@ def get_appid(url: str) -> set:
             appids.add(appid)
 
     return appids
+
+
+@cache
+def get_all_apps_on_flathub() -> set:
+    return get_appids_from_summary(
+        "https://dl.flathub.org/repo/summary"
+    ) | get_appids_from_summary("https://dl.flathub.org/beta-repo/summary")
 
 
 def check_url(url: str, strict: bool) -> bool:
@@ -198,12 +212,6 @@ def is_app_on_flathub_api(appid: str) -> bool:
 @cache
 def is_app_on_flathub_summary(appid: str) -> bool:
 
-    stable = get_appid("https://dl.flathub.org/repo/summary")
-    if appid in stable:
+    if appid in get_all_apps_on_flathub():
         return True
-    else:
-        beta = get_appid("https://dl.flathub.org/beta-repo/summary")
-        if appid in beta:
-            return True
-
     return False
