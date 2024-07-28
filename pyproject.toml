@@ -12,7 +12,6 @@ requests = "^2.32.2"
 lxml = "^5.2.2"
 sentry-sdk = "^2.8.0"
 PyGObject = "^3.48.2"
-requests-cache = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

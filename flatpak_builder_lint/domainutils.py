@@ -1,8 +1,10 @@
+import datetime
+import hashlib
+import os
 from functools import cache
 
 import gi
 import requests
-from requests_cache import CachedSession
 
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
@@ -17,8 +19,6 @@ code_hosts = (
     "org.gnome.gitlab.",
     "org.freedesktop.gitlab.",
 )
-
-session = CachedSession("cache", backend="sqlite", use_temp=True, cache_control=True)
 
 
 def ignore_ref(ref: str) -> bool:
@@ -35,10 +35,32 @@ def ignore_ref(ref: str) -> bool:
 
 
 @cache
+def get_cache_file(url: str) -> str:
+    cache_dir = os.path.join(GLib.get_user_cache_dir(), "flatpak-builder-lint")
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+    h = hashlib.new("sha256")
+    h.update(url.encode("utf-8"))
+    digest = h.hexdigest()
+
+    return os.path.join(cache_dir, f"summary-{digest}")
+
+
+def is_cache_expired(cache_file_path: str) -> bool:
+    if not os.path.exists(cache_file_path):
+        return True
+
+    last_mod_time = datetime.datetime.fromtimestamp(os.path.getmtime(cache_file_path))
+    expiry_time = datetime.datetime.now() - datetime.timedelta(seconds=3600)
+
+    return last_mod_time < expiry_time
+
+
+@cache
 def fetch_summary_bytes(url: str) -> bytes:
     summary_bytes = b""
 
-    r = session.get(url, allow_redirects=False, timeout=(120.05, None))
+    r = requests.get(url, allow_redirects=False, timeout=(120.05, None))
     if (
         r.status_code == 200
         and r.headers.get("Content-Type") == "application/octet-stream"
@@ -46,16 +68,38 @@ def fetch_summary_bytes(url: str) -> bytes:
         summary_bytes = r.content
 
     if not summary_bytes:
-        raise Exception("Failed to fetch summary")
+        raise Exception("Failed to fetch summary from remote")
 
     return summary_bytes
+
+
+@cache
+def get_summary_bytes_with_cache(url: str) -> bytes:
+    cache_file = get_cache_file(url)
+    data = b""
+
+    if os.path.exists(cache_file) and not is_cache_expired(cache_file):
+        with open(cache_file, "rb") as fp:
+            data = fp.read()
+
+    if is_cache_expired(cache_file):
+        data = fetch_summary_bytes(url)
+        if os.path.exists(cache_file):
+            os.remove(cache_file)
+        with open(cache_file, "wb+") as fp:
+            fp.write(data)
+
+    if not data:
+        raise Exception("Failed to fetch summary")
+
+    return data
 
 
 @cache
 def get_appids_from_summary(url: str) -> set:
 
     appids = set()
-    summary = GLib.Bytes.new(fetch_summary_bytes(url))
+    summary = GLib.Bytes.new(get_summary_bytes_with_cache(url))
 
     data = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
