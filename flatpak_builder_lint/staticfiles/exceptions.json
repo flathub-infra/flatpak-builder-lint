@@ -3350,7 +3350,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.mattermost.Desktop": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "flathub-json-automerge-enabled": "Predates the linter rule, used only in beta branch"
     },
     "com.microsoft.EdgeDev": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
