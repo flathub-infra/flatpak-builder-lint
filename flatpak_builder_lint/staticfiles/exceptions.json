@@ -2670,7 +2670,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.fabrialberio.pinapp": {
-        "finish-args-unnecessary-xdg-data-access": "This program needs read-write-access to xdg-data/applications and read-access to xdg-data/flatpak"
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "This program needs read-access to xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-data-applications-rw-access": "This program needs read-write access to xdg-data/applications"
     },
     "io.github.fizzyizzy05.binary": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
