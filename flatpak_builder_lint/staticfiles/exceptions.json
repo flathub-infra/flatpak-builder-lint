@@ -1068,7 +1068,8 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule"
+        "finish-args-direct-dconf-path": "Predates the linter rule",
+        "cid-missing-affiliation-gnome": "Predates the linter rule"
     },
     "cc.nift.nsm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
