@@ -2669,6 +2669,9 @@
     "io.github.FailurePoint.RandomNumberFive": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "io.github.fabrialberio.pinapp": {
+        "finish-args-unnecessary-xdg-data-access": "This program needs read-write-access to xdg-data/applications and read-access to xdg-data/flatpak"
+    },
     "io.github.fizzyizzy05.binary": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
