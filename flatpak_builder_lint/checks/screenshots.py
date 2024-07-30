@@ -22,9 +22,7 @@ class ScreenshotsCheck(Check):
         refs = refs_cmd["stdout"].splitlines()
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
-            if ret["returncode"] != 0:
-                raise RuntimeError("Failed to extract ostree repo")
+            ostree.extract_subpath(path, ref, "files/share", tmpdir)
 
             appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
@@ -81,7 +79,11 @@ class ScreenshotsCheck(Check):
                     path, "ls", "-R", f"screenshots/{arch}"
                 )
                 if ostree_screenshots_cmd["returncode"] != 0:
-                    raise RuntimeError("Failed to list screenshots")
+                    raise RuntimeError(
+                        "Failed to list screenshot refs: {}".format(
+                            ostree_screenshots_cmd["stderr"].strip()
+                        )
+                    )
 
                 ostree_screenshots = []
                 for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():

@@ -113,10 +113,7 @@ class FlathubJsonCheck(Check):
             return
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ret = ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            if ret["returncode"] != 0:
-                raise RuntimeError("Failed to extract ostree repo")
-
+            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
             metadata = builddir.parse_metadata(tmpdir)
             if not metadata:
                 return
