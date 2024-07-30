@@ -259,16 +259,11 @@ class DesktopfileCheck(Check):
             return
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            retm = ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            if retm["returncode"] != 0:
-                raise RuntimeError("Failed to extract ostree repo")
+            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
             metadata = builddir.parse_metadata(tmpdir)
             if not metadata:
                 return
             if metadata.get("type", False) != "application":
                 return
-
-            ret = ostree.extract_subpath(path, ref, "files/share", tmpdir)
-            if ret["returncode"] != 0:
-                raise RuntimeError("Failed to extract ostree repo")
+            ostree.extract_subpath(path, ref, "files/share", tmpdir)
             self._validate(tmpdir, appid)

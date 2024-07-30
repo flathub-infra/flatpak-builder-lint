@@ -97,6 +97,14 @@ def extract_subpath(repo: str, ref: str, subpath: str, dest: str) -> CliResult:
         ref,
         dest,
     )
+
+    if cmd["returncode"] != 0:
+        raise RuntimeError(
+            "Failed to extract {} from ostree repo: {}".format(
+                subpath, cmd["stderr"].strip()
+            )
+        )
+
     return cmd
 
 
