@@ -108,13 +108,12 @@ class FlathubJsonCheck(Check):
         if not ref:
             return
 
-        flathub_json = ostree.get_flathub_json(path, ref)
-        if not flathub_json:
-            return
-
         with tempfile.TemporaryDirectory() as tmpdir:
             ostree.extract_subpath(path, ref, "/metadata", tmpdir)
             metadata = builddir.parse_metadata(tmpdir)
             if not metadata:
+                return
+            flathub_json = ostree.get_flathub_json(path, ref, tmpdir)
+            if not flathub_json:
                 return
             self._check_metadata(metadata, flathub_json)
