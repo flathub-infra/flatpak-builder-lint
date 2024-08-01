@@ -1,69 +1,37 @@
-import errno
 import json
 import os
-import subprocess
-from typing import Optional, TypedDict
+from typing import List, Optional
 
-from .builddir import parse_metadata
+import gi
 
-
-class CliResult(TypedDict):
-    stdout: str
-    stderr: str
-    returncode: int
+gi.require_version("OSTree", "1.0")
+from gi.repository import Gio, GLib, OSTree  # noqa: E402
 
 
-def cli(repo: str, *args: str) -> CliResult:
-    if not os.path.exists(repo):
-        raise OSError(errno.ENOENT, f"No such ostree repo: {repo}")
+def open_ostree_repo(repo_path: str) -> OSTree.Repo:
+    repo = OSTree.Repo.new(Gio.File.new_for_path(repo_path))
 
-    ret = subprocess.run(
-        ["ostree", f"--repo={repo}", *args],
-        capture_output=True,
-    )
+    if not repo.open(None):
+        raise Exception("Failed to open the OSTree repository")
 
-    return {
-        "stdout": ret.stdout.decode("utf-8"),
-        "stderr": ret.stderr.decode("utf-8"),
-        "returncode": ret.returncode,
-    }
+    return repo
 
 
-def get_primary_ref(repo: str) -> Optional[str]:
-    refs_cmd = cli(repo, "refs", "--list")
-    if refs_cmd["returncode"] != 0:
-        raise RuntimeError("Failed to list refs")
+def get_refs(repo_path: str, ref_prefix: str | None) -> set[str]:
+    repo = open_ostree_repo(repo_path)
+    _, refs = repo.list_refs(ref_prefix, None)
 
-    refs = refs_cmd["stdout"].splitlines()
+    return set(refs.keys())
+
+
+def get_primary_ref(repo_path: str) -> Optional[str]:
+    refs = get_refs(repo_path, None)
+
     ref: str
 
     for ref in refs:
         if ref.startswith("app/"):
             return ref
-
-    return None
-
-
-def get_text_file(repo: str, ref: str, path: str) -> Optional[str]:
-    cmd = cli(repo, "cat", ref, path)
-    if cmd["returncode"] == 0:
-        return cmd["stdout"]
-
-    return None
-
-
-def get_metadata(repo: str, primary_ref: Optional[str]) -> Optional[dict]:
-    if not primary_ref:
-        ref = get_primary_ref(repo)
-        if not ref:
-            return None
-    else:
-        ref = primary_ref
-
-    cat_metadata_cmd = cli(repo, "cat", ref, "/metadata")
-    if cat_metadata_cmd["returncode"] == 0:
-        metadata = parse_metadata(cat_metadata_cmd["stdout"])
-        return metadata
 
     return None
 
@@ -76,38 +44,47 @@ def infer_appid(path: str) -> Optional[str]:
     return None
 
 
-def get_flathub_json(repo: str, ref: str) -> Optional[dict]:
-    flathub_json_path = "/files/flathub.json"
-    flathub_json_raw = get_text_file(repo, ref, flathub_json_path)
+def extract_subpath(
+    repo_path: str,
+    ref: str,
+    subpath: str,
+    dest: str,
+    should_pass: Optional[bool] = False,
+) -> None:
+    repo = open_ostree_repo(repo_path)
+    opts = OSTree.RepoCheckoutAtOptions()
+    # https://gitlab.gnome.org/GNOME/pygobject/-/issues/639
+    opts.mode = int(OSTree.RepoCheckoutMode.USER)  # type: ignore
+    opts.overwrite_mode = int(OSTree.RepoCheckoutOverwriteMode.ADD_FILES)  # type: ignore
+    opts.subpath = subpath
 
-    if not flathub_json_raw:
-        return None
+    _, rev = repo.resolve_rev(ref, True)
 
-    flathub_json: dict = json.loads(flathub_json_raw)
+    # https://sourceware.org/git/?p=glibc.git;a=blob;f=io/fcntl.h;h=f157991782681caabe9bd7edb46ec205731965af;hb=HEAD#l149
+    AT_FDCWD = -100
+    if rev:
+        if should_pass:
+            try:
+                repo.checkout_at(opts, AT_FDCWD, dest, rev, None)
+            except GLib.Error as err:
+                if err.matches(Gio.io_error_quark(), Gio.IOErrorEnum.NOT_FOUND):
+                    pass
+                else:
+                    raise
+        else:
+            repo.checkout_at(opts, AT_FDCWD, dest, rev, None)
+
+
+def get_flathub_json(
+    repo_path: str, ref: str, dest: str
+) -> dict[str, str | bool | List[str]]:
+    extract_subpath(repo_path, ref, "/files/flathub.json", dest, True)
+
+    flathub_json_path = os.path.join(dest, "flathub.json")
+    flathub_json: dict = {}
+
+    if os.path.exists(flathub_json_path):
+        with open(flathub_json_path) as fp:
+            flathub_json = json.load(fp)
+
     return flathub_json
-
-
-def extract_subpath(repo: str, ref: str, subpath: str, dest: str) -> CliResult:
-    cmd = cli(
-        repo,
-        "checkout",
-        "--union-add",
-        "--user-mode",
-        f"--subpath={subpath}",
-        ref,
-        dest,
-    )
-
-    if cmd["returncode"] != 0:
-        raise RuntimeError(
-            "Failed to extract {} from ostree repo: {}".format(
-                subpath, cmd["stderr"].strip()
-            )
-        )
-
-    return cmd
-
-
-def list_ref(repo: str, ref: str) -> CliResult:
-    cmd = cli(repo, "ls", "--R", ref)
-    return cmd

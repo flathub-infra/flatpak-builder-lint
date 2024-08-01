@@ -1,3 +1,4 @@
+import glob
 import os
 import tempfile
 
@@ -16,10 +17,7 @@ class ScreenshotsCheck(Check):
         if appid.endswith(".BaseApp"):
             return
 
-        refs_cmd = ostree.cli(path, "refs", "--list")
-        if refs_cmd["returncode"] != 0:
-            raise RuntimeError("Failed to list refs")
-        refs = refs_cmd["stdout"].splitlines()
+        refs = ostree.get_refs(path, None)
 
         with tempfile.TemporaryDirectory() as tmpdir:
             ostree.extract_subpath(path, ref, "files/share", tmpdir)
@@ -68,14 +66,14 @@ class ScreenshotsCheck(Check):
                 "https://dl.flathub.org/media",
             )
 
-            screenshots = appstream.components(appstream_path)[0].xpath(
-                "screenshots/screenshot/image"
-            )
-
-            sc_values = list(
-                appstream.components(appstream_path)[0].xpath(
-                    "screenshots/screenshot/image/text()"
-                )
+            sc_values = set(
+                [
+                    os.path.basename(i)
+                    for i in appstream.components(appstream_path)[0].xpath(
+                        "screenshots/screenshot/image/text()"
+                    )
+                    if i.endswith(".png")
+                ]
             )
 
             if not sc_values:
@@ -98,40 +96,17 @@ class ScreenshotsCheck(Check):
             for arch in arches:
                 if f"screenshots/{arch}" not in refs:
                     self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
-                    return
+                media_path = os.path.join(tmpdir, "app-info", f"screenshots-{arch}")
+                media_glob_path = f"{media_path}/**"
+                ostree.extract_subpath(path, f"screenshots/{arch}", "/", media_path)
 
-                ostree_screenshots_cmd = ostree.cli(
-                    path, "ls", "-R", f"screenshots/{arch}"
+                ref_sc_files = set(
+                    [
+                        os.path.basename(path)
+                        for path in glob.glob(media_glob_path, recursive=True)
+                        if path.endswith(".png")
+                    ]
                 )
-                if ostree_screenshots_cmd["returncode"] != 0:
-                    raise RuntimeError(
-                        "Failed to list screenshot refs: {}".format(
-                            ostree_screenshots_cmd["stderr"].strip()
-                        )
-                    )
 
-                ostree_screenshots = []
-                for ostree_screenshot in ostree_screenshots_cmd["stdout"].splitlines():
-                    (
-                        mode,
-                        _,
-                        _,
-                        _,
-                        ostree_screenshot_filename,
-                    ) = ostree_screenshot.split()
-                    if mode[0] != "-":
-                        continue
-                    ostree_screenshots.append(ostree_screenshot_filename[1:])
-
-                for screenshot in screenshots:
-                    if screenshot.attrib.get("type") == "thumbnail":
-                        if screenshot.text.startswith("https://dl.flathub.org/media/"):
-                            screenshot_fn = "/".join(screenshot.text.split("/")[4:])
-                        else:
-                            screenshot_fn = "/".join(screenshot.text.split("/")[5:])
-
-                        if f"{screenshot_fn}" not in ostree_screenshots:
-                            self.warnings.add(
-                                "appstream-screenshots-files-not-found-in-ostree"
-                            )
-                            return
+                if not (ref_sc_files & sc_values):
+                    self.errors.add("appstream-screenshots-files-not-found-in-ostree")
