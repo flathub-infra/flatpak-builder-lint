@@ -39,6 +39,32 @@ class ScreenshotsCheck(Check):
             ):
                 return
 
+            metainfo_dirs = [f"{tmpdir}/metainfo", f"{tmpdir}/appdata"]
+            metainfo_exts = [".appdata.xml", ".metainfo.xml"]
+
+            metainfo_path = None
+            for metainfo_dir in metainfo_dirs:
+                for ext in metainfo_exts:
+                    metainfo_dirext = f"{metainfo_dir}/{appid}{ext}"
+                    if os.path.exists(metainfo_dirext):
+                        metainfo_path = metainfo_dirext
+
+            if metainfo_path is None:
+                self.errors.add("appstream-metainfo-missing")
+                self.info.add(
+                    f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
+                    + " /app/share/metainfo or /app/share/appdata"
+                )
+                return
+
+            if not appstream.metainfo_is_screenshot_image_present(metainfo_path):
+                self.errors.add("metainfo-missing-screenshots")
+                self.info.add(
+                    "metainfo-missing-screenshots: The metainfo file is missing screenshots"
+                    + " or it is not present under the screenshots/screenshot/image tag"
+                )
+                return
+
             sc_allowed_urls = (
                 "https://dl.flathub.org/repo/screenshots",
                 "https://dl.flathub.org/media",
@@ -58,8 +84,7 @@ class ScreenshotsCheck(Check):
                 self.errors.add("appstream-missing-screenshots")
                 self.info.add(
                     "appstream-missing-screenshots: Catalogue file has no screenshots."
-                    + " Please check if screenshot URLs are reachable and the Metainfo file"
-                    + " has no validation errors related to screenshots"
+                    + " Please check if screenshot URLs are reachable"
                 )
                 return
 

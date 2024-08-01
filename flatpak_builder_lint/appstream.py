@@ -63,6 +63,11 @@ def components(path: str) -> list:
     return list(components)
 
 
+def metainfo_components(path: str) -> list:
+    components = parse_xml(path).xpath("/component")
+    return list(components)
+
+
 def appstream_id(path: str) -> Optional[str]:
     aps_cid = components(path)[0].xpath("id/text()")[0]
     return str(aps_cid)
@@ -87,6 +92,11 @@ def is_developer_name_present(path: str) -> bool:
 def is_project_license_present(path: str) -> bool:
     plicense = components(path)[0].xpath("project_license")
     return bool(plicense)
+
+
+def metainfo_is_screenshot_image_present(path: str) -> bool:
+    img = metainfo_components(path)[0].xpath("screenshots/screenshot/image/text()")
+    return bool(img)
 
 
 def component_type(path: str) -> str:
