@@ -7,10 +7,18 @@ import pkgutil
 import sys
 from typing import Dict, List, Optional, Union
 
-import requests
 import sentry_sdk
 
-from . import __version__, appstream, builddir, checks, manifest, ostree, staticfiles
+from . import (
+    __version__,
+    appstream,
+    builddir,
+    checks,
+    domainutils,
+    manifest,
+    ostree,
+    staticfiles,
+)
 
 if sentry_dsn := os.getenv("SENTRY_DSN"):
     sentry_sdk.init(sentry_dsn)
@@ -41,19 +49,6 @@ def get_local_exceptions(appid: str) -> set:
         return set(ret)
 
     return set()
-
-
-def get_remote_exceptions(
-    appid: str, api_url: str = "https://flathub.org/api/v2/exceptions"
-) -> set:
-    try:
-        r = requests.get(f"{api_url}/{appid}")
-        r.raise_for_status()
-        ret = set(r.json())
-    except requests.exceptions.RequestException:
-        ret = set()
-
-    return ret
 
 
 def run_checks(
@@ -105,7 +100,7 @@ def run_checks(
             appid = infer_appid_func(path)
 
         if appid:
-            exceptions = get_remote_exceptions(appid)
+            exceptions = domainutils.get_remote_exceptions(appid)
             if not exceptions:
                 exceptions = get_local_exceptions(appid)
 
