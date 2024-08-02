@@ -18,7 +18,13 @@ code_hosts = (
     "org.freedesktop.gitlab.",
 )
 
-session = CachedSession("cache", backend="sqlite", use_temp=True, cache_control=True)
+REQUEST_TIMEOUT = (120.05, None)
+
+FLATHUB_API_URL = "https://flathub.org/api/v2"
+FLATHUB_STABLE_REPO_URL = "https://dl.flathub.org/repo"
+FLATHUB_BETA_REPO_URL = "https://dl.flathub.org/beta-repo"
+
+session = CachedSession("cache", backend="sqlite", use_temp=True, expire_after=3600)
 
 
 def ignore_ref(ref: str) -> bool:
@@ -37,13 +43,15 @@ def ignore_ref(ref: str) -> bool:
 @cache
 def fetch_summary_bytes(url: str) -> bytes:
     summary_bytes = b""
-
-    r = session.get(url, allow_redirects=False, timeout=(120.05, None))
-    if (
-        r.status_code == 200
-        and r.headers.get("Content-Type") == "application/octet-stream"
-    ):
-        summary_bytes = r.content
+    try:
+        r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
+        if (
+            r.status_code == 200
+            and r.headers.get("Content-Type") == "application/octet-stream"
+        ):
+            summary_bytes = r.content
+    except requests.exceptions.RequestException:
+        pass
 
     if not summary_bytes:
         raise Exception("Failed to fetch summary")
@@ -76,15 +84,17 @@ def get_appids_from_summary(url: str) -> set:
 @cache
 def get_all_apps_on_flathub() -> set:
     return get_appids_from_summary(
-        "https://dl.flathub.org/repo/summary"
-    ) | get_appids_from_summary("https://dl.flathub.org/beta-repo/summary")
+        f"{FLATHUB_STABLE_REPO_URL}/summary"
+    ) | get_appids_from_summary(f"{FLATHUB_BETA_REPO_URL}/summary")
 
 
+@cache
 def check_url(url: str, strict: bool) -> bool:
     assert url.startswith(("https://", "http://"))
+
     ret = False
     try:
-        r = requests.get(url, allow_redirects=False, timeout=10)
+        r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         if r.ok and not strict:
             ret = True
         # For known code hosting sites
@@ -94,6 +104,26 @@ def check_url(url: str, strict: bool) -> bool:
             ret = True
     except requests.exceptions.RequestException:
         pass
+
+    return ret
+
+
+@cache
+def get_remote_exceptions(appid: str) -> set[str]:
+
+    ret = set()
+    try:
+        # exception updates should be reflected immediately
+        r = requests.get(
+            f"{FLATHUB_API_URL}/exceptions/{appid}",
+            allow_redirects=False,
+            timeout=REQUEST_TIMEOUT,
+        )
+        if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
+            ret = set(r.json())
+    except requests.exceptions.RequestException:
+        pass
+
     return ret
 
 
@@ -205,8 +235,9 @@ def get_domain(appid: str) -> str | None:
     return domain
 
 
+@cache
 def is_app_on_flathub_api(appid: str) -> bool:
-    return check_url(f"https://flathub.org/api/v2/summary/{appid}", strict=True)
+    return check_url(f"{FLATHUB_API_URL}/summary/{appid}", strict=True)
 
 
 @cache
