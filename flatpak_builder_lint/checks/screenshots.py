@@ -55,6 +55,10 @@ class ScreenshotsCheck(Check):
                 )
                 return
 
+            if not appstream.metainfo_components(metainfo_path):
+                self.errors.add("metainfo-missing-component-tag")
+                return
+
             if not appstream.metainfo_is_screenshot_image_present(metainfo_path):
                 self.errors.add("metainfo-missing-screenshots")
                 self.info.add(
