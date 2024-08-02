@@ -94,7 +94,7 @@ def check_url(url: str, strict: bool) -> bool:
 
     ret = False
     try:
-        r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
+        r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         if r.ok and not strict:
             ret = True
         # For known code hosting sites
