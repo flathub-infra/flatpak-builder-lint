@@ -70,15 +70,15 @@ class ScreenshotsCheck(Check):
                 "https://dl.flathub.org/media",
             )
 
-            sc_values = set(
-                [
-                    os.path.basename(i)
-                    for i in appstream.components(appstream_path)[0].xpath(
-                        "screenshots/screenshot/image/text()"
-                    )
-                    if i.endswith(".png")
-                ]
-            )
+            sc_values = [
+                i
+                for i in appstream.components(appstream_path)[0].xpath(
+                    "screenshots/screenshot/image/text()"
+                )
+                if i.endswith(".png")
+            ]
+
+            sc_values_basename = set([os.path.basename(i) for i in sc_values])
 
             if not sc_values:
                 self.errors.add("appstream-missing-screenshots")
@@ -112,5 +112,5 @@ class ScreenshotsCheck(Check):
                     ]
                 )
 
-                if not (ref_sc_files & sc_values):
+                if not (ref_sc_files & sc_values_basename):
                     self.errors.add("appstream-screenshots-files-not-found-in-ostree")
