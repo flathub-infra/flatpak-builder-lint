@@ -3858,5 +3858,8 @@
     },
     "moe.tundra.Tundra": {
         "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
+    },
+    "org.dupot.easyflatpak": {
+        "finish-args-flatpak-spawn-access": "Required to install then override some flatpak application (for example asking game folder for steam or lutris)"
     }
 }
