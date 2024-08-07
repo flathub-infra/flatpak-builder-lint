@@ -89,22 +89,24 @@ def test_manifest_toplevel() -> None:
         "toplevel-no-command",
         "toplevel-cleanup-debug",
         "toplevel-no-modules",
+        "toplevel-unnecessary-branch",
     }
-    warnings = {
+
+    not_founds = {
+        "toplevel-no-command",
         "toplevel-unnecessary-branch",
     }
 
     ret = run_checks("tests/manifests/toplevel.json")
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
-    assert warnings.issubset(found_warnings)
 
     ret = run_checks("tests/manifests/base_app.json")
     found_errors = set(ret["errors"])
 
-    assert "toplevel-no-command" not in found_errors
+    for e in not_founds:
+        assert e not in found_errors
 
 
 def test_manifest_appid() -> None:

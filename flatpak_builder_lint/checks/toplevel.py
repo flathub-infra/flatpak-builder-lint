@@ -15,18 +15,20 @@ class TopLevelCheck(Check):
             if not command:
                 self.errors.add("toplevel-no-command")
             elif command.startswith("/"):
-                self.warnings.add("toplevel-command-is-path")
+                self.errors.add("toplevel-command-is-path")
                 self.info.add(
                     "toplevel-command-is-path: Command in manifest is a path"
-                    + f" {command}"
+                    + f" {command}. Please install the executable to"
+                    + " $FLATPAK_DEST/bin and change command to just the name"
                 )
 
             branch = manifest.get("branch")
-            if branch in ("stable", "master"):
-                self.warnings.add("toplevel-unnecessary-branch")
+            def_branch = manifest.get("default-branch")
+            if branch in ("stable", "master") or def_branch in ("stable", "master"):
+                self.errors.add("toplevel-unnecessary-branch")
                 self.info.add(
-                    "toplevel-unnecessary-branch: Found an unnecessary use of"
-                    + " branch property in the manifest"
+                    "toplevel-unnecessary-branch: Please remove the toplevel"
+                    + " branch or default-branch property in the manifest"
                 )
 
         cleanup = manifest.get("cleanup")

@@ -3,6 +3,6 @@
     "branch": "stable",
     "default-branch": "stable",
     "cleanup": [
-	"/lib/debug"
+        "/lib/debug"
     ]
 }
