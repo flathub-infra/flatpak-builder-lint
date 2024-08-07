@@ -27,7 +27,6 @@ class ScreenshotsCheck(Check):
                 return
 
             if len(appstream.components(appstream_path)) != 1:
-                self.errors.add("appstream-multiple-components")
                 return
 
             if appstream.component_type(appstream_path) not in (
