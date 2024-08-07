@@ -3861,5 +3861,8 @@
     },
     "org.dupot.easyflatpak": {
         "finish-args-flatpak-spawn-access": "Required to install then override some flatpak application (for example asking game folder for steam or lutris)"
+    },
+    "org.qownnotes.QOwnNotes": {
+        "flathub-json-automerge-enabled": "Verified application"
     }
 }
