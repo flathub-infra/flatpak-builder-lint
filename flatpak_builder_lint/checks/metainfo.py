@@ -99,26 +99,6 @@ class MetainfoCheck(Check):
         ):
             return
 
-        # for mypy
-        name = appstream.name(appstream_path)
-        summary = appstream.summary(appstream_path)
-
-        if name is not None and len(name) > 20:
-            self.warnings.add("appstream-name-too-long")
-            self.info.add(
-                "appstream-name-too-long: The value of name tag in metainfo"
-                + " is more than 20 characters"
-            )
-        if summary is not None:
-            if len(summary) > 35:
-                self.warnings.add("appstream-summary-too-long")
-                self.info.add(
-                    "appstream-summary-too-long: The value of summary tag in metainfo"
-                    + " is more than 35 characters"
-                )
-            if summary.endswith("."):
-                self.warnings.add("appstream-summary-ends-in-dot")
-
         if not appstream.is_developer_name_present(appstream_path):
             self.errors.add("appstream-missing-developer-name")
             self.info.add(

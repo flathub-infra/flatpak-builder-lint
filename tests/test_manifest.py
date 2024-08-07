@@ -137,7 +137,6 @@ def test_manifest_finish_args() -> None:
         "finish-args-arbitrary-dbus-access",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
-        "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-wildcard-gnome-own-name",
@@ -153,7 +152,6 @@ def test_manifest_finish_args() -> None:
 
     warnings = {
         "finish-args-x11-without-ipc",
-        "finish-args-redundant-device-all",
         "finish-args-contains-both-x11-and-fallback",
     }
 
@@ -191,33 +189,6 @@ def test_manifest_finish_args_issue_33() -> None:
     ret = run_checks("tests/manifests/own_name_substring2.json")
     found_errors = set(ret["errors"])
     assert "finish-args-unnecessary-appid-own-name" in found_errors
-
-
-def test_manifest_finish_args_shm() -> None:
-
-    ret = run_checks("tests/manifests/finish-args-shm.json")
-    found_warnings = set(ret["warnings"])
-
-    assert "finish-args-deprecated-shm" in found_warnings
-
-
-def test_manifest_finish_args_home_host() -> None:
-
-    for file in (
-        "finish_args-home_host1.json",
-        "finish_args-home_host2.json",
-    ):
-        ret = run_checks(f"tests/manifests/{file}")
-        found_errors = set(ret["errors"])
-        assert "finish-args-redundant-home-and-host" in found_errors
-
-    for file in (
-        "finish_args-home_host3.json",
-        "finish_args-home_host4.json",
-    ):
-        ret = run_checks(f"tests/manifests/{file}")
-        found_errors = set(ret["errors"])
-        assert "finish-args-redundant-home-and-host" not in found_errors
 
 
 def test_manifest_display_stuff() -> None:

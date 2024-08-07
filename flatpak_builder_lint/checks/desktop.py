@@ -146,13 +146,6 @@ class DesktopfileCheck(Check):
                 # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
                 self.errors.add("desktop-file-exec-key-absent")
             else:
-                if not len(exect) > 0:
-                    # https://github.com/flatpak/flatpak/commit/298286be2d8ceacc426dedecc0e38a3f82d8aedc
-                    # Flatpak allows exporting empty Exec key because it is
-                    # going to be rewritten w/o command and command in
-                    # manifest is going to be used as default. Rely on
-                    # fallback but also warn
-                    self.warnings.add("desktop-file-exec-key-empty")
                 if len(exect) > 0 and "flatpak run" in exect:
                     # desktop files are rewritten only on (re)install, neither
                     # exported ref or builddir should have "flatpak run"

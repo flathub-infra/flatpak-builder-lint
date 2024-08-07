@@ -125,14 +125,6 @@ class FinishArgsCheck(Check):
                     + " has direct access to host dconf path"
                 )
 
-        pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
-        if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
-            self.errors.add("finish-args-redundant-home-and-host")
-            self.info.add(
-                "finish-args-redundant-home-and-host: finish-args has both host and home"
-                + " filesystem access"
-            )
-
         for own_name in finish_args["own-name"]:
             if appid:
                 # Values not allowed: appid or appid.*
@@ -255,13 +247,6 @@ class FinishArgsCheck(Check):
                 "finish-args-arbitrary-dbus-access: finish-args has socket access to"
                 + " full system or session bus"
             )
-
-        if "shm" in finish_args["device"]:
-            self.warnings.add("finish-args-deprecated-shm")
-
-        if "all" in finish_args["device"] and len(finish_args["device"]) > 1:
-            if "shm" not in finish_args["device"]:
-                self.warnings.add("finish-args-redundant-device-all")
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")

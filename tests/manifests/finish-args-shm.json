@@ -1,6 +1,0 @@
-{
-    "app-id": "org.flathub.finish_args_shm",
-    "finish-args": [
-        "--device=shm"
-    ]
-}

@@ -26,7 +26,6 @@ def test_builddir_finish_args() -> None:
         "finish-args-arbitrary-dbus-access",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
-        "finish-args-redundant-home-and-host",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-wildcard-gnome-own-name",
@@ -43,7 +42,6 @@ def test_builddir_finish_args() -> None:
 
     warnings = {
         "finish-args-x11-without-ipc",
-        "finish-args-redundant-device-all",
     }
 
     expected_absents = {
@@ -65,14 +63,6 @@ def test_builddir_finish_args() -> None:
         )
 
 
-def test_manifest_finish_args_shm() -> None:
-
-    ret = run_checks("tests/builddir/finish_args_shm")
-    found_warnings = set(ret["warnings"])
-
-    assert "finish-args-deprecated-shm" in found_warnings
-
-
 def test_builddir_display_supported() -> None:
 
     absents = {
@@ -84,13 +74,6 @@ def test_builddir_display_supported() -> None:
     found_errors = set(ret["errors"])
     for a in absents:
         assert a not in found_errors
-
-
-def test_manifest_finish_args_home_host() -> None:
-
-    ret = run_checks(f"tests/builddir/finish_args_home_host")
-    found_errors = set(ret["errors"])
-    assert "finish-args-redundant-home-and-host" not in found_errors
 
 
 def test_builddir_finish_args_missing() -> None:
@@ -185,10 +168,7 @@ def test_builddir_quality_guidelines() -> None:
         "appstream-launchable-file-missing",
     }
     warnings = {
-        "appstream-name-too-long",
         "appstream-screenshot-missing-caption",
-        "appstream-summary-too-long",
-        "appstream-summary-ends-in-dot",
     }
     found_warnings = set(ret["warnings"])
     found_errors = set(ret["errors"])
