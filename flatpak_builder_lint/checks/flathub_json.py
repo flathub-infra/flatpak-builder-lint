@@ -23,43 +23,34 @@ class FlathubJsonCheck(Check):
     def _validate(
         self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
     ) -> None:
-        if flathub_json.get("skip-appstream-check"):
-            is_baseapp = appid.endswith(".BaseApp")
-            if not (is_extension or is_baseapp):
-                self.errors.add("flathub-json-skip-appstream-check")
+
+        is_baseapp = appid.endswith(".BaseApp")
 
         eol = flathub_json.get("end-of-life")
         eol_rebase = flathub_json.get("end-of-life-rebase")
         automerge = flathub_json.get("automerge-flathubbot-prs")
+        skip_appstream = flathub_json.get("skip-appstream-check")
+        only_arches = flathub_json.get("only-arches", None)
+        skip_arches = flathub_json.get("skip-arches", None)
+        publish_delay = flathub_json.get("publish-delay-hours")
 
-        if isinstance(automerge, bool):
-            if automerge:
-                self.errors.add("flathub-json-automerge-enabled")
+        if skip_appstream and not (is_extension or is_baseapp):
+            self.errors.add("flathub-json-skip-appstream-check")
+
+        if automerge:
+            self.errors.add("flathub-json-automerge-enabled")
 
         if eol_rebase and not eol:
             self.errors.add("flathub-json-eol-rebase-without-message")
 
-        if only_arches := flathub_json.get("only-arches"):
-            if "arm" in only_arches:
-                self.warnings.add("flathub-json-deprecated-arm-arch-included")
-            if "i386" in only_arches:
-                self.warnings.add("flathub-json-deprecated-i386-arch-included")
-            if len(only_arches) == 0:
-                self.errors.add("flathub-json-only-arches-empty")
-            if len(self.arches.intersection(only_arches)) == len(self.arches):
-                self.warnings.add("flathub-json-redundant-only-arches")
+        if only_arches is not None and len(only_arches) == 0:
+            self.errors.add("flathub-json-only-arches-empty")
 
-        if exclude_arches := flathub_json.get("exclude-arches"):
-            if "arm" in exclude_arches:
-                self.warnings.add("flathub-json-deprecated-arm-arch-excluded")
-            if "i386" in exclude_arches:
-                self.warnings.add("flathub-json-deprecated-i386-arch-excluded")
-            if len(exclude_arches) == 0:
-                self.warnings.add("flathub-json-exclude-arches-empty")
-            if len(self.arches.intersection(exclude_arches)) == len(self.arches):
-                self.errors.add("flathub-json-excluded-all-arches")
+        if skip_arches is not None and len(
+            self.arches.intersection(skip_arches)
+        ) == len(self.arches):
+            self.errors.add("flathub-json-excluded-all-arches")
 
-        publish_delay = flathub_json.get("publish-delay-hours")
         if isinstance(publish_delay, int):
             if publish_delay < 3 and not is_extra_data:
                 self.errors.add("flathub-json-modified-publish-delay")

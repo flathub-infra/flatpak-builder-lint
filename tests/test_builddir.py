@@ -105,14 +105,10 @@ def test_builddir_flathub_json() -> None:
         "flathub-json-modified-publish-delay",
     }
 
-    warnings = {"flathub-json-deprecated-i386-arch-included"}
-
     ret = run_checks("tests/builddir/flathub_json")
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
-    assert warnings.issubset(found_warnings)
 
 
 def test_builddir_baseapp() -> None:
