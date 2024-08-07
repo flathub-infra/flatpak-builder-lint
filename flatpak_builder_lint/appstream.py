@@ -1,15 +1,17 @@
 import os
 import subprocess
-from typing import Optional
+from typing import List, Optional, TypedDict, cast
 
 from lxml import etree
 
-# for mypy
-Element = etree._Element
-ElementTree = etree._ElementTree
+
+class SubprocessResult(TypedDict):
+    stdout: str
+    stderr: str
+    returncode: int
 
 
-def validate(path: str, *args: str) -> dict:
+def validate(path: str, *args: str) -> SubprocessResult:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
 
@@ -45,7 +47,7 @@ def validate(path: str, *args: str) -> dict:
         capture_output=True,
     )
 
-    ret = {
+    ret: SubprocessResult = {
         "stdout": cmd.stdout.decode("utf-8"),
         "stderr": cmd.stderr.decode("utf-8"),
         "returncode": cmd.returncode,
@@ -54,18 +56,16 @@ def validate(path: str, *args: str) -> dict:
     return ret
 
 
-def parse_xml(path: str) -> ElementTree:
+def parse_xml(path: str) -> etree._ElementTree:
     return etree.parse(path)
 
 
-def components(path: str) -> list:
-    components = parse_xml(path).xpath("/components/component")
-    return list(components)
+def components(path: str) -> List[etree._Element]:
+    return cast(List[etree._Element], parse_xml(path).xpath("/components/component"))
 
 
-def metainfo_components(path: str) -> list:
-    components = parse_xml(path).xpath("/component")
-    return list(components)
+def metainfo_components(path: str) -> List[etree._Element]:
+    return cast(List[etree._Element], parse_xml(path).xpath("/component"))
 
 
 def appstream_id(path: str) -> Optional[str]:
@@ -73,7 +73,7 @@ def appstream_id(path: str) -> Optional[str]:
     return str(aps_cid)
 
 
-def get_launchable(path: str) -> list:
+def get_launchable(path: str) -> List[str]:
     launchable = components(path)[0].xpath("launchable[@type='desktop-id']/text()")
     return list(launchable)
 
@@ -133,9 +133,13 @@ def has_icon_key(path: str) -> bool:
 
 
 def icon_no_type(path: str) -> bool:
-    for icon in parse_xml(path).findall("component/icon"):
-        if icon.attrib.get("type") is None:
-            return True
+    icon_types = set(
+        [icon.attrib.get("type") for icon in components(path)[0].xpath("icon")]
+    )
+
+    if None in icon_types:
+        return True
+
     return False
 
 

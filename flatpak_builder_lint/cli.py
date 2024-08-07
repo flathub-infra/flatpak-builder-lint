@@ -40,7 +40,7 @@ def _filter(info: set, excepts: set) -> list:
     return list(final)
 
 
-def get_local_exceptions(appid: str) -> set:
+def get_local_exceptions(appid: str) -> set[str]:
     with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid)
@@ -53,7 +53,7 @@ def get_local_exceptions(appid: str) -> set:
 
 def run_checks(
     kind: str, path: str, enable_exceptions: bool = False, appid: Optional[str] = None
-) -> dict:
+) -> Dict[str, Union[str, List[Optional[str]]]]:
     match kind:
         case "manifest":
             check_method_name = "check_manifest"
