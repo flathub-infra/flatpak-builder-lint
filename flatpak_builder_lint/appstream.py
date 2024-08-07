@@ -115,20 +115,6 @@ def is_valid_component_type(path: str) -> bool:
     return False
 
 
-def name(path: str) -> Optional[str]:
-    for name in parse_xml(path).findall("component/name"):
-        if not name.attrib.get(r"{http://www.w3.org/XML/1998/namespace}lang"):
-            return str(name.text)
-    return None
-
-
-def summary(path: str) -> Optional[str]:
-    for summary in parse_xml(path).findall("component/summary"):
-        if not summary.attrib.get(r"{http://www.w3.org/XML/1998/namespace}lang"):
-            return str(summary.text)
-    return None
-
-
 def check_caption(path: str) -> bool:
     exp = "//screenshot[not(caption/text()) or not(caption)]"
     return not any(e is not None for e in parse_xml(path).xpath(exp))

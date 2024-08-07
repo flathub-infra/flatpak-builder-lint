@@ -1,5 +1,0 @@
-[Application]
-name=org.flathub.finish_args_shm
-
-[Context]
-devices=shm;
