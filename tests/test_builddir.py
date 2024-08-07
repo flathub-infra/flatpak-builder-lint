@@ -222,9 +222,7 @@ def test_builddir_broken_icon() -> None:
         "desktop-file-not-installed",
     }
     not_founds = {
-        "appid-domain-not-found",
-        "appid-domain-not-registered",
-        "appid-domain-not-resolvable",
+        "appid-url-check-internal-error",
     }
     found_errors = set(ret["errors"])
     for e in errors:
