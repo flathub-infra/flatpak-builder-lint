@@ -60,7 +60,7 @@ def fetch_summary_bytes(url: str) -> bytes:
 
 
 @cache
-def get_appids_from_summary(url: str) -> set:
+def get_appids_from_summary(url: str) -> set[str]:
 
     appids = set()
     summary = GLib.Bytes.new(fetch_summary_bytes(url))
@@ -82,7 +82,7 @@ def get_appids_from_summary(url: str) -> set:
 
 
 @cache
-def get_all_apps_on_flathub() -> set:
+def get_all_apps_on_flathub() -> set[str]:
     return get_appids_from_summary(
         f"{FLATHUB_STABLE_REPO_URL}/summary"
     ) | get_appids_from_summary(f"{FLATHUB_BETA_REPO_URL}/summary")

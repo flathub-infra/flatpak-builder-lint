@@ -21,7 +21,7 @@ def show_manifest(filename: str) -> dict:
         raise Exception(ret.stderr.decode("utf-8"))
 
     manifest = ret.stdout.decode("utf-8")
-    manifest_json = json.loads(manifest)
+    manifest_json: dict = json.loads(manifest)
     manifest_json["x-manifest-filename"] = filename
 
     manifest_basedir = os.path.dirname(filename)
@@ -31,9 +31,7 @@ def show_manifest(filename: str) -> dict:
             flathub_json = json.load(f)
             manifest_json["x-flathub"] = flathub_json
 
-    # mypy does not support circular types
-    # https://github.com/python/typing/issues/182
-    return manifest_json  # type: ignore
+    return manifest_json
 
 
 def infer_appid(path: str) -> Optional[str]:

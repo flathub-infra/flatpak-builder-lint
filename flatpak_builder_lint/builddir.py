@@ -2,7 +2,7 @@ import errno
 import json
 import os
 from collections import defaultdict
-from typing import Optional
+from typing import List, Optional
 
 from gi.repository import GLib
 
@@ -83,12 +83,12 @@ def infer_appid(path: str) -> Optional[str]:
     return None
 
 
-def get_flathub_json(path: str) -> Optional[dict]:
+def get_flathub_json(path: str) -> dict[str, str | bool | List[str]]:
     flathub_json_path = f"{path}/files/flathub.json"
-    if not os.path.exists(flathub_json_path):
-        return None
+    flathub_json: dict = {}
 
-    with open(flathub_json_path, "r") as f:
-        flathub_json: dict = json.load(f)
+    if os.path.exists(flathub_json_path):
+        with open(flathub_json_path, "r") as f:
+            flathub_json = json.load(f)
 
     return flathub_json

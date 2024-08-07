@@ -209,6 +209,17 @@ files = [
 ]
 
 [[package]]
+name = "cssselect"
+version = "1.2.0"
+description = "cssselect parses CSS3 Selectors and translates them to XPath 1.0"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "cssselect-1.2.0-py2.py3-none-any.whl", hash = "sha256:da1885f0c10b60c03ed5eccbb6b68d6eff248d91976fcde348f395d54c9fd35e"},
+    {file = "cssselect-1.2.0.tar.gz", hash = "sha256:666b19839cfaddb9ce9d36bfe4c969132c647b92fc9088c4e23f786b30f1b3dc"},
+]
+
+[[package]]
 name = "decorator"
 version = "5.1.1"
 description = "Decorators for Humans"
@@ -1499,21 +1510,22 @@ referencing = "*"
 
 [[package]]
 name = "types-lxml"
-version = "2023.10.21"
+version = "2024.4.14"
 description = "Complete lxml external type annotation"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "types-lxml-2023.10.21.tar.gz", hash = "sha256:daf1458b7d9b2fb421354137b97c6029c4fe75cef2cbab0d8e144d8c548d9b98"},
-    {file = "types_lxml-2023.10.21-py3-none-any.whl", hash = "sha256:545097ca5f69d568827416d671285cae203a5b3d99937294e155c4cc0e46e712"},
+    {file = "types_lxml-2024.4.14-py3-none-any.whl", hash = "sha256:7e5f836067cde4fddce3cdbf2bac7192c764bf5ee6d3eb86c732ad1b84f265c5"},
+    {file = "types_lxml-2024.4.14.tar.gz", hash = "sha256:dd8105b579925af1b6ae77469f4fc835be3872b15e86cb46ad4fcc33b20c781d"},
 ]
 
 [package.dependencies]
-types-beautifulsoup4 = "*"
+cssselect = ">=1.2,<2.0"
+types-beautifulsoup4 = ">=4.12,<5.0"
 typing-extensions = ">=4.5,<5.0"
 
 [package.extras]
-dev = ["black", "isort (>=5)", "lxml (==4.9.*)", "mypy (>=1.1,<1.4)", "pyright (>=1.1.289,<1.1.332)", "pytest (>=7)", "pytest-mypy-plugins (>=1.10.1,<2.0)", "typeguard (==3.0.*)"]
+test = ["beautifulsoup4 (>=4.8,<5.0)", "html5lib (==1.1)", "lxml (>=4.9)", "mypy (==1.9.*)", "pyright (>=1.1.289)", "pytest (>=7.0,<9)", "pytest-mypy-plugins (==1.11.1)", "tox (>=4.0,<5.0)", "typeguard (>=3.0,<5)"]
 
 [[package]]
 name = "types-requests"
@@ -1689,4 +1701,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "29afc546ed83e0f1b1c19bd7248d58d07406fa1bf8c174fb1e50544d014df505"
+content-hash = "e922ef126470132ee506e50824f2d374e67f9c5ce75d15a777ff206d3d440a82"
