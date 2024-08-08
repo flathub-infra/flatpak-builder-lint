@@ -16,6 +16,7 @@ code_hosts = (
     "net.sourceforge.",
     "org.gnome.gitlab.",
     "org.freedesktop.gitlab.",
+    "site.srht.",
 )
 
 REQUEST_TIMEOUT = (120.05, None)
@@ -145,6 +146,16 @@ def get_proj_url(appid: str) -> str | None:
         # needs root path "/" otherwise HTTP 302
         # not case-sensitive
         url = f"sourceforge.net/projects/{second_cpt}/".lower()
+
+    if appid.startswith("site.srht."):
+        second_cpt = demangle(appid.split(".")[2])
+        if appid.count(".") == 3:
+            third_cpt = appid.split(".")[3]
+            # needs root path "/" otherwise HTTP 308
+            url = f"sr.ht/~{second_cpt}/{third_cpt}/"
+        else:
+            third_cpt = demangle(appid.split(".")[3])
+            url = f"sr.ht/~{second_cpt}/{third_cpt}/"
 
     # not case-sensitive -> lower
     elif appid.startswith("io.github."):
