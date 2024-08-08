@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - 'flatpak_builder_lint/staticfiles/exceptions.json'
   workflow_dispatch:
 
 jobs:

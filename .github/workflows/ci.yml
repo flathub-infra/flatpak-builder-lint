@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: master
+    paths-ignore:
+      - 'flatpak_builder_lint/staticfiles/exceptions.json'
   pull_request:
     branches: master
     paths-ignore:
