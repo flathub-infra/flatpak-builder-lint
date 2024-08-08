@@ -1004,7 +1004,8 @@
     },
     "org.gimp.GIMP": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
-        "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config."
+        "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config.",
+        "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used"
     },
     "org.fcitx.Fcitx5": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
