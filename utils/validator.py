@@ -24,6 +24,7 @@ known_exceptions = {
     "finish-args-dconf-talk-name",
     "finish-args-freedesktop-dbus-system-talk-name",
     "finish-args-freedesktop-dbus-talk-name",
+    "jsonschema-validation-error",
 }
 
 

@@ -650,7 +650,10 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rhyme_player.rhyme": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "jsonschema-validation-error": "Temporary",
+        "module-rhyme-source-git-local-path": "Temporary",
+        "module-rhyme-source-git-no-url": "Temporary"
     },
     "com.github.rkoesters.xkcd-gtk": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
