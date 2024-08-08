@@ -38,9 +38,6 @@ def test_builddir_finish_args() -> None:
         "finish-args-freedesktop-dbus-talk-name",
         "finish-args-wildcard-gnome-system-own-name",
         "finish-args-freedesktop-dbus-system-talk-name",
-    }
-
-    warnings = {
         "finish-args-x11-without-ipc",
     }
 
@@ -51,10 +48,8 @@ def test_builddir_finish_args() -> None:
 
     ret = run_checks("tests/builddir/finish_args")
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
-    assert warnings.issubset(found_warnings)
     for a in expected_absents:
         assert a not in found_errors
     for err in found_errors:
