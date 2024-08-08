@@ -148,9 +148,6 @@ def test_manifest_finish_args() -> None:
         "finish-args-freedesktop-dbus-talk-name",
         "finish-args-freedesktop-dbus-system-talk-name",
         "finish-args-wildcard-kde-system-talk-name",
-    }
-
-    warnings = {
         "finish-args-x11-without-ipc",
         "finish-args-contains-both-x11-and-fallback",
     }
@@ -163,10 +160,8 @@ def test_manifest_finish_args() -> None:
 
     ret = run_checks("tests/manifests/finish_args.json")
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
 
     assert errors.issubset(found_errors)
-    assert warnings.issubset(found_warnings)
     for a in expected_absents:
         assert a not in found_errors
     for err in found_errors:

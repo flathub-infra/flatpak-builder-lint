@@ -10,14 +10,14 @@ from . import Check
 class FinishArgsCheck(Check):
     def _validate(self, appid: Optional[str], finish_args: dict[str, Set[str]]) -> None:
         if "x11" in finish_args["socket"] and "fallback-x11" in finish_args["socket"]:
-            self.warnings.add("finish-args-contains-both-x11-and-fallback")
+            self.errors.add("finish-args-contains-both-x11-and-fallback")
 
         if "x11" in finish_args["socket"] and "wayland" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-wayland")
 
         if "x11" in finish_args["socket"] or "fallback-x11" in finish_args["socket"]:
             if "ipc" not in finish_args["share"]:
-                self.warnings.add("finish-args-x11-without-ipc")
+                self.errors.add("finish-args-x11-without-ipc")
 
         if (
             "fallback-x11" in finish_args["socket"]
