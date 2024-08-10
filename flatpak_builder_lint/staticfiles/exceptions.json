@@ -828,8 +828,7 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.irccloud.desktop": {
-        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "jsonschema-validation-error": "Temporary"
+        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
     "com.jetpackduba.Gitnuro": {
         "finish-args-flatpak-spawn-access": "required to access external terminal emulators and run external credentials managers for Git"
