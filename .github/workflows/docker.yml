@@ -6,7 +6,7 @@ on:
       - master
     paths-ignore:
       - 'flatpak_builder_lint/staticfiles/exceptions.json'
-      - 'utils'
+      - 'utils/**'
   workflow_dispatch:
 
 jobs:
