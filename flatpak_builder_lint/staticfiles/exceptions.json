@@ -2562,7 +2562,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "dev.overlayed.Overlayed": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Allow merging of autobot PRs to keep webkitgtx updated"
     },
     "com.hack_computer.Sidetrack": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
