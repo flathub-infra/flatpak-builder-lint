@@ -2561,6 +2561,9 @@
     "com.hack_computer.OperatingSystemApp": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "dev.overlayed.Overlayed": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
     "com.hack_computer.Sidetrack": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
