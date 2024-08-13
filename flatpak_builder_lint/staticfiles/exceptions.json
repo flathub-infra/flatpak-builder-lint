@@ -3871,5 +3871,8 @@
     },
     "org.qownnotes.QOwnNotes": {
         "flathub-json-automerge-enabled": "Verified application"
+    },
+    "io.github.limo_app.limo": {
+        "finish-args-flatpak-spawn-access": "Required for running user defined modding tools, which take the form of arbitrary commands to be run on the host"
     }
 }
