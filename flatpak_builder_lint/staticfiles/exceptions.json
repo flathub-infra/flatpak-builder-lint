@@ -2685,6 +2685,9 @@
     "io.github.limads.Queries": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "io.github.lime3ds.Lime3DS": {
+        "finish-args-unnecessary-xdg-data-applications-create-access": "Lime3DS creates .desktop files in .local/share/applications"
+    },
     "io.github.lxndr.gswatcher": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
