@@ -968,6 +968,9 @@
     "io.github.bothlab.syntalos": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
+    "org.syntalos.syntalos": {
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
+    },
     "org.gnome.Contacts": {
         "finish-args-unnecessary-xdg-data-pixmaps-create-access": "the app predates this linter rule",
         "finish-args-unnecessary-xdg-cache-evolution-ro-access": "the app predates this linter rule, used for evolution data server",
