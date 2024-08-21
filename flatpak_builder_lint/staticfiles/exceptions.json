@@ -207,9 +207,6 @@
     "com.github.christianrauch.Jahresarbeit-2003": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
-    "com.github.corna.Vivado": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-    },
     "com.github.coslyk.MoonPlayer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -397,7 +394,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.github.jeromerobert.pdfarranger": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.github.jkotra.eovpn": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -847,7 +845,8 @@
     "org.telegram.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
         "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "org.telegram.desktop.webview": {
         "flathub-json-automerge-enabled": "Predates the linter rule, addon for org.telegram.desktop"
@@ -1016,7 +1015,8 @@
         "finish-args-unnecessary-xdg-config-ibus-create-access": "Predates the linter rule"
     },
     "com.jetbrains.PyCharm-Community": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.PyCharm-Professional": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
@@ -1030,7 +1030,8 @@
     "com.jetbrains.RubyMine": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "org.libreoffice.LibreOffice": {
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule",
@@ -1100,21 +1101,25 @@
     "com.jetbrains.CLion": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.DataGrip": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Community": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.PhpStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1123,7 +1128,8 @@
     "com.jetbrains.WebStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.leinardi.gkraken": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1294,7 +1300,8 @@
         "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
     },
     "net.cozic.joplin_desktop": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "net.davidotek.pupgui2": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1822,7 +1829,8 @@
     },
     "io.github.kotatogram": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule",
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "io.github.Hexchat": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -3234,7 +3242,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "io.github.kukuruzka165.materialgram": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "io.github.nearinfinitybrowser.nearinfinity": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
@@ -3247,7 +3256,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "io.github.tdesktop_x64.TDesktop": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "io.github.waylyrics.Waylyrics": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
@@ -3882,5 +3892,17 @@
     "io.github.wivrn.wivrn": {
         "finish-args-unnecessary-xdg-config-openvr-create-access": "Required to set the current OpenVR runtime",
         "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime"
+    },
+    "br.gov.fazenda.receita.irpf2022": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "br.gov.fazenda.receita.irpf2023": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "br.gov.fazenda.receita.irpf2024": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "com.jetbrains.Rider, com.jetbrains.PhpStorm": {
+        "external-gitmodule-url-found": "Predates the linter rule"
     }
 }
