@@ -1126,7 +1126,8 @@
     },
     "com.jetbrains.PhpStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data"
+        "flathub-json-modified-publish-delay": "extra-data",
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "com.jetbrains.WebStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -3903,9 +3904,6 @@
         "external-gitmodule-url-found": "Predates the linter rule"
     },
     "br.gov.fazenda.receita.irpf2024": {
-        "external-gitmodule-url-found": "Predates the linter rule"
-    },
-    "com.jetbrains.Rider, com.jetbrains.PhpStorm": {
         "external-gitmodule-url-found": "Predates the linter rule"
     }
 }
