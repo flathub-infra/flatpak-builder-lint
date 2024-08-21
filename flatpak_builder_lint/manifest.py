@@ -35,7 +35,7 @@ def show_manifest(filename: str) -> dict:
     manifest_json: dict = json.loads(manifest)
     manifest_json["x-manifest-filename"] = filename
 
-    manifest_basedir = os.path.dirname(filename)
+    manifest_basedir = os.path.dirname(os.path.abspath(filename))
     flathub_json_path = os.path.join(manifest_basedir, "flathub.json")
     gitmodules_path = os.path.join(manifest_basedir, ".gitmodules")
 
@@ -44,7 +44,7 @@ def show_manifest(filename: str) -> dict:
             flathub_json = json.load(f)
             manifest_json["x-flathub"] = flathub_json
 
-    if os.path.exists(gitmodules_path):
+    if os.path.exists(gitmodules_path) and is_git_directory(manifest_basedir):
         with open(gitmodules_path) as f:
             manifest_json["x-gitmodules"] = [
                 line.split("=", 1)[1].strip()
