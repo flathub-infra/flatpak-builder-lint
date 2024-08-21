@@ -43,12 +43,12 @@ class TopLevelCheck(Check):
             return
 
         allowed_gitmodule_urls = (
-            "https://github.com/flathub",
-            "https://github.com/flathub-infra",
-            "https://github.com/flatpak",
-            "git@github.com:flathub",
-            "git@github.com:flatpak",
-            "git@github.com:flathub-infra",
+            "https://github.com/flathub/",
+            "https://github.com/flathub-infra/",
+            "https://github.com/flatpak/",
+            "git@github.com:flathub/",
+            "git@github.com:flatpak/",
+            "git@github.com:flathub-infra/",
         )
         ext_gitmodules = [
             m for m in gitmodules if not m.startswith(allowed_gitmodule_urls)
