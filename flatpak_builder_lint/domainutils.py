@@ -19,7 +19,7 @@ code_hosts = (
     "site.srht.",
 )
 
-REQUEST_TIMEOUT = (120.05, None)
+REQUEST_TIMEOUT = (120.05, 10800)
 
 FLATHUB_API_URL = "https://flathub.org/api/v2"
 FLATHUB_STABLE_REPO_URL = "https://dl.flathub.org/repo"
