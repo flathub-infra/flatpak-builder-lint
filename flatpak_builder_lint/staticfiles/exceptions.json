@@ -3905,5 +3905,9 @@
     },
     "br.gov.fazenda.receita.irpf2024": {
         "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    {
+    "io.kinvolk.Headlamp": {
+        "finish-args-flatpak-spawn-access": "Required to run external CLI tools related to Kubernetes. This is mainly to cover any tools the user has in their kubeconfig, or that Headlamp plugins need to run (e.g. minikube, az, etc.)."
     }
 }
