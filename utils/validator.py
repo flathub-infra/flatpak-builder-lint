@@ -25,6 +25,7 @@ known_exceptions = {
     "finish-args-freedesktop-dbus-system-talk-name",
     "finish-args-freedesktop-dbus-talk-name",
     "external-gitmodule-url-found",
+    "toplevel-unnecessary-branch",
 }
 
 
