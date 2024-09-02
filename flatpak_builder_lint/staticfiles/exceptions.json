@@ -3909,5 +3909,9 @@
     },
     "br.gov.fazenda.receita.irpf2024": {
         "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "org.freedesktop.LinuxAudio.BaseExtension": {
+        "finish-args-not-defined": "This provides an extension point only",
+        "appstream-metainfo-missing": "This provides an extension point only"
     }
 }

@@ -26,6 +26,7 @@ known_exceptions = {
     "finish-args-freedesktop-dbus-talk-name",
     "external-gitmodule-url-found",
     "toplevel-unnecessary-branch",
+    "appstream-metainfo-missing",
 }
 
 
