@@ -27,6 +27,7 @@ known_exceptions = {
     "external-gitmodule-url-found",
     "toplevel-unnecessary-branch",
     "appstream-metainfo-missing",
+    "appid-url-not-reachable",
 }
 
 

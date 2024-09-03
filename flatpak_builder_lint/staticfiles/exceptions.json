@@ -3913,5 +3913,8 @@
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "finish-args-not-defined": "This provides an extension point only",
         "appstream-metainfo-missing": "This provides an extension point only"
+    },
+    "surf.deckr.deckr": {
+        "appid-url-not-reachable": "Request is returning 403, https://github.com/flathub/flathub/pull/5529#issuecomment-2325455509"
     }
 }
