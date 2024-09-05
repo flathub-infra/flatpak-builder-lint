@@ -50,14 +50,14 @@ poetry run flatpak-builder-lint --help
 ```
 
 The following Python dependencies are needed to run
-`jsonschema==4.19.1, requests==2.32.2, lxml==5.2.2, sentry-sdk==1.34.0,
-PyGObject==3.48.2`. Additionally `poetry-core>=1.0.0` is necessary
-to build.
+`jsonschema^4.19.1, requests^2.32.2, requests-cache^1.2.1, lxml^5.2.2,
+sentry-sdk^2.8.0, PyGObject=^3.48.2`. Additionally `poetry-core>=1.0.0`
+is necessary to build.
 
-Additional tools are required by subcommands and checks:
+Additionally the following tools or packages must be installed:
 
+- `libgirepository1.0-dev, gir1.2-ostree-1.0`
 - `flatpak-builder` for validating flatpak-builder manifests
-- `ostree` for validating ostree repositories containing builds
 - `appstreamcli` from `org.flatpak.Builder` for validating MetaInfo files
 - `desktop-file-validate` to validate desktop files
 
