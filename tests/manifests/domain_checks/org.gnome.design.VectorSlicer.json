@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.gitlab.World.design.vector-slicer",
+    "app-id": "org.gnome.design.VectorSlicer",
     "runtime": "foo",
     "sdk": "bar",
     "command": "foo",

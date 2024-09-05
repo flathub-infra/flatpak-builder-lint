@@ -29,10 +29,10 @@ class AppIDCheck(Check):
 
         is_baseapp = appid.endswith(".BaseApp")
 
-        if not (is_extension or is_baseapp) and len(split) > 6:
+        if not (is_extension or is_baseapp) and len(split) > 5:
             self.errors.add("appid-too-many-components-for-app")
             self.info.add(
-                "appid-too-many-components-for-app: appid has 6 or more"
+                "appid-too-many-components-for-app: appid has more than 5"
                 + " components for an app"
             )
             return
