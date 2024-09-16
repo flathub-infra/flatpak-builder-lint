@@ -112,10 +112,18 @@ def test_manifest_toplevel() -> None:
 def test_manifest_appid() -> None:
     errors = {
         "appid-filename-mismatch",
-        "appid-code-hosting-too-few-components",
         "appid-uses-code-hosting-domain",
     }
     ret = run_checks("tests/manifests/appid.json")
+    found_errors = set(ret["errors"])
+    assert errors.issubset(found_errors)
+
+
+def test_manifest_appid() -> None:
+    errors = {
+        "appid-code-hosting-too-few-components",
+    }
+    ret = run_checks("tests/manifests/appid-too-few-cpts.json")
     found_errors = set(ret["errors"])
     assert errors.issubset(found_errors)
 

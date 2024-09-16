@@ -46,9 +46,11 @@ class AppIDCheck(Check):
             if tld != "io" and domain in ("github", "gitlab"):
                 self.errors.add("appid-uses-code-hosting-domain")
                 self.info.add(f"appid-uses-code-hosting-domain: {domain}.{tld}")
+                return
             if tld != "page" and domain == "codeberg":
                 self.errors.add("appid-uses-code-hosting-domain")
                 self.info.add(f"appid-uses-code-hosting-domain: {domain}.{tld}")
+                return
             if len(split) < 4:
                 self.errors.add("appid-code-hosting-too-few-components")
                 return
