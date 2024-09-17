@@ -37,6 +37,7 @@ jobs:
 
       - name: Set up dependencies
         run: |
+          sudo add-apt-repository ppa:flatpak/development
           sudo apt-get update
           sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev gir1.2-ostree-1.0
 
