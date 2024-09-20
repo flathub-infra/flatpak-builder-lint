@@ -1348,6 +1348,9 @@
     "org.flathub.flatpak-external-data-checker": {
         "*": "used by flathub infra"
     },
+    "org.freecad.FreeCAD": {
+        "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
+    },
     "org.freecadweb.FreeCAD": {
         "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
     },
