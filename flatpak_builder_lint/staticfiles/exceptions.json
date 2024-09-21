@@ -3921,6 +3921,7 @@
     },
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "finish-args-not-defined": "This provides an extension point only",
+        "toplevel-no-command": "This provides an extension point only",
         "appstream-metainfo-missing": "This provides an extension point only"
     },
     "surf.deckr.deckr": {
