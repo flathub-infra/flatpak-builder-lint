@@ -17,6 +17,7 @@ known_exceptions = {
     "finish-args-not-defined",
     "finish-args-wildcard-kde-own-name",
     "flathub-json-modified-publish-delay",
+    "flathub-json-skip-appstream-check",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
     "appid-too-many-components-for-app",
