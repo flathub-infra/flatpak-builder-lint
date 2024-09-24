@@ -1,14 +1,13 @@
 import re
 import tempfile
 from collections import defaultdict
-from typing import Optional, Set
 
 from .. import builddir, ostree
 from . import Check
 
 
 class FinishArgsCheck(Check):
-    def _validate(self, appid: Optional[str], finish_args: dict[str, Set[str]]) -> None:
+    def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
         if "x11" in finish_args["socket"] and "fallback-x11" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-fallback")
 

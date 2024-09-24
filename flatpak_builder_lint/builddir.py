@@ -2,7 +2,6 @@ import errno
 import json
 import os
 from collections import defaultdict
-from typing import List, Optional
 
 from gi.repository import GLib
 
@@ -75,7 +74,7 @@ def parse_metadata(builddir: str) -> dict:
     return metadata
 
 
-def infer_appid(path: str) -> Optional[str]:
+def infer_appid(path: str) -> str | None:
     metadata = parse_metadata(path)
     if metadata:
         return metadata.get("name")
@@ -83,7 +82,7 @@ def infer_appid(path: str) -> Optional[str]:
     return None
 
 
-def get_flathub_json(path: str) -> dict[str, str | bool | List[str]]:
+def get_flathub_json(path: str) -> dict[str, str | bool | list[str]]:
     flathub_json_path = f"{path}/files/flathub.json"
     flathub_json: dict = {}
 

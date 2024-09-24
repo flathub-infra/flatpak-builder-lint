@@ -2,7 +2,6 @@ import glob
 import os
 import re
 import tempfile
-from typing import List
 
 from .. import appstream, builddir, ostree
 from . import Check
@@ -49,7 +48,7 @@ class MetainfoCheck(Check):
             for err in metainfo_validation["stderr"].splitlines():
                 self.appstream.add(err.strip())
 
-            stdout: List[str] = list(
+            stdout: list[str] = list(
                 filter(
                     lambda x: x.startswith(("E:", "W:")),
                     metainfo_validation["stdout"].splitlines()[:-1],

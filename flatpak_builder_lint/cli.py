@@ -5,7 +5,6 @@ import json
 import os
 import pkgutil
 import sys
-from typing import Dict, List, Optional, Union
 
 import sentry_sdk
 
@@ -52,13 +51,13 @@ def get_local_exceptions(appid: str) -> set[str]:
 
 
 def run_checks(
-    kind: str, path: str, enable_exceptions: bool = False, appid: Optional[str] = None
-) -> Dict[str, Union[str, List[Optional[str]]]]:
+    kind: str, path: str, enable_exceptions: bool = False, appid: str | None = None
+) -> dict[str, str | list[str | None]]:
     match kind:
         case "manifest":
             check_method_name = "check_manifest"
             infer_appid_func = manifest.infer_appid
-            check_method_arg: Union[str, dict] = manifest.show_manifest(path)
+            check_method_arg: str | dict = manifest.show_manifest(path)
         case "builddir":
             check_method_name = "check_build"
             infer_appid_func = builddir.infer_appid
@@ -76,7 +75,7 @@ def run_checks(
         if (check_method := getattr(check, check_method_name, None)) and callable(check_method):
             check_method(check_method_arg)
 
-    results: Dict[str, Union[str, List[Optional[str]]]] = {}
+    results: dict[str, str | list[str | None]] = {}
     if errors := checks.Check.errors:
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:

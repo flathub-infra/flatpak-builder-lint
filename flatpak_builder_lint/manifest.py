@@ -2,7 +2,6 @@ import errno
 import json
 import os
 import subprocess
-from typing import Optional
 
 
 def is_git_directory(path: str) -> bool:
@@ -57,6 +56,6 @@ def show_manifest(filename: str) -> dict:
     return manifest_json
 
 
-def infer_appid(path: str) -> Optional[str]:
+def infer_appid(path: str) -> str | None:
     manifest = show_manifest(path)
     return manifest.get("id")
