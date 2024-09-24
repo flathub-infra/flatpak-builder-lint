@@ -29,8 +29,8 @@ class FlathubJsonCheck(Check):
         eol_rebase = flathub_json.get("end-of-life-rebase")
         automerge = flathub_json.get("automerge-flathubbot-prs")
         skip_appstream = flathub_json.get("skip-appstream-check")
-        only_arches = flathub_json.get("only-arches", None)
-        skip_arches = flathub_json.get("skip-arches", None)
+        only_arches = flathub_json.get("only-arches")
+        skip_arches = flathub_json.get("skip-arches")
         publish_delay = flathub_json.get("publish-delay-hours")
 
         if skip_appstream and not (is_extension or is_baseapp):
