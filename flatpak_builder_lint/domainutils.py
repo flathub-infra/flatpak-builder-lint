@@ -35,10 +35,8 @@ def ignore_ref(ref: str) -> bool:
         return True
 
     return bool(
-        (
-            ref_splits[2] not in ("x86_64", "aarch64")
-            or ref_splits[1].endswith((".Debug", ".Locale", ".Sources"))
-        )
+        ref_splits[2] not in ("x86_64", "aarch64")
+        or ref_splits[1].endswith((".Debug", ".Locale", ".Sources"))
     )
 
 
