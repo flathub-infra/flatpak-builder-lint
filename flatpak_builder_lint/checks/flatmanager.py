@@ -6,8 +6,10 @@ import tempfile
 
 import requests
 
-from .. import appstream
+from .. import appstream, domainutils
 from . import Check
+
+REQUEST_TIMEOUT = domainutils.REQUEST_TIMEOUT
 
 
 class FlatManagerCheck(Check):
@@ -41,7 +43,11 @@ class FlatManagerCheck(Check):
                 "Authorization": f"Bearer {flatmgr_token}",
                 "Content-Type": "application/json",
             }
-            r = requests.get(f"{flatmgr_url}/api/v1/build/{build_id}/extended", headers=headers)
+            r = requests.get(
+                f"{flatmgr_url}/api/v1/build/{build_id}/extended",
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
 
             if r.status_code != 200:
                 raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")
