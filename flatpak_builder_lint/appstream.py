@@ -45,6 +45,7 @@ def validate(path: str, *args: str) -> SubprocessResult:
     cmd = subprocess.run(
         ["appstreamcli", "validate", f"--override={overrides_value}", *args, path],
         capture_output=True,
+        check=False,
     )
 
     ret: SubprocessResult = {

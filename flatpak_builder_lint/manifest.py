@@ -26,6 +26,7 @@ def show_manifest(filename: str) -> dict:
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename],
         capture_output=True,
+        check=False,
     )
 
     if ret.returncode != 0:

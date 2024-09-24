@@ -81,6 +81,7 @@ class DesktopfileCheck(Check):
                     ],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
+                    check=False,
                 )
                 if cmd.returncode != 0:
                     self.errors.add("desktop-file-failed-validation")
