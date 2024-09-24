@@ -99,7 +99,7 @@ class FinishArgsCheck(Check):
                         f"finish-args-reserved-{resv_dir}: finish-args has filesystem access"
                         + f" to {resv_dir} which is reserved internally for Flatpak"
                     )
-            if fs.startswith("/home") or fs.startswith("/var/home"):
+            if fs.startswith(("/home", "/var/home")):
                 self.errors.add("finish-args-absolute-home-path")
                 self.info.add(
                     "finish-args-absolute-home-path: finish-args has filesystem access"
