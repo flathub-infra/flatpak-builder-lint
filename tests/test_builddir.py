@@ -87,11 +87,11 @@ def test_builddir_flathub_json() -> None:
 
 
 def test_builddir_baseapp() -> None:
-    ret = run_checks("tests/builddir/baseapp")
+    run_checks("tests/builddir/baseapp")
 
 
 def test_builddir_extension() -> None:
-    ret = run_checks("tests/builddir/extension")
+    run_checks("tests/builddir/extension")
 
 
 def test_builddir_console() -> None:
@@ -118,7 +118,7 @@ def test_builddir_appstream_unsupported_ctype() -> None:
 
 
 def test_builddir_metadata_spaces() -> None:
-    ret = run_checks("tests/builddir/metadata-spaces")
+    run_checks("tests/builddir/metadata-spaces")
 
 
 def test_builddir_desktop_file() -> None:

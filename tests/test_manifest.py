@@ -296,3 +296,6 @@ def test_manifest_xdg_dir_finish_arg() -> None:
         "finish-args-unnecessary-xdg-config-fonts-rw-access",
         "finish-args-unnecessary-xdg-data-gvfs-ro-access",
     }
+    found_errors = ret["errors"]
+    for e in errors:
+        assert e in found_errors
