@@ -86,7 +86,8 @@ def get_all_apps_on_flathub() -> set[str]:
 
 @cache
 def check_url(url: str, strict: bool) -> bool:
-    assert url.startswith(("https://", "http://"))
+    if not url.startswith(("https://", "http://")):
+        raise Exception("Invalid input")
 
     ret = False
     try:
@@ -129,8 +130,8 @@ def demangle(name: str) -> str:
 
 
 def get_proj_url(appid: str) -> str | None:
-    assert appid.startswith(code_hosts)
-    assert appid.count(".") >= 2
+    if not (appid.startswith(code_hosts) or appid.count(".") >= 2):
+        raise Exception("Invalid input")
 
     url = None
 
@@ -220,8 +221,8 @@ def get_proj_url(appid: str) -> str | None:
 
 
 def get_domain(appid: str) -> str | None:
-    assert not appid.startswith(code_hosts)
-    assert appid.count(".") >= 2
+    if not (appid.startswith(code_hosts) or appid.count(".") >= 2):
+        raise Exception("Invalid input")
 
     domain = None
     if appid.startswith("org.gnome.") and not appid.startswith("org.gnome.gitlab."):
