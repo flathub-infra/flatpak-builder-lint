@@ -28,7 +28,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             try:
                 merge_data = json.load(f, object_pairs_hook=merge_duplicates)
             except ValueError as err:
-                print(f"{filename}: Failed to decode: {err}")
+                print(f"{filename}: Failed to decode: {err}")  # noqa: T201
                 exit_code = 1
 
         if merge_data is not None:
@@ -36,7 +36,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 with open(filename, "w") as f:
                     json.dump(merge_data, f, indent=4)
             except ValueError as err:
-                print(f"{filename}: Failed to write: {err}")
+                print(f"{filename}: Failed to write: {err}")  # noqa: T201
                 exit_code = 1
 
     return exit_code

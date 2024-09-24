@@ -74,13 +74,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "toplevel-no-command",
                 }
                 if not found_exceptions.issubset(known_exceptions):
-                    print(
+                    print(  # noqa: T201
                         "Exception not found in known exceptions list",
                         found_exceptions - known_exceptions,
                     )
                     exit_code = 1
             except ValueError as err:
-                print(f"{filename}: Failed to decode: {err}")
+                print(f"{filename}: Failed to decode: {err}")  # noqa: T201
                 exit_code = 1
     return exit_code
 

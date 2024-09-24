@@ -43,4 +43,4 @@ for app in appids:
         excps_tmp.update({f"{ex}": f"{reason}"})
     data[app] = excps_tmp
 
-print(json.dumps(data, sort_keys=True, indent=4))
+print(json.dumps(data, sort_keys=True, indent=4))  # noqa: T201
