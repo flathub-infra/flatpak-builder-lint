@@ -42,14 +42,11 @@ jobs:
         run: |
           poetry install
 
-      - name: Check module sort order
-        run: poetry run ruff check --select I flatpak_builder_lint
-
       - name: Check code formatting
-        run: poetry run black --check flatpak_builder_lint
+        run: poetry run ruff format --check .
 
-      - name: Check code errors
-        run: poetry run flake8p flatpak_builder_lint
+      - name: Lint
+        run: poetry run ruff check --output-format=github .
 
       - name: Check python types
         run: poetry run mypy flatpak_builder_lint
