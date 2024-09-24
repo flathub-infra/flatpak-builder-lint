@@ -2,7 +2,7 @@
 
 import json
 
-with open("org.flatpak.Builder/org.flatpak.Builder.json", "r") as f:
+with open("org.flatpak.Builder/org.flatpak.Builder.json") as f:
     manifest = json.load(f)
 
 for module in manifest["modules"]:

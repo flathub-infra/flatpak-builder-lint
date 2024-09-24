@@ -52,7 +52,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     exit_code = 0
     for filename in args.filenames:
-        with open(filename, "r") as f:
+        with open(filename) as f:
             try:
                 data = json.load(f, object_pairs_hook=check_duplicates)
                 found_exceptions = {
