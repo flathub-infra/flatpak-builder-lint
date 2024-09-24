@@ -46,5 +46,41 @@ warn_unused_ignores = true
 show_error_codes = true
 warn_return_any = true
 
-[tool.flake8]
-max-line-length = 100
+[tool.ruff]
+line-length = 100
+include = ["*.py"]
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+  "F",
+  "E",
+  "W",
+  "B",
+  "A",
+  "C4",
+  "DTZ",
+  "SIM",
+  "I",
+  "ICN",
+  "PIE",
+  "T201",
+  "Q",
+  "RSE",
+  "RET",
+  "ARG",
+  "ERA",
+  "PL",
+]
+
+ignore = [
+  "PLR2004",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+]
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "double"
