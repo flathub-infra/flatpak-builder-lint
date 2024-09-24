@@ -49,6 +49,11 @@ poetry install
 poetry run flatpak-builder-lint --help
 ```
 
+After making changes to the code or any dependencies run
+`poetry lock --no-update` to regenerate the lockfile (when adding
+or changing dependency versions) and `poetry install --sync` to
+synchronise the virtual environment.
+
 The following Python dependencies are needed to run
 `jsonschema^4.19.1, requests^2.32.2, requests-cache^1.2.1, lxml^5.2.2,
 sentry-sdk^2.8.0, PyGObject=^3.48.2`. Additionally `poetry-core>=1.0.0`
@@ -59,7 +64,33 @@ Additionally the following tools or packages must be installed:
 - `libgirepository1.0-dev, gir1.2-ostree-1.0`
 - `flatpak-builder` for validating flatpak-builder manifests
 - `appstreamcli` from `org.flatpak.Builder` for validating MetaInfo files
+```sh
+#!/bin/sh
+
+exec flatpak run --command=appstreamcli org.flatpak.Builder ${@}
+```
 - `desktop-file-validate` to validate desktop files
+
+[Ruff](https://docs.astral.sh/ruff/installation/) and [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
+is used to lint, format code and check Python types. To run them:
+
+```sh
+# Formatting
+poetry run ruff format .
+
+# Linting
+poetry run ruff check .
+
+# Auto fix some lint errrors
+poetry run ruff check --fix .
+```
+
+[Pytest](https://docs.pytest.org/en/stable/getting-started.html) is used
+to run tests:
+
+```sh
+poetry run pytest -v tests
+```
 
 ### Usage
 
