@@ -38,8 +38,7 @@ def check_duplicates(
     for key, val in pairs:
         if key in d:
             raise ValueError(f"Duplicate key(s) found: {key}")
-        else:
-            d[key] = val
+        d[key] = val
     return d
 
 
