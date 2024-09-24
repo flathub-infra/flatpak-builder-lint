@@ -1,5 +1,3 @@
-from typing import Optional, Set
-
 from .. import ostree
 
 ALL = []
@@ -15,13 +13,13 @@ class CheckMeta(type):
 
 
 class Check(metaclass=CheckMeta):
-    warnings: Set[Optional[str]] = set()
-    errors: Set[Optional[str]] = set()
-    jsonschema: Set[Optional[str]] = set()
-    appstream: Set[Optional[str]] = set()
-    desktopfile: Set[Optional[str]] = set()
-    info: Set[Optional[str]] = set()
-    repo_primary_ref: Optional[str] = None
+    warnings: set[str] = set()
+    errors: set[str] = set()
+    jsonschema: set[str] = set()
+    appstream: set[str] = set()
+    desktopfile: set[str] = set()
+    info: set[str] = set()
+    repo_primary_ref: str | None = None
 
     def _populate_ref(self, repo: str) -> None:
         if self.repo_primary_ref is None:

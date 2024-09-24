@@ -1,6 +1,6 @@
 import os
 import subprocess
-from typing import List, Optional, TypedDict, cast
+from typing import TypedDict, cast
 
 from lxml import etree
 
@@ -61,20 +61,20 @@ def parse_xml(path: str) -> etree._ElementTree:
     return etree.parse(path)
 
 
-def components(path: str) -> List[etree._Element]:
-    return cast(List[etree._Element], parse_xml(path).xpath("/components/component"))
+def components(path: str) -> list[etree._Element]:
+    return cast(list[etree._Element], parse_xml(path).xpath("/components/component"))
 
 
-def metainfo_components(path: str) -> List[etree._Element]:
-    return cast(List[etree._Element], parse_xml(path).xpath("/component"))
+def metainfo_components(path: str) -> list[etree._Element]:
+    return cast(list[etree._Element], parse_xml(path).xpath("/component"))
 
 
-def appstream_id(path: str) -> Optional[str]:
+def appstream_id(path: str) -> str | None:
     aps_cid = components(path)[0].xpath("id/text()")[0]
     return str(aps_cid)
 
 
-def get_launchable(path: str) -> List[str]:
+def get_launchable(path: str) -> list[str]:
     launchable = components(path)[0].xpath("launchable[@type='desktop-id']/text()")
     return list(launchable)
 
@@ -142,7 +142,7 @@ def is_remote_icon_mirrored(path: str) -> bool:
     return all(icon.startswith("https://dl.flathub.org/media/") for icon in remote_icons)
 
 
-def get_icon_filename(path: str) -> Optional[str]:
+def get_icon_filename(path: str) -> str | None:
     if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
         return str(icons[0].text)
     return None

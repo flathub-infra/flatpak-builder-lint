@@ -1,6 +1,5 @@
 import json
 import os
-from typing import List, Optional
 
 import gi
 
@@ -24,7 +23,7 @@ def get_refs(repo_path: str, ref_prefix: str | None) -> set[str]:
     return set(refs.keys())
 
 
-def get_primary_ref(repo_path: str) -> Optional[str]:
+def get_primary_ref(repo_path: str) -> str | None:
     refs = get_refs(repo_path, None)
 
     ref: str
@@ -36,7 +35,7 @@ def get_primary_ref(repo_path: str) -> Optional[str]:
     return None
 
 
-def infer_appid(path: str) -> Optional[str]:
+def infer_appid(path: str) -> str | None:
     ref = get_primary_ref(path)
     if ref:
         return ref.split("/")[1]
@@ -49,7 +48,7 @@ def extract_subpath(
     ref: str,
     subpath: str,
     dest: str,
-    should_pass: Optional[bool] = False,
+    should_pass: bool = False,
 ) -> None:
     repo = open_ostree_repo(repo_path)
     opts = OSTree.RepoCheckoutAtOptions()
@@ -75,7 +74,7 @@ def extract_subpath(
             repo.checkout_at(opts, AT_FDCWD, dest, rev, None)
 
 
-def get_flathub_json(repo_path: str, ref: str, dest: str) -> dict[str, str | bool | List[str]]:
+def get_flathub_json(repo_path: str, ref: str, dest: str) -> dict[str, str | bool | list[str]]:
     extract_subpath(repo_path, ref, "/files/flathub.json", dest, True)
 
     flathub_json_path = os.path.join(dest, "flathub.json")

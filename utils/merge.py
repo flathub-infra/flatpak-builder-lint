@@ -1,6 +1,7 @@
 import argparse
 import json
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 
 def merge_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:

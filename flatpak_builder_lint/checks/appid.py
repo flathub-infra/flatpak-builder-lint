@@ -1,14 +1,13 @@
 import os
 import re
 import tempfile
-from typing import Optional
 
 from .. import builddir, domainutils, ostree
 from . import Check
 
 
 class AppIDCheck(Check):
-    def _validate(self, appid: Optional[str], is_extension: bool) -> None:
+    def _validate(self, appid: str | None, is_extension: bool) -> None:
         if not appid:
             self.errors.add("appid-not-defined")
             return

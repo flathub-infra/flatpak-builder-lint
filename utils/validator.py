@@ -1,6 +1,7 @@
 import argparse
 import json
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 known_exceptions = {
     "appid-code-hosting-too-few-components",
