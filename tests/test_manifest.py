@@ -20,9 +20,7 @@ def test_appid_wrong_syntax() -> None:
 
 
 def test_appid_too_many_cpts() -> None:
-    ret = run_checks(
-        "tests/manifests/domain_checks/org.gnome.gitlab.user.project.foo.bar.json"
-    )
+    ret = run_checks("tests/manifests/domain_checks/org.gnome.gitlab.user.project.foo.bar.json")
     errors = set(ret["errors"])
     assert {"appid-too-many-components-for-app"} == errors
 
@@ -71,16 +69,12 @@ def test_appid_on_flathub() -> None:
 
 
 def test_appid_skip_domain_checks_extension() -> None:
-    ret = run_checks(
-        "tests/manifests/domain_checks/org.gtk.Gtk33theme.Helium-dark.json"
-    )
+    ret = run_checks("tests/manifests/domain_checks/org.gtk.Gtk33theme.Helium-dark.json")
     assert "errors" not in ret
 
 
 def test_appid_skip_domain_checks_baseapp() -> None:
-    ret = run_checks(
-        "tests/manifests/domain_checks/org.electronjs.Electron200.BaseApp.json"
-    )
+    ret = run_checks("tests/manifests/domain_checks/org.electronjs.Electron200.BaseApp.json")
     assert "errors" not in ret
 
 
@@ -173,9 +167,7 @@ def test_manifest_finish_args() -> None:
     for a in expected_absents:
         assert a not in found_errors
     for err in found_errors:
-        assert not err.startswith(
-            ("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-")
-        )
+        assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
 
 
 def test_manifest_finish_args_issue_wayland_x11() -> None:
@@ -195,7 +187,6 @@ def test_manifest_finish_args_issue_33() -> None:
 
 
 def test_manifest_display_stuff() -> None:
-
     absents = {
         "finish-args-fallback-x11-without-wayland",
         "finish-args-only-wayland",

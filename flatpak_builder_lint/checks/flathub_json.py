@@ -23,7 +23,6 @@ class FlathubJsonCheck(Check):
     def _validate(
         self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
     ) -> None:
-
         is_baseapp = appid.endswith(".BaseApp")
 
         eol = flathub_json.get("end-of-life")
@@ -46,9 +45,9 @@ class FlathubJsonCheck(Check):
         if only_arches is not None and len(only_arches) == 0:
             self.errors.add("flathub-json-only-arches-empty")
 
-        if skip_arches is not None and len(
-            self.arches.intersection(skip_arches)
-        ) == len(self.arches):
+        if skip_arches is not None and len(self.arches.intersection(skip_arches)) == len(
+            self.arches
+        ):
             self.errors.add("flathub-json-excluded-all-arches")
 
         if isinstance(publish_delay, int):

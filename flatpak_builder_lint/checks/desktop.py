@@ -32,8 +32,7 @@ class DesktopfileCheck(Check):
             icon_list = [
                 file
                 for file in glob.glob(glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
-                and os.path.isfile(file)
+                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
             ]
             icon_files_list = [os.path.basename(i) for i in icon_list]
 
@@ -94,9 +93,7 @@ class DesktopfileCheck(Check):
 
         if os.path.exists(f"{desktopfiles_path}/{appid}.desktop"):
             key_file = GLib.KeyFile.new()
-            key_file.load_from_file(
-                f"{desktopfiles_path}/{appid}.desktop", GLib.KeyFileFlags.NONE
-            )
+            key_file.load_from_file(f"{desktopfiles_path}/{appid}.desktop", GLib.KeyFileFlags.NONE)
 
             if key_file.get_start_group() != "Desktop Entry":
                 raise GLib.Error("Unknown start group in desktop file.")
@@ -190,7 +187,6 @@ class DesktopfileCheck(Check):
                 False,
                 None,
             ):
-
                 try:
                     terminal = key_file.get_boolean("Desktop Entry", "Terminal")
                 except GLib.Error:

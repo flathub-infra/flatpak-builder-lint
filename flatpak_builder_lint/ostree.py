@@ -75,9 +75,7 @@ def extract_subpath(
             repo.checkout_at(opts, AT_FDCWD, dest, rev, None)
 
 
-def get_flathub_json(
-    repo_path: str, ref: str, dest: str
-) -> dict[str, str | bool | List[str]]:
+def get_flathub_json(repo_path: str, ref: str, dest: str) -> dict[str, str | bool | List[str]]:
     extract_subpath(repo_path, ref, "/files/flathub.json", dest, True)
 
     flathub_json_path = os.path.join(dest, "flathub.json")

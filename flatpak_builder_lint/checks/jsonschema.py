@@ -10,9 +10,11 @@ from . import Check
 
 class JSONSchemaCheck(Check):
     def check_manifest(self, manifest: dict) -> None:
-        with importlib.resources.files(staticfiles).joinpath(
-            "flatpak-manifest.schema.json"
-        ).open() as f:
+        with (
+            importlib.resources.files(staticfiles)
+            .joinpath("flatpak-manifest.schema.json")
+            .open() as f
+        ):
             schema = json.load(f)
 
         try:

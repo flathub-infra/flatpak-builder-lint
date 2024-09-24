@@ -83,9 +83,7 @@ class AppIDCheck(Check):
                         or domainutils.check_url(url_http, strict=False)
                     ):
                         self.errors.add("appid-url-not-reachable")
-                        self.info.add(
-                            f"appid-url-not-reachable: Tried {url_http}, {url_https}"
-                        )
+                        self.info.add(f"appid-url-not-reachable: Tried {url_http}, {url_https}")
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")

@@ -145,9 +145,7 @@ def main() -> int:
     parser.add_argument(
         "--version", action="version", version=f"flatpak-builder-lint {__version__}"
     )
-    parser.add_argument(
-        "--exceptions", help="skip allowed warnings or errors", action="store_true"
-    )
+    parser.add_argument("--exceptions", help="skip allowed warnings or errors", action="store_true")
     parser.add_argument("--appid", help="override app ID", type=str, nargs=1)
     parser.add_argument(
         "--cwd",

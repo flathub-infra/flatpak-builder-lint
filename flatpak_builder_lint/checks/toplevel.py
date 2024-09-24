@@ -52,9 +52,7 @@ class TopLevelCheck(Check):
             "git@github.com:flatpak/",
             "git@github.com:flathub-infra/",
         )
-        ext_gitmodules = [
-            m for m in gitmodules if not m.startswith(allowed_gitmodule_urls)
-        ]
+        ext_gitmodules = [m for m in gitmodules if not m.startswith(allowed_gitmodule_urls)]
         if ext_gitmodules:
             self.errors.add("external-gitmodule-url-found")
             self.info.add(f"external-gitmodule-url-found: {ext_gitmodules}")

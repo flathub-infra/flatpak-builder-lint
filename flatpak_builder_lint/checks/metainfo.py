@@ -123,8 +123,7 @@ class MetainfoCheck(Check):
             svg_icon_list = [
                 file
                 for file in glob.glob(svg_glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
-                and os.path.isfile(file)
+                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
             ]
             wrong_svgs = [i for i in svg_icon_list if not i.endswith((".svg", ".svgz"))]
         if not all(i.endswith((".svg", ".svgz")) for i in svg_icon_list):
@@ -137,8 +136,7 @@ class MetainfoCheck(Check):
             png_icon_list = [
                 file
                 for file in glob.glob(png_glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file))
-                and os.path.isfile(file)
+                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
             ]
             wrong_pngs = [i for i in png_icon_list if not i.endswith(".png")]
         if not all(i.endswith(".png") for i in png_icon_list):
@@ -180,9 +178,7 @@ class MetainfoCheck(Check):
                 )
                 return
 
-            if launchable_file_path is not None and not os.path.exists(
-                launchable_file_path
-            ):
+            if launchable_file_path is not None and not os.path.exists(launchable_file_path):
                 self.errors.add("appstream-launchable-file-missing")
                 self.info.add(
                     f"appstream-launchable-file-missing: The launchable file {launchable_value}"

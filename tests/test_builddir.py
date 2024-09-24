@@ -53,13 +53,10 @@ def test_builddir_finish_args() -> None:
     for a in expected_absents:
         assert a not in found_errors
     for err in found_errors:
-        assert not err.startswith(
-            ("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-")
-        )
+        assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
 
 
 def test_builddir_display_supported() -> None:
-
     absents = {
         "finish-args-fallback-x11-without-wayland",
         "finish-args-only-wayland",
@@ -114,7 +111,6 @@ def test_builddir_console() -> None:
 
 
 def test_builddir_appstream_unsupported_ctype() -> None:
-
     ret = run_checks("tests/builddir/appstream-unsupported-ctype")
     found_errors = set(ret["errors"])
 
@@ -227,7 +223,6 @@ def test_builddir_appstream_icon_key_no_type() -> None:
 
 
 def test_min_success_metadata() -> None:
-
     # Illustrate the minimum metadata required to pass linter
     # These should not be broken
     for builddir in (
