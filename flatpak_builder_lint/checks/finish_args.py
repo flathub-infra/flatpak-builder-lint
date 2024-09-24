@@ -15,9 +15,10 @@ class FinishArgsCheck(Check):
         if "x11" in finish_args["socket"] and "wayland" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-wayland")
 
-        if "x11" in finish_args["socket"] or "fallback-x11" in finish_args["socket"]:
-            if "ipc" not in finish_args["share"]:
-                self.errors.add("finish-args-x11-without-ipc")
+        if (
+            "x11" in finish_args["socket"] or "fallback-x11" in finish_args["socket"]
+        ) and "ipc" not in finish_args["share"]:
+            self.errors.add("finish-args-x11-without-ipc")
 
         if "fallback-x11" in finish_args["socket"] and "wayland" not in finish_args["socket"]:
             self.errors.add("finish-args-fallback-x11-without-wayland")
@@ -120,13 +121,12 @@ class FinishArgsCheck(Check):
                 )
 
         for own_name in finish_args["own-name"]:
-            if appid:
-                # Values not allowed: appid or appid.*
-                # See https://github.com/flathub/flatpak-builder-lint/issues/33
-                if own_name == appid or (
-                    own_name.startswith(appid) and own_name[len(appid)] == "."
-                ):
-                    self.errors.add("finish-args-unnecessary-appid-own-name")
+            # Values not allowed: appid or appid.*
+            # See https://github.com/flathub/flatpak-builder-lint/issues/33
+            if appid and (
+                own_name == appid or (own_name.startswith(appid) and own_name[len(appid)] == ".")
+            ):
+                self.errors.add("finish-args-unnecessary-appid-own-name")
             if own_name == "org.freedesktop.*":
                 self.errors.add("finish-args-wildcard-freedesktop-own-name")
             if own_name == "org.gnome.*":
