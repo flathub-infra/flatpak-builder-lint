@@ -34,11 +34,12 @@ def ignore_ref(ref: str) -> bool:
     if len(ref_splits) != 4:
         return True
 
-    if ref_splits[2] not in ("x86_64", "aarch64") or ref_splits[1].endswith(
-        (".Debug", ".Locale", ".Sources")
-    ):
-        return True
-    return False
+    return bool(
+        (
+            ref_splits[2] not in ("x86_64", "aarch64")
+            or ref_splits[1].endswith((".Debug", ".Locale", ".Sources"))
+        )
+    )
 
 
 @cache
@@ -245,6 +246,4 @@ def is_app_on_flathub_api(appid: str) -> bool:
 
 @cache
 def is_app_on_flathub_summary(appid: str) -> bool:
-    if appid in get_all_apps_on_flathub():
-        return True
-    return False
+    return bool(appid in get_all_apps_on_flathub())
