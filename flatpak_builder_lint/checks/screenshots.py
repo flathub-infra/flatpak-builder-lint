@@ -78,7 +78,7 @@ class ScreenshotsCheck(Check):
                 if i.endswith(".png")
             ]
 
-            sc_values_basename = set([os.path.basename(i) for i in sc_values])
+            sc_values_basename = {os.path.basename(i) for i in sc_values}
 
             if not sc_values:
                 self.errors.add("appstream-missing-screenshots")
@@ -104,13 +104,11 @@ class ScreenshotsCheck(Check):
                 media_glob_path = f"{media_path}/**"
                 ostree.extract_subpath(path, f"screenshots/{arch}", "/", media_path)
 
-                ref_sc_files = set(
-                    [
-                        os.path.basename(path)
-                        for path in glob.glob(media_glob_path, recursive=True)
-                        if path.endswith(".png")
-                    ]
-                )
+                ref_sc_files = {
+                    os.path.basename(path)
+                    for path in glob.glob(media_glob_path, recursive=True)
+                    if path.endswith(".png")
+                }
 
                 if not (ref_sc_files & sc_values_basename):
                     self.errors.add("appstream-screenshots-files-not-found-in-ostree")
