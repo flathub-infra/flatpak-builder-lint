@@ -126,8 +126,7 @@ def get_remote_exceptions(appid: str) -> set[str]:
 def demangle(name: str) -> str:
     if name.startswith("_"):
         name = name[1:]
-    name = name.replace("_", "-")
-    return name
+    return name.replace("_", "-")
 
 
 def get_proj_url(appid: str) -> str | None:
