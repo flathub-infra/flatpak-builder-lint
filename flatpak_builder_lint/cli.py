@@ -189,11 +189,11 @@ def main() -> int:
                 exit_code = 1
 
             output = json.dumps(results, indent=4)
-            print(output)
+            print(output)  # noqa: T201
     else:
         appstream_results = appstream.validate(path, "--explain")
-        print(appstream_results["stdout"])
-        print(appstream_results["stderr"])
+        print(appstream_results["stdout"])  # noqa: T201
+        print(appstream_results["stderr"])  # noqa: T201
         exit_code = appstream_results["returncode"]
 
     sys.exit(exit_code)
