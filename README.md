@@ -52,7 +52,9 @@ poetry run flatpak-builder-lint --help
 After making changes to the code or any dependencies run
 `poetry lock --no-update` to regenerate the lockfile (when adding
 or changing dependency versions) and `poetry install --sync` to
-synchronise the virtual environment.
+synchronise the virtual environment. The virtual enviroment can be
+removed with `poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`
+(check the environment name with `poetry env list`).
 
 The following Python dependencies are needed to run
 `jsonschema^4.19.1, requests^2.32.2, requests-cache^1.2.1, lxml^5.2.2,
@@ -87,6 +89,16 @@ poetry run ruff check --fix .
 
 # Check python types
 poetry run mypy .
+```
+
+A pre-commit hook is provided to automate the formatting and linting:
+
+```
+poetry run pre-commit install
+poetry run pre-commit run --all-files
+
+#Uninstall hooks
+poetry run pre-commit uninstall
 ```
 
 [Pytest](https://docs.pytest.org/en/stable/getting-started.html) is used
