@@ -73,9 +73,8 @@ def run_checks(
     for checkclass in checks.ALL:
         check = checkclass()
 
-        if check_method := getattr(check, check_method_name, None):
-            if callable(check_method):
-                check_method(check_method_arg)
+        if (check_method := getattr(check, check_method_name, None)) and callable(check_method):
+            check_method(check_method_arg)
 
     results: Dict[str, Union[str, List[Optional[str]]]] = {}
     if errors := checks.Check.errors:

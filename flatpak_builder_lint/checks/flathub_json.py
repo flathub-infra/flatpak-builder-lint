@@ -50,9 +50,8 @@ class FlathubJsonCheck(Check):
         ):
             self.errors.add("flathub-json-excluded-all-arches")
 
-        if isinstance(publish_delay, int):
-            if publish_delay < 3 and not is_extra_data:
-                self.errors.add("flathub-json-modified-publish-delay")
+        if isinstance(publish_delay, int) and publish_delay < 3 and not is_extra_data:
+            self.errors.add("flathub-json-modified-publish-delay")
 
     def check_manifest(self, manifest: dict) -> None:
         flathub_json = manifest.get("x-flathub")
