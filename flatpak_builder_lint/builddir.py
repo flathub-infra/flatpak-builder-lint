@@ -88,7 +88,7 @@ def get_flathub_json(path: str) -> dict[str, str | bool | List[str]]:
     flathub_json: dict = {}
 
     if os.path.exists(flathub_json_path):
-        with open(flathub_json_path, "r") as f:
+        with open(flathub_json_path) as f:
             flathub_json = json.load(f)
 
     return flathub_json

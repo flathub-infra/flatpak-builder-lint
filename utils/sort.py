@@ -15,7 +15,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     json_data = None
     for filename in args.filenames:
         try:
-            with open(filename, "r") as f:
+            with open(filename) as f:
                 json_data = json.load(f)
         except ValueError as err:
             print(f"{filename}: Failed to decode: {err}")  # noqa: T201

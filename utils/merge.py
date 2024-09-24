@@ -24,7 +24,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     exit_code = 0
     merge_data = None
     for filename in args.filenames:
-        with open(filename, "r") as f:
+        with open(filename) as f:
             try:
                 merge_data = json.load(f, object_pairs_hook=merge_duplicates)
             except ValueError as err:
