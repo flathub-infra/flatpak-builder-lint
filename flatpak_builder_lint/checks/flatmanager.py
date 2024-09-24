@@ -52,7 +52,7 @@ class FlatManagerCheck(Check):
             target_repo = build_info["repo"]
 
             refs = [build_ref["ref_name"] for build_ref in build_extended.get("build_refs", [])]
-            arches = set(ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4)
+            arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
 
             if token_type == "app":
                 has_app_ref = any(ref.startswith("app/") for ref in refs)

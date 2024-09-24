@@ -132,7 +132,7 @@ def has_icon_key(path: str) -> bool:
 
 
 def icon_no_type(path: str) -> bool:
-    icon_types = set([icon.attrib.get("type") for icon in components(path)[0].xpath("icon")])
+    icon_types = {icon.attrib.get("type") for icon in components(path)[0].xpath("icon")}
 
     if None in icon_types:
         return True
