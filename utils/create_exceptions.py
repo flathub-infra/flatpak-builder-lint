@@ -31,7 +31,6 @@ try:
             appids.add(line.strip("\n"))
 except FileNotFoundError:
     appids.add(args.appidfile[0])
-    pass
 
 data = {}
 for app in appids:
