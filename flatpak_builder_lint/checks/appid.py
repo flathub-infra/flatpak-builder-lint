@@ -66,24 +66,22 @@ class AppIDCheck(Check):
                 if domainutils.get_proj_url(appid) is None:
                     self.errors.add("appid-url-check-internal-error")
                     return
-                else:
-                    url = f"https://{domainutils.get_proj_url(appid)}"
-                    if not domainutils.check_url(url, strict=True):
-                        self.errors.add("appid-url-not-reachable")
-                        self.info.add(f"appid-url-not-reachable: Tried {url}")
+                url = f"https://{domainutils.get_proj_url(appid)}"
+                if not domainutils.check_url(url, strict=True):
+                    self.errors.add("appid-url-not-reachable")
+                    self.info.add(f"appid-url-not-reachable: Tried {url}")
             else:
                 if domainutils.get_domain(appid) is None:
                     self.errors.add("appid-url-check-internal-error")
                     return
-                else:
-                    url_http = f"http://{domainutils.get_domain(appid)}"
-                    url_https = f"https://{domainutils.get_domain(appid)}"
-                    if not (
-                        domainutils.check_url(url_https, strict=False)
-                        or domainutils.check_url(url_http, strict=False)
-                    ):
-                        self.errors.add("appid-url-not-reachable")
-                        self.info.add(f"appid-url-not-reachable: Tried {url_http}, {url_https}")
+                url_http = f"http://{domainutils.get_domain(appid)}"
+                url_https = f"https://{domainutils.get_domain(appid)}"
+                if not (
+                    domainutils.check_url(url_https, strict=False)
+                    or domainutils.check_url(url_http, strict=False)
+                ):
+                    self.errors.add("appid-url-not-reachable")
+                    self.info.add(f"appid-url-not-reachable: Tried {url_http}, {url_https}")
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
