@@ -37,20 +37,20 @@ class DesktopfileCheck(Check):
             icon_files_list = [os.path.basename(i) for i in icon_list]
 
         if appid.endswith(".BaseApp"):
-            return None
+            return
 
         if not os.path.exists(appstream_path):
-            return None
+            return
 
         if len(appstream.components(appstream_path)) != 1:
-            return None
+            return
 
         if appstream.component_type(appstream_path) not in (
             "desktop",
             "desktop-application",
             "console-application",
         ):
-            return None
+            return
 
         is_console = appstream.component_type(appstream_path) == "console-application"
 
