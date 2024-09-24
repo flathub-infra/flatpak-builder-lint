@@ -236,10 +236,8 @@ class FinishArgsCheck(Check):
 
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
-        if isinstance(appid, str):
-            is_baseapp = appid.endswith(".BaseApp")
-        else:
-            is_baseapp = False
+
+        is_baseapp = bool(isinstance(appid, str) and appid.endswith(".BaseApp"))
 
         finish_args_list = manifest.get("finish-args")
         build_extension = manifest.get("build-extension")
@@ -279,10 +277,7 @@ class FinishArgsCheck(Check):
             return
 
         appid = metadata.get("name")
-        if isinstance(appid, str):
-            is_baseapp = appid.endswith(".BaseApp")
-        else:
-            is_baseapp = False
+        is_baseapp = bool(isinstance(appid, str) and appid.endswith(".BaseApp"))
 
         permissions = metadata.get("permissions", {})
         if not permissions and not is_baseapp:
