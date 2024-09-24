@@ -20,10 +20,7 @@ parser.add_argument(
 parser.add_argument("--reason", nargs=1, type=str, help="Input optional reason string")
 args = parser.parse_args()
 
-if not args.reason:
-    reason = "Predates the linter rule"
-else:
-    reason = args.reason[0]
+reason = "Predates the linter rule" if not args.reason else args.reason[0]
 
 excps = args.exception
 appids = set()

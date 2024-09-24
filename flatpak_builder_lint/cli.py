@@ -93,10 +93,7 @@ def run_checks(
     if enable_exceptions:
         exceptions = None
 
-        if appid:
-            appid = appid[0]
-        else:
-            appid = infer_appid_func(path)
+        appid = appid[0] if appid else infer_appid_func(path)
 
         if appid:
             exceptions = domainutils.get_remote_exceptions(appid)
@@ -174,10 +171,7 @@ def main() -> int:
     args = parser.parse_args()
     exit_code = 0
 
-    if args.cwd:
-        path = os.getcwd()
-    else:
-        path = args.path[0]
+    path = os.getcwd() if args.cwd else args.path[0]
 
     if args.ref:
         checks.Check.repo_primary_ref = args.ref[0]
