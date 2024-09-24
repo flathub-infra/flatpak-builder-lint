@@ -113,7 +113,7 @@ def test_manifest_appid() -> None:
     assert errors.issubset(found_errors)
 
 
-def test_manifest_appid() -> None:
+def test_manifest_appid_too_few_cpts() -> None:
     errors = {
         "appid-code-hosting-too-few-components",
     }
