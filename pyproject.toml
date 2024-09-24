@@ -65,6 +65,8 @@ select = [
   "ARG",
   "ERA",
   "PL",
+  "UP",
+  "S",
 ]
 
 ignore = [
@@ -73,8 +75,15 @@ ignore = [
   "PLR0912",
   "PLR0913",
   "PLR0915",
+  "S105",
+  "S320",
+  "S607",
+  "S603",
 ]
 
 [tool.ruff.format]
 line-ending = "lf"
 quote-style = "double"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
