@@ -233,7 +233,7 @@ def test_min_success_metadata() -> None:
         ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}")
         assert "errors" not in ret
 
-    ret = run_checks(f"tests/builddir/min_success_metadata/org.flathub.cli")
+    ret = run_checks("tests/builddir/min_success_metadata/org.flathub.cli")
     found_errors = set(ret["errors"])
     # CLI applications are allowed to have no finish-args with exceptions
     accepted = {"finish-args-not-defined"}
