@@ -105,15 +105,16 @@ def component_type(path: str) -> str:
 
 
 def is_valid_component_type(path: str) -> bool:
-    if component_type(path) in (
-        "addon",
-        "console-application",
-        "desktop",
-        "desktop-application",
-        "runtime",
-    ):
-        return True
-    return False
+    return bool(
+        component_type(path)
+        in (
+            "addon",
+            "console-application",
+            "desktop",
+            "desktop-application",
+            "runtime",
+        )
+    )
 
 
 def check_caption(path: str) -> bool:
@@ -133,11 +134,7 @@ def has_icon_key(path: str) -> bool:
 
 def icon_no_type(path: str) -> bool:
     icon_types = {icon.attrib.get("type") for icon in components(path)[0].xpath("icon")}
-
-    if None in icon_types:
-        return True
-
-    return False
+    return None in icon_types
 
 
 def is_remote_icon_mirrored(path: str) -> bool:
