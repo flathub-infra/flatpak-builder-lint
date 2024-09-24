@@ -67,12 +67,13 @@ Additionally the following tools or packages must be installed:
 ```sh
 #!/bin/sh
 
-exec flatpak run --command=appstreamcli org.flatpak.Builder ${@}
+exec flatpak run --branch=stable --command=appstreamcli org.flatpak.Builder ${@}
 ```
 - `desktop-file-validate` to validate desktop files
 
-[Ruff](https://docs.astral.sh/ruff/installation/) and [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
-is used to lint, format code and check Python types. To run them:
+[Ruff](https://docs.astral.sh/ruff/installation/) is used to lint and
+format code. [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
+is used to check Python types. To run them:
 
 ```sh
 # Formatting
@@ -83,6 +84,9 @@ poetry run ruff check .
 
 # Auto fix some lint errrors
 poetry run ruff check --fix .
+
+# Check python types
+poetry run mypy .
 ```
 
 [Pytest](https://docs.pytest.org/en/stable/getting-started.html) is used
