@@ -49,7 +49,7 @@ jobs:
         run: poetry run ruff check --output-format=github .
 
       - name: Check python types
-        run: poetry run mypy flatpak_builder_lint
+        run: poetry run mypy .
 
       - name: Allow file:// clones with git>=2.38.1
         run: |
