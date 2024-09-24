@@ -143,20 +143,19 @@ class DesktopfileCheck(Check):
             if exect is None:
                 # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
                 self.errors.add("desktop-file-exec-key-absent")
-            else:
-                if len(exect) > 0 and "flatpak run" in exect:
-                    # desktop files are rewritten only on (re)install, neither
-                    # exported ref or builddir should have "flatpak run"
-                    # unless manually added in desktop-file
-                    # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
-                    # flatpak-dir.c: export_desktop_file < rewrite_export_dir
-                    # < flatpak_rewrite_export_dir < flatpak_dir_deploy
-                    # < flatpak_dir_deploy_install < flatpak_dir_install
-                    self.errors.add("desktop-file-exec-has-flatpak-run")
-                    self.info.add(
-                        f"desktop-file-exec-has-flatpak-run: Exec key: {exect}"
-                        + " uses flatpak run in it"
-                    )
+            elif len(exect) > 0 and "flatpak run" in exect:
+                # desktop files are rewritten only on (re)install, neither
+                # exported ref or builddir should have "flatpak run"
+                # unless manually added in desktop-file
+                # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
+                # flatpak-dir.c: export_desktop_file < rewrite_export_dir
+                # < flatpak_rewrite_export_dir < flatpak_dir_deploy
+                # < flatpak_dir_deploy_install < flatpak_dir_install
+                self.errors.add("desktop-file-exec-has-flatpak-run")
+                self.info.add(
+                    f"desktop-file-exec-has-flatpak-run: Exec key: {exect}"
+                    + " uses flatpak run in it"
+                )
 
             try:
                 hidden = key_file.get_boolean("Desktop Entry", "Hidden")
