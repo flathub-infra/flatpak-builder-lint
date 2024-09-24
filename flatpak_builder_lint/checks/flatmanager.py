@@ -41,24 +41,17 @@ class FlatManagerCheck(Check):
                 "Authorization": f"Bearer {flatmgr_token}",
                 "Content-Type": "application/json",
             }
-            r = requests.get(
-                f"{flatmgr_url}/api/v1/build/{build_id}/extended", headers=headers
-            )
+            r = requests.get(f"{flatmgr_url}/api/v1/build/{build_id}/extended", headers=headers)
 
             if r.status_code != 200:
-                raise RuntimeError(
-                    f"Failed to fetch build info from flat-manager: {r.status_code}"
-                )
+                raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")
 
             build_extended = r.json()
             build_info = build_extended["build"]
             token_type = build_info["token_type"]
             target_repo = build_info["repo"]
 
-            refs = [
-                build_ref["ref_name"]
-                for build_ref in build_extended.get("build_refs", [])
-            ]
+            refs = [build_ref["ref_name"] for build_ref in build_extended.get("build_refs", [])]
             arches = set(ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4)
 
             if token_type == "app":

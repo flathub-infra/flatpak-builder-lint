@@ -46,10 +46,7 @@ def fetch_summary_bytes(url: str) -> bytes:
     summary_bytes = b""
     try:
         r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
-        if (
-            r.status_code == 200
-            and r.headers.get("Content-Type") == "application/octet-stream"
-        ):
+        if r.status_code == 200 and r.headers.get("Content-Type") == "application/octet-stream":
             summary_bytes = r.content
     except requests.exceptions.RequestException:
         pass
@@ -62,7 +59,6 @@ def fetch_summary_bytes(url: str) -> bytes:
 
 @cache
 def get_appids_from_summary(url: str) -> set[str]:
-
     appids = set()
     summary = GLib.Bytes.new(fetch_summary_bytes(url))
 
@@ -84,9 +80,9 @@ def get_appids_from_summary(url: str) -> set[str]:
 
 @cache
 def get_all_apps_on_flathub() -> set[str]:
-    return get_appids_from_summary(
-        f"{FLATHUB_STABLE_REPO_URL}/summary"
-    ) | get_appids_from_summary(f"{FLATHUB_BETA_REPO_URL}/summary")
+    return get_appids_from_summary(f"{FLATHUB_STABLE_REPO_URL}/summary") | get_appids_from_summary(
+        f"{FLATHUB_BETA_REPO_URL}/summary"
+    )
 
 
 @cache
@@ -111,7 +107,6 @@ def check_url(url: str, strict: bool) -> bool:
 
 @cache
 def get_remote_exceptions(appid: str) -> set[str]:
-
     ret = set()
     try:
         # exception updates should be reflected immediately
@@ -235,9 +230,7 @@ def get_domain(appid: str) -> str | None:
         domain = "gnome.org"
     elif appid.startswith("org.kde."):
         domain = "kde.org"
-    elif appid.startswith("org.freedesktop.") and not appid.startswith(
-        "org.freedesktop.gitlab."
-    ):
+    elif appid.startswith("org.freedesktop.") and not appid.startswith("org.freedesktop.gitlab."):
         domain = "freedesktop.org"
     else:
         demangled = [demangle(i) for i in appid.split(".")[:-1]]
@@ -253,7 +246,6 @@ def is_app_on_flathub_api(appid: str) -> bool:
 
 @cache
 def is_app_on_flathub_summary(appid: str) -> bool:
-
     if appid in get_all_apps_on_flathub():
         return True
     return False

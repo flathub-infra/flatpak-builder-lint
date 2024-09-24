@@ -19,10 +19,7 @@ class FinishArgsCheck(Check):
             if "ipc" not in finish_args["share"]:
                 self.errors.add("finish-args-x11-without-ipc")
 
-        if (
-            "fallback-x11" in finish_args["socket"]
-            and "wayland" not in finish_args["socket"]
-        ):
+        if "fallback-x11" in finish_args["socket"] and "wayland" not in finish_args["socket"]:
             self.errors.add("finish-args-fallback-x11-without-wayland")
             self.info.add(
                 "finish-args-fallback-x11-without-wayland: finish-args has fallback-x11"
@@ -30,8 +27,7 @@ class FinishArgsCheck(Check):
             )
 
         if "wayland" in finish_args["socket"] and (
-            "x11" not in finish_args["socket"]
-            and "fallback-x11" not in finish_args["socket"]
+            "x11" not in finish_args["socket"] and "fallback-x11" not in finish_args["socket"]
         ):
             self.errors.add("finish-args-only-wayland")
             self.info.add(
@@ -70,9 +66,7 @@ class FinishArgsCheck(Check):
                     mode_suffix = mode_src.split(":", 1)[1]
 
                 if re.match(regexp_arbitrary, fs):
-                    self.errors.add(
-                        f"finish-args-arbitrary-{xdg_dir}-{mode_suffix}-access"
-                    )
+                    self.errors.add(f"finish-args-arbitrary-{xdg_dir}-{mode_suffix}-access")
                 elif re.match(regexp_unnecessary, fs):
                     subdir = fs.split("/")[1]
                     if subdir.endswith(modes):
@@ -116,9 +110,9 @@ class FinishArgsCheck(Check):
                     "finish-args-absolute-home-path: finish-args has filesystem access"
                     + " that is a subdirectory of /run/media"
                 )
-            if fs.startswith(
-                ("xdg-run/dconf", "~/.config/dconf", "home/dconf")
-            ) or re.match("^/run/user/.*/dconf", fs):
+            if fs.startswith(("xdg-run/dconf", "~/.config/dconf", "home/dconf")) or re.match(
+                "^/run/user/.*/dconf", fs
+            ):
                 self.errors.add("finish-args-direct-dconf-path")
                 self.info.add(
                     "finish-args-direct-dconf-path: finish-args"
@@ -147,9 +141,7 @@ class FinishArgsCheck(Check):
                 )
             if own_name == "ca.desrt.dconf" or own_name.startswith("ca.desrt.dconf."):
                 self.errors.add("finish-args-dconf-own-name")
-            if own_name == "org.freedesktop.DBus" or own_name.startswith(
-                "org.freedesktop.DBus."
-            ):
+            if own_name == "org.freedesktop.DBus" or own_name.startswith("org.freedesktop.DBus."):
                 self.errors.add("finish-args-freedesktop-dbus-own-name")
                 self.info.add(
                     "finish-args-freedesktop-dbus-own-name: finish-args has own-name access to"
@@ -177,9 +169,7 @@ class FinishArgsCheck(Check):
                 )
             if talk_name == "ca.desrt.dconf" or talk_name.startswith("ca.desrt.dconf."):
                 self.errors.add("finish-args-dconf-talk-name")
-            if talk_name == "org.freedesktop.DBus" or talk_name.startswith(
-                "org.freedesktop.DBus."
-            ):
+            if talk_name == "org.freedesktop.DBus" or talk_name.startswith("org.freedesktop.DBus."):
                 self.errors.add("finish-args-freedesktop-dbus-talk-name")
                 self.info.add(
                     "finish-args-freedesktop-dbus-talk-name: finish-args has talk-name access to"
@@ -190,8 +180,7 @@ class FinishArgsCheck(Check):
             if talk_name in ("org.freedesktop.Flatpak", "org.freedesktop.Flatpak.*"):
                 self.errors.add("finish-args-flatpak-spawn-access")
                 self.info.add(
-                    "finish-args-flatpak-spawn-access: finish-args has access"
-                    + " to flatpak-spawn"
+                    "finish-args-flatpak-spawn-access: finish-args has access" + " to flatpak-spawn"
                 )
             if talk_name != "org.freedesktop.Flatpak.*" and talk_name.startswith(
                 "org.freedesktop.Flatpak."
@@ -238,10 +227,7 @@ class FinishArgsCheck(Check):
             ):
                 self.errors.add("finish-args-flatpak-system-talk-name")
 
-        if (
-            "system-bus" in finish_args["socket"]
-            or "session-bus" in finish_args["socket"]
-        ):
+        if "system-bus" in finish_args["socket"] or "session-bus" in finish_args["socket"]:
             self.errors.add("finish-args-arbitrary-dbus-access")
             self.info.add(
                 "finish-args-arbitrary-dbus-access: finish-args has socket access to"

@@ -122,9 +122,7 @@ def check_caption(path: str) -> bool:
 
 def has_manifest_key(path: str) -> bool:
     custom = parse_xml(path).xpath("//custom/value[@key='flathub::manifest']/text()")
-    metadata = parse_xml(path).xpath(
-        "//metadata/value[@key='flathub::manifest']/text()"
-    )
+    metadata = parse_xml(path).xpath("//metadata/value[@key='flathub::manifest']/text()")
     return bool(custom or metadata)
 
 
@@ -133,9 +131,7 @@ def has_icon_key(path: str) -> bool:
 
 
 def icon_no_type(path: str) -> bool:
-    icon_types = set(
-        [icon.attrib.get("type") for icon in components(path)[0].xpath("icon")]
-    )
+    icon_types = set([icon.attrib.get("type") for icon in components(path)[0].xpath("icon")])
 
     if None in icon_types:
         return True
@@ -145,9 +141,7 @@ def icon_no_type(path: str) -> bool:
 
 def is_remote_icon_mirrored(path: str) -> bool:
     remote_icons = parse_xml(path).xpath("//icon[@type='remote']/text()")
-    return all(
-        icon.startswith("https://dl.flathub.org/media/") for icon in remote_icons
-    )
+    return all(icon.startswith("https://dl.flathub.org/media/") for icon in remote_icons)
 
 
 def get_icon_filename(path: str) -> Optional[str]:
