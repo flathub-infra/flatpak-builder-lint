@@ -176,6 +176,12 @@ def test_manifest_finish_args_issue_wayland_x11() -> None:
     assert "finish-args-contains-both-x11-and-wayland" in found_errors
 
 
+def test_manifest_finish_args_incorrect_secret_talk_name() -> None:
+    ret = run_checks("tests/manifests/finish_args-incorrect_secrets-talk-name.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-incorrect-secret-service-talk-name" in found_errors
+
+
 def test_manifest_finish_args_issue_33() -> None:
     ret = run_checks("tests/manifests/own_name_substring.json")
     found_errors = set(ret["errors"])

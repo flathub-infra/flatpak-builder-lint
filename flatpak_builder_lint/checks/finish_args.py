@@ -186,6 +186,13 @@ class FinishArgsCheck(Check):
             ):
                 self.errors.add("finish-args-flatpak-talk-name")
 
+            if talk_name == "org.freedesktop.Secrets":
+                self.errors.add("finish-args-incorrect-secret-service-talk-name")
+                self.info.add(
+                    "finish-args-incorrect-secret-service-talk-name: The name is in lower case"
+                    + " org.freedesktop.secrets"
+                )
+
         for sys_own_name in finish_args["system-own-name"]:
             if sys_own_name == "org.freedesktop.*":
                 self.errors.add("finish-args-wildcard-freedesktop-system-own-name")
