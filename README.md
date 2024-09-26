@@ -42,30 +42,7 @@ and on external tools.
 
 ## Contributing
 
-For development purposes the project can be installed with:
-
-```bash
-git clone https://github.com/flathub/flatpak-builder-lint
-cd flatpak-builder-lint
-poetry install
-poetry run flatpak-builder-lint --help
-```
-
-After making changes to the code or any dependencies run
-`poetry lock --no-update` to regenerate the lockfile (when adding
-or changing dependency versions) and `poetry install --sync` to
-synchronise the virtual environment.
-
-The virtual enviroment can be removed with
-`poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`
-(check the environment name with `poetry env list`).
-
-The following Python dependencies are needed to run
-`jsonschema^4.19.1, requests^2.32.2, requests-cache^1.2.1, lxml^5.2.2,
-sentry-sdk^2.8.0, PyGObject^3.48.2`. Additionally `poetry-core>=1.0.0`
-is necessary to build.
-
-Additionally the following system dependencies must be installed:
+The following system dependencies must be installed:
 
 - `libgirepository1.0-dev, gir1.2-ostree-1.0`
 - `flatpak-builder` for validating flatpak-builder manifests
@@ -76,24 +53,46 @@ Additionally the following system dependencies must be installed:
 exec flatpak run --branch=stable --command=appstreamcli org.flatpak.Builder ${@}
 ```
 - `desktop-file-validate` to validate desktop files
+- `git` to check if a directory is a git repository
 
 Debiab/Ubuntu:
 
 ```
-# apt install appstream flatpak-builder libgirepository1.0-dev gir1.2-ostree-1.0 libcairo2-dev desktop-file-utils
+# apt install git appstream flatpak-builder libgirepository1.0-dev gir1.2-ostree-1.0 libcairo2-dev desktop-file-utils
 ```
 
 ArchLinux:
 
 ```
-# pacman -S --needed appstream flatpak-builder desktop-file-utils ostree glib2
+# pacman -S --needed git appstream flatpak-builder desktop-file-utils ostree glib2
 ```
 
 Fedora:
 
 ```
-# dnf install appstream flatpak-builder desktop-file-utils ostree-libs glib2-devel cairo-devel
+# dnf install git appstream flatpak-builder desktop-file-utils ostree-libs glib2-devel cairo-devel
 ```
+
+Then the project can be installed with:
+
+```bash
+git clone https://github.com/flathub/flatpak-builder-lint.git && cd flatpak-builder-lint
+poetry install
+poetry run flatpak-builder-lint --help
+```
+
+After making changes to any dependencies run
+`poetry lock --no-update` to regenerate the lockfile and
+`poetry install --sync` to synchronise the virtual environment when
+chaning code or dependencies.
+
+The virtual enviroment can be listed with `poetry env list` and removed
+with `poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`.
+
+The following Python dependencies are installed by Poetry and needed to
+run `jsonschema^4.19.1, requests^2.32.2, requests-cache^1.2.1, lxml^5.2.2,
+sentry-sdk^2.8.0, PyGObject^3.48.2`. Additionally `poetry-core>=1.0.0`
+is necessary to build.
 
 [Ruff](https://docs.astral.sh/ruff/installation/) is used to lint and
 format code. [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
@@ -119,7 +118,7 @@ A pre-commit hook is provided to automate the formatting and linting:
 poetry run pre-commit install
 poetry run pre-commit run --all-files
 
-#Uninstall hooks
+# Uninstall hooks
 poetry run pre-commit uninstall
 ```
 
