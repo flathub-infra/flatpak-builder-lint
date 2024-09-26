@@ -9,6 +9,7 @@
             "build-commands": [
                 "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-core>=1.0.0\" --no-build-isolation"
             ],
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "file",
@@ -216,6 +217,7 @@
             "build-commands": [
                 "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"meson-python\" --no-build-isolation"
             ],
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "file",
