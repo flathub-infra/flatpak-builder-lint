@@ -7,6 +7,12 @@ on:
     paths-ignore:
       - 'flatpak_builder_lint/staticfiles/exceptions.json'
       - 'utils/**'
+      - '.git-blame-ignore-revs'
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - 'README.md'
   workflow_dispatch:
 
 jobs:

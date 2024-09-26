@@ -5,10 +5,22 @@ on:
     branches: master
     paths-ignore:
       - 'flatpak_builder_lint/staticfiles/exceptions.json'
+      - '.git-blame-ignore-revs'
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - 'README.md'
   pull_request:
     branches: master
     paths-ignore:
       - 'flatpak_builder_lint/staticfiles/exceptions.json'
+      - '.git-blame-ignore-revs'
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - 'README.md'
 
 jobs:
   lint:
