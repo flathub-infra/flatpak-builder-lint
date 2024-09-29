@@ -3821,6 +3821,6 @@
         "finish-args-flatpak-spawn-access": "required to install and manage compatibility-runtimes on the host"
     },
     "dev.edfloreshz.CosmicTweaks": {
-        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write to system configuration files"
     }
 }
