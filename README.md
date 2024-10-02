@@ -32,7 +32,7 @@ infrastructure.
 
 The latest build of flatpak-builder-linter can be used with Docker.
 
-```
+```bash
 docker run --rm -it ghcr.io/flathub/flatpak-builder-lint:latest --help
 
 # Run the manifest check
