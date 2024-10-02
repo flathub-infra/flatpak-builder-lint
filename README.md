@@ -6,18 +6,7 @@ for other Flatpak repositories.
 
 ## Installation
 
-The only supported ways to install and use it are Docker and Flatpak.
-
-### Docker
-
-The latest build of flatpak-builder-linter can be used with Docker.
-
-```
-docker run --rm -it ghcr.io/flathub/flatpak-builder-lint:latest
-```
-
-You may need to pass the local data using `--volume` to check the chosen file
-or repo.
+The only supported ways to install and use it are Flatpak and Docker.
 
 ### Flatpak
 
@@ -28,10 +17,33 @@ available on Flathub. [Set up Flatpak][flatpak_setup] first, then install
 ```bash
 flatpak install flathub -y org.flatpak.Builder
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder --help
+
+# Run the manifest check
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest com.foo.bar.json
+
+# Run the repo check
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder repo repo
 ```
 
-The flatpak package tracks the git commit currently used on the Flathub
+The Flatpak package tracks the git commit currently used on the Flathub
 infrastructure.
+
+### Docker
+
+The latest build of flatpak-builder-linter can be used with Docker.
+
+```
+docker run --rm -it ghcr.io/flathub/flatpak-builder-lint:latest --help
+
+# Run the manifest check
+docker run -v $(pwd):/mnt --rm -it ghcr.io/flathub/flatpak-builder-lint:latest manifest /mnt/com.foo.bar.json
+
+# Run the repo check
+docker run -v $(pwd):/mnt --rm -it ghcr.io/flathub/flatpak-builder-lint:latest repo /mnt/repo
+```
+
+You may need to pass `:Z` if your distro is using SELinux like so
+`-v $(pwd):/mnt:Z`.
 
 ### Local environment
 
