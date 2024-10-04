@@ -3828,5 +3828,8 @@
     },
     "dev.edfloreshz.Calculator": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "com.francescogaglione.chronos": {
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     }
 }
