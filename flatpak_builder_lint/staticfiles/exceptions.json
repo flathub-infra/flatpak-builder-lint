@@ -1426,8 +1426,6 @@
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
     },
     "org.kde.ruqola": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.yakuake": {
@@ -1975,7 +1973,6 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule"
     },
     "com.discordapp.Discord": {
-        "finish-args-wildcard-kde-own-name": "Initial import, outdated Electron, still uses legacy StatusNotifier implementation",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
@@ -2050,8 +2047,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.index": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.isoimagewriter": {
@@ -2129,10 +2124,6 @@
     },
     "org.kde.kgeography": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "org.kde.kgeotag": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
     },
     "org.kde.kgoldrunner": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
