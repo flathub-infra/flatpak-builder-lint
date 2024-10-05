@@ -254,5 +254,15 @@ class DesktopfileCheck(Check):
                 return
             if metadata.get("type", False) != "application":
                 return
-            ostree.extract_subpath(path, ref, "files/share", tmpdir)
+
+            dirs_needed = ("app-info", "applications", "icons")
+
+            for subdir in dirs_needed:
+                os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
+
+            for subdir in dirs_needed:
+                ostree.extract_subpath(
+                    path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
+                )
+
             self._validate(tmpdir, appid)

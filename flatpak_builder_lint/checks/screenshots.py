@@ -20,7 +20,15 @@ class ScreenshotsCheck(Check):
         refs = ostree.get_refs(path, None)
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "files/share", tmpdir)
+            dirs_needed = ("appdata", "metainfo", "app-info")
+
+            for subdir in dirs_needed:
+                os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
+
+            for subdir in dirs_needed:
+                ostree.extract_subpath(
+                    path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
+                )
 
             appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
             if not os.path.exists(appstream_path):
