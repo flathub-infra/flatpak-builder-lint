@@ -1,0 +1,22 @@
+app-id: org.flathub.cli
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: hello
+finish-args:
+ - --filesystem=host
+ - --share=network
+
+modules:
+- name: metainfo
+  buildsystem: simple
+  build-commands:
+   - install -Dm0644 ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+   - install -Dm755 hello.sh /app/bin/hello
+  sources:
+   - type: file
+     path: org.flathub.cli.metainfo.xml
+   - type: script
+     dest-filename: hello.sh
+     commands:
+      - echo "Hello world, from a sandbox"
