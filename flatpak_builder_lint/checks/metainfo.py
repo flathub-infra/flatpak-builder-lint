@@ -253,8 +253,6 @@ class MetainfoCheck(Check):
 
             for subdir in dirs_needed:
                 os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-
-            for subdir in dirs_needed:
                 ostree.extract_subpath(
                     path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
                 )
