@@ -91,6 +91,49 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
+      - name: Check a baseapp
+        run: |
+          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.chromium.Chromium.BaseApp.git org.chromium.Chromium.BaseApp
+          cd org.chromium.Chromium.BaseApp
+          git submodule update --init --recursive
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.chromium.Chromium.BaseApp.yaml
+          flatpak-builder --verbose --user --force-clean --repo=repo \
+            --install-deps-from=flathub --ccache builddir org.chromium.Chromium.BaseApp.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
+      - name: Check an extension
+        run: |
+          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.gtk.Gtk3theme.Helium.git org.gtk.Gtk3theme.Helium
+          cd org.gtk.Gtk3theme.Helium
+          git submodule update --init --recursive
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.gtk.Gtk3theme.Helium.yml
+          flatpak-builder --verbose --user --force-clean --repo=repo \
+            --install-deps-from=flathub --ccache builddir org.gtk.Gtk3theme.Helium.yml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
+      - name: Check a console application
+        run: |
+          cd tests/repo/min_success_metadata/console-app
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
+          flatpak-builder --verbose --user --force-clean --repo=repo \
+            --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
+      - name: Check a GUI application
+        run: |
+          cd tests/repo/min_success_metadata/gui-app
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+            --mirror-screenshots-url=https://dl.flathub.org/media \
+            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+          mkdir -p builddir/files/share/app-info/media
+          ostree commit --repo=repo --canonical-permissions --branch=screenshots/x86_64 builddir/files/share/app-info/media
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
       - name: Set up appstreamcli
         run: |
           echo '#!/bin/sh' > /usr/local/bin/appstreamcli
