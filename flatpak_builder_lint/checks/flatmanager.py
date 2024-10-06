@@ -74,14 +74,12 @@ class FlatManagerCheck(Check):
                         self.errors.add("flat-manager-branch-repo-mismatch")
                         break
 
-                with (
-                    tempfile.TemporaryDirectory() as tmpdir,
-                    gzip.open(
+                with tempfile.TemporaryDirectory() as tmpdir:
+                    with gzip.open(  # noqa: SIM117
                         f"{path}/appstream/{arches.pop()}/appstream.xml.gz", "rb"
-                    ) as appstream_gz,
-                    open(f"{tmpdir}/appstream.xml", "wb") as appstream_file,
-                ):
-                    shutil.copyfileobj(appstream_gz, appstream_file)
+                    ) as appstream_gz:
+                        with open(f"{tmpdir}/appstream.xml", "wb") as appstream_file:
+                            shutil.copyfileobj(appstream_gz, appstream_file)
 
                     if not appstream.has_manifest_key(f"{tmpdir}/appstream.xml"):
                         self.errors.add("appstream-no-flathub-manifest-key")
