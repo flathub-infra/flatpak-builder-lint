@@ -3786,7 +3786,8 @@
     },
     "io.github.wivrn.wivrn": {
         "finish-args-unnecessary-xdg-config-openvr-create-access": "Required to set the current OpenVR runtime",
-        "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime"
+        "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime",
+        "finish-args-flatpak-spawn-access": "Required to launch games on the host"
     },
     "br.gov.fazenda.receita.irpf2022": {
         "external-gitmodule-url-found": "Predates the linter rule"
