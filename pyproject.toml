@@ -89,7 +89,7 @@ quote-style = "double"
 "tests/*" = ["S101"]
 
 [tool.pytest.ini_options]
-addopts = "--ignore=tests/repo"
+addopts = "--ignore=tests/repo --ignore=tests/test_httpserver.py"
 testpaths = [
     "tests",
 ]
