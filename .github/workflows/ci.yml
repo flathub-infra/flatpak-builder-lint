@@ -117,6 +117,7 @@ jobs:
         run: |
           cd tests/repo/min_success_metadata/console-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
           flatpak-builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
