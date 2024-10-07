@@ -141,6 +141,13 @@ to run tests:
 poetry run pytest -v tests
 ```
 
+An additional Flat manager test can be run when modifying code relying
+on the flatmanager check using
+
+```sh
+./tests/flatmanager.sh
+```
+
 ## Usage
 
 ```
