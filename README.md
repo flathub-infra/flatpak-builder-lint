@@ -142,7 +142,9 @@ poetry run pytest -v tests
 ```
 
 An additional Flat manager test can be run when modifying code relying
-on the flatmanager check using
+on the flatmanager check. The check is meant to be run on CI and not
+locally. If it is being run locally it must be run from the root of the
+git repository using
 
 ```sh
 ./tests/flatmanager.sh
