@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 top_dir="$(pwd)"
 
 checkcmd() {
@@ -23,7 +25,6 @@ if [ "$GITHUB_ACTIONS" = "true" ]; then
 fi
 
 arch="$(flatpak --default-arch)"
-check_exists="$(flatpak info org.flatpak.Builder//localtest)"
 
 files="docker/rewrite-manifest.py docker/flatpak-builder-lint-deps.json tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml tests/test_httpserver.py"
 for item in ${files}; do
@@ -53,76 +54,72 @@ if [ -z "$GITHUB_ACTIONS" ]; then
 	flatpak run org.flatpak.Builder//localtest --version
 fi
 
-if [ "${check_exists}" ]; then
-	cd "$top_dir" || exit
-	rm -rf tests/repo/min_success_metadata/gui-app/builddir tests/repo/min_success_metadata/gui-app/repo tests/repo/min_success_metadata/gui-app/.flatpak-builder
-	cd tests/repo/min_success_metadata/gui-app || exit
-
-	if [ "$GITHUB_ACTIONS" = "true" ]; then
-		dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo --mirror-screenshots-url=https://dl.flathub.org/media --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
-	else
-		flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo --mirror-screenshots-url=https://dl.flathub.org/media --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
-	fi
-
-
-	mkdir -p builddir/files/share/app-info/media
-	ostree commit --repo=repo --canonical-permissions --branch=screenshots/"${arch}" builddir/files/share/app-info/media
-	export FLAT_MANAGER_BUILD_ID=0 FLAT_MANAGER_URL=http://localhost:9001 FLAT_MANAGER_TOKEN=foo
-	mkdir -p repo/appstream/x86_64
-	mv -v builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/"${arch}"/appstream.xml.gz
-	nohup python ../../../test_httpserver.py &
-	sleep 15
-
-	errors1="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)" && tests_run="yes"
-	if [ "${errors1}" = "appstream-no-flathub-manifest-key" ]; then
-		echo "Test1: Pass"
-		test_code="test_passed"
-	else
-		echo "Test1: Failed, $errors1"
-		test_code="test_failed"
-	fi
-
-	gzip -df repo/appstream/"${arch}"/appstream.xml.gz || true
-	xmlstarlet ed --subnode "/components/component" --type elem -n custom --subnode "/components/component/custom" --type elem -n value -v "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml" repo/appstream/"${arch}"/appstream.xml|xmlstarlet ed --insert //custom/value --type attr -n key -v flathub::manifest >> repo/appstream/x86_64/appstream-out.xml
-	rm -vf repo/appstream/"${arch}"/appstream.xml  repo/appstream/"${arch}"/appstream.xml.gz
-	mv -v repo/appstream/"${arch}"/appstream-out.xml repo/appstream/"${arch}"/appstream.xml
-	gzip repo/appstream/"${arch}"/appstream.xml || true
-
-	errors2="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)" && tests_run="yes"
-	if [ "${errors2}" = "" ]; then
-		echo "Test2: Pass"
-		test_code="test_passed"
-	else
-		echo "Test2: Failed, $errors2"
-		test_code="test_failed"
-	fi
-
-	python ../../../test_httpserver.py --stop
-
-	if [ -z "$GITHUB_ACTIONS" ]; then
-		flatpak remove -y org.flatpak.Builder//localtest
-		flatpak uninstall --user --unused -y
-	fi
-
-	cd "$top_dir" || exit
-
-	rm -rf tests/repo/min_success_metadata/gui-app/nohup.out build tests/repo/min_success_metadata/gui-app/builddir tests/repo/min_success_metadata/gui-app/repo tests/repo/min_success_metadata/gui-app/.flatpak-builder
-	unset FLAT_MANAGER_BUILD_ID
-	unset FLAT_MANAGER_URL
-	unset FLAT_MANAGER_TOKEN
+if [ ! "$(flatpak info -r org.flatpak.Builder//localtest)" ]; then
+	echo "Did not find org.flatpak.Builder//localtest installed"
 fi
 
-if [ "${test_code}" = "test_passed" ]; then
-	printf "\n\n"
-	echo "Tests passed ✅✅"
-	exit 0
-elif [ -z "${tests_run}" ]; then
-	echo "Tests did not run 🚨🚨"
-	exit 1
-elif [ "${test_code}" = "test_failed" ]; then
-	echo "Tests failed 🚨🚨"
-	exit 1
+cd "$top_dir" || exit
+rm -rf nohup.out server.pid
+nohup python tests/test_httpserver.py &
+sleep 5
+cd tests/repo/min_success_metadata/gui-app || exit
+rm -rf builddir repo .flatpak-builder
+
+if [ "$GITHUB_ACTIONS" = "true" ]; then
+	dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo --mirror-screenshots-url=https://dl.flathub.org/media --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
 else
-	echo "Error occurred 🚨🚨"
+	flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo --mirror-screenshots-url=https://dl.flathub.org/media --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+fi
+
+mkdir -p builddir/files/share/app-info/media
+ostree commit --repo=repo --canonical-permissions --branch=screenshots/"${arch}" builddir/files/share/app-info/media
+export FLAT_MANAGER_BUILD_ID=0 FLAT_MANAGER_URL=http://localhost:9001 FLAT_MANAGER_TOKEN=foo
+mkdir -p repo/appstream/x86_64
+mv -v builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/"${arch}"/appstream.xml.gz
+
+tests1_run="yes"
+errors1="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)"
+if [ "${errors1}" = "appstream-no-flathub-manifest-key" ]; then
+	echo "Test 1: PASS ✅"
+	test1_code="test_passed"
+else
+	echo "Test 1: FAIL, $errors1 🚨🚨"
+	test1_code="test_failed"
+fi
+
+gzip -df repo/appstream/"${arch}"/appstream.xml.gz || true
+xmlstarlet ed --subnode "/components/component" --type elem -n custom --subnode "/components/component/custom" --type elem -n value -v "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml" repo/appstream/"${arch}"/appstream.xml|xmlstarlet ed --insert //custom/value --type attr -n key -v flathub::manifest >> repo/appstream/x86_64/appstream-out.xml
+rm -vf repo/appstream/"${arch}"/appstream.xml  repo/appstream/"${arch}"/appstream.xml.gz
+mv -v repo/appstream/"${arch}"/appstream-out.xml repo/appstream/"${arch}"/appstream.xml
+gzip repo/appstream/"${arch}"/appstream.xml || true
+
+tests2_run="yes"
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo && echo "Test 2: PASS ✅" && test2_code="test_passed" 
+
+if [ -z "${test2_code}" ] || [ "${test2_code}" != "test_passed" ]; then
+	echo "Test 2: FAIL 🚨🚨" && test2_code="test_failed"
+fi
+
+cd "$top_dir" || exit
+python tests/test_httpserver.py --stop
+
+if [ -z "$GITHUB_ACTIONS" ]; then
+	flatpak remove -y org.flatpak.Builder//localtest
+	flatpak uninstall --user --unused -y
+fi
+
+rm -rf nohup.out server.pid
+cd tests/repo/min_success_metadata/gui-app || exit
+rm -rf builddir repo .flatpak-builder
+
+unset FLAT_MANAGER_BUILD_ID
+unset FLAT_MANAGER_URL
+unset FLAT_MANAGER_TOKEN
+
+if [ -z "${tests1_run}" ] || [ -z "${tests2_run}" ]; then
+	echo "All tests did not run 🚨🚨"
+	exit 1
+elif [ "${test1_code}" = "test_failed" ] || [ "${test2_code}" = "test_failed" ] || [ -z "${test1_code}" ] || [ -z "${test1_code}" ]; then
+	echo "Tests failed 🚨🚨"
 	exit 1
 fi
