@@ -40,7 +40,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:flatpak/development
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev gir1.2-ostree-1.0
+          sudo apt-get install -y jq flatpak flatpak-builder curl dbus-daemon libgirepository1.0-dev gir1.2-ostree-1.0 gzip xmlstarlet
 
       - name: Setup Poetry
         run: |
@@ -133,6 +133,28 @@ jobs:
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/x86_64 builddir/files/share/app-info/media
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
+      - name: Perform Flatmanager checks
+        run: |
+          export FLAT_MANAGER_BUILD_ID=0 FLAT_MANAGER_URL=http://localhost:9001 FLAT_MANAGER_TOKEN=foo
+          cd tests/repo/min_success_metadata/gui-app
+          mkdir -p repo/appstream/x86_64
+          mv -v builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/x86_64/appstream.xml.gz
+          nohup python ../../../test_httpserver.py &
+          sleep 15
+          errors1="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)"
+          if [ "${errors1}" == "appstream-no-flathub-manifest-key" ]; then echo "Pass"; else echo "Failed, $errors1" && false; fi
+          gzip -df repo/appstream/x86_64/appstream.xml.gz || true
+          xmlstarlet ed --subnode "/components/component" --type elem -n custom --subnode "/components/component/custom" --type elem -n \
+            value -v "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml" \
+            repo/appstream/x86_64/appstream.xml|xmlstarlet ed --insert //custom/value \
+            --type attr -n key -v flathub::manifest >> repo/appstream/x86_64/appstream-out.xml
+          rm -vf repo/appstream/x86_64/appstream.xml  repo/appstream/x86_64/appstream.xml.gz
+          mv -v repo/appstream/x86_64/appstream-out.xml repo/appstream/x86_64/appstream.xml
+          gzip repo/appstream/x86_64/appstream.xml || true
+          errors2="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)"
+          if [ "${errors2}" == "" ]; then echo "Pass"; else echo "Failed, $errors2" && false; fi
+          python ../../../test_httpserver.py --stop
 
       - name: Set up appstreamcli
         run: |
