@@ -86,23 +86,23 @@ jobs:
 
       - name: Sanity check on a baseapp
         run: |
-          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.chromium.Chromium.BaseApp.git org.chromium.Chromium.BaseApp
-          cd org.chromium.Chromium.BaseApp
+          git clone --depth=1 --recursive --single-branch https://github.com/flathub/com.system76.Cosmic.BaseApp.git com.system76.Cosmic.BaseApp
+          cd com.system76.Cosmic.BaseApp
           git submodule update --init --recursive
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.chromium.Chromium.BaseApp.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
           flatpak-builder --verbose --user --force-clean --repo=repo \
-            --install-deps-from=flathub --ccache builddir org.chromium.Chromium.BaseApp.yaml
+            --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
       - name: Sanity check on an extension
         run: |
-          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.gtk.Gtk3theme.Helium.git org.gtk.Gtk3theme.Helium
-          cd org.gtk.Gtk3theme.Helium
+          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.git org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
+          cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           git submodule update --init --recursive
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.gtk.Gtk3theme.Helium.yml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak-builder --verbose --user --force-clean --repo=repo \
-            --install-deps-from=flathub --ccache builddir org.gtk.Gtk3theme.Helium.yml
+            --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
