@@ -11,4 +11,4 @@ for module in manifest["modules"]:
         break
 
 with open("org.flatpak.Builder/org.flatpak.Builder.json", "w") as f:
-    json.dump(manifest, f)
+    json.dump(manifest, f, indent=4)
