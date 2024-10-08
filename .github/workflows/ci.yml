@@ -24,7 +24,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  CI:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
             --install builddir org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
 
-      - name: Check a baseapp
+      - name: Sanity check on a baseapp
         run: |
           git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.chromium.Chromium.BaseApp.git org.chromium.Chromium.BaseApp
           cd org.chromium.Chromium.BaseApp
@@ -95,7 +95,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-      - name: Check an extension
+      - name: Sanity check on an extension
         run: |
           git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.gtk.Gtk3theme.Helium.git org.gtk.Gtk3theme.Helium
           cd org.gtk.Gtk3theme.Helium
@@ -106,7 +106,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-      - name: Check a console application
+      - name: Sanity check on a console application
         run: |
           cd tests/repo/min_success_metadata/console-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
@@ -116,7 +116,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-      - name: Check a GUI application
+      - name: Sanity check on a GUI application
         run: |
           cd tests/repo/min_success_metadata/gui-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
@@ -128,7 +128,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-      - name: Perform Flatmanager checks
+      - name: Sanity check on Flatmanager chekcs
         run: sh -c tests/flatmanager.sh
 
       - name: Set up appstreamcli
