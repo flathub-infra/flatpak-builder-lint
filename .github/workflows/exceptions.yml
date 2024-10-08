@@ -9,7 +9,7 @@ on:
       - flatpak_builder_lint/staticfiles/exceptions.json
 
 jobs:
-  lint:
+  validate-exceptions:
     runs-on: ubuntu-latest
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository)
     steps:
