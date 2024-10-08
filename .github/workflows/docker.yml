@@ -19,6 +19,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     permissions:
       packages: write
     strategy:
@@ -98,6 +99,7 @@ jobs:
   docker-manifest:
     if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     needs:
       - docker
     permissions:
