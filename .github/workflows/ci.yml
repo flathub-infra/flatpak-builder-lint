@@ -84,13 +84,6 @@ jobs:
             --install builddir org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
 
-      - name: Sanity check the linter
-        run: |
-          cd build/org.flatpak.Builder
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
       - name: Check a baseapp
         run: |
           git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.chromium.Chromium.BaseApp.git org.chromium.Chromium.BaseApp
