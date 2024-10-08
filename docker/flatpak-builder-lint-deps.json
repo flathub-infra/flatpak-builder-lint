@@ -52,7 +52,7 @@
                     "sha256": "7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde"
                 }
             ]
-        }
+        },
         {
             "name": "python3-rpds-py",
             "buildsystem": "simple",
