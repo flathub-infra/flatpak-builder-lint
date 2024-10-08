@@ -48,7 +48,7 @@ jobs:
 
       - name: Set up dependencies
         run: |
-          sudo add-apt-repository ppa:flatpak/development
+          sudo add-apt-repository ppa:flatpak/stable
 
       - name: Build flatpak-builder-lint
         run: |
