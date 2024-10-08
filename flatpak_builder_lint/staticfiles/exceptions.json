@@ -3819,5 +3819,8 @@
     },
     "com.francescogaglione.chronos": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "io.github.cosmic_utils.Examine": {
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     }
 }
