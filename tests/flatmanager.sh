@@ -11,6 +11,12 @@ checkcmd() {
     fi
 }
 
+clean_up() {
+    cd "tests/repo/min_success_metadata/gui-app" || exit
+    echo "Deleting tests/repo/min_success_metadata/gui-app/{builddir, repo, .flatpak-builder}"
+    rm -rf "builddir" "repo" ".flatpak-builder"
+}
+
 checkcmd "python"
 checkcmd "gzip"
 checkcmd "jq"
@@ -24,6 +30,11 @@ if [ "$GITHUB_ACTIONS" = "true" ]; then
 	checkcmd "dbus-run-session"
 fi
 
+if [ "$(git rev-parse --show-toplevel 2>/dev/null)" != "$(pwd)" ]; then
+    echo "Abort. Not running from root of git repository."
+    exit 1
+fi
+
 arch="$(flatpak --default-arch)"
 
 files="docker/rewrite-manifest.py docker/flatpak-builder-lint-deps.json tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml tests/test_httpserver.py"
@@ -34,35 +45,40 @@ for item in ${files}; do
 	fi
 done
 
-if [ "$GITHUB_ACTIONS" = "true" ]; then
-	checkcmd "dbus-run-session"
-fi
-
 if [ -z "$GITHUB_ACTIONS" ]; then
 	echo "Not inside GitHub CI. Trying to build org.flatpak.Builder//localtest"
 	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	echo "Deleting build/org.flatpak.Builder"
-	rm -rf build/org.flatpak.Builder
-	git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
+
+	if [ "$NO_CLEAN_UP" != "1" ]; then
+		echo "Deleting build/org.flatpak.Builder"
+		rm -rf build/org.flatpak.Builder
+	fi
+
+	if [ ! -d "build/org.flatpak.Builder" ]; then
+		git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
+	fi
+
 	cd build && python3 ../docker/rewrite-manifest.py && cd org.flatpak.Builder || exit
 	rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/flatpak-builder-lint-deps.json .
 	git config protocol.file.allow always
 	flatpak-builder --user --force-clean --repo=repo --install-deps-from=flathub --default-branch=localtest --ccache --install builddir org.flatpak.Builder.json
-	flatpak run org.flatpak.Builder//localtest --version
 fi
 
 if [ ! "$(flatpak info -r org.flatpak.Builder//localtest)" ]; then
 	echo "Did not find org.flatpak.Builder//localtest installed"
+	exit 1
 fi
 
 cd "$top_dir" || exit
 rm -vf nohup.out server.pid
 nohup python tests/test_httpserver.py &
 sleep 5
-cd tests/repo/min_success_metadata/gui-app || exit
-echo "Deleting tests/repo/min_success_metadata/gui-app/{builddir, repo, .flatpak-builder}"
-rm -rf builddir repo .flatpak-builder
 
+if [ "$NO_CLEAN_UP" != "1" ]; then
+	clean_up
+fi
+
+cd "tests/repo/min_success_metadata/gui-app" || true
 if [ "$GITHUB_ACTIONS" = "true" ]; then
 	dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo --mirror-screenshots-url=https://dl.flathub.org/media --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
 else
@@ -101,21 +117,18 @@ cd "$top_dir" || exit
 python tests/test_httpserver.py --stop
 
 if [ -z "$GITHUB_ACTIONS" ]; then
-	flatpak remove -y org.flatpak.Builder//localtest
-	flatpak uninstall --user --unused -y
+	flatpak remove -y --noninteractive org.flatpak.Builder//localtest
 fi
 
 rm -vf nohup.out server.pid
-cd tests/repo/min_success_metadata/gui-app || exit
-echo "Deleting tests/repo/min_success_metadata/gui-app/{builddir, repo, .flatpak-builder}"
-rm -rf builddir repo .flatpak-builder
+
+if [ "$NO_CLEAN_UP" != "1" ]; then
+	clean_up
+fi
 
 unset FLAT_MANAGER_BUILD_ID FLAT_MANAGER_URL FLAT_MANAGER_TOKEN
 
-if [ -z "${tests1_run}" ] || [ -z "${tests2_run}" ]; then
-	echo "All tests did not run 🚨🚨"
-	exit 1
-elif [ "${test1_code}" = "test_failed" ] || [ "${test2_code}" = "test_failed" ] || [ -z "${test1_code}" ] || [ -z "${test1_code}" ]; then
+if [ -z "${tests1_run}" ] || [ -z "${tests2_run}" ] || [ "${test1_code}" = "test_failed" ] || [ "${test2_code}" = "test_failed" ] || [ -z "${test1_code}" ] || [ -z "${test1_code}" ]; then
 	echo "Tests failed 🚨🚨"
 	exit 1
 fi

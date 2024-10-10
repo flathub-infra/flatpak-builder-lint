@@ -148,6 +148,9 @@ git repository using
 
 ```sh
 ./tests/flatmanager.sh
+
+# Avoid repeated rebuilds
+NO_CLEAN_UP=1 ./tests/flatmanager.sh
 ```
 
 ## Usage
