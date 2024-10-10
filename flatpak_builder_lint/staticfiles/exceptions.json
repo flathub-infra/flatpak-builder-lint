@@ -1021,7 +1021,8 @@
         "finish-args-unnecessary-xdg-config-kxkbrc-rw-access": "Predates the linter rule",
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "Predates the linter rule",
         "finish-args-unnecessary-xdg-cache-ibus-create-access": "Predates the linter rule",
-        "finish-args-unnecessary-xdg-config-ibus-create-access": "Predates the linter rule"
+        "finish-args-unnecessary-xdg-config-ibus-create-access": "Predates the linter rule",
+        "finish-args-contains-both-x11-and-wayland": "Input method daemon need to talk with both XWayland/X11/Wayland applications at the same time"
     },
     "com.jetbrains.PyCharm-Community": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
