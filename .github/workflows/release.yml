@@ -1,0 +1,29 @@
+name: Trigger release
+
+on:
+  workflow_run:
+    workflows: [Docker]
+    types: [completed]
+    branches: [master]
+  workflow_dispatch:
+
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' && contains(github.event.head_commit.message, '[release]')
+    steps:
+      - name: Trigger workflow in org.flatpak.Builder repository
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          repository: flathub/org.flatpak.Builder
+          event-type: trigger-workflow
+          client-payload: '{"sha": "${{ github.event.head_commit.id }}"}'
+          token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
+
+      - name: Trigger workflow in flathub-infra/flatpak-github-actions
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          repository: flathub-infra/flatpak-github-actions
+          event-type: trigger-workflow
+          token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
