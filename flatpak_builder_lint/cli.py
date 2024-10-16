@@ -5,6 +5,7 @@ import json
 import os
 import pkgutil
 import sys
+import textwrap
 
 import sentry_sdk
 
@@ -135,21 +136,38 @@ def run_checks(
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="A linter for Flatpak builds and flatpak-builder manifests",
-        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",  # noqa: E501
+        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",
+        formatter_class=argparse.RawTextHelpFormatter,
+        add_help=False,
     )
     parser.add_argument(
-        "--version", action="version", version=f"flatpak-builder-lint {__version__}"
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit",
     )
-    parser.add_argument("--exceptions", help="skip allowed warnings or errors", action="store_true")
-    parser.add_argument("--appid", help="override app ID", type=str, nargs=1)
+    parser.add_argument(
+        "--version",
+        action="version",
+        help="Show the version number and exit",
+        version=f"flatpak-builder-lint {__version__}",
+    )
+    parser.add_argument(
+        "--exceptions",
+        help="Skip warnings or errors added to exceptions. Exceptions must be submitted to Flathub"
+        + " or be available in exceptions.json locally",
+        action="store_true",
+    )
+    parser.add_argument("--appid", help="Override the app ID", type=str, nargs=1)
     parser.add_argument(
         "--cwd",
-        help="override the path parameter with current working directory",
+        help="Override the path parameter with current working directory",
         action="store_true",
     )
     parser.add_argument(
         "--ref",
-        help="override the primary ref detection",
+        help="Override the primary ref detection",
         type=str,
         nargs=1,
         default=None,
@@ -157,12 +175,23 @@ def main() -> int:
 
     parser.add_argument(
         "type",
-        help="type of artifact to lint",
-        choices=["builddir", "repo", "manifest", "appstream"],
+        help=textwrap.dedent("""\
+        Type of artifact to lint
+
+        appstream expects a MetaInfo file
+        manifest expects a flatpak-builder manifest
+        builddir expects a flatpak-builder build directory
+        repo expects an OSTree repo exported by flatpak-builder"""),
+        choices=[
+            "appstream",
+            "manifest",
+            "builddir",
+            "repo",
+        ],
     )
     parser.add_argument(
         "path",
-        help="path to artifact",
+        help="Path to the artifact",
         type=str,
         nargs=1,
     )
