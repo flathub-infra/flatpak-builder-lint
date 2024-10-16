@@ -155,8 +155,10 @@ def main() -> int:
     )
     parser.add_argument(
         "--exceptions",
-        help="Skip warnings or errors added to exceptions. Exceptions must be submitted to Flathub"
-        + " or be available in exceptions.json locally",
+        help=textwrap.dedent("""
+        Skip warnings or errors added to exceptions.
+        Exceptions must be submitted to Flathub or be available in exceptions.json locally
+        """),
         action="store_true",
     )
     parser.add_argument("--appid", help="Override the app ID", type=str, nargs=1)

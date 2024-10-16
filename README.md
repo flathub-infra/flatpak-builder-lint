@@ -192,7 +192,9 @@ positional arguments:
 options:
   -h, --help            Show this help message and exit
   --version             Show the version number and exit
-  --exceptions          Skip warnings or errors added to exceptions. Exceptions must be submitted to Flathub or be available in exceptions.json locally
+  --exceptions
+                        Skip warnings or errors added to exceptions.
+                        Exceptions must be submitted to Flathub or be available in exceptions.json locally
   --appid APPID         Override the app ID
   --cwd                 Override the path parameter with current working directory
   --ref REF             Override the primary ref detection
