@@ -1,8 +1,8 @@
 # flatpak-builder-lint
 
 flatpak-builder-lint is a linter for Flatpak artifacts like Flatpak
-manifests, Flatpak Builder builds and repos. It is primarily developed
-for Flathub, but can be useful for general use as well.
+manifests, Flatpak Builder build artifacts and repos. It is primarily
+developed for Flathub, but can be useful for general use as well.
 
 ## Checks
 
@@ -24,7 +24,7 @@ with the proper arguments to Flatpak Builder.
 
 Some checks may require network connectivity.
 
-Errors can be overidden through exceptions. Exceptions must be [submitted
+Errors can be overridden through exceptions. Exceptions must be [submitted
 to Flathub](https://docs.flathub.org/docs/for-app-authors/linter#exceptions).
 
 ## Installation
