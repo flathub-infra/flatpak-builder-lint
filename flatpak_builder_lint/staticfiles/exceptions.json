@@ -1321,7 +1321,7 @@
     "net.lutris.Lutris": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-unnecessary-xdg-data-umu-rw-access": "Uses shared installation for the umu runtime"
+        "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime"
     },
     "net.retrodeck.retrodeck": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
@@ -3256,7 +3256,7 @@
     },
     "com.heroicgameslauncher.hgl": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-unnecessary-xdg-data-umu-rw-access": "Uses shared installation for the umu runtime"
+        "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime"
     },
     "com.katawa_shoujo.KatawaShoujo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
