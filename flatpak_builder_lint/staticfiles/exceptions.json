@@ -3829,5 +3829,20 @@
     },
     "io.github.cosmic_utils.Examine": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "org.freedesktop.Platform.ClInfo": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "org.freedesktop.Platform.GlxInfo": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "org.freedesktop.Platform.VaInfo": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "org.freedesktop.Platform.VdpauInfo": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "org.freedesktop.Platform.VulkanInfo": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     }
 }
