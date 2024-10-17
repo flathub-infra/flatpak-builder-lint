@@ -157,7 +157,7 @@ def main() -> int:
         "--exceptions",
         help=textwrap.dedent("""
         Skip warnings or errors added to exceptions.
-        Exceptions must be submitted to Flathub or be available in exceptions.json locally
+        Exceptions must be submitted to Flathub
         """),
         action="store_true",
     )
