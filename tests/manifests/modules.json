@@ -5,8 +5,7 @@
             "name": "module1",
             "buildsystem": "cmake",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Debug",
-                "-DCMAKE_INSTALL_PREFIX=/app"
+                "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "sources": [
                 {
@@ -35,13 +34,6 @@
                     "url": "https://example.com/foo.tar.gz",
                     "sha1": "deadbeef"
                 }
-            ]
-        },
-        {
-            "name": "module2",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--prefix=/app"
             ]
         }
     ]
