@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' && contains(github.event.head_commit.message, '[release]')
     steps:
+      - name: Delay for 2 minutes
+        run: sleep 120
+
       - name: Trigger workflow in org.flatpak.Builder repository
         uses: peter-evans/repository-dispatch@v3
         with:
