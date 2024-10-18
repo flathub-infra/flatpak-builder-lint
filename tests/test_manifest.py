@@ -234,8 +234,6 @@ def test_manifest_modules() -> None:
     warnings = {
         "module-module1-buildsystem-is-plain-cmake",
         "module-module1-cmake-non-release-build",
-        "module-module2-autotools-redundant-prefix",
-        "module-module1-cmake-redundant-prefix",
         "module-module1-source-sha1-deprecated",
     }
 
