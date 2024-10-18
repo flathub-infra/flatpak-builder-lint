@@ -18,7 +18,7 @@ jobs:
         with:
           repository: flathub/org.flatpak.Builder
           event-type: trigger-workflow
-          client-payload: '{"sha": "${{ github.event.head_commit.id }}"}'
+          client-payload: '{"sha": "${{ github.sha }}"}'
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
       - name: Trigger workflow in flathub-infra/flatpak-github-actions
