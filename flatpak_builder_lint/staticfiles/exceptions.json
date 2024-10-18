@@ -1203,6 +1203,9 @@
     "com.vscodium.codium-insiders": {
         "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc"
     },
+    "de.z_ray.OptimusUI": {
+        "finish-args-flatpak-spawn-access": "Requires use of prime-select, nvidia-prime-select or fedora-prime-select on the host; Furthermore it requires access to /etc/os-release on the host to determine the real host distribution to use the correct prime tool and enable / disable features in the UI"
+    },
     "dev.boxi.Boxi": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
