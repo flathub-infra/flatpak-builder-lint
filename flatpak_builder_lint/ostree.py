@@ -8,10 +8,15 @@ from gi.repository import Gio, GLib, OSTree  # noqa: E402
 
 
 def open_ostree_repo(repo_path: str) -> OSTree.Repo:
+    if not os.path.exists(repo_path):
+        raise FileNotFoundError(f"Could not find repo directory: {repo_path}")
+
     repo = OSTree.Repo.new(Gio.File.new_for_path(repo_path))
 
-    if not repo.open(None):
-        raise Exception("Failed to open the OSTree repository")
+    try:
+        repo.open(None)
+    except GLib.Error as err:
+        raise GLib.Error("Failed to open OSTree repo") from err
 
     return repo
 
