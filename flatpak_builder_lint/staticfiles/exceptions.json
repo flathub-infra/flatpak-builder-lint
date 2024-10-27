@@ -1273,7 +1273,10 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.philipk.boilr": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required for showing which other Flatpaks are installed, so a shortcut can be added easly to Steam",
+        "finish-args-unnecessary-xdg-data-lutris-ro-access": "Required for reading the installed games in Lutris, so a shortcut can be added easly to Steam",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the shortcuts file in Steam, this is the purpose of BoilR"
     },
     "io.github.prateekmedia.appimagepool": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
