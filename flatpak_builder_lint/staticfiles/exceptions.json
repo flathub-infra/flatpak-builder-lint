@@ -3847,5 +3847,10 @@
     },
     "org.freedesktop.Platform.VulkanInfo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "io.github.philipk.boilr": {
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required for showing which other Flatpaks are installed, so a shortcut can be added easly to Steam",
+        "finish-args-unnecessary-xdg-data-lutris-ro-access": "Required for reading the installed games in Lutris, so a shortcut can be added easly to Steam",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the shortcuts file in Steam, this is the purpose of BoilR"
     }
 }
