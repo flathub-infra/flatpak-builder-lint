@@ -106,6 +106,8 @@ class ScreenshotsCheck(Check):
             for arch in arches:
                 if f"screenshots/{arch}" not in refs:
                     self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
+                    break
+
                 media_path = os.path.join(tmpdir, "app-info", f"screenshots-{arch}")
                 media_glob_path = f"{media_path}/**"
                 ostree.extract_subpath(path, f"screenshots/{arch}", "/", media_path)
