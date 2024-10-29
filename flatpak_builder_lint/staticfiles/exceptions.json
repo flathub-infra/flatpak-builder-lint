@@ -3850,5 +3850,8 @@
     },
     "org.freedesktop.Platform.VulkanInfo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
+    "io.github.lawstorant.boxflat": {
+        "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name"
     }
 }
