@@ -30,7 +30,7 @@ jobs:
             src:
               - '.github/**'
               - 'docker/**'
-              - 'flatpak_builder_lint/**'
+              - 'flatpak_builder_lint/**/!(staticfiles/exceptions.json)'
               - 'tests/**'
               - 'utils/**'
               - 'poetry.lock'
@@ -38,7 +38,7 @@ jobs:
             docker:
               - '.github/**'
               - 'docker/**'
-              - 'flatpak_builder_lint/!(staticfiles/exceptions.json)/**'
+              - 'flatpak_builder_lint/**/!(staticfiles/exceptions.json)'
               - 'poetry.lock'
               - 'pyproject.toml'
 
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     needs: changes
-    if: ${{ needs.changes.outputs.exceptions == 'false' && needs.changes.outputs.src == 'true' }}
+    if: ${{ needs.changes.outputs.src == 'true' }}
     steps:
       - uses: actions/checkout@v4
         with:
