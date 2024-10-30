@@ -70,8 +70,8 @@ jobs:
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/$(uname -m) builddir/files/share/app-info/media
-          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} manifest /mnt/org.flathub.gui.yaml
-          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} repo /mnt/repo
+          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 manifest /mnt/org.flathub.gui.yaml
+          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 repo /mnt/repo
 
       - name: Push the image
         uses: docker/build-push-action@v5
