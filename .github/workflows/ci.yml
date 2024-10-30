@@ -184,3 +184,4 @@ jobs:
       - ci
     if: ${{ needs.changes.outputs.docker == 'true' && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
     uses: ./.github/workflows/docker.yml
+    secrets: inherit
