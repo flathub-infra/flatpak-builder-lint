@@ -15,6 +15,7 @@ jobs:
       pull-requests: read
     outputs:
       src: ${{ steps.filter.outputs.src }}
+      src-extra: ${{ steps.filter.outputs.src-extra }}
       docker: ${{ steps.filter.outputs.docker }}
       exceptions: ${{ steps.filter.outputs.exceptions }}
     steps:
@@ -35,6 +36,9 @@ jobs:
               - 'utils/**'
               - 'poetry.lock'
               - 'pyproject.toml'
+            src-extra:
+              - 'flatpak_builder_lint/staticfiles/flatpak-manifest.schema.json'
+              - 'flatpak_builder_lint/staticfiles/*.py'
             docker:
               - '.github/**'
               - 'docker/**'
@@ -61,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     needs: changes
-    if: ${{ needs.changes.outputs.src == 'true' }}
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.src-extra == 'true' }}
     steps:
       - uses: actions/checkout@v4
         with:
