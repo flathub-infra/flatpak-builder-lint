@@ -45,8 +45,37 @@ jobs:
           cd docker
           bash -x ./build.sh ${{ matrix.platform }}
 
-      - name: Build and push image
+      - name: Build the image
         uses: docker/build-push-action@v5
+        with:
+          context: docker
+          file: docker/Dockerfile
+          platforms: linux/${{ matrix.platform }}
+          push: false
+          provenance: false
+          load: true
+          tags: |
+            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/flathub-infra/flatpak-builder-lint:latest-${{ matrix.platform }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
+
+      - name: Run a sanity check
+        run: |
+          cd tests/repo/min_success_metadata/gui-app
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+            --mirror-screenshots-url=https://dl.flathub.org/media \
+            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+          mkdir -p builddir/files/share/app-info/media
+          ostree commit --repo=repo --canonical-permissions --branch=screenshots/$(uname -m) builddir/files/share/app-info/media
+          docker run -v $(pwd):/mnt --rm -it ghcr.io/${{ github.repository_owner }}/flatpak-builder-lint:latest manifest /mnt/org.flathub.gui.yaml
+          docker run -v $(pwd):/mnt --rm -it ghcr.io/${{ github.repository_owner }}/flatpak-builder-lint:latest repo /mnt/repo
+
+      - name: Push the image
+        uses: docker/build-push-action@v5
+        if: success()
         with:
           context: docker
           file: docker/Dockerfile
@@ -63,6 +92,7 @@ jobs:
 
       - name: Login to ghcr.io using Flathub credentials
         uses: docker/login-action@v3
+        if: success()
         with:
           registry: ghcr.io
           username: ${{ secrets.FLATHUB_ORG_USER }}
@@ -70,6 +100,7 @@ jobs:
 
       - name: Build and push Docker image to the old location
         uses: docker/build-push-action@v5
+        if: success()
         with:
           context: docker
           file: docker/Dockerfile
