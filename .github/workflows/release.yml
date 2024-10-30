@@ -2,7 +2,7 @@ name: Trigger release
 
 on:
   workflow_run:
-    workflows: [Docker]
+    workflows: [CI]
     types: [completed]
     branches: [master]
   workflow_dispatch:
@@ -13,10 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' && contains(github.event.head_commit.message, '[release]') }}
     steps:
+
+      - name: Check if docker-manifest succeeded
+        run: |
+          job_status=$(gh run view ${{ github.event.workflow_run.id }} --json jobs --jq '.jobs[] | select(.name=="docker-call / docker-manifest") | .conclusion')
+          echo "Status: $job_status"
+
+          if [ "$job_status" == "success" ]; then
+            echo "RUN=true" >> "$GITHUB_ENV"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Delay for 2 minutes
+        if: env.RUN == 'true'
         run: sleep 120
 
       - name: Trigger workflow in org.flatpak.Builder repository
+        if: env.RUN == 'true'
         uses: peter-evans/repository-dispatch@v3
         with:
           repository: flathub/org.flatpak.Builder
@@ -25,6 +39,7 @@ jobs:
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
       - name: Trigger workflow in flathub-infra/flatpak-github-actions
+        if: env.RUN == 'true'
         uses: peter-evans/repository-dispatch@v3
         with:
           repository: flathub-infra/flatpak-github-actions
