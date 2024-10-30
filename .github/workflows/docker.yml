@@ -1,20 +1,7 @@
 name: Docker
 
 on:
-  push:
-    branches:
-      - master
-    paths-ignore:
-      - 'flatpak_builder_lint/staticfiles/exceptions.json'
-      - 'tests/**'
-      - 'utils/**'
-      - '.git-blame-ignore-revs'
-      - '.gitignore'
-      - '.pre-commit-config.yaml'
-      - 'CODEOWNERS'
-      - 'LICENSE'
-      - 'README.md'
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   docker:
