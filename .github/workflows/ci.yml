@@ -3,24 +3,8 @@ name: CI
 on:
   push:
     branches: master
-    paths-ignore:
-      - 'flatpak_builder_lint/staticfiles/exceptions.json'
-      - '.git-blame-ignore-revs'
-      - '.gitignore'
-      - '.pre-commit-config.yaml'
-      - 'CODEOWNERS'
-      - 'LICENSE'
-      - 'README.md'
   pull_request:
     branches: master
-    paths-ignore:
-      - 'flatpak_builder_lint/staticfiles/exceptions.json'
-      - '.git-blame-ignore-revs'
-      - '.gitignore'
-      - '.pre-commit-config.yaml'
-      - 'CODEOWNERS'
-      - 'LICENSE'
-      - 'README.md'
   workflow_dispatch:
 
 jobs:
@@ -32,12 +16,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set path filter
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            src-changes:
+              - '!flatpak_builder_lint/staticfiles/exceptions.json'
+              - '!.git-blame-ignore-revs'
+              - '!.gitignore'
+              - '!.pre-commit-config.yaml'
+              - '!CODEOWNERS'
+              - '!LICENSE'
+              - '!README.md'
+            exception-changes:
+              - 'flatpak_builder_lint/staticfiles/exceptions.json'
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Validate exceptions.json
+        if: ${{ steps.filter.outputs.exception-changes == 'true' || steps.filter.outputs.src-changes == 'true' }}
         run: python3 utils/validator.py
+
+      - name: Skip main CI if no relevant changes
+        if: ${{ steps.filter.outputs.src-changes != 'true' }}
+        run: echo "No relevant changes" && exit 0
 
       - name: Set up dependencies
         run: |
