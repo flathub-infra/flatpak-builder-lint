@@ -22,13 +22,13 @@ jobs:
         with:
           filters: |
             src-changes:
-              - '!flatpak_builder_lint/staticfiles/exceptions.json'
-              - '!.git-blame-ignore-revs'
-              - '!.gitignore'
-              - '!.pre-commit-config.yaml'
-              - '!CODEOWNERS'
-              - '!LICENSE'
-              - '!README.md'
+              - '.github/**'
+              - 'docker/**'
+              - 'flatpak_builder_lint/!(staticfiles/exceptions.json)/**'
+              - 'tests/**'
+              - 'utils/**'
+              - 'poetry.lock'
+              - 'pyproject.toml'
             exception-changes:
               - 'flatpak_builder_lint/staticfiles/exceptions.json'
 
