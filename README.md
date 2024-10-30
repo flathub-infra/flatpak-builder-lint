@@ -1,5 +1,7 @@
 # flatpak-builder-lint
 
+FOO
+
 flatpak-builder-lint is a linter for Flatpak artifacts like Flatpak
 manifests, Flatpak Builder build artifacts and repos. It is primarily
 developed for Flathub, but can be useful for general use as well.
