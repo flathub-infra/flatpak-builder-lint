@@ -2,12 +2,13 @@
 set -e
 
 sudo apt-get update
-sudo apt-get install -y flatpak-builder git bzip2 git \
+sudo apt-get install -y flatpak dbus-daemon git bzip2 \
     python3 python3-requirement-parser python3-toml
 
 git config --global protocol.file.allow always
 
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user -y flathub org.flatpak.Builder
 [[ ! -d org.flatpak.Builder ]] && git clone https://github.com/flathub/org.flatpak.Builder
 
 mv flatpak-builder-lint-deps.json org.flatpak.Builder/flatpak-builder-lint-deps.json
@@ -23,7 +24,7 @@ case $1 in
 esac
 
 cd org.flatpak.Builder 
-flatpak-builder --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --arch="$arch" \
-    --user --verbose --force-clean --repo=repo --ccache \
+dbus-run-session flatpak run org.flatpak.Builder --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+    --arch="$arch" --verbose --user --force-clean --repo=repo --ccache \
     --install-deps-from=flathub builddir org.flatpak.Builder.json
 rm -rf "builddir/files/lib/debug"
