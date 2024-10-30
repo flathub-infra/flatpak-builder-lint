@@ -30,7 +30,7 @@ jobs:
             src:
               - '.github/**'
               - 'docker/**'
-              - 'flatpak_builder_lint/**/!(staticfiles/exceptions.json)'
+              - 'flatpak_builder_lint/!(staticfiles)/**'
               - 'tests/**'
               - 'utils/**'
               - 'poetry.lock'
@@ -38,7 +38,7 @@ jobs:
             docker:
               - '.github/**'
               - 'docker/**'
-              - 'flatpak_builder_lint/**/!(staticfiles/exceptions.json)'
+              - 'flatpak_builder_lint/!(staticfiles)/**'
               - 'poetry.lock'
               - 'pyproject.toml'
 
