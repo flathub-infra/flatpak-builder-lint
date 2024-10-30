@@ -129,7 +129,7 @@ jobs:
           cd com.system76.Cosmic.BaseApp
           git submodule update --init --recursive
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
-          flatpak-builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -140,7 +140,7 @@ jobs:
           cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           git submodule update --init --recursive
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
-          flatpak-builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -150,7 +150,7 @@ jobs:
           cd tests/repo/min_success_metadata/console-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
-          flatpak-builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
