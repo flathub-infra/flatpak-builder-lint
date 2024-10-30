@@ -55,8 +55,8 @@ jobs:
           provenance: false
           load: true
           tags: |
-            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
-            ghcr.io/flathub-infra/flatpak-builder-lint:latest-${{ matrix.platform }}
+            ghcr.io/${{ github.repository }}:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
@@ -75,7 +75,7 @@ jobs:
 
       - name: Push the image
         uses: docker/build-push-action@v5
-        if: success()
+        if: success() && github.event_name != 'pull_request'
         with:
           context: docker
           file: docker/Dockerfile
@@ -83,8 +83,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           provenance: false
           tags: |
-            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-${{ matrix.platform }}
-            ghcr.io/flathub-infra/flatpak-builder-lint:latest-${{ matrix.platform }}
+            ghcr.io/${{ github.repository }}:${{ github.sha }}-${{ matrix.platform }}
+            ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }}
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=ssh://git@github.com:${{ github.repository }}.git
@@ -92,7 +92,7 @@ jobs:
 
       - name: Login to ghcr.io using Flathub credentials
         uses: docker/login-action@v3
-        if: success()
+        if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           registry: ghcr.io
           username: ${{ secrets.FLATHUB_ORG_USER }}
@@ -100,7 +100,7 @@ jobs:
 
       - name: Build and push Docker image to the old location
         uses: docker/build-push-action@v5
-        if: success()
+        if: success() && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           context: docker
           file: docker/Dockerfile
@@ -135,27 +135,29 @@ jobs:
       - name: Create and push manifest
         run: |
           docker manifest create \
-            ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }} \
-            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
-            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+            ghcr.io/${{ github.repository }}:${{ github.sha }} \
+            --amend ghcr.io/${{ github.repository }}:${{ github.sha }}-amd64 \
+            --amend ghcr.io/${{ github.repository }}:${{ github.sha }}-arm64
 
-          docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}
+          docker manifest push ghcr.io/${{ github.repository }}:${{ github.sha }}
 
           docker manifest create \
-            ghcr.io/flathub-infra/flatpak-builder-lint:latest \
-            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-amd64 \
-            --amend ghcr.io/flathub-infra/flatpak-builder-lint:${{ github.sha }}-arm64
+            ghcr.io/${{ github.repository }}:latest \
+            --amend ghcr.io/${{ github.repository }}:${{ github.sha }}-amd64 \
+            --amend ghcr.io/${{ github.repository }}:${{ github.sha }}-arm64
 
-          docker manifest push ghcr.io/flathub-infra/flatpak-builder-lint:latest
+          docker manifest push ghcr.io/${{ github.repository }}:latest
 
       - name: Login to ghcr.io using Flathub credentials
         uses: docker/login-action@v3
+        if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           registry: ghcr.io
           username: ${{ secrets.FLATHUB_ORG_USER }}
           password: ${{ secrets.FLATHUB_ORG_TOKEN }}
 
       - name: Push manifest to the old location
+        if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         run: |
           docker manifest create \
             ghcr.io/flathub/flatpak-builder-lint:${{ github.sha }} \
