@@ -1551,6 +1551,7 @@
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.behringer.XAirEdit": {
+        "finish-args-unnecessary-xdg-config-.X-AIR-Edit-create-access": "hardcoded path in application binary",
         "flathub-json-modified-publish-delay": "extra-data"
     },
     "com.bluejeans.BlueJeans": {
