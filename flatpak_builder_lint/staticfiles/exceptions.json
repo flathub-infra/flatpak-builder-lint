@@ -3834,7 +3834,7 @@
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
     "com.francescogaglione.cosmicmoney": {
-        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read the system theme and listen for config changes in the host"
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
     "io.github.cosmic_utils.Examine": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
