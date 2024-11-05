@@ -205,19 +205,19 @@
             "name": "python3-lxml",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"lxml==5.2.2\" --no-build-isolation"
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"lxml==5.3.0\" --no-build-isolation"
             ],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/de/12/0253de661bb9f8c26b47059be4ed2ec5b9e4411fd2b1d45a2f4b399a7616/lxml-5.2.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-                    "sha256": "75a9632f1d4f698b2e6e2e1ada40e71f369b15d69baddb8968dcc8e683839b18",
+                    "url": "https://files.pythonhosted.org/packages/09/91/e6136f17459a11ce1757df864b213efbeab7adcb2efa63efb1b846ab6723/lxml-5.3.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+                    "sha256": "c24037349665434f375645fa9d1f5304800cec574d0310f618490c871fd902b3",
                     "only-arches": ["x86_64"]
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/6b/cc/8e73a63c2aeb205fbed44272fea8c5ded07920233b9956e8e304e2516931/lxml-5.2.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
-                    "sha256": "33ce9e786753743159799fdf8e92a5da351158c4bfb6f2db0bf31e7892a1feb5",
+                    "url": "https://files.pythonhosted.org/packages/88/69/6972bfafa8cd3ddc8562b126dd607011e218e17be313a8b1b9cc5a0ee876/lxml-5.3.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+                    "sha256": "65ab5685d56914b9a2a34d67dd5488b83213d680b0c5d10b47f81da5a16b0b0e",
                     "only-arches": ["aarch64"]
                 }
             ]
