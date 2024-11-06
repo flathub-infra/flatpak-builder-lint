@@ -1,4 +1,10 @@
+import re
+
 from . import Check
+
+
+def _is_git_commit_hash(s: str) -> bool:
+    return re.match(r"[a-f0-9]{4,40}", s) is not None
 
 
 class ModuleCheck(Check):
@@ -19,25 +25,21 @@ class ModuleCheck(Check):
             commit = source.get("commit")
             branch = source.get("branch")
             tag = source.get("tag")
-            branch_committish = False
-
-            if branch:
-                if len(branch) != 40:
-                    self.errors.add(f"module-{module_name}-source-git-branch")
-                else:
-                    branch_committish = True
-
-            if not branch_committish and not commit and not tag:
-                self.errors.add(f"module-{module_name}-source-git-no-commit-or-tag")
-
-            if source.get("path"):
-                self.errors.add(f"module-{module_name}-source-git-local-path")
-
             url = source.get("url")
+
             if not url:
                 self.errors.add(f"module-{module_name}-source-git-no-url")
-            elif not url.startswith("https:") and not url.startswith("http:"):
+                return
+
+            if url and not url.startswith(("http://", "https://")):
                 self.errors.add(f"module-{module_name}-source-git-url-not-http")
+
+            if not any([commit, branch, tag]):
+                self.errors.add(f"module-{module_name}-source-git-no-tag-commit-branch")
+                return
+
+            if branch and not _is_git_commit_hash(branch):
+                self.errors.add(f"module-{module_name}-source-git-branch")
 
     def check_module(self, module: dict) -> None:
         name = module.get("name")
