@@ -1007,7 +1007,7 @@
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
     },
     "org.gnome.Totem.Devel": {
-        "module-totem-source-git-no-commit-or-tag": "This is the development version of Totem, tracking upstream",
+        "module-totem-source-git-no-tag-commit-branch": "This is the development version of Totem, tracking upstream",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gimp.GIMP": {

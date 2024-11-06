@@ -9,27 +9,6 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "path": "."
-                },
-                {
-                    "type": "git",
-                    "url": "ssh://foobar.git",
-                    "tag": "foo",
-                    "dest-filename": "foo/bar"
-                },
-                {
-                    "type": "git",
-                    "url": "ssh://foobar2.git",
-                    "branch": "master",
-                    "commit": "1234567890abcdef1234567890abcdef12345678"
-                },
-                {
-                    "type": "git",
-                    "url": "ssh://foobar3.git",
-                    "branch": "1234567890abcdef1234567890abcdef12345678"
-                },
-                {
                     "type": "archive",
                     "url": "https://example.com/foo.tar.gz",
                     "sha1": "deadbeef"
