@@ -120,6 +120,9 @@ After making changes to any dependencies run
 `poetry lock --no-update` to regenerate the lockfile and
 `poetry install --sync` to synchronise the virtual environment.
 
+When adding new checks, please do not increase the minimum requirements
+set in `{builddir, repo}/min_success_metadata`.
+
 The virtual enviroment can be listed with `poetry env list` and removed
 with `poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`.
 
@@ -157,6 +160,8 @@ poetry run pre-commit run --all-files
 poetry run pre-commit uninstall
 ```
 
+### Tests
+
 [Pytest](https://docs.pytest.org/en/stable/getting-started.html) is used
 to run tests:
 
@@ -175,6 +180,17 @@ git repository using
 # Avoid repeated rebuilds
 NO_CLEAN_UP=1 ./tests/flatmanager.sh
 ```
+
+To write tests for manifest checks, recreate a minimal Flatpak builder
+manifest with the cases to check against and put it in `tests/manifests`.
+Then add the test using it (or modify the existing tests) in
+`tests/test_manifest.py`.
+
+Similarly to add a test for builddir check, recreate the `metadata` file
+and the build directory contents that Flatpak builder creates. Then
+put it in `tests/builddir` and add the test in `tests/test_builddir.py`.
+Please avoid adding large files or binary files that aren't readable
+(compressed appstream catalogue data is fine).
 
 ## Usage
 
