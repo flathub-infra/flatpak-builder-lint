@@ -46,6 +46,19 @@ jobs:
               - 'poetry.lock'
               - 'pyproject.toml'
 
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: changes
+    if: |
+      needs.changes.outputs.exceptions == 'false' &&
+      needs.changes.outputs.exceptions == 'false' &&
+      needs.changes.outputs.src-extra == 'false' &&
+      needs.changes.outputs.docker == 'false'
+    steps:
+      - name: Check
+        run: echo "No filter matched. Perhaps this file is not covered by CI" && exit 1
+
   exceptions:
     runs-on: ubuntu-latest
     timeout-minutes: 60
