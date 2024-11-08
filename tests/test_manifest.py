@@ -224,13 +224,6 @@ def test_manifest_finish_args_empty() -> None:
 
 
 def test_manifest_modules() -> None:
-    errors = {
-        "module-module1-source-git-no-commit-or-tag",
-        "module-module1-source-git-local-path",
-        "module-module1-source-git-no-url",
-        "module-module1-source-git-url-not-http",
-    }
-
     warnings = {
         "module-module1-buildsystem-is-plain-cmake",
         "module-module1-cmake-non-release-build",
@@ -238,10 +231,8 @@ def test_manifest_modules() -> None:
     }
 
     ret = run_checks("tests/manifests/modules.json")
-    found_errors = set(ret["errors"])
     found_warnings = set(ret["warnings"])
 
-    assert errors.issubset(found_errors)
     assert warnings.issubset(found_warnings)
 
 
@@ -253,8 +244,16 @@ def test_manifest_modules_git_allowed() -> None:
 
 def test_manifest_modules_git_disallowed() -> None:
     ret = run_checks("tests/manifests/modules_git_disallowed.json")
+    errors = {
+        "module-module1-source-git-no-url",
+        "module-module2-source-git-no-url",
+        "module-module3-source-git-url-not-http",
+        "module-module4-source-git-no-tag-commit-branch",
+        "module-module5-source-git-branch",
+    }
     found_errors = set(ret["errors"])
-    assert [x for x in found_errors if x.startswith("module-")]
+    for e in errors:
+        assert e in found_errors
 
 
 def test_manifest_exceptions() -> None:

@@ -11,6 +11,7 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    if: always()
     permissions:
       pull-requests: read
     outputs:
@@ -46,10 +47,31 @@ jobs:
               - 'poetry.lock'
               - 'pyproject.toml'
 
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    if: always()
+    needs: changes
+    steps:
+      - name: Check
+        run: |
+          if ${{ 
+            needs.changes.outputs.exceptions == 'false' &&
+            needs.changes.outputs.src == 'false' &&
+            needs.changes.outputs.src-extra == 'false' &&
+            needs.changes.outputs.docker == 'false' 
+          }}; then
+            echo "No filter matched. This file is not covered by CI" && exit 1
+          else
+            echo "Found matching file"
+          fi
+
   exceptions:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    needs: changes
+    needs:
+      - changes
+      - check
     if: ${{ needs.changes.outputs.exceptions == 'true' }}
     steps:
       - uses: actions/checkout@v4
@@ -64,7 +86,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    needs: changes
+    needs:
+      - changes
+      - check
     if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.src-extra == 'true' }}
     steps:
       - uses: actions/checkout@v4
@@ -185,6 +209,7 @@ jobs:
       packages: write
     needs:
       - changes
+      - check
       - ci
     if: ${{ needs.changes.outputs.docker == 'true' && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
     uses: ./.github/workflows/docker.yml

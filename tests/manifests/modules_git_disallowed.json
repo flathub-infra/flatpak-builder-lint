@@ -5,8 +5,7 @@
             "name": "module1",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://foobar2.git"
+                    "type": "git"
                 }
             ]
         },
@@ -23,7 +22,9 @@
             "name": "module3",
             "sources": [
                 {
-                    "type": "git"
+                    "type": "git",
+                    "url": "ssh://foobar2.git",
+                    "tag": "foo"
                 }
             ]
         },
@@ -32,8 +33,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "ssh://foobar2.git",
-                    "commit": "8bdc272f381e2633b96d1846994c7cb0f90f079f"
+                    "url": "https://example.org/foobar2.git"
                 }
             ]
         },
@@ -42,8 +42,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://foobar2.git",
-                    "branch": "branch_name"
+                    "url": "https://example.org/foobar2.git",
+                    "branch": "foobarfoo" 
                 }
             ]
         }
