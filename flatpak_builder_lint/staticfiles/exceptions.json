@@ -2642,6 +2642,9 @@
     "io.github.nokse22.ultimate-tic-tac-toe": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "io.github.OkuBrowser.oku": {
+        "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system"
+    },
     "io.github.orontee.Argos": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
