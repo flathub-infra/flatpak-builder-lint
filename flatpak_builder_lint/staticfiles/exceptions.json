@@ -3859,5 +3859,8 @@
     },
     "io.github.lawstorant.boxflat": {
         "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name"
+    },
+    "com.github.ahrm.sioyek": {
+        "finish-args-unnecessary-xdg-config-sioyek-rw-access": "Required for app theming. Predates linter rule."
     }
 }
