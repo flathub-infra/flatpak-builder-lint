@@ -2,6 +2,7 @@ name: Docker
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   docker:
