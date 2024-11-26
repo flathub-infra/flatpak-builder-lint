@@ -509,7 +509,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.matfantinel.reminduck": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "finish-args-unnecessary-xdg-config-autostart-create-access": "The app predates this linter rule"
     },
     "com.github.Matoking.protontricks": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
