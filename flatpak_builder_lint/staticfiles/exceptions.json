@@ -3829,6 +3829,9 @@
     "dev.edfloreshz.CosmicTweaks": {
         "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write to system configuration files"
     },
+    "fr.sgued.bodev": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write to system configuration files"
+    },
     "com.jwestall.Forecast": {
         "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read the system theme and listen for config changes in the host"
     },
