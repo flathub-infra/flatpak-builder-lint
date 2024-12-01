@@ -1016,6 +1016,9 @@
         "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config.",
         "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used"
     },
+    "org.gitfourchette.gitfourchette": {
+        "finish-args-flatpak-spawn-access": "Start external merge tool via flatpak-spawn"
+    },
     "org.fcitx.Fcitx5": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-unnecessary-xdg-config-fcitx-create-access": "need for simulating ibus daemon and changing kde system xkb settings",
