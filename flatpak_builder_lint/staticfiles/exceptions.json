@@ -3867,5 +3867,8 @@
     },
     "io.github.lawstorant.boxflat": {
         "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name"
+    },
+    "menu.kando.Kando": {
+        "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher"
     }
 }
