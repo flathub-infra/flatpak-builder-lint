@@ -19,7 +19,7 @@ jobs:
 
       - name: Check last commit message
         run: |
-          if git log -1 --pretty=%B|xargs|grep -E "\[release\]"; then
+          if git log -1 --pretty=%B|grep -E "\[release\]"; then
             echo "IS_RELEASE=true" >> "$GITHUB_ENV"
           fi
 
