@@ -158,18 +158,15 @@ class MetainfoCheck(Check):
             if not appstream.get_launchable(appstream_path):
                 self.errors.add("metainfo-missing-launchable-tag")
 
+            launchable_value = None
+            launchable_file_path = None
             if appstream.get_launchable(appstream_path):
                 launchable_value = appstream.get_launchable(appstream_path)[0]
-                launchable_file_path = f"{launchable_dir}/{launchable_value}"
-            else:
-                launchable_value = None
-                launchable_file_path = None
+                launchable_file_path = os.path.join(launchable_dir, launchable_value)
 
-            # Don't allow all exportable combinations to avoid issues
-            # like typos. This must match the main desktop file named by
-            # appid.desktop and must not have multiple launchables in
-            # metainfo per the spec
-            if launchable_value is not None and launchable_value != appid + ".desktop":
+            if launchable_value is not None and not re.match(
+                rf"^{appid}([-.].*)?[.]desktop$", launchable_value
+            ):
                 self.errors.add("metainfo-launchable-tag-wrong-value")
                 self.info.add(
                     "metainfo-launchable-tag-wrong-value: The value of launchable tag in Metainfo"
