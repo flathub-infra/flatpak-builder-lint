@@ -3463,7 +3463,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.itch.itch": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
     },
     "io.jamulus.Jamulus": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
