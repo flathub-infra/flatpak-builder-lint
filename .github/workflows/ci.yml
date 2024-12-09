@@ -46,6 +46,13 @@ jobs:
               - 'flatpak_builder_lint/!(staticfiles)/**'
               - 'poetry.lock'
               - 'pyproject.toml'
+            ignore-ci:
+              - '.git-blame-ignore-revs'
+              - '.gitignore'
+              - '.pre-commit-config.yaml'
+              - 'CODEOWNERS'
+              - 'LICENSE'
+              - 'README.md'
 
   check:
     runs-on: ubuntu-latest
@@ -59,7 +66,8 @@ jobs:
             needs.changes.outputs.exceptions == 'false' &&
             needs.changes.outputs.src == 'false' &&
             needs.changes.outputs.src-extra == 'false' &&
-            needs.changes.outputs.docker == 'false' 
+            needs.changes.outputs.docker == 'false' &&
+            needs.changes.outputs.ignore-ci == 'false'
           }}; then
             echo "No filter matched. This file is not covered by CI" && exit 1
           else
