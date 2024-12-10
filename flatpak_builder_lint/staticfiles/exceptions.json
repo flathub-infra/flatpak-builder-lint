@@ -3059,7 +3059,8 @@
         "module-goldendict-source-git-branch": "Needed for x-checker as upstream does not tag releaases."
     },
     "net.rpcs3.RPCS3": {
-        "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
+        "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation.",
+        "flathub-json-automerge-enabled": "Grandfather in on condition of weekly update workflow. Without automerge builds fail as branch moves to another SHA"
     },
     "io.github.loot.loot": {
         "finish-args-unnecessary-xdg-config-heroic-ro-access": "Needed to detect games installed through Heroic Games Launcher.",
