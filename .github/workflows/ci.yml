@@ -149,7 +149,7 @@ jobs:
         run: |
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
           cd build && python3 ../docker/rewrite-manifest.py && cd org.flatpak.Builder
-          rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/flatpak-builder-lint-deps.json .
+          rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/{flatpak-builder-lint-deps,cargo-sources-maturin,cargo-sources-rpds-py}.json .
           flatpak-builder --verbose --user --force-clean --repo=repo \
             --install-deps-from=flathub --default-branch=localtest --ccache \
             --install builddir org.flatpak.Builder.json

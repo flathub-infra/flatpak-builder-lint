@@ -11,7 +11,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 flatpak install --user -y flathub org.flatpak.Builder
 [[ ! -d org.flatpak.Builder ]] && git clone https://github.com/flathub/org.flatpak.Builder
 
-mv flatpak-builder-lint-deps.json org.flatpak.Builder/flatpak-builder-lint-deps.json
+mv flatpak-builder-lint-deps.json cargo-sources-maturin.json cargo-sources-rpds-py.json org.flatpak.Builder/
 python3 rewrite-manifest.py
 
 case $1 in
