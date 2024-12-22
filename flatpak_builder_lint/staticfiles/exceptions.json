@@ -3843,5 +3843,8 @@
     },
     "net.imaginaryinfinity.Squiid": {
         "finish-args-not-defined": "Is a command line application"
+    },
+    "com.roundabout_host.roundabout.Izvor": {
+        "finish-args-flatpak-spawn-access": "Needed to launch commands on the host (this is a search/launcher app)"
     }
 }
