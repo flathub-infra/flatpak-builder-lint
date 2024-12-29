@@ -1417,6 +1417,7 @@
     },
     "org.kde.gwenview": {
         "finish-args-unnecessary-xdg-data-Trash-rw-access": "required for access to Trash until Portal support is added",
+        "finish-args-unnecessary-xdg-cache-thumbnails-rw-access": "required for thumbnail reading and generation",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kate": {
