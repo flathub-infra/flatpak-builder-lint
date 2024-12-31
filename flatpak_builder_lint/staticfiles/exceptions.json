@@ -1086,6 +1086,12 @@
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
+    "page.tesk.Refine": {
+        "finish-args-flatpak-spawn-access": "needed to access host dconf configuration",
+        "finish-args-unnecessary-xdg-config-dconf-rw-access": "needed to access host dconf configuration at launch time",
+        "finish-args-direct-dconf-path": "needed to access host dconf configuration",
+        "finish-args-dconf-talk-name": "needed to access host dconf configuration"
+    },
     "cc.nift.nsm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
