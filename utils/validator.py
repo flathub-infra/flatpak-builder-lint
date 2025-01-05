@@ -1,9 +1,9 @@
 import argparse
 import json
+import os
 from collections.abc import Sequence
-from typing import Any
 
-known_exceptions = {
+KNOWN_EXCEPTIONS = {
     "appid-code-hosting-too-few-components",
     "appid-ends-with-lowercase-desktop",
     "appid-uses-code-hosting-domain",
@@ -32,10 +32,8 @@ known_exceptions = {
 }
 
 
-def check_duplicates(
-    pairs: list[tuple[str, Any]],
-) -> dict[str, Any]:
-    d = {}
+def check_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[str, str]]:
+    d: dict[str, dict[str, str]] = {}
     for key, val in pairs:
         if key in d:
             raise ValueError(f"Duplicate key(s) found: {key}")
@@ -52,36 +50,41 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.filenames = ["flatpak_builder_lint/staticfiles/exceptions.json"]
 
     exit_code = 0
+
     for filename in args.filenames:
-        with open(filename) as f:
-            try:
+        if not os.path.exists(filename) and os.path.isfile(filename):
+            print(f"File not found: {filename}")  # noqa: T201
+            exit_code = 1
+            break
+        try:
+            with open(filename) as f:
                 data = json.load(f, object_pairs_hook=check_duplicates)
-                found_exceptions = {
-                    j
-                    for i in data.values()
-                    for j in i
-                    if not j.startswith(
-                        (
-                            "module-",
-                            "finish-args-arbitrary-xdg-",
-                            "finish-args-unnecessary-xdg-",
-                        )
-                    )
-                } - {
-                    "*",
-                    "appid-filename-mismatch",
-                    "flathub-json-deprecated-i386-arch-included",
-                    "toplevel-no-command",
-                }
-                if not found_exceptions.issubset(known_exceptions):
-                    print(  # noqa: T201
-                        "Exception not found in known exceptions list",
-                        found_exceptions - known_exceptions,
-                    )
-                    exit_code = 1
-            except ValueError as err:
-                print(f"{filename}: Failed to decode: {err}")  # noqa: T201
-                exit_code = 1
+        except ValueError as err:
+            print(f"{filename}: Failed to decode: {err}")  # noqa: T201
+            exit_code = 1
+            continue
+
+        found_exceptions = {
+            j
+            for i in data.values()
+            for j in i
+            if not j.startswith(
+                ("module-", "finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-")
+            )
+        } - {
+            "*",
+            "appid-filename-mismatch",
+            "flathub-json-deprecated-i386-arch-included",
+            "toplevel-no-command",
+        }
+
+        if not found_exceptions.issubset(KNOWN_EXCEPTIONS):
+            print(  # noqa: T201
+                "Exception not found in known exceptions list:",
+                found_exceptions - KNOWN_EXCEPTIONS,
+            )
+            exit_code = 1
+
     return exit_code
 
 
