@@ -3815,6 +3815,9 @@
     "io.github.cosmic_utils.Examine": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
+    "io.github.pixeldoted.cosmic-ext-color-picker": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+    },
     "org.freedesktop.Platform.ClInfo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
