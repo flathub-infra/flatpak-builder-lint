@@ -122,10 +122,10 @@ def check_caption(path: str) -> bool:
     return not any(e is not None for e in parse_xml(path).xpath(exp))
 
 
-def has_manifest_key(path: str) -> bool:
-    custom = parse_xml(path).xpath("//custom/value[@key='flathub::manifest']/text()")
-    metadata = parse_xml(path).xpath("//metadata/value[@key='flathub::manifest']/text()")
-    return bool(custom or metadata)
+def get_manifest_key(path: str) -> list[str]:
+    custom: list[str] = parse_xml(path).xpath("//custom/value[@key='flathub::manifest']/text()")
+    metadata: list[str] = parse_xml(path).xpath("//metadata/value[@key='flathub::manifest']/text()")
+    return custom + metadata
 
 
 def has_icon_key(path: str) -> bool:

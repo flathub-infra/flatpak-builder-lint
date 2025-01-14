@@ -113,6 +113,20 @@ else
 	echo "Test 2: FAIL 🚨🚨" && test2_code="test_failed"
 fi
 
+gzip -df repo/appstream/"${arch}"/appstream.xml.gz || true
+sed -i 's|https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml|https://raw.githubusercontent.com/flathub-infra/wwwwwwwwww/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.yaml|g' repo/appstream/"${arch}"/appstream.xml
+gzip repo/appstream/"${arch}"/appstream.xml || true
+
+tests3_run="yes"
+errors3="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo|jq -r '.errors|.[]'|xargs)"
+if [ "${errors3}" = "appstream-flathub-manifest-url-not-reachable" ]; then
+	echo "Test 3: PASS ✅"
+	test3_code="test_passed"
+else
+	echo "Test 3: FAIL, $errors3 🚨🚨"
+	test3_code="test_failed"
+fi
+
 cd "$top_dir" || exit
 python tests/test_httpserver.py --stop
 
@@ -128,7 +142,10 @@ fi
 
 unset FLAT_MANAGER_BUILD_ID FLAT_MANAGER_URL FLAT_MANAGER_TOKEN
 
-if [ -z "${tests1_run}" ] || [ -z "${tests2_run}" ] || [ "${test1_code}" = "test_failed" ] || [ "${test2_code}" = "test_failed" ] || [ -z "${test1_code}" ] || [ -z "${test1_code}" ]; then
-	echo "Tests failed 🚨🚨"
-	exit 1
+if [ -z "${tests1_run}" ] || [ -z "${tests2_run}" ] || [ -z "${tests3_run}" ] ||
+   [ "${test1_code}" = "test_failed" ] || [ "${test2_code}" = "test_failed" ] ||
+   [ "${test3_code}" = "test_failed" ] || [ -z "${test1_code}" ] ||
+   [ -z "${test2_code}" ] || [ -z "${test3_code}" ]; then
+    echo "Tests failed 🚨🚨"
+    exit 1
 fi
