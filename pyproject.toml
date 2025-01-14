@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-jsonschema = "^4.19.1"
+jsonschema = "^4.23.0"
 requests = "^2.32.2"
 lxml = "^5.3.0"
 sentry-sdk = "^2.8.0"
