@@ -47,7 +47,7 @@ jobs:
           bash -x ./build.sh ${{ matrix.platform }}
 
       - name: Build the image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: docker
           file: docker/Dockerfile
@@ -75,7 +75,7 @@ jobs:
           docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 repo /mnt/repo
 
       - name: Push the image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: success() && github.event_name != 'pull_request'
         with:
           context: docker
@@ -100,7 +100,7 @@ jobs:
           password: ${{ secrets.FLATHUB_ORG_TOKEN }}
 
       - name: Build and push Docker image to the old location
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: success() && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           context: docker
