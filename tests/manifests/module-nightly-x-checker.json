@@ -1,0 +1,24 @@
+{
+    "app-id": "org.flathub.module-nightly-x-checker",
+    "modules": [
+        {
+            "name": "module1",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://example.com/foo.tar.gz",
+                    "sha1": "deadbeef",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://example.com/releases/latest",
+                        "commit-query": ".sha"
+                    }
+                } 
+            ]
+        }
+    ]
+}

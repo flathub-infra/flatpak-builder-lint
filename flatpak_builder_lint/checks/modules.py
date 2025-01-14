@@ -69,6 +69,8 @@ class ModuleCheck(Check):
             for source in sources:
                 if name := module.get("name"):
                     self.check_source(name, source)
+                if "commit-query" in source.get("x-checker-data", {}):
+                    self.errors.add(f"module-{name}-checker-uses-commit-query")
 
         if nested_modules := module.get("modules"):
             for nested_module in nested_modules:
