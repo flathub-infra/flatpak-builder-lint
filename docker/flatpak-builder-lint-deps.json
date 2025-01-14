@@ -54,70 +54,24 @@
             ]
         },
         {
-            "name": "python3-setuptools_rust",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"setuptools_rust\" --no-build-isolation"
-            ],
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/6a/23/8146aad7d88f4fcb3a6218f41a60f6c2d4e3a72de72da1825dc7c8f7877c/semantic_version-2.10.0-py2.py3-none-any.whl",
-                    "sha256": "de78a3b8e0feda74cabc54aab2da702113e33ac9d9eb9d2389bcf1f58b7d9177"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/97/09/3da290ba3934c7003d3a178840579989a7fcfa5bd23f50dd7f2ff27f30e1/setuptools_rust-1.10.2-py3-none-any.whl",
-                    "sha256": "4b39c435ae9670315d522ed08fa0e8cb29f2a6048033966b6be2571a90ce4f1c"
-                }
-            ]
-        },
-        {
-            "name": "python3-maturin",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"maturin\" --no-build-isolation"
-            ],
-            "build-options": {
-                "append-path": "/usr/lib/sdk/rust-stable/bin",
-                "env": {
-                    "CARGO_HOME": "/run/build/python3-maturin/cargo"
-                }
-            },
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/51/28/31a650d9209d873b6aec759c944bd284155154d7a01f7f541786d7c435ca/maturin-1.7.4.tar.gz",
-                    "sha256": "2b349d742a07527d236f0b4b6cab26f53ebecad0ceabfc09ec4c6a396e3176f9"
-                },
-                "cargo-sources-maturin.json"
-            ]
-        },
-        {
             "name": "python3-rpds-py",
             "buildsystem": "simple",
             "build-commands": [
                 "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"rpds-py\" --no-build-isolation"
             ],
-            "build-options": {
-                "append-path": "/usr/lib/sdk/rust-stable/bin",
-                "env": {
-                    "CARGO_HOME": "/run/build/python3-rpds-py/cargo"
-                }
-            },
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/2d/aa/e7c404bdee1db7be09860dff423d022ffdce9269ec8e6532cce09ee7beea/rpds_py-0.18.1.tar.gz",
-                    "sha256": "dc48b479d540770c811fbd1eb9ba2bb66951863e448efec2e2c102625328e92f"
+                    "url": "https://files.pythonhosted.org/packages/28/1c/2e208636275eab9636981fee10cb5cdaf3d5a202c3c16bf31fdd52ee08d0/rpds_py-0.18.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+                    "sha256": "6e30ac5e329098903262dc5bdd7e2086e0256aa762cc8b744f9e7bf2a427d3f8",
+                    "only-arches": ["x86_64"]
                 },
-                "cargo-sources-rpds-py.json"
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/19/38/eb7ae2b3ca5001b74536a67555e65202bedd1302f3d5d5000f7b0dc67ba6/rpds_py-0.18.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+                    "sha256": "35b2b771b13eee8729a5049c976197ff58a27a3829c018a04341bcf1ae409b2b",
+                    "only-arches": ["aarch64"]
+                }
             ]
         },
         {
