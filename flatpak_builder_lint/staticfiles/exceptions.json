@@ -3778,15 +3778,6 @@
         "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime",
         "finish-args-flatpak-spawn-access": "Required to launch games on the host"
     },
-    "br.gov.fazenda.receita.irpf2022": {
-        "external-gitmodule-url-found": "Predates the linter rule"
-    },
-    "br.gov.fazenda.receita.irpf2023": {
-        "external-gitmodule-url-found": "Predates the linter rule"
-    },
-    "br.gov.fazenda.receita.irpf2024": {
-        "external-gitmodule-url-found": "Predates the linter rule"
-    },
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "finish-args-not-defined": "This provides an extension point only",
         "toplevel-no-command": "This provides an extension point only",
