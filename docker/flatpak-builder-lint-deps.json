@@ -54,73 +54,6 @@
             ]
         },
         {
-            "name": "python3-setuptools_rust",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"setuptools_rust\" --no-build-isolation"
-            ],
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/6a/23/8146aad7d88f4fcb3a6218f41a60f6c2d4e3a72de72da1825dc7c8f7877c/semantic_version-2.10.0-py2.py3-none-any.whl",
-                    "sha256": "de78a3b8e0feda74cabc54aab2da702113e33ac9d9eb9d2389bcf1f58b7d9177"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/97/09/3da290ba3934c7003d3a178840579989a7fcfa5bd23f50dd7f2ff27f30e1/setuptools_rust-1.10.2-py3-none-any.whl",
-                    "sha256": "4b39c435ae9670315d522ed08fa0e8cb29f2a6048033966b6be2571a90ce4f1c"
-                }
-            ]
-        },
-        {
-            "name": "python3-maturin",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"maturin\" --no-build-isolation"
-            ],
-            "build-options": {
-                "append-path": "/usr/lib/sdk/rust-stable/bin",
-                "env": {
-                    "CARGO_HOME": "/run/build/python3-maturin/cargo"
-                }
-            },
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/51/28/31a650d9209d873b6aec759c944bd284155154d7a01f7f541786d7c435ca/maturin-1.7.4.tar.gz",
-                    "sha256": "2b349d742a07527d236f0b4b6cab26f53ebecad0ceabfc09ec4c6a396e3176f9"
-                },
-                "cargo-sources-maturin.json"
-            ]
-        },
-        {
-            "name": "python3-rpds-py",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"rpds-py\" --no-build-isolation"
-            ],
-            "build-options": {
-                "append-path": "/usr/lib/sdk/rust-stable/bin",
-                "env": {
-                    "CARGO_HOME": "/run/build/python3-rpds-py/cargo"
-                }
-            },
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/01/80/cce854d0921ff2f0a9fa831ba3ad3c65cee3a46711addf39a2af52df2cfd/rpds_py-0.22.3.tar.gz",
-                    "sha256": "e32fee8ab45d3c2db6da19a5323bc3362237c8b653c70194414b892fd06a080d"
-                },
-                "cargo-sources-rpds-py.json"
-            ]
-        },
-        {
             "name": "python3-jsonschema",
             "buildsystem": "simple",
             "build-commands": [
@@ -282,50 +215,6 @@
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/ca/1c/89ffc63a9605b583d5df2be791a27bc1a42b7c32bab68d3c8f2f73a98cd4/urllib3-2.2.2-py3-none-any.whl",
                     "sha256": "a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472"
-                }
-            ]
-        },
-        {
-            "name": "python3-meson-python",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"meson-python\" --no-build-isolation"
-            ],
-            "cleanup": ["*"],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/91/c0/104cb6244c83fe6bc3886f144cc433db0c0c78efac5dc00e409a5a08c87d/meson_python-0.16.0-py3-none-any.whl",
-                    "sha256": "842dc9f5dc29e55fc769ff1b6fe328412fe6c870220fc321060a1d2d395e69e8"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl",
-                    "sha256": "5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/aa/5f/bb5970d3d04173b46c9037109f7f05fc8904ff5be073ee49bb6ff00301bc/pyproject_metadata-0.8.0-py3-none-any.whl",
-                    "sha256": "ad858d448e1d3a1fb408ac5bac9ea7743e7a8bbb472f2693aaa334d2db42f526"
-                }
-            ]
-        },
-        {
-            "name": "python3-PyGObject",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"PyGObject==3.48.2\" --no-build-isolation --ignore-installed"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/19/4f/0d48a017090d4527e921d6892bc550ae869902e67859fc960f8fe63a9094/pycairo-1.26.1.tar.gz",
-                    "sha256": "a11b999ce55b798dbf13516ab038e0ce8b6ec299b208d7c4e767a6f7e68e8430"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/f9/9e/6bab1ed3bd878f0912d9a0600c21f3d88bab0e8a8d4c3ce50f5cf336faaf/pygobject-3.48.2.tar.gz",
-                    "sha256": "c3c0a7afbe5b2c1c64dc0530109b4dd571085153dbedfbccb8ec7c5ad233f977"
                 }
             ]
         }
