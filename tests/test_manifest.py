@@ -308,7 +308,7 @@ def test_manifest_nightly_checker() -> None:
     ret = run_checks("tests/manifests/module-nightly-x-checker.json")
     found_errors = ret["errors"]
     errors = {
-        "module-module1-checker-uses-commit-query",
+        "module-module1-checker-tracks-commits",
     }
     for e in errors:
         assert e in found_errors

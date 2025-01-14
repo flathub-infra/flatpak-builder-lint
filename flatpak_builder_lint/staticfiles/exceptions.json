@@ -854,7 +854,7 @@
         "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "module-tg_owt-checker-uses-commit-query": "Manually updated, grandfathered"
+        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
     },
     "org.telegram.desktop.webview": {
         "flathub-json-automerge-enabled": "Predates the linter rule, addon for org.telegram.desktop"
@@ -1854,7 +1854,7 @@
         "appid-code-hosting-too-few-components": "the app predates this linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "module-tg_owt-checker-uses-commit-query": "Manually updated, grandfathered"
+        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
     },
     "io.github.Hexchat": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
@@ -3119,7 +3119,7 @@
     "io.github.kukuruzka165.materialgram": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "module-tg_owt-checker-uses-commit-query": "Manually updated, grandfathered"
+        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
     },
     "io.github.nearinfinitybrowser.nearinfinity": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
@@ -3301,7 +3301,7 @@
     },
     "com.usebottles.bottles": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "module-vmtouch-checker-uses-commit-query": "Module is unmaintained for 2 years"
+        "module-vmtouch-checker-tracks-commits": "Module is unmaintained for 2 years"
     },
     "com.vivaldi.Vivaldi": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
@@ -3855,12 +3855,15 @@
         "finish-args-flatpak-spawn-access": "Needed to launch commands on the host (this is a search/launcher app)"
     },
     "org.freedesktop.Sdk.Extension.dmd": {
-        "module-dmd-checker-uses-commit-query": "Uses tag, grandfathered"
+        "module-dmd-checker-tracks-commits": "Uses tag, grandfathered"
     },
     "org.gnome.Boxes.Extension.OsinfoDb": {
-        "module-osinfo-db-checker-uses-commit-query": "Uses tag, grandfathered"
+        "module-osinfo-db-checker-tracks-commits": "Uses tag, grandfathered"
     },
     "org.DolphinEmu.dolphin-emu": {
-        "module-dolphin-emu-checker-uses-commit-query": "Uses beta channel"
+        "module-dolphin-emu-checker-tracks-commits": "Uses beta channel"
+    },
+    "io.itch.amcsquad.amcsquad": {
+        "module-amc-data-checker-tracks-commits": "Uses tag"
     }
 }
