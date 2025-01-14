@@ -58,7 +58,13 @@ def validate(path: str, *args: str) -> SubprocessResult:
 
 
 def parse_xml(path: str) -> etree._ElementTree:
-    return etree.parse(path)
+    if not (os.path.exists(path) and os.path.isfile(path)):
+        raise FileNotFoundError(f"XML file not found: {path}")
+
+    try:
+        return etree.parse(path)
+    except etree.XMLSyntaxError as e:
+        raise RuntimeError(f"XML syntax error in file {path}: {str(e)}") from None
 
 
 def components(path: str) -> list[etree._Element]:
