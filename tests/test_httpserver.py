@@ -43,8 +43,15 @@ def main() -> None:
         if os.path.exists(pid_file):
             with open(pid_file) as f:
                 pid = int(f.read().strip())
-                os.kill(pid, signal.SIGKILL)
-                os.unlink("server.pid")
+                try:
+                    os.kill(pid, 0)
+                    os.kill(pid, signal.SIGKILL)
+                    print(f"Process {pid} terminated")  # noqa: T201
+                except ProcessLookupError:
+                    print(f"No process found with PID {pid}")  # noqa: T201
+                except PermissionError:
+                    print(f"Permission denied to terminate process {pid}")  # noqa: T201
+            os.unlink(pid_file)
         else:
             print("No PID file found")  # noqa: T201
         return
