@@ -12,9 +12,62 @@ class CustomHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            json_string = """{"build": {"app_id": null, "build_log_url": "https://buildbot.flathub.org/#/builders/6/builds/8406", "commit_job_id": 107573, "created": "2023-11-28T11:43:58.274070", "extra_ids": [], "id": 66707, "public_download": true, "publish_job_id": 107683, "published_state": 2, "repo": "stable", "repo_state": 2, "token_branches": [], "token_name": "default", "token_type": "app"}, "build_refs": [{"build_id": 66707, "build_log_url": null, "commit": "03cb80951512747ff4732ec91fbdb66f135646b78dd844e4f0c383e0e4961545", "id": 432660, "ref_name": "screenshots/x86_64"}, {"build_id": 66707, "build_log_url": null, "commit": "98ff535bac32c1c76c4898a9d93508de66db10f55564812385fdacb010864956", "id": 432661, "ref_name": "runtime/org.flathub.gui.Debug/x86_64/stable"}, {"build_id": 66707, "build_log_url": null, "commit": "e08164425b36bb3bc79acef9a40ea3bac7b19862adb596a38f0242b4b4b408ed", "id": 432662, "ref_name": "runtime/org.flathub.gui.Locale/x86_64/stable"}, {"build_id": 66707, "build_log_url": null, "commit": "57c6246315ff6c494e8d657834a5137c8dbd96845e9e9d04a012448a1306fd5d", "id": 432663, "ref_name": "app/org.flathub.gui/x86_64/stable"}, {"build_id": 66707, "build_log_url": null, "commit": "7c3ff51a95ebc2a4f4ee29303731b4d8b56222dcc0d4b509553952336ee2d84e", "id": 432664, "ref_name": "runtime/org.flathub.gui.Sources/x86_64/stable"}]}"""  # noqa: E501
-            data = json.loads(json_string)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            json_string = {
+                "build": {
+                    "app_id": None,
+                    "build_log_url": "https://buildbot.flathub.org/#/builders/6/builds/8406",
+                    "commit_job_id": 107573,
+                    "created": "2023-11-28T11:43:58.274070",
+                    "extra_ids": [],
+                    "id": 66707,
+                    "public_download": True,
+                    "publish_job_id": 107683,
+                    "published_state": 2,
+                    "repo": "stable",
+                    "repo_state": 2,
+                    "token_branches": [],
+                    "token_name": "default",
+                    "token_type": "app",
+                },
+                "build_refs": [
+                    {
+                        "build_id": 66707,
+                        "build_log_url": None,
+                        "commit": "03cb80951512747ff4732ec91fbdb66f135646b78dd844e4f0c383e0e4961545",  # noqa: E501
+                        "id": 432660,
+                        "ref_name": "screenshots/x86_64",
+                    },
+                    {
+                        "build_id": 66707,
+                        "build_log_url": None,
+                        "commit": "98ff535bac32c1c76c4898a9d93508de66db10f55564812385fdacb010864956",  # noqa: E501
+                        "id": 432661,
+                        "ref_name": "runtime/org.flathub.gui.Debug/x86_64/stable",
+                    },
+                    {
+                        "build_id": 66707,
+                        "build_log_url": None,
+                        "commit": "e08164425b36bb3bc79acef9a40ea3bac7b19862adb596a38f0242b4b4b408ed",  # noqa: E501
+                        "id": 432662,
+                        "ref_name": "runtime/org.flathub.gui.Locale/x86_64/stable",
+                    },
+                    {
+                        "build_id": 66707,
+                        "build_log_url": None,
+                        "commit": "57c6246315ff6c494e8d657834a5137c8dbd96845e9e9d04a012448a1306fd5d",  # noqa: E501
+                        "id": 432663,
+                        "ref_name": "app/org.flathub.gui/x86_64/stable",
+                    },
+                    {
+                        "build_id": 66707,
+                        "build_log_url": None,
+                        "commit": "7c3ff51a95ebc2a4f4ee29303731b4d8b56222dcc0d4b509553952336ee2d84e",  # noqa: E501
+                        "id": 432664,
+                        "ref_name": "runtime/org.flathub.gui.Sources/x86_64/stable",
+                    },
+                ],
+            }
+            self.wfile.write(json.dumps(json_string).encode("utf-8"))
         else:
             self.send_response(404)
             self.end_headers()
