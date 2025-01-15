@@ -201,7 +201,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-      - name: Sanity check on Flatmanager chekcs
+      - name: Run Flatmanager checks
         run: sh -c tests/flatmanager.sh
 
       - name: Set up appstreamcli
