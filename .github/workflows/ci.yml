@@ -202,7 +202,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
       - name: Run Flatmanager checks
-        run: sh -c tests/flatmanager.sh
+        run: bash -c tests/flatmanager.sh
 
       - name: Set up appstreamcli
         run: |
