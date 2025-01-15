@@ -127,7 +127,7 @@ The virtual enviroment can be listed with `poetry env list` and removed
 with `poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`.
 
 The following Python dependencies are installed by Poetry and needed to
-run `jsonschema, requests, requests-cache, lxml, sentry-sdk, PyGObject`.
+run the project: `jsonschema, requests, requests-cache, lxml, sentry-sdk, PyGObject`.
 Additionally `poetry-core>=1.0.0` is necessary to build.
 `poetry-dynamic-versioning` is used to generate a version from the
 git commit, since no tags or releases are done.
