@@ -3856,5 +3856,13 @@
     },
     "io.itch.amcsquad.amcsquad": {
         "module-amc-data-checker-tracks-commits": "Uses tag"
+    },
+    "io.github.moonlight_mod.moonlight-installer": {
+        "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needed to set overrides and patch Flatpak installations of Discord",
+        "finish-args-unnecessary-xdg-data-Discord-rw-access": "Needed to patch Discord",
+        "finish-args-unnecessary-xdg-data-DiscordPTB-rw-access": "Needed to patch Discord PTB",
+        "finish-args-unnecessary-xdg-data-DiscordCanary-rw-access": "Needed to patch Discord Canary",
+        "finish-args-unnecessary-xdg-data-DiscordDevelopment-rw-access": "Needed to patch Discord Development",
+        "finish-args-unnecessary-xdg-config-moonlight-mod-rw-access": "Patches are stored here, needs to be accessible from all patched Discord instances"
     }
 }
