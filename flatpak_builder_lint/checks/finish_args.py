@@ -62,7 +62,7 @@ class FinishArgsCheck(Check):
 
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
-                    mode_src = [i for i in modes if fs.endswith(i)][0]
+                    mode_src = next(i for i in modes if fs.endswith(i))
                     mode_suffix = mode_src.split(":", 1)[1]
 
                 if re.match(regexp_arbitrary, fs):

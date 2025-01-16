@@ -5,7 +5,7 @@ from . import Check
 
 
 class FlathubJsonCheck(Check):
-    arches: set[str] = {"x86_64", "aarch64"}
+    arches: tuple[str] = ("x86_64", "aarch64")
 
     def _check_if_extra_data(self, modules: list) -> bool:
         for module in modules:
