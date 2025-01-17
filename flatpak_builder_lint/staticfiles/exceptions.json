@@ -3444,7 +3444,9 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.mpv.Mpv": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "module-x264-checker-tracks-commits": "Tracks stable branch commits, doesn't have releases",
+        "module-luajit-checker-tracks-commits": "Tracks stable branch commits, doesn't have releases"
     },
     "io.qt.QtCreator": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
