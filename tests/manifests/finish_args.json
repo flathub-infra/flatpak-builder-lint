@@ -7,6 +7,7 @@
         "--filesystem=host",
         "--filesystem=/run/media:ro",
         "--filesystem=xdg-config/kdeglobals:ro",
+        "--talk-name=org.flathub.finish_args",
         "--own-name=org.flathub.finish_args",
         "--own-name=org.kde.StatusNotifierItem",
         "--socket=session-bus",
