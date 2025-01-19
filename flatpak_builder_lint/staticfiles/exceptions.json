@@ -3865,6 +3865,6 @@
         "finish-args-unnecessary-xdg-data-DiscordPTB-rw-access": "Needed to patch Discord PTB",
         "finish-args-unnecessary-xdg-data-DiscordCanary-rw-access": "Needed to patch Discord Canary",
         "finish-args-unnecessary-xdg-data-DiscordDevelopment-rw-access": "Needed to patch Discord Development",
-        "finish-args-unnecessary-xdg-config-moonlight-mod-rw-access": "Patches are stored here, needs to be accessible from all patched Discord instances"
+        "finish-args-unnecessary-xdg-config-moonlight-mod-create-access": "Patches are stored here, needs to be accessible from all patched Discord instances"
     }
 }
