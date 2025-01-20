@@ -9,7 +9,9 @@ git config --global protocol.file.allow always
 
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install --user -y flathub org.flatpak.Builder
-[[ ! -d org.flatpak.Builder ]] && git clone https://github.com/flathub/org.flatpak.Builder
+rm -rf org.flatpak.Builder
+git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
+git submodule update --init --recursive
 
 mv flatpak-builder-lint-deps.json org.flatpak.Builder/
 python3 rewrite-manifest.py
