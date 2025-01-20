@@ -2,8 +2,8 @@
 set -e
 
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends flatpak dbus-daemon git \
-    python3
+sudo apt-get install -y --no-install-recommends flatpak dbus-daemon \
+    git python3 desktop-file-utils elfutils
 
 git config --global protocol.file.allow always
 
