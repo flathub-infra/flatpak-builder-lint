@@ -1191,6 +1191,12 @@
     "com.ulduzsoft.Birdtray": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.ulaa.Ulaa": {
+        "flathub-json-modified-publish-delay": "extra-data",
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-dconf-talk-name": "Predates the linter rule",
+        "finish-args-direct-dconf-path": "Predates the linter rule"
+    },
     "com.unity.UnityHub": {
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor"
