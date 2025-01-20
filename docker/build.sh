@@ -12,7 +12,7 @@ flatpak install --user -y flathub org.flatpak.Builder
 rm -rf org.flatpak.Builder
 git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
 
-cp -vf docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
+cp -vf flatpak-builder-lint-deps.json org.flatpak.Builder/
 python3 rewrite-manifest.py
 
 case $1 in
