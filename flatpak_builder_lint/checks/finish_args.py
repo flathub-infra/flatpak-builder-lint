@@ -62,7 +62,7 @@ class FinishArgsCheck(Check):
 
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
-                    mode_src = [i for i in modes if fs.endswith(i)][0]
+                    mode_src = next(i for i in modes if fs.endswith(i))
                     mode_suffix = mode_src.split(":", 1)[1]
 
                 if re.match(regexp_arbitrary, fs):
@@ -154,6 +154,16 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-flatpak-own-name")
 
         for talk_name in finish_args["talk-name"]:
+            # Values not allowed: appid or appid.*
+            # An own-name implies talk-name
+            # See https://docs.flatpak.org/en/latest/flatpak-command-reference.html
+            # session bus policy
+            # > The application can own the bus name or names (as well as all the above)
+            # https://github.com/flatpak/flatpak/pull/5582#discussion_r1384797147
+            if appid and (
+                talk_name == appid or (talk_name.startswith(appid) and talk_name[len(appid)] == ".")
+            ):
+                self.errors.add("finish-args-unnecessary-appid-talk-name")
             if talk_name == "org.freedesktop.*":
                 self.errors.add("finish-args-wildcard-freedesktop-talk-name")
             if talk_name == "org.gnome.*":

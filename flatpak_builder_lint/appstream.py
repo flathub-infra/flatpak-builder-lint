@@ -64,7 +64,7 @@ def parse_xml(path: str) -> etree._ElementTree:
     try:
         return etree.parse(path)
     except etree.XMLSyntaxError as e:
-        raise RuntimeError(f"XML syntax error in file {path}: {str(e)}") from None
+        raise RuntimeError(f"XML syntax error in file {path}: {e!s}") from None
 
 
 def components(path: str) -> list[etree._Element]:

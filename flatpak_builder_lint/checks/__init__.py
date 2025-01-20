@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from .. import ostree
 
 ALL = []
@@ -13,12 +15,12 @@ class CheckMeta(type):
 
 
 class Check(metaclass=CheckMeta):
-    warnings: set[str] = set()
-    errors: set[str] = set()
-    jsonschema: set[str] = set()
-    appstream: set[str] = set()
-    desktopfile: set[str] = set()
-    info: set[str] = set()
+    warnings: ClassVar[set[str]] = set()
+    errors: ClassVar[set[str]] = set()
+    jsonschema: ClassVar[set[str]] = set()
+    appstream: ClassVar[set[str]] = set()
+    desktopfile: ClassVar[set[str]] = set()
+    info: ClassVar[set[str]] = set()
     repo_primary_ref: str | None = None
 
     def _populate_ref(self, repo: str) -> None:

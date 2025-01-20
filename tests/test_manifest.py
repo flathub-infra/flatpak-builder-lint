@@ -152,6 +152,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-wildcard-kde-system-talk-name",
         "finish-args-x11-without-ipc",
         "finish-args-contains-both-x11-and-fallback",
+        "finish-args-unnecessary-appid-talk-name",
     }
 
     expected_absents = {
