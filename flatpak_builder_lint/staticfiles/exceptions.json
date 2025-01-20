@@ -1193,9 +1193,9 @@
     },
     "com.ulaa.Ulaa": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Optional Wayland support",
+        "finish-args-dconf-talk-name": "Require to access host dconf configuration",
+        "finish-args-direct-dconf-path": "Require to access host dconf configuration"
     },
     "com.unity.UnityHub": {
         "flathub-json-modified-publish-delay": "extra-data",
