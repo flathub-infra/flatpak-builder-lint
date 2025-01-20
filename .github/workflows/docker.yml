@@ -37,10 +37,6 @@ jobs:
           path: ${{ github.workspace }}/.flatpak-builder
           key: fb-${{ matrix.platform }}-${{ hashFiles('poetry.lock') }}
 
-      - name: Set up dependencies
-        run: |
-          sudo add-apt-repository ppa:flatpak/stable
-
       - name: Build flatpak-builder-lint
         run: |
           cd docker
