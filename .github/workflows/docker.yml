@@ -36,9 +36,8 @@ jobs:
 
       - name: Prepare manifest for hashing
         run: |
-          sudo apt update && sudo apt install -y flatpak-builder
+          sudo apt update && sudo apt install -y --no-install-recommends flatpak-builder
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
-          git submodule update --init --recursive
           mv docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
           python3 docker/rewrite-manifest.py
           flatpak-builder --show-manifest org.flatpak.Builder/org.flatpak.Builder.json >> org.flatpak.Builder-cache.json

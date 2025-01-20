@@ -2,8 +2,8 @@
 set -e
 
 sudo apt-get update
-sudo apt-get install -y flatpak dbus-daemon git bzip2 \
-    ostree python3 python3-requirement-parser python3-toml
+sudo apt-get install -y --no-install-recommends flatpak dbus-daemon git \
+    bzip2 ostree python3 python3-requirement-parser python3-toml
 
 git config --global protocol.file.allow always
 
@@ -11,10 +11,9 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 flatpak install --user -y flathub org.flatpak.Builder
 rm -rf org.flatpak.Builder
 git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
-git submodule update --init --recursive
 
-mv flatpak-builder-lint-deps.json org.flatpak.Builder/
-python3 rewrite-manifest.py
+mv -v docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
+python3 docker/rewrite-manifest.py
 
 case $1 in
     amd64)
@@ -25,7 +24,7 @@ case $1 in
         ;;
 esac
 
-cd org.flatpak.Builder 
+cd org.flatpak.Builder
 dbus-run-session flatpak run org.flatpak.Builder --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
     --arch="$arch" --verbose --user --force-clean --ccache \
     --install-deps-from=flathub builddir org.flatpak.Builder.json
