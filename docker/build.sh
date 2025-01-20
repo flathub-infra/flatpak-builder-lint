@@ -25,6 +25,6 @@ esac
 
 cd org.flatpak.Builder 
 dbus-run-session flatpak run org.flatpak.Builder --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
-    --arch="$arch" --verbose --user --force-clean --repo=repo --ccache \
+    --arch="$arch" --verbose --user --force-clean --ccache \
     --install-deps-from=flathub builddir org.flatpak.Builder.json
 rm -rf "builddir/files/lib/debug"
