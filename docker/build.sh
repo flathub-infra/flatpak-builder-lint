@@ -3,7 +3,7 @@ set -e
 
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends flatpak dbus-daemon git \
-    bzip2 ostree python3 python3-requirement-parser python3-toml
+    python3
 
 git config --global protocol.file.allow always
 
