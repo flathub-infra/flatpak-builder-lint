@@ -1191,6 +1191,11 @@
     "com.ulduzsoft.Birdtray": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.ulaa.Ulaa": {
+        "finish-args-contains-both-x11-and-wayland": "Optional Wayland support",
+        "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
+        "finish-args-direct-dconf-path": "Access host dconf for proxy resolution"
+    },
     "com.unity.UnityHub": {
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor"
