@@ -3,7 +3,7 @@ set -e
 
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends flatpak dbus-daemon \
-    git python3 desktop-file-utils elfutils
+    git python3
 
 git config --global protocol.file.allow always
 
@@ -12,8 +12,8 @@ flatpak install --user -y flathub org.flatpak.Builder
 rm -rf org.flatpak.Builder
 git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
 
-mv -v docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
-python3 docker/rewrite-manifest.py
+cp -vf docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
+python3 rewrite-manifest.py
 
 case $1 in
     amd64)
