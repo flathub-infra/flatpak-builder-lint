@@ -148,23 +148,34 @@ jobs:
           flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
           flatpak remote-add --user --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 
-      - name: Build and test org.flatpak.Builder
+      - name: Prepare org.flatpak.Builder
         run: |
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git build/org.flatpak.Builder
-          cd build && python3 ../docker/rewrite-manifest.py && cd org.flatpak.Builder
-          rm -v flatpak-builder-lint-deps.json && cp -v ../../docker/flatpak-builder-lint-deps.json .
-          flatpak-builder --verbose --user --force-clean --repo=repo \
-            --install-deps-from=flathub --default-branch=localtest --ccache \
-            --install builddir org.flatpak.Builder.json
+          cd build && python3 ../docker/rewrite-manifest.py
+          cd org.flatpak.Builder
+          cp -vf ../../docker/flatpak-builder-lint-deps.json .
+          flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.flatpak-builder
+          key: ${{ runner.os }}-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+
+      - name: Build and test org.flatpak.Builder
+        run: |
+          flatpak-builder --verbose --user --force-clean \
+            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --install-deps-from=flathub --default-branch=localtest \
+            --ccache --install builddir org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
 
       - name: Sanity check on a baseapp
         run: |
           git clone --depth=1 --recursive --single-branch https://github.com/flathub/com.system76.Cosmic.BaseApp.git com.system76.Cosmic.BaseApp
           cd com.system76.Cosmic.BaseApp
-          git submodule update --init --recursive
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --repo=repo --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -175,7 +186,8 @@ jobs:
           cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           git submodule update --init --recursive
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --repo=repo --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -185,7 +197,8 @@ jobs:
           cd tests/repo/min_success_metadata/console-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --repo=repo \
             --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -194,7 +207,8 @@ jobs:
         run: |
           cd tests/repo/min_success_metadata/gui-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media

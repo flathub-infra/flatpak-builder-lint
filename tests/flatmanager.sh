@@ -61,7 +61,8 @@ run_test() {
 run_build() {
     if [ "${GITHUB_ACTIONS:-false}" = "true" ]; then
         dbus-run-session flatpak run org.flatpak.Builder//localtest \
-            --verbose --user --force-clean --repo=repo \
+            --verbose --user --force-clean \
+            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --install-deps-from=flathub --ccache builddir \
             org.flathub.gui.yaml
