@@ -18,8 +18,6 @@ jobs:
         platform: [amd64, arm64]
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -34,24 +32,47 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare manifest for hashing
+      - name: Install dependencies
         run: |
-          sudo apt update && sudo apt install -y --no-install-recommends flatpak-builder
+          sudo apt update && sudo apt install -y \
+            --no-install-recommends flatpak flatpak-builder \
+            dbus-daemon git python3
+
+      - name: Allow file:// clones with git>=2.38.1
+        run: |
+          git config --global protocol.file.allow always
+
+      - name: Prepare manifest
+        run: |
+          cd docker
+          rm -rf org.flatpak.Builder/
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
-          cp -vf docker/flatpak-builder-lint-deps.json org.flatpak.Builder/
-          python3 docker/rewrite-manifest.py
+          cp -vf flatpak-builder-lint-deps.json org.flatpak.Builder/
+          python3 rewrite-manifest.py
           flatpak-builder --show-manifest org.flatpak.Builder/org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
 
       - name: Cache flatpak build
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.flatpak-builder
-          key: fb-${{ matrix.platform }}-${{ hashFiles('org.flatpak.Builder-cache.json') }}
+          key: fb-${{ matrix.platform }}-${{ hashFiles('docker/org.flatpak.Builder-cache.json') }}
 
       - name: Build flatpak-builder-lint
         run: |
+          if [ "${{ matrix.platform }}" = "amd64" ]; then
+            arch="x86_64"
+          elif [ "${{ matrix.platform }}" = "arm64" ]; then
+            arch="aarch64"
+          else
+            echo "Unsupported platform: ${{ matrix.platform }}"
+            exit 1
+          fi
           cd docker
-          bash -x ./build.sh ${{ matrix.platform }}
+          dbus-run-session flatpak run org.flatpak.Builder \
+            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --arch="$arch" --verbose --user --force-clean --ccache \
+            --install-deps-from=flathub builddir org.flatpak.Builder.json
+          rm -rf "builddir/files/lib/debug"
 
       - name: Build the image
         uses: docker/build-push-action@v6
