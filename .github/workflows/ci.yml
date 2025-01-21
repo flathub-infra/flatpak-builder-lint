@@ -131,14 +131,14 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/.flatpak-builder
+          path: ${{ github.workspace }}/cache/.flatpak-builder
           key: ${{ runner.os }}-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
 
       - name: Build and test org.flatpak.Builder
         run: |
           cd build/org.flatpak.Builder
           flatpak-builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --default-branch=localtest \
             --ccache --keep-build-dirs --install builddir \
             org.flatpak.Builder.json
@@ -150,7 +150,7 @@ jobs:
           cd com.system76.Cosmic.BaseApp
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -161,7 +161,7 @@ jobs:
           cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -172,7 +172,7 @@ jobs:
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --repo=repo \
+            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
             --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
@@ -182,7 +182,7 @@ jobs:
           cd tests/repo/min_success_metadata/gui-app
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" --repo=repo \
+            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
