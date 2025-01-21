@@ -69,7 +69,7 @@ jobs:
             echo "Unsupported platform: ${{ matrix.platform }}"
             exit 1
           fi
-          cd docker
+          cd docker/org.flatpak.Builder/
           dbus-run-session flatpak run org.flatpak.Builder \
             --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
             --arch="$arch" --verbose --user --force-clean --ccache \
