@@ -37,6 +37,8 @@ jobs:
           sudo apt update && sudo apt install -y \
             --no-install-recommends flatpak flatpak-builder \
             dbus-daemon git python3
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.flatpak.Builder
 
       - name: Allow file:// clones with git>=2.38.1
         run: |
