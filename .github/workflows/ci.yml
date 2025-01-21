@@ -136,6 +136,7 @@ jobs:
 
       - name: Build and test org.flatpak.Builder
         run: |
+          cd build/org.flatpak.Builder
           flatpak-builder --verbose --user --force-clean \
             --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
             --install-deps-from=flathub --default-branch=localtest \
@@ -157,7 +158,6 @@ jobs:
         run: |
           git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.git org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
-          git submodule update --init --recursive
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
