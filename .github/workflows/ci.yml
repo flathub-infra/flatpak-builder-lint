@@ -140,7 +140,8 @@ jobs:
           flatpak-builder --verbose --user --force-clean \
             --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
             --install-deps-from=flathub --default-branch=localtest \
-            --ccache --install builddir org.flatpak.Builder.json
+            --ccache --keep-build-dirs --install builddir \
+            org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
 
       - name: Sanity check on a baseapp
