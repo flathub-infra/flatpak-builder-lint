@@ -24,8 +24,40 @@ with the proper arguments to Flatpak Builder.
 
 Some checks may require network connectivity.
 
-Errors can be overridden through exceptions. Exceptions must be [submitted
-to Flathub](https://docs.flathub.org/docs/for-app-authors/linter#exceptions).
+## Exceptions
+
+Errors can be overridden through exceptions.
+
+Exceptions must be [submitted to Flathub](https://docs.flathub.org/docs/for-app-authors/linter#exceptions)
+if the app is meant to be published on Flathub or already exists on
+Flathub.
+
+### Local exceptions
+
+For ignoring errors locally (for example in CI outside Flathub),
+the `--user-exceptions` argument can be used to point it to a local
+JSON file containing exceptions:
+
+```sh
+flatpak-builder-lint --exceptions --user-exceptions exceptions.json {appstream,manifest,builddir,repo} path
+```
+
+The JSON file must be in the following format:
+
+```json
+{
+    "com.foo.Bar.Devel": [
+        "linter-error-1"
+    ],
+    "com.foo.Bar.Nightly": [
+        "linter-error-2"
+    ]
+}
+```
+
+If it is passed only local exceptions loaded from the file, matching the
+app ID will be used, otherwise it will use remote exceptions from
+Flathub.
 
 ## Installation
 
@@ -195,7 +227,8 @@ Please avoid adding large files or binary files that aren't readable
 ## Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--appid APPID] [--cwd] [--ref REF] {appstream,manifest,builddir,repo} path
+usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF]
+                            {appstream,manifest,builddir,repo} path
 
 A linter for Flatpak builds and flatpak-builder manifests
 
@@ -215,6 +248,8 @@ options:
   --exceptions
                         Skip warnings or errors added to exceptions.
                         Exceptions must be submitted to Flathub
+  --user-exceptions USER_EXCEPTIONS
+                        Path to a JSON file with exceptions
   --appid APPID         Override the app ID
   --cwd                 Override the path parameter with current working directory
   --ref REF             Override the primary ref detection

@@ -51,8 +51,20 @@ def get_local_exceptions(appid: str) -> set[str]:
     return set()
 
 
+def get_user_exceptions(file: str, appid: str) -> set[str]:
+    if os.path.exists(file) and os.path.isfile(file):
+        with open(file, encoding="utf-8") as f:
+            exceptions = json.load(f)
+            return set(exceptions.get(appid))
+    return set()
+
+
 def run_checks(
-    kind: str, path: str, enable_exceptions: bool = False, appid: str | None = None
+    kind: str,
+    path: str,
+    enable_exceptions: bool = False,
+    appid: str | None = None,
+    user_exceptions_path: str | None = None,
 ) -> dict[str, str | list[str | None]]:
     match kind:
         case "manifest":
@@ -96,7 +108,11 @@ def run_checks(
         appid = appid[0] if appid else infer_appid_func(path)
 
         if appid:
-            exceptions = domainutils.get_remote_exceptions(appid)
+            if user_exceptions_path:
+                exceptions = get_user_exceptions(user_exceptions_path, appid)
+            else:
+                exceptions = domainutils.get_remote_exceptions(appid)
+
             if not exceptions:
                 exceptions = get_local_exceptions(appid)
 
@@ -161,6 +177,11 @@ def main() -> int:
         """),
         action="store_true",
     )
+    parser.add_argument(
+        "--user-exceptions",
+        help="Path to a JSON file with exceptions",
+        type=str,
+    )
     parser.add_argument("--appid", help="Override the app ID", type=str, nargs=1)
     parser.add_argument(
         "--cwd",
@@ -207,7 +228,9 @@ def main() -> int:
         checks.Check.repo_primary_ref = args.ref[0]
 
     if args.type != "appstream":
-        if results := run_checks(args.type, path, args.exceptions, args.appid):
+        if results := run_checks(
+            args.type, path, args.exceptions, args.appid, args.user_exceptions
+        ):
             if "errors" in results:
                 exit_code = 1
 
