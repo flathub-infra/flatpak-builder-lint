@@ -3874,6 +3874,6 @@
         "finish-args-unnecessary-xdg-config-moonlight-mod-create-access": "Patches are stored here, needs to be accessible from all patched Discord instances"
     },
     "app.freelens.Freelens": {
-        "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+        "finish-args-flatpak-spawn-access": "test"
     }
 }
