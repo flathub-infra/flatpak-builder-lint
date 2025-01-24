@@ -34,11 +34,8 @@ Flathub.
 
 ### Local exceptions
 
-Specifying local exceptions using `--user-exceptions` should be avoided
-for pipelines or cases where builds are being pushed to Flathub as it
-may hide errors which Flathub will fail on. In general, this option
-should be used at one's own risk, as some errors should never be
-ignored.
+This option should be used sparingly as some errors should never be
+ignored and it may hide errors that will fail on Flathub.
 
 For ignoring errors locally (for example in CI outside Flathub),
 the `--user-exceptions` argument can be used to point it to a local
