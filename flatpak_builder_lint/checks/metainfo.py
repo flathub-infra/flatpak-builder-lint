@@ -88,7 +88,7 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-id-mismatch-flatpak-id")
             self.info.add(
                 f"appstream-id-mismatch-flatpak-id: The value of ID tag: {aps_cid} in Metainfo"
-                + f" does not match the FLATPAK_ID: {appid}. Please see the docs for more details"
+                + f" does not match the FLATPAK_ID: {appid}. Please see the docs for more details."
             )
 
         if not appstream.all_release_has_timestamp(appstream_path):
