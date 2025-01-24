@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Example
+GenericName=Example
+Comment=Example
+Exec=Example %U
+Icon=org.flathub.appstream_no_timestamp
+Type=Application
+Categories=Network;
+Version=1.1

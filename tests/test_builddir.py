@@ -284,3 +284,9 @@ def test_builddir_xdg_dir_access() -> None:
     }
     for e in errors:
         assert e in found_errors
+
+
+def test_builddir_appstream_missing_timestamp() -> None:
+    ret = run_checks("tests/builddir/appstream-missing-timestamp")
+    found_errors = set(ret["errors"])
+    assert "appstream-release-tag-missing-timestamp" in found_errors

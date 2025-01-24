@@ -152,3 +152,7 @@ def get_icon_filename(path: str) -> str | None:
     if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
         return str(icons[0].text)
     return None
+
+
+def all_release_has_timestamp(path: str) -> bool:
+    return not parse_xml(path).xpath("//releases/release[not(@timestamp)]")
