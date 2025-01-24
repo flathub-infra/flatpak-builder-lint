@@ -42,7 +42,7 @@ the `--user-exceptions` argument can be used to point it to a local
 JSON file containing exceptions:
 
 ```sh
-flatpak-builder-lint --exceptions --user-exceptions exceptions.json {appstream,manifest,builddir,repo} path
+flatpak-builder-lint --exceptions --user-exceptions exceptions.json {manifest,builddir,repo} path
 ```
 
 The JSON file must be in the following format:
