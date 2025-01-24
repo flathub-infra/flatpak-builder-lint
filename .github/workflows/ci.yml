@@ -33,6 +33,7 @@ jobs:
             shared: &shared
               - '.github/**'
               - 'docker/**'
+              - 'flatpak_builder_lint/!(staticfiles/**)/**'
               - 'flatpak_builder_lint/staticfiles/flatpak-manifest.schema.json'
               - 'flatpak_builder_lint/staticfiles/*.py'
               - 'poetry.lock'
