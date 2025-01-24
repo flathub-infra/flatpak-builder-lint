@@ -43,7 +43,7 @@ def _filter(info: set, excepts: set) -> list:
 def get_local_exceptions(appid: str) -> set[str]:
     with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
-        ret = exceptions.get(appid)
+        ret = exceptions.get(appid, [])
 
     if ret:
         return set(ret)
@@ -55,7 +55,7 @@ def get_user_exceptions(file: str, appid: str) -> set[str]:
     if os.path.exists(file) and os.path.isfile(file):
         with open(file, encoding="utf-8") as f:
             exceptions = json.load(f)
-            return set(exceptions.get(appid))
+            return set(exceptions.get(appid, []))
     return set()
 
 
