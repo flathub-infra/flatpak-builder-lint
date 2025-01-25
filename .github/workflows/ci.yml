@@ -83,6 +83,8 @@ jobs:
 
       - name: Set up dependencies
         run: |
+          sudo add-apt-repository ppa:flatpak/stable
+          sudo apt-get update
           sudo apt-get install -y --no-install-recommends jq flatpak \
             desktop-file-utils elfutils flatpak-builder curl \
             dbus-daemon libgirepository1.0-dev \

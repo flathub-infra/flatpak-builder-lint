@@ -35,8 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -y \
-            --no-install-recommends flatpak flatpak-builder \
-            dbus-daemon git python3
+            --no-install-recommends flatpak dbus-daemon git python3
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y flathub org.flatpak.Builder
 
