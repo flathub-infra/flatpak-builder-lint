@@ -126,12 +126,11 @@ jobs:
           cd build && python3 ../docker/rewrite-manifest.py
           cd org.flatpak.Builder
           cp -vf ../../docker/flatpak-builder-lint-deps.json .
-          flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
 
       - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/cache/.flatpak-builder
-          key: ${{ runner.os }}-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+          key: ${{ runner.os }}-flatpak-builder
 
       - name: Build and test org.flatpak.Builder
         run: |

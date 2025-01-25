@@ -51,13 +51,12 @@ jobs:
           git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
           cp -vf flatpak-builder-lint-deps.json org.flatpak.Builder/
           python3 rewrite-manifest.py
-          flatpak-builder --show-manifest org.flatpak.Builder/org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
 
       - name: Cache flatpak build
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.flatpak-builder
-          key: fb-${{ matrix.platform }}-${{ hashFiles('docker/org.flatpak.Builder-cache.json') }}
+          key: fb-${{ matrix.platform }}-${{ runner.os }}
 
       - name: Build flatpak-builder-lint
         run: |
