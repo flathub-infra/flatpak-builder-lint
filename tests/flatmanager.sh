@@ -64,13 +64,13 @@ run_build() {
             --verbose --user --force-clean \
             --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
-            --install-deps-from=flathub builddir \
+            --install-deps-from=flathub --ccache builddir \
             org.flathub.gui.yaml
     else
         flatpak run org.flatpak.Builder//localtest --verbose --user \
             --force-clean --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
-            --install-deps-from=flathub builddir \
+            --install-deps-from=flathub --ccache builddir \
             org.flathub.gui.yaml
     fi
     mkdir -p builddir/files/share/app-info/media
@@ -112,7 +112,7 @@ if [ -z "${GITHUB_ACTIONS:-}" ]; then
     python3 ../docker/rewrite-manifest.py
     cd org.flatpak.Builder || exit
     cp -v ../../docker/flatpak-builder-lint-deps.json .
-    flatpak-builder --user --force-clean --repo=repo --install-deps-from=flathub --default-branch=localtest --install builddir org.flatpak.Builder.json
+    flatpak-builder --user --force-clean --repo=repo --install-deps-from=flathub --default-branch=localtest --ccache --install builddir org.flatpak.Builder.json
     popd > /dev/null
 fi
 
