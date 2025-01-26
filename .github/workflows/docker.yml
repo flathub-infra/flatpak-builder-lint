@@ -55,7 +55,7 @@ jobs:
       - name: Cache flatpak build
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/.flatpak-builder
+          path: ${{ github.workspace }}/docker-cache/.flatpak-builder
           key: fb-${{ matrix.platform }}-${{ runner.os }}
 
       - name: Build flatpak-builder-lint
@@ -70,7 +70,7 @@ jobs:
           fi
           cd docker/org.flatpak.Builder/
           dbus-run-session flatpak run org.flatpak.Builder \
-            --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
+            --state-dir="$GITHUB_WORKSPACE/docker-cache/.flatpak-builder" \
             --arch="$arch" --verbose --user --force-clean --ccache \
             --install-deps-from=flathub builddir org.flatpak.Builder.json
           rm -rf "builddir/files/lib/debug"
