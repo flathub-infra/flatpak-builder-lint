@@ -71,7 +71,7 @@ jobs:
           cd docker/org.flatpak.Builder/
           dbus-run-session flatpak run org.flatpak.Builder \
             --state-dir="$GITHUB_WORKSPACE/docker-cache/.flatpak-builder" \
-            --arch="$arch" --verbose --user --force-clean --ccache \
+            --arch="$arch" --verbose --user --force-clean \
             --install-deps-from=flathub builddir org.flatpak.Builder.json
           rm -rf "builddir/files/lib/debug"
 
@@ -97,7 +97,7 @@ jobs:
           cd tests/repo/min_success_metadata/gui-app
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
             --mirror-screenshots-url=https://dl.flathub.org/media \
-            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+            --install-deps-from=flathub builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/$(uname -m) builddir/files/share/app-info/media
           docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 manifest /mnt/org.flathub.gui.yaml
