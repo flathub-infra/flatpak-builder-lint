@@ -224,8 +224,7 @@ Then add the test using it (or modify the existing tests) in
 Similarly to add a test for builddir check, recreate the `metadata` file
 and the build directory contents that Flatpak builder creates. Then
 put it in `tests/builddir` and add the test in `tests/test_builddir.py`.
-Please avoid adding large files or binary files that aren't readable
-(compressed appstream catalogue data is fine).
+Please avoid adding large files or binary files that aren't readable.
 
 ## Usage
 

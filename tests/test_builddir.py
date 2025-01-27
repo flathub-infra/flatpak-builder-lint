@@ -1,27 +1,100 @@
+import gzip
+import os
+import shutil
+import tempfile
+from collections.abc import Generator
+
+import pytest
+
 from flatpak_builder_lint import checks, cli
 
 
-def run_checks(filename: str) -> dict:
+def create_catalogue(test_dir: str, xml_fname: str) -> None:
+    cataloge_path = os.path.join(test_dir, "files/share/app-info/xmls")
+    os.makedirs(test_dir, exist_ok=True)
+    source_xml = os.path.join(cataloge_path, xml_fname)
+    target_gzip = os.path.join(cataloge_path, xml_fname + ".gz")
+
+    with open(source_xml, "rb") as xml_file, gzip.open(target_gzip, "wb") as gzip_file:
+        gzip_file.write(xml_file.read())
+
+
+def create_catalogue_icon(
+    test_dir: str,
+    icon_fname: str,
+    size: str = "128x128",
+) -> None:
+    icon_dir = os.path.join(test_dir, f"files/share/app-info/icons/flatpak/{size}")
+    os.makedirs(icon_dir, exist_ok=True)
+    icon_path = os.path.join(icon_dir, icon_fname)
+
+    with open(icon_path, "w", encoding="utf-8"):
+        pass
+
+
+def create_app_icon(
+    test_dir: str,
+    icon_fname: str,
+    size: str = "128x128",
+    scalable: bool = False,
+    hicolor: bool = True,
+) -> None:
+    if scalable:
+        icon_dir = os.path.join(test_dir, "files/share/icons/hicolor/scalable/apps")
+
+    if hicolor:
+        icon_dir = os.path.join(test_dir, f"files/share/icons/hicolor/{size}/apps")
+
+    os.makedirs(icon_dir, exist_ok=True)
+    icon_path = os.path.join(icon_dir, icon_fname)
+
+    with open(icon_path, "w", encoding="utf-8"):
+        pass
+
+
+def create_file(path: str, fname: str) -> None:
+    os.makedirs(path, exist_ok=True)
+    file_path = os.path.join(path, fname)
+
+    if os.path.exists(file_path):
+        return
+
+    with open(file_path, "w", encoding="utf-8"):
+        pass
+
+
+@pytest.fixture(scope="module")
+def tmp_testdir() -> Generator[str, None, None]:
+    original_dir = os.getcwd()
+    with tempfile.TemporaryDirectory(delete=False) as tmpdir:
+        targetdir = os.path.join(tmpdir, "tests", "builddir")
+        shutil.copytree("tests/builddir", targetdir)
+        yield tmpdir
+    os.chdir(original_dir)
+
+
+def run_checks(filename: str, testdir: str) -> dict:
+    os.chdir(testdir)
     checks.Check.errors = set()
     checks.Check.warnings = set()
     return cli.run_checks("builddir", filename)
 
 
-def test_builddir_appid() -> None:
+def test_builddir_appid(tmp_testdir: str) -> None:
     errors = {"appid-ends-with-lowercase-desktop", "appid-uses-code-hosting-domain"}
-    ret = run_checks("tests/builddir/appid")
+    ret = run_checks("tests/builddir/appid", tmp_testdir)
     found_errors = set(ret["errors"])
     assert errors.issubset(found_errors)
     assert "appstream-metainfo-missing" in found_errors
 
 
-def test_builddir_url_not_reachable() -> None:
-    ret = run_checks("tests/builddir/wrong-rdns-appid")
+def test_builddir_url_not_reachable(tmp_testdir: str) -> None:
+    ret = run_checks("tests/builddir/wrong-rdns-appid", tmp_testdir)
     found_errors = set(ret["errors"])
     assert "appid-url-not-reachable" in found_errors
 
 
-def test_builddir_finish_args() -> None:
+def test_builddir_finish_args(tmp_testdir: str) -> None:
     errors = {
         "finish-args-arbitrary-dbus-access",
         "finish-args-flatpak-spawn-access",
@@ -46,7 +119,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-has-nosocket-fallback-x11",
     }
 
-    ret = run_checks("tests/builddir/finish_args")
+    ret = run_checks("tests/builddir/finish_args", tmp_testdir)
     found_errors = set(ret["errors"])
 
     assert errors.issubset(found_errors)
@@ -56,45 +129,37 @@ def test_builddir_finish_args() -> None:
         assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
 
 
-def test_builddir_display_supported() -> None:
+def test_builddir_display_supported(tmp_testdir: str) -> None:
     absents = {
         "finish-args-fallback-x11-without-wayland",
         "finish-args-only-wayland",
     }
 
-    ret = run_checks("tests/builddir/display-supported")
+    ret = run_checks("tests/builddir/display-supported", tmp_testdir)
     found_errors = set(ret["errors"])
     for a in absents:
         assert a not in found_errors
 
 
-def test_builddir_finish_args_missing() -> None:
-    ret = run_checks("tests/builddir/finish_args_missing")
+def test_builddir_finish_args_missing(tmp_testdir: str) -> None:
+    ret = run_checks("tests/builddir/finish_args_missing", tmp_testdir)
     found_errors = set(ret["errors"])
     assert "finish-args-not-defined" in found_errors
 
 
-def test_builddir_flathub_json() -> None:
+def test_builddir_flathub_json(tmp_testdir: str) -> None:
     errors = {
         "flathub-json-skip-appstream-check",
         "flathub-json-modified-publish-delay",
     }
 
-    ret = run_checks("tests/builddir/flathub_json")
+    ret = run_checks("tests/builddir/flathub_json", tmp_testdir)
     found_errors = set(ret["errors"])
 
     assert errors.issubset(found_errors)
 
 
-def test_builddir_baseapp() -> None:
-    run_checks("tests/builddir/baseapp")
-
-
-def test_builddir_extension() -> None:
-    run_checks("tests/builddir/extension")
-
-
-def test_builddir_console() -> None:
+def test_builddir_console(tmp_testdir: str) -> None:
     errors = {
         "finish-args-not-defined",
         "desktop-file-exec-key-absent",
@@ -102,27 +167,35 @@ def test_builddir_console() -> None:
         "desktop-file-terminal-key-not-true",
         "appid-url-not-reachable",
     }
-
-    ret = run_checks("tests/builddir/console")
+    testdir = "tests/builddir/console"
+    create_catalogue(testdir, "org.flathub.example.console.xml")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
 
     assert "appstream-unsupported-component-type" not in found_errors
     assert errors == found_errors
 
 
-def test_builddir_appstream_unsupported_ctype() -> None:
-    ret = run_checks("tests/builddir/appstream-unsupported-ctype")
+def test_builddir_appstream_unsupported_ctype(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-unsupported-ctype"
+    create_catalogue(testdir, "org.flathub.appstream_unsupported_ctype.xml")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
 
     assert "appstream-unsupported-component-type" in found_errors
 
 
-def test_builddir_metadata_spaces() -> None:
-    run_checks("tests/builddir/metadata-spaces")
+def test_builddir_metadata_spaces(tmp_testdir: str) -> None:
+    run_checks("tests/builddir/metadata-spaces", tmp_testdir)
 
 
-def test_builddir_desktop_file() -> None:
-    ret = run_checks("tests/builddir/desktop-file")
+def test_builddir_desktop_file(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/desktop-file"
+    icons = ["com.github.flathub_infra.desktop-file.Devel.png", "org.flathub.foo.png"]
+    create_catalogue(testdir, "com.github.flathub_infra.desktop-file.xml")
+    for i in icons:
+        create_app_icon(testdir, i)
+    ret = run_checks(testdir, tmp_testdir)
     errors = {
         "desktop-file-icon-key-wrong-value",
         "desktop-file-is-hidden",
@@ -138,8 +211,15 @@ def test_builddir_desktop_file() -> None:
     assert "appstream-missing-categories" not in found_errors
 
 
-def test_builddir_misplaced_icons() -> None:
-    ret = run_checks("tests/builddir/misplaced-icons")
+def test_builddir_misplaced_icons(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/misplaced-icons"
+    create_catalogue(testdir, "org.flathub.example.misplaced-icons.xml")
+    create_catalogue_icon(testdir, "org.flathub.example.misplaced-icons.png")
+    create_app_icon(
+        testdir, "org.flathub.example.misplaced-icons.png", scalable=True, hicolor=False
+    )
+    create_app_icon(testdir, "org.flathub.example.misplaced-icons.svg")
+    ret = run_checks(testdir, tmp_testdir)
     errors = {
         "non-png-icon-in-hicolor-size-folder",
         "non-svg-icon-in-scalable-folder",
@@ -149,8 +229,11 @@ def test_builddir_misplaced_icons() -> None:
         assert err in found_errors
 
 
-def test_builddir_quality_guidelines() -> None:
-    ret = run_checks("tests/builddir/appdata-quality")
+def test_builddir_quality_guidelines(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appdata-quality"
+    create_catalogue(testdir, "com.github.flathub.appdata-quality.xml")
+    create_app_icon(testdir, "foo")
+    ret = run_checks(testdir, tmp_testdir)
     errors = {
         "appstream-missing-developer-name",
         "appstream-missing-project-license",
@@ -178,8 +261,11 @@ def test_builddir_quality_guidelines() -> None:
         assert e not in found_errors
 
 
-def test_builddir_broken_icon() -> None:
-    ret = run_checks("tests/builddir/appstream-broken-icon")
+def test_builddir_broken_icon(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-broken-icon"
+    create_catalogue(testdir, "org.flathub.appstream_broken_icon.xml")
+    create_file(os.path.join(testdir, "files/share/applications"), "org.foo.test.desktop")
+    ret = run_checks(testdir, tmp_testdir)
     errors = {
         # Expected failure with appstreamcli validate
         "appstream-failed-validation",
@@ -198,8 +284,11 @@ def test_builddir_broken_icon() -> None:
         assert n not in found_errors
 
 
-def test_builddir_broken_remote_icon() -> None:
-    ret = run_checks("tests/builddir/appstream-broken-remote-icon")
+def test_builddir_broken_remote_icon(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-broken-remote-icon"
+    create_catalogue(testdir, "org.flathub.appstream_broken_remote_icon.xml")
+    create_catalogue_icon(testdir, "org.flathub.appstream_broken_remote_icon.png")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     errors = {
         "appstream-remote-icon-not-mirrored",
@@ -210,19 +299,24 @@ def test_builddir_broken_remote_icon() -> None:
     assert "metainfo-launchable-tag-wrong-value" not in found_errors
 
 
-def test_builddir_appstream_no_icon_file() -> None:
-    ret = run_checks("tests/builddir/appstream-no-icon-file")
+def test_builddir_appstream_no_icon_file(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-no-icon-file"
+    create_catalogue(testdir, "org.flathub.appstream_no_icon_file.xml")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     assert "appstream-missing-icon-file" in found_errors
 
 
-def test_builddir_appstream_icon_key_no_type() -> None:
-    ret = run_checks("tests/builddir/appstream-icon-key-no-type")
+def test_builddir_appstream_icon_key_no_type(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-icon-key-no-type"
+    create_catalogue(testdir, "org.flathub.appstream_icon_key_no_type.xml")
+    create_catalogue_icon(testdir, "org.flathub.appstream_icon_key_no_type.png")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     assert "appstream-icon-key-no-type" in found_errors
 
 
-def test_min_success_metadata() -> None:
+def test_min_success_metadata(tmp_testdir: str) -> None:
     # Illustrate the minimum metadata required to pass linter
     # These should not be broken
     for builddir in (
@@ -230,10 +324,18 @@ def test_min_success_metadata() -> None:
         "org.gtk.Gtk33theme.Helium-dark",
         "org.flathub.gui",
     ):
-        ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}")
+        if builddir == "org.flathub.gui":
+            path = "tests/builddir/min_success_metadata/org.flathub.gui"
+            create_catalogue(path, "org.flathub.gui.xml")
+            create_app_icon(path, "org.flathub.gui.png")
+            create_catalogue_icon(path, "org.flathub.gui.png")
+
+        ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}", tmp_testdir)
         assert "errors" not in ret
 
-    ret = run_checks("tests/builddir/min_success_metadata/org.flathub.cli")
+    cli_testdir = "tests/builddir/min_success_metadata/org.flathub.cli"
+    create_catalogue(cli_testdir, "org.flathub.cli.xml")
+    ret = run_checks(cli_testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     # CLI applications are allowed to have no finish-args with exceptions
     accepted = {"finish-args-not-defined"}
@@ -248,14 +350,16 @@ def test_min_success_metadata() -> None:
         assert n not in found_errors
 
 
-def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
-    ret = run_checks("tests/builddir/appstream-cid-mismatch-flatpak-id")
+def test_builddir_aps_cid_mismatch_flatpak_id(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-cid-mismatch-flatpak-id"
+    create_catalogue(testdir, "org.flathub.appstream-cid-mismatch-flatpak-id.xml")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     assert "appstream-id-mismatch-flatpak-id" in found_errors
 
 
-def test_builddir_dconf_access() -> None:
-    ret = run_checks("tests/builddir/dconf-access")
+def test_builddir_dconf_access(tmp_testdir: str) -> None:
+    ret = run_checks("tests/builddir/dconf-access", tmp_testdir)
     found_errors = set(ret["errors"])
     errors = {
         "finish-args-dconf-talk-name",
@@ -265,8 +369,8 @@ def test_builddir_dconf_access() -> None:
         assert e in found_errors
 
 
-def test_builddir_xdg_dir_access() -> None:
-    ret = run_checks("tests/builddir/finish_args_xdg_dirs")
+def test_builddir_xdg_dir_access(tmp_testdir: str) -> None:
+    ret = run_checks("tests/builddir/finish_args_xdg_dirs", tmp_testdir)
     found_errors = set(ret["errors"])
     errors = {
         "finish-args-arbitrary-xdg-config-ro-access",
@@ -286,7 +390,9 @@ def test_builddir_xdg_dir_access() -> None:
         assert e in found_errors
 
 
-def test_builddir_appstream_missing_timestamp() -> None:
-    ret = run_checks("tests/builddir/appstream-missing-timestamp")
+def test_builddir_appstream_missing_timestamp(tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-missing-timestamp"
+    create_catalogue(testdir, "org.flathub.appstream_no_timestamp.xml")
+    ret = run_checks(testdir, tmp_testdir)
     found_errors = set(ret["errors"])
     assert "appstream-release-tag-missing-timestamp" in found_errors

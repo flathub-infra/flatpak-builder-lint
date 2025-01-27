@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="generic">
+    <id>org.flathub.appstream_unsupported_ctype</id>
+    <name>Example Console</name>
+    <summary>Example Console Application</summary>
+    <url type="homepage">https://flathub.org</url>
+    <developer_name>Flathub</developer_name>
+    <description>
+      <p>This is an example</p>
+    </description>
+    <provides>
+      <binary>foo</binary>
+    </provides>
+    <releases>
+      <release version="1.0.1" date="2024-01-18" />
+    </releases>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0</project_license>
+    <content_rating type="oars-1.1"/>
+  </component>
+</components>

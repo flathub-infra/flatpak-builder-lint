@@ -10,3 +10,6 @@ build/
 repo/
 .flatpak-builder/
 .venv/
+*.gz
+*.svg
+*.png

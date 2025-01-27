@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components version="0.16">
+  <component type="console-application">
+    <id>org.flathub.cli</id>
+    <name xml:lang="ar">مثال سطر الأوامر</name>
+    <name>Example CLI</name>
+    <summary>Example cli application for tests</summary>
+    <project_license>LGPL-2.1+</project_license>
+    <developer_name>Flathub</developer_name>
+    <description>
+      <p>
+      This is an example console-application to perform checks in the linter so that they are always successful. This is for the linter only.
+    </p>
+    </description>
+    <description xml:lang="fr">
+      <p>Il s'agit d'un exemple d'application console pour effectuer des vérifications dans le linter afin qu'elles réussissent toujours. C'est pour le linter seulement.</p>
+    </description>
+    <url type="homepage">https://flathub.org</url>
+    <provides>
+      <binary>foo</binary>
+    </provides>
+    <languages>
+      <lang percentage="100">en_US</lang>
+    </languages>
+    <releases>
+      <release type="stable" version="0.0.1" timestamp="1709182842">
+        <description>
+          <p>This release adds the following features:</p>
+          <ul>
+            <li>New tests</li>
+          </ul>
+        </description>
+      </release>
+    </releases>
+    <content_rating type="oars-1.1"/>
+  </component>
+</components>
