@@ -1,8 +1,0 @@
-[Runtime]
-name=org.flathub.example.extension
-runtime=org.example.Platform/x86_64/23.08
-sdk=org.example.Sdk/x86_64/23.08
-
-[ExtensionOf]
-ref=runtime/org.example.Sdk/x86_64/23.08
-runtime=org.example.Platform/x86_64/23.08

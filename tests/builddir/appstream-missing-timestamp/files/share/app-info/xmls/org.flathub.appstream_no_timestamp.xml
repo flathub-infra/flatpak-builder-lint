@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="desktop">
+    <id>org.flathub.appstream_no_timestamp</id>
+    <name>Foo Bar</name>
+    <summary>Foo foo foo foo</summary>
+    <developer_name>Flathub</developer_name>
+    <description><p>>An example desktop application</p></description>
+    <icon type="cached" height="64" width="64">org.flathub.appstream_no_timestamp.png</icon>
+    <icon type="cached" height="128" width="128">org.flathub.appstream_no_timestamp.png</icon>
+    <categories>
+      <category>Network</category>
+    </categories>
+    <project_license>GPL-2.0+</project_license>
+    <url type="homepage">https://flathub.org</url>
+    <screenshots>
+      <screenshot type="default">
+        <image type="source">https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png</image>
+        <image type="thumbnail" height="351" width="624">https://dl.flathub.org/repo/screenshots/org.flathub.example.gui-master/624x351/org.flathub.example.gui-5b97a2051866698942c536e94169b6a8.png</image>
+        <image type="thumbnail" height="63" width="112">https://dl.flathub.org/repo/screenshots/org.flathub.example.gui-master/112x63/org.flathub.example.gui-5b97a2051866698942c536e94169b6a8.png</image>
+        <image type="thumbnail" height="126" width="224">https://dl.flathub.org/repo/screenshots/org.flathub.example.gui-master/224x126/org.flathub.example.gui-5b97a2051866698942c536e94169b6a8.png</image>
+        <image type="thumbnail" height="423" width="752">https://dl.flathub.org/repo/screenshots/org.flathub.example.gui-master/752x423/org.flathub.example.gui-5b97a2051866698942c536e94169b6a8.png</image>
+        <caption>foobar</caption>
+      </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.1"/>
+    <releases>
+      <release version="1.13.2"/>
+    </releases>
+    <launchable type="desktop-id">org.flathub.appstream_no_timestamp.desktop</launchable>
+  </component>
+</components>
