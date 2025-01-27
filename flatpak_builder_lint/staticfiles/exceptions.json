@@ -3875,5 +3875,8 @@
     },
     "app.freelens.Freelens": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+    },
+    "org.qbittorrent.qBittorrent": {
+        "module-libtorrent-checker-tracks-commits": "Tracks stable, low maintenace branch commits"
     }
 }
