@@ -1,3 +1,4 @@
+import glob
 import gzip
 import os
 import shutil
@@ -61,6 +62,31 @@ def create_file(path: str, fname: str) -> None:
 
     with open(file_path, "w", encoding="utf-8"):
         pass
+
+
+def move_files(testdir: str) -> None:
+    paths = {
+        "desktopfiles_path": os.path.join(testdir, "files/share/applications"),
+        "cataloguefiles_path": os.path.join(testdir, "files/share/app-info/xmls"),
+        "metainfofiles_path": os.path.join(testdir, "files/share/metainfo"),
+        "flathubjson_path": os.path.join(testdir, "files"),
+    }
+
+    for path in paths.values():
+        os.makedirs(path, exist_ok=True)
+
+    flathubjson = os.path.join(testdir, "flathub.json")
+    if os.path.exists(flathubjson) and os.path.isfile(flathubjson):
+        shutil.move(flathubjson, paths["flathubjson_path"])
+
+    for file in glob.glob(os.path.join(testdir, "*.desktop")):
+        shutil.move(file, paths["desktopfiles_path"])
+
+    for file in glob.glob(os.path.join(testdir, "*.xml")):
+        if file.endswith((".metainfo.xml", ".appdata.xml")):
+            shutil.move(file, paths["metainfofiles_path"])
+        else:
+            shutil.move(file, paths["cataloguefiles_path"])
 
 
 @pytest.fixture(scope="module")
@@ -157,8 +183,9 @@ def test_builddir_flathub_json() -> None:
         "flathub-json-skip-appstream-check",
         "flathub-json-modified-publish-delay",
     }
-
-    ret = run_checks("tests/builddir/flathub_json")
+    testdir = "tests/builddir/flathub_json"
+    move_files(testdir)
+    ret = run_checks(testdir)
     found_errors = set(ret["errors"])
 
     assert errors.issubset(found_errors)
@@ -173,6 +200,7 @@ def test_builddir_console() -> None:
         "appid-url-not-reachable",
     }
     testdir = "tests/builddir/console"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.example.console.xml")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
@@ -183,6 +211,7 @@ def test_builddir_console() -> None:
 
 def test_builddir_appstream_unsupported_ctype() -> None:
     testdir = "tests/builddir/appstream-unsupported-ctype"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_unsupported_ctype.xml")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
@@ -196,6 +225,7 @@ def test_builddir_metadata_spaces() -> None:
 
 def test_builddir_desktop_file() -> None:
     testdir = "tests/builddir/desktop-file"
+    move_files(testdir)
     icons = ["com.github.flathub_infra.desktop-file.Devel.png", "org.flathub.foo.png"]
     create_catalogue(testdir, "com.github.flathub_infra.desktop-file.xml")
     for i in icons:
@@ -218,6 +248,7 @@ def test_builddir_desktop_file() -> None:
 
 def test_builddir_misplaced_icons() -> None:
     testdir = "tests/builddir/misplaced-icons"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.example.misplaced-icons.xml")
     create_catalogue_icon(testdir, "org.flathub.example.misplaced-icons.png")
     create_app_icon(
@@ -236,6 +267,7 @@ def test_builddir_misplaced_icons() -> None:
 
 def test_builddir_quality_guidelines() -> None:
     testdir = "tests/builddir/appdata-quality"
+    move_files(testdir)
     create_catalogue(testdir, "com.github.flathub.appdata-quality.xml")
     create_app_icon(testdir, "foo")
     ret = run_checks(testdir)
@@ -268,6 +300,7 @@ def test_builddir_quality_guidelines() -> None:
 
 def test_builddir_broken_icon() -> None:
     testdir = "tests/builddir/appstream-broken-icon"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_broken_icon.xml")
     create_file(os.path.join(testdir, "files/share/applications"), "org.foo.test.desktop")
     ret = run_checks(testdir)
@@ -291,6 +324,7 @@ def test_builddir_broken_icon() -> None:
 
 def test_builddir_broken_remote_icon() -> None:
     testdir = "tests/builddir/appstream-broken-remote-icon"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_broken_remote_icon.xml")
     create_catalogue_icon(testdir, "org.flathub.appstream_broken_remote_icon.png")
     ret = run_checks(testdir)
@@ -306,6 +340,7 @@ def test_builddir_broken_remote_icon() -> None:
 
 def test_builddir_appstream_no_icon_file() -> None:
     testdir = "tests/builddir/appstream-no-icon-file"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_no_icon_file.xml")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
@@ -314,6 +349,7 @@ def test_builddir_appstream_no_icon_file() -> None:
 
 def test_builddir_appstream_icon_key_no_type() -> None:
     testdir = "tests/builddir/appstream-icon-key-no-type"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_icon_key_no_type.xml")
     create_catalogue_icon(testdir, "org.flathub.appstream_icon_key_no_type.png")
     ret = run_checks(testdir)
@@ -329,16 +365,19 @@ def test_min_success_metadata() -> None:
         "org.gtk.Gtk33theme.Helium-dark",
         "org.flathub.gui",
     ):
-        if builddir == "org.flathub.gui":
-            path = "tests/builddir/min_success_metadata/org.flathub.gui"
-            create_catalogue(path, "org.flathub.gui.xml")
-            create_app_icon(path, "org.flathub.gui.png")
-            create_catalogue_icon(path, "org.flathub.gui.png")
+        testdir = f"tests/builddir/min_success_metadata/{builddir}"
 
-        ret = run_checks(f"tests/builddir/min_success_metadata/{builddir}")
+        if builddir == "org.flathub.gui":
+            move_files(testdir)
+            create_catalogue(testdir, "org.flathub.gui.xml")
+            create_app_icon(testdir, "org.flathub.gui.png")
+            create_catalogue_icon(testdir, "org.flathub.gui.png")
+
+        ret = run_checks(testdir)
         assert "errors" not in ret
 
     cli_testdir = "tests/builddir/min_success_metadata/org.flathub.cli"
+    move_files(cli_testdir)
     create_catalogue(cli_testdir, "org.flathub.cli.xml")
     ret = run_checks(cli_testdir)
     found_errors = set(ret["errors"])
@@ -357,6 +396,7 @@ def test_min_success_metadata() -> None:
 
 def test_builddir_aps_cid_mismatch_flatpak_id() -> None:
     testdir = "tests/builddir/appstream-cid-mismatch-flatpak-id"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream-cid-mismatch-flatpak-id.xml")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
@@ -397,6 +437,7 @@ def test_builddir_xdg_dir_access() -> None:
 
 def test_builddir_appstream_missing_timestamp() -> None:
     testdir = "tests/builddir/appstream-missing-timestamp"
+    move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_no_timestamp.xml")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])

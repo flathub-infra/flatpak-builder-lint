@@ -222,10 +222,14 @@ manifest with the cases to check against and put it in `tests/manifests`.
 Then add the test using it (or modify the existing tests) in
 `tests/test_manifest.py`.
 
-Similarly to add a test for builddir check, recreate the `metadata` file
-and the build directory contents that Flatpak builder creates. Then
-put it in `tests/builddir` and add the test in `tests/test_builddir.py`.
-Please avoid adding large files or binary files that aren't readable.
+Similarly to add a test for builddir check, recreate the `metadata`,
+cataloge, metainfo, desktop files as needed and put them in a
+subdirectory of `tests/builddir`. Then add the test in
+`tests/test_builddir.py`. There are helper functions in
+`tests/test_builddir.py` to emulate a flatpak-builder build directory
+using the source files.
+
+Please avoid adding binary files that aren't readable.
 
 ## Usage
 
