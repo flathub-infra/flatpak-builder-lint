@@ -128,6 +128,9 @@ jobs:
           cd build && python3 ../docker/rewrite-manifest.py
           cd org.flatpak.Builder
           cp -vf ../../docker/flatpak-builder-lint-deps.json .
+          cp -vf ../../tests/python3-pytest.json .
+          jq '.modules |= map(if . == "flatpak-builder-lint-deps.json" then . , "python3-pytest.json" else . end)' org.flatpak.Builder.json >> org.flatpak.Builder-modified.json
+          mv -vf org.flatpak.Builder-modified.json org.flatpak.Builder.json
 
       - uses: actions/cache@v4
         with:
@@ -193,15 +196,8 @@ jobs:
       - name: Run Flatmanager checks
         run: bash -c tests/flatmanager.sh
 
-      - name: Set up appstreamcli
-        run: |
-          echo '#!/bin/sh' > /usr/local/bin/appstreamcli
-          echo "exec dbus-run-session flatpak run --branch=localtest --command=appstreamcli org.flatpak.Builder \${@}" >> /usr/local/bin/appstreamcli
-          chmod +x /usr/local/bin/appstreamcli
-          appstreamcli --version
-
       - name: Run test suite
-        run: poetry run pytest -v tests
+        run: flatpak run --command=pytest org.flatpak.Builder//localtest -vvv tests
 
   docker-call:
     permissions:
