@@ -1,6 +1,7 @@
 FROM docker.io/freedesktopsdk/sdk:24.08
 
 RUN install -d -m1777 /var/tmp
+RUN uuidgen | tr -d '-' > /etc/machine-id
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
