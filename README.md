@@ -200,10 +200,17 @@ poetry run pre-commit uninstall
 ### Tests
 
 [Pytest](https://docs.pytest.org/en/stable/getting-started.html) is used
-to run tests:
+to run tests.
 
 ```sh
 poetry run pytest -v tests
+```
+
+Tests can also be run inside a container using `docker` or `podman`
+after making changes to the project.
+
+```sh
+docker build -t linter:dev -q -f tests/Dockerfile . && docker run -it linter:dev pytest -vvv
 ```
 
 An additional Flat manager test can be run when modifying code relying
