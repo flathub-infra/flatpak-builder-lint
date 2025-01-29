@@ -107,7 +107,7 @@ jobs:
 
       - name: Push the image
         uses: docker/build-push-action@v6
-        if: success() && github.event_name != 'pull_request' && github.event_name != 'schedule'
+        if: success() && github.event_name != 'pull_request'
         with:
           context: docker
           file: docker/Dockerfile
@@ -124,7 +124,7 @@ jobs:
 
       - name: Login to ghcr.io using Flathub credentials
         uses: docker/login-action@v3
-        if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.event_name != 'schedule'
+        if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           registry: ghcr.io
           username: ${{ secrets.FLATHUB_ORG_USER }}
@@ -132,7 +132,7 @@ jobs:
 
       - name: Build and push Docker image to the old location
         uses: docker/build-push-action@v6
-        if: success() && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.event_name != 'schedule'
+        if: success() && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           context: docker
           file: docker/Dockerfile
@@ -149,7 +149,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   docker-manifest:
-    if: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' }}
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs:
