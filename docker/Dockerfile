@@ -3,7 +3,7 @@ FROM docker.io/freedesktopsdk/sdk:24.08
 RUN install -d -m1777 /var/tmp
 RUN uuidgen | tr -d '-' > /etc/machine-id
 ADD passwd /etc/passwd
-RUN install -d -m755 -o 1000 -g 1000 /home/flatbld
+RUN install -d -m755 -o 1001 -g 1001 /home/flatbld
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
