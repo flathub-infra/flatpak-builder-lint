@@ -16,4 +16,5 @@ RUN ln -s /usr/bin/true /usr/bin/dbus-daemon
 ADD dbus-session.conf /app/share/dbus-1/session.conf
 
 USER flatbld
+WORKDIR /home/flatbld
 ENTRYPOINT ["/app/bin/flatpak-builder-lint"]
