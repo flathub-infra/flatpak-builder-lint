@@ -3,6 +3,7 @@ FROM docker.io/freedesktopsdk/sdk:24.08
 RUN install -d -m1777 /var/tmp
 RUN uuidgen | tr -d '-' > /etc/machine-id
 ADD passwd /etc/passwd
+RUN install -d -m755 -o 1000 -g 1000 /home/flatbld
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
@@ -14,4 +15,5 @@ ADD org.flatpak.Builder/builddir/files /app
 RUN ln -s /usr/bin/true /usr/bin/dbus-daemon
 ADD dbus-session.conf /app/share/dbus-1/session.conf
 
+USER flatbld
 ENTRYPOINT ["/app/bin/flatpak-builder-lint"]
