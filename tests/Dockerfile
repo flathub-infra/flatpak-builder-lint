@@ -1,4 +1,4 @@
-FROM archlinux:latest@sha256:901cf83a14f09d9ba70b219e22f67abd4d6346cb6d3f0c048cd08f22fb9a7425
+FROM archlinux:latest@sha256:901cf83a14f09d9ba70b219e22f67abd4d6346cb6d3f0c048cd08f22fb9a7425 AS base
 
 RUN echo "Server=https://archive.archlinux.org/repos/2024/12/21/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
@@ -14,6 +14,8 @@ RUN pacman --noconfirm --needed -S \
     desktop-file-utils ostree glib2 \
     meson ninja jq gperf glib2-devel gobject-introspection itstool \
     xmlto docbook-xsl docbook-xml python-pip python-pipx
+
+FROM base AS image
 
 RUN git clone --depth 1 --branch master https://github.com/flathub/org.flatpak.Builder.git
 

@@ -225,8 +225,11 @@ jobs:
           file: tests/Dockerfile
           push: false
           provenance: false
-          no-cache: true
+          build-args: 
+            no-cache-filter=image
           tags: linter:dev
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Run tests with the test docker image
         run: docker run linter:dev pytest -vvv
