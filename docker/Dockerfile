@@ -13,7 +13,6 @@ ENV GI_TYPELIB_PATH=/app/lib/girepository-1.0
 ADD org.flatpak.Builder/builddir/files /app
 
 RUN ln -s /usr/bin/true /usr/bin/dbus-daemon
-ADD dbus-session.conf /app/share/dbus-1/session.conf
 
 USER flatbld
 WORKDIR /home/flatbld
