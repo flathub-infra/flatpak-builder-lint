@@ -225,8 +225,7 @@ jobs:
           file: tests/Dockerfile
           push: false
           provenance: false
-          build-args: 
-            no-cache-filter=image
+          no-cache-filters: image
           tags: linter:dev
           cache-from: type=gha
           cache-to: type=gha,mode=max
