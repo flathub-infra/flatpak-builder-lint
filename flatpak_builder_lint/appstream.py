@@ -38,6 +38,7 @@ def validate(path: str, *args: str) -> SubprocessResult:
         "releases-info-missing": "error",
         "summary-too-long": "info",
         "unknown-tag": "error",
+        "app-categories-missing": "info",
     }
 
     overrides_value = ",".join([f"{k}={v}" for k, v in overrides.items()])
