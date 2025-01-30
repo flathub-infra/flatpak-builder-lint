@@ -1,0 +1,8 @@
+FROM ghcr.io/flathub-infra/flatpak-builder-lint:latest
+
+ADD passwd /etc/passwd
+RUN install -d -m755 -o 1001 -g 1001 /home/flatbld
+
+USER flatbld
+WORKDIR /home/flatbld
+ENTRYPOINT ["/app/bin/flatpak-builder-lint"] 
