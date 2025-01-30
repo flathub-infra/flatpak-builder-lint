@@ -208,3 +208,25 @@ jobs:
     if: ${{ needs.changes.outputs.docker == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
     uses: ./.github/workflows/docker.yml
     secrets: inherit
+
+  docker-test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    needs:
+      - changes
+    if: ${{ needs.changes.outputs.src == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the test image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: tests/Dockerfile
+          push: false
+          provenance: false
+          no-cache: true
+          tags: linter:dev
+
+      - name: Run tests with the test docker image
+        run: docker run linter:dev pytest -vvv
