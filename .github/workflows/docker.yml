@@ -56,7 +56,8 @@ jobs:
 
       - name: Prepare for hashing
         run: |
-          flatpak-builder --show-manifest docker/org.flatpak.Builder/org.flatpak.Builder.json >> docker/org.flatpak.Builder/org.flatpak.Builder-cache.json
+          flatpak run org.flatpak.Builder --show-manifest --show-manifest \
+            docker/org.flatpak.Builder/org.flatpak.Builder.json >> docker/org.flatpak.Builder/org.flatpak.Builder-cache.json
 
       - uses: actions/cache@v4
         with:
