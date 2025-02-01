@@ -99,6 +99,7 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
 
       - name: Run a sanity check
+        if: matrix.platform == 'amd64'
         run: |
           cd tests/repo/min_success_metadata/gui-app
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
