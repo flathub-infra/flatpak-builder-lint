@@ -54,11 +54,15 @@ jobs:
           cp -vf flatpak-builder-lint-deps.json org.flatpak.Builder/
           python3 rewrite-manifest.py
 
-      - name: Cache flatpak build
-        uses: actions/cache@v4
+      - name: Prepare for hashing
+        run: |
+          flatpak-builder --show-manifest docker/org.flatpak.Builder/org.flatpak.Builder.json >> docker/org.flatpak.Builder/org.flatpak.Builder-cache.json
+
+      - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/docker-cache/.flatpak-builder
-          key: fb-${{ matrix.platform }}-${{ runner.os }}
+          key: ${{ matrix.platform }}-${{ runner.os }}-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+          restore-keys: ${{ matrix.platform }}-${{ runner.os }}-flatpak-builder-
 
       - name: Build flatpak-builder-lint
         run: |

@@ -99,6 +99,7 @@ jobs:
         with:
           path: ~/.cache/pypoetry
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: ${{ runner.os }}-poetry-
 
       - name: Install python dependencies
         run: |
@@ -132,10 +133,15 @@ jobs:
           jq '.modules |= map(if . == "flatpak-builder-lint-deps.json" then . , "python3-pytest.json" else . end)' org.flatpak.Builder.json >> org.flatpak.Builder-modified.json
           mv -vf org.flatpak.Builder-modified.json org.flatpak.Builder.json
 
+      - name: Prepare for hashing
+        run: |
+          flatpak-builder --show-manifest build/org.flatpak.Builder/org.flatpak.Builder.json >> build/org.flatpak.Builder/org.flatpak.Builder-cache.json
+
       - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/cache/.flatpak-builder
-          key: ${{ runner.os }}-flatpak-builder
+          key: ${{ runner.os }}-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+          restore-keys: ${{ runner.os }}-flatpak-builder-
 
       - name: Build and test org.flatpak.Builder
         run: |
