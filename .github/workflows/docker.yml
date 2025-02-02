@@ -9,13 +9,17 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            platform: amd64
+          - os: ubuntu-22.04-arm
+            platform: arm64
+    runs-on: ${{matrix.os}}
     timeout-minutes: 180
     permissions:
       packages: write
-    strategy:
-      matrix:
-        platform: [amd64, arm64]
     steps:
       - uses: actions/checkout@v4
 
