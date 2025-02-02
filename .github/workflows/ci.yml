@@ -66,6 +66,9 @@ jobs:
   ci:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    concurrency:
+      group: ci
+      cancel-in-progress: true
     needs:
       - changes
     if: ${{ needs.changes.outputs.src == 'true' }}
@@ -218,6 +221,9 @@ jobs:
   docker-test:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    concurrency:
+      group: docker_test
+      cancel-in-progress: true
     needs:
       - changes
     if: ${{ needs.changes.outputs.src == 'true' }}

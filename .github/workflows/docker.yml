@@ -18,6 +18,9 @@ jobs:
             platform: arm64
     runs-on: ${{matrix.os}}
     timeout-minutes: 180
+    concurrency:
+      group: ${{matrix.os}}-docker
+      cancel-in-progress: true
     permissions:
       packages: write
     steps:
@@ -164,6 +167,9 @@ jobs:
     timeout-minutes: 30
     needs:
       - docker
+    concurrency:
+      group: docker_manifest
+      cancel-in-progress: true
     permissions:
       packages: write
     steps:
