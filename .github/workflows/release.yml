@@ -7,7 +7,6 @@ on:
     branches: [master]
   workflow_dispatch:
 
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -18,29 +17,30 @@ jobs:
           ref: 'master'
 
       - name: Check last commit message
+        id: check_commit
         run: |
-          if git log -1 --pretty=%B|grep -E "\[release\]"; then
-            echo "IS_RELEASE=true" >> "$GITHUB_ENV"
+          if git log -1 --pretty=%B | grep -E "\[release\]"; then
+            echo "is_release=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Check if docker-manifest succeeded
-        if: env.IS_RELEASE == 'true'
+        if: steps.check_commit.outputs.is_release == 'true'
+        id: check_job
         run: |
           job_status=$(gh run view ${{ github.event.workflow_run.id }} --json jobs --jq '.jobs[] | select(.name=="docker-call / docker-manifest") | .conclusion')
           echo "Status: $job_status"
-
           if [ "$job_status" == "success" ]; then
-            echo "RUN=true" >> "$GITHUB_ENV"
+            echo "run=true" >> "$GITHUB_OUTPUT"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delay for 2 minutes
-        if: env.RUN == 'true'
+        if: steps.check_job.outputs.run == 'true'
         run: sleep 120
 
       - name: Trigger workflow in org.flatpak.Builder repository
-        if: env.RUN == 'true'
+        if: steps.check_job.outputs.run == 'true'
         uses: peter-evans/repository-dispatch@v3
         with:
           repository: flathub/org.flatpak.Builder
@@ -49,7 +49,7 @@ jobs:
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
       - name: Trigger workflow in flathub-infra/flatpak-github-actions
-        if: env.RUN == 'true'
+        if: steps.check_job.outputs.run == 'true'
         uses: peter-evans/repository-dispatch@v3
         with:
           repository: flathub-infra/flatpak-github-actions
