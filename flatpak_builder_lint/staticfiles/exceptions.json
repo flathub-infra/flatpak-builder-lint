@@ -748,7 +748,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.djpdf": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "com.github.unrud.RemoteTouchpad": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1010,12 +1011,14 @@
     },
     "org.gnome.Totem.Devel": {
         "module-totem-source-git-no-tag-commit-branch": "This is the development version of Totem, tracking upstream",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.gimp.GIMP": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
         "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config.",
-        "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used"
+        "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.gitfourchette.gitfourchette": {
         "finish-args-flatpak-spawn-access": "Start external merge tool via flatpak-spawn"
@@ -1051,7 +1054,8 @@
     "org.libreoffice.LibreOffice": {
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule",
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "com.st.STM32CubeIDE": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1524,7 +1528,8 @@
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "org.chromium.Chromium": {
-        "finish-args-contains-both-x11-and-wayland": "optional wayland support"
+        "finish-args-contains-both-x11-and-wayland": "optional wayland support",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "net.scribus.Scribus": {
         "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
@@ -2848,7 +2853,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Loupe": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.gnome.meld": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2885,7 +2891,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Shotwell": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.gnome.SoundJuicer": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2900,7 +2907,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Totem": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.keepassxc.KeePassXC": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3188,7 +3196,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.radare.iaito": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.zrythm.Zrythm": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
@@ -3427,7 +3436,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.github.ungoogled_software.ungoogled_chromium": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "io.gitlab.o20.word": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3678,7 +3688,8 @@
     },
     "org.winehq.Wine": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "toplevel-unnecessary-branch": "Wine uses a custom branch following runtime branch for historical reasons"
+        "toplevel-unnecessary-branch": "Wine uses a custom branch following runtime branch for historical reasons",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.zulip.Zulip": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3736,7 +3747,8 @@
     },
     "io.frama.tractor.carburetor": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule"
+        "finish-args-direct-dconf-path": "Predates the linter rule",
+        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "net.christianbeier.Gromit-MPX": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
@@ -3878,5 +3890,62 @@
     },
     "org.qbittorrent.qBittorrent": {
         "module-libtorrent-checker-tracks-commits": "Tracks stable, low maintenace branch commits"
+    },
+    "app.fotema.Fotema": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "com.chowdsp.BYOD": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "com.thewavewarden.Odin2": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "com.visualstudio.code.oss": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "de.bforartists.Bforartists": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "io.github.manisandro.gImageReader": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "net.sonobus.SonoBus": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.apache.jmeter": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.audacityteam.Audacity": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.blender.Blender": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.gnome.Fractal": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.guitarix.Guitarix": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.kde.CrowTranslate": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.pitivi.Pitivi": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.stochas.Stochas": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.surge_synth_team.surge-xt": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.tenacityaudio.Tenacity": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.upbge.UPBGE": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
+    },
+    "org.kde.krita": {
+        "manifest-has-bundled-extension": "Predates the linter rule"
     }
 }

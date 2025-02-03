@@ -7,6 +7,10 @@ def _is_git_commit_hash(s: str) -> bool:
     return re.match(r"[a-f0-9]{4,40}", s) is not None
 
 
+def _has_bundled_extension(manifest: dict) -> bool:
+    return any(ext.get("bundle") is True for ext in manifest.get("add-extensions", {}).values())
+
+
 class ModuleCheck(Check):
     def check_source(self, module_name: str, source: dict) -> None:
         source_type = source.get("type")
@@ -77,6 +81,13 @@ class ModuleCheck(Check):
                 self.check_module(nested_module)
 
     def check_manifest(self, manifest: dict) -> None:
+        if manifest and _has_bundled_extension(manifest):
+            self.errors.add("manifest-has-bundled-extension")
+            self.info.add(
+                "manifest-has-bundled-extension: Bundled extensions needs to"
+                + " be approved through exceptions"
+            )
+
         if modules := manifest.get("modules"):
             for module in modules:
                 self.check_module(module)

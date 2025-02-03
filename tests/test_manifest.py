@@ -256,7 +256,9 @@ def test_manifest_modules() -> None:
 
     ret = run_checks("tests/manifests/modules.json")
     found_warnings = set(ret["warnings"])
+    found_errors = set(ret["errors"])
 
+    assert "manifest-has-bundled-extension" in found_errors
     assert warnings.issubset(found_warnings)
 
 

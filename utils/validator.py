@@ -29,6 +29,7 @@ KNOWN_EXCEPTIONS = {
     "toplevel-unnecessary-branch",
     "appstream-metainfo-missing",
     "appid-url-not-reachable",
+    "manifest-has-bundled-extension",
 }
 
 
