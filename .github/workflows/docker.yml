@@ -69,24 +69,28 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/docker-cache/.flatpak-builder
-          key: ${{ matrix.platform }}-${{ runner.os }}-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
-          restore-keys: ${{ matrix.platform }}-${{ runner.os }}-flatpak-builder-
+          key: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-
 
-      - name: Build flatpak-builder-lint
+      - name: Set Flatpak arch
         run: |
           if [ "${{ matrix.platform }}" = "amd64" ]; then
-            arch="x86_64"
+            echo "FP_ARCH=x86_64" >> $GITHUB_ENV
           elif [ "${{ matrix.platform }}" = "arm64" ]; then
-            arch="aarch64"
+            echo "FP_ARCH=aarch64" >> $GITHUB_ENV
           else
             echo "Unsupported platform: ${{ matrix.platform }}"
             exit 1
           fi
+
+      - name: Build flatpak-builder-lint
+        run: |
           cd docker/org.flatpak.Builder/
           dbus-run-session flatpak run org.flatpak.Builder \
             --state-dir="$GITHUB_WORKSPACE/docker-cache/.flatpak-builder" \
-            --arch="$arch" --verbose --user --force-clean --ccache \
-            --install-deps-from=flathub builddir org.flatpak.Builder.json
+            --arch=${{ env.FP_ARCH }} --verbose --user \
+            --force-clean --ccache --install-deps-from=flathub \
+            builddir org.flatpak.Builder.json
           rm -rf "builddir/files/lib/debug"
 
       - name: Build the base image
@@ -107,16 +111,16 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
 
       - name: Run a sanity check
-        if: matrix.platform == 'amd64'
         run: |
           cd tests/repo/min_success_metadata/gui-app
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+            --arch=${{ env.FP_ARCH }} \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=screenshots/$(uname -m) builddir/files/share/app-info/media
-          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 manifest /mnt/org.flathub.gui.yaml
-          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-amd64 repo /mnt/repo
+          ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
+          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} manifest /mnt/org.flathub.gui.yaml
+          docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} repo /mnt/repo
 
       - name: Push the images
         uses: docker/build-push-action@v6
