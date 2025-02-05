@@ -3949,7 +3949,7 @@
     "org.kde.krita": {
         "manifest-has-bundled-extension": "Predates the linter rule"
     },
-    "dev.heppen.webapps" {
+    "dev.heppen.webapps": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Access for reading installed browsers",
         "finish-args-unnecessary-xdg-data-applications-rw-access": "Access for writing desktop files for web apps",
     }
