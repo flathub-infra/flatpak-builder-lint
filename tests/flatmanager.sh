@@ -75,8 +75,12 @@ run_build() {
     fi
     mkdir -p builddir/files/share/app-info/media
     ostree commit --repo=repo --canonical-permissions --branch=screenshots/"${ARCH}" builddir/files/share/app-info/media
-    mkdir -p repo/appstream/"${ARCH}"
-    mv -v builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/"${ARCH}"/appstream.xml.gz
+    mkdir -p repo/appstream/x86_64
+    cp -vf builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/x86_64/appstream.xml.gz
+    if [ "$ARCH" != "x86_64" ]; then
+        mkdir -p repo/appstream/"${ARCH}"
+        cp -vf builddir/files/share/app-info/xmls/org.flathub.gui.xml.gz repo/appstream/"${ARCH}"/appstream.xml.gz
+    fi
 }
 
 for cmd in $REQUIRED_COMMANDS; do
@@ -131,23 +135,43 @@ run_build
 
 run_test "Test 1" "appstream-no-flathub-manifest-key" || exit 1
 
-gzip -df repo/appstream/"${ARCH}"/appstream.xml.gz || true
+gzip -df repo/appstream/x86_64/appstream.xml.gz || true
 xmlstarlet ed --subnode "/components/component" --type elem -n custom \
+    --subnode "/components/component/custom" --type elem -n value -v \
+    "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml" \
+    repo/appstream/x86_64/appstream.xml |
+    xmlstarlet ed --insert //custom/value --type attr -n key -v flathub::manifest > \
+    repo/appstream/x86_64/appstream-out-x86_64.xml
+mv repo/appstream/x86_64/appstream-out-x86_64.xml repo/appstream/x86_64/appstream.xml
+gzip repo/appstream/x86_64/appstream.xml || true
+
+if [ "$ARCH" != "x86_64" ]; then
+    gzip -df repo/appstream/"${ARCH}"/appstream.xml.gz || true
+    xmlstarlet ed --subnode "/components/component" --type elem -n custom \
     --subnode "/components/component/custom" --type elem -n value -v \
     "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml" \
     repo/appstream/"${ARCH}"/appstream.xml |
     xmlstarlet ed --insert //custom/value --type attr -n key -v flathub::manifest > \
-    repo/appstream/"${ARCH}"/appstream-out.xml
-mv repo/appstream/"${ARCH}"/appstream-out.xml repo/appstream/"${ARCH}"/appstream.xml
-gzip repo/appstream/"${ARCH}"/appstream.xml || true
+    repo/appstream/"${ARCH}"/appstream-out-"${ARCH}".xml
+    mv repo/appstream/"${ARCH}"/appstream-out-"${ARCH}".xml repo/appstream/"${ARCH}"/appstream.xml
+    gzip repo/appstream/"${ARCH}"/appstream.xml || true  
+fi
 
 run_test "Test 2" "" || exit 1
 
-gzip -df repo/appstream/"${ARCH}"/appstream.xml.gz || true
+gzip -df repo/appstream/x86_64/appstream.xml.gz || true
 old_url="https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml"
 broken_url="https://raw.githubusercontent.com/flathub-infra/w/ww/w.yaml"
-sed -i "s|${old_url}|${broken_url}|g" repo/appstream/"${ARCH}"/appstream.xml
-gzip repo/appstream/"${ARCH}"/appstream.xml || true
+sed -i "s|${old_url}|${broken_url}|g" repo/appstream/x86_64/appstream.xml
+gzip repo/appstream/x86_64/appstream.xml || true
+
+if [ "$ARCH" != "x86_64" ]; then
+    gzip -df repo/appstream/"${ARCH}"/appstream.xml.gz || true
+    old_url="https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml"
+    broken_url="https://raw.githubusercontent.com/flathub-infra/w/ww/w.yaml"
+    sed -i "s|${old_url}|${broken_url}|g" repo/appstream/"${ARCH}"/appstream.xml
+    gzip repo/appstream/"${ARCH}"/appstream.xml || true
+fi
 
 run_test "Test 3" "appstream-flathub-manifest-url-not-reachable" || exit 1
 

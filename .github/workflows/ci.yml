@@ -64,18 +64,23 @@ jobs:
         run: python3 utils/validator.py
 
   ci:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            platform: amd64
+          - os: ubuntu-22.04-arm
+            platform: arm64
+    runs-on: ${{matrix.os}}
     timeout-minutes: 30
     concurrency:
-      group: ci
+      group: ci-${{ matrix.platform }}
       cancel-in-progress: true
     needs:
       - changes
     if: ${{ needs.changes.outputs.src == 'true' }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -101,8 +106,8 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pypoetry
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-          restore-keys: ${{ runner.os }}-poetry-
+          key: ${{ runner.os }}-${{ matrix.platform }}-ci-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-ci-poetry-
 
       - name: Install python dependencies
         run: |
@@ -143,18 +148,62 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/cache/.flatpak-builder
-          key: ${{ runner.os }}-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
-          restore-keys: ${{ runner.os }}-flatpak-builder-
+          key: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-
+
+      - name: Set Flatpak arch
+        run: |
+          if [ "${{ matrix.platform }}" = "amd64" ]; then
+            echo "FP_ARCH=x86_64" >> $GITHUB_ENV
+          elif [ "${{ matrix.platform }}" = "arm64" ]; then
+            echo "FP_ARCH=aarch64" >> $GITHUB_ENV
+          else
+            echo "Unsupported platform: ${{ matrix.platform }}"
+            exit 1
+          fi
 
       - name: Build and test org.flatpak.Builder
         run: |
           cd build/org.flatpak.Builder
           flatpak-builder --verbose --user --force-clean \
+            --arch=${{ env.FP_ARCH }} \
             --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --default-branch=localtest \
             --ccache --keep-build-dirs --install builddir \
             org.flatpak.Builder.json
           flatpak run org.flatpak.Builder//localtest --version
+
+      - name: Run test suite
+        run: flatpak run --command=pytest org.flatpak.Builder//localtest -vvv tests
+
+      - name: Run Flatmanager checks
+        run: bash -c tests/flatmanager.sh
+
+      - name: Sanity check on a GUI application
+        run: |
+          cd tests/repo/min_success_metadata/gui-app
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
+            --arch=${{ env.FP_ARCH }} \
+            --mirror-screenshots-url=https://dl.flathub.org/media \
+            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+          mkdir -p builddir/files/share/app-info/media
+          ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
+      - name: Sanity check on a console application
+        run: |
+          cd tests/repo/min_success_metadata/console-app
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --arch=${{ env.FP_ARCH }} \
+            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
+            --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
       - name: Sanity check on a baseapp
         run: |
@@ -162,6 +211,7 @@ jobs:
           cd com.system76.Cosmic.BaseApp
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
@@ -173,40 +223,11 @@ jobs:
           cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Sanity check on a console application
-        run: |
-          cd tests/repo/min_success_metadata/console-app
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
-            --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Sanity check on a GUI application
-        run: |
-          cd tests/repo/min_success_metadata/gui-app
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
-            --mirror-screenshots-url=https://dl.flathub.org/media \
-            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
-          mkdir -p builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=screenshots/x86_64 builddir/files/share/app-info/media
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Run Flatmanager checks
-        run: bash -c tests/flatmanager.sh
-
-      - name: Run test suite
-        run: flatpak run --command=pytest org.flatpak.Builder//localtest -vvv tests
 
   docker-call:
     permissions:
@@ -219,10 +240,17 @@ jobs:
     secrets: inherit
 
   docker-test:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            platform: amd64
+          - os: ubuntu-22.04-arm
+            platform: arm64
+    runs-on: ${{matrix.os}}
     timeout-minutes: 30
     concurrency:
-      group: docker_test
+      group: docker_test-${{ matrix.platform }}
       cancel-in-progress: true
     needs:
       - changes

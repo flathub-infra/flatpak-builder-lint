@@ -1,12 +1,12 @@
-FROM archlinux:latest@sha256:901cf83a14f09d9ba70b219e22f67abd4d6346cb6d3f0c048cd08f22fb9a7425 AS base
+FROM alpine:latest AS base
 
-RUN echo "Server=https://archive.archlinux.org/repos/2024/12/21/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
-
-RUN pacman --noconfirm -Syyuu && pacman --noconfirm --needed -S \
-    appstream base-devel desktop-file-utils flatpak-builder \
-    git glib2 glib2-devel gobject-introspection gperf itstool \
-    jq meson ninja ostree \
-    python-pip python-pipx
+RUN apk update && apk add build-base appstream cairo-dev curl-dev \
+	fontconfig-dev gdk-pixbuf-dev glib-dev gobject-introspection-dev \
+	libxml2-dev libxmlb-dev pango-dev yaml-dev desktop-file-utils \
+	flatpak flatpak-builder git glib gobject-introspection gperf \
+	itstool jq meson ninja ostree py3-pip pipx py3-cairo-dev libffi-dev \
+	py3-setuptools python3-dev libxml2-dev libxslt-dev py3-setuptools \
+	cython libxml2 libxslt ostree-gir
 
 FROM base AS image
 
@@ -43,7 +43,7 @@ RUN cp -vf ../org.flatpak.Builder/patches/appstream-*.patch . && \
         -Dzstd-support=false \
         && meson compile -C builddir
 
-RUN pacman --noconfirm -Rdd appstream && meson install -C builddir
+RUN meson install -C builddir
 
 RUN pipx install poetry && pipx inject poetry poetry-plugin-export
 
