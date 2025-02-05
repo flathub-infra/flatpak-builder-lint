@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{matrix.os}}
     timeout-minutes: 180
     concurrency:
-      group: ${{matrix.os}}-docker
+      group: ${{matrix.os}}-${{ github.ref }}-docker
       cancel-in-progress: true
     permissions:
       packages: write
@@ -172,7 +172,7 @@ jobs:
     needs:
       - docker
     concurrency:
-      group: docker_manifest
+      group: ${{ github.ref }}-docker_manifest
       cancel-in-progress: true
     permissions:
       packages: write

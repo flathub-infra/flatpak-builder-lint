@@ -74,7 +74,7 @@ jobs:
     runs-on: ${{matrix.os}}
     timeout-minutes: 30
     concurrency:
-      group: ci-${{ matrix.platform }}
+      group: ci-${{ matrix.platform }}-${{ github.ref }}
       cancel-in-progress: true
     needs:
       - changes
@@ -250,7 +250,7 @@ jobs:
     runs-on: ${{matrix.os}}
     timeout-minutes: 30
     concurrency:
-      group: docker_test-${{ matrix.platform }}
+      group: docker_test-${{ matrix.platform }}-${{ github.ref }}
       cancel-in-progress: true
     needs:
       - changes
