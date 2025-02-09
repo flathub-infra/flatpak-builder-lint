@@ -41,6 +41,7 @@ def ignore_ref(ref: str) -> bool:
         len(parts) != 4
         or parts[2] not in {"x86_64", "aarch64"}
         or parts[1].endswith((".Debug", ".Locale", ".Sources"))
+        or parts[0] != "app"
     )
 
 
