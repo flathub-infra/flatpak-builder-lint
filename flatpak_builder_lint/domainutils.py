@@ -1,3 +1,4 @@
+import os
 from functools import cache
 
 import gi
@@ -25,7 +26,13 @@ FLATHUB_API_URL = "https://flathub.org/api/v2"
 FLATHUB_STABLE_REPO_URL = "https://dl.flathub.org/repo"
 FLATHUB_BETA_REPO_URL = "https://dl.flathub.org/beta-repo"
 
-session = CachedSession("cache", backend="sqlite", use_temp=True, expire_after=3600)
+XDG_CACHE_HOME = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
+CACHEDIR = os.path.join(XDG_CACHE_HOME, "flatpak-builder-lint")
+CACHEFILE = os.path.join(CACHEDIR, "requests_cache")
+
+os.makedirs(CACHEDIR, exist_ok=True)
+
+session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
 
 
 def ignore_ref(ref: str) -> bool:
