@@ -61,7 +61,7 @@ class AppIDCheck(Check):
                 return
             if domainutils.is_app_on_flathub_summary(appid):
                 return
-            if appid.startswith(domainutils.code_hosts):
+            if appid.startswith(domainutils.CODE_HOSTS):
                 if domainutils.get_proj_url(appid) is None:
                     self.errors.add("appid-url-check-internal-error")
                     return

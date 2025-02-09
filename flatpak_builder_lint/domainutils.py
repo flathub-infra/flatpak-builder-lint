@@ -8,7 +8,7 @@ from requests_cache import CachedSession
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
 
-code_hosts = (
+CODE_HOSTS = (
     "io.github.",
     "io.frama.",
     "io.gitlab.",
@@ -36,52 +36,34 @@ session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
 
 
 def ignore_ref(ref: str) -> bool:
-    ref_splits = ref.split("/")
-
-    if len(ref_splits) != 4:
-        return True
-
-    return bool(
-        ref_splits[2] not in ("x86_64", "aarch64")
-        or ref_splits[1].endswith((".Debug", ".Locale", ".Sources"))
+    parts = ref.split("/")
+    return (
+        len(parts) != 4
+        or parts[2] not in {"x86_64", "aarch64"}
+        or parts[1].endswith((".Debug", ".Locale", ".Sources"))
     )
 
 
 @cache
 def fetch_summary_bytes(url: str) -> bytes:
-    summary_bytes = b""
     try:
         r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/octet-stream":
-            summary_bytes = r.content
+            return r.content
     except requests.exceptions.RequestException:
         pass
 
-    if not summary_bytes:
-        raise Exception("Failed to fetch summary")
-
-    return summary_bytes
+    raise Exception("Failed to fetch summary")
 
 
 @cache
 def get_appids_from_summary(url: str) -> set[str]:
-    appids = set()
     summary = GLib.Bytes.new(fetch_summary_bytes(url))
-
-    data = GLib.Variant.new_from_bytes(
+    refs, _ = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
-    )
+    ).unpack()
 
-    refs, _ = data.unpack()
-
-    if refs:
-        for ref, _ in refs:
-            if ignore_ref(ref):
-                continue
-            appid = ref.split("/")[1]
-            appids.add(appid)
-
-    return appids
+    return {ref.split("/")[1] for ref, _ in (refs or []) if not ignore_ref(ref)}
 
 
 @cache
@@ -92,29 +74,19 @@ def get_all_apps_on_flathub() -> set[str]:
 
 
 @cache
-def check_url(url: str, strict: bool) -> bool:
+def check_url(url: str, strict: bool = False) -> bool:
     if not url.startswith(("https://", "http://")):
         raise Exception("Invalid input")
 
-    ret = False
     try:
         r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
-        if r.ok and not strict:
-            ret = True
-        # For known code hosting sites
-        # they return 300s on non-existent repo/users
-        # 200 is the only way to make sure target exists
-        if strict and r.status_code == 200:
-            ret = True
+        return r.ok and not strict or strict and r.status_code == 200
     except requests.exceptions.RequestException:
-        pass
-
-    return ret
+        return False
 
 
 @cache
 def get_remote_exceptions(appid: str) -> set[str]:
-    ret = set()
     try:
         # exception updates should be reflected immediately
         r = requests.get(
@@ -123,11 +95,11 @@ def get_remote_exceptions(appid: str) -> set[str]:
             timeout=REQUEST_TIMEOUT,
         )
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
-            ret = set(r.json())
+            return set(r.json())
     except requests.exceptions.RequestException:
         pass
 
-    return ret
+    return set()
 
 
 def demangle(name: str) -> str:
@@ -137,7 +109,7 @@ def demangle(name: str) -> str:
 
 
 def get_proj_url(appid: str) -> str | None:
-    if not (appid.startswith(code_hosts) or appid.count(".") >= 2):
+    if not (appid.startswith(CODE_HOSTS) or appid.count(".") >= 2):
         raise Exception("Invalid input")
 
     url = None
@@ -228,7 +200,7 @@ def get_proj_url(appid: str) -> str | None:
 
 
 def get_domain(appid: str) -> str | None:
-    if not (appid.startswith(code_hosts) or appid.count(".") >= 2):
+    if not (appid.startswith(CODE_HOSTS) or appid.count(".") >= 2):
         raise Exception("Invalid input")
 
     domain = None
