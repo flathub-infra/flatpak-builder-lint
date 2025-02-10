@@ -34,7 +34,7 @@ def validate(path: str, *args: str) -> SubprocessResult:
         "metainfo-filename-cid-mismatch": "error",
         "metainfo-legacy-path": "error",
         "metainfo-multiple-components": "error",
-        "name-has-dot-suffix": "error",
+        "name-has-dot-suffix": "info",
         "releases-info-missing": "error",
         "summary-too-long": "info",
         "unknown-tag": "error",
