@@ -3294,7 +3294,8 @@
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "com.play0ad.zeroad": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "appstream-failed-validation": "Add a temporary exception"
     },
     "com.pot_app.pot": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
