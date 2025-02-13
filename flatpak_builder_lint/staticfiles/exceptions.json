@@ -2030,10 +2030,6 @@
     "org.kde.artikulate": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.kde.atlantik": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.blinken": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
