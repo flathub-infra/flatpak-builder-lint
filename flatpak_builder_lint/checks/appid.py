@@ -90,6 +90,9 @@ class AppIDCheck(Check):
             (manifest_basename, _) = os.path.splitext(filename)
             manifest_basename = os.path.basename(manifest_basename)
 
+            if os.path.exists(filename) and os.path.islink(filename):
+                self.errors.add("manifest-file-is-symlink")
+
             if appid != manifest_basename:
                 self.errors.add("appid-filename-mismatch")
                 self.info.add(

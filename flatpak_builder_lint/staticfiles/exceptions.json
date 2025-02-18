@@ -1013,7 +1013,8 @@
     "org.gnome.Totem.Devel": {
         "module-totem-source-git-no-tag-commit-branch": "This is the development version of Totem, tracking upstream",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "manifest-has-bundled-extension": "Predates the linter rule",
+        "manifest-file-is-symlink": "Predates the linter rule"
     },
     "org.gimp.GIMP": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
@@ -3947,5 +3948,11 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Access for reading installed browsers",
         "finish-args-unnecessary-xdg-data-applications-rw-access": "Access for writing desktop files for web apps",
         "finish-args-unnecessary-xdg-data-icons-rw-access": "Access for writing icons into xdg-data/icons/QuickWebApps directory for created webapps"
+    },
+    "com.valvesoftware.Steam.CompatibilityTool.Proton-Exp": {
+        "manifest-file-is-symlink": "Predates the linter rule"
+    },
+    "com.valvesoftware.Steam.CompatibilityTool.Proton-GE": {
+        "manifest-file-is-symlink": "Predates the linter rule"
     }
 }

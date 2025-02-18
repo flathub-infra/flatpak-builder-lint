@@ -30,6 +30,7 @@ KNOWN_EXCEPTIONS = {
     "appstream-metainfo-missing",
     "appid-url-not-reachable",
     "manifest-has-bundled-extension",
+    "manifest-file-is-symlink",
 }
 
 

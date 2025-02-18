@@ -12,7 +12,7 @@ from flatpak_builder_lint import checks, cli
 def tmp_testdir() -> Generator[str, None, None]:
     with tempfile.TemporaryDirectory() as tmpdir:
         targetdir = os.path.join(tmpdir, "tests", "manifests")
-        shutil.copytree("tests/manifests", targetdir)
+        shutil.copytree("tests/manifests", targetdir, symlinks=True)
         yield tmpdir
 
 
@@ -338,3 +338,12 @@ def test_manifest_nightly_checker() -> None:
     }
     for e in errors:
         assert e in found_errors
+
+
+def test_manifest_symlink() -> None:
+    ret = run_checks("tests/manifests/symlinks/symlink.json")
+    found_errors = ret["errors"]
+    assert "manifest-file-is-symlink" in found_errors
+    ret = run_checks("tests/manifests/symlinks/source.json")
+    found_errors = ret["errors"]
+    assert "manifest-file-is-symlink" not in found_errors
