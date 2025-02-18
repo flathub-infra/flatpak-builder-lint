@@ -5,14 +5,32 @@ import subprocess
 
 
 def is_git_directory(path: str) -> bool:
-    res = subprocess.run(
-        ["git", "rev-parse"],
+    if not os.path.exists(path):
+        return False
+    return (
+        subprocess.run(
+            ["git", "rev-parse"],
+            cwd=path,
+            capture_output=True,
+            check=False,
+        ).returncode
+        == 0
+    )
+
+
+def get_git_toplevel(path: str) -> str | None:
+    if not is_git_directory(path):
+        return None
+
+    result = subprocess.run(
+        ["git", "rev-parse", "--show-toplevel"],
         cwd=path,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+        capture_output=True,
+        text=True,
         check=False,
     )
-    return res.returncode == os.EX_OK
+
+    return result.stdout.strip() if result.returncode == 0 else None
 
 
 # json-glib supports non-standard syntax like // comments. Bail out and
