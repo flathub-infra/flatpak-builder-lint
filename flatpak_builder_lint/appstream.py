@@ -107,6 +107,11 @@ def metainfo_is_screenshot_image_present(path: str) -> bool:
     return bool(img)
 
 
+def get_screenshot_images(path: str) -> list[str]:
+    img = components(path)[0].xpath("screenshots/screenshot/image/text()")
+    return list(img)
+
+
 def component_type(path: str) -> str:
     return str(components(path)[0].attrib.get("type"))
 

@@ -2,11 +2,107 @@ import glob
 import os
 import tempfile
 
-from .. import appstream, ostree
+from .. import appstream, builddir, ostree
 from . import Check
 
 
 class ScreenshotsCheck(Check):
+    def _validate(self, path: str, appid: str) -> None:
+        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
+
+        metainfo_dirs = [f"{path}/metainfo", f"{path}/appdata"]
+        metainfo_exts = [".appdata.xml", ".metainfo.xml"]
+
+        metainfo_path = None
+        for metainfo_dir in metainfo_dirs:
+            for ext in metainfo_exts:
+                metainfo_dirext = f"{metainfo_dir}/{appid}{ext}"
+                if os.path.exists(metainfo_dirext):
+                    metainfo_path = metainfo_dirext
+
+        if metainfo_path is None:
+            self.errors.add("appstream-metainfo-missing")
+            self.info.add(
+                f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
+                + " /app/share/metainfo or /app/share/appdata"
+            )
+            return
+
+        if not appstream.metainfo_components(metainfo_path):
+            self.errors.add("metainfo-missing-component-tag")
+            return
+
+        if appstream.metainfo_components(metainfo_path)[0].attrib.get("type") not in (
+            "desktop",
+            "desktop-application",
+        ):
+            return
+
+        if not appstream.metainfo_is_screenshot_image_present(metainfo_path):
+            self.errors.add("metainfo-missing-screenshots")
+            self.info.add(
+                "metainfo-missing-screenshots: The metainfo file is missing screenshots"
+                + " or it is not present under the screenshots/screenshot/image tag"
+            )
+            return
+
+        if not os.path.exists(appstream_path):
+            self.errors.add("appstream-missing-appinfo-file")
+            self.info.add(
+                "appstream-missing-appinfo-file: Appstream catalogue file is missing."
+                + " Perhaps no Metainfo file was installed with correct name"
+            )
+            return
+
+        if len(appstream.components(appstream_path)) != 1:
+            self.errors.add("appstream-multiple-components")
+            return
+
+        if appstream.component_type(appstream_path) not in (
+            "desktop",
+            "desktop-application",
+        ):
+            return
+
+        sc_allowed_urls = (
+            "https://dl.flathub.org/repo/screenshots",
+            "https://dl.flathub.org/media",
+        )
+
+        sc_values = [
+            i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
+        ]
+
+        if not sc_values:
+            self.errors.add("appstream-missing-screenshots")
+            self.info.add(
+                "appstream-missing-screenshots: Catalogue file has no screenshots."
+                + " Please check if screenshot URLs are reachable"
+            )
+            return
+
+        if not any(s.startswith(sc_allowed_urls) for s in sc_values):
+            self.errors.add("appstream-external-screenshot-url")
+            self.info.add(
+                "appstream-external-screenshot-url: Screenshots are not mirrored to"
+                + " https://dl.flathub.org/media"
+            )
+            return
+
+    def check_build(self, path: str) -> None:
+        appid = builddir.infer_appid(path)
+        if not appid:
+            return
+        if appid.endswith(".BaseApp"):
+            return
+        metadata = builddir.parse_metadata(path)
+        if not metadata:
+            return
+        if metadata.get("type", False) != "application":
+            return
+
+        self._validate(f"{path}/files/share", appid)
+
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
         ref = self.repo_primary_ref
@@ -18,6 +114,7 @@ class ScreenshotsCheck(Check):
             return
 
         refs = ostree.get_refs(path, None)
+        arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
 
         with tempfile.TemporaryDirectory() as tmpdir:
             dirs_needed = ("appdata", "metainfo", "app-info")
@@ -28,85 +125,17 @@ class ScreenshotsCheck(Check):
                     path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
                 )
 
+            self._validate(tmpdir, appid)
             appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
-            if not os.path.exists(appstream_path):
-                return
 
-            if len(appstream.components(appstream_path)) != 1:
-                return
-
-            if appstream.component_type(appstream_path) not in (
+            if os.path.exists(appstream_path) and appstream.component_type(appstream_path) in (
                 "desktop",
                 "desktop-application",
             ):
-                return
-
-            metainfo_dirs = [f"{tmpdir}/metainfo", f"{tmpdir}/appdata"]
-            metainfo_exts = [".appdata.xml", ".metainfo.xml"]
-
-            metainfo_path = None
-            for metainfo_dir in metainfo_dirs:
-                for ext in metainfo_exts:
-                    metainfo_dirext = f"{metainfo_dir}/{appid}{ext}"
-                    if os.path.exists(metainfo_dirext):
-                        metainfo_path = metainfo_dirext
-
-            if metainfo_path is None:
-                self.errors.add("appstream-metainfo-missing")
-                self.info.add(
-                    f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
-                    + " /app/share/metainfo or /app/share/appdata"
-                )
-                return
-
-            if not appstream.metainfo_components(metainfo_path):
-                self.errors.add("metainfo-missing-component-tag")
-                return
-
-            if not appstream.metainfo_is_screenshot_image_present(metainfo_path):
-                self.errors.add("metainfo-missing-screenshots")
-                self.info.add(
-                    "metainfo-missing-screenshots: The metainfo file is missing screenshots"
-                    + " or it is not present under the screenshots/screenshot/image tag"
-                )
-                return
-
-            sc_allowed_urls = (
-                "https://dl.flathub.org/repo/screenshots",
-                "https://dl.flathub.org/media",
-            )
-
-            sc_values = [
-                i
-                for i in appstream.components(appstream_path)[0].xpath(
-                    "screenshots/screenshot/image/text()"
-                )
-                if i.endswith(".png")
-            ]
-
-            sc_values_basename = {os.path.basename(i) for i in sc_values}
-
-            if not sc_values:
-                self.errors.add("appstream-missing-screenshots")
-                self.info.add(
-                    "appstream-missing-screenshots: Catalogue file has no screenshots."
-                    + " Please check if screenshot URLs are reachable"
-                )
-                return
-
-            if not any(s.startswith(sc_allowed_urls) for s in sc_values):
-                self.errors.add("appstream-external-screenshot-url")
-                self.info.add(
-                    "appstream-external-screenshot-url: Screenshots are not mirrored to"
-                    + " https://dl.flathub.org/media"
-                )
-                return
-
-            arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
-            for arch in arches:
-                if f"screenshots/{arch}" not in refs:
-                    self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
-                    break
+                for arch in arches:
+                    if f"screenshots/{arch}" not in refs:
+                        self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
+                        return
 
                 media_path = os.path.join(tmpdir, "app-info", f"screenshots-{arch}")
                 media_glob_path = f"{media_path}/**"
@@ -118,5 +147,5 @@ class ScreenshotsCheck(Check):
                     if path.endswith(".png")
                 }
 
-                if not (ref_sc_files & sc_values_basename):
+                if not ref_sc_files:
                     self.errors.add("appstream-screenshots-files-not-found-in-ostree")
