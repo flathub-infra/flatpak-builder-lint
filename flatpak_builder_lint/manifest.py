@@ -54,8 +54,12 @@ def show_manifest(filename: str) -> dict:
     manifest_json["x-manifest-filename"] = filename
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
+    git_toplevel = get_git_toplevel(manifest_basedir)
     flathub_json_path = os.path.join(manifest_basedir, "flathub.json")
     gitmodules_path = os.path.join(manifest_basedir, ".gitmodules")
+
+    if git_toplevel is not None:
+        gitmodules_path = os.path.join(git_toplevel, ".gitmodules")
 
     if os.path.exists(flathub_json_path):
         with open(flathub_json_path) as f:
