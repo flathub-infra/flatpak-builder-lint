@@ -102,13 +102,8 @@ def is_project_license_present(path: str) -> bool:
     return bool(plicense)
 
 
-def metainfo_is_screenshot_image_present(path: str) -> bool:
-    img = metainfo_components(path)[0].xpath("screenshots/screenshot/image/text()")
-    return bool(img)
-
-
 def get_screenshot_images(path: str) -> list[str]:
-    img = components(path)[0].xpath("screenshots/screenshot/image/text()")
+    img = parse_xml(path).xpath("//screenshots/screenshot/image/text()")
     return list(img)
 
 

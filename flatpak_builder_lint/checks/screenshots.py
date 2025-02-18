@@ -38,12 +38,21 @@ class ScreenshotsCheck(Check):
         ):
             return
 
-        if not appstream.metainfo_is_screenshot_image_present(metainfo_path):
+        metainfo_sc = appstream.get_screenshot_images(metainfo_path)
+
+        if not metainfo_sc:
             self.errors.add("metainfo-missing-screenshots")
             self.info.add(
                 "metainfo-missing-screenshots: The metainfo file is missing screenshots"
                 + " or it is not present under the screenshots/screenshot/image tag"
             )
+            return
+
+        metainfo_svg_sc_values = [i for i in metainfo_sc if i.endswith((".svg", ".svgz"))]
+
+        if metainfo_svg_sc_values:
+            self.errors.add("metainfo-svg-screenshots")
+            self.info.add("metainfo-svg-screenshots: The metainfo has a SVG screenshot")
             return
 
         if not os.path.exists(appstream_path):

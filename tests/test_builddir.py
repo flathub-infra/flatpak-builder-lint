@@ -442,3 +442,12 @@ def test_builddir_appstream_missing_timestamp() -> None:
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
     assert "appstream-release-tag-missing-timestamp" in found_errors
+
+
+def test_builddir_appstream_svg_screenshot() -> None:
+    testdir = "tests/builddir/svg-screenshot"
+    move_files(testdir)
+    create_catalogue(testdir, "com.github.flathub.svg_screenshot.xml")
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    assert "metainfo-svg-screenshots" in found_errors
