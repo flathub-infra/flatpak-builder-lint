@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file should pass validation using appstreamcli of linter-->
+<component type="desktop">
+  <id>com.github.flathub.svg_screenshot</id>
+  <name>Example</name>
+  <summary>A summary</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>Flathub</developer_name>
+  <url type="homepage">https://flathub.org/</url>
+  <launchable type="desktop-id">com.github.flathub.svg_screenshot.desktop</launchable>
+    <description>
+    <p>Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/265px-Tux.svg</image>
+      <caption>Foo Foo Foo Foo</caption>
+    </screenshot>
+  </screenshots>
+  <keywords>
+    <keyword>Foo</keyword>
+  </keywords>
+  <categories>
+    <category>Utility</category>
+  </categories>
+</component>

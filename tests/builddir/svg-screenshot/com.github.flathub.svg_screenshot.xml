@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="desktop-application">
+    <id>com.github.flathub.svg_screenshot</id>
+    <name>Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo</name>
+    <summary>Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar.</summary>
+    <url type="homepage">https://flathub.org</url>
+    <description>
+      <p>This is an example</p>
+    </description>
+    <metadata_license>CC0-1.0</metadata_license>
+    <launchable type="desktop-id">com.github.flathub.svg_screenshot.desktop</launchable>
+    <icon type="cached" width="128" height="128">com.github.flathub.svg_screenshot.png</icon>
+    <categories>
+      <category>Network</category>
+    </categories>
+    <provides>
+      <id>com.github.flathub.svg_screenshot.desktop</id>
+    </provides>
+    <screenshots>
+      <screenshot type="default">
+        <image type="source">https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png</image>
+      </screenshot>
+      <screenshot>
+        <image type="source">https://dl.flathub.org/assets/badges/flathub-badge-en.png</image>
+      </screenshot>
+      <screenshot>
+        <caption>Foo Foo Foo</caption>
+        <image type="source">https://dl.flathub.org/assets/badges/flathub-badge-i-en.png</image>
+      </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.1"/>
+  </component>
+</components>
