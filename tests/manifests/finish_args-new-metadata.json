@@ -1,0 +1,7 @@
+{
+    "app-id": "org.flathub.finish_args_new_metadata",
+    "finish-args": [
+        "--device=input",
+        "--require-version=1.11.0"
+    ]
+}

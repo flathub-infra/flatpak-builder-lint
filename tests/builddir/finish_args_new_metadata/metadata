@@ -1,0 +1,5 @@
+[Application]
+name=org.flathub.finish_args_new_metadata
+
+[Context]
+devices=usb;
