@@ -32,23 +32,23 @@ class ScreenshotsCheck(Check):
             self.errors.add("metainfo-missing-component-tag")
             return
 
-        if appstream.metainfo_components(metainfo_path)[0].attrib.get("type") not in (
-            "desktop",
-            "desktop-application",
-        ):
-            return
-
         metainfo_sc = appstream.get_screenshot_images(metainfo_path)
+        metainfo_svg_sc_values = [i for i in metainfo_sc if i.endswith((".svg", ".svgz"))]
 
-        if not metainfo_sc:
+        if (
+            appstream.metainfo_components(metainfo_path)[0].attrib.get("type")
+            in (
+                "desktop",
+                "desktop-application",
+            )
+            and not metainfo_sc
+        ):
             self.errors.add("metainfo-missing-screenshots")
             self.info.add(
                 "metainfo-missing-screenshots: The metainfo file is missing screenshots"
                 + " or it is not present under the screenshots/screenshot/image tag"
             )
             return
-
-        metainfo_svg_sc_values = [i for i in metainfo_sc if i.endswith((".svg", ".svgz"))]
 
         if metainfo_svg_sc_values:
             self.errors.add("metainfo-svg-screenshots")
@@ -67,22 +67,23 @@ class ScreenshotsCheck(Check):
             self.errors.add("appstream-multiple-components")
             return
 
-        if appstream.component_type(appstream_path) not in (
-            "desktop",
-            "desktop-application",
-        ):
-            return
+        sc_values = [
+            i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
+        ]
 
         sc_allowed_urls = (
             "https://dl.flathub.org/repo/screenshots",
             "https://dl.flathub.org/media",
         )
 
-        sc_values = [
-            i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
-        ]
-
-        if not sc_values:
+        if (
+            appstream.component_type(appstream_path)
+            in (
+                "desktop",
+                "desktop-application",
+            )
+            and not sc_values
+        ):
             self.errors.add("appstream-missing-screenshots")
             self.info.add(
                 "appstream-missing-screenshots: Catalogue file has no screenshots."
@@ -90,7 +91,7 @@ class ScreenshotsCheck(Check):
             )
             return
 
-        if not any(s.startswith(sc_allowed_urls) for s in sc_values):
+        if sc_values and not any(s.startswith(sc_allowed_urls) for s in sc_values):
             self.errors.add("appstream-external-screenshot-url")
             self.info.add(
                 "appstream-external-screenshot-url: Screenshots are not mirrored to"
