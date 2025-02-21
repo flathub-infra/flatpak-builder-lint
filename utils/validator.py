@@ -31,6 +31,11 @@ KNOWN_EXCEPTIONS = {
     "appid-url-not-reachable",
     "manifest-has-bundled-extension",
     "manifest-file-is-symlink",
+    "finish-args-flatpak-appdata-folder-access",
+    "finish-args-flatpak-system-folder-access",
+    "finish-args-flatpak-user-folder-access",
+    "finish-args-host-tmp-access",
+    "finish-args-host-var-access",
 }
 
 
