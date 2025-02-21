@@ -119,6 +119,23 @@ class FinishArgsCheck(Check):
                     + " has direct access to host dconf path"
                 )
 
+            if fs.startswith(("~/.var/app", "home/.var/app")):
+                self.errors.add("finish-args-flatpak-appdata-folder-access")
+
+            if fs.startswith("/var/lib/flatpak"):
+                self.errors.add("finish-args-flatpak-system-folder-access")
+
+            if fs.startswith(("~/.local/share/flatpak", "home/.local/share/flatpak")):
+                self.errors.add("finish-args-flatpak-user-folder-access")
+
+            if fs.startswith("/tmp"):  # noqa: S108
+                self.errors.add("finish-args-host-tmp-access")
+
+            if fs.startswith("/var") and not fs.startswith(
+                ("/var/cache", "/var/config", "/var/data", "/var/tmp", "/var/lib/flatpak")  # noqa: S108
+            ):
+                self.errors.add("finish-args-host-var-access")
+
         for own_name in finish_args["own-name"]:
             # Values not allowed: appid or appid.*
             # See https://github.com/flathub/flatpak-builder-lint/issues/33

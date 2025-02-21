@@ -176,6 +176,10 @@ def test_manifest_finish_args() -> None:
         "finish-args-x11-without-ipc",
         "finish-args-contains-both-x11-and-fallback",
         "finish-args-unnecessary-appid-talk-name",
+        "finish-args-flatpak-system-folder-access",
+        "finish-args-host-tmp-access",
+        "finish-args-host-var-access",
+        "finish-args-flatpak-appdata-folder-access",
     }
 
     expected_absents = {

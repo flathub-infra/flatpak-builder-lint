@@ -143,6 +143,10 @@ def test_builddir_finish_args() -> None:
         "finish-args-wildcard-gnome-system-own-name",
         "finish-args-freedesktop-dbus-system-talk-name",
         "finish-args-x11-without-ipc",
+        "finish-args-flatpak-user-folder-access",
+        "finish-args-host-tmp-access",
+        "finish-args-flatpak-appdata-folder-access",
+        "finish-args-host-var-access",
     }
 
     expected_absents = {

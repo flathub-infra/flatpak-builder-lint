@@ -24,6 +24,10 @@
         "--talk-name=org.freedesktop.*",
         "--own-name=org.freedesktop.portal.Foo",
         "--system-talk-name=org.freedesktop.DBus.foo",
-        "--unshare=network"
+        "--unshare=network",
+        "--filesystem=~/.var/app/foo",
+        "--filesystem=/var/lib/flatpak",
+        "--filesystem=/tmp",
+        "--filesystem=/var/foobar"
     ]
 }

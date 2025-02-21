@@ -5,7 +5,7 @@ name=org.flathub.finish_args
 share=!network;
 sockets=x11;wayland;session-bus;fallback-x11;!cups;
 devices=all;!dri;
-filesystems=home;xdg-config/kdeglobals:ro;host;/run/media/foo;
+filesystems=home;xdg-config/kdeglobals:ro;host;/run/media/foo;~/.var/app;/tmp/foo;~/.local/share/flatpak;/var;
 
 [Session Bus Policy]
 org.freedesktop.portal.*=talk
