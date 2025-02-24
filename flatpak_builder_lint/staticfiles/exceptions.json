@@ -11,7 +11,7 @@
         "*": "ignore all errors and warnings"
     },
     "io.dbeaver.DBeaverCommunity": {
-        "finish-args-unnecessary-xdg-data-DBeaverData-rw-access": "Required to be retro-compatible with old configurations (before migrating to XDG_DATA_HOME)"
+        "finish-args-unnecessary-xdg-data-DBeaverData-ro-access": "Required to be retro-compatible with old configurations (before migrating to XDG_DATA_HOME)"
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
