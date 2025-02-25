@@ -3122,9 +3122,13 @@
     },
     "io.github.loot.loot": {
         "finish-args-unnecessary-xdg-config-heroic-ro-access": "Needed to detect games installed through Heroic Games Launcher.",
+        "finish-args-unnecessary-xdg-config-openmw-rw-access": "Needed to detect and make changes to OpenMW when it is installed as a distribution package.",
+        "finish-args-unnecessary-xdg-data-openmw-ro-access": "Needed to read OpenMW data when it is installed as a distribution package.",
         "finish-args-unnecessary-xdg-data-Steam-ro-access": "Needed to detect and make changes to games installed through Steam.",
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Needed to detect and make changes to games installed through Steam.",
-        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-appdata-folder-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+        "finish-args-flatpak-system-folder-access": "Needed to read the OpenMW install folder when it is installed as a system Flatpak.",
+        "finish-args-flatpak-user-folder-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak.",
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings.",
