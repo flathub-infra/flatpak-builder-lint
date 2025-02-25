@@ -3128,7 +3128,7 @@
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Needed to detect and make changes to games installed through Steam.",
         "finish-args-flatpak-appdata-folder-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
         "finish-args-flatpak-system-folder-access": "Needed to read the OpenMW install folder when it is installed as a system Flatpak.",
-        "finish-args-flatpak-user-folder-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak.",
+        "finish-args-flatpak-user-folder-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak."
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings.",
