@@ -1,2 +1,4 @@
 [Application]
 name=org.flathub.appstream_icon_key_no_type
+runtime=org.freedesktop.Platform/x86_64/23.08
+

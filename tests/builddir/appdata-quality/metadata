@@ -1,2 +1,4 @@
 [Application]
 name=com.github.flathub.appdata-quality
+runtime=org.freedesktop.Platform/x86_64/23.08
+

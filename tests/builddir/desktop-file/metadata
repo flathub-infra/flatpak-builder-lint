@@ -1,2 +1,4 @@
 [Application]
 name=com.github.flathub_infra.desktop-file
+runtime=org.freedesktop.Platform/x86_64/23.08
+

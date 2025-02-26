@@ -1,2 +1,4 @@
 [Application]
 name=org.flathub.flathub_json
+runtime=org.freedesktop.Platform/x86_64/23.08
+

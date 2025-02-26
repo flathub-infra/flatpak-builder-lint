@@ -1,5 +1,6 @@
 [Application]
 name=org.flathub.finish_args
+runtime=org.freedesktop.Platform/x86_64/23.08
 
 [Context]
 share=!network;
