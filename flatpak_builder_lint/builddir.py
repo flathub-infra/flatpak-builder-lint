@@ -19,14 +19,12 @@ def parse_metadata(builddir: str) -> dict:
 
     metadata: dict = {}
 
-    if key_file.get_start_group() == "Application":
-        metadata["type"] = "application"
-        metadata["name"] = key_file.get_value("Application", "name")
-    elif key_file.get_start_group() == "Runtime":
-        metadata["type"] = "runtime"
-        metadata["name"] = key_file.get_value("Runtime", "name")
-    else:
-        raise GLib.Error("Unknown start group in metadata.")
+    group = key_file.get_start_group()
+    if group is None:
+        raise GLib.Error("Start group in metadata not found")
+
+    metadata["type"] = group.lower()
+    metadata["name"] = key_file.get_value(group, "name")
 
     environment: dict = defaultdict(set)
     permissions: dict = defaultdict(set)
