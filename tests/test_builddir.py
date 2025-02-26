@@ -147,6 +147,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-host-tmp-access",
         "finish-args-flatpak-appdata-folder-access",
         "finish-args-host-var-access",
+        "finish-args-mpris-flatpak-id-own-name",
     }
 
     expected_absents = {

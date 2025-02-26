@@ -169,6 +169,8 @@ class FinishArgsCheck(Check):
                 "org.freedesktop.Flatpak."
             ):
                 self.errors.add("finish-args-flatpak-own-name")
+            if appid and own_name == f"org.mpris.MediaPlayer2.{appid}":
+                self.errors.add("finish-args-mpris-flatpak-id-own-name")
 
         for talk_name in finish_args["talk-name"]:
             # Values not allowed: appid or appid.*
@@ -219,6 +221,8 @@ class FinishArgsCheck(Check):
                     "finish-args-incorrect-secret-service-talk-name: The name is in lower case"
                     + " org.freedesktop.secrets"
                 )
+            if appid and talk_name == f"org.mpris.MediaPlayer2.{appid}":
+                self.errors.add("finish-args-mpris-flatpak-id-talk-name")
 
         for sys_own_name in finish_args["system-own-name"]:
             if sys_own_name == "org.freedesktop.*":
@@ -239,6 +243,8 @@ class FinishArgsCheck(Check):
                 "org.freedesktop.Flatpak."
             ):
                 self.errors.add("finish-args-flatpak-system-own-name")
+            if appid and sys_own_name == f"org.mpris.MediaPlayer2.{appid}":
+                self.errors.add("finish-args-mpris-flatpak-id-system-own-name")
 
         for sys_talk_name in finish_args["system-talk-name"]:
             if sys_talk_name == "org.freedesktop.*":
@@ -259,6 +265,8 @@ class FinishArgsCheck(Check):
                 "org.freedesktop.Flatpak."
             ):
                 self.errors.add("finish-args-flatpak-system-talk-name")
+            if appid and sys_talk_name == f"org.mpris.MediaPlayer2.{appid}":
+                self.errors.add("finish-args-mpris-flatpak-id-system-talk-name")
 
         if "system-bus" in finish_args["socket"] or "session-bus" in finish_args["socket"]:
             self.errors.add("finish-args-arbitrary-dbus-access")

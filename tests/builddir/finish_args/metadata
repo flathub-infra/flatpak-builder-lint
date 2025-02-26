@@ -17,6 +17,7 @@ org.flathub.finish_args=own
 org.kde.StatusNotifierItem=own
 org.gtk.vfs=talk
 org.freedesktop.DBus.foo=talk
+org.mpris.MediaPlayer2.org.flathub.finish_args=own
 
 [System Bus Policy]
 org.gnome.*=own
