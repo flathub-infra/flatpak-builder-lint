@@ -58,12 +58,18 @@ def fetch_summary_bytes(url: str) -> bytes:
 
 
 @cache
-def get_appids_from_summary(url: str) -> set[str]:
+def get_summary_obj(url: str) -> tuple[dict, dict]:
     summary = GLib.Bytes.new(fetch_summary_bytes(url))
-    refs, _ = GLib.Variant.new_from_bytes(
+    refs, metadata = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
     ).unpack()
 
+    return refs, metadata
+
+
+@cache
+def get_appids_from_summary(url: str) -> set:
+    refs, _ = get_summary_obj(url)
     return {ref.split("/")[1] for ref, _ in (refs or []) if not ignore_ref(ref)}
 
 
@@ -72,6 +78,27 @@ def get_all_apps_on_flathub() -> set[str]:
     return get_appids_from_summary(f"{FLATHUB_STABLE_REPO_URL}/summary") | get_appids_from_summary(
         f"{FLATHUB_BETA_REPO_URL}/summary"
     )
+
+
+@cache
+def get_eol_runtimes(url: str) -> set[str]:
+    eols = set()
+    _, metadata = get_summary_obj(url)
+    for ref, eol_dict in metadata["xa.sparse-cache"].items():
+        ref_type, ref_id, _, branch = ref.split("/")
+
+        if ref_id.endswith((".Debug", ".Locale", ".Sources")) or ref_type != "runtime":
+            continue
+
+        if any(key in eol_dict for key in ("eolr", "eol")):
+            eolid = f"{ref_id}//{branch}"
+            eols.add(eolid)
+
+    return eols
+
+
+def get_eol_runtimes_on_flathub() -> set[str]:
+    return get_eol_runtimes(f"{FLATHUB_STABLE_REPO_URL}/summary")
 
 
 @cache

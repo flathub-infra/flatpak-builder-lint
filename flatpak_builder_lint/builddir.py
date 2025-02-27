@@ -23,6 +23,17 @@ def parse_metadata(builddir: str) -> dict:
     if group is None:
         raise GLib.Error("Start group in metadata not found")
 
+    if group == "Runtime":
+        keys = key_file.get_keys(group)[0]
+        if "runtime" in keys:
+            metadata["runtime"] = key_file.get_value(group, "runtime")
+        elif "sdk" in keys:
+            metadata["runtime"] = key_file.get_value(group, "sdk")
+        else:
+            metadata["runtime"] = None
+    elif group == "Application":
+        metadata["runtime"] = key_file.get_value(group, "runtime")
+
     metadata["type"] = group.lower()
     metadata["name"] = key_file.get_value(group, "name")
 
@@ -78,6 +89,10 @@ def infer_appid(path: str) -> str | None:
         return metadata.get("name")
 
     return None
+
+
+def get_runtime(path: str) -> str | None:
+    return runtime if isinstance(runtime := parse_metadata(path).get("runtime"), str) else None
 
 
 def get_flathub_json(path: str) -> dict[str, str | bool | list[str]]:

@@ -352,3 +352,9 @@ def test_manifest_symlink() -> None:
     ret = run_checks("tests/manifests/symlinks/source.json")
     found_errors = ret["errors"]
     assert "manifest-file-is-symlink" not in found_errors
+
+
+def test_manifest_eol_runtime() -> None:
+    ret = run_checks("tests/manifests/eol_runtime.json")
+    found_warnings = ret["warnings"]
+    assert "runtime-is-eol-org.gnome.Sdk-40" in found_warnings

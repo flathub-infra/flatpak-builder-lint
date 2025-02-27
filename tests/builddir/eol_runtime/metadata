@@ -1,0 +1,3 @@
+[Application]
+name=com.github.flathub.eol_runtime
+runtime=org.freedesktop.Platform/x86_64/18.08
