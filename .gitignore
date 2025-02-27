@@ -8,8 +8,10 @@ builddir/
 !tests/builddir/
 build/
 repo/
+!tests/repo/
 .flatpak-builder/
 .venv/
 *.gz
 *.svg
 *.png
+!tests/repo/min_success_metadata/gui-app/org.flathub.gui.png
