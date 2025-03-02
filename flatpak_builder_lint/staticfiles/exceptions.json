@@ -10,6 +10,10 @@
     "org.flathub.exceptions_wildcard": {
         "*": "ignore all errors and warnings"
     },
+    "page.codeberg.dnkl.foot": {
+        "finish-args-flatpak-spawn-access": "required for host shell access via host-spawn",
+        "finish-args-only-wayland": "this program doesn't have x11 support"
+    },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
         "finish-args-unnecessary-xdg-data-applications-create-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
