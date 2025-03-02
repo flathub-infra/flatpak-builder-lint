@@ -36,6 +36,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-flatpak-user-folder-access",
     "finish-args-host-tmp-access",
     "finish-args-host-var-access",
+    "finish-args-only-wayland",
 }
 
 
