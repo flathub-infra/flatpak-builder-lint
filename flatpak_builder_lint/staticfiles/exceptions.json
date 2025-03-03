@@ -3960,6 +3960,7 @@
         "finish-args-unnecessary-xdg-config-autostart-create-access": "This app's purpose is to manage autostart entries",
         "finish-args-unnecessary-xdg-data-icons-ro-access": "Needed to be able to show app icons that are stored in this directory",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needed to be able to see the list of .desktop files associated with installed flatpaks, to be able to autostart them",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Needed to be able to see the list of .desktop files for user-installed applications, to be able to autostart them",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule"
     },
