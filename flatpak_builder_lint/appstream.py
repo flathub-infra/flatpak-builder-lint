@@ -76,29 +76,30 @@ def metainfo_components(path: str) -> list[etree._Element]:
     return cast(list[etree._Element], parse_xml(path).xpath("/component"))
 
 
-def appstream_id(path: str) -> str | None:
-    aps_cid = components(path)[0].xpath("id/text()")[0]
-    return str(aps_cid)
+def appstream_id(path: str) -> list[str]:
+    aps_id: list[str] = parse_xml(path).xpath("//component/id/text()")
+    return aps_id
 
 
 def get_launchable(path: str) -> list[str]:
-    launchable = components(path)[0].xpath("launchable[@type='desktop-id']/text()")
-    return list(launchable)
+    launchable: list[str] = parse_xml(path).xpath("//launchable[@type='desktop-id']/text()")
+    return launchable
 
 
 def is_categories_present(path: str) -> bool:
-    categories = components(path)[0].xpath("categories")
+    categories = parse_xml(path).xpath("//categories/category")
     return bool(categories)
 
 
 def is_developer_name_present(path: str) -> bool:
-    developer_name = components(path)[0].xpath("developer/name")
-    legacy_developer_name = components(path)[0].xpath("developer_name")
-    return bool(developer_name or legacy_developer_name)
+    tree = parse_xml(path)
+    dev = tree.xpath("//developer[@id]/name/text()")
+    legacy_dev = tree.xpath("//developer_name/text()")
+    return bool(dev or legacy_dev)
 
 
 def is_project_license_present(path: str) -> bool:
-    plicense = components(path)[0].xpath("project_license")
+    plicense = parse_xml(path).xpath("//project_license/text()")
     return bool(plicense)
 
 
@@ -107,21 +108,19 @@ def get_screenshot_images(path: str) -> list[str]:
     return list(img)
 
 
-def component_type(path: str) -> str:
-    return str(components(path)[0].attrib.get("type"))
+def component_type(path: str) -> str | None:
+    component_type = parse_xml(path).xpath("//component/@type")
+    return component_type[0] if component_type else None
 
 
 def is_valid_component_type(path: str) -> bool:
-    return bool(
-        component_type(path)
-        in (
-            "addon",
-            "console-application",
-            "desktop",
-            "desktop-application",
-            "runtime",
-        )
-    )
+    return component_type(path) in {
+        "addon",
+        "console-application",
+        "desktop",
+        "desktop-application",
+        "runtime",
+    }
 
 
 def check_caption(path: str) -> bool:
@@ -130,18 +129,18 @@ def check_caption(path: str) -> bool:
 
 
 def get_manifest_key(path: str) -> list[str]:
-    custom: list[str] = parse_xml(path).xpath("//custom/value[@key='flathub::manifest']/text()")
-    metadata: list[str] = parse_xml(path).xpath("//metadata/value[@key='flathub::manifest']/text()")
+    tree = parse_xml(path)
+    custom: list[str] = tree.xpath("//custom/value[@key='flathub::manifest']/text()")
+    metadata: list[str] = tree.xpath("//metadata/value[@key='flathub::manifest']/text()")
     return custom + metadata
 
 
 def has_icon_key(path: str) -> bool:
-    return bool(components(path)[0].xpath("icon"))
+    return bool(parse_xml(path).xpath("//icon"))
 
 
 def icon_no_type(path: str) -> bool:
-    icon_types = {icon.attrib.get("type") for icon in components(path)[0].xpath("icon")}
-    return None in icon_types
+    return bool(parse_xml(path).xpath("//icon[not(@type)]"))
 
 
 def is_remote_icon_mirrored(path: str) -> bool:
@@ -150,7 +149,7 @@ def is_remote_icon_mirrored(path: str) -> bool:
 
 
 def get_icon_filename(path: str) -> str | None:
-    if icons := parse_xml(path).xpath("/components/component[1]/icon[@type='cached']"):
+    if icons := parse_xml(path).xpath("//icon[@type='cached']"):
         return str(icons[0].text)
     return None
 

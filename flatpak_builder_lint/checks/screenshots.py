@@ -67,6 +67,11 @@ class ScreenshotsCheck(Check):
             self.errors.add("appstream-multiple-components")
             return
 
+        aps_ctype = appstream.component_type(appstream_path)
+        if aps_ctype is None:
+            self.errors.add("appstream-missing-component-type")
+            return
+
         sc_values = [
             i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
         ]
@@ -77,7 +82,7 @@ class ScreenshotsCheck(Check):
         )
 
         if (
-            appstream.component_type(appstream_path)
+            aps_ctype
             in (
                 "desktop",
                 "desktop-application",
@@ -138,7 +143,12 @@ class ScreenshotsCheck(Check):
             self._validate(tmpdir, appid)
             appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
 
-            if os.path.exists(appstream_path) and appstream.component_type(appstream_path) in (
+            aps_ctype = appstream.component_type(appstream_path)
+            if aps_ctype is None:
+                self.errors.add("appstream-missing-component-type")
+                return
+
+            if os.path.exists(appstream_path) and aps_ctype in (
                 "desktop",
                 "desktop-application",
             ):

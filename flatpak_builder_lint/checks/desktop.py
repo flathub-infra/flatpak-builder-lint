@@ -45,14 +45,20 @@ class DesktopfileCheck(Check):
         if len(appstream.components(appstream_path)) != 1:
             return
 
-        if appstream.component_type(appstream_path) not in (
+        aps_ctype = appstream.component_type(appstream_path)
+
+        if aps_ctype is None:
+            self.errors.add("appstream-missing-component-type")
+            return
+
+        if aps_ctype not in (
             "desktop",
             "desktop-application",
             "console-application",
         ):
             return
 
-        is_console = appstream.component_type(appstream_path) == "console-application"
+        is_console = aps_ctype == "console-application"
 
         if not is_console:
             if not len(icon_list) > 0:
