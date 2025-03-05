@@ -1,6 +1,5 @@
 import glob
 import os
-import re
 import tempfile
 
 from .. import appstream, builddir, ostree
@@ -8,28 +7,35 @@ from . import Check
 
 
 class MetainfoCheck(Check):
-    def _validate(self, path: str, appid: str) -> None:
-        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
-        appinfo_icon_dir = f"{path}/app-info/icons/flatpak/128x128/"
-        launchable_dir = f"{path}/applications"
-        icon_path = f"{path}/icons/hicolor"
-        svg_icon_path = f"{icon_path}/scalable/apps"
-        svg_glob_path = f"{icon_path}/scalable/apps/*"
-        png_glob_path = f"{icon_path}/[!scalable]*/apps/*"
-        metainfo_dirs = [
-            f"{path}/metainfo",
-            f"{path}/appdata",
+    def _validate(self, path: str, appid: str, ref_type: str) -> None:
+        skip = False
+        if appid.endswith(".BaseApp") or ref_type == "runtime":
+            skip = True
+        metainfo_dirs = [f"{path}/metainfo", f"{path}/appdata"]
+        patterns = [
+            f"{appid}.metainfo.xml",
+            f"{appid}.*.metainfo.xml",
+            f"{appid}.appdata.xml",
+            f"{appid}.*.appdata.xml",
         ]
-        metainfo_exts = [".appdata.xml", ".metainfo.xml"]
+        metainfo_files = [
+            os.path.abspath(file)
+            for metainfo_dir in metainfo_dirs
+            if os.path.isdir(metainfo_dir)
+            for pattern in patterns
+            for file in glob.glob(os.path.join(metainfo_dir, pattern))
+            if os.path.isfile(file)
+        ]
+        exact_metainfo = next(
+            (
+                file
+                for file in metainfo_files
+                if file.endswith((f"{appid}.metainfo.xml", f"{appid}.appdata.xml"))
+            ),
+            None,
+        )
 
-        metainfo_path = None
-        for metainfo_dir in metainfo_dirs:
-            for ext in metainfo_exts:
-                metainfo_dirext = f"{metainfo_dir}/{appid}{ext}"
-                if os.path.exists(metainfo_dirext):
-                    metainfo_path = metainfo_dirext
-
-        if metainfo_path is None:
+        if not skip and exact_metainfo is None:
             self.errors.add("appstream-metainfo-missing")
             self.info.add(
                 f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
@@ -37,229 +43,54 @@ class MetainfoCheck(Check):
             )
             return
 
-        metainfo_validation = appstream.validate(metainfo_path, "--no-net")
-        if metainfo_validation["returncode"] != 0:
-            self.errors.add("appstream-failed-validation")
-            self.info.add(
-                f"appstream-failed-validation: Metainfo file {metainfo_path} has failed validation."
-                + " Please see the errors in appstream block"
-            )
-
-            for err in metainfo_validation["stderr"].splitlines():
-                self.appstream.add(err.strip())
-
-            stdout: list[str] = list(
-                filter(
-                    lambda x: x.startswith(("E:", "W:")),
-                    metainfo_validation["stdout"].splitlines()[:-1],
-                )
-            )
-            for out in stdout:
-                self.appstream.add(out.strip())
-
-        if not appstream.metainfo_components(metainfo_path):
-            self.errors.add("metainfo-missing-component-tag")
-            return
-
-        if appstream.metainfo_components(metainfo_path)[0].attrib.get("type") is None:
-            self.errors.add("metainfo-missing-component-type")
-
-        if not os.path.exists(appstream_path):
-            self.errors.add("appstream-missing-appinfo-file")
-            self.info.add(
-                "appstream-missing-appinfo-file: Appstream catalogue file is missing."
-                + " Perhaps no Metainfo file was installed with correct name"
-            )
-            return
-
-        if len(appstream.components(appstream_path)) != 1:
-            self.errors.add("appstream-multiple-components")
-            return
-
-        if not appstream.is_valid_component_type(appstream_path):
-            self.errors.add("appstream-unsupported-component-type")
-            self.info.add(
-                "appstream-unsupported-component-type: Component type must be one of"
-                + " addon, console-application, desktop, desktop-application or runtime"
-            )
-
-        aps_cid = appstream.appstream_id(appstream_path)
-        if aps_cid != appid:
-            self.errors.add("appstream-id-mismatch-flatpak-id")
-            self.info.add(
-                f"appstream-id-mismatch-flatpak-id: The value of ID tag: {aps_cid} in Metainfo"
-                + f" does not match the FLATPAK_ID: {appid}. Please see the docs for more details"
-            )
-
-        if not appstream.all_release_has_timestamp(appstream_path):
-            self.errors.add("appstream-release-tag-missing-timestamp")
-            self.info.add(
-                "appstream-release-tag-missing-timestamp: A release tag is missing timestamp."
-                + " This is autogenerated and indicates an issue in Metainfo release tags"
-            )
-
-        if appstream.component_type(appstream_path) not in (
-            "desktop",
-            "desktop-application",
-            "console-application",
-        ):
-            return
-
-        if not appstream.is_developer_name_present(appstream_path):
-            self.errors.add("appstream-missing-developer-name")
-            self.info.add(
-                "appstream-missing-developer-name: No developer tag found in Metainfo file"
-            )
-        if not appstream.is_project_license_present(appstream_path):
-            self.errors.add("appstream-missing-project-license")
-            self.info.add(
-                "appstream-missing-project-license: No project_license tag found in Metainfo file"
-            )
-
-        if not appstream.check_caption(appstream_path):
-            self.warnings.add("appstream-screenshot-missing-caption")
-            self.info.add(
-                "appstream-screenshot-missing-caption: One or more screenshots are missing"
-                + " captions in the Metainfo file"
-            )
-
-        svg_icon_list = []
-        wrong_svgs = []
-        if os.path.exists(svg_icon_path):
-            svg_icon_list = [
-                file
-                for file in glob.glob(svg_glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
-            ]
-            wrong_svgs = [i for i in svg_icon_list if not i.endswith((".svg", ".svgz"))]
-        if not all(i.endswith((".svg", ".svgz")) for i in svg_icon_list):
-            self.errors.add("non-svg-icon-in-scalable-folder")
-            self.info.add(f"non-svg-icon-in-scalable-folder: {wrong_svgs}")
-
-        png_icon_list = []
-        wrong_pngs = []
-        if os.path.exists(icon_path):
-            png_icon_list = [
-                file
-                for file in glob.glob(png_glob_path)
-                if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
-            ]
-            wrong_pngs = [i for i in png_icon_list if not i.endswith(".png")]
-        if not all(i.endswith(".png") for i in png_icon_list):
-            self.errors.add("non-png-icon-in-hicolor-size-folder")
-            self.info.add(f"non-png-icon-in-hicolor-size-folder: {wrong_pngs}")
-
-        if appstream.component_type(appstream_path) in (
-            "desktop",
-            "desktop-application",
-        ):
-            icon_list = svg_icon_list + png_icon_list
-            if not len(icon_list) > 0:
-                self.errors.add("no-exportable-icon-installed")
+        for file in metainfo_files:
+            metainfo_validation = appstream.validate(file, "--no-net")
+            if metainfo_validation["returncode"] != 0:
+                self.errors.add("appstream-failed-validation")
                 self.info.add(
-                    f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
-                    + " were found in /app/share/icons/hicolor/$size/apps"
-                    + " or /app/share/icons/hicolor/scalable/apps"
+                    f"appstream-failed-validation: Metainfo file {file} has failed"
+                    + " validation. Please see the errors in appstream block"
                 )
 
-            if not appstream.get_launchable(appstream_path):
-                self.errors.add("metainfo-missing-launchable-tag")
-
-            launchable_value = None
-            launchable_file_path = None
-            if appstream.get_launchable(appstream_path):
-                launchable_value = appstream.get_launchable(appstream_path)[0]
-                launchable_file_path = os.path.join(launchable_dir, launchable_value)
-
-            if launchable_value is not None and not re.match(
-                rf"^{appid}([-.].*)?[.]desktop$", launchable_value
-            ):
-                self.errors.add("metainfo-launchable-tag-wrong-value")
-                self.info.add(
-                    "metainfo-launchable-tag-wrong-value: The value of launchable tag in Metainfo"
-                    + f" is wrong: {launchable_value}"
+                for err in metainfo_validation["stderr"].splitlines():
+                    self.appstream.add(err.strip())
+                stdout: list[str] = list(
+                    filter(
+                        lambda x: x.startswith(("E:", "W:")),
+                        metainfo_validation["stdout"].splitlines()[:-1],
+                    )
                 )
+                for out in stdout:
+                    self.appstream.add(out.strip())
+
+            if not appstream.metainfo_components(file):
+                self.errors.add("metainfo-missing-component-tag")
                 return
 
-            if launchable_file_path is not None and not os.path.exists(launchable_file_path):
-                self.errors.add("appstream-launchable-file-missing")
-                self.info.add(
-                    f"appstream-launchable-file-missing: The launchable file {launchable_value}"
-                    + " was not found in /app/share/applications"
-                )
-                return
-
-            # the checks below depend on launchable being present
-
-            if not appstream.is_categories_present(appstream_path):
-                self.errors.add("appstream-missing-categories")
-                self.info.add(
-                    "appstream-missing-categories: The catalogue file is missing categories."
-                    + " Please check if categories are defined in the desktop file or the metainfo"
-                    + " file and it does not have, only low quality categories"
-                )
-
-            icon_filename = appstream.get_icon_filename(appstream_path)
-            appinfo_icon_path = f"{appinfo_icon_dir}/{icon_filename}"
-
-            if not os.path.exists(appinfo_icon_path):
-                self.errors.add("appstream-missing-icon-file")
-                self.info.add(
-                    "appstream-missing-icon-file: No icon was generated by appstream."
-                    + " An icon needs to be installed."
-                    + " Allowed: 128, 256, 512px PNG or SVG"
-                )
-                return
-            if not appstream.has_icon_key(appstream_path):
-                self.errors.add("appstream-missing-icon-key")
-                return
-            if appstream.icon_no_type(appstream_path):
-                self.errors.add("appstream-icon-key-no-type")
-            if not appstream.is_remote_icon_mirrored(appstream_path):
-                self.errors.add("appstream-remote-icon-not-mirrored")
-                self.info.add(
-                    "appstream-remote-icon-not-mirrored: Remote icons are not mirrored to Flathub."
-                    + " Please see the docs for more information"
-                )
+            if appstream.metainfo_components(file)[0].attrib.get("type") is None:
+                self.errors.add("metainfo-missing-component-type")
 
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
-        if not appid:
-            return
-        if appid.endswith(".BaseApp"):
-            return
-        metadata = builddir.parse_metadata(path)
-        if not metadata:
-            return
-        if metadata.get("type", False) != "application":
+        ref_type = builddir.infer_type(path)
+        if not (appid and ref_type):
             return
 
-        self._validate(f"{path}/files/share", appid)
+        self._validate(f"{path}/files/share", appid, ref_type)
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
-            return
-        appid = ref.split("/")[1]
+        for ref in ostree.get_all_refs_filtered(path):
+            parts = ref.split("/")
+            ref_type, appid = parts[0], parts[1]
 
-        if appid.endswith(".BaseApp"):
-            return
-
-        with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            metadata = builddir.parse_metadata(tmpdir)
-            if not metadata:
-                return
-            if metadata.get("type", False) != "application":
+            if not (appid and ref_type):
                 return
 
-            dirs_needed = ("appdata", "metainfo", "app-info", "applications", "icons")
+            with tempfile.TemporaryDirectory() as tmpdir:
+                for subdir in ("appdata", "metainfo"):
+                    os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
+                    ostree.extract_subpath(
+                        path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
+                    )
 
-            for subdir in dirs_needed:
-                os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-                ostree.extract_subpath(
-                    path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
-                )
-
-            self._validate(tmpdir, appid)
+                self._validate(tmpdir, appid, ref_type)
