@@ -28,6 +28,19 @@ def get_refs(repo_path: str, ref_prefix: str | None) -> set[str]:
     return set(refs.keys())
 
 
+def get_all_refs_filtered(repo_path: str) -> set[str]:
+    refs = get_refs(repo_path, None)
+
+    return {
+        r
+        for r in refs
+        if (parts := r.split("/"))
+        and len(parts) == 4
+        and parts[2] in {"x86_64", "aarch64"}
+        and not parts[1].endswith((".Debug", ".Locale", ".Sources"))
+    }
+
+
 def get_primary_ref(repo_path: str) -> str | None:
     refs = get_refs(repo_path, None)
 
