@@ -91,6 +91,10 @@ def infer_appid(path: str) -> str | None:
     return None
 
 
+def infer_type(path: str) -> str:
+    return "app" if parse_metadata(path).get("type") == "application" else "runtime"
+
+
 def get_runtime(path: str) -> str | None:
     return runtime if isinstance(runtime := parse_metadata(path).get("runtime"), str) else None
 
