@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <components origin="flatpak" version="0.8">
   <component type="desktop-application">
+    <id>com.github.flathub_infra.desktop-file</id>
     <name>Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo</name>
     <summary>Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar</summary>
     <url type="homepage">https://flathub.org</url>
