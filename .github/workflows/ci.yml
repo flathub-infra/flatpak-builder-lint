@@ -259,11 +259,19 @@ jobs:
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
+          sed -i "s/org\.flathub\.gui/com\.foo\.bar/g" org.flathub.gui.metainfo.xml org.flathub.gui.yaml org.flathub.gui.desktop
+          cp -vf org.flathub.gui.desktop com.foo.bar.desktop
+          cp -vf org.flathub.gui.metainfo.xml com.foo.bar.metainfo.xml
+          cp -vf org.flathub.gui.png com.foo.bar.png
+          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
+            --arch=${{ env.FP_ARCH }} \
+            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
+            --mirror-screenshots-url=https://dl.flathub.org/media \
+            --install-deps-from=flathub --ccache builddir-2 org.flathub.gui.yaml
           mkdir -p builddir/files/foo builddir/files/share/app-info/media
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=app/com.foo.bar/${{ env.FP_ARCH }}/master builddir/files/foo
           ostree refs --repo=repo
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions --ref app/org.flathub.gui/$(uname -m)/master repo repo
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions --ref app/org.flathub.gui/${{ env.FP_ARCH }}/master repo repo
 
   docker-call:
     permissions:
