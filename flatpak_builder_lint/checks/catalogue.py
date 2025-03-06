@@ -45,7 +45,7 @@ class MetainfoCheck(Check):
             if aps_cid and aps_cid[0] != appid:
                 self.errors.add("appstream-id-mismatch-flatpak-id")
                 self.info.add(
-                    f"appstream-id-mismatch-flatpak-id: The value of ID tag: {aps_cid} in Metainfo"
+                    f"appstream-id-mismatch-flatpak-id: The ID tag: {aps_cid[0]} in Metainfo"
                     + f" does not match the FLATPAK_ID: {appid}"
                 )
 
