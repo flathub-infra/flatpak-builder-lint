@@ -26,6 +26,7 @@ FLATHUB_APPSTREAM_TYPES_DESKTOP = (
 FLATHUB_APPSTREAM_TYPES_CONSOLE = "console-application"
 
 FLATHUB_APPSTREAM_TYPES = (
+    "generic",
     "addon",
     "runtime",
     *FLATHUB_APPSTREAM_TYPES_APPS,
