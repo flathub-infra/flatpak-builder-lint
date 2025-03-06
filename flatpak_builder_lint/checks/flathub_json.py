@@ -69,32 +69,27 @@ class FlathubJsonCheck(Check):
 
         self._validate(appid, flathub_json, is_extra_data, is_extension)
 
-    def _check_metadata(self, metadata: dict, flathub_json: dict) -> None:
-        appid = metadata.get("name")
-        if not appid:
-            return
-
-        is_extra_data = bool(metadata.get("extra-data", False))
-        is_extension = metadata.get("type", False) != "application"
-
-        self._validate(appid, flathub_json, is_extra_data, is_extension)
-
     def check_build(self, path: str) -> None:
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
+        if not (appid and ref_type):
+            return
         metadata = builddir.parse_metadata(path)
         if not metadata:
             return
+        is_extra_data = bool(metadata.get("extra-data", False))
 
         flathub_json = builddir.get_flathub_json(path)
         if not flathub_json:
             return
 
-        self._check_metadata(metadata, flathub_json)
+        self._validate(appid, flathub_json, is_extra_data, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
         ref = self.repo_primary_ref
         if not ref:
             return
+        appid = ref.split("/")[1]
 
         with tempfile.TemporaryDirectory() as tmpdir:
             ostree.extract_subpath(path, ref, "/metadata", tmpdir)
@@ -104,4 +99,5 @@ class FlathubJsonCheck(Check):
             flathub_json = ostree.get_flathub_json(path, ref, tmpdir)
             if not flathub_json:
                 return
-            self._check_metadata(metadata, flathub_json)
+            is_extra_data = bool(metadata.get("extra-data", False))
+            self._validate(appid, flathub_json, is_extra_data, False)

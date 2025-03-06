@@ -124,9 +124,7 @@ class ScreenshotsCheck(Check):
         arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            dirs_needed = ("appdata", "metainfo", "app-info")
-
-            for subdir in dirs_needed:
+            for subdir in ("appdata", "metainfo", "app-info"):
                 os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
                 ostree.extract_subpath(
                     path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
