@@ -68,8 +68,7 @@ class MetainfoCheck(Check):
                 return
 
     def check_build(self, path: str) -> None:
-        appid = builddir.infer_appid(path)
-        ref_type = builddir.infer_type(path)
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
         if not (appid and ref_type):
             return
 
