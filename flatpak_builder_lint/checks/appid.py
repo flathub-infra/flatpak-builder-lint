@@ -2,7 +2,7 @@ import os
 import re
 import tempfile
 
-from .. import builddir, domainutils, ostree
+from .. import builddir, config, domainutils, ostree
 from . import Check
 
 
@@ -26,7 +26,7 @@ class AppIDCheck(Check):
             self.errors.add("appid-component-wrong-syntax")
             return
 
-        is_baseapp = appid.endswith(".BaseApp")
+        is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
 
         if not (is_extension or is_baseapp) and len(split) > 5:
             self.errors.add("appid-too-many-components-for-app")

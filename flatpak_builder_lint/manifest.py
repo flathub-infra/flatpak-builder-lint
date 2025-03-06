@@ -3,6 +3,8 @@ import json
 import os
 import subprocess
 
+from . import config
+
 
 def is_git_directory(path: str) -> bool:
     if not os.path.exists(path):
@@ -55,7 +57,7 @@ def show_manifest(filename: str) -> dict:
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
     git_toplevel = get_git_toplevel(manifest_basedir)
-    flathub_json_path = os.path.join(manifest_basedir, "flathub.json")
+    flathub_json_path = os.path.join(manifest_basedir, config.FLATHUB_JSON_FILE)
     gitmodules_path = os.path.join(manifest_basedir, ".gitmodules")
 
     if git_toplevel is not None:

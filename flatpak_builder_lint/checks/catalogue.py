@@ -3,7 +3,7 @@ import os
 import re
 import tempfile
 
-from .. import appstream, builddir, ostree
+from .. import appstream, builddir, config, ostree
 from . import Check
 
 
@@ -53,11 +53,7 @@ class MetainfoCheck(Check):
 
         aps_ctype = appstream.component_type(appstream_path)
 
-        if aps_ctype not in (
-            "desktop",
-            "desktop-application",
-            "console-application",
-        ):
+        if aps_ctype not in config.FLATHUB_APPSTREAM_TYPES_APPS:
             return
 
         if not appstream.is_developer_name_present(appstream_path):
@@ -104,10 +100,7 @@ class MetainfoCheck(Check):
             self.errors.add("non-png-icon-in-hicolor-size-folder")
             self.info.add(f"non-png-icon-in-hicolor-size-folder: {wrong_pngs}")
 
-        if aps_ctype in (
-            "desktop",
-            "desktop-application",
-        ):
+        if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP:
             icon_list = svg_icon_list + png_icon_list
             if not len(icon_list) > 0:
                 self.errors.add("no-exportable-icon-installed")
@@ -175,7 +168,7 @@ class MetainfoCheck(Check):
 
     def check_build(self, path: str) -> None:
         if (appid := builddir.infer_appid(path)) and (ref_type := builddir.infer_type(path)):
-            if appid.endswith(".BaseApp") or ref_type == "runtime":
+            if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER) or ref_type == "runtime":
                 return
             self._validate(f"{path}/files/share", appid)
 
@@ -186,7 +179,7 @@ class MetainfoCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        if appid.endswith(".BaseApp"):
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
             return
 
         with tempfile.TemporaryDirectory() as tmpdir:

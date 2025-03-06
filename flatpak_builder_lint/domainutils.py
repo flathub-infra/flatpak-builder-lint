@@ -5,6 +5,8 @@ import gi
 import requests
 from requests_cache import CachedSession
 
+from . import config
+
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
 
@@ -22,15 +24,10 @@ CODE_HOSTS = (
 
 REQUEST_TIMEOUT = (120.05, 10800)
 
-FLATHUB_API_URL = "https://flathub.org/api/v2"
-FLATHUB_STABLE_REPO_URL = "https://dl.flathub.org/repo"
-FLATHUB_BETA_REPO_URL = "https://dl.flathub.org/beta-repo"
 
-XDG_CACHE_HOME = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
-CACHEDIR = os.path.join(XDG_CACHE_HOME, "flatpak-builder-lint")
-CACHEFILE = os.path.join(CACHEDIR, "requests_cache")
+CACHEFILE = os.path.join(config.CACHEDIR, "requests_cache")
 
-os.makedirs(CACHEDIR, exist_ok=True)
+os.makedirs(config.CACHEDIR, exist_ok=True)
 
 session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
 
@@ -39,7 +36,7 @@ def ignore_ref(ref: str) -> bool:
     parts = ref.split("/")
     return (
         len(parts) != 4
-        or parts[2] not in {"x86_64", "aarch64"}
+        or parts[2] not in config.FLATHUB_SUPPORTED_ARCHES
         or parts[1].endswith((".Debug", ".Locale", ".Sources"))
         or parts[0] != "app"
     )
@@ -75,9 +72,9 @@ def get_appids_from_summary(url: str) -> set:
 
 @cache
 def get_all_apps_on_flathub() -> set[str]:
-    return get_appids_from_summary(f"{FLATHUB_STABLE_REPO_URL}/summary") | get_appids_from_summary(
-        f"{FLATHUB_BETA_REPO_URL}/summary"
-    )
+    return get_appids_from_summary(
+        f"{config.FLATHUB_STABLE_REPO_URL}/summary"
+    ) | get_appids_from_summary(f"{config.FLATHUB_BETA_REPO_URL}/summary")
 
 
 @cache
@@ -98,7 +95,7 @@ def get_eol_runtimes(url: str) -> set[str]:
 
 
 def get_eol_runtimes_on_flathub() -> set[str]:
-    return get_eol_runtimes(f"{FLATHUB_STABLE_REPO_URL}/summary")
+    return get_eol_runtimes(f"{config.FLATHUB_STABLE_REPO_URL}/summary")
 
 
 @cache
@@ -118,7 +115,7 @@ def get_remote_exceptions(appid: str) -> set[str]:
     try:
         # exception updates should be reflected immediately
         r = requests.get(
-            f"{FLATHUB_API_URL}/exceptions/{appid}",
+            f"{config.FLATHUB_API_URL}/exceptions/{appid}",
             allow_redirects=False,
             timeout=REQUEST_TIMEOUT,
         )
@@ -247,7 +244,7 @@ def get_domain(appid: str) -> str | None:
 
 @cache
 def is_app_on_flathub_api(appid: str) -> bool:
-    return check_url(f"{FLATHUB_API_URL}/summary/{appid}", strict=True)
+    return check_url(f"{config.FLATHUB_API_URL}/summary/{appid}", strict=True)
 
 
 @cache

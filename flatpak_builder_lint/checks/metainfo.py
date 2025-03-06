@@ -2,14 +2,14 @@ import glob
 import os
 import tempfile
 
-from .. import appstream, builddir, ostree
+from .. import appstream, builddir, config, ostree
 from . import Check
 
 
 class MetainfoCheck(Check):
     def _validate(self, path: str, appid: str, ref_type: str) -> None:
         skip = False
-        if appid.endswith(".BaseApp") or ref_type == "runtime":
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER) or ref_type == "runtime":
             skip = True
         metainfo_dirs = [f"{path}/metainfo", f"{path}/appdata"]
         patterns = [
