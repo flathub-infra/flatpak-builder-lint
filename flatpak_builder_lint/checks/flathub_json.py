@@ -54,17 +54,13 @@ class FlathubJsonCheck(Check):
 
     def check_manifest(self, manifest: dict) -> None:
         flathub_json = manifest.get("x-flathub")
-        if not flathub_json:
-            return
-
         appid = manifest.get("id")
-        if not appid:
+        if not (flathub_json and appid):
             return
 
-        is_extra_data = False
-        if modules := manifest.get("modules"):
-            is_extra_data = self._check_if_extra_data(modules)
-
+        is_extra_data = (
+            self._check_if_extra_data(modules) if (modules := manifest.get("modules")) else False
+        )
         is_extension = manifest.get("build-extension", False)
 
         self._validate(appid, flathub_json, is_extra_data, is_extension)
