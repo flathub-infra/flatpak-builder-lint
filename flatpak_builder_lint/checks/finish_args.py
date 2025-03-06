@@ -312,17 +312,16 @@ class FinishArgsCheck(Check):
         self._validate(appid, fa)
 
     def check_build(self, path: str) -> None:
-        metadata = builddir.parse_metadata(path)
         appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
-        if not (metadata and appid and ref_type) or ref_type == "runtime":
+        if not (appid and ref_type) or ref_type == "runtime":
             return
 
-        is_baseapp = bool(
-            isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
-        )
+        metadata = builddir.parse_metadata(path)
+        if not metadata:
+            return
 
         permissions = metadata.get("permissions", {})
-        if not permissions and not is_baseapp:
+        if not permissions and not appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
             self.errors.add("finish-args-not-defined")
             return
 
@@ -335,15 +334,13 @@ class FinishArgsCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
-
         with tempfile.TemporaryDirectory() as tmpdir:
             ostree.extract_subpath(path, ref, "/metadata", tmpdir)
             metadata = builddir.parse_metadata(tmpdir)
             if not metadata:
                 return
-            permissions = metadata["permissions"]
-            if not permissions and not is_baseapp:
+            permissions = metadata.get("permissions", {})
+            if not (permissions or appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)):
                 self.errors.add("finish-args-not-defined")
                 return
             self._validate(appid, permissions)
