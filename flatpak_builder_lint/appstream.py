@@ -165,9 +165,7 @@ def get_screenshot_images(path: str) -> list[str]:
 
 
 def get_manifest_key(path: str) -> list[str]:
-    return xpath_list(path, "//custom/value[@key='flathub::manifest']/text()") + xpath_list(
-        path, "//metadata/value[@key='flathub::manifest']/text()"
-    )
+    return xpath_list(path, "//custom/value[@key='flathub::manifest']/text()")
 
 
 # String returns
