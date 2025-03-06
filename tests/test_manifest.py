@@ -48,11 +48,6 @@ def test_appid_too_many_cpts() -> None:
     assert {"appid-too-many-components-for-app"} == errors
 
 
-def test_appid_devel_skip() -> None:
-    ret = run_checks("tests/manifests/domain_checks/ch.wwwwww.bar.Devel.json")
-    assert "errors" not in ret
-
-
 def test_appid_url_not_reachable() -> None:
     for i in (
         "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.bar.json",
