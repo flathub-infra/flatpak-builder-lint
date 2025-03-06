@@ -1,3 +1,4 @@
+from .. import config
 from . import Check
 
 
@@ -5,7 +6,9 @@ class TopLevelCheck(Check):
     def check_manifest(self, manifest: dict) -> None:
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")
-        is_baseapp = bool(isinstance(appid, str) and appid.endswith(".BaseApp"))
+        is_baseapp = bool(
+            isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
+        )
 
         if not build_extension and not is_baseapp:
             command = manifest.get("command")
@@ -41,15 +44,9 @@ class TopLevelCheck(Check):
         if not gitmodules:
             return
 
-        allowed_gitmodule_urls = (
-            "https://github.com/flathub/",
-            "https://github.com/flathub-infra/",
-            "https://github.com/flatpak/",
-            "git@github.com:flathub/",
-            "git@github.com:flatpak/",
-            "git@github.com:flathub-infra/",
-        )
-        ext_gitmodules = [m for m in gitmodules if not m.startswith(allowed_gitmodule_urls)]
+        ext_gitmodules = [
+            m for m in gitmodules if not m.startswith(config.FLATHUB_ALLOWED_GITMODULE_URLS)
+        ]
         if ext_gitmodules:
             self.errors.add("external-gitmodule-url-found")
             self.info.add(f"external-gitmodule-url-found: {ext_gitmodules}")

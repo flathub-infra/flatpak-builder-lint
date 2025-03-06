@@ -3,6 +3,8 @@ import os
 
 import gi
 
+from . import config
+
 gi.require_version("OSTree", "1.0")
 from gi.repository import Gio, GLib, OSTree  # noqa: E402
 
@@ -36,7 +38,7 @@ def get_all_refs_filtered(repo_path: str) -> set[str]:
         for r in refs
         if (parts := r.split("/"))
         and len(parts) == 4
-        and parts[2] in {"x86_64", "aarch64"}
+        and parts[2] in config.FLATHUB_SUPPORTED_ARCHES
         and not parts[1].endswith((".Debug", ".Locale", ".Sources"))
     }
 
@@ -93,9 +95,9 @@ def extract_subpath(
 
 
 def get_flathub_json(repo_path: str, ref: str, dest: str) -> dict[str, str | bool | list[str]]:
-    extract_subpath(repo_path, ref, "/files/flathub.json", dest, True)
-
-    flathub_json_path = os.path.join(dest, "flathub.json")
+    flathubjsonfile = config.FLATHUB_JSON_FILE
+    extract_subpath(repo_path, ref, f"/files/{flathubjsonfile}", dest, True)
+    flathub_json_path = os.path.join(dest, flathubjsonfile)
     flathub_json: dict = {}
 
     if os.path.exists(flathub_json_path):

@@ -5,6 +5,8 @@ from collections import defaultdict
 
 from gi.repository import GLib
 
+from . import config
+
 
 def parse_metadata(builddir: str) -> dict:
     if not os.path.exists(builddir):
@@ -100,7 +102,7 @@ def get_runtime(path: str) -> str | None:
 
 
 def get_flathub_json(path: str) -> dict[str, str | bool | list[str]]:
-    flathub_json_path = f"{path}/files/flathub.json"
+    flathub_json_path = f"{path}/files/{config.FLATHUB_JSON_FILE}"
     flathub_json: dict = {}
 
     if os.path.exists(flathub_json_path):

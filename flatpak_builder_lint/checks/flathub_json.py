@@ -1,12 +1,11 @@
 import tempfile
-from typing import ClassVar
 
-from .. import builddir, ostree
+from .. import builddir, config, ostree
 from . import Check
 
 
 class FlathubJsonCheck(Check):
-    arches: ClassVar[set[str]] = {"x86_64", "aarch64"}
+    arches = config.FLATHUB_SUPPORTED_ARCHES
 
     def _check_if_extra_data(self, modules: list) -> bool:
         for module in modules:
@@ -23,7 +22,7 @@ class FlathubJsonCheck(Check):
     def _validate(
         self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
     ) -> None:
-        is_baseapp = appid.endswith(".BaseApp")
+        is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
 
         eol = flathub_json.get("end-of-life")
         eol_rebase = flathub_json.get("end-of-life-rebase")
@@ -45,7 +44,7 @@ class FlathubJsonCheck(Check):
         if only_arches is not None and len(only_arches) == 0:
             self.errors.add("flathub-json-only-arches-empty")
 
-        if skip_arches is not None and len(self.arches.intersection(skip_arches)) == len(
+        if skip_arches is not None and len(set(self.arches).intersection(skip_arches)) == len(
             self.arches
         ):
             self.errors.add("flathub-json-excluded-all-arches")

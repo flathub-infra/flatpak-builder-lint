@@ -139,8 +139,7 @@ def run_checks(
                 results.pop("info")
 
     help_text = (
-        "Please consult the documentation at "
-        "https://docs.flathub.org/docs/for-app-authors/linter"
+        "Please consult the documentation at https://docs.flathub.org/docs/for-app-authors/linter"
     )
 
     if any(x in results for x in ("errors", "warnings", "info")):

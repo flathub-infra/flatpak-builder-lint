@@ -6,7 +6,7 @@ import tempfile
 
 from gi.repository import GLib
 
-from .. import appstream, builddir, ostree
+from .. import appstream, builddir, config, ostree
 from . import Check
 
 
@@ -36,7 +36,7 @@ class DesktopfileCheck(Check):
             ]
             icon_files_list = [os.path.basename(i) for i in icon_list]
 
-        if appid.endswith(".BaseApp"):
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
             return
 
         if not os.path.exists(appstream_path):
@@ -47,14 +47,10 @@ class DesktopfileCheck(Check):
 
         aps_ctype = appstream.component_type(appstream_path)
 
-        if aps_ctype not in (
-            "desktop",
-            "desktop-application",
-            "console-application",
-        ):
+        if aps_ctype not in config.FLATHUB_APPSTREAM_TYPES_APPS:
             return
 
-        is_console = aps_ctype == "console-application"
+        is_console = aps_ctype == config.FLATHUB_APPSTREAM_TYPES_CONSOLE
 
         if not is_console:
             if not len(icon_list) > 0:
@@ -246,7 +242,7 @@ class DesktopfileCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        if appid.endswith(".BaseApp"):
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
             return
 
         with tempfile.TemporaryDirectory() as tmpdir:

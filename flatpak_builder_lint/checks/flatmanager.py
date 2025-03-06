@@ -6,7 +6,7 @@ import tempfile
 
 import requests
 
-from .. import appstream, domainutils
+from .. import appstream, config, domainutils
 from . import Check
 
 REQUEST_TIMEOUT = domainutils.REQUEST_TIMEOUT
@@ -98,7 +98,7 @@ class FlatManagerCheck(Check):
                 _, appid, _, branch = appref.split("/")
 
                 if (
-                    appid.split(".")[-1] == "BaseApp"
+                    appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
                     or appid.startswith("org.freedesktop.Platform.")
                     or appid == "org.winehq.Wine"
                 ):

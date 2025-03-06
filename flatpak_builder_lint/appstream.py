@@ -4,6 +4,8 @@ from typing import TypedDict, cast
 
 from lxml import etree
 
+from . import config
+
 
 class SubprocessResult(TypedDict):
     stdout: str
@@ -121,19 +123,13 @@ def all_release_has_timestamp(path: str) -> bool:
 
 def is_remote_icon_mirrored(path: str) -> bool:
     return all(
-        icon.startswith("https://dl.flathub.org/media/")
+        icon.startswith(f"{config.FLATHUB_MEDIA_BASE_URL}/")
         for icon in xpath_list(path, "//icon[@type='remote']/text()")
     )
 
 
 def is_valid_component_type(path: str) -> bool:
-    return component_type(path) in {
-        "addon",
-        "console-application",
-        "desktop",
-        "desktop-application",
-        "runtime",
-    }
+    return component_type(path) in config.FLATHUB_APPSTREAM_TYPES
 
 
 # List returns

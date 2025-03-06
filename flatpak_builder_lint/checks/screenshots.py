@@ -2,7 +2,7 @@ import glob
 import os
 import tempfile
 
-from .. import appstream, builddir, ostree
+from .. import appstream, builddir, config, ostree
 from . import Check
 
 
@@ -11,7 +11,7 @@ class ScreenshotsCheck(Check):
         appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
 
         skip = False
-        if appid.endswith(".BaseApp") or ref_type == "runtime":
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER) or ref_type == "runtime":
             skip = True
         metainfo_dirs = [f"{path}/metainfo", f"{path}/appdata"]
         patterns = [
@@ -54,14 +54,7 @@ class ScreenshotsCheck(Check):
 
             metainfo_ctype = appstream.component_type(exact_metainfo)
 
-            if (
-                metainfo_ctype
-                in (
-                    "desktop",
-                    "desktop-application",
-                )
-                and not metainfo_sc
-            ):
+            if metainfo_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP and not metainfo_sc:
                 self.errors.add("metainfo-missing-screenshots")
                 self.info.add(
                     "metainfo-missing-screenshots: The metainfo file is missing screenshots"
@@ -94,18 +87,11 @@ class ScreenshotsCheck(Check):
             ]
 
             sc_allowed_urls = (
+                config.FLATHUB_MEDIA_BASE_URL,
                 "https://dl.flathub.org/repo/screenshots",
-                "https://dl.flathub.org/media",
             )
 
-            if (
-                aps_ctype
-                in (
-                    "desktop",
-                    "desktop-application",
-                )
-                and not sc_values
-            ):
+            if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP and not sc_values:
                 self.errors.add("appstream-missing-screenshots")
                 self.info.add(
                     "appstream-missing-screenshots: Catalogue file has no screenshots."
@@ -117,7 +103,7 @@ class ScreenshotsCheck(Check):
                 self.errors.add("appstream-external-screenshot-url")
                 self.info.add(
                     "appstream-external-screenshot-url: Screenshots are not mirrored to"
-                    + " https://dl.flathub.org/media"
+                    + " {sc_allowed_urls}"
                 )
                 return
 
@@ -155,10 +141,7 @@ class ScreenshotsCheck(Check):
             if os.path.exists(appstream_path):
                 aps_ctype = appstream.component_type(appstream_path)
 
-                if aps_ctype in (
-                    "desktop",
-                    "desktop-application",
-                ):
+                if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP:
                     for arch in arches:
                         if f"screenshots/{arch}" not in refs:
                             self.errors.add("appstream-screenshots-not-mirrored-in-ostree")

@@ -2,7 +2,7 @@ import re
 import tempfile
 from collections import defaultdict
 
-from .. import builddir, ostree
+from .. import builddir, config, ostree
 from . import Check
 
 
@@ -278,7 +278,9 @@ class FinishArgsCheck(Check):
     def check_manifest(self, manifest: dict) -> None:
         appid = manifest.get("id")
 
-        is_baseapp = bool(isinstance(appid, str) and appid.endswith(".BaseApp"))
+        is_baseapp = bool(
+            isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
+        )
 
         finish_args_list = manifest.get("finish-args")
         build_extension = manifest.get("build-extension")
@@ -318,7 +320,9 @@ class FinishArgsCheck(Check):
             return
 
         appid = metadata.get("name")
-        is_baseapp = bool(isinstance(appid, str) and appid.endswith(".BaseApp"))
+        is_baseapp = bool(
+            isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
+        )
 
         permissions = metadata.get("permissions", {})
         if not permissions and not is_baseapp:
@@ -334,7 +338,7 @@ class FinishArgsCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        is_baseapp = appid.endswith(".BaseApp")
+        is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
 
         with tempfile.TemporaryDirectory() as tmpdir:
             ostree.extract_subpath(path, ref, "/metadata", tmpdir)
