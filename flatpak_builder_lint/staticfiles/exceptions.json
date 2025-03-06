@@ -4059,8 +4059,9 @@
     },
     "dev.heppen.webapps": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Access for reading installed browsers",
-        "finish-args-unnecessary-xdg-data-applications-rw-access": "Access for writing desktop files for web apps",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "Access for writing desktop files for web apps",
         "finish-args-unnecessary-xdg-data-icons-rw-access": "Access for writing icons into xdg-data/icons/QuickWebApps directory for created webapps",
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "For COSMIC desktop environment",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule"
     },
     "com.valvesoftware.Steam.CompatibilityTool.Proton-Exp": {
