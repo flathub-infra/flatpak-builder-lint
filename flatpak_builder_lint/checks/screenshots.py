@@ -100,7 +100,7 @@ class ScreenshotsCheck(Check):
                 self.errors.add("appstream-external-screenshot-url")
                 self.info.add(
                     "appstream-external-screenshot-url: Screenshots are not mirrored to"
-                    + " {sc_allowed_urls}"
+                    + f" {sc_allowed_urls}"
                 )
                 return
 
