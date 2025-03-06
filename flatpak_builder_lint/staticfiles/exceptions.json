@@ -7,7 +7,7 @@
         "toplevel-no-command": "another nonsensical reason",
         "flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
     },
-     "io.gitlab.payoliin.CSnake": {
+     "io.gitlab.payoliin.csnake": {
         "finish-args-not-defined": "Not needed as this app is fully terminal-based"
     },
     "org.flathub.exceptions_wildcard": {
