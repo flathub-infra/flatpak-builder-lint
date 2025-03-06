@@ -105,12 +105,10 @@ class ScreenshotsCheck(Check):
                 return
 
     def check_build(self, path: str) -> None:
-        appid = builddir.infer_appid(path)
-        ref_type = builddir.infer_type(path)
+        ref_type, appid = builddir.infer_type(path), builddir.infer_appid(path)
         if not (appid and ref_type):
             return
-        if ref_type != "app":
-            return
+
         self._validate(f"{path}/files/share", appid, ref_type)
 
     def check_repo(self, path: str) -> None:
