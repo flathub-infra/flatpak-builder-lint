@@ -17,6 +17,9 @@ class DesktopfileCheck(Check):
         icon_path = f"{path}/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
 
+        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
+            return
+
         desktop_files = []
         if os.path.exists(desktopfiles_path):
             desktop_files = [
@@ -35,9 +38,6 @@ class DesktopfileCheck(Check):
                 if re.match(rf"^{appid}([-.].*)?$", os.path.basename(file)) and os.path.isfile(file)
             ]
             icon_files_list = [os.path.basename(i) for i in icon_list]
-
-        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
-            return
 
         if not os.path.exists(appstream_path):
             return
@@ -236,9 +236,6 @@ class DesktopfileCheck(Check):
         if not ref:
             return
         appid = ref.split("/")[1]
-
-        if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
-            return
 
         with tempfile.TemporaryDirectory() as tmpdir:
             for subdir in ("app-info", "applications", "icons"):
