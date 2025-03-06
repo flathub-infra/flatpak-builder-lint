@@ -86,10 +86,7 @@ class ScreenshotsCheck(Check):
                 i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
             ]
 
-            sc_allowed_urls = (
-                config.FLATHUB_MEDIA_BASE_URL,
-                "https://dl.flathub.org/repo/screenshots",
-            )
+            sc_allowed_urls = (config.FLATHUB_MEDIA_BASE_URL,)
 
             if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP and not sc_values:
                 self.errors.add("appstream-missing-screenshots")
