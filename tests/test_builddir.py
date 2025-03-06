@@ -165,6 +165,12 @@ def test_builddir_finish_args() -> None:
         assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
 
 
+def test_builddir_finish_args_new_metadata() -> None:
+    ret = run_checks("tests/builddir/finish_args_new_metadata")
+    found_errors = set(ret["errors"])
+    assert "finish-args-no-required-flatpak" in found_errors
+
+
 def test_builddir_display_supported() -> None:
     absents = {
         "finish-args-fallback-x11-without-wayland",
