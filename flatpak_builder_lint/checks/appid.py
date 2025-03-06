@@ -1,8 +1,7 @@
 import os
 import re
-import tempfile
 
-from .. import builddir, config, domainutils, ostree
+from .. import builddir, config, domainutils
 from . import Check
 
 
@@ -103,13 +102,11 @@ class AppIDCheck(Check):
         self._validate(appid, is_extension)
 
     def check_build(self, path: str) -> None:
-        metadata = builddir.parse_metadata(path)
-        if not metadata:
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
+        if not (appid and ref_type):
             return
 
-        appid = metadata.get("name")
-        is_extension = metadata.get("type", False) != "application"
-        self._validate(appid, is_extension)
+        self._validate(appid, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
         self._populate_ref(path)
@@ -118,10 +115,4 @@ class AppIDCheck(Check):
             return
         appid = ref.split("/")[1]
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            metadata = builddir.parse_metadata(tmpdir)
-            if not metadata:
-                return
-            is_extension = metadata.get("type", False) != "application"
-            self._validate(appid, is_extension)
+        self._validate(appid, False)

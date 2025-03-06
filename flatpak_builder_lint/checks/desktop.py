@@ -224,13 +224,8 @@ class DesktopfileCheck(Check):
                 )
 
     def check_build(self, path: str) -> None:
-        appid = builddir.infer_appid(path)
-        if not appid:
-            return
-        metadata = builddir.parse_metadata(path)
-        if not metadata:
-            return
-        if metadata.get("type", False) != "application":
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
+        if not (appid and ref_type) or ref_type == "runtime":
             return
 
         self._validate(f"{path}/files/share", appid)
@@ -246,16 +241,7 @@ class DesktopfileCheck(Check):
             return
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            metadata = builddir.parse_metadata(tmpdir)
-            if not metadata:
-                return
-            if metadata.get("type", False) != "application":
-                return
-
-            dirs_needed = ("app-info", "applications", "icons")
-
-            for subdir in dirs_needed:
+            for subdir in ("app-info", "applications", "icons"):
                 os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
                 ostree.extract_subpath(
                     path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True

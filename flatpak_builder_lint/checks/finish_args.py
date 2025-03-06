@@ -313,13 +313,10 @@ class FinishArgsCheck(Check):
 
     def check_build(self, path: str) -> None:
         metadata = builddir.parse_metadata(path)
-        if not metadata:
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
+        if not (metadata and appid and ref_type) or ref_type == "runtime":
             return
 
-        if metadata.get("type", False) != "application":
-            return
-
-        appid = metadata.get("name")
         is_baseapp = bool(
             isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
         )
