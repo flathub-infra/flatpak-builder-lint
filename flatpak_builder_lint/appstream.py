@@ -59,58 +59,71 @@ def validate(path: str, *args: str) -> SubprocessResult:
 
 
 def parse_xml(path: str) -> etree._ElementTree:
-    if not (os.path.exists(path) and os.path.isfile(path)):
+    if not os.path.isfile(path):
         raise FileNotFoundError(f"XML file not found: {path}")
-
     try:
         return etree.parse(path)
     except etree.XMLSyntaxError as e:
-        raise RuntimeError(f"XML syntax error in file {path}: {e!s}") from None
+        raise RuntimeError(f"XML syntax error in {path}: {e}") from None
 
 
-def components(path: str) -> list[etree._Element]:
-    return cast(list[etree._Element], parse_xml(path).xpath("/components/component"))
+def xpath_list(path: str, query: str) -> list[str]:
+    tree = parse_xml(path)
+    return cast(list[str], tree.xpath(query))
 
 
-def metainfo_components(path: str) -> list[etree._Element]:
-    return cast(list[etree._Element], parse_xml(path).xpath("/component"))
+def is_present(path: str, query: str) -> bool:
+    return bool(xpath_list(path, query))
 
 
-def appstream_id(path: str) -> list[str]:
-    aps_id: list[str] = parse_xml(path).xpath("//component/id/text()")
-    return aps_id
+def component_type(path: str) -> str:
+    types = xpath_list(path, "//component/@type")
+    return types[0] if types else None
 
 
-def get_launchable(path: str) -> list[str]:
-    launchable: list[str] = parse_xml(path).xpath("//launchable[@type='desktop-id']/text()")
-    return launchable
+def get_icon_filename(path: str) -> str | None:
+    icons = xpath_list(path, "//icon[@type='cached']/text()")
+    return icons[0] if icons else None
+
+
+# Boolean returns
 
 
 def is_categories_present(path: str) -> bool:
-    categories = parse_xml(path).xpath("//categories/category")
-    return bool(categories)
+    return is_present(path, "//categories/category")
 
 
 def is_developer_name_present(path: str) -> bool:
-    tree = parse_xml(path)
-    dev = tree.xpath("//developer[@id]/name/text()")
-    legacy_dev = tree.xpath("//developer_name/text()")
-    return bool(dev or legacy_dev)
+    return is_present(path, "//developer[@id]/name/text()") or is_present(
+        path, "//developer_name/text()"
+    )
 
 
 def is_project_license_present(path: str) -> bool:
-    plicense = parse_xml(path).xpath("//project_license/text()")
-    return bool(plicense)
+    return is_present(path, "//project_license/text()")
 
 
-def get_screenshot_images(path: str) -> list[str]:
-    img = parse_xml(path).xpath("//screenshots/screenshot/image/text()")
-    return list(img)
+def has_icon_key(path: str) -> bool:
+    return is_present(path, "//icon")
 
 
-def component_type(path: str) -> str | None:
-    component_type = parse_xml(path).xpath("//component/@type")
-    return component_type[0] if component_type else None
+def icon_no_type(path: str) -> bool:
+    return is_present(path, "//icon[not(@type)]")
+
+
+def check_caption(path: str) -> bool:
+    return not is_present(path, "//screenshot[not(caption/text()) or not(caption)]")
+
+
+def all_release_has_timestamp(path: str) -> bool:
+    return not is_present(path, "//releases/release[not(@timestamp)]")
+
+
+def is_remote_icon_mirrored(path: str) -> bool:
+    return all(
+        icon.startswith("https://dl.flathub.org/media/")
+        for icon in xpath_list(path, "//icon[@type='remote']/text()")
+    )
 
 
 def is_valid_component_type(path: str) -> bool:
@@ -123,36 +136,30 @@ def is_valid_component_type(path: str) -> bool:
     }
 
 
-def check_caption(path: str) -> bool:
-    exp = "//screenshot[not(caption/text()) or not(caption)]"
-    return not any(e is not None for e in parse_xml(path).xpath(exp))
+# List returns
+
+
+def components(path: str) -> list[str]:
+    return xpath_list(path, "/components/component")
+
+
+def metainfo_components(path: str) -> list[str]:
+    return xpath_list(path, "/component")
+
+
+def appstream_id(path: str) -> list[str]:
+    return xpath_list(path, "//component/id/text()")
+
+
+def get_launchable(path: str) -> list[str]:
+    return xpath_list(path, "//launchable[@type='desktop-id']/text()")
+
+
+def get_screenshot_images(path: str) -> list[str]:
+    return xpath_list(path, "//screenshots/screenshot/image/text()")
 
 
 def get_manifest_key(path: str) -> list[str]:
-    tree = parse_xml(path)
-    custom: list[str] = tree.xpath("//custom/value[@key='flathub::manifest']/text()")
-    metadata: list[str] = tree.xpath("//metadata/value[@key='flathub::manifest']/text()")
-    return custom + metadata
-
-
-def has_icon_key(path: str) -> bool:
-    return bool(parse_xml(path).xpath("//icon"))
-
-
-def icon_no_type(path: str) -> bool:
-    return bool(parse_xml(path).xpath("//icon[not(@type)]"))
-
-
-def is_remote_icon_mirrored(path: str) -> bool:
-    remote_icons = parse_xml(path).xpath("//icon[@type='remote']/text()")
-    return all(icon.startswith("https://dl.flathub.org/media/") for icon in remote_icons)
-
-
-def get_icon_filename(path: str) -> str | None:
-    if icons := parse_xml(path).xpath("//icon[@type='cached']"):
-        return str(icons[0].text)
-    return None
-
-
-def all_release_has_timestamp(path: str) -> bool:
-    return not parse_xml(path).xpath("//releases/release[not(@timestamp)]")
+    return xpath_list(path, "//custom/value[@key='flathub::manifest']/text()") + xpath_list(
+        path, "//metadata/value[@key='flathub::manifest']/text()"
+    )
