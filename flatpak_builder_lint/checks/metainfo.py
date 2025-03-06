@@ -67,9 +67,6 @@ class MetainfoCheck(Check):
                 self.errors.add("metainfo-missing-component-tag")
                 return
 
-            if appstream.metainfo_components(file)[0].attrib.get("type") is None:
-                self.errors.add("metainfo-missing-component-type")
-
     def check_build(self, path: str) -> None:
         appid = builddir.infer_appid(path)
         ref_type = builddir.infer_type(path)

@@ -280,7 +280,6 @@ def test_builddir_quality_guidelines() -> None:
         "appstream-missing-developer-name",
         "appstream-missing-project-license",
         "no-exportable-icon-installed",
-        "metainfo-missing-component-type",
         "appstream-launchable-file-missing",
     }
     warnings = {

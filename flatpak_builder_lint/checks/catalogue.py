@@ -52,9 +52,6 @@ class MetainfoCheck(Check):
             )
 
         aps_ctype = appstream.component_type(appstream_path)
-        if aps_ctype is None:
-            self.errors.add("appstream-missing-component-type")
-            return
 
         if aps_ctype not in (
             "desktop",
