@@ -52,11 +52,7 @@ class ScreenshotsCheck(Check):
             metainfo_sc = appstream.get_screenshot_images(exact_metainfo)
             metainfo_svg_sc_values = [i for i in metainfo_sc if i.endswith((".svg", ".svgz"))]
 
-            metainfo_ctype = appstream.metainfo_components(exact_metainfo)
-
-            if metainfo_ctype is None:
-                self.errors.add("metainfo-missing-component-type")
-                return
+            metainfo_ctype = appstream.component_type(exact_metainfo)
 
             if (
                 metainfo_ctype
@@ -92,9 +88,6 @@ class ScreenshotsCheck(Check):
                 return
 
             aps_ctype = appstream.component_type(appstream_path)
-            if aps_ctype is None:
-                self.errors.add("appstream-missing-component-type")
-                return
 
             sc_values = [
                 i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
@@ -161,10 +154,6 @@ class ScreenshotsCheck(Check):
 
             if os.path.exists(appstream_path):
                 aps_ctype = appstream.component_type(appstream_path)
-
-                if aps_ctype is None:
-                    self.errors.add("appstream-missing-component-type")
-                    return
 
                 if aps_ctype in (
                     "desktop",

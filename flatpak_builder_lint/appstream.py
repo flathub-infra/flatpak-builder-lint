@@ -78,7 +78,7 @@ def is_present(path: str, query: str) -> bool:
 
 def component_type(path: str) -> str:
     types = xpath_list(path, "//component/@type")
-    return types[0] if types else None
+    return types[0] if types else "generic"
 
 
 def get_icon_filename(path: str) -> str | None:
