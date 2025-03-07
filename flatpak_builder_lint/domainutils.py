@@ -92,6 +92,8 @@ def get_eol_runtimes(url: str) -> set[str]:
 
         if (
             ref_type == "runtime"
+            and ref_id.startswith(config.FLATHUB_RUNTIME_PREFIXES)
+            and ref_id.endswith(config.FLATHUB_RUNTIME_SUFFIXES)
             and not ref_id.endswith(config.IGNORE_REF_SUFFIXES)
             and any(key in eol_dict for key in ("eolr", "eol"))
         ):
