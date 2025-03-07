@@ -261,6 +261,8 @@ jobs:
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           sed -i "s/org\.flathub\.gui/com\.foo\.bar/g" org.flathub.gui.metainfo.xml org.flathub.gui.yaml org.flathub.gui.desktop
           cp -vf org.flathub.gui.desktop com.foo.bar.desktop
+          # Break the desktop file to raise an error
+          sed -i '/^Exec=/d' com.foo.bar.desktop
           cp -vf org.flathub.gui.metainfo.xml com.foo.bar.metainfo.xml
           cp -vf org.flathub.gui.png com.foo.bar.png
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
