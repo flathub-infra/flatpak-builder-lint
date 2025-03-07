@@ -2053,7 +2053,8 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "com.obsproject.Studio": {
-        "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
+        "finish-args-flatpak-spawn-access": "Required for the virtual camera feature",
+	"external-gitmodule-url-found": "Flatpak are published by upstream from their own repo"
     },
     "io.github.thetumultuousunicornofdarkness.cpu-x": {
         "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
