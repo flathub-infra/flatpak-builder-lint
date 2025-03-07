@@ -37,7 +37,7 @@ def ignore_ref(ref: str) -> bool:
     return (
         len(parts) != 4
         or parts[2] not in config.FLATHUB_SUPPORTED_ARCHES
-        or parts[1].endswith((".Debug", ".Locale", ".Sources"))
+        or parts[1].endswith(config.IGNORE_REF_SUFFIXES)
         or parts[0] != "app"
     )
 
@@ -80,16 +80,22 @@ def get_all_apps_on_flathub() -> set[str]:
 @cache
 def get_eol_runtimes(url: str) -> set[str]:
     eols = set()
-    _, metadata = get_summary_obj(url)
-    for ref, eol_dict in metadata["xa.sparse-cache"].items():
-        ref_type, ref_id, _, branch = ref.split("/")
 
-        if ref_id.endswith((".Debug", ".Locale", ".Sources")) or ref_type != "runtime":
+    _, metadata = get_summary_obj(url)
+
+    for ref, eol_dict in metadata["xa.sparse-cache"].items():
+        parts = ref.split("/")
+        if len(parts) < 4:
             continue
 
-        if any(key in eol_dict for key in ("eolr", "eol")):
-            eolid = f"{ref_id}//{branch}"
-            eols.add(eolid)
+        ref_type, ref_id, _, branch = parts
+
+        if (
+            ref_type == "runtime"
+            and not ref_id.endswith(config.IGNORE_REF_SUFFIXES)
+            and any(key in eol_dict for key in ("eolr", "eol"))
+        ):
+            eols.add(f"{ref_id}//{branch}")
 
     return eols
 

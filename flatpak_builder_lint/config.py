@@ -8,6 +8,8 @@ FLATHUB_BETA_REPO_URL = f"{FLATHUB_REPO_BASE_URL}/beta-repo"
 
 FLATHUB_SUPPORTED_ARCHES = ("x86_64", "aarch64")
 
+IGNORE_REF_SUFFIXES = (".Locale", ".Debug", ".Sources")
+
 FLATHUB_JSON_FILE = "flathub.json"
 
 FLATHUB_BASEAPP_IDENTIFIER = ".BaseApp"

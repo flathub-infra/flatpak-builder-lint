@@ -39,7 +39,7 @@ def get_all_refs_filtered(repo_path: str) -> set[str]:
         if (parts := r.split("/"))
         and len(parts) == 4
         and parts[2] in config.FLATHUB_SUPPORTED_ARCHES
-        and not parts[1].endswith((".Debug", ".Locale", ".Sources"))
+        and not parts[1].endswith(config.IGNORE_REF_SUFFIXES)
     }
 
 
