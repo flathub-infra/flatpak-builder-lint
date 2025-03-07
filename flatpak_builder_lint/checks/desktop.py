@@ -231,17 +231,18 @@ class DesktopfileCheck(Check):
         self._validate(f"{path}/files/share", appid)
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        if not refs:
             return
-        appid = ref.split("/")[1]
+        for ref in refs:
+            appid = ref.split("/")[1]
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            for subdir in ("app-info", "applications", "icons"):
-                os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-                ostree.extract_subpath(
-                    path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
-                )
+            with tempfile.TemporaryDirectory() as tmpdir:
+                for subdir in ("app-info", "applications", "icons"):
+                    os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
+                    ostree.extract_subpath(
+                        path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
+                    )
 
-            self._validate(tmpdir, appid)
+                self._validate(tmpdir, appid)

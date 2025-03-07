@@ -191,10 +191,9 @@ def main() -> int:
         "--ref",
         help="Override the primary ref detection",
         type=str,
-        nargs=1,
-        default=None,
+        action="append",
+        default=[],
     )
-
     parser.add_argument(
         "type",
         help=textwrap.dedent("""\
@@ -224,7 +223,7 @@ def main() -> int:
     path = os.getcwd() if args.cwd else args.path[0]
 
     if args.ref:
-        checks.Check.repo_primary_ref = args.ref[0]
+        checks.Check.repo_primary_refs = set(args.ref)
 
     if args.type != "appstream":
         if results := run_checks(

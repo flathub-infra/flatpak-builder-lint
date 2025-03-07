@@ -31,15 +31,16 @@ class EolRuntimeCheck(Check):
         self._validate(runtime_ref)
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        if not refs:
             return
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            runtime_ref = builddir.get_runtime(tmpdir)
-            if not runtime_ref:
-                return
+        for ref in refs:
+            with tempfile.TemporaryDirectory() as tmpdir:
+                ostree.extract_subpath(path, ref, "/metadata", tmpdir)
+                runtime_ref = builddir.get_runtime(tmpdir)
+                if not runtime_ref:
+                    return
 
-            self._validate(runtime_ref)
+                self._validate(runtime_ref)

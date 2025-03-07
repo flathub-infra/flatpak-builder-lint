@@ -81,19 +81,21 @@ class FlathubJsonCheck(Check):
         self._validate(appid, flathub_json, is_extra_data, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        if not refs:
             return
-        appid = ref.split("/")[1]
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            metadata = builddir.parse_metadata(tmpdir)
-            if not metadata:
-                return
-            flathub_json = ostree.get_flathub_json(path, ref, tmpdir)
-            if not flathub_json:
-                return
-            is_extra_data = bool(metadata.get("extra-data", False))
-            self._validate(appid, flathub_json, is_extra_data, False)
+        for ref in refs:
+            appid = ref.split("/")[1]
+
+            with tempfile.TemporaryDirectory() as tmpdir:
+                ostree.extract_subpath(path, ref, "/metadata", tmpdir)
+                metadata = builddir.parse_metadata(tmpdir)
+                if not metadata:
+                    return
+                flathub_json = ostree.get_flathub_json(path, ref, tmpdir)
+                if not flathub_json:
+                    return
+                is_extra_data = bool(metadata.get("extra-data", False))
+                self._validate(appid, flathub_json, is_extra_data, False)

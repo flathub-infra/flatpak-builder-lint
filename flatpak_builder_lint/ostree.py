@@ -43,21 +43,24 @@ def get_all_refs_filtered(repo_path: str) -> set[str]:
     }
 
 
-def get_primary_ref(repo_path: str) -> str | None:
-    refs = get_refs(repo_path, None)
-
-    ref: str
-
-    for ref in refs:
-        if ref.startswith("app/"):
-            return ref
-
-    return None
+def get_primary_refs(repo_path: str) -> set[str]:
+    return {
+        r
+        for r in get_refs(repo_path, None)
+        if (parts := r.split("/"))
+        and len(parts) == 4
+        and parts[0] == "app"
+        and parts[2] in config.FLATHUB_SUPPORTED_ARCHES
+    }
 
 
 def infer_appid(path: str) -> str | None:
-    ref = get_primary_ref(path)
-    if ref:
+    refs = get_primary_refs(path)
+    if refs:
+        # Assume refs share the same ref_id
+        # refs with different ref_id in a
+        # single repo is not a supported case
+        ref = next(iter(refs))
         return ref.split("/")[1]
 
     return None

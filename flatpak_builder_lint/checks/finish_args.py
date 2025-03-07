@@ -328,19 +328,20 @@ class FinishArgsCheck(Check):
         self._validate(appid, permissions)
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        if not refs:
             return
-        appid = ref.split("/")[1]
+        for ref in refs:
+            appid = ref.split("/")[1]
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            ostree.extract_subpath(path, ref, "/metadata", tmpdir)
-            metadata = builddir.parse_metadata(tmpdir)
-            if not metadata:
-                return
-            permissions = metadata.get("permissions", {})
-            if not (permissions or appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)):
-                self.errors.add("finish-args-not-defined")
-                return
-            self._validate(appid, permissions)
+            with tempfile.TemporaryDirectory() as tmpdir:
+                ostree.extract_subpath(path, ref, "/metadata", tmpdir)
+                metadata = builddir.parse_metadata(tmpdir)
+                if not metadata:
+                    return
+                permissions = metadata.get("permissions", {})
+                if not (permissions or appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)):
+                    self.errors.add("finish-args-not-defined")
+                    return
+                self._validate(appid, permissions)

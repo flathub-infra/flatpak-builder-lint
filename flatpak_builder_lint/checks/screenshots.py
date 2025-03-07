@@ -112,30 +112,30 @@ class ScreenshotsCheck(Check):
         self._validate(f"{path}/files/share", appid, ref_type)
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        refs.update({r for r in ostree.get_refs(path, None) if r.startswith("screenshots/")})
+        app_refs = {ref for ref in refs if ref.startswith("app/") and len(ref.split("/")) == 4}
+        if not app_refs:
             return
-        appid = ref.split("/")[1]
+        for ref in app_refs:
+            appid = ref.split("/")[1]
+            arch = ref.split("/")[2]
 
-        refs = ostree.get_refs(path, None)
-        arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
+            with tempfile.TemporaryDirectory() as tmpdir:
+                for subdir in ("appdata", "metainfo", "app-info"):
+                    os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
+                    ostree.extract_subpath(
+                        path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
+                    )
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            for subdir in ("appdata", "metainfo", "app-info"):
-                os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-                ostree.extract_subpath(
-                    path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
-                )
+                self._validate(tmpdir, appid, "app")
+                appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
 
-            self._validate(tmpdir, appid, "app")
-            appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
+                if os.path.exists(appstream_path):
+                    aps_ctype = appstream.component_type(appstream_path)
 
-            if os.path.exists(appstream_path):
-                aps_ctype = appstream.component_type(appstream_path)
-
-                if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP:
-                    for arch in arches:
+                    if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP:
                         if f"screenshots/{arch}" not in refs:
                             self.errors.add("appstream-screenshots-not-mirrored-in-ostree")
                             return
@@ -152,4 +152,3 @@ class ScreenshotsCheck(Check):
 
                         if not ref_sc_files:
                             self.errors.add("appstream-screenshots-files-not-found-in-ostree")
-                            break

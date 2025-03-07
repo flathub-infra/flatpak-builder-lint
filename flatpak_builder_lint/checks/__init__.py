@@ -21,8 +21,8 @@ class Check(metaclass=CheckMeta):
     appstream: ClassVar[set[str]] = set()
     desktopfile: ClassVar[set[str]] = set()
     info: ClassVar[set[str]] = set()
-    repo_primary_ref: str | None = None
+    repo_primary_refs: ClassVar[set[str]] = set()
 
-    def _populate_ref(self, repo: str) -> None:
-        if self.repo_primary_ref is None:
-            self.repo_primary_ref = ostree.get_primary_ref(repo)
+    def _populate_refs(self, repo: str) -> None:
+        if not Check.repo_primary_refs:
+            Check.repo_primary_refs.update(ostree.get_primary_refs(repo))

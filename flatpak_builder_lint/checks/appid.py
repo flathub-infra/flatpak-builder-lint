@@ -107,10 +107,11 @@ class AppIDCheck(Check):
         self._validate(appid, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
-        self._populate_ref(path)
-        ref = self.repo_primary_ref
-        if not ref:
+        self._populate_refs(path)
+        refs = self.repo_primary_refs
+        if not refs:
             return
-        appid = ref.split("/")[1]
 
-        self._validate(appid, False)
+        for ref in refs:
+            appid = ref.split("/")[1]
+            self._validate(appid, False)
