@@ -4242,5 +4242,8 @@
     },
     "org.vertcoin.vertcoin-qt": {
         "finish-args-host-var-access": "Predates the linter rule"
+    },
+    "io.github.alexays.waybar": {
+        "finish-args-missing-x11": "Application is designed to run exclusively on Wayland"
     }
 }
