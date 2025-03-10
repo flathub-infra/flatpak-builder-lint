@@ -4242,5 +4242,8 @@
     },
     "org.vertcoin.vertcoin-qt": {
         "finish-args-host-var-access": "Predates the linter rule"
+    },
+    "sh.loft.devpod": {
+	"finish-args-flatpak-spawn-access": "Required for host shell access"
     }
 }
