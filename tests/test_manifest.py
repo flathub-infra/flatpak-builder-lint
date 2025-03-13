@@ -182,6 +182,8 @@ def test_manifest_finish_args() -> None:
         "finish-args-absolute-run-media-path",
         "finish-args-has-nodevice-shm",
         "finish-args-has-nosocket-fallback-x11",
+        "finish-args-no-required-flatpak",
+        "finish-args-insufficient-required-flatpak",
     }
 
     ret = run_checks("tests/manifests/finish_args.json")
@@ -192,6 +194,12 @@ def test_manifest_finish_args() -> None:
         assert a not in found_errors
     for err in found_errors:
         assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
+
+
+def test_manifest_finish_args_new_metadata() -> None:
+    ret = run_checks("tests/manifests/finish_args-new-metadata.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-insufficient-required-flatpak" in found_errors
 
 
 def test_manifest_finish_args_issue_wayland_x11() -> None:
