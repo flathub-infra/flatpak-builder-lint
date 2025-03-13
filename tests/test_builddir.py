@@ -2,6 +2,7 @@ import glob
 import gzip
 import os
 import shutil
+import struct
 import tempfile
 from collections.abc import Generator
 
@@ -62,6 +63,48 @@ def create_file(path: str, fname: str) -> None:
 
     with open(file_path, "w", encoding="utf-8"):
         pass
+
+
+def create_elf(test_dir: str, arch: str, fname: str = "test.elf") -> None:
+    dest = os.path.join(test_dir, "files/bin")
+    os.makedirs(dest, exist_ok=True)
+
+    archmap = {
+        "x86_64": 0x3E,
+        "aarch64": 0xB7,
+        "riscv64": 0xF3,
+    }
+
+    if arch not in archmap:
+        raise ValueError(f"Unsupported architecture: {arch}")
+
+    elf_header = struct.pack(
+        "<4s5B7x2H5I6Q",
+        b"\x7fELF",
+        2,
+        1,
+        1,
+        0,
+        0,
+        2,
+        archmap[arch],
+        1,
+        0x400000,
+        0x40,
+        0,
+        0,
+        64,
+        0,
+        0,
+        0,
+        0,
+        0,
+    )
+
+    fpath = os.path.join(dest, fname)
+
+    with open(fpath, "wb") as f:
+        f.write(elf_header)
 
 
 def move_files(testdir: str) -> None:
@@ -462,3 +505,17 @@ def test_builddir_eol_runtime() -> None:
     ret = run_checks(testdir)
     found_warnings = set(ret["warnings"])
     assert "runtime-is-eol-org.freedesktop.Platform-18.08" in found_warnings
+
+
+def test_builddir_wrong_elf_arch() -> None:
+    testdir = "tests/builddir/wrong-elf-arch"
+    create_elf(testdir, "aarch64")
+    create_elf(testdir, "riscv64", "test2.elf")
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    errors = {
+        "elf-arch-multiple-found",
+        "elf-arch-not-found",
+    }
+    for e in errors:
+        assert e in found_errors
