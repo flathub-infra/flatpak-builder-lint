@@ -2,12 +2,24 @@ import re
 import tempfile
 from collections import defaultdict
 
+import gi
+
 from .. import builddir, config, ostree
 from . import Check
+
+gi.require_version("AppStream", "1.0")
+from gi.repository import AppStream  # noqa: E402
 
 
 class FinishArgsCheck(Check):
     def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
+        init_ver = finish_args.get("required-flatpak")
+        flatpak_version = None
+        if isinstance(init_ver, (set | list)):
+            flatpak_version = next(iter(init_ver))
+        if isinstance(init_ver, str):
+            flatpak_version = init_ver.split(";", 1)[0]
+
         if "x11" in finish_args["socket"] and "fallback-x11" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-fallback")
 
@@ -49,6 +61,25 @@ class FinishArgsCheck(Check):
             if dev.startswith("!"):
                 dv = dev.removeprefix("!")
                 self.errors.add(f"finish-args-has-nodevice-{dv}")
+            if dev in ("input", "usb"):
+                if "required-flatpak" not in finish_args:
+                    self.errors.add("finish-args-no-required-flatpak")
+                    self.info.add(
+                        "finish-args-no-required-flatpak: finish-args has input or usb"
+                        + " but no minimum Flatpak version. Use all for backwards compat"
+                        + " or specify require-version"
+                    )
+                if flatpak_version is not None and not AppStream.vercmp_test_match(
+                    flatpak_version,
+                    AppStream.RelationCompare.GE,
+                    "1.16.0",
+                    AppStream.VercmpFlags.NONE,
+                ):
+                    self.errors.add("finish-args-insufficient-required-flatpak")
+                    self.info.add(
+                        "finish-args-insufficient-required-flatpak: finish-args has"
+                        + " input or usb but require-version is not set to >=1.16.0"
+                    )
 
         modes = (":ro", ":rw", ":create")
         xdgdirs = ("xdg-data", "xdg-config", "xdg-cache")
@@ -298,6 +329,8 @@ class FinishArgsCheck(Check):
                 split = arg.split("=")
                 key = split[0].removeprefix("--")
                 value = "=".join(split[1:])
+                if key == "require-version":
+                    key = "required-flatpak"
                 if key == "nodevice":
                     key = "device"
                     value = "!" + value

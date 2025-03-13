@@ -42,6 +42,12 @@ def parse_metadata(builddir: str) -> dict:
     environment: dict = defaultdict(set)
     permissions: dict = defaultdict(set)
 
+    if (
+        key_file.has_group("Application")
+        and "required-flatpak" in key_file.get_keys("Application")[0]
+    ):
+        permissions["required-flatpak"] = key_file.get_value("Application", "required-flatpak")
+
     if key_file.has_group("Context"):
         for key in key_file.get_keys("Context")[0]:
             permissions[key] = key_file.get_string_list("Context", key)
