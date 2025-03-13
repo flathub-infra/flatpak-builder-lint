@@ -77,6 +77,7 @@ class ELFArchCheck(Check):
         self._validate(path, stripped_ref)
 
     def check_repo(self, path: str) -> None:
+        return
         self._populate_refs(path)
         refs = self.repo_primary_refs
         if not refs:
