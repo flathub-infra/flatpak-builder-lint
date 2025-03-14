@@ -1,8 +1,7 @@
 FROM docker.io/freedesktopsdk/sdk:24.08
 
 RUN install -d -m1777 /var/tmp
-RUN uuidgen | tr -d '-' > /etc/machine-id
-RUN ln -s /usr/bin/true /usr/bin/dbus-daemon
+RUN mkdir -p /root
 
 RUN echo "root:x:0:0:root:/root:/bin/bash" > /etc/passwd && \
     echo "root:x:0:" > /etc/group
