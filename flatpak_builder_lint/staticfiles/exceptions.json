@@ -3533,6 +3533,7 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
         "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
+        "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
         "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "io.gitlab.o20.word": {
