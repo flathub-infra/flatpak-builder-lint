@@ -4246,5 +4246,8 @@
     },
     "sh.loft.devpod": {
         "finish-args-flatpak-spawn-access": "Required for host shell access"
+    },
+    "io.github.piotrek_k._2dTaskBoard": {
+        "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
     }
 }
