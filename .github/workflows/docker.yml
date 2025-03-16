@@ -21,18 +21,23 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v4
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        # 3.6.0
+        uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        # 3.10.0
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2
 
       - name: Login to ghcr.io
-        uses: docker/login-action@v3
+        # 3.4.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -65,7 +70,8 @@ jobs:
           flatpak run org.flatpak.Builder --show-manifest --show-manifest \
             docker/org.flatpak.Builder/org.flatpak.Builder.json >> docker/org.flatpak.Builder/org.flatpak.Builder-cache.json
 
-      - uses: actions/cache@v4
+        # 4.2.2
+      - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
         with:
           path: ${{ github.workspace }}/docker-cache/.flatpak-builder
           key: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
@@ -93,7 +99,8 @@ jobs:
           rm -rf "builddir/files/lib/debug"
 
       - name: Build the base image
-        uses: docker/build-push-action@v6
+        # 6.15.0
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4
         with:
           context: docker
           file: docker/Dockerfile
@@ -122,7 +129,8 @@ jobs:
           docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} repo /mnt/repo
 
       - name: Push the images
-        uses: docker/build-push-action@v6
+        # 6.15.0
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4
         if: success() && github.event_name != 'pull_request'
         with:
           context: docker
@@ -139,7 +147,8 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
 
       - name: Login to ghcr.io using Flathub credentials
-        uses: docker/login-action@v3
+        # 3.4.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
         if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           registry: ghcr.io
@@ -147,7 +156,8 @@ jobs:
           password: ${{ secrets.FLATHUB_ORG_TOKEN }}
 
       - name: Build and push Docker image to the old location
-        uses: docker/build-push-action@v6
+        # 6.15.0
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4
         if: success() && github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           context: docker
@@ -176,10 +186,12 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v4
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Login to ghcr.io
-        uses: docker/login-action@v3
+        # 3.4.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -202,7 +214,8 @@ jobs:
           docker manifest push ghcr.io/${{ github.repository }}:latest
 
       - name: Login to ghcr.io using Flathub credentials
-        uses: docker/login-action@v3
+        # 3.4.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
         if: github.event_name != 'pull_request' && github.repository == 'flathub-infra/flatpak-builder-lint'
         with:
           registry: ghcr.io
@@ -227,17 +240,20 @@ jobs:
           docker manifest push ghcr.io/flathub/flatpak-builder-lint:latest
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        # 3.10.0
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2
 
       - name: Login to ghcr.io
-        uses: docker/login-action@v3
+        # 3.4.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push the unprivileged image
-        uses: docker/build-push-action@v6
+        # 6.15.0
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4
         with:
           context: docker
           file: docker/Dockerfile.unprivileged

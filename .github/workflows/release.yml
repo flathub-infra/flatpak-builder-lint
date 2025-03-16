@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
     steps:
-      - uses: actions/checkout@v4
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          persist-credentials: false
           ref: 'master'
 
       - name: Check last commit message
@@ -41,7 +43,8 @@ jobs:
 
       - name: Trigger workflow in org.flatpak.Builder repository
         if: steps.check_job.outputs.run == 'true'
-        uses: peter-evans/repository-dispatch@v3
+        # 3.0.0
+        uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0
         with:
           repository: flathub/org.flatpak.Builder
           event-type: trigger-workflow
@@ -50,7 +53,8 @@ jobs:
 
       - name: Trigger workflow in flathub-infra/flatpak-github-actions
         if: steps.check_job.outputs.run == 'true'
-        uses: peter-evans/repository-dispatch@v3
+        # 3.0.0
+        uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0
         with:
           repository: flathub-infra/flatpak-github-actions
           event-type: trigger-workflow
