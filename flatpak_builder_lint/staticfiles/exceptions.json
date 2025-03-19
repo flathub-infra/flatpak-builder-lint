@@ -4249,5 +4249,8 @@
     },
     "io.github.piotrek_k._2dTaskBoard": {
         "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
+    },
+    "net.krafting.SemantiK": {
+        "manifest-has-bundled-extension": "Required to bundle the default language pack."
     }
 }
