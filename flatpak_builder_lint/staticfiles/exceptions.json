@@ -1028,6 +1028,7 @@
     },
     "app.devsuite.Manuals": {
         "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
+        "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-flatpak-user-folder-access": "Predates the linter rule"
     },
