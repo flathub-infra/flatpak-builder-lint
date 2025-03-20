@@ -4115,6 +4115,7 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.github.theforceengine.tfe": {
+    	  "manifest-has-bundled-extension": "Game engine plugins implemented as extensions including default ones.",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.kopia.KopiaUI": {
