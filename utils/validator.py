@@ -37,6 +37,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-host-tmp-access",
     "finish-args-host-var-access",
     "finish-args-only-wayland",
+    "finish-args-flatpak-system-talk-name",
 }
 
 
