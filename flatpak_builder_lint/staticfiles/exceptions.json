@@ -1,7 +1,4 @@
 {
-    "io.github.theforceengine.tfe": {
-        "manifest-has-bundled-extension": "Game engine plugins implemented as extensions including default ones."
-    },
     "io.github.mhogomchungu.sirikali": {
         "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
     },
@@ -4117,6 +4114,7 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.github.theforceengine.tfe": {
+    	"manifest-has-bundled-extension": "Game engine plugins implemented as extensions including default ones.",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.kopia.KopiaUI": {
