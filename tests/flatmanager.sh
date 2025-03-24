@@ -154,7 +154,7 @@ if [ "$ARCH" != "x86_64" ]; then
     xmlstarlet ed --insert //custom/value --type attr -n key -v flathub::manifest > \
     repo/appstream/"${ARCH}"/appstream-out-"${ARCH}".xml
     mv repo/appstream/"${ARCH}"/appstream-out-"${ARCH}".xml repo/appstream/"${ARCH}"/appstream.xml
-    gzip repo/appstream/"${ARCH}"/appstream.xml || true  
+    gzip repo/appstream/"${ARCH}"/appstream.xml || true
 fi
 
 run_test "Test 2" "" || exit 1

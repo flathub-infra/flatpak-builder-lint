@@ -43,7 +43,7 @@
                 {
                     "type": "git",
                     "url": "https://example.org/foobar2.git",
-                    "branch": "foobarfoo" 
+                    "branch": "foobarfoo"
                 }
             ]
         }

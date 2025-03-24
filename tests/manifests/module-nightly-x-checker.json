@@ -17,7 +17,7 @@
                         "url": "https://example.com/releases/latest",
                         "commit-query": ".sha"
                     }
-                } 
+                }
             ]
         }
     ]
