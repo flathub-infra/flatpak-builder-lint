@@ -76,12 +76,17 @@ available on Flathub. [Set up FlatHub][flatpak_setup] first, then install
 
 ```bash
 flatpak install flathub -y org.flatpak.Builder
-flatpak run --command=flatpak-builder-lint org.flatpak.Builder --help
+```
 
-# Run the manifest check
+To run the manifest check:
+
+```sh
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest com.foo.bar.json
+```
 
-# Run the repo check
+To run the repo check:
+
+```sh
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder repo repo
 ```
 
@@ -94,11 +99,17 @@ The latest build of flatpak-builder-linter can be used with Docker.
 
 ```bash
 docker run --rm -it ghcr.io/flathub/flatpak-builder-lint:latest --help
+```
 
-# Run the manifest check
+To run the manifest check:
+
+```sh
 docker run -v $(pwd):/mnt --rm -it ghcr.io/flathub/flatpak-builder-lint:latest manifest /mnt/com.foo.bar.json
+```
 
-# Run the repo check
+To run the repo check:
+
+```sh
 docker run -v $(pwd):/mnt --rm -it ghcr.io/flathub/flatpak-builder-lint:latest repo /mnt/repo
 ```
 
@@ -113,6 +124,8 @@ that are found in the `org.flatpak.Builder` flatpak package
 and on external tools.
 
 ## Contributing
+
+### Dependencies
 
 The following system dependencies must be installed:
 
@@ -129,26 +142,31 @@ exec flatpak run --branch=stable --command=appstreamcli org.flatpak.Builder ${@}
 
 Debiab/Ubuntu:
 
-```
-# apt install git appstream flatpak-builder libgirepository1.0-dev gir1.2-ostree-1.0 gir1.2-appstream-1.0 libcairo2-dev desktop-file-utils
+```sh
+sudo apt install git appstream flatpak-builder libgirepository1.0-dev gir1.2-ostree-1.0 gir1.2-appstream-1.0 libcairo2-dev desktop-file-utils
 ```
 
 ArchLinux:
 
-```
-# pacman -S --needed git appstream flatpak-builder desktop-file-utils ostree glib2
+```sh
+sudo pacman -S --needed git appstream flatpak-builder desktop-file-utils ostree glib2
 ```
 
 Fedora:
 
-```
-# dnf install git appstream flatpak-builder desktop-file-utils ostree-libs glib2-devel cairo-devel
+```sh
+sudo dnf install git appstream flatpak-builder desktop-file-utils ostree-libs glib2-devel cairo-devel
 ```
 
-Then the project can be installed with:
+Clone the repo:
 
 ```bash
 git clone https://github.com/flathub/flatpak-builder-lint.git && cd flatpak-builder-lint
+```
+
+Then the project can be run with:
+
+```sh
 uv run --all-groups --frozen -q flatpak-builder-lint --help
 ```
 
@@ -163,32 +181,37 @@ project. `dunamai` is used to generate a version from the git commit,
 since no tags or releases are done, in absence of which it will default
 to the version of the last tag made.
 
+### Formatting and Linting
+
 [Ruff](https://docs.astral.sh/ruff/installation/) is used to lint and
 format code. [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
-is used to check Python types. To run them:
+is used to check Python types.
+
+A set of pre-commit hooks are provided to automate the formatting and
+linting:
 
 ```sh
-# Formatting
-uv run ruff format --check
-
-# Linting
-uv run ruff check
-
-# Auto fix some lint errrors
-uv run ruff check --fix
-
-# Check python types
-uv run mypy .
+uv run --frozen -q pre-commit install
 ```
 
-A pre-commit hook is provided to automate the formatting and linting:
+To uninstall:
 
 ```sh
-uv run pre-commit install
-uv run pre-commit run --all-files
+uv run --frozen -q pre-commit uninstall
+```
 
-# Uninstall hooks
-uv run pre-commit uninstall
+Or run individually:
+
+```sh
+uv run --frozen -q ruff format
+```
+
+```sh
+uv run --frozen -q ruff check --fix --exit-non-zero-on-fix
+```
+
+```sh
+uv run --frozen -q mypy .
 ```
 
 ### Tests
@@ -197,8 +220,39 @@ uv run pre-commit uninstall
 to run tests.
 
 ```sh
-uv run pytest -v tests
+uv run --frozen -q pytest -vvv
 ```
+
+An additional Flat manager test can be run when modifying code relying
+on the flatmanager check. The test is meant to be run on CI and not
+locally. If it is being run locally, it must be run from the root of the
+git repository using
+
+```sh
+./tests/flatmanager.sh
+```
+
+To avoid cleanup run as:
+
+```sh
+NO_CLEAN_UP=1 ./tests/flatmanager.sh
+```
+
+To write tests for manifest checks, recreate a minimal Flatpak builder
+manifest with the cases to check against and put it in `tests/manifests`.
+Then add the test using it (or modify the existing tests) in
+`tests/test_manifest.py`.
+
+Similarly to add a test for builddir check, recreate the `metadata`,
+cataloge, metainfo, desktop files as needed and put them in a
+subdirectory of `tests/builddir`. Then add the test in
+`tests/test_builddir.py`. There are helper functions in
+`tests/test_builddir.py` to emulate a flatpak-builder build directory
+using the source files.
+
+Please avoid adding binary files that aren't readable.
+
+### Development environment
 
 A development environment is also available as a docker container. To
 use it to run tests or for linting execute the below from the root of the
@@ -216,32 +270,6 @@ published to GitHub if rebuilding the latest isn't necessary:
 ```sh
 docker run -it --rm --entrypoint= -v $(pwd):/mnt:Z -w /mnt ghcr.io/flathub-infra/flatpak-builder-lint:latest bash
 ```
-
-An additional Flat manager test can be run when modifying code relying
-on the flatmanager check. The test is meant to be run on CI and not
-locally. If it is being run locally, it must be run from the root of the
-git repository using
-
-```sh
-./tests/flatmanager.sh
-
-# Avoid repeated rebuilds
-NO_CLEAN_UP=1 ./tests/flatmanager.sh
-```
-
-To write tests for manifest checks, recreate a minimal Flatpak builder
-manifest with the cases to check against and put it in `tests/manifests`.
-Then add the test using it (or modify the existing tests) in
-`tests/test_manifest.py`.
-
-Similarly to add a test for builddir check, recreate the `metadata`,
-cataloge, metainfo, desktop files as needed and put them in a
-subdirectory of `tests/builddir`. Then add the test in
-`tests/test_builddir.py`. There are helper functions in
-`tests/test_builddir.py` to emulate a flatpak-builder build directory
-using the source files.
-
-Please avoid adding binary files that aren't readable.
 
 ## Usage
 
