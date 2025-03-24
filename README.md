@@ -107,7 +107,7 @@ You may need to pass `:Z` if your distro is using SELinux like so
 
 ### Local environment
 
-Installing flatpak-builder-lint locally with [Poetry][poetry] or pip is
+Installing flatpak-builder-lint locally with [uv][uv] or pip is
 not recommended unless for development purposes. It depends on patches
 that are found in the `org.flatpak.Builder` flatpak package
 and on external tools.
@@ -149,25 +149,19 @@ Then the project can be installed with:
 
 ```bash
 git clone https://github.com/flathub/flatpak-builder-lint.git && cd flatpak-builder-lint
-poetry install
-poetry run flatpak-builder-lint --help
+uv run --all-groups --frozen -q flatpak-builder-lint --help
 ```
 
-After making changes to any dependencies run
-`poetry lock --no-update` to regenerate the lockfile and
-`poetry install --sync` to synchronise the virtual environment.
+Dependencies can be added to removed with `uv add` and `uv remove` while
+`uv lock` will regenerate the lockfile. `uv lock -P` can be used to
+upgrade a specific package or `uv lock -U` to upgrade everything.
 
-When adding new checks, please do not increase the minimum requirements
-set in `{builddir, repo}/min_success_metadata`.
-
-The virtual enviroment can be listed with `poetry env list` and removed
-with `poetry env remove flatpak-builder-lint-xxxxxxxx-py3.xx`.
-
-The following Python dependencies are installed by Poetry and needed to
-run the project: `jsonschema, requests, requests-cache, lxml, sentry-sdk, PyGObject`.
-Additionally `poetry-core>=1.0.0` is necessary to build.
-`poetry-dynamic-versioning` is used to generate a version from the
-git commit, since no tags or releases are done.
+The following Python dependencies are installed and needed to run the
+project: `jsonschema, requests, requests-cache, lxml, sentry-sdk`
+and `PyGObject`. Additionally `setuptools` is necessary to build the
+project. `dunamai` is used to generate a version from the git commit,
+since no tags or releases are done, in absence of which it will default
+to the version of the last tag made.
 
 [Ruff](https://docs.astral.sh/ruff/installation/) is used to lint and
 format code. [MyPy](https://mypy.readthedocs.io/en/stable/getting_started.html)
@@ -175,26 +169,26 @@ is used to check Python types. To run them:
 
 ```sh
 # Formatting
-poetry run ruff format .
+uv run ruff format --check
 
 # Linting
-poetry run ruff check .
+uv run ruff check
 
 # Auto fix some lint errrors
-poetry run ruff check --fix .
+uv run ruff check --fix
 
 # Check python types
-poetry run mypy .
+uv run mypy .
 ```
 
 A pre-commit hook is provided to automate the formatting and linting:
 
 ```sh
-poetry run pre-commit install
-poetry run pre-commit run --all-files
+uv run pre-commit install
+uv run pre-commit run --all-files
 
 # Uninstall hooks
-poetry run pre-commit uninstall
+uv run pre-commit uninstall
 ```
 
 ### Tests
@@ -203,7 +197,7 @@ poetry run pre-commit uninstall
 to run tests.
 
 ```sh
-poetry run pytest -v tests
+uv run pytest -v tests
 ```
 
 Tests can also be run inside a container using `docker` or `podman`
@@ -272,7 +266,7 @@ options:
 If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint
 ```
 
-[poetry]: https://python-poetry.org/docs/#installation
+[uv]: https://docs.astral.sh/uv/getting-started/installation/
 [flatpak_setup]: https://flathub.org/setup
 
 ## Documentation

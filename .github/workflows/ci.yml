@@ -29,6 +29,7 @@ jobs:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Setup path filters
@@ -43,7 +44,7 @@ jobs:
               - 'flatpak_builder_lint/!(staticfiles/**)/**'
               - 'flatpak_builder_lint/staticfiles/flatpak-manifest.schema.json'
               - 'flatpak_builder_lint/staticfiles/*.py'
-              - 'poetry.lock'
+              - 'uv.lock'
               - 'pyproject.toml'
             exceptions:
               - 'flatpak_builder_lint/staticfiles/exceptions.json'
@@ -114,30 +115,30 @@ jobs:
             gir1.2-ostree-1.0 gzip xmlstarlet libcairo2-dev \
             gir1.2-appstream-1.0
 
-      - name: Setup Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          sudo ln -s /github/home/.local/bin/poetry /usr/bin/poetry
-
-        # 4.2.2
-      - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
+      - name: Install uv
+        # 5.4.0
+        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174
         with:
-          path: ~/.cache/pypoetry
-          key: ${{ runner.os }}-${{ matrix.platform }}-ci-poetry-${{ hashFiles('poetry.lock') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-ci-poetry-
+          version: "0.6.9"
+          enable-cache: true
+          cache-dependency-glob: |
+            **/uv.lock
+            **/pyproject.toml
+
+      - name: Set version
+        run: ver="$(uvx --isolated dunamai from git --style pep440)" && sed -i -E 's/^version\s*=\s*".*"/version = "'"$ver"'"/' pyproject.toml
 
       - name: Install python dependencies
-        run: |
-          poetry install
+        run: uv sync -v --all-groups --frozen
 
       - name: Check code formatting
-        run: poetry run ruff format --check .
+        run: uv run ruff format --check
 
       - name: Lint
-        run: poetry run ruff check --output-format=github .
+        run: uv run ruff check --output-format=github
 
       - name: Check python types
-        run: poetry run mypy .
+        run: uv run mypy .
 
       - name: Allow file:// clones with git>=2.38.1
         run: |

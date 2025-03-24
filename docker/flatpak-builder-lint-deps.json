@@ -4,52 +4,37 @@
     "build-commands": [],
     "modules": [
         {
-            "name": "python3-poetry-core",
+            "name": "python3-dunamai",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-core>=1.0.0\" --no-build-isolation"
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"dunamai\" --no-build-isolation"
             ],
-            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/a1/8d/85fcf9bcbfefcc53a1402450f28e5acf39dcfde3aabb996a1d98481ac829/poetry_core-1.9.0-py3-none-any.whl",
-                    "sha256": "4e0c9c6ad8cf89956f03b308736d84ea6ddb44089d16f2adc94050108ec1f5a1"
+                    "url": "https://files.pythonhosted.org/packages/fe/e6/6621a99488e8457585cbc4565b18c1a1591e1eae67adcd530ffa7c0bd30e/dunamai-1.23.1-py3-none-any.whl",
+                    "sha256": "2611b0b9105a5797149ef82f4968a01dd912bdac857d49fc06856a4cfa58cf78"
                 }
             ]
         },
         {
-            "name": "python3-poetry-dynamic-versioning",
+            "name": "python3-uv",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-dynamic-versioning\" --no-build-isolation"
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"uv==0.6.9\" --no-build-isolation"
             ],
-            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/b8/01/0c3ba3dcf946e884ad8a153f6ac277e38cc8e87038059dbb751f89b9e258/dunamai-1.22.0-py3-none-any.whl",
-                    "sha256": "eab3894b31e145bd028a74b13491c57db01986a7510482c9b5fff3b4e53d77b7"
+                    "url": "https://files.pythonhosted.org/packages/07/14/a32e6228535e6e84dc2dfe4409f19db6155f68e1e439a4e1f9b468c01ea2/uv-0.6.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+                    "sha256": "8e2db4fd0dc8aff8e7db1861022578f04c0b685d6cd9b81a0b1f7c2bcfa9947b",
+                    "only-arches": ["x86_64"]
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/31/80/3a54838c3fb461f6fec263ebf3a3a41771bd05190238de3486aae8540c36/jinja2-3.1.4-py3-none-any.whl",
-                    "sha256": "bc5dd2abb727a5319567b7a813e6a2e7318c39f4f487cfe6c89c6f9c7d25197d"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl",
-                    "sha256": "5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/0b/ef/f6878882c79d8517a33590d32f0ad7f20b54037266c6f0b2e24f999f924b/poetry_dynamic_versioning-1.4.1-py3-none-any.whl",
-                    "sha256": "44866ccbf869849d32baed4fc5fadf97f786180d8efa1719c88bf17a471bd663"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/f9/b6/a447b5e4ec71e13871be01ba81f5dfc9d0af7e473da256ff46bc0e24026f/tomlkit-0.13.2-py3-none-any.whl",
-                    "sha256": "7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde"
+                    "url": "https://files.pythonhosted.org/packages/12/4d/206f57fcd5e6a48b43e4c7cec74f4aaa07fb01a47427d8b594361423fa2e/uv-0.6.9-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
+                    "sha256": "4e1cf5e02e7b7ca7d3ae8681cdbca79fdb2bb1a005a2ecc0e3f4fcccc664403d",
+                    "only-arches": ["aarch64"]
                 }
             ]
         },
