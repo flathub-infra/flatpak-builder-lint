@@ -200,11 +200,21 @@ to run tests.
 uv run pytest -v tests
 ```
 
-Tests can also be run inside a container using `docker` or `podman`
-after making changes to the project.
+A development environment is also available as a docker container. To
+use it to run tests or for linting execute the below from the root of the
+repository:
 
 ```sh
-docker build --no-cache-filter=image -t linter:dev -q -f tests/Dockerfile . && docker run -it --rm linter:dev pytest -vvv
+./docker/build.sh
+```
+
+This gives an active shell inside the container with all the necessary
+tools available and any changes made are available once the container
+is exited. The same environment can also be used from the docker images
+published to GitHub if rebuilding the latest isn't necessary:
+
+```sh
+docker run -it --rm --entrypoint= -v $(pwd):/mnt:Z -w /mnt ghcr.io/flathub-infra/flatpak-builder-lint:latest bash
 ```
 
 An additional Flat manager test can be run when modifying code relying

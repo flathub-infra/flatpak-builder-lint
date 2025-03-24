@@ -1,10 +1,9 @@
 FROM docker.io/freedesktopsdk/sdk:24.08
 
-RUN install -d -m1777 /var/tmp
-RUN mkdir -p /root
-
 RUN echo "root:x:0:0:root:/root:/bin/bash" > /etc/passwd && \
     echo "root:x:0:" > /etc/group
+
+RUN mkdir -p -m 1777 /var/tmp && mkdir -p -m 700 /root
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
