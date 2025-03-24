@@ -1,40 +1,62 @@
-[tool.poetry]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+  "flatpak_builder_lint",
+  "flatpak_builder_lint.checks",
+  "flatpak_builder_lint.staticfiles"
+]
+exclude = ["**/__pycache__"]
+
+[tool.setuptools.package-data]
+flatpak_builder_lint = ["staticfiles/*.json"]
+
+[project]
 name = "flatpak_builder_lint"
 version = "3.0.0"
 description = "A linter for flatpak-builder manifests"
-authors = ["Bartłomiej Piotrowski <b@bpiotrowski.pl>"]
-license = "MIT"
+authors = [
+  {name = "Bartłomiej Piotrowski", email = "b@bpiotrowski.pl"},
+  {name = "bbhtt", email = "bbhtt@bbhtt.space"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = "<4.0,>=3.10"
+dependencies = [
+    "jsonschema<5.0.0,>=4.23.0",
+    "requests<3.0.0,>=2.32.2",
+    "lxml<6.0.0,>=5.3.0",
+    "sentry-sdk<3.0.0,>=2.8.0",
+    "PyGObject<4.0.0,>=3.48.2",
+    "requests-cache<2.0.0,>=1.2.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-jsonschema = "^4.23.0"
-requests = "^2.32.2"
-lxml = "^5.3.0"
-sentry-sdk = "^2.8.0"
-PyGObject = "^3.48.2"
-requests-cache = "^1.2.1"
+[project.urls]
+Homepage = "https://github.com/flathub-infra/flatpak-builder-lint"
+Documentation = "https://docs.flathub.org/docs/for-app-authors/linter"
+Repository = "https://github.com/flathub-infra/flatpak-builder-lint.git"
+Issues = "https://github.com/flathub-infra/flatpak-builder-lint/issues"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
-mypy = "^1.11.2"
-ruff = "^0.6.7"
-pre-commit = "^3.8.0"
-types-requests = "^2.32.0.20240914"
-types-jsonschema = "^4.23.0.20240813"
-types-lxml = "^2024.9.16"
-PyGObject-stubs = "^2.11.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 flatpak-builder-lint = "flatpak_builder_lint.cli:main"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "pep440"
+[dependency-groups]
+dev = [
+    "pytest<9.0.0,>=8.3.3",
+    "mypy<2.0.0,>=1.11.2",
+    "ruff<1.0.0,>=0.6.7",
+    "pre-commit<4.0.0,>=3.8.0",
+    "types-requests<3.0.0.0,>=2.32.0.20240914",
+    "types-jsonschema<5.0.0.0,>=4.23.0.20240813",
+    "types-lxml<2025.0.0,>=2024.9.16",
+    "PyGObject-stubs<3.0.0,>=2.11.0",
+]
 
 [tool.mypy]
 disallow_untyped_defs = true
