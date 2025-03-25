@@ -191,6 +191,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-flatpak-appdata-folder-access",
         "finish-args-host-var-access",
         "finish-args-mpris-flatpak-id-own-name",
+        "finish-args-portal-impl-permissionstore-own-name",
     }
 
     expected_absents = {

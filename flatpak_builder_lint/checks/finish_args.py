@@ -202,6 +202,9 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-flatpak-own-name")
             if appid and own_name == f"org.mpris.MediaPlayer2.{appid}":
                 self.errors.add("finish-args-mpris-flatpak-id-own-name")
+            if own_name.startswith("org.freedesktop.impl.portal."):
+                cpt = own_name.split(".")[-1].lower()
+                self.errors.add(f"finish-args-portal-impl-{cpt}-own-name")
 
         for talk_name in finish_args["talk-name"]:
             # Values not allowed: appid or appid.*
@@ -254,6 +257,9 @@ class FinishArgsCheck(Check):
                 )
             if appid and talk_name == f"org.mpris.MediaPlayer2.{appid}":
                 self.errors.add("finish-args-mpris-flatpak-id-talk-name")
+            if talk_name.startswith("org.freedesktop.impl.portal."):
+                cpt = talk_name.split(".")[-1].lower()
+                self.errors.add(f"finish-args-portal-impl-{cpt}-talk-name")
 
         for sys_own_name in finish_args["system-own-name"]:
             if sys_own_name == "org.freedesktop.*":
@@ -276,6 +282,9 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-flatpak-system-own-name")
             if appid and sys_own_name == f"org.mpris.MediaPlayer2.{appid}":
                 self.errors.add("finish-args-mpris-flatpak-id-system-own-name")
+            if sys_own_name.startswith("org.freedesktop.impl.portal."):
+                cpt = sys_own_name.split(".")[-1].lower()
+                self.errors.add(f"finish-args-portal-impl-{cpt}-system-own-name")
 
         for sys_talk_name in finish_args["system-talk-name"]:
             if sys_talk_name == "org.freedesktop.*":
@@ -298,6 +307,9 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-flatpak-system-talk-name")
             if appid and sys_talk_name == f"org.mpris.MediaPlayer2.{appid}":
                 self.errors.add("finish-args-mpris-flatpak-id-system-talk-name")
+            if sys_talk_name.startswith("org.freedesktop.impl.portal."):
+                cpt = sys_talk_name.split(".")[-1].lower()
+                self.errors.add(f"finish-args-portal-impl-{cpt}-system-talk-name")
 
         if "system-bus" in finish_args["socket"] or "session-bus" in finish_args["socket"]:
             self.errors.add("finish-args-arbitrary-dbus-access")
