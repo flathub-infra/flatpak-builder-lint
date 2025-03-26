@@ -1373,6 +1373,9 @@
     "io.stoplight.studio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "net.nymtech.NymVPN": {
+        "finish-args-host-var-access": "needed to access the daemon logs"
+    },
     "net.codelogistics.webapps": {
         "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
     },
