@@ -1106,9 +1106,6 @@
     "org.eclipse.Javascript": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
-    "re.sonny.Workbench": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
-    },
     "com.hack_computer.Clubhouse": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1567,7 +1564,29 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "required to list apps",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "required to list apps",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-host-var-access": "Predates the linter rule"
+        "finish-args-host-var-access": "Predates the linter rule",
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Workbench": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.OhMySVG": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Eloquent": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Commit": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Retro": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Tangram": {
+        "external-gitmodule-url-found": "Predates the linter rule"
+    },
+    "re.sonny.Playhouse": {
+        "external-gitmodule-url-found": "Predates the linter rule"
     },
     "space.crankshaft.Crankshaft": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -3094,9 +3113,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "page.codeberg.Imaginer.Imaginer": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "re.sonny.Retro": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "se.manyver.Manyverse": {
