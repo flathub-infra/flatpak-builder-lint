@@ -159,22 +159,6 @@ fi
 
 run_test "Test 2" "" || exit 1
 
-gzip -df repo/appstream/x86_64/appstream.xml.gz || true
-old_url="https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml"
-broken_url="https://raw.githubusercontent.com/flathub-infra/w/ww/w.yaml"
-sed -i "s|${old_url}|${broken_url}|g" repo/appstream/x86_64/appstream.xml
-gzip repo/appstream/x86_64/appstream.xml || true
-
-if [ "$ARCH" != "x86_64" ]; then
-    gzip -df repo/appstream/"${ARCH}"/appstream.xml.gz || true
-    old_url="https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/240fe03919ed087b24d941898cca21497de0fa49/tests/repo/min_success_metadata/gui-app/org.flathub.gui.yaml"
-    broken_url="https://raw.githubusercontent.com/flathub-infra/w/ww/w.yaml"
-    sed -i "s|${old_url}|${broken_url}|g" repo/appstream/"${ARCH}"/appstream.xml
-    gzip repo/appstream/"${ARCH}"/appstream.xml || true
-fi
-
-run_test "Test 3" "appstream-flathub-manifest-url-not-reachable" || exit 1
-
 cd "$TOP_DIR" || exit
 python tests/test_httpserver.py --stop
 if [ -z "${GITHUB_ACTIONS:-}" ]; then

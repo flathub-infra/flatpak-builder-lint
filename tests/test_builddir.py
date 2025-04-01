@@ -443,6 +443,8 @@ def test_min_success_metadata() -> None:
         "metainfo-missing-launchable-tag",
         "appid-url-check-internal-error",
         "appid-url-not-reachable",
+        "appstream-no-flathub-manifest-key",
+        "appstream-flathub-manifest-url-not-reachable",
     }
     for n in not_founds:
         assert n not in found_errors
@@ -526,3 +528,12 @@ def test_builddir_wrong_elf_arch() -> None:
     }
     for e in errors:
         assert e in found_errors
+
+
+def test_builddir_appstream_manifest_url_unreachable() -> None:
+    testdir = "tests/builddir/appstream-manifest-url-unreachable"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    assert "appstream-flathub-manifest-url-not-reachable" in found_errors
