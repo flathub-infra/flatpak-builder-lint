@@ -86,8 +86,6 @@ class FlatManagerCheck(Check):
                     manifest_key = appstream.get_manifest_key(f"{tmpdir}/appstream.xml")
                     if not manifest_key:
                         self.errors.add("appstream-no-flathub-manifest-key")
-                    if manifest_key and not domainutils.check_url(manifest_key[0], strict=False):
-                        self.errors.add("appstream-flathub-manifest-url-not-reachable")
 
             else:
                 appref_list = [ref for ref in refs if ref.startswith("app/")]
