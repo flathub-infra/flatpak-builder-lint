@@ -1081,8 +1081,8 @@
         "external-gitmodule-url-found": "Predates the linter rule"
     },
     "org.libreoffice.LibreOffice": {
-        "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "the app predates this linter rule",
+        "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule, and this was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice'",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "the app predates this linter rule, and this was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration'",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "manifest-has-bundled-extension": "Predates the linter rule"
     },
