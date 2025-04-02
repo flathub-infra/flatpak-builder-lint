@@ -1106,9 +1106,6 @@
     "org.eclipse.Javascript": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
     },
-    "re.sonny.Workbench": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
-    },
     "com.hack_computer.Clubhouse": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -3094,9 +3091,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "page.codeberg.Imaginer.Imaginer": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "re.sonny.Retro": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "se.manyver.Manyverse": {
