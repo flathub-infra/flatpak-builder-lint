@@ -39,6 +39,9 @@ KNOWN_EXCEPTIONS = {
     "finish-args-only-wayland",
     "finish-args-flatpak-system-talk-name",
     "finish-args-portal-impl-permissionstore-talk-name",
+    "finish-args-legacy-icon-folder-permission",
+    "finish-args-legacy-font-folder-permission",
+    "finish-args-incorrect-theme-folder-permission",
 }
 
 

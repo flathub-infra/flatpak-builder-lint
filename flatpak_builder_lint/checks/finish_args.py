@@ -153,6 +153,15 @@ class FinishArgsCheck(Check):
             if fs.startswith(("~/.var/app", "home/.var/app")):
                 self.errors.add("finish-args-flatpak-appdata-folder-access")
 
+            if fs.startswith(("~/.icons", "home/.icons")):
+                self.errors.add("finish-args-legacy-icon-folder-permission")
+
+            if fs.startswith(("~/.fonts", "home/.fonts")):
+                self.errors.add("finish-args-legacy-font-folder-permission")
+
+            if fs.startswith(("~/.themes", "home/.themes")):
+                self.errors.add("finish-args-incorrect-theme-folder-permission")
+
             if fs.startswith("/var/lib/flatpak"):
                 self.errors.add("finish-args-flatpak-system-folder-access")
 
