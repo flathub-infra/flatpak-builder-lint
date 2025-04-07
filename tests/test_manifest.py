@@ -177,6 +177,9 @@ def test_manifest_finish_args() -> None:
         "finish-args-flatpak-appdata-folder-access",
         "finish-args-mpris-flatpak-id-own-name",
         "finish-args-portal-impl-permissionstore-talk-name",
+        "finish-args-legacy-icon-folder-permission",
+        "finish-args-legacy-font-folder-permission",
+        "finish-args-incorrect-theme-folder-permission",
     }
 
     expected_absents = {
