@@ -24,7 +24,7 @@ def change_to_tmpdir(tmp_testdir: str) -> Generator[None, None, None]:
     os.chdir(original_dir)
 
 
-def run_checks(filename: str, enable_exceptions: bool = False) -> dict:
+def run_checks(filename: str, enable_exceptions: bool = False) -> dict[str, str | list[str]]:
     checks.Check.errors = set()
     checks.Check.warnings = set()
     return cli.run_checks("manifest", filename, enable_exceptions)
@@ -297,7 +297,7 @@ def test_manifest_modules_git_disallowed() -> None:
 def test_manifest_exceptions() -> None:
     ret = run_checks("tests/manifests/exceptions.json", enable_exceptions=True)
     found_errors = ret["errors"]
-    found_warnings = ret.get("warnings", {})
+    found_warnings = ret.get("warnings", [])
 
     assert "appid-filename-mismatch" not in found_errors
     assert "toplevel-no-command" not in found_errors

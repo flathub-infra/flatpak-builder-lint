@@ -1,9 +1,11 @@
+from typing import Any
+
 from .. import config
 from . import Check
 
 
 class TopLevelCheck(Check):
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")
         is_baseapp = bool(

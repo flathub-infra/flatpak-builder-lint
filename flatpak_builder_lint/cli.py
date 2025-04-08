@@ -6,6 +6,7 @@ import os
 import pkgutil
 import sys
 import textwrap
+from typing import Any
 
 import sentry_sdk
 
@@ -27,7 +28,7 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
 
-def _filter(info: set, excepts: set) -> list:
+def _filter(info: set[str], excepts: set[str]) -> list[str]:
     final = set()
     for i in info:
         count = False
@@ -65,12 +66,12 @@ def run_checks(
     enable_exceptions: bool = False,
     appid: str | None = None,
     user_exceptions_path: str | None = None,
-) -> dict[str, str | list[str | None]]:
+) -> dict[str, str | list[str]]:
     match kind:
         case "manifest":
             check_method_name = "check_manifest"
             infer_appid_func = manifest.infer_appid
-            check_method_arg: str | dict = manifest.show_manifest(path)
+            check_method_arg: str | dict[str, Any] = manifest.show_manifest(path)
         case "builddir":
             check_method_name = "check_build"
             infer_appid_func = builddir.infer_appid
@@ -88,7 +89,7 @@ def run_checks(
         if (check_method := getattr(check, check_method_name, None)) and callable(check_method):
             check_method(check_method_arg)
 
-    results: dict[str, str | list[str | None]] = {}
+    results: dict[str, str | list[str]] = {}
     if errors := checks.Check.errors:
         results["errors"] = list(errors)
     if warnings := checks.Check.warnings:

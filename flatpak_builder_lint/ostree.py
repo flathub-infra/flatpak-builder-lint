@@ -101,7 +101,7 @@ def get_flathub_json(repo_path: str, ref: str, dest: str) -> dict[str, str | boo
     flathubjsonfile = config.FLATHUB_JSON_FILE
     extract_subpath(repo_path, ref, f"/files/{flathubjsonfile}", dest, True)
     flathub_json_path = os.path.join(dest, flathubjsonfile)
-    flathub_json: dict = {}
+    flathub_json: dict[str, str | bool | list[str]] = {}
 
     if os.path.exists(flathub_json_path):
         with open(flathub_json_path) as fp:

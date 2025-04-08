@@ -148,7 +148,7 @@ def change_to_tmpdir(tmp_testdir: str) -> Generator[None, None, None]:
     os.chdir(original_dir)
 
 
-def run_checks(filename: str) -> dict:
+def run_checks(filename: str) -> dict[str, str | list[str]]:
     checks.Check.errors = set()
     checks.Check.warnings = set()
     return cli.run_checks("builddir", filename)
@@ -296,7 +296,7 @@ def test_builddir_desktop_file() -> None:
         "desktop-file-icon-not-installed",
     }
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
+    found_warnings: set[str] = set(ret["warnings"])
 
     assert "desktop-file-low-quality-category" in found_warnings
     for err in errors:

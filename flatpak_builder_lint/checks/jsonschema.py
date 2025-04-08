@@ -1,5 +1,6 @@
 import importlib.resources
 import json
+from typing import Any
 
 import jsonschema
 import jsonschema.exceptions
@@ -9,7 +10,7 @@ from . import Check
 
 
 class JSONSchemaCheck(Check):
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         with (
             importlib.resources.files(staticfiles)
             .joinpath("flatpak-manifest.schema.json")

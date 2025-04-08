@@ -1,5 +1,6 @@
 import os
 import re
+from typing import Any
 
 from .. import builddir, config, domainutils
 from . import Check
@@ -75,7 +76,7 @@ class AppIDCheck(Check):
                     self.errors.add("appid-url-not-reachable")
                     self.info.add(f"appid-url-not-reachable: Tried {url_https}")
 
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         appid = manifest.get("id")
         is_extension = manifest.get("build-extension", False)
 

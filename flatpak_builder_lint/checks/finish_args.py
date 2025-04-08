@@ -1,6 +1,7 @@
 import re
 import tempfile
 from collections import defaultdict
+from typing import Any
 
 import gi
 
@@ -387,7 +388,7 @@ class FinishArgsCheck(Check):
                 + " full system or session bus"
             )
 
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         appid = manifest.get("id")
 
         is_baseapp = bool(
@@ -434,7 +435,9 @@ class FinishArgsCheck(Check):
         if not metadata:
             return
 
-        permissions = metadata.get("permissions", {})
+        raw_perms = metadata.get("permissions")
+        permissions: dict[str, set[str]] = raw_perms if isinstance(raw_perms, dict) else {}
+
         if not permissions and not appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
             self.errors.add("finish-args-not-defined")
             return
@@ -454,7 +457,8 @@ class FinishArgsCheck(Check):
                 metadata = builddir.parse_metadata(tmpdir)
                 if not metadata:
                     return
-                permissions = metadata.get("permissions", {})
+                raw_perms = metadata.get("permissions")
+                permissions: dict[str, set[str]] = raw_perms if isinstance(raw_perms, dict) else {}
                 if not (permissions or appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)):
                     self.errors.add("finish-args-not-defined")
                     return

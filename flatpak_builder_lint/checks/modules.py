@@ -1,4 +1,5 @@
 import re
+from typing import Any
 
 from . import Check
 
@@ -7,12 +8,12 @@ def _is_git_commit_hash(s: str) -> bool:
     return re.match(r"[a-f0-9]{4,40}", s) is not None
 
 
-def _has_bundled_extension(manifest: dict) -> bool:
+def _has_bundled_extension(manifest: dict[str, Any]) -> bool:
     return any(ext.get("bundle") is True for ext in manifest.get("add-extensions", {}).values())
 
 
 class ModuleCheck(Check):
-    def check_source(self, module_name: str, source: dict) -> None:
+    def check_source(self, module_name: str, source: dict[str, str]) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
 
@@ -45,7 +46,7 @@ class ModuleCheck(Check):
             if branch and not _is_git_commit_hash(branch):
                 self.errors.add(f"module-{module_name}-source-git-branch")
 
-    def check_module(self, module: dict) -> None:
+    def check_module(self, module: dict[str, Any]) -> None:
         name = module.get("name")
         buildsystem = module.get("buildsystem", "autotools")
 
@@ -80,7 +81,7 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         if manifest and _has_bundled_extension(manifest):
             self.errors.add("manifest-has-bundled-extension")
             self.info.add(

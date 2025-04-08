@@ -17,12 +17,14 @@ def read_appid(id_input: str) -> set[str]:
     return app_ids
 
 
-def generate_exceptions(app_ids: set, exceptions: set, reason: str) -> dict[str, dict[str, str]]:
+def generate_exceptions(
+    app_ids: set[str], exceptions: set[str], reason: str
+) -> dict[str, dict[str, str]]:
     reason = reason if reason else "Predates the linter rule"
     return {app: {ex: reason for ex in exceptions} for app in app_ids}
 
 
-def main(appid: str, exceptions: set, reason: str) -> None:
+def main(appid: str, exceptions: set[str], reason: str) -> None:
     reason = reason if reason else "Predates the linter rule"
 
     app_ids = read_appid(appid)

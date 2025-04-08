@@ -1,4 +1,5 @@
 import tempfile
+from typing import Any
 
 from .. import builddir, domainutils, ostree
 from . import Check
@@ -13,7 +14,7 @@ class EolRuntimeCheck(Check):
         if decomp_ref in eols_runtimes:
             self.warnings.add(f"runtime-is-eol-{splits[0]}-{splits[2]}")
 
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         runtime_id = manifest.get("runtime")
         runtime_br = manifest.get("runtime-version")
 

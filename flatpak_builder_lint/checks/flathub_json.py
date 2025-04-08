@@ -1,4 +1,5 @@
 import tempfile
+from typing import Any
 
 from .. import builddir, config, ostree
 from . import Check
@@ -7,7 +8,7 @@ from . import Check
 class FlathubJsonCheck(Check):
     arches = config.FLATHUB_SUPPORTED_ARCHES
 
-    def _check_if_extra_data(self, modules: list) -> bool:
+    def _check_if_extra_data(self, modules: list[dict[str, Any]]) -> bool:
         for module in modules:
             if sources := module.get("sources"):
                 for source in sources:
@@ -20,7 +21,11 @@ class FlathubJsonCheck(Check):
         return False
 
     def _validate(
-        self, appid: str, flathub_json: dict, is_extra_data: bool, is_extension: bool
+        self,
+        appid: str,
+        flathub_json: dict[str, str | bool | list[str]],
+        is_extra_data: bool,
+        is_extension: bool,
     ) -> None:
         is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
 
@@ -41,18 +46,20 @@ class FlathubJsonCheck(Check):
         if eol_rebase and not eol:
             self.errors.add("flathub-json-eol-rebase-without-message")
 
-        if only_arches is not None and len(only_arches) == 0:
+        if only_arches is not None and not isinstance(only_arches, bool) and len(only_arches) == 0:
             self.errors.add("flathub-json-only-arches-empty")
 
-        if skip_arches is not None and len(set(self.arches).intersection(skip_arches)) == len(
-            self.arches
+        if (
+            skip_arches is not None
+            and isinstance(skip_arches, set)
+            and len(set(self.arches).intersection(skip_arches)) == len(self.arches)
         ):
             self.errors.add("flathub-json-excluded-all-arches")
 
         if isinstance(publish_delay, int) and publish_delay < 3 and not is_extra_data:
             self.errors.add("flathub-json-modified-publish-delay")
 
-    def check_manifest(self, manifest: dict) -> None:
+    def check_manifest(self, manifest: dict[str, Any]) -> None:
         flathub_json = manifest.get("x-flathub")
         appid = manifest.get("id")
         if not (flathub_json and appid):

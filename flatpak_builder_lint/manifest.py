@@ -2,6 +2,7 @@ import errno
 import json
 import os
 import subprocess
+from typing import Any
 
 from . import config
 
@@ -38,7 +39,7 @@ def get_git_toplevel(path: str) -> str | None:
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
-def show_manifest(filename: str) -> dict:
+def show_manifest(filename: str) -> dict[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
@@ -52,7 +53,7 @@ def show_manifest(filename: str) -> dict:
         raise Exception(ret.stderr.decode("utf-8"))
 
     manifest = ret.stdout.decode("utf-8")
-    manifest_json: dict = json.loads(manifest)
+    manifest_json: dict[str, Any] = json.loads(manifest)
     manifest_json["x-manifest-filename"] = filename
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))

@@ -1,5 +1,6 @@
 import os
 from functools import cache
+from typing import Any
 
 import gi
 import requests
@@ -55,7 +56,9 @@ def fetch_summary_bytes(url: str) -> bytes:
 
 
 @cache
-def get_summary_obj(url: str) -> tuple[dict, dict]:
+def get_summary_obj(
+    url: str,
+) -> tuple[list[tuple[str, tuple[int, list[int], dict[str, str | int]]]], dict[str, Any]]:
     summary = GLib.Bytes.new(fetch_summary_bytes(url))
     refs, metadata = GLib.Variant.new_from_bytes(
         GLib.VariantType.new(OSTree.SUMMARY_GVARIANT_STRING), summary, True
@@ -65,7 +68,7 @@ def get_summary_obj(url: str) -> tuple[dict, dict]:
 
 
 @cache
-def get_appids_from_summary(url: str) -> set:
+def get_appids_from_summary(url: str) -> set[str]:
     refs, _ = get_summary_obj(url)
     return {ref.split("/")[1] for ref, _ in (refs or []) if not ignore_ref(ref)}
 

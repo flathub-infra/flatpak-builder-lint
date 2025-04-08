@@ -8,7 +8,7 @@ from gi.repository import GLib
 from . import config
 
 
-def parse_metadata(builddir: str) -> dict:
+def parse_metadata(builddir: str) -> dict[str, str | dict[str, set[str]]]:
     if not os.path.exists(builddir):
         raise OSError(errno.ENOENT, f"No such build directory: {builddir}")
 
@@ -19,7 +19,7 @@ def parse_metadata(builddir: str) -> dict:
     key_file = GLib.KeyFile.new()
     key_file.load_from_file(metadata_path, GLib.KeyFileFlags.NONE)
 
-    metadata: dict = {}
+    metadata: dict[str, str | dict[str, set[str]]] = {}
 
     group = key_file.get_start_group()
     if group is None:
@@ -31,26 +31,25 @@ def parse_metadata(builddir: str) -> dict:
             metadata["runtime"] = key_file.get_value(group, "runtime")
         elif "sdk" in keys:
             metadata["runtime"] = key_file.get_value(group, "sdk")
-        else:
-            metadata["runtime"] = None
+
     elif group == "Application":
         metadata["runtime"] = key_file.get_value(group, "runtime")
 
     metadata["type"] = group.lower()
     metadata["name"] = key_file.get_value(group, "name")
 
-    environment: dict = defaultdict(set)
-    permissions: dict = defaultdict(set)
+    environment: dict[str, set[str]] = defaultdict(set)
+    permissions: dict[str, set[str]] = defaultdict(set)
 
     if (
         key_file.has_group("Application")
         and "required-flatpak" in key_file.get_keys("Application")[0]
     ):
-        permissions["required-flatpak"] = key_file.get_value("Application", "required-flatpak")
+        permissions["required-flatpak"] = {key_file.get_value("Application", "required-flatpak")}
 
     if key_file.has_group("Context"):
         for key in key_file.get_keys("Context")[0]:
-            permissions[key] = key_file.get_string_list("Context", key)
+            permissions[key] = set(key_file.get_string_list("Context", key))
 
     if key_file.has_group("Session Bus Policy"):
         for key in key_file.get_keys("Session Bus Policy")[0]:
@@ -81,7 +80,7 @@ def parse_metadata(builddir: str) -> dict:
 
     if key_file.has_group("Environment"):
         for key in key_file.get_keys("Environment")[0]:
-            environment[key] = key_file.get_string_list("Environment", key)
+            environment[key] = set(key_file.get_string_list("Environment", key))
 
     metadata["environment"] = environment
 
@@ -94,8 +93,9 @@ def parse_metadata(builddir: str) -> dict:
 def infer_appid(path: str) -> str | None:
     metadata = parse_metadata(path)
     if metadata:
-        return metadata.get("name")
-
+        name = metadata.get("name")
+        if isinstance(name, str):
+            return name
     return None
 
 
@@ -109,7 +109,7 @@ def get_runtime(path: str) -> str | None:
 
 def get_flathub_json(path: str) -> dict[str, str | bool | list[str]]:
     flathub_json_path = f"{path}/files/{config.FLATHUB_JSON_FILE}"
-    flathub_json: dict = {}
+    flathub_json: dict[str, str | bool | list[str]] = {}
 
     if os.path.exists(flathub_json_path):
         with open(flathub_json_path) as f:
