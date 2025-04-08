@@ -160,7 +160,7 @@ class FinishArgsCheck(Check):
                 for prefix in (
                     "xdg-run/dconf",
                     "~/.config/dconf",
-                    "home/dconf",
+                    "home/.config/dconf",
                 )
             ) or re.match("^/run/user/.*/dconf", fs):
                 self.errors.add("finish-args-direct-dconf-path")
