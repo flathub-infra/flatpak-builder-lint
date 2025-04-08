@@ -229,6 +229,7 @@ class FinishArgsCheck(Check):
                         "/var/data",
                         "/var/tmp",  # noqa: S108
                         "/var/lib/flatpak",
+                        "/var/home",
                     )
                 )
                 and _fs_value_matches_prefix(fs, "/var")
