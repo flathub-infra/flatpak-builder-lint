@@ -11,6 +11,11 @@ gi.require_version("AppStream", "1.0")
 from gi.repository import AppStream  # noqa: E402
 
 
+def _fs_value_matches_prefix(input_path: str, prefix: str) -> bool:
+    pattern = rf"^{re.escape(prefix)}(?:/.*)?(?::(create|rw|ro))?$"
+    return re.match(pattern, input_path) is not None
+
+
 class FinishArgsCheck(Check):
     def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
         init_ver = finish_args.get("required-flatpak")
@@ -107,72 +112,126 @@ class FinishArgsCheck(Check):
                     )
 
         for fs in finish_args["filesystem"]:
-            for resv_dir in [
-                ".flatpak-info",
-                "app",
-                "bin",
-                "dev",
-                "etc",
-                "lib",
-                "lib32",
-                "lib64",
-                "proc",
-                "root",
-                "run/flatpak",
-                "run/host",
-                "sbin",
-                "usr",
-            ]:
-                if fs.startswith(f"/{resv_dir}"):
-                    self.errors.add(f"finish-args-reserved-{resv_dir}")
+            for resv_dir in (
+                "/.flatpak-info",
+                "/app",
+                "/bin",
+                "/dev",
+                "/etc",
+                "/lib",
+                "/lib32",
+                "/lib64",
+                "/proc",
+                "/root",
+                "/run/flatpak",
+                "/run/host",
+                "/sbin",
+                "/usr",
+            ):
+                if _fs_value_matches_prefix(fs, resv_dir):
+                    self.errors.add(f"finish-args-reserved-{resv_dir.lstrip('/')}")
                     self.info.add(
-                        f"finish-args-reserved-{resv_dir}: finish-args has filesystem access"
-                        + f" to {resv_dir} which is reserved internally for Flatpak"
+                        f"finish-args-reserved-{resv_dir.lstrip('/')}: finish-args has filesystem"
+                        + f" access to {resv_dir} which is reserved internally for Flatpak"
                     )
-            if fs.startswith(("/home", "/var/home")):
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "/home",
+                    "/var/home",
+                )
+            ):
                 self.errors.add("finish-args-absolute-home-path")
                 self.info.add(
                     "finish-args-absolute-home-path: finish-args has filesystem access"
                     + " starting with /home or /var/home"
                 )
+
             if re.match(r"^/run/media(?=/\w).+$", fs):
                 self.errors.add("finish-args-absolute-run-media-path")
                 self.info.add(
                     "finish-args-absolute-home-path: finish-args has filesystem access"
                     + " that is a subdirectory of /run/media"
                 )
-            if fs.startswith(("xdg-run/dconf", "~/.config/dconf", "home/dconf")) or re.match(
-                "^/run/user/.*/dconf", fs
-            ):
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "xdg-run/dconf",
+                    "~/.config/dconf",
+                    "home/dconf",
+                )
+            ) or re.match("^/run/user/.*/dconf", fs):
                 self.errors.add("finish-args-direct-dconf-path")
                 self.info.add(
                     "finish-args-direct-dconf-path: finish-args"
                     + " has direct access to host dconf path"
                 )
 
-            if fs.startswith(("~/.var/app", "home/.var/app")):
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.var/app",
+                    "home/.var/app",
+                )
+            ):
                 self.errors.add("finish-args-flatpak-appdata-folder-access")
 
-            if fs.startswith(("~/.icons", "home/.icons")):
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.icons",
+                    "home/.icons",
+                )
+            ):
                 self.errors.add("finish-args-legacy-icon-folder-permission")
 
-            if fs.startswith(("~/.fonts", "home/.fonts")):
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.fonts",
+                    "home/.fonts",
+                )
+            ):
                 self.errors.add("finish-args-legacy-font-folder-permission")
 
-            if fs.startswith(("~/.themes", "home/.themes")):
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.themes",
+                    "home/.themes",
+                )
+            ):
                 self.errors.add("finish-args-incorrect-theme-folder-permission")
 
-            if fs.startswith("/var/lib/flatpak"):
+            if _fs_value_matches_prefix(fs, "/var/lib/flatpak"):
                 self.errors.add("finish-args-flatpak-system-folder-access")
 
-            if fs.startswith(("~/.local/share/flatpak", "home/.local/share/flatpak")):
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.local/share/flatpak",
+                    "home/.local/share/flatpak",
+                )
+            ):
                 self.errors.add("finish-args-flatpak-user-folder-access")
 
-            if fs.startswith("/tmp"):  # noqa: S108
+            if _fs_value_matches_prefix(fs, "/tmp"):  # noqa: S108
                 self.errors.add("finish-args-host-tmp-access")
 
-            if fs.startswith("/var") and not fs.startswith(
-                ("/var/cache", "/var/config", "/var/data", "/var/tmp", "/var/lib/flatpak")  # noqa: S108
+            if (
+                fs.startswith("/var")
+                and not fs.startswith(
+                    (
+                        "/var/cache",
+                        "/var/config",
+                        "/var/data",
+                        "/var/tmp",  # noqa: S108
+                        "/var/lib/flatpak",
+                    )
+                )
+                and _fs_value_matches_prefix(fs, "/var")
             ):
                 self.errors.add("finish-args-host-var-access")
 
