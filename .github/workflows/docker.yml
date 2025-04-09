@@ -194,6 +194,8 @@ jobs:
     steps:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
       - name: Login to ghcr.io
         # 3.4.0
