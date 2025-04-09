@@ -74,7 +74,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+          PR_NUM: ${{ github.event.pull_request.number || github.event.issue.number }}
 
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
