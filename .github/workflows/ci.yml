@@ -62,6 +62,17 @@ jobs:
       - changes
     if: ${{ needs.changes.outputs.exceptions == 'true' }}
     steps:
+      - name: Add exceptions label
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! gh pr view --json labels -q '.labels[].name' "$PR_NUM"|grep -qE "^exceptions$"; then
+            gh pr edit "$PR_NUM" --add-label "exceptions"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
