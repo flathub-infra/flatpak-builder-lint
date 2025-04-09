@@ -2,6 +2,11 @@ name: Docker
 
 on:
   workflow_call:
+    secrets:
+      FLATHUB_ORG_USER:
+        required: true
+      FLATHUB_ORG_TOKEN:
+        required: true
   workflow_dispatch:
 
 jobs:
