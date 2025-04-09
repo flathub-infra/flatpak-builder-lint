@@ -65,6 +65,11 @@ jobs:
       - changes
     if: ${{ needs.changes.outputs.exceptions == 'true' }}
     steps:
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
       - name: Add exceptions label
         if: github.event_name == 'pull_request'
         run: |
@@ -75,11 +80,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
-
-        # 4.2.2
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          persist-credentials: false
 
         # 5.4.0
       - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
