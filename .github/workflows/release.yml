@@ -10,6 +10,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    timeout-minutes: 20
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
     steps:
         # 4.2.2

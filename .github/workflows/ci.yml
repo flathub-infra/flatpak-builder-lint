@@ -58,6 +58,9 @@ jobs:
   exceptions:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      pull-requests: write
+      contents: read
     needs:
       - changes
     if: ${{ needs.changes.outputs.exceptions == 'true' }}
@@ -96,6 +99,8 @@ jobs:
             platform: arm64
     runs-on: ${{matrix.os}}
     timeout-minutes: 120
+    permissions:
+      contents: read
     concurrency:
       group: ci-${{ matrix.platform }}-${{ github.ref }}
       cancel-in-progress: true
@@ -311,6 +316,7 @@ jobs:
 
   docker-call:
     permissions:
+      contents: read
       packages: write
     needs:
       - changes

@@ -19,6 +19,7 @@ jobs:
       group: ${{matrix.os}}-${{ github.ref }}-docker
       cancel-in-progress: true
     permissions:
+      contents: read
       packages: write
     steps:
         # 4.2.2
@@ -188,6 +189,7 @@ jobs:
       group: ${{ github.ref }}-docker_manifest
       cancel-in-progress: true
     permissions:
+      contents: read
       packages: write
     steps:
         # 4.2.2
