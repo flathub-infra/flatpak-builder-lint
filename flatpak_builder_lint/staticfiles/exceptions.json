@@ -3,7 +3,7 @@
         "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
     },
     "org.flathub.exceptions": {
-        "appid-filename-mismatch": "required as I like pies",
+        "appid-filename-mismatch": "Test",
         "toplevel-no-command": "another nonsensical reason",
         "flathub-json-deprecated-i386-arch-included": "this would be a warning but is also skipped"
     },
