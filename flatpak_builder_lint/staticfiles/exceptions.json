@@ -4263,6 +4263,6 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs acccess to xdg-data/flatpak/db"
     },
     "io.github.ilya_zlobintsev.LACT": {
-        "finish-args-flatpak-spawn-access": "Required to set up the host service for GPU control."
+        "finish-args-flatpak-spawn-access": "Foobar"
     }
 }
