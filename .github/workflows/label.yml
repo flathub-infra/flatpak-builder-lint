@@ -19,7 +19,6 @@ jobs:
       pull-requests: write
     steps:
       - name: Add exceptions label
-        if: github.event_name == 'pull_request'
         run: |
           if ! gh pr view --json labels -q '.labels[].name' "$PR_NUM"|grep -qE "^exceptions$"; then
             gh pr edit "$PR_NUM" --add-label "exceptions"
