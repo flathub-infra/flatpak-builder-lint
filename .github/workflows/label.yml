@@ -1,0 +1,30 @@
+name: Label pull requests
+
+# WARNING: Do NOT use org level secrets or checkout any code in this
+# workflow
+
+on:
+  pull_request_target:
+    types: [opened]
+    branches:
+      - master
+    paths:
+      - 'flatpak_builder_lint/staticfiles/exceptions.json'
+  workflow_dispatch:
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add exceptions label
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! gh pr view --json labels -q '.labels[].name' "$PR_NUM"|grep -qE "^exceptions$"; then
+            gh pr edit "$PR_NUM" --add-label "exceptions"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUM: ${{ github.event.pull_request.number || github.event.issue.number }}
