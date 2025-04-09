@@ -439,7 +439,7 @@ class FinishArgsCheck(Check):
         permissions: dict[str, set[str]] = raw_perms if isinstance(raw_perms, dict) else {}
 
         if not permissions and not appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
-            self.errors.add("finish-args-not-defined")
+            self.errors.add("finish-args-not-defineddd")
             return
 
         self._validate(appid, permissions)

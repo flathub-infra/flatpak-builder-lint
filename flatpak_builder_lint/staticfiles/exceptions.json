@@ -4232,7 +4232,7 @@
         "finish-args-host-var-access": "Predates the linter rule"
     },
     "io.github.plrigaux.sysd-manager": {
-        "finish-args-host-var-access": "Predates the linter rule"
+        "finish-args-host-var-access": "Test"
     },
     "io.github.rafaelfassi.QLogExplorer": {
         "finish-args-host-var-access": "Predates the linter rule"
