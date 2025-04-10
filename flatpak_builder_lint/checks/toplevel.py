@@ -49,4 +49,8 @@ class TopLevelCheck(Check):
             ]
             if ext_gitmodules:
                 self.errors.add("external-gitmodule-url-found")
-                self.info.add(f"external-gitmodule-url-found: {ext_gitmodules}")
+                self.info.add(
+                    "external-gitmodule-url-found: Only flatpak, flathub"
+                    + " and flathub-infra gitmodules are allowed in Flathub manifest"
+                    + " repo {ext_gitmodules}"
+                )
