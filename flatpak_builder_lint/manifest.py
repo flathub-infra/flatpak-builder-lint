@@ -70,6 +70,55 @@ def get_github_repo_namespace(path: str) -> str | None:
     return namespace
 
 
+def get_git_large_files(repo_path: str, min_size_mb: int = 20) -> set[str]:
+    files: set[str] = set()
+
+    if not is_git_directory(repo_path):
+        return files
+
+    try:
+        rev_list = subprocess.run(
+            ["git", "rev-list", "--objects", "--all"],
+            stdout=subprocess.PIPE,
+            cwd=repo_path,
+            text=True,
+            check=True,
+        )
+
+        lines = rev_list.stdout.strip().split("\n")
+        sha_paths: dict[str, str] = {}
+        for line in lines:
+            parts = line.strip().split(maxsplit=1)
+            if len(parts) == 2:
+                sha, path = parts
+                sha_paths[sha] = path
+
+        batch_input = "\n".join(sha_paths.keys())
+        cat_file = subprocess.run(
+            ["git", "cat-file", "--batch-check=%(objectname) %(objecttype) %(objectsize)"],
+            input=batch_input,
+            stdout=subprocess.PIPE,
+            cwd=repo_path,
+            text=True,
+            check=True,
+        )
+
+        min_size_bytes = min_size_mb * 1024 * 1024
+
+        for line in cat_file.stdout.strip().split("\n"):
+            sha, obj_type, size_str = line.strip().split()
+            size = int(size_str)
+            if obj_type == "blob" and size >= min_size_bytes:
+                path = sha_paths.get(sha, "None")
+                if path != "None":
+                    files.add(path)
+
+    except subprocess.CalledProcessError:
+        pass
+
+    return files
+
+
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
@@ -104,6 +153,11 @@ def show_manifest(filename: str) -> dict[str, Any]:
             manifest_json["x-flathub"] = flathub_json
 
     github_ns = get_github_repo_namespace(manifest_basedir)
+
+    if github_ns in ("flathub", "flathub-infra"):
+        large_files = get_git_large_files(manifest_basedir)
+        if large_files:
+            manifest_json["x-large-git-files"] = [os.path.basename(file) for file in large_files]
 
     if os.path.exists(gitmodules_path) and github_ns in ("flathub", "flathub-infra"):
         with open(gitmodules_path) as f:
