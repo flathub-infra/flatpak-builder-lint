@@ -43,12 +43,10 @@ class TopLevelCheck(Check):
             self.errors.add("toplevel-no-modules")
 
         gitmodules = manifest.get("x-gitmodules")
-        if not gitmodules:
-            return
-
-        ext_gitmodules = [
-            m for m in gitmodules if not m.startswith(config.FLATHUB_ALLOWED_GITMODULE_URLS)
-        ]
-        if ext_gitmodules:
-            self.errors.add("external-gitmodule-url-found")
-            self.info.add(f"external-gitmodule-url-found: {ext_gitmodules}")
+        if gitmodules:
+            ext_gitmodules = [
+                m for m in gitmodules if not m.startswith(config.FLATHUB_ALLOWED_GITMODULE_URLS)
+            ]
+            if ext_gitmodules:
+                self.errors.add("external-gitmodule-url-found")
+                self.info.add(f"external-gitmodule-url-found: {ext_gitmodules}")
