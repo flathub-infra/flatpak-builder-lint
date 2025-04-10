@@ -54,3 +54,12 @@ class TopLevelCheck(Check):
                     + " and flathub-infra gitmodules are allowed in Flathub manifest"
                     + " repo {ext_gitmodules}"
                 )
+
+        large_files = manifest.get("x-large-git-files")
+        if large_files:
+            for file in large_files:
+                self.errors.add(f"large-git-file-found-{file}")
+                self.info.add(
+                    f"large-git-file-found-{file}: Files larger than 20 MB are"
+                    " not allowed in Flathub manifest git repo"
+                )
