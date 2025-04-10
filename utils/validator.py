@@ -82,7 +82,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             for i in data.values()
             for j in i
             if not j.startswith(
-                ("module-", "finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-")
+                (
+                    "module-",
+                    "finish-args-arbitrary-xdg-",
+                    "finish-args-unnecessary-xdg-",
+                    "large-git-file-found-",
+                )
             )
         } - {
             "*",
