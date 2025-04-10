@@ -42,24 +42,20 @@ class TopLevelCheck(Check):
         if not manifest.get("modules"):
             self.errors.add("toplevel-no-modules")
 
-        gitmodules = manifest.get("x-gitmodules")
-        if gitmodules:
-            ext_gitmodules = [
-                m for m in gitmodules if not m.startswith(config.FLATHUB_ALLOWED_GITMODULE_URLS)
-            ]
-            if ext_gitmodules:
-                self.errors.add("external-gitmodule-url-found")
-                self.info.add(
-                    "external-gitmodule-url-found: Only flatpak, flathub"
-                    + " and flathub-infra gitmodules are allowed in Flathub manifest"
-                    + " repo {ext_gitmodules}"
-                )
+        gitmodules = manifest.get("x-gitmodules", [])
+        ext_gitmodules = [
+            m for m in gitmodules if not m.startswith(config.FLATHUB_ALLOWED_GITMODULE_URLS)
+        ]
+        if ext_gitmodules:
+            self.errors.add("external-gitmodule-url-found")
+            self.info.add(
+                "external-gitmodule-url-found: Only flatpak, flathub, and flathub-infra "
+                f"gitmodules are allowed in manifest git repo: {ext_gitmodules}"
+            )
 
-        large_files = manifest.get("x-large-git-files")
-        if large_files:
-            for file in large_files:
-                self.errors.add(f"large-git-file-found-{file}")
-                self.info.add(
-                    f"large-git-file-found-{file}: Files larger than 20 MB are"
-                    " not allowed in Flathub manifest git repo"
-                )
+        for file in manifest.get("x-large-git-files", []):
+            self.errors.add(f"large-git-file-found-{file}")
+            self.info.add(
+                f"large-git-file-found-{file}: Files larger than 20 MB are"
+                + " not allowed in manifest git repo"
+            )
