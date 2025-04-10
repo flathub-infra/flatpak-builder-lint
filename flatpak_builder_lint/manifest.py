@@ -120,18 +120,25 @@ def get_git_large_files(repo_path: str, min_size_mb: int = 20) -> set[str]:
 
 
 def get_directory_size(path: str) -> int:
-    total = 0
-    for dirpath, _, filenames in os.walk(path):
-        if ".git" in dirpath:
-            continue
-        for f in filenames:
-            try:
-                fp = os.path.join(dirpath, f)
-                if os.path.isfile(fp):
-                    total += os.path.getsize(fp)
-            except OSError:
-                pass
-    return total
+    def get_size(directory: str) -> int:
+        total = 0
+        if not os.path.exists(directory):
+            return 0
+
+        for dirpath, _, filenames in os.walk(directory, topdown=True):
+            for f in filenames:
+                try:
+                    fp = os.path.join(dirpath, f)
+                    if os.path.isfile(fp):
+                        total += os.path.getsize(fp)
+                except OSError:
+                    pass
+        return total
+
+    total_size = get_size(path)
+    git_size = get_size(os.path.join(path, ".git"))
+
+    return total_size - git_size
 
 
 # json-glib supports non-standard syntax like // comments. Bail out and
