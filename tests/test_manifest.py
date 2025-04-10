@@ -408,6 +408,7 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     errors = {
         "large-git-file-found-file.txt",
         "external-gitmodule-url-found",
+        "manifest-directory-too-large",
     }
     for err in errors:
         assert err in found_errors

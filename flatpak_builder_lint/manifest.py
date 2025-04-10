@@ -119,6 +119,21 @@ def get_git_large_files(repo_path: str, min_size_mb: int = 20) -> set[str]:
     return files
 
 
+def get_directory_size(path: str) -> int:
+    total = 0
+    for dirpath, _, filenames in os.walk(path):
+        if ".git" in dirpath:
+            continue
+        for f in filenames:
+            try:
+                fp = os.path.join(dirpath, f)
+                if os.path.isfile(fp):
+                    total += os.path.getsize(fp)
+            except OSError:
+                pass
+    return total
+
+
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
@@ -158,6 +173,9 @@ def show_manifest(filename: str) -> dict[str, Any]:
         large_files = get_git_large_files(manifest_basedir)
         if large_files:
             manifest_json["x-large-git-files"] = [os.path.basename(file) for file in large_files]
+
+        if get_directory_size(manifest_basedir) > (25 * 1024 * 1024):
+            manifest_json["x-manifest-dir-large"] = True
 
     if os.path.exists(gitmodules_path) and github_ns in ("flathub", "flathub-infra"):
         with open(gitmodules_path) as f:
