@@ -1,11 +1,43 @@
 import os
 import shutil
+import subprocess
 import tempfile
 from collections.abc import Generator
 
 import pytest
 
 from flatpak_builder_lint import checks, cli
+
+
+def create_git_repo(path: str) -> None:
+    subprocess.run(["git", "init"], cwd=path, check=True)
+    subprocess.run(["git", "config", "user.name", "Test User"], cwd=path, check=True)
+    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=path, check=True)
+    subprocess.run(["git", "add", "."], cwd=path, check=True)
+    subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=path, check=True)
+    subprocess.run(
+        [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/flathub-infra/flatpak-builder-lint.git",
+        ],
+        cwd=path,
+        check=True,
+    )
+
+
+def set_git_remote_url(path: str, new_url: str) -> None:
+    subprocess.run(["git", "remote", "remove", "origin"], cwd=path, check=False)
+    subprocess.run(["git", "remote", "add", "origin", new_url], cwd=path, check=True)
+
+
+def create_file(path: str, size_mb: int = 10) -> None:
+    filepath = os.path.join(path, "file.txt")
+    with open(filepath, "wb") as f:
+        f.seek(size_mb * 1024 * 1024 - 1)
+        f.write(b"\0")
 
 
 @pytest.fixture(scope="module")
@@ -365,3 +397,22 @@ def test_manifest_eol_runtime() -> None:
     ret = run_checks("tests/manifests/eol_runtime.json")
     found_warnings = ret["warnings"]
     assert "runtime-is-eol-org.gnome.Sdk-40" in found_warnings
+
+
+def test_manifest_in_git_repo(tmp_testdir: str) -> None:
+    repo_path = os.path.abspath(os.path.join(tmp_testdir, "tests", "manifests", "git-repo-checks"))
+    create_file(repo_path, 30)
+    create_git_repo(repo_path)
+    ret = run_checks("tests/manifests/git-repo-checks/git-repo-checks.json")
+    found_errors = set(ret["errors"])
+    errors = {
+        "large-git-file-found-file.txt",
+        "external-gitmodule-url-found",
+    }
+    for err in errors:
+        assert err in found_errors
+    set_git_remote_url(repo_path, "https://example.org/foobar.git")
+    ret = run_checks("tests/manifests/git-repo-checks/git-repo-checks.json")
+    found_errors = set(ret["errors"])
+    for err in errors:
+        assert err not in found_errors
