@@ -990,6 +990,9 @@
     "com.gitlab.zehkira.Myuzi": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "org.catacombing.kumo": {
+        "finish-args-only-wayland": "this program doesn't have x11 support"
+    },
     "org.codeberg.dimkard.glossaico": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
