@@ -1,4 +1,10 @@
 {
+    "io.github.TeamWheelWizard.WheelWizard": {
+        "finish-args-unnecessary-xdg-config-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin config files (e.g. for graphics settings)",
+        "finish-args-unnecessary-xdg-data-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin Mii and game/mod data files",
+        "finish-args-flatpak-appdata-folder-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
+        "finish-args-flatpak-spawn-access": "this program needs to be able to run host commands as specified in the manifest's wrapper scripts to support Flatpak and native Dolphin installations"
+    },
     "io.github.mhogomchungu.sirikali": {
         "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
     },
