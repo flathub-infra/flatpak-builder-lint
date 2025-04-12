@@ -3909,7 +3909,8 @@
         "flathub-json-automerge-enabled": "Verified application"
     },
     "io.github.limo_app.limo": {
-        "finish-args-flatpak-spawn-access": "Required for running user defined modding tools, which take the form of arbitrary commands to be run on the host"
+        "finish-args-flatpak-spawn-access": "Required for running user defined modding tools, which take the form of arbitrary commands to be run on the host",
+        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule. Required for accessing apps installed to the default directory by Flatpak Steam"
     },
     "io.github.wivrn.wivrn": {
         "finish-args-unnecessary-xdg-config-openvr-create-access": "Required to set the current OpenVR runtime",
