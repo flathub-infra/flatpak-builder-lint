@@ -42,6 +42,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-legacy-icon-folder-permission",
     "finish-args-legacy-font-folder-permission",
     "finish-args-incorrect-theme-folder-permission",
+    "finish-args-host-tmp-acces",
 }
 
 
