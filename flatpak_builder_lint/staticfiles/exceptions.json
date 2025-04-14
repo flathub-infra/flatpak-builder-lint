@@ -2008,7 +2008,7 @@
     },
     "it.mijorus.gearlever": {
         "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu",
-        "finish-args-host-tmp-acces": "Required to extract some large AppImages into the /tmp directory: the tmpfs under /run/user/1000 might be too small"
+        "finish-args-host-tmp-access": "Required to extract some large AppImages into the /tmp directory: the tmpfs under /run/user/1000 might be too small"
     },
     "page.codeberg.JakobDev.jdTextEdit": {
         "finish-args-flatpak-spawn-access": "Neded to execute external commands"
