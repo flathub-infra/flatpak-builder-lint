@@ -2850,6 +2850,9 @@
     "org.apache.netbeans": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
+    "org.azahar_emu.Azahar": {
+        "finish-args-unnecessary-xdg-data-applications-create-access": "Azahar has a feature which creates .desktop files in ~/.local/share/applications"
+    },
     "org.chrisoft.qmidiplayer": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
