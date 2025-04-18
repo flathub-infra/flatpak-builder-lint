@@ -141,6 +141,26 @@ def get_directory_size(path: str) -> int:
     return total_size - git_size
 
 
+def get_repo_tree_size(path: str) -> int:
+    try:
+        result = subprocess.run(
+            ["git", "ls-tree", "-r", "-l", "HEAD"],
+            cwd=path,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            check=True,
+        )
+        total = 0
+        for line in result.stdout.splitlines():
+            parts = line.split()
+            if len(parts) >= 4 and parts[-2].isdigit():
+                total += int(parts[-2])
+        return total
+    except subprocess.CalledProcessError:
+        return 0
+
+
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
@@ -181,7 +201,7 @@ def show_manifest(filename: str) -> dict[str, Any]:
         if large_files:
             manifest_json["x-large-git-files"] = [os.path.basename(file) for file in large_files]
 
-        if get_directory_size(manifest_basedir) > (25 * 1024 * 1024):
+        if get_repo_tree_size(manifest_basedir) > (25 * 1024 * 1024):
             manifest_json["x-manifest-dir-large"] = True
 
     if os.path.exists(gitmodules_path) and github_ns in ("flathub", "flathub-infra"):
