@@ -50,6 +50,6 @@ repos:
         stages:
           - "pre-push"
         description: Run pytest
-        entry: uv run --frozen -q pytest
+        entry: uv run --frozen -q pytest --ff --exitfirst
         language: system
         pass_filenames: false
