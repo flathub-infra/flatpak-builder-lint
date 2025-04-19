@@ -44,6 +44,7 @@ repos:
         entry: uv run --frozen -q mypy .
         language: system
         pass_filenames: false
+        files: \.py$
       - id: py-test
         name: pytest
         stages:
