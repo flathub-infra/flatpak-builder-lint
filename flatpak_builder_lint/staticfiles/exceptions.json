@@ -1225,6 +1225,9 @@
     "com.raggesilver.BlackBox": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
+    "com.ranfdev.DistroShelf": {
+        "finish-args-flatpak-spawn-access": "needed to run distrobox commands and manage containers"
+    },
     "com.rawtherapee.RawTherapee": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule"
