@@ -2166,8 +2166,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kamoso": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
@@ -2181,8 +2179,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kbibtex": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kblackbox": {
@@ -2322,8 +2318,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.krename": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kreversi": {
@@ -2379,8 +2373,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kxstitch": {
-        "appstream-failed-validation": "grandfathered due to unannounced linter changes",
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },

@@ -9,7 +9,6 @@ KNOWN_EXCEPTIONS = {
     "appid-too-many-components-for-app",
     "appid-url-not-reachable",
     "appid-uses-code-hosting-domain",
-    "appstream-failed-validation",
     "appstream-id-mismatch-flatpak-id",
     "appstream-metainfo-missing",
     "appstream-missing-developer-name",
