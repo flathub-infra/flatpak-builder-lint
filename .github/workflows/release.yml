@@ -55,11 +55,11 @@ jobs:
           client-payload: '{"sha": "${{ github.sha }}"}'
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
-      - name: Trigger workflow in flathub-infra/flatpak-github-actions
+      - name: Trigger workflow in flathub-infra/actions-images
         if: steps.check_job.outputs.run == 'true'
         # 3.0.0
         uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0
         with:
-          repository: flathub-infra/flatpak-github-actions
+          repository: flathub-infra/actions-images
           event-type: trigger-workflow
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
