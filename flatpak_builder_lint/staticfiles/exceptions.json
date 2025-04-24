@@ -4276,5 +4276,13 @@
     },
     "page.codeberg.JakobDev.jdSystemMonitor": {
         "finish-args-flatpak-spawn-access": "Run the Daemon outside the Flatpak"
+    },
+    "dev.geopjr.Turntable": {
+        "finish-args-freedesktop-dbus-talk-name": "Required to gather and update the list of all available MPRIS clients",
+        "finish-args-flatpak-appdata-folder-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+        "finish-args-host-var-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
+        "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients"
     }
 }
