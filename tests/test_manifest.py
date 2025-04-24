@@ -406,7 +406,6 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     ret = run_checks("tests/manifests/git-repo-checks/git-repo-checks.json")
     found_errors = set(ret["errors"])
     errors = {
-        "large-git-file-found-file.txt",
         "external-gitmodule-url-found",
         "manifest-directory-too-large",
     }

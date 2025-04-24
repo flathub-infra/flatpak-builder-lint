@@ -85,7 +85,6 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "module-",
                     "finish-args-arbitrary-xdg-",
                     "finish-args-unnecessary-xdg-",
-                    "large-git-file-found-",
                 )
             )
         } - {

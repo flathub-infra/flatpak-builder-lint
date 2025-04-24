@@ -53,13 +53,6 @@ class TopLevelCheck(Check):
                 f"gitmodules are allowed in manifest git repo: {ext_gitmodules}"
             )
 
-        for file in manifest.get("x-large-git-files", []):
-            self.errors.add(f"large-git-file-found-{file}")
-            self.info.add(
-                f"large-git-file-found-{file}: Files larger than 20 MB are"
-                + " not allowed in manifest git repo"
-            )
-
         if manifest.get("x-manifest-dir-large"):
             self.errors.add("manifest-directory-too-large")
             self.info.add("manifest-directory-too-large: Manifest directory is more than 25 MB")
