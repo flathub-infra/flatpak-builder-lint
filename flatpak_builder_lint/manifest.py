@@ -119,28 +119,6 @@ def get_git_large_files(repo_path: str, min_size_mb: int = 20) -> set[str]:
     return files
 
 
-def get_directory_size(path: str) -> int:
-    def get_size(directory: str) -> int:
-        total = 0
-        if not os.path.exists(directory):
-            return 0
-
-        for dirpath, _, filenames in os.walk(directory, topdown=True):
-            for f in filenames:
-                try:
-                    fp = os.path.join(dirpath, f)
-                    if os.path.isfile(fp):
-                        total += os.path.getsize(fp)
-                except OSError:
-                    pass
-        return total
-
-    total_size = get_size(path)
-    git_size = get_size(os.path.join(path, ".git"))
-
-    return total_size - git_size
-
-
 def get_repo_tree_size(path: str) -> int:
     try:
         result = subprocess.run(
