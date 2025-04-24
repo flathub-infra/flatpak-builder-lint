@@ -4273,5 +4273,8 @@
     },
     "io.github.ilya_zlobintsev.LACT": {
         "finish-args-flatpak-spawn-access": "Required to set up the host service for GPU control."
+    },
+    "page.codeberg.JakobDev.jdSystemMonitor": {
+        "finish-args-flatpak-spawn-access": "Run the Daemon outside the Flatpak"
     }
 }
