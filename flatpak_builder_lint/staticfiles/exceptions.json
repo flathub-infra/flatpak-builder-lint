@@ -4285,4 +4285,7 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients"
     }
+    "org.siril.Siril": {
+        "finish-args-flatpak-spawn-access": "required to interact with third-party applications like astrometry.net for plate solving and other astronomical image processing workflows"
+    }
 }
