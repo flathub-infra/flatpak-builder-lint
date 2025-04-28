@@ -4290,5 +4290,8 @@
     },
     "io.github.radiolamp.mangojuice": {
         "finish-args-unnecessary-xdg-config-MangoHud-create-access": "Access shared MangoHud configuration files"
+    },
+    "io.github.archisman_panigrahi.typhoon": {
+        "finish-args-freedesktop-dbus-talk-name": "Required to send current temperature as launcher count, and to access the current accent color to be used as HTML background color"
     }
 }
