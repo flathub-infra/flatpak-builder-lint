@@ -4290,5 +4290,10 @@
     },
     "io.github.radiolamp.mangojuice": {
         "finish-args-unnecessary-xdg-config-MangoHud-create-access": "Access shared MangoHud configuration files"
+    },
+    "de.allotropia.ZetaOffice": {
+        "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice' in the org.libreoffice.LibreOffice app from which this app derives",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration' in the org.libreoffice.LibreOffice app from which this app derives",
+        "manifest-has-bundled-extension": "Same as for the org.libreoffice.LibreOffice app from which this app derives, the help content is rather large, and an online version will be used if it is not installed locally, so makes sense to have it as an extension"
     }
 }
