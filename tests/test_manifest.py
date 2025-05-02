@@ -175,7 +175,6 @@ def test_manifest_appid_too_few_cpts() -> None:
 def test_manifest_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
-        "flathub-json-modified-publish-delay",
     }
 
     ret = run_checks("tests/manifests/flathub_json.json")

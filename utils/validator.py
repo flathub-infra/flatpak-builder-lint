@@ -37,7 +37,6 @@ KNOWN_EXCEPTIONS = {
     "finish-args-wildcard-kde-own-name",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
-    "flathub-json-modified-publish-delay",
     "manifest-file-is-symlink",
     "manifest-has-bundled-extension",
     "toplevel-unnecessary-branch",

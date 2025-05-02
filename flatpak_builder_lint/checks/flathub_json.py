@@ -24,7 +24,6 @@ class FlathubJsonCheck(Check):
         self,
         appid: str,
         flathub_json: dict[str, str | bool | list[str]],
-        is_extra_data: bool,
         is_extension: bool,
     ) -> None:
         is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
@@ -35,7 +34,6 @@ class FlathubJsonCheck(Check):
         skip_appstream = flathub_json.get("skip-appstream-check")
         only_arches = flathub_json.get("only-arches")
         skip_arches = flathub_json.get("skip-arches")
-        publish_delay = flathub_json.get("publish-delay-hours")
 
         if skip_appstream and not (is_extension or is_baseapp):
             self.errors.add("flathub-json-skip-appstream-check")
@@ -56,21 +54,15 @@ class FlathubJsonCheck(Check):
         ):
             self.errors.add("flathub-json-excluded-all-arches")
 
-        if isinstance(publish_delay, int) and publish_delay < 3 and not is_extra_data:
-            self.errors.add("flathub-json-modified-publish-delay")
-
     def check_manifest(self, manifest: dict[str, Any]) -> None:
         flathub_json = manifest.get("x-flathub")
         appid = manifest.get("id")
         if not (flathub_json and appid):
             return
 
-        is_extra_data = (
-            self._check_if_extra_data(modules) if (modules := manifest.get("modules")) else False
-        )
         is_extension = manifest.get("build-extension", False)
 
-        self._validate(appid, flathub_json, is_extra_data, is_extension)
+        self._validate(appid, flathub_json, is_extension)
 
     def check_build(self, path: str) -> None:
         appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
@@ -79,13 +71,12 @@ class FlathubJsonCheck(Check):
         metadata = builddir.parse_metadata(path)
         if not metadata:
             return
-        is_extra_data = bool(metadata.get("extra-data", False))
 
         flathub_json = builddir.get_flathub_json(path)
         if not flathub_json:
             return
 
-        self._validate(appid, flathub_json, is_extra_data, ref_type != "app")
+        self._validate(appid, flathub_json, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
         self._populate_refs(path)
@@ -104,5 +95,4 @@ class FlathubJsonCheck(Check):
                 flathub_json = ostree.get_flathub_json(path, ref, tmpdir)
                 if not flathub_json:
                     return
-                is_extra_data = bool(metadata.get("extra-data", False))
-                self._validate(appid, flathub_json, is_extra_data, False)
+                self._validate(appid, flathub_json, False)
