@@ -2480,7 +2480,6 @@
         "finish-args-host-tmp-access": "Predates the linter rule"
     },
     "com.brave.Browser": {
-        "flathub-json-modified-publish-delay": "Allow setting the delay to 0 to ensure users get the latest version as soon as possible",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
