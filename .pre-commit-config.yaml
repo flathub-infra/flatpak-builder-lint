@@ -45,6 +45,12 @@ repos:
         language: system
         pass_filenames: false
         files: \.py$
+      - id: validate-exceptions
+        name: validate exceptions
+        description: Validate exceptions
+        entry: python utils/validator.py
+        language: system
+        pass_filenames: false
       - id: py-test
         name: pytest
         stages:
