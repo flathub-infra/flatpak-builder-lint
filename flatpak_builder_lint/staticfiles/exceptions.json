@@ -29,6 +29,9 @@
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule"
     },
+    "com.apifox.Apifox": {
+        "flathub-json-automerge-enabled": "Predates the linter rule"
+    },
     "com.github.sixpounder.GameOfLife": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
