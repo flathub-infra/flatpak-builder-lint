@@ -4304,5 +4304,5 @@
     },
     "io.github.DenysMb.Kontainer": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
-    },
+    }
 }
