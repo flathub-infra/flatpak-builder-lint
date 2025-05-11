@@ -29,6 +29,9 @@
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule"
     },
+    "com.alibabainc.DingTalk": {
+        "finish-args-wildcard-kde-own-name": "Still uses legacy StatusNotifier implementation"
+    },
     "com.apifox.Apifox": {
         "flathub-json-automerge-enabled": "Extra-data app with unversioned source link"
     },
