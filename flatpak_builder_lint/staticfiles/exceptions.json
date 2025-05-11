@@ -4307,5 +4307,8 @@
     },
     "io.github.DenysMb.Kontainer": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
+    },
+    "io.github.bcpierce00.unison": {
+        "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files"
     }
 }
