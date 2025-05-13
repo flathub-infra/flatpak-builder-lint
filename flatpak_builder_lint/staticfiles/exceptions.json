@@ -4310,5 +4310,8 @@
     },
     "io.github.bcpierce00.unison": {
         "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files"
+    },
+    "com.rioterm.Rio": {
+        "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator"
     }
 }
