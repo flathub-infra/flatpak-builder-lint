@@ -25,6 +25,7 @@ jobs:
       src: ${{ steps.filter.outputs.src }}
       docker: ${{ steps.filter.outputs.docker }}
       exceptions: ${{ steps.filter.outputs.exceptions }}
+      force_ci: ${{ steps.force.outputs.value }}
     steps:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -55,6 +56,11 @@ jobs:
             docker:
               - *shared
 
+      - name: Force full CI for schedule runs
+        if: ${{ github.event_name == 'schedule' && github.repository == 'flathub-infra/flatpak-builder-lint' }}
+        id: force
+        run: echo "value=true" >> $GITHUB_OUTPUT
+
   exceptions:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -65,7 +71,7 @@ jobs:
       statuses: read
     needs:
       - changes
-    if: ${{ needs.changes.outputs.exceptions == 'true' }}
+    if: ${{ needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.exceptions == 'true' }}
     steps:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -97,7 +103,7 @@ jobs:
       cancel-in-progress: true
     needs:
       - changes
-    if: ${{ needs.changes.outputs.src == 'true' }}
+    if: ${{ needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.src == 'true' }}
     steps:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -312,7 +318,7 @@ jobs:
     needs:
       - changes
       - ci
-    if: ${{ needs.changes.outputs.docker == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    if: ${{ (github.event_name != 'pull_request' && github.ref == 'refs/heads/master') && (needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.docker == 'true') }}
     uses: ./.github/workflows/docker.yml
     secrets:
       FLATHUB_ORG_USER: ${{ secrets.FLATHUB_ORG_USER }}
