@@ -234,7 +234,12 @@ def test_manifest_finish_args() -> None:
 def test_manifest_finish_args_new_metadata() -> None:
     ret = run_checks("tests/manifests/finish_args-new-metadata.json")
     found_errors = set(ret["errors"])
-    assert "finish-args-insufficient-required-flatpak" in found_errors
+    errors = {
+        "finish-args-insufficient-required-flatpak",
+        "finish-args-has-dev-input",
+    }
+    for err in errors:
+        assert err in found_errors
 
 
 def test_manifest_finish_args_issue_wayland_x11() -> None:

@@ -71,9 +71,9 @@ class FinishArgsCheck(Check):
                 if "required-flatpak" not in finish_args:
                     self.errors.add("finish-args-no-required-flatpak")
                     self.info.add(
-                        "finish-args-no-required-flatpak: finish-args has input or usb"
-                        + " but no minimum Flatpak version. Use all for backwards compat"
-                        + " or specify require-version"
+                        "finish-args-no-required-flatpak: finish-args has 'input' or 'usb'"
+                        + " device but no minimum Flatpak version. Use 'all' for backwards"
+                        + " compat or specify '--require-version='"
                     )
                 if flatpak_version is not None and not AppStream.vercmp_test_match(
                     flatpak_version,
@@ -84,7 +84,21 @@ class FinishArgsCheck(Check):
                     self.errors.add("finish-args-insufficient-required-flatpak")
                     self.info.add(
                         "finish-args-insufficient-required-flatpak: finish-args has"
-                        + " input or usb but require-version is not set to >=1.16.0"
+                        + " 'input' or 'usb' device but 'require-version' is not >=1.16.0"
+                    )
+                if dev == "input":
+                    self.errors.add("finish-args-has-dev-input")
+                    self.info.add(
+                        "finish-args-has-dev-input: This permissions is not backwards"
+                        + " compatible with a supported Flatpak release 1.14.x and"
+                        + " requires an exception"
+                    )
+                if dev == "usb":
+                    self.errors.add("finish-args-has-dev-usb")
+                    self.info.add(
+                        "finish-args-has-dev-input: This permissions is not backwards"
+                        + " compatible with a supported Flatpak release 1.14.x and"
+                        + " requires an exception"
                     )
 
         modes = (":ro", ":rw", ":create")
