@@ -4313,5 +4313,8 @@
     },
     "com.rioterm.Rio": {
         "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator"
+    },
+    "dev.vencord.Vesktop": {
+        "finish-args-contains-both-x11-and-wayland": "Running through native Wayland instead of X11 causes issues, but Wayland access is still needed for pipewire screen capturing"
     }
 }
