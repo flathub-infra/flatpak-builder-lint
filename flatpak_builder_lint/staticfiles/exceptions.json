@@ -4151,7 +4151,8 @@
         "finish-args-host-var-access": "Predates the linter rule"
     },
     "org.gnome.DejaDup": {
-        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-appdata-folder-access": "Users would expect that a full home backup would include flatpak application configuration and data",
+        "finish-args-flatpak-spawn-access": "Required to spawn fusermount, mounting the user's backup via FUSE"
     },
     "org.gnome.baobab": {
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
