@@ -890,7 +890,8 @@
         "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
+        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered",
+        "module-tde2e-checker-tracks-commits": "Manually updated"
     },
     "org.telegram.desktop.webview": {
         "flathub-json-automerge-enabled": "Predates the linter rule, addon for org.telegram.desktop"
