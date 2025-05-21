@@ -31,6 +31,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          lfs: true
           fetch-depth: 0
 
       - name: Set up Docker Buildx
@@ -199,6 +200,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          lfs: true
 
       - name: Login to ghcr.io
         # 3.4.0

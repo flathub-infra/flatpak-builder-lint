@@ -1,3 +1,4 @@
+import importlib.resources
 import os
 from functools import cache
 from typing import Any
@@ -6,7 +7,7 @@ import gi
 import requests
 from requests_cache import CachedSession
 
-from . import config
+from . import config, staticfiles
 
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
@@ -52,7 +53,16 @@ def fetch_summary_bytes(url: str) -> bytes:
     except requests.exceptions.RequestException:
         pass
 
-    raise Exception("Failed to fetch summary")
+    if url.startswith(config.FLATHUB_BETA_REPO_URL):
+        local_summary_file = "flathub-beta-summary"
+    else:
+        local_summary_file = "flathub-stable-summary"
+
+    try:
+        with importlib.resources.open_binary(staticfiles, local_summary_file) as f:
+            return f.read()
+    except (OSError, FileNotFoundError) as err:
+        raise Exception("Failed to load fallback local summary file") from err
 
 
 @cache
