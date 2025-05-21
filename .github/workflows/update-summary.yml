@@ -1,0 +1,79 @@
+name: Update summary files
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch: {}
+
+jobs:
+  archive:
+    name: Update summary files
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          lfs: true
+
+      - name: Set up dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ostree
+
+      - name: Download summary files
+        run: |
+          mkdir -p update && cd update
+          curl -L -o flathub-stable.summary http://dl.flathub.org/repo/summary
+          curl -L -o flathub-beta.summary http://dl.flathub.org/beta-repo/summary
+
+      - name: Move summary files
+        run: |
+          cp -vf update/flathub-stable.summary flatpak_builder_lint/staticfiles/flathub-stable.summary
+          cp -vf update/flathub-beta.summary flatpak_builder_lint/staticfiles/flathub-beta.summary
+
+      - name: Check summary files
+        run: |
+          cd update
+          ostree init --repo=stable_repo
+          cp -vf ../flatpak_builder_lint/staticfiles/flathub-stable.summary stable_repo/summary
+          ostree --repo=stable_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Stable"
+          ostree init --repo=beta_repo
+          cp -vf ../flatpak_builder_lint/staticfiles/flathub-beta.summary beta_repo/summary
+          ostree --repo=beta_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Beta"
+
+      - name: Cleanup
+        run: |
+          rm -rf update
+
+      - name: Check if changes present
+        id: changes
+        run: |
+          if git diff --quiet HEAD -- flatpak_builder_lint/staticfiles/; then
+            echo "No changes in staticfiles directory."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Changes detected in staticfiles directory."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.changes.outputs.changed == 'true'
+        # 7.0.8
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch-suffix: "random"
+          commit-message: |
+            (Automated) Update summary files
+
+          title: "(Automated) Update summary files"
+          body: |
+            (Automated) Update summary files
+          delete-branch: true
+          sign-commits: false
+          draft: always-true

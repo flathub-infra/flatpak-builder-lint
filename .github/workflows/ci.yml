@@ -20,17 +20,20 @@ jobs:
     timeout-minutes: 20
     if: always()
     permissions:
+      contents: read
       pull-requests: read
     outputs:
       src: ${{ steps.filter.outputs.src }}
       docker: ${{ steps.filter.outputs.docker }}
       exceptions: ${{ steps.filter.outputs.exceptions }}
+      summary: ${{ steps.filter.outputs.summary }}
       force_ci: ${{ steps.force.outputs.value }}
     steps:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
+          lfs: true
           persist-credentials: false
 
       - name: Setup path filters
@@ -49,6 +52,8 @@ jobs:
               - 'pyproject.toml'
             exceptions:
               - 'flatpak_builder_lint/staticfiles/exceptions.json'
+            summary:
+              - 'flatpak_builder_lint/staticfiles/*.summary'
             src:
               - *shared
               - 'tests/**'
@@ -77,6 +82,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          lfs: true
 
         # 5.4.0
       - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
@@ -85,6 +91,36 @@ jobs:
 
       - name: Validate exceptions.json
         run: python3 utils/validator.py
+
+  summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      pull-requests: write
+      contents: read
+    needs:
+      - changes
+    if: ${{ needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.summary == 'true' }}
+    steps:
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          lfs: true
+
+      - name: Set up dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ostree
+
+      - name: Check summary files
+        run: |
+          ostree init --repo=stable_repo
+          cp -vf flatpak_builder_lint/staticfiles/flathub-stable.summary stable_repo/summary
+          ostree --repo=stable_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Stable"
+          ostree init --repo=beta_repo
+          cp -vf flatpak_builder_lint/staticfiles/flathub-beta.summary beta_repo/summary
+          ostree --repo=beta_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Beta"
 
   ci:
     strategy:
@@ -109,6 +145,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          lfs: true
 
         # 5.4.0
       - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
@@ -126,7 +163,16 @@ jobs:
             desktop-file-utils elfutils flatpak-builder curl \
             dbus-daemon libgirepository1.0-dev \
             gir1.2-ostree-1.0 gzip xmlstarlet libcairo2-dev \
-            gir1.2-appstream-1.0
+            gir1.2-appstream-1.0 ostree
+
+      - name: Check summary files
+        run: |
+          ostree init --repo=stable_repo
+          cp -vf flatpak_builder_lint/staticfiles/flathub-stable.summary stable_repo/summary
+          ostree --repo=stable_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Stable"
+          ostree init --repo=beta_repo
+          cp -vf flatpak_builder_lint/staticfiles/flathub-beta.summary beta_repo/summary
+          ostree --repo=beta_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Beta"
 
       - name: Install uv
         # 5.4.0
