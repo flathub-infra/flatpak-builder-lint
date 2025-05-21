@@ -54,9 +54,9 @@ def fetch_summary_bytes(url: str) -> bytes:
         pass
 
     if url.startswith(config.FLATHUB_BETA_REPO_URL):
-        local_summary_file = "flathub-beta-summary"
+        local_summary_file = "flathub-beta.summary"
     else:
-        local_summary_file = "flathub-stable-summary"
+        local_summary_file = "flathub-stable.summary"
 
     try:
         with importlib.resources.open_binary(staticfiles, local_summary_file) as f:
