@@ -70,10 +70,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      pull-requests: write
+      pull-requests: read
       contents: read
-      checks: read
-      statuses: read
     needs:
       - changes
     if: ${{ needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.exceptions == 'true' }}
