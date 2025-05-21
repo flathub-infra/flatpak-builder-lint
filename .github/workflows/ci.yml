@@ -4,6 +4,7 @@ on:
   push:
     branches: master
   pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
     branches: master
   workflow_dispatch:
   # Keep an active cache
