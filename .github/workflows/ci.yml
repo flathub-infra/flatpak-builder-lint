@@ -253,6 +253,14 @@ jobs:
       - name: Run test suite
         run: flatpak run --command=pytest org.flatpak.Builder//localtest -vvv tests
 
+      - name: Run large repo check
+        run: |
+          export BUILD_URL=https://hub.flathub.org/api/v1/foobar
+          ostree init --repo=large_repo
+          dd if=/dev/zero of=large_repo/file.bin bs=1M count=3072
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo large_repo|grep "flatpak-repo-too-large"
+          unset BUILD_URL
+
       - name: Run Flatmanager checks
         run: bash -c tests/flatmanager.sh
 
