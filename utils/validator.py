@@ -38,6 +38,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
     "flathub-json-modified-publish-delay",
+    "flatpak-repo-too-large",
     "manifest-file-is-symlink",
     "manifest-has-bundled-extension",
     "toplevel-unnecessary-branch",
