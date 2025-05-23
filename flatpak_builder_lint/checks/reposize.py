@@ -19,7 +19,7 @@ class RepoSizeCheck(Check):
         return size
 
     def _validate(self, path: str) -> None:
-        MAX = 2 * 1024 * 1024 * 1024
+        MAX = 3 * 1024 * 1024 * 1024
         repo_size = self.get_dir_size(path)
 
         build_id = os.getenv("FLAT_MANAGER_BUILD_ID")
