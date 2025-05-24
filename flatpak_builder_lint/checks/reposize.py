@@ -19,9 +19,8 @@ class RepoSizeCheck(Check):
         return size
 
     def _validate(self, path: str, primary_ref_count: int = 1) -> None:
-        MAX = 3 * 1024 * 1024 * 1024
-        if primary_ref_count > 1:
-            MAX = 2 * 3 * 1024 * 1024 * 1024
+        BASE = 7 * 1024 * 1024 * 1024
+        MAX = 2 * BASE if primary_ref_count > 1 else BASE
 
         repo_size = self.get_dir_size(path)
 
