@@ -18,8 +18,11 @@ class RepoSizeCheck(Check):
                     continue
         return size
 
-    def _validate(self, path: str) -> None:
+    def _validate(self, path: str, primary_ref_count: int = 1) -> None:
         MAX = 3 * 1024 * 1024 * 1024
+        if primary_ref_count > 1:
+            MAX = 2 * 3 * 1024 * 1024 * 1024
+
         repo_size = self.get_dir_size(path)
 
         build_id = os.getenv("FLAT_MANAGER_BUILD_ID")
@@ -35,4 +38,6 @@ class RepoSizeCheck(Check):
             )
 
     def check_repo(self, path: str) -> None:
-        self._validate(path)
+        self._populate_refs(path)
+        primary_ref_count = len(self.repo_primary_refs)
+        self._validate(path, primary_ref_count)
