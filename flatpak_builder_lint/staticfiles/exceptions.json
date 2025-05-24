@@ -1535,9 +1535,7 @@
         "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system"
     },
     "org.octave.Octave": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "org.openshot.OpenShot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
