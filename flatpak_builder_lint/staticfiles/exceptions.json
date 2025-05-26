@@ -4318,5 +4318,8 @@
     },
     "dev.vencord.Vesktop": {
         "finish-args-contains-both-x11-and-wayland": "Running through native Wayland instead of X11 causes issues for a considerable number of users, but Wayland access is still needed for pipewire screen capturing"
+    },
+    "best.ellie.StartupConfiguration": {
+        "finish-args-unnecessary-xdg-config-autostart-create-access": "This app requires access to the hosts' ~/.config/autostart directory in create mode in order to manage applications launched on startup." 
     }
 }
