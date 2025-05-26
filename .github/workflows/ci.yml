@@ -152,7 +152,7 @@ jobs:
             desktop-file-utils elfutils flatpak-builder curl \
             dbus-daemon libgirepository1.0-dev \
             gir1.2-ostree-1.0 gzip xmlstarlet libcairo2-dev \
-            gir1.2-appstream-1.0
+            gir1.2-appstream-1.0 ostree
 
       - name: Install uv
         # 5.4.0
@@ -182,6 +182,17 @@ jobs:
       - name: Allow file:// clones with git>=2.38.1
         run: |
           git config --global protocol.file.allow always
+
+      - name: Check summary files
+        run: |
+          git clone --depth 1 https://gitlab.com/projects261/summary-files.git
+          ostree init --repo=stable_repo
+          mv -vf summary-files/summary/stable.summary stable_repo/summary
+          ostree --repo=stable_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Stable"
+          ostree init --repo=beta_repo
+          mv summary-files/summary/beta.summary beta_repo/summary
+          ostree --repo=beta_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Beta"
+          rm -rf summary-files stable_repo beta_repo
 
       - name: Set up flathub remote
         run: |

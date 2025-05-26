@@ -15,7 +15,11 @@ include = [
 exclude = ["**/__pycache__"]
 
 [tool.setuptools.package-data]
-flatpak_builder_lint = ["staticfiles/*.json"]
+flatpak_builder_lint = [
+  "staticfiles/flathub-stable.summary",
+  "staticfiles/flathub-beta.summary",
+  "staticfiles/*.json"
+]
 
 [project]
 name = "flatpak_builder_lint"
