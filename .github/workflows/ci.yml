@@ -185,7 +185,7 @@ jobs:
 
       - name: Check summary files
         run: |
-          git clone --depth 1 https://gitlab.com/projects261/summary-files.git
+          git clone --depth 1 https://github.com/flathub-infra/summary-files.git
           ostree init --repo=stable_repo
           mv -vf summary-files/summary/stable.summary stable_repo/summary
           ostree --repo=stable_repo summary -v|grep "Collection ID (ostree.summary.collection-id): org.flathub.Stable"
