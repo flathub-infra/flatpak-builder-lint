@@ -1672,7 +1672,8 @@
     },
     "com.fightcade.Fightcade": {
         "flathub-json-modified-publish-delay": "Client version must be in sync with server to function",
-        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
+        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function",
+        "manifest-has-bundled-extension": "Optional quality of life features implemented as Flatpak extension"
     },
     "com.flashforge.FlashPrint": {
         "flathub-json-modified-publish-delay": "extra-data",
