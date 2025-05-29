@@ -75,7 +75,7 @@ The only supported ways to install and use are Flatpak and Docker.
 ### Flatpak
 
 flatpak-builder-lint is part of the `org.flatpak.Builder` flatpak package
-available on Flathub. [Set up FlatHub][flatpak_setup] first, then install
+available on Flathub. [Set up Flathub][flatpak_setup] first, then install
 `org.flatpak.Builder`:
 
 ```bash
