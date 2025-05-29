@@ -32,7 +32,11 @@ Errors can be overridden through exceptions.
 
 Exceptions must be [submitted to Flathub](https://docs.flathub.org/docs/for-app-authors/linter#exceptions)
 if the app is meant to be published on Flathub or already exists on
-Flathub.
+Flathub. These exceptions, once published, can be viewed by doing:
+
+```sh
+curl -s https://flathub.org/api/v2/exceptions/my.app.id|jq
+```
 
 ### Local exceptions
 
