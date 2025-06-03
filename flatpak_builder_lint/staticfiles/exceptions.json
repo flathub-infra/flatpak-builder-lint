@@ -4325,5 +4325,8 @@
         "finish-args-flatpak-system-folder-access": "This app requires read-only access to the hosts' /var/lib/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
         "finish-args-flatpak-user-folder-access": "This app requires read-only access to the hosts' ~/.local/share/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
         "finish-args-host-var-access": "This app requires read-only access to the hosts' /var/lib/snapd/desktop/applications directory in order to allow users to add snaps to the applications launched on startup."
+    },
+    "app.katvan.Katvan": {
+        "finish-args-unnecessary-xdg-data-typst-ro-access": "Well known common location of the user's Typst packages in the @local namespace"
     }
 }
