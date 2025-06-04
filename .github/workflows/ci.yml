@@ -45,6 +45,7 @@ jobs:
               - 'flatpak_builder_lint/!(staticfiles/**)/**'
               - 'flatpak_builder_lint/staticfiles/flatpak-manifest.schema.json'
               - 'flatpak_builder_lint/staticfiles/*.py'
+              - 'flatpak_builder_lint/*.py'
               - 'uv.lock'
               - 'pyproject.toml'
             exceptions:

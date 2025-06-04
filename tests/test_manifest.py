@@ -420,3 +420,12 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     found_errors = set(ret["errors"])
     for err in errors:
         assert err not in found_errors
+
+
+def test_manifest_unknown_properties() -> None:
+    ret = run_checks("tests/manifests/unknown-properties-1.json")
+    found_errors = ret["errors"]
+    assert "manifest-unknown-propeties" in found_errors
+    ret = run_checks("tests/manifests/unknown-properties-2.json")
+    found_errors = ret["errors"]
+    assert "manifest-unknown-propeties" not in found_errors

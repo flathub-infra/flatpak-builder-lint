@@ -6,6 +6,12 @@ from . import Check
 
 class TopLevelCheck(Check):
     def check_manifest(self, manifest: dict[str, Any]) -> None:
+        unknown_propeties = manifest.get("x-manifest-unknown-properties")
+
+        if unknown_propeties:
+            self.errors.add("manifest-unknown-propeties")
+            self.info.add(f"manifest-unknown-propeties: {unknown_propeties}")
+
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")
         is_baseapp = bool(

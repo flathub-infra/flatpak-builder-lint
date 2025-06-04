@@ -1,6 +1,7 @@
 import errno
 import json
 import os
+import re
 import subprocess
 from typing import Any
 
@@ -18,14 +19,28 @@ def show_manifest(filename: str) -> dict[str, Any]:
         ["flatpak-builder", "--show-manifest", filename],
         capture_output=True,
         check=False,
+        env={**os.environ, "G_MESSAGES_PREFIXED": "all"},
     )
 
-    if ret.returncode != 0:
-        raise Exception(ret.stderr.decode("utf-8"))
+    stderr_s = ret.stderr.decode("utf-8")
+    stdout_s = ret.stdout.decode("utf-8")
 
-    manifest = ret.stdout.decode("utf-8")
+    pat = re.compile(
+        r"^\*\* \(flatpak-builder:\d+\): WARNING \*\*: " r"[\d:.]+: Unknown property (\S+) for type"
+    )
+    unknown_properties: list[str] = []
+    if stderr_s:
+        unknown_properties = [m.group(1) for line in stderr_s.split("\n") if (m := pat.match(line))]
+
+    if ret.returncode != 0:
+        raise Exception(stderr_s)
+
+    manifest = stdout_s
     manifest_json: dict[str, Any] = json.loads(manifest)
     manifest_json["x-manifest-filename"] = filename
+
+    if unknown_properties:
+        manifest_json["x-manifest-unknown-properties"] = unknown_properties
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
     git_toplevel = gitutils.get_git_toplevel(manifest_basedir)
