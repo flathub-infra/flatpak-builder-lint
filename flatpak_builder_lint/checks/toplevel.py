@@ -9,8 +9,8 @@ class TopLevelCheck(Check):
         unknown_propeties = manifest.get("x-manifest-unknown-properties")
 
         if unknown_propeties:
-            self.errors.add("manifest-unknown-propeties")
-            self.info.add(f"manifest-unknown-propeties: {unknown_propeties}")
+            self.errors.add("manifest-unknown-properties")
+            self.info.add(f"manifest-unknown-properties: {unknown_propeties}")
 
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")

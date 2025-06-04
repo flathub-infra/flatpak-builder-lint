@@ -425,7 +425,7 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
 def test_manifest_unknown_properties() -> None:
     ret = run_checks("tests/manifests/unknown-properties-1.json")
     found_errors = ret["errors"]
-    assert "manifest-unknown-propeties" in found_errors
+    assert "manifest-unknown-properties" in found_errors
     ret = run_checks("tests/manifests/unknown-properties-2.json")
     found_errors = ret["errors"]
-    assert "manifest-unknown-propeties" not in found_errors
+    assert "manifest-unknown-properties" not in found_errors
