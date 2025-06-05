@@ -4276,5 +4276,8 @@
     },
     "app.katvan.Katvan": {
         "finish-args-unnecessary-xdg-data-typst-ro-access": "Well known common location of the user's Typst packages in the @local namespace"
+    },
+    "com.stremio.Stremio": {
+        "finish-args-contains-both-x11-and-wayland": "The window is able to be create under wayland but this app uses CEF (Chromium Embedded Framework) which requires acccess to X11"
     }
 }
