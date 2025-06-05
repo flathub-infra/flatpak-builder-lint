@@ -3,7 +3,8 @@ FROM docker.io/freedesktopsdk/sdk:24.08
 RUN echo "root:x:0:0:root:/root:/bin/bash" > /etc/passwd && \
     echo "root:x:0:" > /etc/group
 
-RUN mkdir -p -m 1777 /var/tmp && mkdir -p -m 700 /root
+RUN rm -rf /tmp /var/tmp /root && mkdir -p -m 1777 /tmp /var/tmp && \
+    mkdir -p -m 700 /root
 
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
