@@ -662,8 +662,7 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.github.rafostar.Clapper": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "manifest-has-bundled-extension": "Required to bundle its own plugins"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.raibtoffoletto.litteris": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -781,8 +780,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.djpdf": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.unrud.RemoteTouchpad": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1056,14 +1054,12 @@
     "org.gnome.Totem.Devel": {
         "module-totem-source-git-no-tag-commit-branch": "This is the development version of Totem, tracking upstream",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule",
         "manifest-file-is-symlink": "Predates the linter rule"
     },
     "org.gimp.GIMP": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
         "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config.",
         "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
-        "manifest-has-bundled-extension": "Predates the linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule"
     },
     "org.gitfourchette.gitfourchette": {
@@ -1100,8 +1096,7 @@
     "org.libreoffice.LibreOffice": {
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule, and this was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice'",
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "the app predates this linter rule, and this was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration'",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.st.STM32CubeIDE": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1606,8 +1601,7 @@
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "org.chromium.Chromium": {
-        "finish-args-contains-both-x11-and-wayland": "optional wayland support",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "net.scribus.Scribus": {
         "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
@@ -1672,8 +1666,7 @@
     },
     "com.fightcade.Fightcade": {
         "flathub-json-modified-publish-delay": "Client version must be in sync with server to function",
-        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function",
-        "manifest-has-bundled-extension": "Optional quality of life features implemented as Flatpak extension"
+        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
     },
     "com.flashforge.FlashPrint": {
         "flathub-json-modified-publish-delay": "extra-data",
@@ -2956,8 +2949,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Loupe": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.meld": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2994,8 +2986,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Shotwell": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.SoundJuicer": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3010,8 +3001,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Totem": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.keepassxc.KeePassXC": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3306,8 +3296,7 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.radare.iaito": {
-        "flathub-json-automerge-enabled": "Predates the linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "org.zrythm.Zrythm": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
@@ -3553,8 +3542,7 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
         "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
-        "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art"
     },
     "io.gitlab.o20.word": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3810,8 +3798,7 @@
     },
     "org.winehq.Wine": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "toplevel-unnecessary-branch": "Wine uses a custom branch following runtime branch for historical reasons",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "toplevel-unnecessary-branch": "Wine uses a custom branch following runtime branch for historical reasons"
     },
     "org.zulip.Zulip": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3870,8 +3857,7 @@
     },
     "io.frama.tractor.carburetor": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule",
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "net.christianbeier.Gromit-MPX": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
@@ -4025,65 +4011,32 @@
     "org.qbittorrent.qBittorrent": {
         "module-libtorrent-checker-tracks-commits": "Tracks stable, low maintenace branch commits"
     },
-    "app.fotema.Fotema": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
     "com.chowdsp.BYOD": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.BYOD": "Predates the linter rule"
     },
     "com.thewavewarden.Odin2": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "com.visualstudio.code.oss": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Odin2": "Predates the linter rule"
     },
     "de.bforartists.Bforartists": {
-        "manifest-has-bundled-extension": "Predates the linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule"
-    },
-    "io.github.manisandro.gImageReader": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "net.sonobus.SonoBus": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "org.apache.jmeter": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.SonoBus": "Predates the linter rule"
     },
     "org.audacityteam.Audacity": {
-        "manifest-has-bundled-extension": "Predates the linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule"
-    },
-    "org.blender.Blender": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "org.gnome.Fractal": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "org.guitarix.Guitarix": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "org.kde.CrowTranslate": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "org.pitivi.Pitivi": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Guitarix": "Predates the linter rule"
     },
     "org.stochas.Stochas": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Stochas": "Predates the linter rule"
     },
     "org.surge_synth_team.surge-xt": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Surge-XT": "Predates the linter rule"
     },
     "org.tenacityaudio.Tenacity": {
-        "manifest-has-bundled-extension": "Predates the linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule"
-    },
-    "org.upbge.UPBGE": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
-    },
-    "org.kde.krita": {
-        "manifest-has-bundled-extension": "Predates the linter rule"
     },
     "dev.heppen.webapps": {
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Access for reading installed browsers",
@@ -4138,7 +4091,6 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.github.theforceengine.tfe": {
-        "manifest-has-bundled-extension": "Game engine plugins implemented as extensions including default ones.",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.kopia.KopiaUI": {
@@ -4276,9 +4228,6 @@
     "io.github.piotrek_k._2dTaskBoard": {
         "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
     },
-    "net.krafting.SemantiK": {
-        "manifest-has-bundled-extension": "Required to bundle the default language pack."
-    },
     "page.codeberg.JakobDev.jdPermissionStoreEdit": {
         "finish-args-portal-impl-permissionstore-talk-name": "This is a program to edit the Permission Store",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs acccess to xdg-data/flatpak/db"
@@ -4305,8 +4254,7 @@
     },
     "de.allotropia.ZetaOffice": {
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice' in the org.libreoffice.LibreOffice app from which this app derives",
-        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration' in the org.libreoffice.LibreOffice app from which this app derives",
-        "manifest-has-bundled-extension": "Same as for the org.libreoffice.LibreOffice app from which this app derives, the help content is rather large, and an online version will be used if it is not installed locally, so makes sense to have it as an extension"
+        "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration' in the org.libreoffice.LibreOffice app from which this app derives"
     },
     "io.github.DenysMb.Kontainer": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"

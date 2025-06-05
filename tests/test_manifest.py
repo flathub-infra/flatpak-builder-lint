@@ -306,7 +306,11 @@ def test_manifest_modules() -> None:
     found_warnings = set(ret["warnings"])
     found_errors = set(ret["errors"])
 
-    assert "manifest-has-bundled-extension" in found_errors
+    assert "appid-unprefixed-bundled-extension-org.flathub.example.BundledExtension" in found_errors
+    assert (
+        "appid-unprefixed-bundled-extension-org.flathub.modules.BundledExtension"
+        not in found_errors
+    )
     assert warnings.issubset(found_warnings)
 
 

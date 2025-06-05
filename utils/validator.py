@@ -40,7 +40,6 @@ KNOWN_EXCEPTIONS = {
     "flathub-json-modified-publish-delay",
     "flatpak-repo-too-large",
     "manifest-file-is-symlink",
-    "manifest-has-bundled-extension",
     "toplevel-unnecessary-branch",
 }
 
@@ -86,6 +85,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "module-",
                     "finish-args-arbitrary-xdg-",
                     "finish-args-unnecessary-xdg-",
+                    "appid-unprefixed-bundled-extension-",
                 )
             )
         } - {

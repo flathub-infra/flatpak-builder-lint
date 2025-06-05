@@ -1,7 +1,11 @@
 {
     "app-id": "org.flathub.modules",
     "add-extensions": {
-        "org.example.BundledExtension": {
+        "org.flathub.modules.BundledExtension": {
+            "directory": "foo/bar",
+            "bundle": true
+        },
+        "org.flathub.example.BundledExtension": {
             "directory": "foo/bar",
             "bundle": true
         }

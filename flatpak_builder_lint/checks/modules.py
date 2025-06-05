@@ -8,8 +8,14 @@ def _is_git_commit_hash(s: str) -> bool:
     return re.match(r"[a-f0-9]{4,40}", s) is not None
 
 
-def _has_bundled_extension(manifest: dict[str, Any]) -> bool:
-    return any(ext.get("bundle") is True for ext in manifest.get("add-extensions", {}).values())
+def _get_bundled_extensions_not_prefixed_with_appid(manifest: dict[str, Any]) -> list[str]:
+    appid = manifest.get("id", "")
+    extensions = manifest.get("add-extensions", {})
+    return [
+        ext_id
+        for ext_id, ext in extensions.items()
+        if ext.get("bundle") is True and not ext_id.startswith(appid)
+    ]
 
 
 class ModuleCheck(Check):
@@ -82,12 +88,9 @@ class ModuleCheck(Check):
                 self.check_module(nested_module)
 
     def check_manifest(self, manifest: dict[str, Any]) -> None:
-        if manifest and _has_bundled_extension(manifest):
-            self.errors.add("manifest-has-bundled-extension")
-            self.info.add(
-                "manifest-has-bundled-extension: Bundled extensions needs to"
-                + " be approved through exceptions"
-            )
+        if manifest:
+            for ext in _get_bundled_extensions_not_prefixed_with_appid(manifest):
+                self.errors.add(f"appid-unprefixed-bundled-extension-{ext}")
 
         if modules := manifest.get("modules"):
             for module in modules:
