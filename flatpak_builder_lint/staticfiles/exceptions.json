@@ -1,4 +1,7 @@
 {
+    "io.github.rfrench3.scopebuddy-gui": {
+        "finish-args-unnecessary-xdg-config-scopebuddy-create-access": "This program needs to be able to create and modify xdg-config/scopebuddy/scb.conf (edit config of host Scopebuddy)"
+    },
     "io.github.swordpuffin.wardrobe": {
         "finish-args-dconf-talk-name": "needed to access host dconf configuration"
     },
