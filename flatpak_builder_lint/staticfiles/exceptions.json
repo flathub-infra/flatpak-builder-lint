@@ -1,6 +1,5 @@
 {
     "io.github.swordpuffin.wardrobe": {
-        "finish-args-flatpak-spawn-access": "needed to access host dconf configuration",
         "finish-args-dconf-talk-name": "needed to access host dconf configuration"
     },
     "io.github.TeamWheelWizard.WheelWizard": {
