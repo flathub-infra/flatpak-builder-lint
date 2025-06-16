@@ -4293,5 +4293,8 @@
     },
     "io.github.debasish_patra_1987.linuxthemestore": {
         "finish-args-dconf-talk-name": "needed to access host dconf configuration for modifying themes"
+    },
+    "io.github.Faugus.faugus-launcher": {
+        "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work."
     }
 }
