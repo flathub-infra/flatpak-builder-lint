@@ -4290,5 +4290,8 @@
     },
     "com.stremio.Stremio": {
         "finish-args-contains-both-x11-and-wayland": "The window is able to be create under wayland but this app uses CEF (Chromium Embedded Framework) which requires acccess to X11"
+    },
+    "io.github.debasish_patra_1987.linuxthemestore": {
+        "finish-args-dconf-talk-name": "needed to access host dconf configuration for modifying themes"
     }
 }
