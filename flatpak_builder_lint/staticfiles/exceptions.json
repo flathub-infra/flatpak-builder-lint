@@ -4296,5 +4296,8 @@
     },
     "io.github.cosmicUtils.cosmicAppletMinimon": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "io.github.Faugus.faugus-launcher": {
+        "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work."
     }
 }
