@@ -4294,7 +4294,7 @@
     "io.github.debasish_patra_1987.linuxthemestore": {
         "finish-args-dconf-talk-name": "needed to access host dconf configuration for modifying themes"
     },
-    "io.github.cosmicUtils.cosmicAppletMinimon": {
+    "io.github.cosmic_utils.minimon-applet": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
     "io.github.Faugus.faugus-launcher": {
