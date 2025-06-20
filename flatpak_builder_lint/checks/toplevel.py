@@ -6,6 +6,11 @@ from . import Check
 
 class TopLevelCheck(Check):
     def check_manifest(self, manifest: dict[str, Any]) -> None:
+        yaml_failed = manifest.get("x-manifest-yaml-failed")
+        if yaml_failed:
+            self.errors.add("manifest-invalid-yaml")
+            self.info.add(f"manifest-invalid-yaml: {yaml_failed}")
+
         unknown_propeties = manifest.get("x-manifest-unknown-properties")
 
         if unknown_propeties:

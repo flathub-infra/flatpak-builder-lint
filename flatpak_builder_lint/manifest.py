@@ -5,7 +5,21 @@ import re
 import subprocess
 from typing import Any
 
+from ruamel.yaml import YAML
+from ruamel.yaml.error import YAMLError
+
 from . import config, gitutils
+
+
+def format_yaml_error(e: YAMLError) -> str:
+    err_type = f"{type(e).__module__}.{type(e).__name__}"
+    msg = " ".join(
+        line.strip()
+        for line in str(e).splitlines()
+        if not line.strip().startswith("To suppress this check")
+        and not line.strip().startswith("https://yaml.dev/")
+    )
+    return f"{err_type} {msg}"
 
 
 # json-glib supports non-standard syntax like // comments. Bail out and
@@ -14,6 +28,16 @@ from . import config, gitutils
 def show_manifest(filename: str) -> dict[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
+
+    yaml_failed: bool = False
+    yaml_err: str | None = None
+    if os.path.basename(filename).lower().endswith((".yaml", ".yml")):
+        try:
+            with open(filename) as f:
+                YAML(typ="safe").load(f)
+        except YAMLError as err:
+            yaml_failed = True
+            yaml_err = format_yaml_error(err).strip()
 
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename],
@@ -41,6 +65,9 @@ def show_manifest(filename: str) -> dict[str, Any]:
 
     if unknown_properties:
         manifest_json["x-manifest-unknown-properties"] = unknown_properties
+
+    if yaml_failed and yaml_err:
+        manifest_json["x-manifest-yaml-failed"] = yaml_err
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
     git_toplevel = gitutils.get_git_toplevel(manifest_basedir)

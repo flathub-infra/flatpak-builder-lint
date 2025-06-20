@@ -39,6 +39,7 @@ dependencies = [
     "sentry-sdk<3.0.0,>=2.8.0",
     "PyGObject<4.0.0,>=3.48.2",
     "requests-cache<2.0.0,>=1.2.1",
+    "ruamel.yaml<1.0.0,>=0.18.14",
 ]
 
 [project.urls]
