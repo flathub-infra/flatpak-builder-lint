@@ -433,3 +433,12 @@ def test_manifest_unknown_properties() -> None:
     ret = run_checks("tests/manifests/unknown-properties-2.json")
     found_errors = ret["errors"]
     assert "manifest-unknown-properties" not in found_errors
+
+
+def test_manifest_yaml() -> None:
+    ret = run_checks("tests/manifests/yaml/manfiest-invalid.yml")
+    found_errors = ret["errors"]
+    assert "manifest-invalid-yaml" in found_errors
+    ret = run_checks("tests/manifests/yaml/manfiest-valid.yml")
+    found_errors = ret["errors"]
+    assert "manifest-invalid-yaml" not in found_errors
