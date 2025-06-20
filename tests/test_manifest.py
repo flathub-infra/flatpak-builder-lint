@@ -442,3 +442,14 @@ def test_manifest_yaml() -> None:
     ret = run_checks("tests/manifests/yaml/manfiest-valid.yml")
     found_errors = ret["errors"]
     assert "manifest-invalid-yaml" not in found_errors
+
+
+def test_manifest_build_network_access() -> None:
+    ret = run_checks("tests/manifests/network_access.json")
+    found_errors = ret["errors"]
+    errors = {
+        "manifest-toplevel-build-network-access",
+        "module-build_network_access-build-network-access",
+    }
+    for e in errors:
+        assert e in found_errors
