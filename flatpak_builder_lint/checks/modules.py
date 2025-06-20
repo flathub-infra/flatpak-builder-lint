@@ -54,6 +54,11 @@ class ModuleCheck(Check):
 
     def check_module(self, module: dict[str, Any]) -> None:
         name = module.get("name")
+
+        build_args = module.get("build-options", {}).get("build-args", [])
+        if build_args and "--share=network" in build_args:
+            self.errors.add(f"module-{name}-build-network-access")
+
         buildsystem = module.get("buildsystem", "autotools")
 
         if buildsystem == "autotools" and (config_opts := module.get("config-opts")):

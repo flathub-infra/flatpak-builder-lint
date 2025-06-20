@@ -17,6 +17,10 @@ class TopLevelCheck(Check):
             self.errors.add("manifest-unknown-properties")
             self.info.add(f"manifest-unknown-properties: {unknown_propeties}")
 
+        build_args = manifest.get("build-options", {}).get("build-args", [])
+        if build_args and "--share=network" in build_args:
+            self.errors.add("manifest-toplevel-build-network-access")
+
         build_extension = manifest.get("build-extension")
         appid = manifest.get("id")
         is_baseapp = bool(
