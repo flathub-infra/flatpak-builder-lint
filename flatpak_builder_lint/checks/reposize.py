@@ -24,10 +24,9 @@ class RepoSizeCheck(Check):
 
         repo_size = self.get_dir_size(path)
 
-        build_id = os.getenv("FLAT_MANAGER_BUILD_ID")
-        build_url = os.getenv("BUILD_URL", "")
-
-        if (build_id or build_url.startswith(config.FLATHUB_BUILD_API_URL)) and repo_size >= MAX:
+        if (
+            config.is_flathub_build_pipeline() or config.is_flatmgr_pipeline()
+        ) and repo_size >= MAX:
             size_gb = repo_size / (1024**3)
             max_gb = MAX / (1024**3)
             self.errors.add("flatpak-repo-too-large")

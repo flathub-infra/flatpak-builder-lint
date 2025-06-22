@@ -248,11 +248,11 @@ jobs:
 
       - name: Run large repo check
         run: |
-          export BUILD_URL=https://hub.flathub.org/api/v1/foobar
+          export REPO="https://github.com/flathub/org.flatpak.Builder"
           ostree init --repo=large_repo
           dd if=/dev/zero of=large_repo/file.bin bs=1M count=25600
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo large_repo|grep "flatpak-repo-too-large"
-          unset BUILD_URL
+          unset REPO
           rm -rf large_repo
 
       - name: Run Flatmanager checks

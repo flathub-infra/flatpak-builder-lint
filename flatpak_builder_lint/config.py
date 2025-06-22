@@ -7,6 +7,7 @@ FLATHUB_STABLE_REPO_URL = f"{FLATHUB_REPO_BASE_URL}/repo"
 FLATHUB_BETA_REPO_URL = f"{FLATHUB_REPO_BASE_URL}/beta-repo"
 FLATHUB_BUILD_BASE_URL = "https://hub.flathub.org"
 FLATHUB_BUILD_API_URL = f"{FLATHUB_BUILD_BASE_URL}/api/v1"
+FLATHUB_GITHUB_ORG_URL = "https://github.com/flathub/"
 
 FLATHUB_SUPPORTED_ARCHES = ("x86_64", "aarch64")
 
@@ -42,7 +43,7 @@ FLATHUB_APPSTREAM_TYPES = (
 
 # Keep root URL path
 FLATHUB_ALLOWED_GITMODULE_URLS = (
-    "https://github.com/flathub/",
+    FLATHUB_GITHUB_ORG_URL,
     "https://github.com/flathub-infra/",
     "https://github.com/flatpak/",
     "git@github.com:flathub/",
@@ -52,3 +53,11 @@ FLATHUB_ALLOWED_GITMODULE_URLS = (
 
 XDG_CACHE_HOME = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
 CACHEDIR = os.path.join(XDG_CACHE_HOME, "flatpak-builder-lint")
+
+
+def is_flathub_build_pipeline() -> bool:
+    return os.getenv("REPO", "").startswith(FLATHUB_GITHUB_ORG_URL)
+
+
+def is_flatmgr_pipeline() -> bool:
+    return bool(os.getenv("FLAT_MANAGER_BUILD_ID"))
