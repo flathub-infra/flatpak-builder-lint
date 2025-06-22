@@ -1,0 +1,41 @@
+{
+	"app-id": "org.flathub.build_network_access",
+	"runtime": "org.gnome.Platform",
+	"runtime-version": "48",
+	"sdk": "org.gnome.Sdk",
+	"sdk-extensions": [
+		"org.freedesktop.Sdk.Extension.rust-stable"
+	],
+	"command": "build_network_access",
+	"finish-args": [
+		"--socket=x11",
+		"--filesystem=home"
+	],
+	"build-options": {
+		"build-args": [
+			"--share=network"
+		]
+	},
+	"modules": [
+		{
+			"name": "abracadabra",
+			"buildsystem": "simple",
+			"build-options": {
+				"append-path": "/usr/lib/sdk/rust-stable/bin",
+				"build-args": [
+					"--share=network"
+				]
+			},
+			"build-commands": [
+				"cargo build --all --release",
+				"install -D target/release/build_network_access /app/bin/build_network_access"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/flathub/flathub"
+				}
+			]
+		}
+	]
+}
