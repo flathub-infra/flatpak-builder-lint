@@ -1,6 +1,6 @@
 {
     "io.github.fastrizwaan.WineCharm": {
-        "finish-args-flatpak-appdata-folder-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
+        "finish-args-flatpak-appdata-folder-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires."
     },
     "io.github.rfrench3.scopebuddy-gui": {
         "finish-args-unnecessary-xdg-config-scopebuddy-create-access": "This program needs to be able to create and modify xdg-config/scopebuddy/scb.conf (edit config of host Scopebuddy)"
