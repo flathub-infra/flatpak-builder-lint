@@ -5,6 +5,7 @@ import tempfile
 from collections.abc import Generator
 
 import pytest
+from _pytest.monkeypatch import MonkeyPatch
 
 from flatpak_builder_lint import checks, cli
 
@@ -442,3 +443,15 @@ def test_manifest_yaml() -> None:
     ret = run_checks("tests/manifests/yaml/manfiest-valid.yml")
     found_errors = ret["errors"]
     assert "manifest-invalid-yaml" not in found_errors
+
+
+def test_manifest_build_network_access(monkeypatch: MonkeyPatch) -> None:
+    monkeypatch.setenv("REPO", "https://github.com/flathub/org.flatpak.Builder")
+    ret = run_checks("tests/manifests/network_access.json")
+    found_errors = ret["errors"]
+    errors = {
+        "manifest-toplevel-build-network-access",
+        "module-abracadabra-build-network-access",
+    }
+    for e in errors:
+        assert e in found_errors
