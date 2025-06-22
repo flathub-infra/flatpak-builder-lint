@@ -4305,5 +4305,8 @@
     },
     "io.github.teamclouday.android-mic": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+    },
+    "org.firestormviewer.FirestormViewer": {
+        "finish-args-has-dev-input": "Required to enable support for gamepads, e.g. Xbox 360 controller, Steam Deck controller."
     }
 }
