@@ -24,9 +24,7 @@ class RepoSizeCheck(Check):
 
         repo_size = self.get_dir_size(path)
 
-        if (
-            config.is_flathub_build_pipeline() or config.is_flatmgr_pipeline()
-        ) and repo_size >= MAX:
+        if config.is_flathub_pipeline() and repo_size >= MAX:
             size_gb = repo_size / (1024**3)
             max_gb = MAX / (1024**3)
             self.errors.add("flatpak-repo-too-large")

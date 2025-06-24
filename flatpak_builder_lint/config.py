@@ -61,3 +61,7 @@ def is_flathub_build_pipeline() -> bool:
 
 def is_flatmgr_pipeline() -> bool:
     return bool(os.getenv("FLAT_MANAGER_BUILD_ID"))
+
+
+def is_flathub_pipeline() -> bool:
+    return is_flathub_build_pipeline() or is_flatmgr_pipeline()
