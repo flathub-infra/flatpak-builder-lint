@@ -4,7 +4,7 @@ runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: hello
 finish-args:
- - --filesystem=host
+ - --filesystem=xdg-download
  - --share=network
  - --socket=fallback-x11
  - --socket=wayland

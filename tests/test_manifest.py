@@ -212,6 +212,10 @@ def test_manifest_finish_args() -> None:
         "finish-args-legacy-icon-folder-permission",
         "finish-args-legacy-font-folder-permission",
         "finish-args-incorrect-theme-folder-permission",
+        "finish-args-autostart-filesystem-access",
+        "finish-args-desktopfile-filesystem-access",
+        "finish-args-ssh-filesystem-access",
+        "finish-args-gnupg-filesystem-access",
     }
 
     expected_absents = {
@@ -455,3 +459,20 @@ def test_manifest_build_network_access(monkeypatch: MonkeyPatch) -> None:
     }
     for e in errors:
         assert e in found_errors
+
+
+def test_manifest_home_host_access() -> None:
+    base_path = "tests/manifests/home_host"
+    for i in range(1, 6):
+        ret = run_checks(f"{base_path}/org.flathub.home_host{i}.json")
+        found_errors = set(ret["errors"])
+        assert "finish-args-home-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/org.flathub.home_host1.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-host-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/org.flathub.home_host_false.json")
+    found_errors = set(ret["errors"])
+    for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):
+        assert e not in found_errors

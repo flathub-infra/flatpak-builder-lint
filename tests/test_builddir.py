@@ -195,6 +195,10 @@ def test_builddir_finish_args() -> None:
         "finish-args-legacy-icon-folder-permission",
         "finish-args-legacy-font-folder-permission",
         "finish-args-incorrect-theme-folder-permission",
+        "finish-args-autostart-filesystem-access",
+        "finish-args-desktopfile-filesystem-access",
+        "finish-args-ssh-filesystem-access",
+        "finish-args-gnupg-filesystem-access",
     }
 
     expected_absents = {
@@ -539,3 +543,20 @@ def test_builddir_appstream_manifest_url_unreachable() -> None:
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
     assert "appstream-flathub-manifest-url-not-reachable" in found_errors
+
+
+def test_builddir_home_host_access() -> None:
+    base_path = "tests/builddir/home_host"
+    for i in range(1, 6):
+        ret = run_checks(f"{base_path}/home_host{i}")
+        found_errors = set(ret["errors"])
+        assert "finish-args-home-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/home_host1")
+    found_errors = set(ret["errors"])
+    assert "finish-args-host-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/home_host_false")
+    found_errors = set(ret["errors"])
+    for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):
+        assert e not in found_errors

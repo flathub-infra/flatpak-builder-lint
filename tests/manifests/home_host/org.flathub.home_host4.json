@@ -1,0 +1,6 @@
+{
+    "app-id": "org.flathub.home_host4",
+    "finish-args": [
+        "--filesystem=~/:rw"
+    ]
+}
