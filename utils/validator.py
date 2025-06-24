@@ -41,6 +41,12 @@ KNOWN_EXCEPTIONS = {
     "flatpak-repo-too-large",
     "manifest-file-is-symlink",
     "toplevel-unnecessary-branch",
+    "finish-args-host-filesystem-access",
+    "finish-args-home-filesystem-access",
+    "finish-args-autostart-filesystem-access",
+    "finish-args-desktopfile-filesystem-access",
+    "finish-args-ssh-filesystem-access",
+    "finish-args-gnupg-filesystem-access",
 }
 
 
