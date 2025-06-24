@@ -18,6 +18,7 @@ def save_file(filename: str, data: dict[str, Any]) -> bool:
     try:
         with open(filename, "w") as f:
             json.dump(data, f, indent=4)
+            f.write("\n")
         return True
     except ValueError:
         return False
