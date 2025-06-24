@@ -29,14 +29,12 @@ def show_manifest(filename: str) -> dict[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
-    yaml_failed: bool = False
     yaml_err: str | None = None
     if os.path.basename(filename).lower().endswith((".yaml", ".yml")):
         try:
             with open(filename) as f:
                 YAML(typ="safe").load(f)
         except YAMLError as err:
-            yaml_failed = True
             yaml_err = format_yaml_error(err).strip()
 
     ret = subprocess.run(
@@ -66,7 +64,7 @@ def show_manifest(filename: str) -> dict[str, Any]:
     if unknown_properties:
         manifest_json["x-manifest-unknown-properties"] = unknown_properties
 
-    if yaml_failed and yaml_err:
+    if yaml_err:
         manifest_json["x-manifest-yaml-failed"] = yaml_err
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
