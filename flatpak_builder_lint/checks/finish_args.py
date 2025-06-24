@@ -150,6 +150,55 @@ class FinishArgsCheck(Check):
                         + f" access to {resv_dir} which is reserved internally for Flatpak"
                     )
 
+            if re.fullmatch(r"^(home|host|~/?)(:rw|:create)?$", fs):
+                path = "host" if fs.startswith("host") else "home"
+                self.errors.add(f"finish-args-{path}-filesystem-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.config/autostart",
+                    "home/.config/autostart",
+                )
+            ):
+                self.errors.add("finish-args-autostart-filesystem-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.config/systemd",
+                    "home/.config/systemd",
+                )
+            ):
+                self.errors.add("finish-args-systemd-filesystem-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.local/share/applications",
+                    "home/.local/share/applications",
+                )
+            ):
+                self.errors.add("finish-args-desktopfile-filesystem-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.ssh",
+                    "home/.ssh",
+                )
+            ):
+                self.errors.add("finish-args-ssh-filesystem-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.gnupg",
+                    "home/.gnupg",
+                )
+            ):
+                self.errors.add("finish-args-gnupg-filesystem-access")
+
             if any(
                 _fs_value_matches_prefix(fs, prefix)
                 for prefix in (
