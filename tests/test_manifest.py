@@ -472,6 +472,14 @@ def test_manifest_home_host_access() -> None:
     found_errors = set(ret["errors"])
     assert "finish-args-host-filesystem-access" in found_errors
 
+    ret = run_checks(f"{base_path}/org.flathub.home_host6.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-home-ro-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/org.flathub.home_host7.json")
+    found_errors = set(ret["errors"])
+    assert "finish-args-host-ro-filesystem-access" in found_errors
+
     ret = run_checks(f"{base_path}/org.flathub.home_host_false.json")
     found_errors = set(ret["errors"])
     for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):

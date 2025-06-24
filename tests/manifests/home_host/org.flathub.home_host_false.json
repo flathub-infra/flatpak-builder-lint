@@ -3,11 +3,7 @@
     "finish-args": [
         "--filesystem=home/foobar",
         "--filesystem=home/foobar:ro",
-        "--filesystem=home:ro",
-        "--filesystem=~:ro",
-        "--filesystem=~/:ro",
         "--filesystem=~/foobar:ro",
-        "--filesystem=host:ro",
         "--filesystem=host-os:ro",
         "--filesystem=host-etc"
     ]

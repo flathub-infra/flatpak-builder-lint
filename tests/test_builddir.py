@@ -556,6 +556,14 @@ def test_builddir_home_host_access() -> None:
     found_errors = set(ret["errors"])
     assert "finish-args-host-filesystem-access" in found_errors
 
+    ret = run_checks(f"{base_path}/home_host6")
+    found_errors = set(ret["errors"])
+    assert "finish-args-home-ro-filesystem-access" in found_errors
+
+    ret = run_checks(f"{base_path}/home_host7")
+    found_errors = set(ret["errors"])
+    assert "finish-args-host-ro-filesystem-access" in found_errors
+
     ret = run_checks(f"{base_path}/home_host_false")
     found_errors = set(ret["errors"])
     for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):

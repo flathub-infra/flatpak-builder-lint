@@ -47,6 +47,8 @@ KNOWN_EXCEPTIONS = {
     "finish-args-desktopfile-filesystem-access",
     "finish-args-ssh-filesystem-access",
     "finish-args-gnupg-filesystem-access",
+    "finish-args-host-ro-filesystem-access",
+    "finish-args-home-ro-filesystem-access",
 }
 
 
