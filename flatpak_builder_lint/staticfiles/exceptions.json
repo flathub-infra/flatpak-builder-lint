@@ -6507,5 +6507,5 @@
     "io.github.tobagin.secrets": {
         "finish-args-ssh-filesystem-access": "It'll be used on a future release with git integration.",
         "finish-args-gnupg-filesystem-access": "Used for creatinf gpg keys within the password manager."
-    },
+    }
 }
