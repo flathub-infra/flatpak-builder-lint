@@ -6505,6 +6505,7 @@
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.tobagin.secrets": {
+        "finish-args-home-filesystem-access": "Used to create .password-store folder inside user's home to store passwords."
         "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager."
     }
 }
