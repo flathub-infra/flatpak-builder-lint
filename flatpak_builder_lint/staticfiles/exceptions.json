@@ -6505,6 +6505,6 @@
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     }
     "io.github.tobagin.secrets": {
-        "finish-args-gnupg-filesystem-access": "Used for creatinf gpg keys within the password manager."
+        "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager."
     }
 }
