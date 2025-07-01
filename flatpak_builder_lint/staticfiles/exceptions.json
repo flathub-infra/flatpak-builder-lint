@@ -2934,7 +2934,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.dyegoaurelio.simple-wireplumber-gui": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "finish-args-unnecessary-xdg-config-wireplumber-create-access": "this program creates config files in xdg-config/wireplumber"
     },
     "io.github.FailurePoint.RandomNumberFive": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
