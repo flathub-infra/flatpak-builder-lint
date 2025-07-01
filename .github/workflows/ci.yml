@@ -350,8 +350,8 @@ jobs:
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
           ostree refs --repo=repo
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions --ref app/org.flathub.gui/${{ env.FP_ARCH }}/master repo repo
-          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo | jq -r '.errors[] | select(. == "desktop-file-exec-key-absent")')
-          if [ "$output" = "desktop-file-exec-key-absent" ]; then
+          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo || true)
+          if echo "$output" | grep -q '"desktop-file-exec-key-absent"'; then
             echo "PASS"
           else
             echo "FAIL: $output"
