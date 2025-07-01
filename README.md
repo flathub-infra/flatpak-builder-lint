@@ -278,10 +278,10 @@ docker run -it --rm --entrypoint= -v $(pwd):/mnt:Z -w /mnt ghcr.io/flathub-infra
 ## Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF]
+usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF] [--gha-format]
                             {appstream,manifest,builddir,repo} path
 
-A linter for Flatpak builds and flatpak-builder manifests
+A linter for Flatpak manifests and build artifacts primarily developed for Flathub
 
 positional arguments:
   {appstream,manifest,builddir,repo}
@@ -304,8 +304,9 @@ options:
   --appid APPID         Override the app ID
   --cwd                 Override the path parameter with current working directory
   --ref REF             Override the primary ref detection
+  --gha-format          Use GitHub Actions annotations in CI
 
-If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint
+Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint
 ```
 
 [uv]: https://docs.astral.sh/uv/getting-started/installation/

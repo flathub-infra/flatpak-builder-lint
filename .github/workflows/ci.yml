@@ -251,7 +251,9 @@ jobs:
           export REPO="https://github.com/flathub/org.flatpak.Builder"
           ostree init --repo=large_repo
           dd if=/dev/zero of=large_repo/file.bin bs=1M count=25600
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo large_repo|grep "flatpak-repo-too-large"
+          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --gha-format --exceptions repo large_repo || true)
+          echo "$output"
+          echo "$output" | grep "flatpak-repo-too-large"
           unset REPO
           rm -rf large_repo
 

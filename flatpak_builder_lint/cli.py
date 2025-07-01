@@ -60,6 +60,27 @@ def get_user_exceptions(file: str, appid: str) -> set[str]:
     return set()
 
 
+def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str) -> None:
+    if not results:
+        return
+
+    info: dict[str, str] = {
+        k.strip(): v.strip()
+        for entry in results.get("info", [])
+        if ": " in entry
+        for k, v in [entry.split(": ", 1)]
+    }
+
+    for level, prefix in [("errors", "::error::"), ("warnings", "::warning::")]:
+        msg_type = level[:-1]
+        for msg in results.get(level, []):
+            detail = f"Details: {info.get(msg)}" if msg in info else ""
+            print(f"{prefix}{msg!r} {msg_type} found in linter {artifact_type} check. {detail}")  # noqa: T201
+
+    if help_msg := results.get("message"):
+        print(f"::notice::💡 {help_msg}")  # noqa: T201
+
+
 def run_checks(
     kind: str,
     path: str,
@@ -217,6 +238,11 @@ def main() -> int:
         type=str,
         nargs=1,
     )
+    parser.add_argument(
+        "--gha-format",
+        help="Use GitHub Actions annotations in CI",
+        action="store_true",
+    )
 
     args = parser.parse_args()
     exit_code = 0
@@ -233,8 +259,10 @@ def main() -> int:
             if "errors" in results:
                 exit_code = 1
 
-            output = json.dumps(results, indent=4)
-            print(output)  # noqa: T201
+            if os.environ.get("GITHUB_ACTIONS") == "true" and args.gha_format:
+                print_gh_annotations(results, args.type)
+            else:
+                print(json.dumps(results, indent=4))  # noqa: T201
     else:
         appstream_results = appstream.validate(path, "--explain")
         print(appstream_results["stdout"])  # noqa: T201
