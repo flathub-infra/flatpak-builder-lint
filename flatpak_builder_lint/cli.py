@@ -139,9 +139,7 @@ def run_checks(
             if not results["info"]:
                 results.pop("info")
 
-    help_text = (
-        "Please consult the documentation at https://docs.flathub.org/docs/for-app-authors/linter"
-    )
+    help_text = "See https://docs.flathub.org/linter for details and exceptions"
 
     if any(x in results for x in ("errors", "warnings", "info")):
         results["message"] = help_text
@@ -151,8 +149,10 @@ def run_checks(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="A linter for Flatpak builds and flatpak-builder manifests",
-        epilog="If you consider the detected issues incorrect, please report it here: https://github.com/flathub/flatpak-builder-lint",
+        description=(
+            "A linter for Flatpak manifests and build artifacts primarily developed for Flathub"
+        ),
+        epilog="Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint",
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=False,
     )
