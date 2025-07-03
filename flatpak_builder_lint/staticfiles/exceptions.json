@@ -1207,8 +1207,7 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.jetbrains.Toolbox":{
-        "finish-args-home-filesystem-access":"Need full access to user homedir for function properly",
-        "finish-args-arbitrary-dbus-access":"Need dbus access for systray"
+        "finish-args-home-filesystem-access":"Need full access to user homedir for function properly"
     },
     "org.libreoffice.LibreOffice": {
         "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "the app predates this linter rule, and this was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice'",
