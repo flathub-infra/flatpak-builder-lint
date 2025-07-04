@@ -1245,6 +1245,10 @@
         "finish-args-host-var-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
+    "com.bishwasaha.Koncentro": {
+        "finish-args-flatpak-spawn-access": "the app needs to run commands to change proxy settings on the host",
+        "finish-args-unnecessary-xdg-config-environment.d-create-access": "the app needs to set proxy environment variables for terminal applications"
+    },
     "ca.desrt.dconf-editor": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
