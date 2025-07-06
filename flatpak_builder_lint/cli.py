@@ -77,6 +77,9 @@ def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str
             detail = f"Details: {info.get(msg)}" if msg in info else ""
             print(f"{prefix}{msg!r} {msg_type} found in linter {artifact_type} check. {detail}")  # noqa: T201
 
+    for line in results.get("appstream", []):
+        print(f"::error::Appstream: {line.strip()!r}")  # noqa: T201
+
     if help_msg := results.get("message"):
         print(f"::notice::💡 {help_msg}")  # noqa: T201
 
