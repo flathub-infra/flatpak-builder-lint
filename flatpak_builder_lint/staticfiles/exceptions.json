@@ -6511,5 +6511,8 @@
     },
     "io.github.tobagin.secrets": {
         "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager."
+    },
+    "io.github.tobagin.digger": {
+        "finish-args-flatpak-spawn-access": "Used for spawning host processes (for dig command)."
     }
 }
