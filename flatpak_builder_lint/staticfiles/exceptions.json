@@ -1,4 +1,7 @@
 {
+    "com.ml4w.dotfilesinstaller": {
+        "finish-args-home-filesystem-access": "As the app is a dotfiles management tool, access to the home directory is required for the application's core functionality."
+    },
     "io.github.fastrizwaan.WineCharm": {
         "finish-args-flatpak-appdata-folder-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
