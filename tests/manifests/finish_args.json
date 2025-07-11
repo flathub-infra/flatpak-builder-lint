@@ -38,6 +38,7 @@
         "--filesystem=~/.var/app/foo",
         "--filesystem=/var/lib/flatpak",
         "--filesystem=/tmp",
-        "--filesystem=/var/foobar"
+        "--filesystem=/var/foobar",
+        "--no-talk-name=org.foo.bar"
     ]
 }

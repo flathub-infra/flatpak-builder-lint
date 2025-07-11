@@ -20,6 +20,7 @@ org.gtk.vfs=talk
 org.freedesktop.DBus.foo=talk
 org.mpris.MediaPlayer2.org.flathub.finish_args=own
 org.freedesktop.impl.portal.PermissionStore=own
+org.foo.bar=none
 
 [System Bus Policy]
 org.gnome.*=own

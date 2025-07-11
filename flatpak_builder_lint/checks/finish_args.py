@@ -342,6 +342,9 @@ class FinishArgsCheck(Check):
                 cpt = own_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-own-name")
 
+        if finish_args.get("none-name"):
+            self.errors.add("finish-args-uses-no-talk-name")
+
         for talk_name in finish_args["talk-name"]:
             # Values not allowed: appid or appid.*
             # An own-name implies talk-name
@@ -488,6 +491,8 @@ class FinishArgsCheck(Check):
                 if key == "unshare":
                     key = "share"
                     value = "!" + value
+                if key in ("no-talk-name", "system-no-talk-name"):
+                    key = "none-name"
                 fa[key].add(value)
 
         self._validate(appid, fa)
