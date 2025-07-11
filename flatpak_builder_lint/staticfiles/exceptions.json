@@ -6512,5 +6512,8 @@
     },
     "io.github.tobagin.secrets": {
         "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager."
+    },
+    "io.github.tobagin.keysmith": {
+        "finish-args-ssh-filesystem-access": "Used for creating/saving ssh keys within the application."
     }
 }
