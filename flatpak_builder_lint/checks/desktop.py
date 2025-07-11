@@ -10,11 +10,64 @@ from .. import appstream, builddir, config, ostree
 from . import Check
 
 
+def _check_exec(exec_line: str, bin_path: str) -> tuple[bool, str | None]:
+    ret = (False, None)
+
+    try:
+        _, argv = GLib.shell_parse_argv(exec_line)  # type: ignore[misc]
+    except GLib.Error:
+        return ret
+
+    if not argv:
+        return ret
+
+    skip_prgs = ("env", "export", "bash", "sh", "flatpak")
+    skip_unlikely = (
+        "%f",
+        "%F",
+        "%u",
+        "%U",
+        "%d",
+        "%D",
+        "%n",
+        "%N",
+        "%i",
+        "%c",
+        "%k",
+        "%v",
+        "%m",
+        "@@",
+        "--",
+        "-",
+    )
+
+    args: list[str] = [
+        arg
+        for arg in argv
+        if not (arg.endswith(skip_prgs) or arg.startswith(skip_unlikely)) and "=" not in arg
+    ]
+    if not args:
+        return ret
+
+    executable = args[0]
+    exect_path = os.path.join(bin_path, os.path.basename(executable))
+    # The linter runs outside of Flatpak's context. So we can't use
+    # things like GLib.find_program_in_path() which would try to find
+    # the program in the parent PATH. Additionally symlinks might
+    # also be broken since we are extracting only bin directory and they
+    # may point to the path inside the sandbox anyways. We don't want
+    # to extract everything from the repo to avoid running out of space
+    if os.path.lexists(exect_path):
+        return (True, executable)
+    return (False, executable)
+
+
 class DesktopfileCheck(Check):
     def _validate(self, path: str, appid: str) -> None:
-        appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
-        desktopfiles_path = f"{path}/applications"
-        icon_path = f"{path}/icons/hicolor"
+        bin_path = f"{path}/bin"
+        appstream_path = f"{path}/share/app-info/xmls/{appid}.xml.gz"
+        desktopfiles_path = f"{path}/share/applications"
+        icon_path = f"{path}/share/icons/hicolor"
         glob_path = f"{icon_path}/*/apps/*"
 
         if appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER):
@@ -141,19 +194,27 @@ class DesktopfileCheck(Check):
             if exect is None:
                 # https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/6
                 self.errors.add("desktop-file-exec-key-absent")
-            elif len(exect) > 0 and "flatpak run" in exect:
-                # desktop files are rewritten only on (re)install, neither
-                # exported ref or builddir should have "flatpak run"
-                # unless manually added in desktop-file
-                # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
-                # flatpak-dir.c: export_desktop_file < rewrite_export_dir
-                # < flatpak_rewrite_export_dir < flatpak_dir_deploy
-                # < flatpak_dir_deploy_install < flatpak_dir_install
-                self.errors.add("desktop-file-exec-has-flatpak-run")
-                self.info.add(
-                    f"desktop-file-exec-has-flatpak-run: Exec key: {exect}"
-                    + " uses flatpak run in it"
-                )
+            elif len(exect) > 0:
+                if "flatpak run" in exect:
+                    # desktop files are rewritten only on (re)install, neither
+                    # exported ref or builddir should have "flatpak run"
+                    # unless manually added in desktop-file
+                    # https://github.com/flatpak/flatpak/blob/65bc369a9f7851cc1344d2a767b308050cd66fe3/common/flatpak-transaction.c#L4765
+                    # flatpak-dir.c: export_desktop_file < rewrite_export_dir
+                    # < flatpak_rewrite_export_dir < flatpak_dir_deploy
+                    # < flatpak_dir_deploy_install < flatpak_dir_install
+                    self.errors.add("desktop-file-exec-has-flatpak-run")
+                    self.info.add(
+                        f"desktop-file-exec-has-flatpak-run: Exec key: {exect}"
+                        + " uses flatpak run in it"
+                    )
+                exec_check_ret, calc_exect = _check_exec(exect, bin_path)
+                if not exec_check_ret:
+                    self.errors.add("desktop-file-exec-not-found-in-bindir")
+                    self.info.add(
+                        f"desktop-file-exec-not-found-in-bindir: The binary '{calc_exect}'"
+                        + " calculated from the 'Exec' key was not found in bin directory"
+                    )
 
             try:
                 hidden = key_file.get_boolean("Desktop Entry", "Hidden")
@@ -228,7 +289,7 @@ class DesktopfileCheck(Check):
         if not (appid and ref_type) or ref_type == "runtime":
             return
 
-        self._validate(f"{path}/files/share", appid)
+        self._validate(f"{path}/files", appid)
 
     def check_repo(self, path: str) -> None:
         self._populate_refs(path)
@@ -240,9 +301,11 @@ class DesktopfileCheck(Check):
 
             with tempfile.TemporaryDirectory() as tmpdir:
                 for subdir in ("app-info", "applications", "icons"):
-                    os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-                    ostree.extract_subpath(
-                        path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
-                    )
+                    dest = os.path.join(tmpdir, os.path.join("share", subdir))
+                    os.makedirs(dest, exist_ok=True)
+                    ostree.extract_subpath(path, ref, f"files/share/{subdir}", dest, True)
+
+                os.makedirs(dest := os.path.join(tmpdir, "bin"), exist_ok=True)
+                ostree.extract_subpath(path, ref, "files/bin", dest, True)
 
                 self._validate(tmpdir, appid)
