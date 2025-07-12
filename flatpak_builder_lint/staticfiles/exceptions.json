@@ -1,7 +1,6 @@
 {
     "app.twintaillauncher.ttl": {
-        "finish-args-home-filesystem-access": "The application is a game launcher, it lets users choose where to store games, wine/proton etc... on their file system.",
-        "appid-url-not-reachable": "Website is alive and actually accessible??? Why linter can not reach it is beyond me, perhaps some reverse proxy issues???"
+        "finish-args-home-filesystem-access": "The application is a game launcher, it lets users choose where to store games, wine/proton etc... on their file system."
     },
     "com.ml4w.dotfilesinstaller": {
         "finish-args-home-filesystem-access": "As the app is a dotfiles management tool, access to the home directory is required for the application's core functionality."
