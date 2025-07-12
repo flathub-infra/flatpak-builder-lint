@@ -64,17 +64,25 @@ class AppIDCheck(Check):
                     self.errors.add("appid-url-check-internal-error")
                     return
                 url = f"https://{domainutils.get_proj_url(appid)}"
-                if not domainutils.check_url(url, strict=True):
+                ok, resp = domainutils.check_url(url, strict=True)
+                if not ok:
                     self.errors.add("appid-url-not-reachable")
-                    self.info.add(f"appid-url-not-reachable: Tried {url}")
+                    message = f"appid-url-not-reachable: Tried {url}"
+                    if resp:
+                        message += f" | {resp}"
+                    self.info.add(message)
             else:
                 if domainutils.get_domain(appid) is None:
                     self.errors.add("appid-url-check-internal-error")
                     return
                 url_https = f"https://{domainutils.get_domain(appid)}"
-                if not domainutils.check_url(url_https, strict=False):
+                ok, resp = domainutils.check_url(url_https, strict=False)
+                if not ok:
                     self.errors.add("appid-url-not-reachable")
-                    self.info.add(f"appid-url-not-reachable: Tried {url_https}")
+                    message = f"appid-url-not-reachable: Tried {url_https}"
+                    if resp:
+                        message += f" | {resp}"
+                    self.info.add(message)
 
     def check_manifest(self, manifest: dict[str, Any]) -> None:
         appid = manifest.get("id")

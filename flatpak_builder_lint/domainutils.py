@@ -124,15 +124,22 @@ def get_eol_runtimes_on_flathub() -> set[str]:
 
 
 @cache
-def check_url(url: str, strict: bool = False) -> bool:
+def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
     if not url.startswith(("https://", "http://")):
         raise Exception("Invalid input")
 
     try:
         r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
-        return r.ok and not strict or strict and r.status_code == 200
+        ok = (r.ok and not strict) or (strict and r.status_code == 200)
+        parts = [
+            f"Status: {r.status_code}",
+            f"Headers: {dict(r.headers)}",
+            f"Body: {r.text.strip().replace('\n', ' ')[:500]}",
+        ]
+        resp_info = " | ".join(parts)
+        return ok, resp_info
     except requests.exceptions.RequestException:
-        return False
+        return False, None
 
 
 @cache
@@ -269,7 +276,8 @@ def get_domain(appid: str) -> str | None:
 
 @cache
 def is_app_on_flathub_api(appid: str) -> bool:
-    return check_url(f"{config.FLATHUB_API_URL}/summary/{appid}", strict=True)
+    ok, _ = check_url(f"{config.FLATHUB_API_URL}/summary/{appid}", strict=True)
+    return ok
 
 
 @cache

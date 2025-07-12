@@ -58,8 +58,12 @@ class MetainfoCheck(Check):
 
             manifest_key = appstream.get_manifest_key(appstream_path)
 
-            if manifest_key and not domainutils.check_url(manifest_key[0], strict=False):
-                self.errors.add("appstream-flathub-manifest-url-not-reachable")
+            if manifest_key:
+                ok, resp = domainutils.check_url(manifest_key[0], strict=False)
+                if not ok:
+                    self.errors.add("appstream-flathub-manifest-url-not-reachable")
+                    if resp:
+                        self.info.add(f"appstream-flathub-manifest-url-not-reachable: {resp}")
 
             aps_ctype = appstream.component_type(appstream_path)
 
