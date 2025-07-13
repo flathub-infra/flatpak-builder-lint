@@ -40,7 +40,6 @@ def ignore_ref(ref: str) -> bool:
         len(parts) != 4
         or parts[2] not in config.FLATHUB_SUPPORTED_ARCHES
         or parts[1].endswith(config.IGNORE_REF_SUFFIXES)
-        or parts[0] != "app"
     )
 
 
@@ -82,9 +81,14 @@ def get_summary_obj(
 
 
 @cache
-def get_appids_from_summary(url: str) -> set[str]:
+def get_refs_from_summary(url: str) -> set[str]:
     refs, _ = get_summary_obj(url)
-    return {ref.split("/")[1] for ref, _ in (refs or []) if not ignore_ref(ref)}
+    return {ref for ref, _ in (refs or []) if not ignore_ref(ref)}
+
+
+@cache
+def get_appids_from_summary(url: str) -> set[str]:
+    return {ref.split("/")[1] for ref in get_refs_from_summary(url) if ref.startswith("app/")}
 
 
 @cache
@@ -92,6 +96,28 @@ def get_all_apps_on_flathub() -> set[str]:
     return get_appids_from_summary(
         f"{config.FLATHUB_STABLE_REPO_URL}/summary"
     ) | get_appids_from_summary(f"{config.FLATHUB_BETA_REPO_URL}/summary")
+
+
+@cache
+def get_all_runtimes(url: str) -> set[str]:
+    runtimes: set[str] = set()
+
+    for ref in get_refs_from_summary(url):
+        parts = ref.split("/")
+        if len(parts) < 4:
+            continue
+
+        ref_type, ref_id, _, branch = parts
+
+        if (
+            ref_type == "runtime"
+            and ref_id.startswith(config.FLATHUB_RUNTIME_PREFIXES)
+            and ref_id.endswith(config.FLATHUB_RUNTIME_SUFFIXES)
+            and not ref_id.endswith(config.IGNORE_REF_SUFFIXES)
+        ):
+            runtimes.add(f"{ref_id}//{branch}")
+
+    return runtimes
 
 
 @cache
@@ -116,11 +142,28 @@ def get_eol_runtimes(url: str) -> set[str]:
         ):
             eols.add(f"{ref_id}//{branch}")
 
+    extra = (
+        "org.gnome.Platform//3.38",
+        "org.gnome.Sdk//3.38",
+        "org.kde.Sdk//5.14",
+        "org.kde.Platform//5.14",
+    )
+
+    eols.update(extra)
+
     return eols
+
+
+def get_all_runtimes_on_flathub() -> set[str]:
+    return get_all_runtimes(f"{config.FLATHUB_STABLE_REPO_URL}/summary")
 
 
 def get_eol_runtimes_on_flathub() -> set[str]:
     return get_eol_runtimes(f"{config.FLATHUB_STABLE_REPO_URL}/summary")
+
+
+def get_active_runtimes_on_flathub() -> set[str]:
+    return get_all_runtimes_on_flathub() - get_eol_runtimes_on_flathub()
 
 
 @cache
