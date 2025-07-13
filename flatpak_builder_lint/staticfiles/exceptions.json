@@ -6520,6 +6520,6 @@
         "finish-args-ssh-filesystem-access": "Used for creating/saving ssh keys within the application."
     },
     "io.github.rimsort.RimSort": {
-        "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
     }
 }
