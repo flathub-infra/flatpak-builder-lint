@@ -298,6 +298,7 @@ def test_builddir_desktop_file() -> None:
         "desktop-file-is-hidden",
         "desktop-file-exec-has-flatpak-run",
         "desktop-file-icon-not-installed",
+        "desktop-file-exec-not-found-in-bindir",
     }
     found_errors = set(ret["errors"])
     found_warnings: set[str] = set(ret["warnings"])
@@ -433,6 +434,7 @@ def test_min_success_metadata() -> None:
             create_catalogue(testdir, "org.flathub.gui.xml")
             create_app_icon(testdir, "org.flathub.gui.png")
             create_catalogue_icon(testdir, "org.flathub.gui.png")
+            create_file(os.path.join(testdir, "files/bin"), "Example")
 
         ret = run_checks(testdir)
         assert "errors" not in ret
