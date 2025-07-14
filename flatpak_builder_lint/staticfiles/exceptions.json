@@ -6521,5 +6521,8 @@
     },
     "io.github.rimsort.RimSort": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
+    },
+    "com.ntrack.n-track": {
+        "flathub-json-automerge-enabled": "Required to preserve the app’s CI workflow"
     }
 }
