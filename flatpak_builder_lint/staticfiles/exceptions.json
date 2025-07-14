@@ -5077,7 +5077,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.avidemux.Avidemux": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-contains-both-x11-and-wayland": "Fixes a start up crash for some Wayland users"
     },
     "org.beeref.BeeRef": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
