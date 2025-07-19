@@ -3540,7 +3540,8 @@
     },
     "com.steamgriddb.SGDBoop": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
-        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+        "finish-args-flatpak-system-folder-access": "Read-only access to /var/lib/flatpak/app/com.valvesoftware.Steam to check whether Steam Flatpak is installed"
     },
     "com.steamgriddb.steam-rom-manager": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
