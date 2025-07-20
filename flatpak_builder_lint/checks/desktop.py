@@ -217,7 +217,7 @@ class DesktopfileCheck(Check):
             }
             if cats is not None and len(cats) > 0 and cats.issubset(block):
                 found_cats = cats.intersection(block)
-                self.warnings.add("desktop-file-low-quality-category")
+                self.errors.add("desktop-file-low-quality-category")
                 self.info.add(
                     "desktop-file-low-quality-category: A low quality category was found"
                     + f" in the desktop file: {found_cats}"

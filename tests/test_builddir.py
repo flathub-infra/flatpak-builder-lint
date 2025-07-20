@@ -298,11 +298,10 @@ def test_builddir_desktop_file() -> None:
         "desktop-file-is-hidden",
         "desktop-file-exec-has-flatpak-run",
         "desktop-file-icon-not-installed",
+        "desktop-file-low-quality-category",
     }
     found_errors = set(ret["errors"])
-    found_warnings: set[str] = set(ret["warnings"])
 
-    assert "desktop-file-low-quality-category" in found_warnings
     for err in errors:
         assert err in found_errors
     assert "appstream-missing-categories" not in found_errors
