@@ -6,6 +6,7 @@ import subprocess
 from typing import Any
 
 from ruamel.yaml import YAML
+from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.error import YAMLError
 
 from . import config, gitutils
@@ -20,6 +21,44 @@ def format_yaml_error(e: YAMLError) -> str:
         and not line.strip().startswith("https://yaml.dev/")
     )
     return f"{err_type} {msg}"
+
+
+def get_key_lineno(manifest_path: str, key: str) -> int | None:
+    if not os.path.isfile(manifest_path):
+        return None
+
+    if manifest_path.lower().endswith(".json"):
+        try:
+            with open(manifest_path, encoding="utf-8") as f:
+                for i, line in enumerate(f, start=1):
+                    if f'"{key}"' in line or f"'{key}'" in line:
+                        return i
+        except (OSError, json.JSONDecodeError):
+            return None
+
+    elif manifest_path.lower().endswith((".yaml", ".yml")):
+        yaml = YAML()
+        yaml.preserve_quotes = True
+        try:
+            with open(manifest_path, encoding="utf-8") as f:
+                data = yaml.load(f)
+        except (OSError, YAMLError):
+            return None
+
+        if isinstance(data, CommentedMap) and key in data:
+            node = data.ca.items.get(key)
+            if node and node[0] and hasattr(node[0], "start_mark"):
+                return int(node[0].start_mark.line + 1)
+
+        try:
+            with open(manifest_path, encoding="utf-8") as f:
+                for i, line in enumerate(f, start=1):
+                    if key in line:
+                        return i
+        except OSError:
+            return None
+
+    return None
 
 
 # json-glib supports non-standard syntax like // comments. Bail out and
