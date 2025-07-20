@@ -23,12 +23,15 @@ class ModuleCheck(Check):
     def check_source(self, module_name: str, source: dict[str, str]) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
+        src_url = source.get("url", "")
 
         if dest_filename and dest_filename.find("/") != -1:
             self.errors.add(f"module-{module_name}-source-dest-filename-is-path")
 
         if source_type in ("archive", "file"):
-            if source.get("sha1"):
+            if source.get("sha1") and not src_url.startswith(
+                ("https://registry.npmjs.org/", "https://registry.yarnpkg.com/")
+            ):
                 self.errors.add(f"module-{module_name}-source-sha1-deprecated")
             if source.get("md5"):
                 self.errors.add(f"module-{module_name}-source-md5-deprecated")
