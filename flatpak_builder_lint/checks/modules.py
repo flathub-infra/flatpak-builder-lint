@@ -68,21 +68,6 @@ class ModuleCheck(Check):
                 if opt.startswith("--enable-debug") and not opt.endswith("=no"):
                     self.errors.add(f"module-{name}-autotools-non-release-build")
 
-        if buildsystem == "cmake":
-            self.warnings.add(f"module-{name}-buildsystem-is-plain-cmake")
-
-        if buildsystem in ("cmake-ninja", "cmake") and (config_opts := module.get("config-opts")):
-            for opt in config_opts:
-                if opt.startswith("-DCMAKE_BUILD_TYPE"):
-                    split = opt.split("=")
-                    # There is too many possible choices and customizations.
-                    # So just make this a warning.
-                    # Issues:
-                    #  https://github.com/flathub/flatpak-builder-lint/issues/47
-                    #  https://github.com/flathub/flatpak-builder-lint/issues/41
-                    if split[1] not in ("Release", "RelWithDebInfo", "MinSizeRel"):
-                        self.warnings.add(f"module-{name}-cmake-non-release-build")
-
         if sources := module.get("sources"):
             for source in sources:
                 if name := module.get("name"):
