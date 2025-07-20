@@ -305,6 +305,9 @@ def test_manifest_modules() -> None:
     warnings = {
         "module-module1-buildsystem-is-plain-cmake",
         "module-module1-cmake-non-release-build",
+    }
+
+    errors = {
         "module-module1-source-sha1-deprecated",
     }
 
@@ -318,6 +321,8 @@ def test_manifest_modules() -> None:
         not in found_errors
     )
     assert warnings.issubset(found_warnings)
+    for i in errors:
+        assert i in found_errors
 
 
 def test_manifest_modules_git_allowed() -> None:
