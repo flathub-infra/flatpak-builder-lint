@@ -4185,7 +4185,6 @@
         "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
     },
     "org.openkj.OpenKJ": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.openmsx.openMSX": {
