@@ -6,6 +6,8 @@ RUN echo "root:x:0:0:root:/root:/bin/bash" > /etc/passwd && \
 RUN rm -rf /tmp /var/tmp /root && mkdir -p -m 1777 /tmp /var/tmp && \
     mkdir -p -m 700 /root
 
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 ENV PATH="/app/bin:$PATH"
 ENV LD_LIBRARY_PATH=/app/lib
 ENV PYTHONPATH=/app/lib/python3.12/site-packages
