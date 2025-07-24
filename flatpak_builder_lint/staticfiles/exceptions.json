@@ -6521,5 +6521,8 @@
     },
     "io.github.rimsort.RimSort": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
+    },
+    "de.leopoldluley.Clapgrep": {
+        "finish-args-host-filesystem-access": "Required to get real paths from the GTK FileDialog"
     }
 }
