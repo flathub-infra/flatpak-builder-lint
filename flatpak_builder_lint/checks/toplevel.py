@@ -17,6 +17,12 @@ class TopLevelCheck(Check):
             self.errors.add("manifest-unknown-properties")
             self.info.add(f"manifest-unknown-properties: {unknown_propeties}")
 
+        json_warnings = manifest.get("x-manifest-json-warnings")
+
+        if json_warnings:
+            self.errors.add("manifest-json-warnings")
+            self.info.add(f"manifest-json-warnings: {json_warnings}")
+
         if config.is_flathub_build_pipeline():
             build_args = manifest.get("build-options", {}).get("build-args", [])
             if build_args and "--share=network" in build_args:

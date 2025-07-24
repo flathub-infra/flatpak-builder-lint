@@ -1,0 +1,21 @@
+{
+    "id": "com.example.json_warnings",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.9",
+    "sdk": "org.kde.Sdk",
+    "command": "foo",
+    "finish-args": [
+        "--device=dri"
+    ],
+    "modules": [
+        {
+            "name": "kpat",
+            "buildsystem": "cmake-ninja",
+            "sources":
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/kde/kpat.git"
+                }
+        }
+    ]
+}

@@ -86,12 +86,21 @@ def show_manifest(filename: str) -> dict[str, Any]:
     stderr_s = ret.stderr.decode("utf-8")
     stdout_s = ret.stdout.decode("utf-8")
 
-    pat = re.compile(
+    unknown_pat = re.compile(
         r"^\*\* \(flatpak-builder:\d+\): WARNING \*\*: " r"[\d:.]+: Unknown property (\S+) for type"
     )
+
+    json_warning_pat = re.compile(r"^\(flatpak-builder:\d+\): Json-WARNING \*\*: " r"[\d:.]+: (.+)")
+
     unknown_properties: list[str] = []
+    json_warnings: list[str] = []
+
     if stderr_s:
-        unknown_properties = [m.group(1) for line in stderr_s.split("\n") if (m := pat.match(line))]
+        for line in stderr_s.splitlines():
+            if m := unknown_pat.match(line):
+                unknown_properties.append(m.group(1).strip())
+            elif m := json_warning_pat.match(line):
+                json_warnings.append(m.group(1).strip())
 
     if ret.returncode != 0:
         raise Exception(stderr_s)
@@ -102,6 +111,9 @@ def show_manifest(filename: str) -> dict[str, Any]:
 
     if unknown_properties:
         manifest_json["x-manifest-unknown-properties"] = unknown_properties
+
+    if json_warnings:
+        manifest_json["x-manifest-json-warnings"] = json_warnings
 
     if yaml_err:
         manifest_json["x-manifest-yaml-failed"] = yaml_err

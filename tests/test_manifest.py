@@ -439,6 +439,12 @@ def test_manifest_unknown_properties() -> None:
     assert "manifest-unknown-properties" not in found_errors
 
 
+def test_manifest_json_warnings() -> None:
+    ret = run_checks("tests/manifests/com.example.json_warnings.json")
+    found_errors = ret["errors"]
+    assert "manifest-json-warnings" in found_errors
+
+
 def test_manifest_yaml() -> None:
     ret = run_checks("tests/manifests/yaml/manfiest-invalid.yml")
     found_errors = ret["errors"]
