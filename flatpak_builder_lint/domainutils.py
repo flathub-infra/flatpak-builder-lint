@@ -171,16 +171,26 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
     if not url.startswith(("https://", "http://")):
         raise Exception("Invalid input")
 
+    resp_info = None
     try:
-        r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
-        ok = (r.ok and not strict) or (strict and r.status_code == 200)
-        parts = [
-            f"Status: {r.status_code}",
-            f"Headers: {dict(r.headers)}",
-            f"Body: {r.text.strip().replace('\n', ' ')[:500]}",
-        ]
-        resp_info = " | ".join(parts)
-        return ok, resp_info
+        with requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT, stream=True) as r:
+            ok = r.status_code == 200 if strict else r.ok
+            if ok:
+                return True, None
+            try:
+                chunk = next(r.iter_content(512))
+                body = chunk.decode(errors="replace").replace("\n", " ").strip()
+            except StopIteration:
+                body = ""
+
+            resp_info = " | ".join(
+                [
+                    f"Status: {r.status_code}",
+                    f"Headers: {dict(r.headers)}",
+                    f"Body: {body}",
+                ]
+            )
+            return False, resp_info
     except requests.exceptions.RequestException:
         return False, None
 
