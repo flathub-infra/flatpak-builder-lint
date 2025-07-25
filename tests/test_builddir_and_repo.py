@@ -1,6 +1,6 @@
 import os
 from typing import Any
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from pytest import MonkeyPatch
 
@@ -361,9 +361,23 @@ def test_appstream_svg_screenshot(check_type: str, tmp_testdir: str) -> None:
     assert "metainfo-svg-screenshots" in set(ret["errors"])
 
 
-def test_eol_runtime(check_type: str, tmp_testdir: str) -> None:
-    ret = rc("tests/builddir/eol_runtime", check_type, tmp_testdir)
-    assert "runtime-is-eol-org.freedesktop.Platform-18.08" in set(ret["warnings"])
+@patch("flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub")
+@patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub")
+def test_builddir_eol_runtime(
+    mock_eol: MagicMock,
+    mock_active: MagicMock,
+    check_type: str,
+    tmp_testdir: str,
+) -> None:
+    mock_eol.return_value = {"org.freedesktop.Platform//18.08"}
+    mock_active.return_value = {"org.freedesktop.Platform//23.08"}
+
+    testdir = "tests/builddir/eol_runtime"
+    move_files(testdir)
+    ret = rc(testdir, check_type, tmp_testdir)
+
+    found_errors = set(ret["errors"])
+    assert "runtime-is-eol-org.freedesktop.Platform-18.08" in found_errors
 
 
 # ELF check is disabled for repo check
