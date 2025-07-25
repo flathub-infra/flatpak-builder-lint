@@ -24,7 +24,7 @@ CODE_HOSTS = (
     "site.srht.",
 )
 
-REQUEST_TIMEOUT = (120.05, 10800)
+REQUEST_TIMEOUT = (10, 60)
 
 
 CACHEFILE = os.path.join(config.CACHEDIR, "requests_cache")
