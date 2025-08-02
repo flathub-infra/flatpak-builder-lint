@@ -27,7 +27,7 @@ version = "3.0.0"
 description = "A linter for flatpak-builder manifests"
 authors = [
   {name = "Bartłomiej Piotrowski", email = "b@bpiotrowski.pl"},
-  {name = "bbhtt", email = "bbhtt@bbhtt.space"},
+  {name = "bbhtt", email = "bbhtt@bbhtt.in"},
 ]
 license = {text = "MIT"}
 readme = "README.md"
