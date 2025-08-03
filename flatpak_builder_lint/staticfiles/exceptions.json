@@ -6521,5 +6521,8 @@
     },
     "io.github.rimsort.RimSort": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
+    },
+    "uk.co.cappsy.Tesseract": {
+      "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
 }
