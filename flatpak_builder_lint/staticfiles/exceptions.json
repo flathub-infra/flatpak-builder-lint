@@ -3410,6 +3410,7 @@
     },
     "org.remmina.Remmina": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "finish-args-flatpak-spawn-access": "Needed to launch programs on the host specified by the user",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
