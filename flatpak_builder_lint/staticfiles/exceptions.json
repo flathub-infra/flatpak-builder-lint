@@ -6525,5 +6525,8 @@
     },
     "uk.co.cappsy.Tesseract": {
       "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+    },
+    "page.codeberg.friedrich.DND-Dice-Roller": {
+      "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme"
     }
 }
