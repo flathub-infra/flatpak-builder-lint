@@ -214,6 +214,20 @@
                     "sha256": "6c8fbb13ec503f99a91901ab46e0b07ae7941cd527393187039aec586fdfd36f"
                 }
             ]
+        },
+        {
+            "name": "python3-publicsuffixlist",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"publicsuffixlist\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/0d/38/55799d0c4b1cdd4db5add566e39b1fcc9342527c8725ba4659b712be0627/publicsuffixlist-1.0.2.20250802-py2.py3-none-any.whl",
+                    "sha256": "6fb43d30e92217a6fca0a708860b77a66997b5c78743455579f5d08ce18efe5e"
+                }
+            ]
         }
     ]
 }

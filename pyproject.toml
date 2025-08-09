@@ -40,6 +40,7 @@ dependencies = [
     "PyGObject<4.0.0,>=3.48.2",
     "requests-cache<2.0.0,>=1.2.1",
     "ruamel.yaml<1.0.0,>=0.18.14",
+    "publicsuffixlist>=1.0.2.20250802,<2",
 ]
 
 [project.urls]

@@ -179,11 +179,11 @@ Dependencies can be added to removed with `uv add` and `uv remove` while
 upgrade a specific package or `uv lock -U` to upgrade everything.
 
 The following Python dependencies are installed and needed to run the
-project: `jsonschema, requests, requests-cache, lxml, sentry-sdk, ruamel.yaml`
-and `PyGObject`. Additionally `setuptools` is necessary to build the
-project. `dunamai` is used to generate a version from the git commit,
-since no tags or releases are done, in absence of which it will default
-to the version of the last tag made.
+project: `jsonschema, requests, requests-cache, lxml, sentry-sdk,
+ruamel.yaml, publicsuffixlist` and `PyGObject`. Additionally `setuptools`
+is necessary to build the project. `dunamai` is used to generate a
+version from the git commit, since no tags or releases are done, in
+absence of which it will default to the version of the last tag made.
 
 ### Formatting and Linting
 

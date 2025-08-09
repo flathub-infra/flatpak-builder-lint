@@ -104,6 +104,7 @@ source = { editable = "." }
 dependencies = [
     { name = "jsonschema" },
     { name = "lxml" },
+    { name = "publicsuffixlist" },
     { name = "pygobject" },
     { name = "requests" },
     { name = "requests-cache" },
@@ -127,6 +128,7 @@ dev = [
 requires-dist = [
     { name = "jsonschema", specifier = ">=4.23.0,<5.0.0" },
     { name = "lxml", specifier = ">=5.3.0,<6.0.0" },
+    { name = "publicsuffixlist", specifier = ">=1.0.2.20250802,<2" },
     { name = "pygobject", specifier = ">=3.48.2,<4.0.0" },
     { name = "requests", specifier = ">=2.32.2,<3.0.0" },
     { name = "requests-cache", specifier = ">=1.2.1,<2.0.0" },
@@ -373,6 +375,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/64/10/97ee2fa54dff1e9da9badbc5e35d0bbaef0776271ea5907eccf64140f72f/pre_commit-3.8.0.tar.gz", hash = "sha256:8bb6494d4a20423842e198980c9ecf9f96607a07ea29549e180eef9ae80fe7af", size = 177815, upload-time = "2024-07-28T19:59:01.538Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/07/92/caae8c86e94681b42c246f0bca35c059a2f0529e5b92619f6aba4cf7e7b6/pre_commit-3.8.0-py2.py3-none-any.whl", hash = "sha256:9a90a53bf82fdd8778d58085faf8d83df56e40dfe18f45b19446e26bf1b3a63f", size = 204643, upload-time = "2024-07-28T19:58:59.335Z" },
+]
+
+[[package]]
+name = "publicsuffixlist"
+version = "1.0.2.20250802"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2a/ca/cf5cdeb9bc43c4ecd5229eb0975e2fae75a031d6196be1c46646cbea3a09/publicsuffixlist-1.0.2.20250802.tar.gz", hash = "sha256:fcb8b3eb917b464fd326be712027d1b0ad74165ce0a23c369b8a2d9e1e3ecb90", size = 105857, upload-time = "2025-08-02T04:01:16.219Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0d/38/55799d0c4b1cdd4db5add566e39b1fcc9342527c8725ba4659b712be0627/publicsuffixlist-1.0.2.20250802-py2.py3-none-any.whl", hash = "sha256:6fb43d30e92217a6fca0a708860b77a66997b5c78743455579f5d08ce18efe5e", size = 105658, upload-time = "2025-08-02T04:01:15.004Z" },
 ]
 
 [[package]]

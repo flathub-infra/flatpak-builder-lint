@@ -5,6 +5,7 @@ from typing import Any
 
 import gi
 import requests
+from publicsuffixlist import PublicSuffixList  # type: ignore[import-untyped]
 from requests_cache import CachedSession
 
 from . import config, staticfiles
@@ -321,8 +322,12 @@ def get_domain(appid: str) -> str | None:
     elif appid.startswith("org.freedesktop.") and not appid.startswith("org.freedesktop.gitlab."):
         domain = "freedesktop.org"
     else:
-        demangled = [demangle(i) for i in appid.split(".")[:-1]]
-        domain = ".".join(reversed(demangled)).lower()
+        fqdn = ".".join(reversed(appid.split("."))).lower()
+        psl = PublicSuffixList()
+        if psl.is_private(fqdn):
+            domain = demangle(psl.privatesuffix(fqdn))
+        else:
+            domain = ".".join(reversed([demangle(i) for i in appid.split(".")[:-1]])).lower()
 
     return domain
 

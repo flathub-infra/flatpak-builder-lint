@@ -259,7 +259,6 @@ def test_builddir_console() -> None:
         "desktop-file-exec-key-absent",
         "desktop-file-is-hidden",
         "desktop-file-terminal-key-not-true",
-        "appid-url-not-reachable",
     }
     testdir = "tests/builddir/console"
     move_files(testdir)
