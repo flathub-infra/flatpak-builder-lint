@@ -4369,7 +4369,10 @@
     "io.github.wivrn.wivrn": {
         "finish-args-unnecessary-xdg-config-openvr-create-access": "Required to set the current OpenVR runtime",
         "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime",
-        "finish-args-flatpak-spawn-access": "Required to launch games on the host"
+        "finish-args-flatpak-spawn-access": "Required to launch games on the host",
+        "finish-args-flatpak-appdata-folder-access": "Required to list games in Steam flatpak",
+        "finish-args-unnecessary-xdg-data-Steam-ro-access": "Required to list games in system Steam",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to list .desktop files on the host"
     },
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "finish-args-not-defined": "This provides an extension point only",
