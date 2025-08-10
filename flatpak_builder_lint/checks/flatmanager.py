@@ -88,6 +88,37 @@ class FlatManagerCheck(Check):
                         self.errors.add("appstream-no-flathub-manifest-key")
 
             else:
+                ref_branches: set[str] = {
+                    parts[-1]
+                    for ref in refs
+                    if not ref.startswith(
+                        (
+                            "runtime/org.freedesktop.Platform.GL.",
+                            "runtime/org.freedesktop.Platform.GL32.",
+                        )
+                    )
+                    and (parts := ref.strip("/").split("/"))
+                    and len(parts) >= 3
+                }
+                all_branches_beta = all(
+                    branch.endswith(("beta", "beta-extra")) for branch in ref_branches
+                )
+
+                if target_repo == "beta" and not all_branches_beta:
+                    self.errors.add("flat-manager-wrong-ref-branch-for-beta-repo")
+                    self.info.add(
+                        "flat-manager-wrong-ref-branch-for-beta-repo: If the target repo is 'beta' "
+                        + "then all refs must have branches ending with 'beta' or 'beta-extra'"
+                    )
+
+                if target_repo == "stable" and all_branches_beta:
+                    self.errors.add("flat-manager-wrong-ref-branch-for-stable-repo")
+                    self.info.add(
+                        "flat-manager-wrong-ref-branch-for-stable-repo: If the target repo is "
+                        + "'stable' then no ref must have branches ending "
+                        + "with 'beta' or 'beta-extra'"
+                    )
+
                 appref_list = [ref for ref in refs if ref.startswith("app/")]
                 if not appref_list:
                     return
