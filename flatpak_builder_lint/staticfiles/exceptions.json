@@ -9,6 +9,9 @@
     "io.github.rfrench3.scopebuddy-gui": {
         "finish-args-unnecessary-xdg-config-scopebuddy-create-access": "This program needs to be able to create and modify xdg-config/scopebuddy/scb.conf (edit config of host Scopebuddy)"
     },
+    "io.github.sockeye_d.godl": {
+        "finish-args-host-filesystem-access": "needed to access and modify projects outside of sandbox"
+    },
     "io.github.swordpuffin.wardrobe": {
         "finish-args-dconf-talk-name": "needed to access host dconf configuration",
         "finish-args-home-filesystem-access": "Predates the linter rule"
