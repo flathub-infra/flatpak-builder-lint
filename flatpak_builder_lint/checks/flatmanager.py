@@ -104,6 +104,10 @@ class FlatManagerCheck(Check):
                     branch.endswith(("beta", "beta-extra")) for branch in ref_branches
                 )
 
+                any_branches_beta = any(
+                    branch.endswith(("beta", "beta-extra")) for branch in ref_branches
+                )
+
                 if target_repo == "beta" and not all_branches_beta:
                     self.errors.add("flat-manager-wrong-ref-branch-for-beta-repo")
                     self.info.add(
@@ -111,7 +115,7 @@ class FlatManagerCheck(Check):
                         + "then all refs must have branches ending with 'beta' or 'beta-extra'"
                     )
 
-                if target_repo == "stable" and all_branches_beta:
+                if target_repo == "stable" and any_branches_beta:
                     self.errors.add("flat-manager-wrong-ref-branch-for-stable-repo")
                     self.info.add(
                         "flat-manager-wrong-ref-branch-for-stable-repo: If the target repo is "
