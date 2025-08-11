@@ -100,6 +100,10 @@ class FlatManagerCheck(Check):
                     and (parts := ref.strip("/").split("/"))
                     and len(parts) >= 3
                 }
+
+                if not ref_branches:
+                    return
+
                 all_branches_beta = all(
                     branch.endswith(("beta", "beta-extra")) for branch in ref_branches
                 )
