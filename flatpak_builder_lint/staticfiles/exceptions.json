@@ -6534,5 +6534,8 @@
     },
     "page.codeberg.friedrich.DND-Dice-Roller": {
       "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme"
+    },
+    "com.binarynonsense.acbr": {
+        "finish-args-home-filesystem-access": "As a reader and converter of comic book files, with an integrated file explorer, access to the home directory is required for some of the application's core features."
     }
 }
