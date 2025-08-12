@@ -6534,5 +6534,8 @@
     },
     "page.codeberg.friedrich.DND-Dice-Roller": {
       "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme"
+    },
+    "com.binarynonsense.acbr": {
+        "finish-args-home-filesystem-access": "As a reader and converter of comic book files and images, among other things, it needs, and the users expect, to be able to open and create files and folders anywhere at least inside home, without prompting the user with a dialog, as that isn't feasible for all cases mentioned next: drag and drop files to open them; pass files and folders from the command line to run on the tools as inputs or outputs, or open in the reader; automatically open those files on start / from the history... And some of the integrated tools need to be able to create folders and files during the conversions anywhere the user chooses without human intervention. It's also needed for the integrated file explorer, essential for gamepad and touchscreen users but also available to mouse and keyboard users; the integrated audio player... For all these, I propose home access as the right compromise between security and functionality, as limiting access more may result in users discarding the program as faulty or too limited for the tasks it's supposed to help with as it will limit or even break some of the features/tools."
     }
 }
