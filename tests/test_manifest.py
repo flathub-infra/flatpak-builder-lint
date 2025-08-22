@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import tempfile
 from collections.abc import Generator
+from unittest.mock import MagicMock, patch
 
 import pytest
 from _pytest.monkeypatch import MonkeyPatch
@@ -405,10 +406,21 @@ def test_manifest_symlink() -> None:
     assert "manifest-file-is-symlink" not in found_errors
 
 
-def test_manifest_eol_runtime() -> None:
+@patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub")
+@patch("flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub")
+def test_manifest_eol_runtime(mock_active: MagicMock, mock_eol: MagicMock) -> None:
+    mock_active.return_value = {
+        "org.gnome.Platform//45",
+        "org.gnome.Sdk//45",
+        "org.gnome.Platform//46",
+    }
+    mock_eol.return_value = {
+        "org.gnome.Sdk//40",
+    }
+
     ret = run_checks("tests/manifests/eol_runtime.json")
-    found_warnings = ret["warnings"]
-    assert "runtime-is-eol-org.gnome.Sdk-40" in found_warnings
+    found_errors = ret["errors"]
+    assert "runtime-is-eol-org.gnome.Sdk-40" in found_errors
 
 
 def test_manifest_in_git_repo(tmp_testdir: str) -> None:
