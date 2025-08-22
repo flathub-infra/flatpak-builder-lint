@@ -6492,6 +6492,9 @@
     "org.freedesktop.GstDebugViewer": {
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
+    "org.garudalinux.firedragon": {
+        "releases-not-in-order": "This project uses SemVer which differs from AppStream release order"
+    },
     "org.gnome.Evince": {
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
