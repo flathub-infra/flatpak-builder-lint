@@ -6542,5 +6542,10 @@
     },
     "com.binarynonsense.acbr": {
         "finish-args-home-filesystem-access": "As a reader and converter of comic book files, with an integrated file explorer, access to the home directory is required for some of the application's core features."
+    },
+    "io.github.pol_rivero.github-desktop-plus": {
+        "finish-args-host-filesystem-access": "Needed to read and modify files in git repos outside of sandbox.",
+        "finish-args-flatpak-system-folder-access": "Needed to check which text editors the user has installed as flatpaks.",
+        "finish-args-flatpak-spawn-access": "Needed to spawn external text editors and terminals."
     }
 }
