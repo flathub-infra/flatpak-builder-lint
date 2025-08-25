@@ -6542,5 +6542,8 @@
     },
     "com.binarynonsense.acbr": {
         "finish-args-home-filesystem-access": "As a reader and converter of comic book files, with an integrated file explorer, access to the home directory is required for some of the application's core features."
+    },
+    "io.github.tobagin.keymaker": {
+        "finish-args-ssh-filesystem-access": "Used for creating/saving ssh keys within the application."
     }
 }
