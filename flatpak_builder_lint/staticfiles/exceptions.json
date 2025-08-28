@@ -6398,6 +6398,9 @@
     "org.garudalinux.firedragon": {
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
+    "org.garudalinux.firedragon-catppuccin": {
+        "finish-args-desktopfile-filesystem-access": "Required to manage desktop entries for installed PWAs"
+    },
     "org.kde.angelfish": {
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
