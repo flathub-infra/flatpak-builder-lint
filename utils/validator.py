@@ -49,6 +49,8 @@ KNOWN_EXCEPTIONS = {
     "finish-args-gnupg-filesystem-access",
     "finish-args-host-ro-filesystem-access",
     "finish-args-home-ro-filesystem-access",
+    "finish-args-has-socket-gpg-agent",
+    "finish-args-has-socket-ssh-auth",
 }
 
 

@@ -53,6 +53,12 @@ class FinishArgsCheck(Check):
                 + " but no x11 or fallback-x11 socket"
             )
 
+        if "gpg-agent" in finish_args["socket"]:
+            self.errors.add("finish-args-has-socket-gpg-agent")
+
+        if "ssh-auth" in finish_args["socket"]:
+            self.errors.add("finish-args-has-socket-ssh-auth")
+
         for socket in finish_args["socket"]:
             if socket.startswith("!"):
                 soc = socket.removeprefix("!")

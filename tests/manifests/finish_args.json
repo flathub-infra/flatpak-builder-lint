@@ -24,6 +24,8 @@
         "--socket=wayland",
         "--socket=x11",
         "--socket=fallback-x11",
+        "--socket=gpg-agent",
+        "--socket=ssh-auth",
         "--nosocket=cups",
         "--talk-name=org.gtk.vfs",
         "--talk-name=org.freedesktop.Flatpak",

@@ -4,7 +4,7 @@ runtime=org.freedesktop.Platform/x86_64/23.08
 
 [Context]
 share=!network;
-sockets=x11;wayland;session-bus;fallback-x11;!cups;
+sockets=x11;wayland;session-bus;fallback-x11;!cups;gpg-agent;ssh-auth;
 devices=all;!dri;
 filesystems=home;xdg-config/kdeglobals:ro;host;/run/media/foo;~/.var/app;/tmp/foo;~/.local/share/flatpak;/var;home/.icons;~/.themes;home/.fonts/;~/.gnupg;~/.ssh;~/.config/autostart;~/.local/share/applications;~/.config/systemd;
 

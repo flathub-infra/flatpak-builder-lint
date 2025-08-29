@@ -104,7 +104,8 @@
     },
     "com.github.alecaddd.sequeler": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-ssh-filesystem-access": "Predates the linter rule"
+        "finish-args-ssh-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.alexhuntley.Plots": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -411,7 +412,9 @@
     },
     "com.github.git_cola.git-cola": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.gmg137.netease-cloud-music-gtk": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -433,7 +436,8 @@
     "com.github.hluk.copyq": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule"
     },
     "com.github.hopsan.Hopsan": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -464,7 +468,8 @@
     "com.github.inercia.k3x": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.iortcw.iortcw": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -649,7 +654,8 @@
     "com.github.muriloventuroso.easyssh": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.muriloventuroso.givemelyrics": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -662,7 +668,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.Murmele.scram": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -976,7 +983,9 @@
     },
     "com.jetpackduba.Gitnuro": {
         "finish-args-flatpak-spawn-access": "required to access external terminal emulators and run external credentials managers for Git",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jgraph.drawio.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
@@ -1156,7 +1165,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-flatpak-user-folder-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "app.devsuite.Manuals": {
         "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
@@ -1202,7 +1212,8 @@
     "com.jetbrains.PyCharm-Professional": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.Rider": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
@@ -1233,7 +1244,8 @@
     "org.codeblocks.codeblocks": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.eclipse.Committers": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1241,7 +1253,8 @@
     "org.eclipse.Java": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-host-tmp-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.eclipse.Javascript": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
@@ -1284,13 +1297,15 @@
     },
     "com.axosoft.GitKraken": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.borgbase.Vorta": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.chatterino.chatterino": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1308,40 +1323,51 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.CLion": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.DataGrip": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Community": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.PhpStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
         "external-gitmodule-url-found": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.WebStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1412,26 +1438,31 @@
     "com.visualstudio.code": {
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.visualstudio.code.insiders": {
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.visualstudio.code-oss": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.vscodium.codium": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.vscodium.codium-insiders": {
         "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "de.z_ray.OptimusUI": {
         "finish-args-flatpak-spawn-access": "Requires use of prime-select, nvidia-prime-select or fedora-prime-select on the host; Furthermore it requires access to /etc/os-release on the host to determine the real host distribution to use the correct prime tool and enable / disable features in the UI"
@@ -1445,7 +1476,8 @@
     },
     "dev.lapce.lapce": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "dev.lizardbyte.app.Sunshine": {
         "finish-args-flatpak-spawn-access": "needed to start applications",
@@ -1453,11 +1485,15 @@
     },
     "dev.zed.Zed": {
         "finish-args-flatpak-spawn-access": "application won't open without this permission set; also needed to spawn several tools and commands from the host",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "dev.zed.Zed-Preview": {
         "finish-args-flatpak-spawn-access": "application won't open without this permission set; also needed to spawn several tools and commands from the host",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "dev.salaniLeo.immagini": {
         "finish-args-flatpak-spawn-access": "needed to start applications",
@@ -1479,7 +1515,8 @@
     "io.atom.Atom": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.achetagames.epic_asset_manager": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1548,7 +1585,9 @@
     "io.github.shiftey.Desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.gitlab.Goodvibes": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
@@ -1569,7 +1608,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.stoplight.studio": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "net.nymtech.NymVPN": {
         "finish-args-host-var-access": "needed to access the daemon logs"
@@ -1664,7 +1704,8 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to mount xdg-data/flatpak:ro to undo the tmpfs mount Flatpak does on --filesystem=host. The directory contains the Flatpak privileges overrides and app data that some people want to include in their backups.",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.godotengine.Godot": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1968,7 +2009,8 @@
     },
     "com.sublimemerge.App": {
         "flathub-json-modified-publish-delay": "extra-data",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.sublimetext.three": {
         "flathub-json-modified-publish-delay": "extra-data",
@@ -1990,7 +2032,9 @@
     "com.syntevo.SmartGit": {
         "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.tdameritrade.ThinkOrSwim": {
         "flathub-json-modified-publish-delay": "extra-data"
@@ -2213,7 +2257,8 @@
     "com.diffingo.fwbackups": {
         "finish-args-flatpak-spawn-access": "required to backup and restore installed packages",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.gnome.font-viewer": {
         "finish-args-unnecessary-xdg-data-fonts-create-access": "required to save fonts"
@@ -2575,7 +2620,9 @@
     },
     "org.kde.kommit": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.kde.kompare": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3348,7 +3395,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.KekikAkademi.BTKSorgu": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3422,7 +3470,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.sauerbraten.Sauerbraten": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3628,7 +3677,8 @@
     },
     "md.obsidian.Obsidian": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "net.werwolv.ImHex": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
@@ -3686,7 +3736,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "uk.org.greenend.chiark.sgtatham.putty": {
-        "appid-too-many-components-for-app": "Predates the linter rule"
+        "appid-too-many-components-for-app": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "uk.org.greenend.chiark.sgtatham.puzzles": {
         "appid-too-many-components-for-app": "Predates the linter rule"
@@ -3745,7 +3796,8 @@
     },
     "com.logseq.Logseq": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.mastermindzh.tidal-hifi": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3982,14 +4034,16 @@
     },
     "io.qt.QtCreator": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.typora.Typora": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "net.devolutions.RDM": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "net.displaycal.DisplayCAL": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -4588,7 +4642,8 @@
     "org.gnome.DejaDup": {
         "finish-args-flatpak-appdata-folder-access": "Users would expect that a full home backup would include flatpak application configuration and data",
         "finish-args-flatpak-spawn-access": "Required to spawn fusermount, mounting the user's backup via FUSE",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.gnome.baobab": {
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
@@ -4729,7 +4784,9 @@
     },
     "sh.loft.devpod": {
         "finish-args-flatpak-spawn-access": "Required for host shell access",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.piotrek_k._2dTaskBoard": {
         "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
@@ -4770,7 +4827,8 @@
     },
     "io.github.bcpierce00.unison": {
         "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.rioterm.Rio": {
         "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator"
@@ -4837,10 +4895,14 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.jetbrains.GoLand": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.RustRover": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.kristianduske.TrenchBroom": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -4912,7 +4974,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "de.philippun1.turtle": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "de.renew.Renew": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -4927,7 +4990,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "dev.pulsar_edit.Pulsar": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "eu.scarpetta.PDFMixTool": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5050,7 +5114,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "io.qt.qtdesignstudio": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "la.ogri.strongbox": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5122,7 +5187,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.filezillaproject.Filezilla": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.flatpak.qtdemo": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5152,7 +5218,8 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.gitg": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.gnome.gitlab.somas.Apostrophe": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5387,7 +5454,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.gitfiend.GitFiend": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.github.hopsan.Hopsan.json": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5538,7 +5606,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.wireframesketcher.WireframeSketcher": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.xnview.XnConvert": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5646,10 +5715,12 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.conduktor.Conduktor": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.dbeaver.DBeaverCommunity": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.frappe.books": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5676,7 +5747,9 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.aganzha.Stage": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.alescdb.mailviewer": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5718,7 +5791,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.gssh_linux.gssh": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.gtkwave.GTKWave": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6259,7 +6333,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.remmina.Remmina-local": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.rncbc.qsynth": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6361,17 +6436,20 @@
         "finish-args-ssh-filesystem-access": "Predates the linter rule"
     },
     "com.nomachine.nxplayer": {
-        "finish-args-ssh-filesystem-access": "Predates the linter rule"
+        "finish-args-ssh-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "de.capypara.FieldMonitor": {
-        "finish-args-ssh-filesystem-access": "Predates the linter rule"
+        "finish-args-ssh-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.gnome.seahorse.Application": {
         "finish-args-ssh-filesystem-access": "Predates the linter rule",
         "finish-args-gnupg-filesystem-access": "Predates the linter rule"
     },
     "org.virt_manager.virt-manager": {
-        "finish-args-ssh-filesystem-access": "Predates the linter rule"
+        "finish-args-ssh-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.bktus.gpgfrontend": {
         "finish-args-gnupg-filesystem-access": "Predates the linter rule"
@@ -6468,7 +6546,8 @@
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.KangLin.RabbitRemoteControl": {
-        "finish-args-home-ro-filesystem-access": "Predates the linter rule"
+        "finish-args-home-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.btpf.alexandria": {
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
@@ -6526,7 +6605,9 @@
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.tobagin.secrets": {
-        "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager."
+        "finish-args-gnupg-filesystem-access": "Used for creating gpg keys within the password manager.",
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "io.github.tobagin.keysmith": {
         "finish-args-ssh-filesystem-access": "Used for creating/saving ssh keys within the application."
@@ -6535,10 +6616,10 @@
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
     },
     "uk.co.cappsy.Tesseract": {
-      "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     },
     "page.codeberg.friedrich.DND-Dice-Roller": {
-      "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme"
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme"
     },
     "com.binarynonsense.acbr": {
         "finish-args-home-filesystem-access": "As a reader and converter of comic book files, with an integrated file explorer, access to the home directory is required for some of the application's core features."
@@ -6547,5 +6628,35 @@
         "finish-args-host-filesystem-access": "Needed to read and modify files in git repos outside of sandbox.",
         "finish-args-flatpak-system-folder-access": "Needed to check which text editors the user has installed as flatpaks.",
         "finish-args-flatpak-spawn-access": "Needed to spawn external text editors and terminals."
+    },
+    "im.dino.Dino": {
+        "finish-args-has-socket-gpg-agent": "Predates the linter rule"
+    },
+    "com.devolutions.remotedesktopmanager": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "com.kgurgul.cpuinfo": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "com.termius.Termius": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "dev.k8slens.OpenLens": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "io.beekeeperstudio.Studio": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "io.github.kalaksi.Lightkeeper": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "io.github.subhra74.Muon": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "org.mosh.mosh": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "org.virt_manager.virt-viewer": {
+        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     }
 }

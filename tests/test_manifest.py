@@ -217,6 +217,8 @@ def test_manifest_finish_args() -> None:
         "finish-args-ssh-filesystem-access",
         "finish-args-gnupg-filesystem-access",
         "finish-args-uses-no-talk-name",
+        "finish-args-has-socket-gpg-agent",
+        "finish-args-has-socket-ssh-auth",
     }
 
     expected_absents = {
