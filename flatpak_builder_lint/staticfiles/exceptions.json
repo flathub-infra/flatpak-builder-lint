@@ -2,7 +2,8 @@
     "io.github.kolunmi.Bazaar": {
         "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps",
         "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
-        "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it"
+        "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
+        "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so that it can manage them"
     },
     "com.ml4w.dotfilesinstaller": {
         "finish-args-home-filesystem-access": "As the app is a dotfiles management tool, access to the home directory is required for the application's core functionality."
