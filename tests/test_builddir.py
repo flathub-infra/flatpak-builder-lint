@@ -122,6 +122,10 @@ def move_files(testdir: str) -> None:
     if os.path.exists(flathubjson) and os.path.isfile(flathubjson):
         shutil.move(flathubjson, paths["flathubjson_path"])
 
+    manifestjson = os.path.join(testdir, "manifest.json")
+    if os.path.exists(manifestjson) and os.path.isfile(manifestjson):
+        shutil.move(manifestjson, paths["flathubjson_path"])
+
     for file in glob.glob(os.path.join(testdir, "*.desktop")):
         shutil.move(file, paths["desktopfiles_path"])
 
@@ -568,4 +572,35 @@ def test_builddir_home_host_access() -> None:
     ret = run_checks(f"{base_path}/home_host_false")
     found_errors = set(ret["errors"])
     for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):
+        assert e not in found_errors
+
+
+def test_builddir_license_check() -> None:
+    testdir = "tests/builddir/license_check"
+    license_root_dir = os.path.join(testdir, "files", "share", "licenses")
+
+    move_files(testdir)
+
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    assert "missing-manifest-json" not in found_errors
+    assert "missing-license-root-dir" in found_errors
+
+    os.makedirs(license_root_dir, exist_ok=True)
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    assert "missing-license-root-dir" not in found_errors
+    assert "missing-installed-license-module-example" in found_errors
+
+    license_example_dir = os.path.join(license_root_dir, "example")
+    create_file(license_example_dir, "LICENSE.txt")
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+
+    errors = {
+        "missing-manifest-json",
+        "missing-license-root-dir",
+        "missing-installed-license-module-example",
+    }
+    for e in errors:
         assert e not in found_errors

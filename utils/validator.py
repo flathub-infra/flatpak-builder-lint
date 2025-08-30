@@ -96,6 +96,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "finish-args-arbitrary-xdg-",
                     "finish-args-unnecessary-xdg-",
                     "appid-unprefixed-bundled-extension-",
+                    "missing-installed-license-module-",
                 )
             )
         } - {
