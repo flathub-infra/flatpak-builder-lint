@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>org.flathub.extension</id>
+  <extends>org.freedesktop.Platform</extends>
+  <name>Example extension</name>
+  <summary>Example extension</summary>
+  <url type="homepage">https://github.com/flathub</url>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <releases>
+    <release version="1.3.0" date="2023-01-17"/>
+  </releases>
+</component>
