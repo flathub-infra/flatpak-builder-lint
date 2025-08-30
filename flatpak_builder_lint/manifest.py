@@ -152,3 +152,13 @@ def show_manifest(filename: str) -> dict[str, Any]:
 def infer_appid(path: str) -> str | None:
     manifest = show_manifest(path)
     return manifest.get("id")
+
+
+def parse_manifest_json(flatpak_id: str, manifest_path: str) -> dict[str, Any]:
+    if os.path.isfile(manifest_path):
+        with open(manifest_path, encoding="utf-8") as f:
+            manifest: dict[str, Any] = json.load(f)
+            manifest_id = manifest.get("id") or manifest.get("app-id")
+            if flatpak_id == manifest_id:
+                return manifest
+    return {}

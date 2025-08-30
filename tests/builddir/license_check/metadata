@@ -1,0 +1,3 @@
+[Application]
+name=com.github.flathub.desktop
+runtime=org.freedesktop.Platform/x86_64/23.08

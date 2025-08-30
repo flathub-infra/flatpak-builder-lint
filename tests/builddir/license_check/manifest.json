@@ -1,0 +1,42 @@
+{
+  "id": "com.github.flathub.desktop",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "24.08",
+  "runtime-commit": "a76cc0f7bd6286d407934c3cb054a55b165c3536f41dbf1451fd0dd891407112",
+  "sdk": "org.freedesktop.Sdk",
+  "sdk-commit": "e842874ad2fe253d347cb67393f85103f8034a477cc8911d270bdc2b19670dd8",
+  "command": "foobar",
+  "modules": [
+    {
+      "name": "modules",
+      "buildsystem": "simple",
+      "modules": [
+        {
+          "name": "example",
+          "buildsystem": "cmake-ninja",
+          "config-opts": [
+            "-DFOOBAR=false"
+          ],
+          "sources": [
+            {
+              "url": "https://example.com/foobar.tar.xz",
+              "sha256": "a73343c3093e5cdc50d9377997c3815b878fd110bf6511c2c7759f2afb90f5a3",
+              "type": "archive"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cleanup": [
+    "/lib/*.a",
+    "/lib/*.la"
+  ],
+  "finish-args": [
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=x11",
+    "--socket=pulseaudio"
+  ],
+  "source-date-epoch": 1756526698
+}
