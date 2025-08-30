@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="addon">
-  <id>org.flathub.extension</id>
+  <id>org.freedesktop.Sdk.Extension.flathub</id>
   <extends>org.freedesktop.Platform</extends>
   <name>Example extension</name>
   <summary>Example extension</summary>
