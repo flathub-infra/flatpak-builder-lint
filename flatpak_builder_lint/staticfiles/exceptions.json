@@ -6658,5 +6658,8 @@
     },
     "org.virt_manager.virt-viewer": {
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+    },
+    "com.vkhitrin.cosmicding": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
 }
