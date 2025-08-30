@@ -288,25 +288,23 @@ jobs:
 
       - name: Sanity check on a baseapp
         run: |
-          git clone --depth=1 --recursive --single-branch https://github.com/flathub/com.system76.Cosmic.BaseApp.git com.system76.Cosmic.BaseApp
-          cd com.system76.Cosmic.BaseApp
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest com.system76.Cosmic.BaseApp.json
+          cd tests/repo/min_success_metadata/baseapp
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.BaseApp.yaml
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
             --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --install-deps-from=flathub --ccache builddir com.system76.Cosmic.BaseApp.json
+            --install-deps-from=flathub --ccache builddir org.flathub.BaseApp.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
       - name: Sanity check on an extension
         run: |
-          git clone --depth=1 --recursive --single-branch https://github.com/flathub/org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.git org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
-          cd org.freedesktop.LinuxAudio.Plugins.SoSynthLV2
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
+          cd tests/repo/min_success_metadata/extension
+          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.Sdk.Extension.flathub.yaml
           dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
             --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --install-deps-from=flathub --ccache builddir org.freedesktop.LinuxAudio.Plugins.SoSynthLV2.json
+            --install-deps-from=flathub --ccache builddir org.freedesktop.Sdk.Extension.flathub.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 

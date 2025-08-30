@@ -1,0 +1,17 @@
+id: org.freedesktop.Sdk.Extension.flathub
+branch: stable
+runtime: org.freedesktop.Sdk
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+build-extension: true
+separate-locales: false
+build-options:
+  prefix: /app/plugins/foobar
+modules:
+  - name: hello
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
+    sources:
+      - type: file
+        path: org.freedesktop.Sdk.Extension.flathub.metainfo.xml
