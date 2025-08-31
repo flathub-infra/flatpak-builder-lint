@@ -34,7 +34,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-not-defined",
     "finish-args-only-wayland",
     "finish-args-portal-impl-permissionstore-talk-name",
-    "finish-args-wildcard-kde-own-name",
+    "finish-args-own-name-wildcard-org.kde",
     "finish-args-wildcard-kde-talk-name",
     "flathub-json-automerge-enabled",
     "flathub-json-modified-publish-delay",
@@ -102,6 +102,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "finish-args-arbitrary-xdg-",
                     "finish-args-unnecessary-xdg-",
                     "appid-unprefixed-bundled-extension-",
+                    "finish-args-own-name-",
                 )
             )
         } - {

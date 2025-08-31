@@ -310,55 +310,25 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-host-var-access")
 
         for own_name in finish_args["own-name"]:
-            # Values not allowed: appid or appid.*
-            # See https://github.com/flathub/flatpak-builder-lint/issues/33
-            if appid and (
-                own_name == appid or (own_name.startswith(appid) and own_name[len(appid)] == ".")
-            ):
-                self.errors.add("finish-args-unnecessary-appid-own-name")
-            if own_name == "org.freedesktop.*":
-                self.errors.add("finish-args-wildcard-freedesktop-own-name")
-            if own_name == "org.gnome.*":
-                self.errors.add("finish-args-wildcard-gnome-own-name")
-            if own_name == "org.kde.*":
-                self.errors.add("finish-args-wildcard-kde-own-name")
-            if own_name.startswith("org.freedesktop.portal."):
-                self.errors.add("finish-args-portal-own-name")
-                self.info.add(
-                    "finish-args-portal-own-name: finish-args has own-name access"
-                    + " to XDG Portal busnames"
+            if appid:
+                if own_name == appid or (
+                    own_name.startswith(appid) and own_name[len(appid)] == "."
+                ):
+                    continue
+                if own_name.startswith("org.mpris.MediaPlayer2."):
+                    continue
+
+            if own_name.endswith(".*"):
+                own_name_prefix, own_name_name = "wildcard", own_name[:-2]
+                own_name_err_string = (
+                    f"finish-args-own-name-"
+                    f"{own_name_prefix + '-' if own_name_prefix else ''}"
+                    f"{own_name_name}"
                 )
-            if own_name == "ca.desrt.dconf" or own_name.startswith("ca.desrt.dconf."):
-                self.errors.add("finish-args-dconf-own-name")
-            if own_name == "org.freedesktop.DBus" or own_name.startswith("org.freedesktop.DBus."):
-                self.errors.add("finish-args-freedesktop-dbus-own-name")
-                self.info.add(
-                    "finish-args-freedesktop-dbus-own-name: finish-args has own-name access to"
-                    + " org.freedesktop.DBus or its sub-bus name"
-                )
-            if own_name == "org.gtk.vfs":
-                self.errors.add("finish-args-gvfs-own-name")
-            if own_name == "org.freedesktop.Flatpak" or own_name.startswith(
-                "org.freedesktop.Flatpak."
-            ):
-                self.errors.add("finish-args-flatpak-own-name")
-            if appid and own_name == f"org.mpris.MediaPlayer2.{appid}":
-                self.errors.add("finish-args-mpris-flatpak-id-own-name")
-            if own_name.startswith("org.freedesktop.impl.portal."):
-                cpt = own_name.split(".")[-1].lower()
-                self.errors.add(f"finish-args-portal-impl-{cpt}-own-name")
-            if own_name == "org.freedesktop.systemd1" or own_name.startswith(
-                "org.freedesktop.systemd1."
-            ):
-                self.errors.add("finish-args-systemd1-own-name")
-            if own_name == "org.freedesktop.login1" or own_name.startswith(
-                "org.freedesktop.login1."
-            ):
-                self.errors.add("finish-args-login1-own-name")
-            if own_name == "org.kde.KWin" or own_name.startswith("org.kde.KWin."):
-                self.errors.add("finish-args-kwin-own-name")
-            if own_name == "org.kde.plasmashell" or own_name.startswith("org.kde.plasmashell."):
-                self.errors.add("finish-args-plasmashell-own-name")
+                self.errors.add(own_name_err_string)
+            else:
+                own_name_err_string = f"finish-args-own-name-{own_name}"
+                self.errors.add(own_name_err_string)
 
         if finish_args.get("none-name"):
             self.errors.add("finish-args-uses-no-talk-name")
@@ -431,43 +401,17 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-plasmashell-talk-name")
 
         for sys_own_name in finish_args["system-own-name"]:
-            if sys_own_name == "org.freedesktop.*":
-                self.errors.add("finish-args-wildcard-freedesktop-system-own-name")
-            if sys_own_name == "org.gnome.*":
-                self.errors.add("finish-args-wildcard-gnome-system-own-name")
-            if sys_own_name == "org.kde.*":
-                self.errors.add("finish-args-wildcard-kde-system-own-name")
-            if sys_own_name == "org.freedesktop.DBus" or sys_own_name.startswith(
-                "org.freedesktop.DBus."
-            ):
-                self.errors.add("finish-args-freedesktop-dbus-system-own-name")
-                self.info.add(
-                    "finish-args-freedesktop-dbus-system-own-name: finish-args has system own-name"
-                    + " access to org.freedesktop.DBus or its sub-bus name"
-                )
-            if sys_own_name == "org.freedesktop.Flatpak" or sys_own_name.startswith(
-                "org.freedesktop.Flatpak."
-            ):
-                self.errors.add("finish-args-flatpak-system-own-name")
-            if appid and sys_own_name == f"org.mpris.MediaPlayer2.{appid}":
-                self.errors.add("finish-args-mpris-flatpak-id-system-own-name")
-            if sys_own_name.startswith("org.freedesktop.impl.portal."):
-                cpt = sys_own_name.split(".")[-1].lower()
-                self.errors.add(f"finish-args-portal-impl-{cpt}-system-own-name")
-            if sys_own_name == "org.freedesktop.systemd1" or sys_own_name.startswith(
-                "org.freedesktop.systemd1."
-            ):
-                self.errors.add("finish-args-systemd1-system-own-name")
-            if sys_own_name == "org.freedesktop.login1" or sys_own_name.startswith(
-                "org.freedesktop.login1."
-            ):
-                self.errors.add("finish-args-login1-system-own-name")
-            if sys_own_name == "org.kde.KWin" or sys_own_name.startswith("org.kde.KWin."):
-                self.errors.add("finish-args-kwin-system-own-name")
-            if sys_own_name == "org.kde.plasmashell" or sys_own_name.startswith(
-                "org.kde.plasmashell."
-            ):
-                self.errors.add("finish-args-plasmashell-system-own-name")
+            sys_own_name_prefix: str | None
+            if sys_own_name.endswith(".*"):
+                sys_own_name_prefix, sys_own_name_name = "wildcard", sys_own_name[:-2]
+            else:
+                sys_own_name_prefix, sys_own_name_name = None, sys_own_name
+
+            sys_own_name_err_string = (
+                f"finish-args-system-own-name-"
+                f"{sys_own_name_prefix + '-' if sys_own_name_prefix else ''}{sys_own_name_name}"
+            )
+            self.errors.add(sys_own_name_err_string)
 
         for sys_talk_name in finish_args["system-talk-name"]:
             if sys_talk_name == "org.freedesktop.*":

@@ -189,11 +189,8 @@ def test_manifest_finish_args() -> None:
         "finish-args-arbitrary-dbus-access",
         "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
-        "finish-args-unnecessary-appid-own-name",
         "finish-args-wildcard-freedesktop-talk-name",
-        "finish-args-wildcard-gnome-own-name",
         "finish-args-wildcard-kde-talk-name",
-        "finish-args-portal-own-name",
         "finish-args-has-nodevice-dri",
         "finish-args-has-unshare-network",
         "finish-args-has-nosocket-cups",
@@ -207,7 +204,6 @@ def test_manifest_finish_args() -> None:
         "finish-args-host-tmp-access",
         "finish-args-host-var-access",
         "finish-args-flatpak-appdata-folder-access",
-        "finish-args-mpris-flatpak-id-own-name",
         "finish-args-portal-impl-permissionstore-talk-name",
         "finish-args-legacy-icon-folder-permission",
         "finish-args-legacy-font-folder-permission",
@@ -219,10 +215,13 @@ def test_manifest_finish_args() -> None:
         "finish-args-uses-no-talk-name",
         "finish-args-has-socket-gpg-agent",
         "finish-args-has-socket-ssh-auth",
-        "finish-args-kwin-own-name",
         "finish-args-systemd1-talk-name",
         "finish-args-plasmashell-system-talk-name",
-        "finish-args-login1-system-own-name",
+        "finish-args-own-name-org.freedesktop.portal.Foo",
+        "finish-args-system-own-name-org.freedesktop.login1",
+        "finish-args-own-name-wildcard-org.gnome",
+        "finish-args-own-name-org.kde.StatusNotifierItem",
+        "finish-args-own-name-org.kde.KWin",
     }
 
     expected_absents = {
@@ -231,6 +230,8 @@ def test_manifest_finish_args() -> None:
         "finish-args-has-nosocket-fallback-x11",
         "finish-args-no-required-flatpak",
         "finish-args-insufficient-required-flatpak",
+        "finish-args-own-name-org.flathub.finish_args",
+        "finish-args-own-name-org.mpris.MediaPlayer2.org.flathub.finish_args",
     }
 
     ret = run_checks("tests/manifests/finish_args.json")
@@ -264,16 +265,6 @@ def test_manifest_finish_args_incorrect_secret_talk_name() -> None:
     ret = run_checks("tests/manifests/finish_args-incorrect_secrets-talk-name.json")
     found_errors = set(ret["errors"])
     assert "finish-args-incorrect-secret-service-talk-name" in found_errors
-
-
-def test_manifest_finish_args_issue_33() -> None:
-    ret = run_checks("tests/manifests/own_name_substring.json")
-    found_errors = set(ret["errors"])
-    assert "finish-args-unnecessary-appid-own-name" not in found_errors
-
-    ret = run_checks("tests/manifests/own_name_substring2.json")
-    found_errors = set(ret["errors"])
-    assert "finish-args-unnecessary-appid-own-name" in found_errors
 
 
 def test_manifest_display_stuff() -> None:
@@ -365,7 +356,6 @@ def test_manifest_direct_dconf_access() -> None:
     errors = {
         "finish-args-direct-dconf-path",
         "finish-args-dconf-talk-name",
-        "finish-args-dconf-own-name",
     }
     for e in errors:
         assert e in found_errors
