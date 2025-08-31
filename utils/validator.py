@@ -51,6 +51,12 @@ KNOWN_EXCEPTIONS = {
     "finish-args-home-ro-filesystem-access",
     "finish-args-has-socket-gpg-agent",
     "finish-args-has-socket-ssh-auth",
+    "finish-args-systemd1-system-talk-name",
+    "finish-args-login1-talk-name",
+    "finish-args-login1-system-talk-name",
+    "finish-args-kwin-talk-name",
+    "finish-args-plasmashell-talk-name",
+    "finish-args-systemd1-talk-name",
 }
 
 
