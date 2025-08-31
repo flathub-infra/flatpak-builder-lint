@@ -347,6 +347,18 @@ class FinishArgsCheck(Check):
             if own_name.startswith("org.freedesktop.impl.portal."):
                 cpt = own_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-own-name")
+            if own_name == "org.freedesktop.systemd1" or own_name.startswith(
+                "org.freedesktop.systemd1."
+            ):
+                self.errors.add("finish-args-systemd1-own-name")
+            if own_name == "org.freedesktop.login1" or own_name.startswith(
+                "org.freedesktop.login1."
+            ):
+                self.errors.add("finish-args-login1-own-name")
+            if own_name == "org.kde.KWin" or own_name.startswith("org.kde.KWin."):
+                self.errors.add("finish-args-kwin-own-name")
+            if own_name == "org.kde.plasmashell" or own_name.startswith("org.kde.plasmashell."):
+                self.errors.add("finish-args-plasmashell-own-name")
 
         if finish_args.get("none-name"):
             self.errors.add("finish-args-uses-no-talk-name")
@@ -405,6 +417,18 @@ class FinishArgsCheck(Check):
             if talk_name.startswith("org.freedesktop.impl.portal."):
                 cpt = talk_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-talk-name")
+            if talk_name == "org.freedesktop.systemd1" or talk_name.startswith(
+                "org.freedesktop.systemd1."
+            ):
+                self.errors.add("finish-args-systemd1-talk-name")
+            if talk_name == "org.freedesktop.login1" or talk_name.startswith(
+                "org.freedesktop.login1."
+            ):
+                self.errors.add("finish-args-login1-talk-name")
+            if talk_name == "org.kde.KWin" or talk_name.startswith("org.kde.KWin."):
+                self.errors.add("finish-args-kwin-talk-name")
+            if talk_name == "org.kde.plasmashell" or talk_name.startswith("org.kde.plasmashell."):
+                self.errors.add("finish-args-plasmashell-talk-name")
 
         for sys_own_name in finish_args["system-own-name"]:
             if sys_own_name == "org.freedesktop.*":
@@ -430,6 +454,20 @@ class FinishArgsCheck(Check):
             if sys_own_name.startswith("org.freedesktop.impl.portal."):
                 cpt = sys_own_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-system-own-name")
+            if sys_own_name == "org.freedesktop.systemd1" or sys_own_name.startswith(
+                "org.freedesktop.systemd1."
+            ):
+                self.errors.add("finish-args-systemd1-system-own-name")
+            if sys_own_name == "org.freedesktop.login1" or sys_own_name.startswith(
+                "org.freedesktop.login1."
+            ):
+                self.errors.add("finish-args-login1-system-own-name")
+            if sys_own_name == "org.kde.KWin" or sys_own_name.startswith("org.kde.KWin."):
+                self.errors.add("finish-args-kwin-system-own-name")
+            if sys_own_name == "org.kde.plasmashell" or sys_own_name.startswith(
+                "org.kde.plasmashell."
+            ):
+                self.errors.add("finish-args-plasmashell-system-own-name")
 
         for sys_talk_name in finish_args["system-talk-name"]:
             if sys_talk_name == "org.freedesktop.*":
@@ -455,6 +493,20 @@ class FinishArgsCheck(Check):
             if sys_talk_name.startswith("org.freedesktop.impl.portal."):
                 cpt = sys_talk_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-system-talk-name")
+            if sys_talk_name == "org.freedesktop.systemd1" or sys_talk_name.startswith(
+                "org.freedesktop.systemd1."
+            ):
+                self.errors.add("finish-args-systemd1-system-talk-name")
+            if sys_talk_name == "org.freedesktop.login1" or sys_talk_name.startswith(
+                "org.freedesktop.login1."
+            ):
+                self.errors.add("finish-args-login1-system-talk-name")
+            if sys_talk_name == "org.kde.KWin" or sys_talk_name.startswith("org.kde.KWin."):
+                self.errors.add("finish-args-kwin-system-talk-name")
+            if sys_talk_name == "org.kde.plasmashell" or sys_talk_name.startswith(
+                "org.kde.plasmashell."
+            ):
+                self.errors.add("finish-args-plasmashell-system-talk-name")
 
         if "system-bus" in finish_args["socket"] or "session-bus" in finish_args["socket"]:
             self.errors.add("finish-args-arbitrary-dbus-access")

@@ -219,6 +219,10 @@ def test_manifest_finish_args() -> None:
         "finish-args-uses-no-talk-name",
         "finish-args-has-socket-gpg-agent",
         "finish-args-has-socket-ssh-auth",
+        "finish-args-kwin-own-name",
+        "finish-args-systemd1-talk-name",
+        "finish-args-plasmashell-system-talk-name",
+        "finish-args-login1-system-own-name",
     }
 
     expected_absents = {

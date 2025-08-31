@@ -41,6 +41,10 @@
         "--filesystem=/var/lib/flatpak",
         "--filesystem=/tmp",
         "--filesystem=/var/foobar",
-        "--no-talk-name=org.foo.bar"
+        "--no-talk-name=org.foo.bar",
+        "--talk-name=org.freedesktop.systemd1",
+        "--own-name=org.kde.KWin",
+        "--system-talk-name=org.kde.plasmashell",
+        "--system-own-name=org.freedesktop.login1"
     ]
 }

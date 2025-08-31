@@ -202,6 +202,10 @@ def test_builddir_finish_args() -> None:
         "finish-args-uses-no-talk-name",
         "finish-args-has-socket-gpg-agent",
         "finish-args-has-socket-ssh-auth",
+        "finish-args-login1-own-name",
+        "finish-args-kwin-own-name",
+        "finish-args-plasmashell-talk-name",
+        "finish-args-systemd1-talk-name",
     }
 
     expected_absents = {
