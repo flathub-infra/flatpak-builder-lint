@@ -43,10 +43,11 @@
         "finish-args-only-wayland": "this program doesn't have x11 support"
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
-        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
-        "finish-args-unnecessary-xdg-data-applications-create-access": "this program needs write-access to xdg-data/applications and read-access to xdg-data/flatpak",
-        "finish-args-unnecessary-xdg-config-mimeapps.list-rw-access": "this program needs write-access to xdg-config/mimeapps.list",
-        "finish-args-flatpak-spawn-access": "this program needs to read environment variables on the host system",
+        "finish-args-unnecessary-xdg-data-xdg-desktop-portal-ro-access": "for reading .desktop files and icons in xdg-data/xdg-desktop-portal",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "for reading .desktop files and symlink targets in xdg-data/flatpak",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "for creating, reading, modifying, and deleting .desktop files in xdg-data/applications",
+        "finish-args-unnecessary-xdg-config-mimeapps.list-rw-access": "for reading and updating mimetypes in xdg-config/mimeapps.list",
+        "finish-args-flatpak-spawn-access": "for reading environment variables on the host system",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule",
