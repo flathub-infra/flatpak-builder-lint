@@ -1,4 +1,7 @@
 {
+    "io.github.swordpuffin.rewaita": {
+        "finish-args-autostart-filesystem-access": "Needed for manually creating an autostart file with specific parameters which cannot be done through Libportal"
+    },
     "io.github.kolunmi.Bazaar": {
         "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps",
         "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
