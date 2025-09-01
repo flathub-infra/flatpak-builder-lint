@@ -8,6 +8,8 @@
         "--filesystem=home/.config/autostart",
         "--filesystem=~/.config/systemd",
         "--filesystem=~/.local/share/applications",
+        "--filesystem=~/.cache",
+        "--filesystem=~/.local",
         "--filesystem=~/.ssh",
         "--filesystem=~/.gnupg",
         "--filesystem=/run/media:ro",

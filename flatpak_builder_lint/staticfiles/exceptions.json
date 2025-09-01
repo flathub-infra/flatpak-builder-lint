@@ -527,7 +527,8 @@
     },
     "com.github.joseexposito.touche": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-host-ro-filesystem-access": "Predates the linter rule"
+        "finish-args-host-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-full-home-config-access": "Predates the linter rule"
     },
     "com.github.jpakkane.glyphtracer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -4484,7 +4485,8 @@
         "finish-args-flatpak-user-folder-access": "Predates the linter rule",
         "finish-args-legacy-icon-folder-permission": "Specifically meant to save desktop settings",
         "finish-args-legacy-font-folder-permission": "Specifically meant to save desktop settings",
-        "finish-args-incorrect-theme-folder-permission": "Specifically meant to save desktop settings"
+        "finish-args-incorrect-theme-folder-permission": "Specifically meant to save desktop settings",
+        "finish-args-full-home-config-access": "Predates the linter rule"
     },
     "dev.bsnes.bsnes": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals",
@@ -4921,7 +4923,8 @@
         "finish-args-host-var-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
-        "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients"
+        "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients",
+        "finish-args-full-home-cache-access": "Predates the linter rule"
     },
     "org.siril.Siril": {
         "finish-args-flatpak-spawn-access": "required to interact with third-party applications like astrometry.net for plate solving and other astronomical image processing workflows",
@@ -6921,5 +6924,8 @@
     },
     "org.mozilla.firefox": {
         "finish-args-own-name-wildcard-org.mozilla.firefox_beta": "Predates the linter rule"
+    },
+    "life.bolls.bolls": {
+        "finish-args-full-home-config-access": "Predates the linter rule"
     }
 }

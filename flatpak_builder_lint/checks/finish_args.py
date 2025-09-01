@@ -166,6 +166,42 @@ class FinishArgsCheck(Check):
             if any(
                 _fs_value_matches_prefix(fs, prefix)
                 for prefix in (
+                    "~/.config",
+                    "home/.config",
+                )
+            ):
+                self.errors.add("finish-args-full-home-config-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.cache",
+                    "home/.cache",
+                )
+            ):
+                self.errors.add("finish-args-full-home-cache-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.local",
+                    "home/.local",
+                )
+            ):
+                self.errors.add("finish-args-full-home-local-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
+                    "~/.local/share",
+                    "home/.local/share",
+                )
+            ):
+                self.errors.add("finish-args-full-home-local-share-access")
+
+            if any(
+                _fs_value_matches_prefix(fs, prefix)
+                for prefix in (
                     "~/.config/autostart",
                     "home/.config/autostart",
                 )

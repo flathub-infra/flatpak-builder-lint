@@ -205,6 +205,8 @@ def test_builddir_finish_args() -> None:
         "finish-args-system-own-name-wildcard-org.gnome",
         "finish-args-own-name-org.freedesktop.impl.portal.PermissionStore",
         "finish-args-own-name-org.kde.StatusNotifierItem",
+        "finish-args-full-home-cache-access",
+        "finish-args-full-home-local-access",
     }
 
     expected_absents = {

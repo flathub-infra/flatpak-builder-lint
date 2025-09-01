@@ -222,6 +222,8 @@ def test_manifest_finish_args() -> None:
         "finish-args-own-name-wildcard-org.gnome",
         "finish-args-own-name-org.kde.StatusNotifierItem",
         "finish-args-own-name-org.kde.KWin",
+        "finish-args-full-home-cache-access",
+        "finish-args-full-home-local-access",
     }
 
     expected_absents = {

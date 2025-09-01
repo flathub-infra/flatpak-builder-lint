@@ -57,6 +57,8 @@ KNOWN_EXCEPTIONS = {
     "finish-args-kwin-talk-name",
     "finish-args-plasmashell-talk-name",
     "finish-args-systemd1-talk-name",
+    "finish-args-full-home-config-access",
+    "finish-args-full-home-cache-access",
 }
 
 
