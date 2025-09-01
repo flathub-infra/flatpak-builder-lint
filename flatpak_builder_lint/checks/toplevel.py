@@ -29,12 +29,13 @@ class TopLevelCheck(Check):
                 self.errors.add("manifest-toplevel-build-network-access")
 
         build_extension = manifest.get("build-extension")
+        build_runtime = manifest.get("build-runtime")
         appid = manifest.get("id")
         is_baseapp = bool(
             isinstance(appid, str) and appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
         )
 
-        if not build_extension and not is_baseapp:
+        if not any([build_extension, is_baseapp, build_runtime]):
             command = manifest.get("command")
             if not command:
                 self.errors.add("toplevel-no-command")
