@@ -12,8 +12,12 @@ gi.require_version("AppStream", "1.0")
 from gi.repository import AppStream  # noqa: E402
 
 
-def _fs_value_matches_prefix(input_path: str, prefix: str) -> bool:
-    pattern = rf"^{re.escape(prefix)}(?:/.*)?(?::(create|rw|ro))?$"
+def _fs_value_matches_prefix(input_path: str, prefix: str, subdirs: bool = True) -> bool:
+    if subdirs:
+        pattern = rf"^{re.escape(prefix)}(?:/.*)?(?::(create|rw|ro))?$"
+    else:
+        pattern = rf"^{re.escape(prefix)}/?(?::(create|rw|ro))?$"
+
     return re.match(pattern, input_path) is not None
 
 
@@ -164,7 +168,7 @@ class FinishArgsCheck(Check):
                     self.errors.add(f"finish-args-{path}-filesystem-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.config",
                     "home/.config",
@@ -173,7 +177,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-full-home-config-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.cache",
                     "home/.cache",
@@ -182,7 +186,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-full-home-cache-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.local",
                     "home/.local",
@@ -191,7 +195,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-full-home-local-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.local/share",
                     "home/.local/share",
@@ -200,7 +204,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-full-home-local-share-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.config/autostart",
                     "home/.config/autostart",
@@ -218,7 +222,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-systemd-filesystem-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix)
+                _fs_value_matches_prefix(fs, prefix, False)
                 for prefix in (
                     "~/.local/share/applications",
                     "home/.local/share/applications",

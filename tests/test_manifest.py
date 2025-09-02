@@ -246,6 +246,21 @@ def test_manifest_finish_args() -> None:
         assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
 
 
+def test_manifest_finish_args_fs_negative() -> None:
+    ret = run_checks("tests/manifests/finish_args_fs_negative.json")
+    found_errors = set(ret["errors"])
+    absents = {
+        "finish-args-full-home-config-access",
+        "finish-args-full-home-cache-access",
+        "finish-args-full-home-local-access",
+        "finish-args-full-home-local-share-access",
+        "finish-args-autostart-filesystem-access",
+        "finish-args-desktopfile-filesystem-access",
+    }
+    for err in absents:
+        assert err not in found_errors
+
+
 def test_manifest_finish_args_new_metadata() -> None:
     ret = run_checks("tests/manifests/finish_args-new-metadata.json")
     found_errors = set(ret["errors"])

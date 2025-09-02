@@ -1,0 +1,16 @@
+{
+    "app-id": "org.flathub.finish_args_fs_negative",
+    "finish-args": [
+        "--filesystem=~/.config/foobar/baz:create",
+        "--filesystem=~/.config/foobar/baz",
+        "--filesystem=~/.local/foobar/baz/",
+        "--filesystem=~/.local/share/baz",
+        "--filesystem=~/.cache/share/baz/",
+        "--filesystem=~/.autostart/baz",
+        "--filesystem=~/.local/share/applications/baz",
+        "--filesystem=home/.autostart/baz",
+        "--filesystem=home/.cache/share/baz/:ro",
+        "--filesystem=home/.cache/share/baz:create",
+        "--filesystem=home/.cache/share/baz:ro"
+    ]
+}
