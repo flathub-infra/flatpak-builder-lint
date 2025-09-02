@@ -1,7 +1,7 @@
 {
     "one.ablaze.floorp": {
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for manually creating application .desktop files for Floorp's Web Apps feature",
-        "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds",
+        "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds"
     },
     "io.github.swordpuffin.rewaita": {
         "finish-args-autostart-filesystem-access": "Needed for manually creating an autostart file with specific parameters which cannot be done through Libportal"
