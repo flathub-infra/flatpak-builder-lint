@@ -12,7 +12,7 @@ on:
 
 env:
   # Match with fdsdk runtime
-  PYTHON_VERSION: "3.12"
+  PYTHON_VERSION: "3.13"
 
 jobs:
   changes:

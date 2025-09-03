@@ -1,7 +1,7 @@
 id: org.freedesktop.Sdk.Extension.flathub
 branch: stable
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 build-extension: true
 separate-locales: false
