@@ -4982,7 +4982,8 @@
     },
     "io.github.Faugus.faugus-launcher": {
         "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work.",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Required for MangoHud to detect the settings file."
     },
     "io.github.teamclouday.android-mic": {
         "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
