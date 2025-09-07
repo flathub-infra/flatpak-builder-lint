@@ -1208,6 +1208,7 @@
     },
     "org.gitfourchette.gitfourchette": {
         "finish-args-flatpak-spawn-access": "Start external merge tool via flatpak-spawn",
+        "finish-args-has-socket-ssh-auth": "Authenticate with git remotes via host's ssh-agent",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.fcitx.Fcitx5": {
