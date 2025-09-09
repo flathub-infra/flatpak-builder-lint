@@ -7,7 +7,7 @@ from . import Check
 
 
 class ScreenshotsCheck(Check):
-    def _validate(self, path: str, appid: str, ref_type: str) -> None:
+    def _validate(self, path: str, appid: str, ref_type: str, skip_mirror_check: bool) -> None:
         appstream_path = f"{path}/app-info/xmls/{appid}.xml.gz"
 
         skip = False
@@ -96,7 +96,11 @@ class ScreenshotsCheck(Check):
                 )
                 return
 
-            if sc_values and not any(s.startswith(sc_allowed_urls) for s in sc_values):
+            if (
+                not skip_mirror_check
+                and sc_values
+                and not any(s.startswith(sc_allowed_urls) for s in sc_values)
+            ):
                 self.errors.add("appstream-external-screenshot-url")
                 self.info.add(
                     "appstream-external-screenshot-url: Screenshots are not mirrored to"
@@ -109,7 +113,8 @@ class ScreenshotsCheck(Check):
         if not (appid and ref_type):
             return
 
-        self._validate(f"{path}/files/share", appid, ref_type)
+        # ref branch is not exposed in builddir metadata
+        self._validate(f"{path}/files/share", appid, ref_type, False)
 
     def check_repo(self, path: str) -> None:
         self._populate_refs(path)
@@ -118,9 +123,15 @@ class ScreenshotsCheck(Check):
         app_refs = {ref for ref in refs if ref.startswith("app/") and len(ref.split("/")) == 4}
         if not app_refs:
             return
+
+        skip_mirror_check = False
         for ref in app_refs:
             appid = ref.split("/")[1]
             arch = ref.split("/")[2]
+            branch = ref.split("/")[3]
+
+            if branch == "test":
+                skip_mirror_check = True
 
             with tempfile.TemporaryDirectory() as tmpdir:
                 for subdir in ("appdata", "metainfo", "app-info"):
@@ -129,10 +140,10 @@ class ScreenshotsCheck(Check):
                         path, ref, f"files/share/{subdir}", os.path.join(tmpdir, subdir), True
                     )
 
-                self._validate(tmpdir, appid, "app")
+                self._validate(tmpdir, appid, "app", skip_mirror_check)
                 appstream_path = f"{tmpdir}/app-info/xmls/{appid}.xml.gz"
 
-                if os.path.exists(appstream_path):
+                if not skip_mirror_check and os.path.exists(appstream_path):
                     aps_ctype = appstream.component_type(appstream_path)
 
                     if aps_ctype in config.FLATHUB_APPSTREAM_TYPES_DESKTOP:
