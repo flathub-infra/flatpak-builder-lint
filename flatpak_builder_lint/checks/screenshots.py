@@ -86,9 +86,7 @@ class ScreenshotsCheck(Check):
 
             aps_ctype = appstream.component_type(appstream_path)
 
-            sc_values = [
-                i for i in appstream.get_screenshot_images(appstream_path) if i.endswith(".png")
-            ]
+            sc_values = appstream.get_screenshot_images(appstream_path)
 
             sc_allowed_urls = (config.FLATHUB_MEDIA_BASE_URL,)
 
