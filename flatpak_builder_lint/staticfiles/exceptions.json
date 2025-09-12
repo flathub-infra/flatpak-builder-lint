@@ -4496,6 +4496,7 @@
         "finish-args-legacy-icon-folder-permission": "Specifically meant to save desktop settings",
         "finish-args-legacy-font-folder-permission": "Specifically meant to save desktop settings",
         "finish-args-incorrect-theme-folder-permission": "Specifically meant to save desktop settings",
+        "finish-args-full-home-local-share-access": "Predates the linter rule",
         "finish-args-full-home-config-access": "Predates the linter rule"
     },
     "dev.bsnes.bsnes": {
