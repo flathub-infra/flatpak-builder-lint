@@ -6938,5 +6938,10 @@
     },
     "life.bolls.bolls": {
         "finish-args-full-home-config-access": "Predates the linter rule"
+     },
+    "io.github.shonubot.Spruce": {
+        "finish-args-arbitrary-xdg-cache-rw-access": "Required to scan and clean app caches in $HOME/.cache, with user preview and confirmation.",
+        "finish-args-host-ro-filesystem-access": "Needed for accurate disk usage calculations using host mount info; cleaning is limited to user areas.",
+        "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
     }
 }
