@@ -59,6 +59,7 @@ KNOWN_EXCEPTIONS = {
     "finish-args-systemd1-talk-name",
     "finish-args-full-home-config-access",
     "finish-args-full-home-cache-access",
+    "finish-args-full-home-local-share-access",
 }
 
 
