@@ -4935,7 +4935,8 @@
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients",
-        "finish-args-full-home-cache-access": "Predates the linter rule"
+        "finish-args-full-home-cache-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
+        "finish-args-host-tmp-access": "Required to read the local MPRIS artUrl files from some MPRIS clients"
     },
     "org.siril.Siril": {
         "finish-args-flatpak-spawn-access": "required to interact with third-party applications like astrometry.net for plate solving and other astronomical image processing workflows",
