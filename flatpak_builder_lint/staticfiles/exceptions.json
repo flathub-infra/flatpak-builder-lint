@@ -6939,5 +6939,8 @@
     },
     "life.bolls.bolls": {
         "finish-args-full-home-config-access": "Predates the linter rule"
+    },
+    "it.mq1.TinyWiiBackupManager": {
+        "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
     }
 }
