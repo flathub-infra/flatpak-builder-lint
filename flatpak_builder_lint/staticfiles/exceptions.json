@@ -1,9 +1,10 @@
 {
     
     "io.github.mfat.sshpilot": {
-        "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
-        "finish-args-ssh-filesystem-access": "Just read-only access to load user's existing keypairs.",
+    "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
+    "finish-args-ssh-filesystem-access": "Just read-only access to load user's existing keypairs.",
     },
+    
     "io.github.BuddySirJava.SSH-Studio": {
         "finish-args-ssh-filesystem-access": "This app's main functionality is to edit ssh connections located in ~/.ssh/config",
         "finish-args-has-socket-ssh-auth": "Needed for testing ssh connections (Located in HostEditor)"
