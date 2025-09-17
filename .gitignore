@@ -16,4 +16,3 @@ repo/
 *.svg
 *.png
 !tests/repo/min_success_metadata/gui-app/org.flathub.gui.png
-/.history
