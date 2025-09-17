@@ -1,4 +1,7 @@
 {
+    "page.codeberg.cozyowl.OpaqueFiles": {
+        "finish-args-host-filesystem-access": "Needed to encrypt, decrypt or check files in HOME and on mounted filesystems (USB, Network, ...)"
+    },
     "io.github.BuddySirJava.SSH-Studio": {
         "finish-args-ssh-filesystem-access": "This app's main functionality is to edit ssh connections located in ~/.ssh/config",
         "finish-args-has-socket-ssh-auth": "Needed for testing ssh connections (Located in HostEditor)"
