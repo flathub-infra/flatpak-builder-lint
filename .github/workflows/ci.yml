@@ -268,6 +268,7 @@ jobs:
             --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
             --arch=${{ env.FP_ARCH }} \
             --mirror-screenshots-url=https://dl.flathub.org/media \
+            --compose-url-policy=full \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
@@ -334,6 +335,7 @@ jobs:
             --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --mirror-screenshots-url=https://dl.flathub.org/media \
+            --compose-url-policy=full \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           sed -i "s/org\.flathub\.gui/com\.foo\.bar/g" org.flathub.gui.metainfo.xml org.flathub.gui.yaml org.flathub.gui.desktop
           cp -vf org.flathub.gui.desktop com.foo.bar.desktop
@@ -345,6 +347,7 @@ jobs:
             --arch=${{ env.FP_ARCH }} \
             --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --mirror-screenshots-url=https://dl.flathub.org/media \
+            --compose-url-policy=full \
             --install-deps-from=flathub --ccache builddir-2 org.flathub.gui.yaml
           mkdir -p builddir/files/foo builddir/files/share/app-info/media
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
