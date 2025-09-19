@@ -97,6 +97,8 @@ jobs:
             --state-dir="$GITHUB_WORKSPACE/docker-cache/.flatpak-builder" \
             --arch=${{ env.FP_ARCH }} --verbose --user \
             --force-clean --ccache --install-deps-from=flathub \
+            --default-branch=localtest \
+            --install \
             builddir org.flatpak.Builder.json
           rm -rf "builddir/files/lib/debug"
 
@@ -121,7 +123,7 @@ jobs:
       - name: Run a sanity check
         run: |
           cd tests/repo/min_success_metadata/gui-app
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean --repo=repo \
+          dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo \
             --arch=${{ env.FP_ARCH }} \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --compose-url-policy=full \
