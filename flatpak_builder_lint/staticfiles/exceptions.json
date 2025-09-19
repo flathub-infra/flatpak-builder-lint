@@ -6947,5 +6947,8 @@
     },
     "it.mq1.TinyWiiBackupManager": {
         "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+    },
+    "io.github.ogoshen.AppRyzen": {
+        "finish-args-flatpak-spawn-access": "required to spawn a root D-Bus daemon with access to the Ryzen System Managment Unit"
     }
 }
