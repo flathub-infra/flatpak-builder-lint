@@ -10,7 +10,7 @@
   <name>Foo Bar</name>
   <developer_name>Flathub</developer_name>
   <summary>Foo foo foo foo</summary>
-  <url type="homepage">https://flathub.org</url>
+  <url type="homepage">https://example.org</url>
   <description>
     <p>An example desktop application</p>
   </description>
@@ -21,7 +21,7 @@
       <caption>foofoo</caption>
     </screenshot>
   </screenshots>
-  <url type="bugtracker">https://flathub.org</url>
+  <url type="bugtracker">https://example.org</url>
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="0.0.1" date="2020-08-28"/>

@@ -4,7 +4,7 @@
     <id>com.github.flathub_infra.desktop-file</id>
     <name>Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo</name>
     <summary>Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar Bar</summary>
-    <url type="homepage">https://flathub.org</url>
+    <url type="homepage">https://example.org</url>
     <description>
       <p>This is an example</p>
     </description>
