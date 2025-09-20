@@ -11,7 +11,7 @@
     </p>
   </description>
   <developer_name>Flathub</developer_name>
-  <url type="homepage">https://flathub.org</url>
+  <url type="homepage">https://example.org</url>
   <provides>
     <binary>foo</binary>
   </provides>

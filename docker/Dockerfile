@@ -3,7 +3,7 @@ FROM docker.io/freedesktopsdk/sdk:25.08
 RUN echo "root:x:0:0:root:/root:/bin/bash" > /etc/passwd && \
     echo "root:x:0:" > /etc/group
 
-RUN rm -rf /tmp /var/tmp /root && mkdir -p -m 1777 /tmp /var/tmp && \
+RUN rm -rf /tmp /var/tmp /root /etc/gitconfig && mkdir -p -m 1777 /tmp /var/tmp && \
     mkdir -p -m 700 /root
 
 ENV LANG=C.UTF-8

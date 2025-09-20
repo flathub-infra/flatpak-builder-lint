@@ -1,4 +1,9 @@
 {
+    
+    "io.github.mfat.sshpilot": {
+        "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
+        "finish-args-ssh-filesystem-access": "Just read-only access to load user's existing keypairs."
+    },
     "io.github.BuddySirJava.SSH-Studio": {
         "finish-args-ssh-filesystem-access": "This app's main functionality is to edit ssh connections located in ~/.ssh/config",
         "finish-args-has-socket-ssh-auth": "Needed for testing ssh connections (Located in HostEditor)"
@@ -4935,7 +4940,8 @@
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
         "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients",
-        "finish-args-full-home-cache-access": "Predates the linter rule"
+        "finish-args-full-home-cache-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
+        "finish-args-host-tmp-access": "Required to read the local MPRIS artUrl files from some MPRIS clients"
     },
     "org.siril.Siril": {
         "finish-args-flatpak-spawn-access": "required to interact with third-party applications like astrometry.net for plate solving and other astronomical image processing workflows",
@@ -6938,10 +6944,13 @@
     },
     "life.bolls.bolls": {
         "finish-args-full-home-config-access": "Predates the linter rule"
-     },
+    },
     "io.github.shonubot.Spruce": {
-        "finish-args-arbitrary-xdg-cache-rw-access": "Required to scan and clean app caches in $HOME/.cache, with user preview and confirmation.",
-        "finish-args-host-ro-filesystem-access": "Needed for accurate disk usage calculations using host mount info; cleaning is limited to user areas.",
-        "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
+      "finish-args-arbitrary-xdg-cache-rw-access": "Required to scan and clean app caches in $HOME/.cache, with user preview and confirmation.",
+      "finish-args-host-ro-filesystem-access": "Needed for accurate disk usage calculations using host mount info; cleaning is limited to user areas.",
+      "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
+    },
+    "it.mql.TinyWiiBackupManager": {
+      "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
     }
 }
