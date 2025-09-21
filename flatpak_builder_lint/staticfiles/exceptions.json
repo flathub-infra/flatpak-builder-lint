@@ -4958,7 +4958,8 @@
         "finish-args-own-name-de.allotropia.ZetaOfficeIpc0": "Predates the linter rule"
     },
     "io.github.DenysMb.Kontainer": {
-        "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
+        "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host",
+        "finish-args-desktopfile-filesystem-access": "Needed to list exported apps from distroboxes"
     },
     "io.github.bcpierce00.unison": {
         "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files",
