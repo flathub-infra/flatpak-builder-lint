@@ -1,5 +1,7 @@
 {
-    
+    "page.codeberg.cozyowl.OpaqueFiles": {
+        "finish-args-host-filesystem-access": "Needed to encrypt, decrypt or check files in HOME and on mounted filesystems (USB, Network, ...)"
+    },
     "io.github.mfat.sshpilot": {
         "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
         "finish-args-ssh-filesystem-access": "Just read-only access to load user's existing keypairs."
