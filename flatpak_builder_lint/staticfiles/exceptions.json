@@ -1,5 +1,7 @@
 {
-    
+    "page.codeberg.cozyowl.OpaqueFiles": {
+        "finish-args-host-filesystem-access": "Needed to encrypt, decrypt or check files in HOME and on mounted filesystems (USB, Network, ...)"
+    },
     "io.github.mfat.sshpilot": {
         "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
         "finish-args-ssh-filesystem-access": "Just read-only access to load user's existing keypairs."
@@ -6952,6 +6954,9 @@
       "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
     },
     "it.mql.TinyWiiBackupManager": {
-      "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+        "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+    },
+    "de.gonicus.gonnect": {
+        "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."
     }
 }
