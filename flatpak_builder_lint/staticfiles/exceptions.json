@@ -6953,5 +6953,8 @@
     },
     "de.gonicus.gonnect": {
         "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."
+    },
+    "net.querz.mcaselector": {
+        "finish-args-home-filesystem-access": "To open and edit minecraft world files, since it doesn't support the portal."
     }
 }
