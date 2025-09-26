@@ -6968,5 +6968,8 @@
         "finish-args-flatpak-system-folder-access": "read .desktop files of Flatpak applications installed on the system",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "read .desktop files of Flatpak applications installed by the user",
         "finish-args-unnecessary-xdg-data-applications-create-access": "batch save updated .desktop files to organise applications between the menus of different desktop environments"
+    },
+    "io.github.Querz.mcaselector": {
+        "finish-args-flatpak-appdata-folder-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
     }
 }
