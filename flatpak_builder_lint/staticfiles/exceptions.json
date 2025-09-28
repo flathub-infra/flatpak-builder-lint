@@ -1215,6 +1215,7 @@
         "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-home-filesystem-access": "GIMP requires users to be able to save and open their projects from user home directory",
         "finish-args-kwin-talk-name": "Predates the linter rule"
     },
     "org.gitfourchette.gitfourchette": {
