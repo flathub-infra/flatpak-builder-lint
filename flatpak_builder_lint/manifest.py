@@ -87,18 +87,29 @@ def show_manifest(filename: str) -> dict[str, Any]:
     stdout_s = ret.stdout.decode("utf-8")
 
     unknown_pat = re.compile(
-        r"^\*\* \(flatpak-builder:\d+\): WARNING \*\*: " r"[\d:.]+: Unknown property (\S+) for type"
+        r"^\*\* \(flatpak-builder:\d+\): WARNING \*\*: "
+        r"[\d:.]+: Unknown property (\S+) for type (\S+)"
     )
 
     json_warning_pat = re.compile(r"^\(flatpak-builder:\d+\): Json-WARNING \*\*: " r"[\d:.]+: (.+)")
 
-    unknown_properties: list[str] = []
+    unknown_properties: list[dict[str, str]] = []
     json_warnings: list[str] = []
 
     if stderr_s:
         for line in stderr_s.splitlines():
             if m := unknown_pat.match(line):
-                unknown_properties.append(m.group(1).strip())
+                type_name = m.group(2).strip()
+                context = (
+                    "source"
+                    if type_name == "BuilderSource"
+                    else "source-" + type_name[13:].lower()
+                    if type_name.startswith("BuilderSource")
+                    else type_name[7:].lower()
+                    if type_name.startswith("Builder")
+                    else type_name
+                )
+                unknown_properties.append({"property": m.group(1).strip(), "context": context})
             elif m := json_warning_pat.match(line):
                 json_warnings.append(m.group(1).strip())
 
@@ -110,7 +121,9 @@ def show_manifest(filename: str) -> dict[str, Any]:
     manifest_json["x-manifest-filename"] = filename
 
     if unknown_properties:
-        manifest_json["x-manifest-unknown-properties"] = unknown_properties
+        manifest_json["x-manifest-unknown-properties"] = list(
+            {(p["property"], p["context"]): p for p in unknown_properties}.values()
+        )
 
     if json_warnings:
         manifest_json["x-manifest-json-warnings"] = json_warnings
