@@ -15,7 +15,11 @@ class TopLevelCheck(Check):
 
         if unknown_propeties:
             self.errors.add("manifest-unknown-properties")
-            self.info.add(f"manifest-unknown-properties: {unknown_propeties}")
+            for p in unknown_propeties:
+                self.info.add(
+                    f"manifest-unknown-properties: Invalid property "
+                    f"'{p.get('property')}' in context '{p.get('context')}'"
+                )
 
         json_warnings = manifest.get("x-manifest-json-warnings")
 

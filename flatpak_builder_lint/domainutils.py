@@ -213,9 +213,14 @@ def get_remote_exceptions(appid: str) -> set[str]:
     return set()
 
 
+def demangle_leading_underscore(name: str) -> str:
+    if name[:1] == "_" and name[1:2].isdigit():
+        return name[1:]
+    return name
+
+
 def demangle(name: str) -> str:
-    if name.startswith("_"):
-        name = name[1:]
+    name = demangle_leading_underscore(name)
     return name.replace("_", "-")
 
 
@@ -234,7 +239,7 @@ def get_proj_url(appid: str) -> str | None:
     if appid.startswith("site.srht."):
         second_cpt = demangle(appid.split(".")[2])
         if appid.count(".") == 3:
-            third_cpt = appid.split(".")[3]
+            third_cpt = demangle_leading_underscore(appid.split(".")[3])
             # needs root path "/" otherwise HTTP 308
             url = f"sr.ht/~{second_cpt}/{third_cpt}/"
         else:
@@ -245,7 +250,7 @@ def get_proj_url(appid: str) -> str | None:
     elif appid.startswith("io.github."):
         second_cpt = demangle(appid.split(".")[2])
         if appid.count(".") == 3:
-            third_cpt = appid.split(".")[3]
+            third_cpt = demangle_leading_underscore(appid.split(".")[3])
             url = f"github.com/{second_cpt}/{third_cpt}".lower()
         else:
             third_cpt = demangle(appid.split(".")[3])
@@ -255,7 +260,7 @@ def get_proj_url(appid: str) -> str | None:
     elif appid.startswith("page.codeberg."):
         second_cpt = demangle(appid.split(".")[2])
         if appid.count(".") == 3:
-            third_cpt = appid.split(".")[3]
+            third_cpt = demangle_leading_underscore(appid.split(".")[3])
             url = f"codeberg.org/{second_cpt}/{third_cpt}".lower()
         else:
             third_cpt = demangle(appid.split(".")[3])
@@ -267,7 +272,7 @@ def get_proj_url(appid: str) -> str | None:
         second_cpt = demangle(appid.split(".")[2])
         if appid.startswith("io.gitlab."):
             if appid.count(".") == 3:
-                third_cpt = appid.split(".")[3]
+                third_cpt = demangle_leading_underscore(appid.split(".")[3])
                 url = f"gitlab.com/{second_cpt}/{third_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
@@ -277,7 +282,7 @@ def get_proj_url(appid: str) -> str | None:
 
         if appid.startswith("io.frama."):
             if appid.count(".") == 3:
-                third_cpt = appid.split(".")[3]
+                third_cpt = demangle_leading_underscore(appid.split(".")[3])
                 url = f"framagit.org/{second_cpt}/{third_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
@@ -289,7 +294,7 @@ def get_proj_url(appid: str) -> str | None:
         third_cpt = demangle(appid.split(".")[3])
         if appid.startswith("org.gnome.gitlab."):
             if appid.count(".") == 4:
-                fourth_cpt = appid.split(".")[4]
+                fourth_cpt = demangle_leading_underscore(appid.split(".")[4])
                 url = f"gitlab.gnome.org/{third_cpt}/{fourth_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]
@@ -299,7 +304,7 @@ def get_proj_url(appid: str) -> str | None:
 
         if appid.startswith("org.freedesktop.gitlab."):
             if appid.count(".") == 4:
-                fourth_cpt = appid.split(".")[4]
+                fourth_cpt = demangle_leading_underscore(appid.split(".")[4])
                 url = f"gitlab.freedesktop.org/{third_cpt}/{fourth_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]

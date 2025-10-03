@@ -6958,5 +6958,23 @@
     },
     "de.gonicus.gonnect": {
         "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."
+    },
+    "org.indii.mendingwall": {
+        "finish-args-unnecessary-xdg-config-autostart-create-access": "install autostart programs to restore themes on desktop login, with additional features required beyond those provided by the background portal",
+        "finish-args-unnecessary-xdg-config-plasma-workspace-create-access": "install autostart programs to restore themes on desktop login, which run earlier in the startup process for KDE",
+        "finish-args-direct-dconf-path": "save and restore desktop environment theme configuration stored in GSettings dconf backend",
+        "finish-args-unnecessary-xdg-config-dconf-rw-access": "save and restore desktop environment theme configuration stored in GSettings dconf backend",
+        "finish-args-dconf-talk-name": "save and restore desktop environment theme configuration stored in GSettings dconf backend",
+        "finish-args-arbitrary-xdg-config-rw-access": "save and restore desktop environment theme configuration stored in configuration files",
+        "finish-args-unnecessary-xdg-config-gtk-3.0-create-access": "save and restore desktop environment theme configuration stored in configuration files",
+        "finish-args-unnecessary-xdg-config-gtk-4.0-create-access": "save and restore desktop environment theme configuration stored in configuration files",
+        "finish-args-unnecessary-xdg-config-xsettingsd-create-access": "save and restore desktop environment theme configuration stored in configuration files",
+        "finish-args-host-var-access": "read .desktop files of applications installed on the system",
+        "finish-args-flatpak-system-folder-access": "read .desktop files of Flatpak applications installed on the system",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "read .desktop files of Flatpak applications installed by the user",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "batch save updated .desktop files to organise applications between the menus of different desktop environments"
+    },
+    "io.github.Querz.mcaselector": {
+        "finish-args-flatpak-appdata-folder-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
     }
 }
