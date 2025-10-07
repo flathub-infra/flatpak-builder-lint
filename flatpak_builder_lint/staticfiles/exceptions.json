@@ -1448,6 +1448,9 @@
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "com.remnote.RemNote": {
+        "finish-args-home-filesystem-access": "As this is a note-taking tool, access to the home directory is required for the application's core functionality."
+    },
     "com.syntevo.SmartSynchronize": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "flathub-json-modified-publish-delay": "extra-data",
