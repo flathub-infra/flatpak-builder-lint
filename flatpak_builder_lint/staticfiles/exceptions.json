@@ -6971,5 +6971,8 @@
     },
     "io.github.Querz.mcaselector": {
         "finish-args-flatpak-appdata-folder-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
+    },
+    "net.blumia.pineapple-steam-recording-exporter": {
+        "finish-args-flatpak-appdata-folder-access": "To access and export video recordings under the Steam client packaged as Flatpak applications"
     }
 }
