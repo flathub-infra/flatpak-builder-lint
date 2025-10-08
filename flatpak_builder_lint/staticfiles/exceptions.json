@@ -2653,6 +2653,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kmymoney": {
+        "finish-args-home-filesystem-access": "required for writing and deleting backup and temporary files",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.knavalbattle": {
