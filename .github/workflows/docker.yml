@@ -163,7 +163,7 @@ jobs:
 
       - name: Run the tests inside docker
         run: |
-          docker run --rm --entrypoint= -v $(pwd):/mnt -w /mnt ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} uv run --frozen -q pytest -vvv
+          docker run --rm --entrypoint= -v $(pwd):/mnt -w /mnt ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} uv run --frozen -q pytest -n auto -vvv
 
       - name: Push the images
         # 6.15.0
