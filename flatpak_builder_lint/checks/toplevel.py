@@ -52,14 +52,12 @@ class TopLevelCheck(Check):
                 )
 
             branch = manifest.get("branch")
-            def_branch = manifest.get("default-branch")
-            allowed = ("stable", "beta", None)
 
-            if branch not in allowed or def_branch not in allowed:
+            if branch:
                 self.errors.add("toplevel-unnecessary-branch")
                 self.info.add(
                     "toplevel-unnecessary-branch: Please remove the toplevel"
-                    + " branch or default-branch property in the manifest"
+                    + " branch property in the manifest"
                 )
 
         cleanup = manifest.get("cleanup")

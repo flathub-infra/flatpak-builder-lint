@@ -145,7 +145,6 @@ def test_manifest_toplevel() -> None:
     found_errors = set(ret["errors"])
 
     assert errors.issubset(found_errors)
-    assert "toplevel-unnecessary-branch" not in found_errors
 
     ret = run_checks("tests/manifests/base_app.json")
     found_errors = set(ret["errors"])
