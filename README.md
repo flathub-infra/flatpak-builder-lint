@@ -278,8 +278,7 @@ docker run -it --rm --entrypoint= -v $(pwd):/mnt:Z -w /mnt ghcr.io/flathub-infra
 ## Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF] [--gha-format]
-                            {appstream,manifest,builddir,repo} path
+usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF] [--gha-format] {appstream,manifest,builddir,repo} path
 
 A linter for Flatpak manifests and build artifacts primarily developed for Flathub
 
