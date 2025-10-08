@@ -41,7 +41,6 @@ dependencies = [
     "requests-cache<2.0.0,>=1.2.1",
     "ruamel.yaml<1.0.0,>=0.18.14",
     "publicsuffixlist>=1.0.2.20250802,<2",
-    "pytest-xdist>=3.8.0",
 ]
 
 [project.urls]
