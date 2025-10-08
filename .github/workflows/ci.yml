@@ -114,7 +114,7 @@ jobs:
           sudo rm -rf /usr/share/miniconda /home/runner/.rustup /home/packer/.rustup /home/runneradmin/.rustup
           sudo rm -rf /etc/skel/.rustup /opt/hostedtoolcache/node /opt/google-cloud-sdk
           sudo rm -rf /usr/share/az_* /opt/google /usr/lib/firefox /usr/local/aws-*
-          sudo rm -rf /usr/libexec/gcc /opt/actionarchivecache /opt/hostedtoolcache/Ruby
+          sudo rm -rf /opt/actionarchivecache /opt/hostedtoolcache/Ruby
           sudo rm -rf /var/lib/mysql /usr/local/n
           sudo rm -rf /swapfile || true
           sudo rm -rf /usr/local/lib/android
