@@ -6976,5 +6976,9 @@
     },
     "net.blumia.pineapple-steam-recording-exporter": {
         "finish-args-flatpak-appdata-folder-access": "To access and export video recordings under the Steam client packaged as Flatpak applications"
+    },
+    "one.k8ie.Identities": {
+        "finish-args-has-socket-gpg-agent": "Needs to be able to use your host's GPG agent to decrypt password store entries",
+        "finish-args-gnupg-filesystem-access": "Due to how GPG handles working with a remote agent, the Flatpak's GPG needs to know which public keys are available on the \"remote\" host - see https://wiki.gnupg.org/AgentForwarding"
     }
 }
