@@ -6980,5 +6980,12 @@
     "one.k8ie.Identities": {
         "finish-args-has-socket-gpg-agent": "Needs to be able to use your host's GPG agent to decrypt password store entries",
         "finish-args-gnupg-filesystem-access": "Due to how GPG handles working with a remote agent, the Flatpak's GPG needs to know which public keys are available on the \"remote\" host - see https://wiki.gnupg.org/AgentForwarding"
+    },
+    "org.kde.discover": {
+        "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
+        "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so that it can manage them",
+        "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
+        "finish-args-flatpak-appdata-folder-access": "Needs access to settings and user data of other apps ",
+        "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install apps"
     }
 }
