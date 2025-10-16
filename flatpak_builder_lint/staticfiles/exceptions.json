@@ -6191,5 +6191,8 @@
     "io.github.jmberesford.Retrom": {
         "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
         "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
+    },
+    "com.teamspeak.Teakspeak": {
+        "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Teamspeak will crash when audio or hotkey settings are opened"
     }
 }
