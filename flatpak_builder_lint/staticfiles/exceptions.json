@@ -507,6 +507,9 @@
     "com.github.iwalton3.jellyfin-mpv-shim": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
+    "com.github.j0chn.nextcloud_password_client": {
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+    },
     "com.github.JannikHv.Gydl": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
