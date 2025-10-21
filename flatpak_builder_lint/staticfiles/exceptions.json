@@ -2888,7 +2888,7 @@
     },
     "dev.neovide.neovide": {
         "finish-args-flatpak-spawn-access": "required to allow spawning neovim on the host, terminal emulating, tools and command from host like podman, toolbox, compilers, etc",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "required to browse and edit files on host"
     },
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host",
