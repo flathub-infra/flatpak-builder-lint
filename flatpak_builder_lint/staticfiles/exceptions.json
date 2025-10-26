@@ -2395,7 +2395,7 @@
     },
     "io.github.Youda008.DoomRunner": {
         "finish-args-flatpak-spawn-access": "Needed to execute external game engines",
-        "finish-args-home-ro-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Needed to browse external game files and folders"
     },
     "xyz.tytanium.DoorKnocker": {
         "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
