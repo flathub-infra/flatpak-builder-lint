@@ -2888,7 +2888,7 @@
     },
     "dev.neovide.neovide": {
         "finish-args-flatpak-spawn-access": "required to allow spawning neovim on the host, terminal emulating, tools and command from host like podman, toolbox, compilers, etc",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "required to browse and edit files on host"
     },
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host",
@@ -6990,5 +6990,8 @@
         "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
         "finish-args-flatpak-appdata-folder-access": "Needs access to settings and user data of other apps ",
         "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install apps"
+    },
+    "org.alacritty.Alacritty": {
+        "finish-args-flatpak-spawn-access": "required to spawn shell on host"
     }
 }
