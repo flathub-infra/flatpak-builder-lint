@@ -160,8 +160,14 @@ class FinishArgsCheck(Check):
                         + f" access to {resv_dir} which is reserved internally for Flatpak"
                     )
 
-            if re.fullmatch(r"^(home|host|~/?)(:rw|:create|:ro)?$", fs):
-                path = "host" if fs.startswith("host") else "home"
+            if re.fullmatch(r"^(home|host|host-root|~/?)(:rw|:create|:ro)?$", fs):
+                if fs.startswith("host-root"):
+                    path = "host-root"
+                elif fs.startswith("host"):
+                    path = "host"
+                else:
+                    path = "home"
+
                 if fs.endswith(":ro"):
                     self.errors.add(f"finish-args-{path}-ro-filesystem-access")
                 else:

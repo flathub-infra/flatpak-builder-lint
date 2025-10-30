@@ -223,6 +223,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-own-name-org.kde.KWin",
         "finish-args-full-home-cache-access",
         "finish-args-full-home-local-access",
+        "finish-args-host-root-filesystem-access",
     }
 
     expected_absents = {

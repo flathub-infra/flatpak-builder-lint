@@ -207,6 +207,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-own-name-org.kde.StatusNotifierItem",
         "finish-args-full-home-cache-access",
         "finish-args-full-home-local-access",
+        "finish-args-host-root-filesystem-access",
     }
 
     expected_absents = {
