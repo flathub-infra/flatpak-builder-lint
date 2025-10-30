@@ -535,6 +535,12 @@ class FinishArgsCheck(Check):
                     value = "!" + value
                 if key in ("no-talk-name", "system-no-talk-name"):
                     key = "none-name"
+                if key == "socket-if":
+                    key = "socket"
+                    value = f"if:{value}"
+                if key == "device-if":
+                    key = "device"
+                    value = f"if:{value}"
                 fa[key].add(value)
 
         self._validate(appid, fa)
