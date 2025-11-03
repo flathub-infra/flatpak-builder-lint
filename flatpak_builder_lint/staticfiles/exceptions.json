@@ -1202,7 +1202,10 @@
         "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-flatpak-user-folder-access": "Predates the linter rule",
-        "finish-args-host-ro-filesystem-access": "Predates the linter rule"
+        "finish-args-host-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-unnecessary-xdg-data-gtk-doc-ro-access": "Manuals requires access to locally installed documentation",
+        "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
+        "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation"
     },
     "app.devsuite.Ptyxis": {
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host",
