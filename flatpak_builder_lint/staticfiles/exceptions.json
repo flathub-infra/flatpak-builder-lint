@@ -5554,6 +5554,9 @@
     "cn.apipost.apipost": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "cn.feishu.Feishu": {
+        "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
+    },
     "cn.navclub.ldbfx": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
