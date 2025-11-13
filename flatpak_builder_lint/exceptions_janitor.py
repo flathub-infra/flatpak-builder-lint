@@ -15,13 +15,7 @@ def get_stale_exceptions(active_errors: set[str], exceptions: set[str]) -> set[s
         if exception == "*":
             continue
 
-        is_used = False
-        for issue in active_errors:
-            if issue == exception:
-                is_used = True
-                break
-
-        if not is_used:
+        if exception not in active_errors:
             stale.add(exception)
 
     return stale
@@ -44,11 +38,7 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
         response = requests.get(
             f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues",
             headers=headers,
-            params={
-                "state": "open",
-                "creator": "flathubbot",
-                "labels": ISSUE_LABEL,
-            },
+            params={"state": "open", "creator": "flathubbot", "labels": ISSUE_LABEL},
             timeout=30,
         )
         response.raise_for_status()
@@ -60,42 +50,32 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
         if existing_issue:
             issue_number = existing_issue["number"]
 
-            comments_resp = requests.get(
-                f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues/{issue_number}/comments",
-                headers=headers,
-                timeout=30,
+            comments_url = (
+                f"{config.GITHUB_API}/repos/"
+                f"{config.LINTER_FULL_REPO}/issues/"
+                f"{issue_number}/comments"
             )
+
+            comments_resp = requests.get(comments_url, headers=headers, timeout=30)
             comments_resp.raise_for_status()
             comments = comments_resp.json()
 
             if any(f"`{appid}`" in comment["body"] for comment in comments):
                 return True
 
-            comment_body = f"""Stale exceptions for `{appid}`:
-
-{exception_list}"""
-
+            comment_body = f"Stale exceptions for `{appid}`:\n\n{exception_list}"
             post_resp = requests.post(
-                f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues/{issue_number}/comments",
-                headers=headers,
-                json={"body": comment_body},
-                timeout=30,
+                comments_url, headers=headers, json={"body": comment_body}, timeout=30
             )
             post_resp.raise_for_status()
             return True
 
-        issue_body = f"""Stale exceptions for `{appid}`:
-
-{exception_list}"""
-
+        issue_body = f"Stale exceptions for `{appid}`:\n\n{exception_list}"
+        create_url = f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues"
         create_resp = requests.post(
-            f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues",
+            create_url,
             headers=headers,
-            json={
-                "title": ISSUE_TITLE,
-                "body": issue_body,
-                "labels": [ISSUE_LABEL],
-            },
+            json={"title": ISSUE_TITLE, "body": issue_body, "labels": [ISSUE_LABEL]},
             timeout=30,
         )
         create_resp.raise_for_status()
