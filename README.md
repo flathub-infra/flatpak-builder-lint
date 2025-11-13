@@ -278,32 +278,32 @@ docker run -it --rm --entrypoint= -v $(pwd):/mnt:Z -w /mnt ghcr.io/flathub-infra
 ## Usage
 
 ```
-usage: flatpak-builder-lint [-h] [--version] [--exceptions] [--user-exceptions USER_EXCEPTIONS] [--appid APPID] [--cwd] [--ref REF] [--gha-format] {appstream,manifest,builddir,repo} path
+flatpak-builder-lint
 
-A linter for Flatpak manifests and build artifacts primarily developed for Flathub
+A linter for Flatpak manifests and build artifacts primarily
+developed for Flathub
 
 positional arguments:
   {appstream,manifest,builddir,repo}
                         Type of artifact to lint
 
-                        appstream expects a MetaInfo file
-                        manifest expects a flatpak-builder manifest
-                        builddir expects a flatpak-builder build directory
-                        repo expects an OSTree repo exported by flatpak-builder
-  path                  Path to the artifact
+                          appstream expects a MetaInfo file
+                          manifest  expects a flatpak-builder manifest
+                          builddir  expects a flatpak-builder build directory
+                          repo      expects an OSTree repo exported by flatpak-builder
+
+  PATH                  Path to the artifact
 
 options:
   -h, --help            Show this help message and exit
   --version             Show the version number and exit
-  --exceptions
-                        Skip warnings or errors added to exceptions.
-                        Exceptions must be submitted to Flathub
-  --user-exceptions USER_EXCEPTIONS
-                        Path to a JSON file with exceptions
-  --appid APPID         Override the app ID
-  --cwd                 Override the path parameter with current working directory
-  --ref REF             Override the primary ref detection
+  --exceptions          Skip errors added to exceptions. Exceptions must be submitted to Flathub
+  --user-exceptions     Path to a JSON file with exceptions
+  --appid               Override the app ID with this app ID
+  --cwd                 Override the path parameter with the current working directory
+  --ref                 Override the primary ref detection with this ref
   --gha-format          Use GitHub Actions annotations in CI
+  --janitor-exceptions  Enable reporting of stale exceptions to linter repository
 
 Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint
 ```
