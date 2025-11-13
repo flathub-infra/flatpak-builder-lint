@@ -6966,9 +6966,6 @@
     "io.github.shonubot.Spruce": {
       "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
     },
-    "it.mql.TinyWiiBackupManager": {
-        "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
-    },
     "de.gonicus.gonnect": {
         "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."
     },
