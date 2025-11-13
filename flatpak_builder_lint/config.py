@@ -1,5 +1,9 @@
 import os
 
+GITHUB_API = "https://api.github.com"
+
+LINTER_FULL_REPO = "flathub-infra/flatpak-builder-lint"
+
 FLATHUB_REPO_BASE_URL = "https://dl.flathub.org"
 FLATHUB_API_URL = "https://flathub.org/api/v2"
 FLATHUB_MEDIA_BASE_URL = f"{FLATHUB_REPO_BASE_URL}/media"

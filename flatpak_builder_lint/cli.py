@@ -6,7 +6,7 @@ import os
 import pkgutil
 import sys
 import textwrap
-from typing import Any
+from typing import Any, cast
 
 import sentry_sdk
 
@@ -15,7 +15,9 @@ from . import (
     appstream,
     builddir,
     checks,
+    config,
     domainutils,
+    exceptions_janitor,
     manifest,
     ostree,
     staticfiles,
@@ -90,6 +92,7 @@ def run_checks(
     enable_exceptions: bool = False,
     appid: str | None = None,
     user_exceptions_path: str | None = None,
+    enable_janitor_exceptions: bool = False,
 ) -> dict[str, str | list[str]]:
     match kind:
         case "manifest":
@@ -142,6 +145,19 @@ def run_checks(
                 exceptions = get_local_exceptions(appid)
 
         if exceptions:
+            if (
+                enable_janitor_exceptions
+                and appid
+                and config.is_flathub_build_pipeline()
+                and (stale := exceptions_janitor.get_stale_exceptions(errors, exceptions))
+            ):
+                results.setdefault("warnings", [])
+                results.setdefault("info", [])
+                warnings_list = cast(list[str], results["warnings"])
+                info_list = cast(list[str], results["info"])
+                warnings_list.append("stale-exceptions-found")
+                info_list.append(f"stale-exceptions-found: {', '.join(sorted(stale))}")
+
             if "*" in exceptions:
                 return {}
 
@@ -246,6 +262,11 @@ def main() -> int:
         help="Use GitHub Actions annotations in CI",
         action="store_true",
     )
+    parser.add_argument(
+        "--janitor-exceptions",
+        help="Enable reporting of stale exceptions to linter repository",
+        action="store_true",
+    )
 
     args = parser.parse_args()
     exit_code = 0
@@ -257,7 +278,12 @@ def main() -> int:
 
     if args.type != "appstream":
         if results := run_checks(
-            args.type, path, args.exceptions, args.appid, args.user_exceptions
+            args.type,
+            path,
+            args.exceptions,
+            args.appid,
+            args.user_exceptions,
+            args.janitor_exceptions,
         ):
             if "errors" in results:
                 exit_code = 1
