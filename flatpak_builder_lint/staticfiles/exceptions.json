@@ -7003,5 +7003,8 @@
         "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
         "finish-args-flatpak-appdata-folder-access": "Needs access to settings and user data of other apps ",
         "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install apps"
+    },
+    "it.mq1.TinyWiiBackupManager": {
+        "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
     }
 }
