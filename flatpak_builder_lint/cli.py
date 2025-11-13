@@ -6,7 +6,7 @@ import os
 import pkgutil
 import sys
 import textwrap
-from typing import Any, cast
+from typing import Any
 
 import sentry_sdk
 
@@ -94,6 +94,8 @@ def run_checks(
     user_exceptions_path: str | None = None,
     enable_janitor_exceptions: bool = False,
 ) -> dict[str, str | list[str]]:
+    stale_exceptions: set[str] | None = None
+
     match kind:
         case "manifest":
             check_method_name = "check_manifest"
@@ -149,14 +151,12 @@ def run_checks(
                 enable_janitor_exceptions
                 and appid
                 and config.is_flathub_build_pipeline()
-                and (stale := exceptions_janitor.get_stale_exceptions(errors, exceptions))
+                and (stale_raw := exceptions_janitor.get_stale_exceptions(errors, exceptions))
             ):
-                results.setdefault("warnings", [])
-                results.setdefault("info", [])
-                warnings_list = cast(list[str], results["warnings"])
-                info_list = cast(list[str], results["info"])
-                warnings_list.append("stale-exceptions-found")
-                info_list.append(f"stale-exceptions-found: {', '.join(sorted(stale))}")
+                ignore_stale_exceptions: set[str] = set()
+                stale_exceptions = stale_raw - ignore_stale_exceptions
+                if stale_exceptions:
+                    exceptions_janitor.report_stale_exceptions(appid, stale_exceptions)
 
             if "*" in exceptions:
                 return {}
@@ -165,7 +165,10 @@ def run_checks(
             if not results["errors"]:
                 results.pop("errors")
 
-            results["warnings"] = list(warnings - set(exceptions))
+            warnings_lst = list(warnings - set(exceptions))
+            if stale_exceptions:
+                warnings_lst.append("stale-exceptions-found")
+            results["warnings"] = warnings_lst
             if not results["warnings"]:
                 results.pop("warnings")
 
@@ -175,7 +178,10 @@ def run_checks(
             if "desktop-file-failed-validation" in set(exceptions):
                 results.pop("desktopfile", None)
 
-            results["info"] = _filter(set(info), set(exceptions))
+            info_lst = _filter(set(info), set(exceptions))
+            if stale_exceptions:
+                info_lst.append(f"stale-exceptions-found: {', '.join(sorted(stale_exceptions))}")
+            results["info"] = info_lst
             if not results["info"]:
                 results.pop("info")
 
