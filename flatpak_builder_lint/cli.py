@@ -188,19 +188,23 @@ def run_checks(
 
 
 def main() -> int:
+    description = textwrap.dedent("""\
+        flatpak-builder-lint
+
+        A linter for Flatpak manifests and build artifacts primarily
+        developed for Flathub
+    """)
     parser = argparse.ArgumentParser(
-        description=(
-            "A linter for Flatpak manifests and build artifacts primarily developed for Flathub"
-        ),
-        epilog="Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint",
+        description=description,
         formatter_class=argparse.RawTextHelpFormatter,
+        usage=argparse.SUPPRESS,
         add_help=False,
+        epilog=f"Please report any issues at https://github.com/{config.LINTER_FULL_REPO}",
     )
     parser.add_argument(
         "-h",
         "--help",
         action="help",
-        default=argparse.SUPPRESS,
         help="Show this help message and exit",
     )
     parser.add_argument(
@@ -211,51 +215,48 @@ def main() -> int:
     )
     parser.add_argument(
         "--exceptions",
-        help=textwrap.dedent("""
-        Skip warnings or errors added to exceptions.
-        Exceptions must be submitted to Flathub
-        """),
+        help="Skip errors added to exceptions. Exceptions must be submitted to Flathub",
         action="store_true",
     )
     parser.add_argument(
         "--user-exceptions",
         help="Path to a JSON file with exceptions",
         type=str,
+        metavar="",
     )
-    parser.add_argument("--appid", help="Override the app ID", type=str, nargs=1)
+    parser.add_argument(
+        "--appid", help="Override the app ID with this app ID", type=str, metavar="", nargs=1
+    )
     parser.add_argument(
         "--cwd",
-        help="Override the path parameter with current working directory",
+        help="Override the path parameter with the current working directory",
         action="store_true",
     )
     parser.add_argument(
         "--ref",
-        help="Override the primary ref detection",
+        help="Override the primary ref detection with this ref",
         type=str,
         action="append",
         default=[],
+        metavar="",
     )
     parser.add_argument(
         "type",
+        choices=["appstream", "manifest", "builddir", "repo"],
         help=textwrap.dedent("""\
-        Type of artifact to lint
+            Type of artifact to lint
 
-        appstream expects a MetaInfo file
-        manifest expects a flatpak-builder manifest
-        builddir expects a flatpak-builder build directory
-        repo expects an OSTree repo exported by flatpak-builder"""),
-        choices=[
-            "appstream",
-            "manifest",
-            "builddir",
-            "repo",
-        ],
+              appstream expects a MetaInfo file
+              manifest  expects a flatpak-builder manifest
+              builddir  expects a flatpak-builder build directory
+              repo      expects an OSTree repo exported by flatpak-builder\n\n"""),
     )
     parser.add_argument(
         "path",
         help="Path to the artifact",
         type=str,
         nargs=1,
+        metavar="PATH",
     )
     parser.add_argument(
         "--gha-format",
