@@ -153,7 +153,7 @@ def run_checks(
                 and config.is_flathub_build_pipeline()
                 and (stale_raw := exceptions_janitor.get_stale_exceptions(errors, exceptions))
             ):
-                ignore_stale_exceptions: set[str] = set()
+                ignore_stale_exceptions: set[str] = {"appid-url-not-reachable"}
                 stale_exceptions = stale_raw - ignore_stale_exceptions
                 if stale_exceptions:
                     exceptions_janitor.report_stale_exceptions(appid, stale_exceptions)
