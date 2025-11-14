@@ -1036,7 +1036,6 @@
     },
     "org.telegram.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "module-yasm-cmake-no-debuginfo": "Build-time only dependency, debuginfo is useless",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered",

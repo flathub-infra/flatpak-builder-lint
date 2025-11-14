@@ -1,4 +1,5 @@
 import argparse
+import fnmatch
 import json
 import os
 import re
@@ -36,21 +37,31 @@ def scan_exceptions() -> set[str]:
     return exceptions
 
 
-KNOWN_EXCEPTIONS = scan_exceptions() | {"finish-args-own-name-"}
+KNOWN_EXCEPTIONS = scan_exceptions() | {
+    "finish-args-own-name-",
+    "finish-args-unnecessary-foo-access",
+}
 
 EXP_PREFIX = (
-    "module-",
-    "finish-args-arbitrary-",
-    "finish-args-unnecessary-",
-    "appid-unprefixed-bundled-extension-",
-    "finish-args-own-name-",
+    "module-*-source-*-deprecated",
+    "module-*-source-git-*",
+    "module-*-checker-tracks-commits",
+    "finish-args-arbitrary-*-access",
+    "finish-args-unnecessary-*-access",
+    "appid-unprefixed-bundled-extension-*",
+    "finish-args-own-name-*",
+    "finish-args-*-filesystem-access",
 )
+
+
+def match_prefix(exc: str, pattern: str) -> bool:
+    return fnmatch.fnmatch(exc, pattern + "*")
 
 
 def check_prefix_coverage(known: set[str]) -> list[str]:
     missing = []
     for p in EXP_PREFIX:
-        if not any(exc.startswith(p) for exc in known):
+        if not any(match_prefix(exc, p) for exc in known):
             missing.append(p)
 
     return missing
@@ -74,7 +85,6 @@ def purge_exception(filename: str, exc_name: str) -> bool:
         data = json.load(f)
 
     modified = False
-
     keys_to_delete = []
 
     for app_id, entries in data.items():
@@ -131,7 +141,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             exit_code = 1
             continue
 
-        found_exceptions = {j for i in data.values() for j in i if not j.startswith(EXP_PREFIX)} - {
+        found_exceptions = {
+            j for i in data.values() for j in i if not any(match_prefix(j, p) for p in EXP_PREFIX)
+        } - {
             "*",
             "appid-filename-mismatch",
             "flathub-json-deprecated-i386-arch-included",
