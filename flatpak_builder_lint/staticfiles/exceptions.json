@@ -2,7 +2,7 @@
     "page.codeberg.cozyowl.OpaqueFiles": {
         "finish-args-host-filesystem-access": "Needed to encrypt, decrypt or check files in HOME and on mounted filesystems (USB, Network, ...)"
     },
-     "io.github.N3kosempai.klia-store": {
+    "io.github.N3kosempai.klia-store": {
         "finish-args-flatpak-spawn-access": "Klia Store is a Flatpak application manager that needs to execute flatpak commands on the host system using flatpak-spawn to install, update, and manage other Flatpak applications.",
         "finish-args-flatpak-system-talk-name": "Required to communicate with the Flatpak system service (org.freedesktop.Flatpak) to manage both user and system-level Flatpak installations.",
         "finish-args-flatpak-system-folder-access": "Read-only access to /var/lib/flatpak is required to list and display information about system-installed Flatpak applications.",
@@ -566,8 +566,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.k4zmu2a.spacecadetpinball": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.kagami.boram": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -727,8 +726,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.opentyrian.OpenTyrian": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.optyfr.JRomManager": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -887,8 +885,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
-        "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-portal-impl-permissionstore-talk-name": "Predates the linter rule, needed to modify dynamic permissions"
+        "finish-args-flatpak-system-folder-access": "Predates the linter rule"
     },
     "com.github.tenderowl.frog": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1252,20 +1249,17 @@
     },
     "com.jetbrains.PyCharm-Professional": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.Rider": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.jetbrains.RubyMine": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
@@ -1342,7 +1336,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.axosoft.GitKraken": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
@@ -1368,14 +1361,12 @@
     },
     "com.google.AndroidStudio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.CLion": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -1384,7 +1375,6 @@
     },
     "com.jetbrains.DataGrip": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -1401,7 +1391,6 @@
     },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
@@ -1410,7 +1399,6 @@
     },
     "com.jetbrains.PhpStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-gpg-agent": "Predates the linter rule",
@@ -1418,7 +1406,6 @@
     },
     "com.jetbrains.WebStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -1464,7 +1451,6 @@
     },
     "com.syntevo.SmartSynchronize": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -1479,20 +1465,17 @@
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
     "com.unity.UnityHub": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "com.visualstudio.code": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "com.visualstudio.code.insiders": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -1701,7 +1684,6 @@
         "finish-args-login1-talk-name": "Predates the linter rule"
     },
     "net.veloren.veloren": {
-        "flathub-json-modified-publish-delay": "Continuous builds automated and synced with upstream CI. Server and client must use identical build.",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.cockpit_project.CockpitClient": {
@@ -1908,13 +1890,11 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "com.google.Chrome": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule"
     },
     "com.google.ChromeDev": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
@@ -1937,255 +1917,132 @@
         "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
-    "at.vintagestory.VintageStory": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "chat.tandem.Client": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.adamcake.Bolt": {
         "finish-args-unnecessary-xdg-data-icons-create-access": "individual games' window icons need to be downloaded and copied to xdg-data/icons as the user installs or updates them",
         "finish-args-contains-both-x11-and-wayland": "some games support wayland and some don't"
     },
     "com.adobe.Flash-Player-Projector": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
-    "com.airtame.Client": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.albiononline.AlbionOnline": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.amazon.Workspaces": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.anydesk.Anydesk": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
-    "com.avocode.Avocode": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.behringer.XAirEdit": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.bluejeans.BlueJeans": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.dropbox.Client": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.elsevier.MendeleyDesktop": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.etlegacy.ETLegacy": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.fightcade.Fightcade": {
-        "flathub-json-modified-publish-delay": "Client version must be in sync with server to function",
         "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
     },
     "com.flashforge.FlashPrint": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.getpostman.Postman": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.hamrick.VueScan": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.icons8.Lunacy": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.jagex.RuneScape": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
-    "com.kolor.AutopanoPro": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.lunarclient.LunarClient": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.microsoft.Edge": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
-    "com.microsoft.Teams": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.mojang.Minecraft": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.musixmatch.Musixmatch": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.netease.CloudMusic": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.nordpass.NordPass": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.parsecgaming.parsec": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.qq.QQmusic": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.quixel.Bridge": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.sevenkfans.sevenkaa": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.skype.Client": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.slack.Slack": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
-    "com.spotify.Client": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.sublimemerge.App": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule",
         "finish-args-own-name-com.sublimemerge": "Predates the linter rule"
     },
     "com.sublimetext.three": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.synology.CloudStationBackup": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.synology.SynologyAssistant": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.synology.SynologyDrive": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.syntevo.SmartGit": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-gpg-agent": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
-    "com.tdameritrade.ThinkOrSwim": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.teamspeak.TeamSpeak": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-unnecessary-xdg-config-TeamSpeak-rw-access": "TeamSpeak 5 plugins installation directory."
     },
     "com.tencent.WeChat": {
         "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
     },
-    "com.tencent.wemeet": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.thebrokenrail.MCPIReborn": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.ticktick.TickTick": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
-    "com.todoist.Todoist": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.tracktion.Waveform": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "com.viber.Viber": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
-    "com.wps.Office": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "com.xunlei.Thunder": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "fr.free.hxc2001.HxCFloppyEmulator.Extension.capslib": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "gg.guilded.Guilded": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "il.co.ravkavonline.RavKavOnline": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "io.botfather.Botfather": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.designer.GravitDesigner": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "io.exodus.Exodus": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.Archeb.opentrace": {
         "finish-args-flatpak-spawn-access": "This app uses org.freedesktop.Flatpak to provide ability to run nexttrace with cap_net_raw, which is necessary for a traceroute app"
     },
     "io.github.Fndroid.clash_for_windows": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "io.github.ihhub.Fheroes2": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule"
-    },
-    "io.github.peazip.PeaZip.Addon.i386": {
-        "flathub-json-modified-publish-delay": "extra-data"
     },
     "io.github.MakovWait.Godots": {
         "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.wavebox.Wavebox": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "jp.yvt.OpenSpades": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "me.dusansimic.DynamicWallpaper": {
@@ -2198,59 +2055,22 @@
     "me.timschneeberger.GalaxyBudsClient": {
         "finish-args-own-name-wildcard-org.kde": "The used version of the toolkit Avalonia only supports legacy KDE system tray icons: https://github.com/AvaloniaUI/Avalonia/issues/13782"
     },
-    "net._86box._86Box.ROMs": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "net.blix.BlueMail": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "net.codeindustry.MasterPDFEditor": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
-    "net.gaijin.WarThunder": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "net.xmind.XMind8": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "net.zgcoder.skycheckers": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "nl.lostboys.rollemup": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "org.chocolate_doom.ChocolateDoom": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "org.firestormviewer.FirestormViewer": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "finish-args-own-name-com.secondlife.ViewerAppAPIService": "Predates the linter rule"
     },
-    "org.freedownloadmanager.Manager": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
     "org.freefilesync.FreeFileSync": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.geogebra.GeoGebra": {
-        "flathub-json-modified-publish-delay": "extra-data",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "org.jdownloader.JDownloader": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "org.srb2.SRB2": {
-        "flathub-json-modified-publish-delay": "extra-data"
-    },
-    "org.srb2.SRB2Kart": {
-        "flathub-json-modified-publish-delay": "extra-data"
     },
     "org.xfce.ristretto": {
         "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/issues/2770",
@@ -4941,7 +4761,6 @@
         "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
     },
     "page.codeberg.JakobDev.jdPermissionStoreEdit": {
-        "finish-args-portal-impl-permissionstore-talk-name": "This is a program to edit the Permission Store",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs acccess to xdg-data/flatpak/db"
     },
     "io.github.ilya_zlobintsev.LACT": {
@@ -6964,7 +6783,7 @@
         "finish-args-full-home-config-access": "Predates the linter rule"
     },
     "io.github.shonubot.Spruce": {
-      "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
+        "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
     },
     "de.gonicus.gonnect": {
         "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."

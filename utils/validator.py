@@ -65,13 +65,56 @@ def check_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[
     return d
 
 
+def purge_exception(filename: str, exc_name: str) -> bool:
+    if not os.path.exists(filename):
+        print(f"File not found: {filename}")  # noqa: T201
+        return False
+
+    with open(filename) as f:
+        data = json.load(f)
+
+    modified = False
+
+    keys_to_delete = []
+
+    for app_id, entries in data.items():
+        if exc_name in entries:
+            del entries[exc_name]
+            modified = True
+
+        if not entries:
+            keys_to_delete.append(app_id)
+            modified = True
+
+    for k in keys_to_delete:
+        del data[k]
+
+    if modified:
+        with open(filename, "w") as f:
+            json.dump(data, f, indent=4)
+        print(f"Purged '{exc_name}' from {filename}")  # noqa: T201
+    else:
+        print(f"'{exc_name}' not found in {filename}")  # noqa: T201
+
+    return modified
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", nargs="*", help="Input filenames")
+    parser.add_argument("--purge", metavar="EXCEPTION", help="Remove an exception from the file")
     args = parser.parse_args(argv)
 
     if not args.filenames:
         args.filenames = ["flatpak_builder_lint/staticfiles/exceptions.json"]
+
+    if args.purge:
+        exc = args.purge
+        modified_any = False
+        for filename in args.filenames:
+            if purge_exception(filename, exc):
+                modified_any = True
+        return 0 if modified_any else 1
 
     exit_code = 0
 
@@ -99,6 +142,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if prefix_match:
             print(f"Exception prefix does not match any known exceptions: {prefix_match}")  # noqa: T201
             exit_code = 1
+
         if not found_exceptions.issubset(KNOWN_EXCEPTIONS):
             print(  # noqa: T201
                 "Exception not found in known exceptions list:",
