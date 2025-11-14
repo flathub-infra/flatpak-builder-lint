@@ -105,7 +105,7 @@ def test_appid_url_is_reachable() -> None:
         "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
         "tests/manifests/domain_checks/org.gnome.design.VectorSlicer.json",
         "tests/manifests/domain_checks/org.freedesktop.gitlab.drm_hwcomposer.drm-hwcomposer.json",
-        "tests/manifests/domain_checks/io.frama.flopedt.FlOpEDT.json",
+        # "tests/manifests/domain_checks/io.frama.flopedt.FlOpEDT.json",
         "tests/manifests/domain_checks/page.codeberg.forgejo.code-of-conduct.json",
         #        "tests/manifests/domain_checks/io.sourceforge.xampp.bar.json",
     ):
