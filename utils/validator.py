@@ -1,66 +1,59 @@
 import argparse
 import json
 import os
+import re
 from collections.abc import Sequence
 
-KNOWN_EXCEPTIONS = {
-    "appid-code-hosting-too-few-components",
-    "appid-ends-with-lowercase-desktop",
-    "appid-too-many-components-for-app",
-    "appid-url-not-reachable",
-    "appid-uses-code-hosting-domain",
-    "appstream-id-mismatch-flatpak-id",
-    "appstream-metainfo-missing",
-    "appstream-missing-developer-name",
-    "desktop-file-failed-validation",
-    "external-gitmodule-url-found",
-    "finish-args-arbitrary-autostart-access",
-    "finish-args-arbitrary-dbus-access",
-    "finish-args-contains-both-x11-and-wayland",
-    "finish-args-dconf-talk-name",
-    "finish-args-direct-dconf-path",
-    "finish-args-flatpak-appdata-folder-access",
-    "finish-args-flatpak-spawn-access",
-    "finish-args-flatpak-system-folder-access",
-    "finish-args-flatpak-system-talk-name",
-    "finish-args-flatpak-user-folder-access",
-    "finish-args-freedesktop-dbus-system-talk-name",
-    "finish-args-freedesktop-dbus-talk-name",
-    "finish-args-host-tmp-access",
-    "finish-args-host-var-access",
-    "finish-args-incorrect-theme-folder-permission",
-    "finish-args-legacy-font-folder-permission",
-    "finish-args-legacy-icon-folder-permission",
-    "finish-args-not-defined",
-    "finish-args-only-wayland",
-    "finish-args-portal-impl-permissionstore-talk-name",
-    "finish-args-own-name-wildcard-org.kde",
-    "finish-args-wildcard-kde-talk-name",
-    "flathub-json-automerge-enabled",
-    "flathub-json-modified-publish-delay",
-    "flatpak-repo-too-large",
-    "manifest-file-is-symlink",
-    "toplevel-unnecessary-branch",
-    "finish-args-host-filesystem-access",
-    "finish-args-home-filesystem-access",
-    "finish-args-autostart-filesystem-access",
-    "finish-args-desktopfile-filesystem-access",
-    "finish-args-ssh-filesystem-access",
-    "finish-args-gnupg-filesystem-access",
-    "finish-args-host-ro-filesystem-access",
-    "finish-args-home-ro-filesystem-access",
-    "finish-args-has-socket-gpg-agent",
-    "finish-args-has-socket-ssh-auth",
-    "finish-args-systemd1-system-talk-name",
-    "finish-args-login1-talk-name",
-    "finish-args-login1-system-talk-name",
-    "finish-args-kwin-talk-name",
-    "finish-args-plasmashell-talk-name",
-    "finish-args-systemd1-talk-name",
-    "finish-args-full-home-config-access",
-    "finish-args-full-home-cache-access",
-    "finish-args-full-home-local-share-access",
-}
+
+def normalize_error_arg(s: str) -> str:
+    s = re.sub(r'^[fFrR]{1,2}(?=[\'"])', "", s)
+
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in ("'", '"'):
+        s = s[1:-1]
+
+    return s
+
+
+def scan_exceptions() -> set[str]:
+    pattern = re.compile(r"self\.errors\.add\(\s*(.*?)\s*\)")
+    exceptions = set()
+
+    for root, _, files in os.walk("."):
+        for filename in files:
+            if filename.endswith(".py"):
+                path = os.path.join(root, filename)
+                try:
+                    with open(path, encoding="utf-8") as f:
+                        for line in f:
+                            m = pattern.search(line)
+                            if m:
+                                raw = m.group(1).strip()
+                                normalized = normalize_error_arg(raw)
+                                exceptions.add(normalized)
+                except (UnicodeDecodeError, OSError):
+                    continue
+
+    return exceptions
+
+
+KNOWN_EXCEPTIONS = scan_exceptions() | {"finish-args-own-name-"}
+
+EXP_PREFIX = (
+    "module-",
+    "finish-args-arbitrary-",
+    "finish-args-unnecessary-",
+    "appid-unprefixed-bundled-extension-",
+    "finish-args-own-name-",
+)
+
+
+def check_prefix_coverage(known: set[str]) -> list[str]:
+    missing = []
+    for p in EXP_PREFIX:
+        if not any(exc.startswith(p) for exc in known):
+            missing.append(p)
+
+    return missing
 
 
 def check_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[str, str]]:
@@ -95,26 +88,17 @@ def main(argv: Sequence[str] | None = None) -> int:
             exit_code = 1
             continue
 
-        found_exceptions = {
-            j
-            for i in data.values()
-            for j in i
-            if not j.startswith(
-                (
-                    "module-",
-                    "finish-args-arbitrary-xdg-",
-                    "finish-args-unnecessary-xdg-",
-                    "appid-unprefixed-bundled-extension-",
-                    "finish-args-own-name-",
-                )
-            )
-        } - {
+        found_exceptions = {j for i in data.values() for j in i if not j.startswith(EXP_PREFIX)} - {
             "*",
             "appid-filename-mismatch",
             "flathub-json-deprecated-i386-arch-included",
             "toplevel-no-command",
         }
 
+        prefix_match = check_prefix_coverage(KNOWN_EXCEPTIONS)
+        if prefix_match:
+            print(f"Exception prefix does not match any known exceptions: {prefix_match}")  # noqa: T201
+            exit_code = 1
         if not found_exceptions.issubset(KNOWN_EXCEPTIONS):
             print(  # noqa: T201
                 "Exception not found in known exceptions list:",
