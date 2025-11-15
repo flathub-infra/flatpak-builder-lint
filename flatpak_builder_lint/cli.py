@@ -291,6 +291,10 @@ def main() -> int:
 
     args = parser.parse_args()
     setup_logging(args.debug)
+
+    logger = logging.getLogger(__name__)
+    logger.debug("flatpak-builder-lint version: %s", __version__)
+
     exit_code = 0
 
     path = os.getcwd() if args.cwd else args.path[0]
