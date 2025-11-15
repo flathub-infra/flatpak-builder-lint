@@ -1,10 +1,13 @@
 import glob
+import logging
 import os
 import struct
 import tempfile
 
 from .. import builddir, ostree
 from . import Check
+
+logger = logging.getLogger(__name__)
 
 
 def is_elf(fname: str) -> bool:
@@ -13,7 +16,8 @@ def is_elf(fname: str) -> bool:
     try:
         with open(fname, "br") as f:
             return f.read(4) == b"\x7fELF"
-    except OSError:
+    except OSError as e:
+        logger.debug("Failed to read file %s: %s: %s", fname, type(e).__name__, e)
         return False
 
 
@@ -33,8 +37,12 @@ def get_elf_arch(fname: str) -> str | None:
                     0xF3: "riscv64",
                 }
                 return arch_map.get(e_machine)
-        except struct.error:
-            pass
+        except struct.error as e:
+            logger.debug(
+                "Failed to unpack ELF architecture from %s: %s: %s", fname, type(e).__name__, e
+            )
+        except OSError as e:
+            logger.debug("Failed to read ELF file %s: %s: %s", fname, type(e).__name__, e)
     return None
 
 

@@ -304,6 +304,7 @@ options:
   --ref                 Override the primary ref detection with this ref
   --gha-format          Use GitHub Actions annotations in CI
   --janitor-exceptions  Enable reporting of stale exceptions to linter repository
+  --debug               Enable debug logging
 
 Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint
 ```

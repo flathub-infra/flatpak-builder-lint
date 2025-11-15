@@ -1,20 +1,28 @@
+import logging
 import os
 import re
 import subprocess
 
+logger = logging.getLogger(__name__)
+
 
 def is_git_directory(path: str) -> bool:
     if not os.path.exists(path):
+        logger.debug("Failed to determine git directory as path does not exist: %s", path)
         return False
-    return (
-        subprocess.run(
-            ["git", "rev-parse"],
-            cwd=path,
-            capture_output=True,
-            check=False,
-        ).returncode
-        == 0
+
+    result = subprocess.run(
+        ["git", "rev-parse"], cwd=path, capture_output=True, text=True, check=False
     )
+
+    if result.returncode != 0:
+        logger.debug(
+            "Failed to determine git directory as git rev-parse failed with %s: %s",
+            result.returncode,
+            result.stderr.strip(),
+        )
+
+    return result.returncode == 0
 
 
 def get_git_toplevel(path: str) -> str | None:
@@ -29,7 +37,13 @@ def get_git_toplevel(path: str) -> str | None:
         check=False,
     )
 
-    return result.stdout.strip() if result.returncode == 0 else None
+    if result.returncode != 0:
+        logger.debug(
+            "Failed to get git toplevel with %s: %s", result.returncode, result.stderr.strip()
+        )
+        return None
+
+    return result.stdout.strip()
 
 
 def get_github_repo_namespace(path: str) -> str | None:
@@ -47,6 +61,9 @@ def get_github_repo_namespace(path: str) -> str | None:
     )
 
     if result.returncode != 0:
+        logger.debug(
+            "Failed to get git remote URL with %s: %s", result.returncode, result.stderr.strip()
+        )
         return None
 
     remote_url = result.stdout.strip()
@@ -62,6 +79,9 @@ def get_github_repo_namespace(path: str) -> str | None:
     elif ssh_match and "/" in ssh_match.group(1):
         namespace = ssh_match.group(1).split("/")[0]
 
+    if namespace is None:
+        logger.debug("Failed to parse GitHub namespace from remote URL: %s", remote_url)
+
     return namespace
 
 
@@ -73,8 +93,7 @@ def get_repo_tree_size(path: str) -> int:
         result = subprocess.run(
             ["git", "ls-tree", "-r", "-l", "HEAD"],
             cwd=path,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
+            capture_output=True,
             text=True,
             check=True,
         )
@@ -83,6 +102,13 @@ def get_repo_tree_size(path: str) -> int:
             parts = line.split()
             if len(parts) >= 4 and parts[-2].isdigit():
                 total += int(parts[-2])
+
+        logger.debug("Git repo tree size for %s: %s bytes", path, total)
         return total
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        logger.debug(
+            "Failed to get git repo tree size with %s: %s",
+            e.returncode,
+            e.stderr.strip(),
+        )
         return 0

@@ -1,8 +1,11 @@
+import logging
 import os
 
 import requests
 
 from . import config
+
+logger = logging.getLogger(__name__)
 
 ISSUE_TITLE = "Stale exceptions"
 ISSUE_LABEL = "stale-exceptions"
@@ -81,5 +84,11 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
         create_resp.raise_for_status()
         return True
 
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
+        logger.debug(
+            "Request exception when reporting stale exceptions for %s: %s: %s",
+            appid,
+            type(e).__name__,
+            e,
+        )
         return False

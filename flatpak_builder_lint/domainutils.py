@@ -1,3 +1,4 @@
+import logging
 import os
 from functools import cache
 from importlib.resources import files
@@ -12,6 +13,8 @@ from . import config, staticfiles
 
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
+
+logger = logging.getLogger(__name__)
 
 CODE_HOSTS = (
     "io.github.",
@@ -50,8 +53,8 @@ def fetch_summary_bytes(url: str) -> bytes:
         r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/octet-stream":
             return r.content
-    except requests.exceptions.RequestException:
-        pass
+    except requests.exceptions.RequestException as e:
+        logger.debug("Request exception when fetching %s: %s: %s", url, type(e).__name__, e)
 
     if url.startswith(config.FLATHUB_BETA_REPO_URL):
         local_summary_file = "flathub-beta.summary"
@@ -63,8 +66,8 @@ def fetch_summary_bytes(url: str) -> bytes:
         if resource_path.is_file():
             with resource_path.open("rb") as f:
                 return f.read()
-    except (OSError, FileNotFoundError):
-        pass
+    except (OSError, FileNotFoundError) as e:
+        logger.debug("Exception loading local summary file: %s: %s", type(e).__name__, e)
 
     raise Exception("Failed to load fallback local summary file")
 
@@ -192,7 +195,8 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
                 ]
             )
             return False, resp_info
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
+        logger.debug("Request exception when fetching %s: %s: %s", url, type(e).__name__, e)
         return False, None
 
 
@@ -207,8 +211,10 @@ def get_remote_exceptions(appid: str) -> set[str]:
         )
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
             return set(r.json())
-    except requests.exceptions.RequestException:
-        pass
+    except requests.exceptions.RequestException as e:
+        logger.debug(
+            "Request exception when fetching exceptions for %s: %s: %s", appid, type(e).__name__, e
+        )
 
     return set()
 

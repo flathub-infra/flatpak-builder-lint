@@ -2,6 +2,7 @@ import argparse
 import importlib
 import importlib.resources
 import json
+import logging
 import os
 import pkgutil
 import sys
@@ -28,6 +29,14 @@ if sentry_dsn := os.getenv("SENTRY_DSN"):
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
+
+
+def setup_logging(debug: bool = False) -> None:
+    if debug:
+        logging.basicConfig(level=logging.DEBUG, format="%(levelname)s: %(message)s")
+        logging.getLogger("requests_cache").setLevel(logging.WARNING)
+    else:
+        logging.disable(logging.CRITICAL)
 
 
 def _filter(info: set[str], excepts: set[str]) -> list[str]:
@@ -274,8 +283,14 @@ def main() -> int:
         help="Enable reporting of stale exceptions to linter repository",
         action="store_true",
     )
+    parser.add_argument(
+        "--debug",
+        help="Enable debug logging",
+        action="store_true",
+    )
 
     args = parser.parse_args()
+    setup_logging(args.debug)
     exit_code = 0
 
     path = os.getcwd() if args.cwd else args.path[0]
