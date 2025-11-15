@@ -53,6 +53,12 @@ def fetch_summary_bytes(url: str) -> bytes:
         r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/octet-stream":
             return r.content
+        logger.debug(
+            "Failed to fetch summary from %s. Status: %s, Content-Type: %s",
+            url,
+            r.status_code,
+            r.headers.get("Content-Type"),
+        )
     except requests.exceptions.RequestException as e:
         logger.debug("Request exception when fetching %s: %s: %s", url, type(e).__name__, e)
 
