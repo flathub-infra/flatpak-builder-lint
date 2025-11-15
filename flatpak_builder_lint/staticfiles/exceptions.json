@@ -1,4 +1,7 @@
 {
+    "io.trezor.suite": {
+        "finish-args-flatpak-spawn-access": "Needed to call the host Bluetooth pairing UI is required to pair the BT devices with the app."
+    },
     "page.codeberg.cozyowl.OpaqueFiles": {
         "finish-args-host-filesystem-access": "Needed to encrypt, decrypt or check files in HOME and on mounted filesystems (USB, Network, ...)"
     },
