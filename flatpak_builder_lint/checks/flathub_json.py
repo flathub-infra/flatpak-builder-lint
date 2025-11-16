@@ -1,4 +1,5 @@
 import tempfile
+from collections.abc import Mapping
 from typing import Any
 
 from .. import builddir, config, ostree
@@ -54,7 +55,7 @@ class FlathubJsonCheck(Check):
         ):
             self.errors.add("flathub-json-excluded-all-arches")
 
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         flathub_json = manifest.get("x-flathub")
         appid = manifest.get("id")
         if not (flathub_json and appid):

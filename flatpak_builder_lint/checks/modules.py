@@ -1,4 +1,5 @@
 import re
+from collections.abc import Mapping
 from typing import Any
 
 from .. import config
@@ -9,7 +10,7 @@ def _is_git_commit_hash(s: str) -> bool:
     return re.match(r"[a-f0-9]{4,40}", s) is not None
 
 
-def _get_bundled_extensions_not_prefixed_with_appid(manifest: dict[str, Any]) -> list[str]:
+def _get_bundled_extensions_not_prefixed_with_appid(manifest: Mapping[str, Any]) -> list[str]:
     appid = manifest.get("id", "")
     extensions = manifest.get("add-extensions", {})
     return [
@@ -82,7 +83,7 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         if manifest:
             for ext in _get_bundled_extensions_not_prefixed_with_appid(manifest):
                 self.errors.add(f"appid-unprefixed-bundled-extension-{ext}")

@@ -436,6 +436,15 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     }
     for err in errors:
         assert err in found_errors
+
+    from flatpak_builder_lint import gitutils, manifest
+
+    manifest.show_manifest.cache_clear()
+    gitutils.is_git_directory.cache_clear()
+    gitutils.get_git_toplevel.cache_clear()
+    gitutils.get_github_repo_namespace.cache_clear()
+    gitutils.get_repo_tree_size.cache_clear()
+
     set_git_remote_url(repo_path, "https://example.org/foobar.git")
     ret = run_checks("tests/manifests/git-repo-checks/git-repo-checks.json")
     found_errors = set(ret["errors"])

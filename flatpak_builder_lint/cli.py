@@ -7,6 +7,7 @@ import os
 import pkgutil
 import sys
 import textwrap
+from types import MappingProxyType
 from typing import Any
 
 import sentry_sdk
@@ -109,7 +110,7 @@ def run_checks(
         case "manifest":
             check_method_name = "check_manifest"
             infer_appid_func = manifest.infer_appid
-            check_method_arg: str | dict[str, Any] = manifest.show_manifest(path)
+            check_method_arg: str | MappingProxyType[str, Any] = manifest.show_manifest(path)
         case "builddir":
             check_method_name = "check_build"
             infer_appid_func = builddir.infer_appid

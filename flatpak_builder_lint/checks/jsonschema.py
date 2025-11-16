@@ -1,5 +1,6 @@
 import importlib.resources
 import json
+from collections.abc import Mapping
 from typing import Any
 
 import jsonschema
@@ -10,7 +11,7 @@ from . import Check
 
 
 class JSONSchemaCheck(Check):
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         with (
             importlib.resources.files(staticfiles)
             .joinpath("flatpak-manifest.schema.json")
@@ -19,7 +20,7 @@ class JSONSchemaCheck(Check):
             schema = json.load(f)
 
         try:
-            jsonschema.validate(manifest, schema)
+            jsonschema.validate(dict(manifest), schema)
         except jsonschema.exceptions.SchemaError:
             self.errors.add("jsonschema-schema-error")
         except jsonschema.exceptions.ValidationError as exc:

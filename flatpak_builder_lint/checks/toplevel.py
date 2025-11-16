@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any
 
 from .. import config
@@ -5,7 +6,7 @@ from . import Check
 
 
 class TopLevelCheck(Check):
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         yaml_failed = manifest.get("x-manifest-yaml-failed")
         if yaml_failed:
             self.errors.add("manifest-invalid-yaml")

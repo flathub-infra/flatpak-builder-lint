@@ -1,5 +1,6 @@
 import os
 import re
+from collections.abc import Mapping
 from typing import Any
 
 from .. import builddir, config, domainutils
@@ -84,7 +85,7 @@ class AppIDCheck(Check):
                         message += f" | {resp}"
                     self.info.add(message)
 
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         appid = manifest.get("id")
         is_extension = manifest.get("build-extension", False)
 

@@ -1,6 +1,7 @@
 import re
 import tempfile
 from collections import defaultdict
+from collections.abc import Mapping
 from typing import Any
 
 import gi
@@ -505,7 +506,7 @@ class FinishArgsCheck(Check):
                 + " full system or session bus"
             )
 
-    def check_manifest(self, manifest: dict[str, Any]) -> None:
+    def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         appid = manifest.get("id")
 
         is_baseapp = bool(

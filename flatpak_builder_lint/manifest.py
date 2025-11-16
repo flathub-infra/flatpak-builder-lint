@@ -3,6 +3,8 @@ import json
 import os
 import re
 import subprocess
+from functools import cache
+from types import MappingProxyType
 from typing import Any
 
 from ruamel.yaml import YAML
@@ -64,7 +66,8 @@ def get_key_lineno(manifest_path: str, key: str) -> int | None:
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
-def show_manifest(filename: str) -> dict[str, Any]:
+@cache
+def show_manifest(filename: str) -> MappingProxyType[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
@@ -159,7 +162,7 @@ def show_manifest(filename: str) -> dict[str, Any]:
                     and not line.split("=", 1)[1].strip().startswith(("./", "../"))
                 ]
 
-    return manifest_json
+    return MappingProxyType(manifest_json)
 
 
 def infer_appid(path: str) -> str | None:
