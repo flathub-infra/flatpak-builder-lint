@@ -2,10 +2,12 @@ import logging
 import os
 import re
 import subprocess
+from functools import cache
 
 logger = logging.getLogger(__name__)
 
 
+@cache
 def is_git_directory(path: str) -> bool:
     if not os.path.exists(path):
         logger.debug("Failed to determine git directory as path does not exist: %s", path)
@@ -25,6 +27,7 @@ def is_git_directory(path: str) -> bool:
     return result.returncode == 0
 
 
+@cache
 def get_git_toplevel(path: str) -> str | None:
     if not is_git_directory(path):
         return None
@@ -46,6 +49,7 @@ def get_git_toplevel(path: str) -> str | None:
     return result.stdout.strip()
 
 
+@cache
 def get_github_repo_namespace(path: str) -> str | None:
     namespace = None
 
@@ -87,6 +91,7 @@ def get_github_repo_namespace(path: str) -> str | None:
     return namespace
 
 
+@cache
 def get_repo_tree_size(path: str) -> int:
     if not is_git_directory(path):
         return 0
