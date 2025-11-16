@@ -2298,7 +2298,7 @@
         "finish-args-own-name-wildcard-org.kde.pim": "Predates the linter rule",
         "finish-args-own-name-org.kde.pimsettingexporter": "Predates the linter rule",
         "finish-args-own-name-org.kde.sieveeditor": "Predates the linter rule",
-        "finish-args-own-name-org.kde.importwizard'": "Predates the linter rule"
+        "finish-args-own-name-org.kde.importwizard": "Needed by import wizard"
     },
     "org.kde.konversation": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
