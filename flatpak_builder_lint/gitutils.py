@@ -81,6 +81,8 @@ def get_github_repo_namespace(path: str) -> str | None:
 
     if namespace is None:
         logger.debug("Failed to parse GitHub namespace from remote URL: %s", remote_url)
+    else:
+        logger.debug("GitHub namespace for remote %s is %s", remote_url, namespace)
 
     return namespace
 
