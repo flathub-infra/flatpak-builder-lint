@@ -1,6 +1,6 @@
 [Application]
 name=org.flathub.gui
-runtime=org.gnome.Platform/x86_64/45
+runtime=org.gnome.Platform/x86_64/48
 sdk=org.gnome.Sdk/x86_64/45
 command=foo
 

@@ -5,6 +5,7 @@ import shutil
 import struct
 import tempfile
 from collections.abc import Generator
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -525,11 +526,16 @@ def test_builddir_appstream_svg_screenshot() -> None:
     assert "metainfo-svg-screenshots" in found_errors
 
 
-def test_builddir_eol_runtime() -> None:
+@patch("flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub")
+@patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub")
+def test_builddir_eol_runtime(mock_eol: MagicMock, mock_active: MagicMock) -> None:
+    mock_eol.return_value = {"org.freedesktop.Platform//18.08"}
+    mock_active.return_value = {"org.freedesktop.Platform//23.08"}
+
     testdir = "tests/builddir/eol_runtime"
     ret = run_checks(testdir)
-    found_warnings = set(ret["warnings"])
-    assert "runtime-is-eol-org.freedesktop.Platform-18.08" in found_warnings
+    found_errors = set(ret["errors"])
+    assert "runtime-is-eol-org.freedesktop.Platform-18.08" in found_errors
 
 
 def test_builddir_wrong_elf_arch() -> None:
