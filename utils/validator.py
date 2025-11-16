@@ -179,6 +179,65 @@ def purge_unknown_ids(filename: str, valid_appids: set[str]) -> bool:
     return modified
 
 
+def parse_issue_for_exceptions(issue_number: str) -> dict[str, list[str]]:
+    try:
+        out = subprocess.check_output(
+            [
+                "gh",
+                "issue",
+                "view",
+                issue_number,
+                "--repo",
+                "flathub-infra/flatpak-builder-lint",
+                "--json",
+                "body,comments",
+            ],
+            text=True,
+        )
+        issue_data = json.loads(out)
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
+        print(f"Failed to fetch issue {issue_number}: {e}", file=sys.stderr)  # noqa: T201
+        return {}
+
+    result: dict[str, list[str]] = {}
+
+    appid_pattern = re.compile(r"^Stale exceptions for\s+`?([a-zA-Z0-9._-]+)`?\s*:?\s*$")
+    exception_pattern = re.compile(r"^\s*[•\-*]\s+(.+?)\s*$")
+
+    def parse_text(text: str) -> None:
+        current_appid = None
+        for line in text.splitlines():
+            line_s = line.strip()
+
+            appid_match = appid_pattern.match(line_s)
+            if appid_match:
+                current_appid = appid_match.group(1)
+                if current_appid not in result:
+                    result[current_appid] = []
+                continue
+
+            if current_appid:
+                exc_match = exception_pattern.match(line_s)
+                if exc_match:
+                    exception = exc_match.group(1).strip()
+                    if exception not in result[current_appid]:
+                        result[current_appid].append(exception)
+
+    body = issue_data.get(
+        "body",
+    )
+    if body:
+        parse_text(body)
+
+    comments = issue_data.get("comments", [])
+    for comment in comments:
+        comment_body = comment.get("body", "")
+        if comment_body:
+            parse_text(comment_body)
+
+    return result
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", nargs="*", help="Input filenames")
@@ -188,10 +247,55 @@ def main(argv: Sequence[str] | None = None) -> int:
         action="store_true",
         help="Remove app IDs in exceptions file that are not present in Flathub's list",
     )
+    parser.add_argument(
+        "--purge-from-issue",
+        metavar="ISSUE_NUMBER",
+        help="Parse GitHub issue and purge stale exceptions mentioned in it",
+    )
     args = parser.parse_args(argv)
 
     if not args.filenames:
         args.filenames = ["flatpak_builder_lint/staticfiles/exceptions.json"]
+
+    if args.purge_from_issue:
+        issue_number = args.purge_from_issue
+        exceptions_map = parse_issue_for_exceptions(issue_number)
+
+        if not exceptions_map:
+            print(f"No exceptions found in issue {issue_number}", file=sys.stderr)  # noqa: T201
+            return 1
+
+        modified_any = False
+        for filename in args.filenames:
+            if not os.path.exists(filename):
+                print(f"File not found: {filename}")  # noqa: T201
+                continue
+
+            with open(filename) as f:
+                data = json.load(f)
+
+            file_modified = False
+            for app_id, exceptions in exceptions_map.items():
+                if app_id not in data:
+                    continue
+
+                for exc_name in exceptions:
+                    if exc_name in data[app_id]:
+                        del data[app_id][exc_name]
+                        file_modified = True
+                        print(f"Purged '{exc_name}' from {app_id} in {filename}")  # noqa: T201
+
+                if app_id in data and not data[app_id]:
+                    del data[app_id]
+                    file_modified = True
+                    print(f"Removed empty app-ID '{app_id}' from {filename}")  # noqa: T201
+
+            if file_modified:
+                with open(filename, "w") as f:
+                    json.dump(data, f, indent=4)
+                modified_any = True
+
+        return 0 if modified_any else 1
 
     if args.purge:
         exc = args.purge
