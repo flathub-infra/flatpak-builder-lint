@@ -49,6 +49,7 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
 
         existing_issue = next((i for i in issues if i["title"] == ISSUE_TITLE), None)
         exception_list = "\n".join(f"- {exc}" for exc in sorted(stale_exceptions))
+        issue_body = f"Stale exceptions for `{appid}`:\n\n{exception_list}"
 
         if existing_issue:
             issue_number = existing_issue["number"]
@@ -63,17 +64,15 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
             comments_resp.raise_for_status()
             comments = comments_resp.json()
 
-            if any(f"`{appid}`" in comment["body"] for comment in comments):
+            if any(comment["body"] == issue_body for comment in comments):
                 return True
 
-            comment_body = f"Stale exceptions for `{appid}`:\n\n{exception_list}"
             post_resp = requests.post(
-                comments_url, headers=headers, json={"body": comment_body}, timeout=30
+                comments_url, headers=headers, json={"body": issue_body}, timeout=30
             )
             post_resp.raise_for_status()
             return True
 
-        issue_body = f"Stale exceptions for `{appid}`:\n\n{exception_list}"
         create_url = f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues"
         create_resp = requests.post(
             create_url,
