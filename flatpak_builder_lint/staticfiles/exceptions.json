@@ -80,9 +80,6 @@
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
-    "com.apifox.Apifox": {
-        "flathub-json-automerge-enabled": "Extra-data app with unversioned source link"
-    },
     "com.dingtalk.DingTalk": {
         "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
     },
@@ -429,7 +426,6 @@
     },
     "com.github.IsmaelMartinez.teams_for_linux": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.iwalton3.jellyfin-media-player": {
@@ -916,11 +912,7 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.telegram.desktop": {
-        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "flathub-json-automerge-enabled": "Predates the linter rule",
-        "external-gitmodule-url-found": "Predates the linter rule",
-        "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered",
-        "module-tde2e-checker-tracks-commits": "Manually updated"
+        "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
     },
     "com.gitlab.adnan338.Invoicer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1448,8 +1440,6 @@
         "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
     },
     "net.cozic.joplin_desktop": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "net.davidotek.pupgui2": {
@@ -3187,9 +3177,6 @@
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.adilhanney.ricochlime": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
-    },
-    "com.adilhanney.saber": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
     "com.adilhanney.super_nonogram": {
