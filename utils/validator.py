@@ -190,13 +190,23 @@ def parse_issue_for_exceptions(issue_number: str) -> dict[str, list[str]]:
                 "--repo",
                 "flathub-infra/flatpak-builder-lint",
                 "--json",
-                "body,comments",
+                "body,comments,author",
             ],
             text=True,
         )
         issue_data = json.loads(out)
     except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
         print(f"Failed to fetch issue {issue_number}: {e}", file=sys.stderr)  # noqa: T201
+        return {}
+
+    author = issue_data.get("author", {})
+    issue_author = author.get("login", "") if isinstance(author, dict) else ""
+
+    if issue_author != "flathubbot":
+        print(  # noqa: T201
+            f"Issue {issue_number} was not opened by flathubbot (author: {issue_author})",
+            file=sys.stderr,
+        )
         return {}
 
     result: dict[str, list[str]] = {}
@@ -223,17 +233,21 @@ def parse_issue_for_exceptions(issue_number: str) -> dict[str, list[str]]:
                     if exception not in result[current_appid]:
                         result[current_appid].append(exception)
 
-    body = issue_data.get(
-        "body",
-    )
+    body = issue_data.get("body")
     if body:
         parse_text(body)
 
     comments = issue_data.get("comments", [])
     for comment in comments:
-        comment_body = comment.get("body", "")
-        if comment_body:
-            parse_text(comment_body)
+        comment_author = comment.get("author", {})
+        comment_author_login = (
+            comment_author.get("login", "") if isinstance(comment_author, dict) else ""
+        )
+
+        if comment_author_login == "flathubbot":
+            comment_body = comment.get("body", "")
+            if comment_body:
+                parse_text(comment_body)
 
     return result
 
