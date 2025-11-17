@@ -96,7 +96,6 @@
     },
     "com.github._4lex4.ScanTailor-Advanced": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.github.ADBeveridge.Raider": {
@@ -430,7 +429,6 @@
     },
     "com.github.IsmaelMartinez.teams_for_linux": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.iwalton3.jellyfin-media-player": {
@@ -1040,11 +1038,9 @@
     },
     "org.gimp.GIMP": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config.",
-        "finish-args-unnecessary-xdg-config-GIMP-rw-access": "gtk-3.0 and GIMP config.",
         "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
         "finish-args-host-tmp-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule",
-        "finish-args-kwin-talk-name": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gitfourchette.gitfourchette": {
         "finish-args-flatpak-spawn-access": "Start external merge tool via flatpak-spawn",
@@ -1449,7 +1445,6 @@
         "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
     },
     "net.cozic.joplin_desktop": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "external-gitmodule-url-found": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -2284,7 +2279,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kontact": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-gnupg-filesystem-access": "Predates the linter rule",
         "finish-args-own-name-org.freedesktop.Akonadi": "Predates the linter rule",
         "finish-args-own-name-wildcard-org.freedesktop.Akonadi": "Predates the linter rule",
@@ -2674,9 +2668,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.github.lxndr.gswatcher": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "io.github.martinrotter.textosaurus": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -3065,7 +3056,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.openmw.OpenMW": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.openttd.OpenTTD": {
@@ -3718,8 +3708,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "one.ablaze.floorp": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
         "finish-args-own-name-wildcard-org.mozilla.floorp": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for manually creating application .desktop files for Floorp's Web Apps feature",
         "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds"
@@ -3869,7 +3857,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.signal.Signal": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "org.speedcrunch.SpeedCrunch": {
@@ -4200,9 +4187,7 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.github.accessory.minus_games_gui": {
-        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
     "io.github.fastrizwaan.WineZGUI": {
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
@@ -5345,9 +5330,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-gpg-agent": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
-    },
-    "io.github.alescdb.mailviewer": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.am2r_community_developers.Atomic": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
