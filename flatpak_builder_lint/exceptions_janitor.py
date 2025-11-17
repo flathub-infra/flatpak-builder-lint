@@ -18,6 +18,18 @@ def get_stale_exceptions(active_errors: set[str], exceptions: set[str]) -> set[s
         if exception == "*":
             continue
 
+        if exception.startswith(
+            (
+                "flathub-json-",
+                "module-",
+                "appid-unprefixed-bundled-extension-",
+                "external-gitmodule-url-found",
+                "manifest-",
+                "toplevel-",
+            )
+        ):
+            continue
+
         if exception not in active_errors:
             stale.add(exception)
 
