@@ -17,6 +17,9 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Debug"
             ],
+            "cleanup": [
+                "/lib/debug"
+            ],
             "sources": [
                 {
                     "type": "archive",
