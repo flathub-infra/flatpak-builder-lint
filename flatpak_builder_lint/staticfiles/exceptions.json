@@ -6377,5 +6377,8 @@
     },
     "it.mq1.TinyWiiBackupManager": {
         "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+    },
+    "io.github.brunoherbelin.Vimix": {
+        "finish-args-arbitrary-dbus-access": "Application needs access to session-bus to inhibit the desktop screensaver via the org.freedesktop.ScreenSaver D-Bus API (live performance)"
     }
 }
