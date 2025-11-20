@@ -86,7 +86,7 @@ class ModuleCheck(Check):
         cleanup = module.get("cleanup")
         if cleanup:
             for c in cleanup:
-                if c == "/lib/debug" or c.startswith("/lib/debug"):
+                if c == "/lib/debug" or c.startswith("/lib/debug/"):
                     self.errors.add(f"module-{name}-cleanup-debug")
                     break
 
