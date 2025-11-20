@@ -1,5 +1,8 @@
 {
     "app-id": "org.flathub.TopLevel.BaseApp",
     "branch": "stable",
-    "default-branch": "stable"
+    "default-branch": "stable",
+    "cleanup": [
+        "/lib/debug/source"
+    ]
 }

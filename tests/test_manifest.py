@@ -152,6 +152,8 @@ def test_manifest_toplevel() -> None:
     for e in not_founds:
         assert e not in found_errors
 
+    assert "toplevel-cleanup-debug" in found_errors
+
 
 def test_manifest_appid() -> None:
     errors = {
@@ -318,6 +320,7 @@ def test_manifest_finish_args_empty() -> None:
 def test_manifest_modules() -> None:
     errors = {
         "module-module1-source-sha1-deprecated",
+        "module-module1-cleanup-debug",
     }
 
     ret = run_checks("tests/manifests/modules.json")

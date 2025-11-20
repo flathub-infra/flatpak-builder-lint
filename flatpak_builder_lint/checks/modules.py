@@ -83,6 +83,13 @@ class ModuleCheck(Check):
             for nested_module in nested_modules:
                 self.check_module(nested_module)
 
+        cleanup = module.get("cleanup")
+        if cleanup:
+            for c in cleanup:
+                if c == "/lib/debug" or c.startswith("/lib/debug/"):
+                    self.errors.add(f"module-{name}-cleanup-debug")
+                    break
+
     def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         if manifest:
             for ext in _get_bundled_extensions_not_prefixed_with_appid(manifest):

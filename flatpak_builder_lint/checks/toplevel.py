@@ -62,8 +62,11 @@ class TopLevelCheck(Check):
                 )
 
         cleanup = manifest.get("cleanup")
-        if cleanup and "/lib/debug" in cleanup:
-            self.errors.add("toplevel-cleanup-debug")
+        if cleanup:
+            for c in cleanup:
+                if c == "/lib/debug" or c.startswith("/lib/debug/"):
+                    self.errors.add("toplevel-cleanup-debug")
+                    break
 
         if not manifest.get("modules"):
             self.errors.add("toplevel-no-modules")
