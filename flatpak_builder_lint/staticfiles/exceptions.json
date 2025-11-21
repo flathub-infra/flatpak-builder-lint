@@ -1,4 +1,7 @@
 {
+    "org.vassalengine.vassal": {
+        "finish-args-home-filesystem-access": "Needed to browse external game module files and saved games folders"
+    },
     "app.twintaillauncher.ttl": {
         "finish-args-desktopfile-filesystem-access": "Application can create .desktop file shortcuts for games... literally can not write those files without access to the folder",
         "finish-args-flatpak-appdata-folder-access": "Application can write Steam shortcuts to its shortcuts.vdf file and it needs this to access flatpak Steam"
