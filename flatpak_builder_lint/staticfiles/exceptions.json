@@ -1305,6 +1305,9 @@
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
+    "dev.louiscouture.path": {
+        "finish-args-home-filesystem-access": "This app needs to have access to the file system to add folders and files containing the path overrides and alias declarations without user intervention"
+    },
     "dev.lizardbyte.app.Sunshine": {
         "finish-args-flatpak-spawn-access": "needed to start applications",
         "finish-args-home-filesystem-access": "Predates the linter rule"
