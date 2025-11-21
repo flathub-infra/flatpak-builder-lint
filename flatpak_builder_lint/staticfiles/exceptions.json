@@ -836,7 +836,8 @@
     },
     "com.github.wwmm.easyeffects": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "finish-args-contains-both-x11-and-wayland": "Core application supports wayland natively, but simultaneously needs x11 access to show audio plugin windows."
     },
     "com.github.wwmm.pulseeffects": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
