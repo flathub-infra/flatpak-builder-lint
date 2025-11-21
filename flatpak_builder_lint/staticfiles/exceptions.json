@@ -1,4 +1,7 @@
 {
+    "moe.launcher.an-anime-game-launcher": {
+        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+    },
     "app.twintaillauncher.ttl": {
         "finish-args-desktopfile-filesystem-access": "Application can create .desktop file shortcuts for games... literally can not write those files without access to the folder",
         "finish-args-flatpak-appdata-folder-access": "Application can write Steam shortcuts to its shortcuts.vdf file and it needs this to access flatpak Steam"
