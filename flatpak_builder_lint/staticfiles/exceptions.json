@@ -6344,5 +6344,8 @@
     },
     "it.mq1.TinyWiiBackupManager": {
         "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+    },
+    "org.kde.hana": {
+        "finish-args-home-filesystem-access": "Needs to save images in an user defined folder"
     }
 }
