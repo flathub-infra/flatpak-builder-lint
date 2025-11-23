@@ -6350,5 +6350,9 @@
     },
     "it.mq1.TinyWiiBackupManager": {
         "finish-args-host-filesystem-access": "Used for loading the rom dumps from anywhere in the home directory or from a drive, and for transferring them to the Wii drive."
+    },
+    "io.github.jmberesford.Retrom": {
+      "finish-args-arbitrary-dbus-access": "the app is a launcher for other arbitrary applications configured by the user and requires direct dbus access",
+      "finish-args-host-filesystem-access": "the app must manage video game libraries whose location is arbitrarily managed by the user on the host; as such the app requires host filesystem access"
     }
 }
