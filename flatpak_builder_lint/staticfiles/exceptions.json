@@ -5960,7 +5960,10 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.gitbutler.gitbutler": {
-        "finish-args-ssh-filesystem-access": "Predates the linter rule"
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-host-filesystem-access": "Needed to access Git repositories outside the sandbox",
+        "finish-args-own-name-com.gitbutler.app": "Needed for D-Bus service registration"
     },
     "com.nomachine.nxplayer": {
         "finish-args-ssh-filesystem-access": "Predates the linter rule",
