@@ -50,7 +50,12 @@ def ignore_ref(ref: str) -> bool:
 @cache
 def fetch_summary_bytes(url: str) -> bytes:
     try:
-        r = session.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
+        r = session.get(
+            url,
+            allow_redirects=False,
+            timeout=REQUEST_TIMEOUT,
+            headers={"Accept-Encoding": None},
+        )
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/octet-stream":
             return r.content
         logger.debug(
@@ -214,6 +219,7 @@ def get_remote_exceptions(appid: str) -> set[str]:
             f"{config.FLATHUB_API_URL}/exceptions/{appid}",
             allow_redirects=False,
             timeout=REQUEST_TIMEOUT,
+            headers={"Accept-Encoding": None},
         )
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
             return set(r.json())
