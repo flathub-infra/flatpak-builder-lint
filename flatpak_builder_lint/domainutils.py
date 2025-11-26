@@ -260,9 +260,7 @@ def get_remote_exceptions_github(appid: str) -> set[str]:
     )
     try:
         # exception updates should be reflected immediately
-        r = requests.get(
-            url, allow_redirects=False, timeout=REQUEST_TIMEOUT, headers={"Accept-Encoding": None}
-        )
+        r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
         logger.debug(
             "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
         )
