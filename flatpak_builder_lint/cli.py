@@ -36,7 +36,10 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 def setup_logging(debug: bool = False) -> None:
     if debug:
-        logging.basicConfig(level=logging.CRITICAL + 1, format="%(levelname)s: %(message)s")
+        logging.basicConfig(
+            level=logging.CRITICAL + 1,
+            format="%(asctime)s %(levelname)s:%(name)s:%(funcName)s: %(message)s",
+        )
         logging.getLogger("flatpak_builder_lint").setLevel(logging.DEBUG)
     else:
         logging.disable(logging.CRITICAL)
