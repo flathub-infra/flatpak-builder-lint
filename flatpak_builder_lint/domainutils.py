@@ -157,15 +157,6 @@ def get_eol_runtimes(url: str) -> set[str]:
         ):
             eols.add(f"{ref_id}//{branch}")
 
-    extra = (
-        "org.gnome.Platform//3.38",
-        "org.gnome.Sdk//3.38",
-        "org.kde.Sdk//5.14",
-        "org.kde.Platform//5.14",
-    )
-
-    eols.update(extra)
-
     return eols
 
 
