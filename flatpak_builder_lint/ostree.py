@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+from functools import cache
 
 import gi
 
@@ -26,6 +27,7 @@ def open_ostree_repo(repo_path: str) -> OSTree.Repo:
     return repo
 
 
+@cache
 def get_refs(repo_path: str, ref_prefix: str | None) -> set[str]:
     repo = open_ostree_repo(repo_path)
     _, refs = repo.list_refs(ref_prefix, None)
@@ -34,6 +36,7 @@ def get_refs(repo_path: str, ref_prefix: str | None) -> set[str]:
     return set(refs.keys())
 
 
+@cache
 def get_all_refs_filtered(repo_path: str) -> set[str]:
     refs = get_refs(repo_path, None)
 
@@ -47,6 +50,7 @@ def get_all_refs_filtered(repo_path: str) -> set[str]:
     }
 
 
+@cache
 def get_primary_refs(repo_path: str) -> set[str]:
     primary_refs = {
         r
@@ -60,6 +64,7 @@ def get_primary_refs(repo_path: str) -> set[str]:
     return primary_refs
 
 
+@cache
 def infer_appid(path: str) -> str | None:
     refs = get_primary_refs(path)
     if refs:

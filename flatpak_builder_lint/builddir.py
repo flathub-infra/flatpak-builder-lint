@@ -93,6 +93,7 @@ def parse_metadata(builddir: str) -> MappingProxyType[str, str | dict[str, set[s
     return MappingProxyType(metadata)
 
 
+@cache
 def infer_appid(path: str) -> str | None:
     metadata = parse_metadata(path)
     if metadata:
@@ -102,10 +103,12 @@ def infer_appid(path: str) -> str | None:
     return None
 
 
+@cache
 def infer_type(path: str) -> str:
     return "app" if parse_metadata(path).get("type") == "application" else "runtime"
 
 
+@cache
 def get_runtime(path: str) -> str | None:
     return runtime if isinstance(runtime := parse_metadata(path).get("runtime"), str) else None
 
