@@ -1,6 +1,7 @@
 import os
 
 GITHUB_API = "https://api.github.com"
+GITHUB_CONTENT_CDN = "https://raw.githubusercontent.com"
 
 LINTER_FULL_REPO = "flathub-infra/flatpak-builder-lint"
 

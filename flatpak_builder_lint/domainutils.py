@@ -230,7 +230,7 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
 
 @cache
-def get_remote_exceptions(appid: str) -> set[str]:
+def get_remote_exceptions_flathub(appid: str) -> set[str]:
     url = f"{config.FLATHUB_API_URL}/exceptions/{appid}"
     try:
         # exception updates should be reflected immediately
@@ -244,6 +244,37 @@ def get_remote_exceptions(appid: str) -> set[str]:
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
             logger.debug("Loaded remote exceptions from %s: %s", url, set(r.json()))
             return set(r.json())
+    except requests.exceptions.RequestException as e:
+        logger.debug(
+            "Request exception when fetching exceptions for %s: %s: %s", appid, type(e).__name__, e
+        )
+
+    return set()
+
+
+@cache
+def get_remote_exceptions_github(appid: str) -> set[str]:
+    url = (
+        f"{config.GITHUB_CONTENT_CDN}/{config.LINTER_FULL_REPO}/"
+        f"HEAD/flatpak_builder_lint/staticfiles/exceptions.json"
+    )
+    try:
+        # exception updates should be reflected immediately
+        r = requests.get(
+            url, allow_redirects=False, timeout=REQUEST_TIMEOUT, headers={"Accept-Encoding": None}
+        )
+        logger.debug(
+            "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
+        )
+        logger.debug("Response headers for %s: %s", url, dict(r.headers))
+        if r.status_code == 200 and r.headers.get("Content-Type", "").startswith("text/plain"):
+            logger.debug(
+                "Loaded remote exceptions for %s from %s: %s",
+                appid,
+                url,
+                set(r.json().get(appid, {}).keys()),
+            )
+            return set(r.json().get(appid, {}).keys())
     except requests.exceptions.RequestException as e:
         logger.debug(
             "Request exception when fetching exceptions for %s: %s: %s", appid, type(e).__name__, e
