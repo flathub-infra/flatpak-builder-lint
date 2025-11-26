@@ -58,8 +58,9 @@ jobs:
             docker:
               - *shared
 
-      - name: Force full CI for schedule runs
-        if: ${{ github.event_name == 'schedule' && github.repository == 'flathub-infra/flatpak-builder-lint' }}
+      - name: Force full CI for schedule or manual runs
+        if: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+               && github.repository == 'flathub-infra/flatpak-builder-lint' }}
         id: force
         run: echo "value=true" >> $GITHUB_OUTPUT
 
