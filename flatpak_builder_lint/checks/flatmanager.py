@@ -1,5 +1,6 @@
 import gzip
 import json
+import logging
 import os
 import shutil
 import tempfile
@@ -10,6 +11,8 @@ from .. import appstream, config, domainutils
 from . import Check
 
 REQUEST_TIMEOUT = domainutils.REQUEST_TIMEOUT
+
+logger = logging.getLogger(__name__)
 
 
 class FlatManagerCheck(Check):
@@ -43,11 +46,19 @@ class FlatManagerCheck(Check):
                 "Authorization": f"Bearer {flatmgr_token}",
                 "Content-Type": "application/json",
             }
+
+            flat_mgr_extended_api = f"{flatmgr_url}/api/v1/build/{build_id}/extended"
             r = requests.get(
-                f"{flatmgr_url}/api/v1/build/{build_id}/extended",
+                flat_mgr_extended_api,
                 headers=headers,
                 timeout=REQUEST_TIMEOUT,
             )
+            logger.debug(
+                "Request headers for %s: %s",
+                flat_mgr_extended_api,
+                domainutils.filter_request_headers(dict(r.request.headers)),
+            )
+            logger.debug("Response headers for %s: %s", flat_mgr_extended_api, dict(r.headers))
 
             if r.status_code != 200:
                 raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")

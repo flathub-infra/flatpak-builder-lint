@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from . import config
+from . import config, domainutils
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +42,7 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
 
     github_token = os.getenv("GITHUB_TOKEN")
     if not github_token:
+        logger.debug("No GITHUB_TOKEN found, cannot report stale exceptions")
         return False
 
     headers = {
@@ -50,12 +51,19 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
     }
 
     try:
+        url_issues = f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues"
         response = requests.get(
-            f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues",
+            url_issues,
             headers=headers,
             params={"state": "open", "creator": "flathubbot", "labels": ISSUE_LABEL},
             timeout=30,
         )
+        logger.debug(
+            "Request headers for %s: %s",
+            url_issues,
+            domainutils.filter_request_headers(dict(response.request.headers)),
+        )
+        logger.debug("Response headers for %s: %s", url_issues, dict(response.headers))
         response.raise_for_status()
         issues = response.json()
 
@@ -73,15 +81,28 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
             )
 
             comments_resp = requests.get(comments_url, headers=headers, timeout=30)
+            logger.debug(
+                "Request headers for %s: %s",
+                comments_url,
+                domainutils.filter_request_headers(dict(comments_resp.request.headers)),
+            )
+            logger.debug("Response headers for %s: %s", comments_url, dict(comments_resp.headers))
             comments_resp.raise_for_status()
             comments = comments_resp.json()
 
             if any(comment["body"] == issue_body for comment in comments):
+                logger.debug("Comment already exists for %s, skipping", appid)
                 return True
 
             post_resp = requests.post(
                 comments_url, headers=headers, json={"body": issue_body}, timeout=30
             )
+            logger.debug(
+                "Request headers for %s: %s",
+                comments_url,
+                domainutils.filter_request_headers(dict(post_resp.request.headers)),
+            )
+            logger.debug("Response headers for %s: %s", comments_url, dict(post_resp.headers))
             post_resp.raise_for_status()
             return True
 
@@ -92,6 +113,12 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
             json={"title": ISSUE_TITLE, "body": issue_body, "labels": [ISSUE_LABEL]},
             timeout=30,
         )
+        logger.debug(
+            "Request headers for %s: %s",
+            create_url,
+            domainutils.filter_request_headers(dict(create_resp.request.headers)),
+        )
+        logger.debug("Response headers for %s: %s", create_url, dict(create_resp.headers))
         create_resp.raise_for_status()
         return True
 

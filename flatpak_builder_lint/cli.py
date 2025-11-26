@@ -28,6 +28,8 @@ from . import (
 if sentry_dsn := os.getenv("SENTRY_DSN"):
     sentry_sdk.init(sentry_dsn)
 
+logger = logging.getLogger(__name__)
+
 for plugin_info in pkgutil.iter_modules(checks.__path__):
     importlib.import_module(f".{plugin_info.name}", package=checks.__name__)
 
@@ -59,6 +61,7 @@ def get_local_exceptions(appid: str) -> set[str]:
         ret = exceptions.get(appid, [])
 
     if ret:
+        logger.debug("Loaded local exceptions for %s: %s", appid, set(ret))
         return set(ret)
 
     return set()
@@ -68,6 +71,12 @@ def get_user_exceptions(file: str, appid: str) -> set[str]:
     if os.path.exists(file) and os.path.isfile(file):
         with open(file, encoding="utf-8") as f:
             exceptions = json.load(f)
+            logger.debug(
+                "Loaded user exceptions for %s from %s: %s",
+                appid,
+                os.path.abspath(file),
+                set(exceptions.get(appid, [])),
+            )
             return set(exceptions.get(appid, []))
     return set()
 
@@ -150,11 +159,14 @@ def run_checks(
         if appid:
             if user_exceptions_path:
                 exceptions = get_user_exceptions(user_exceptions_path, appid)
+                logger.debug("Using user exceptions: %s", exceptions)
             else:
                 exceptions = domainutils.get_remote_exceptions(appid)
+                logger.debug("Using remote exceptions: %s", exceptions)
 
             if not exceptions:
                 exceptions = get_local_exceptions(appid)
+                logger.debug("Falling back to local exceptions: %s", exceptions)
 
         if exceptions:
             if (
@@ -293,7 +305,6 @@ def main() -> int:
     args = parser.parse_args()
     setup_logging(args.debug)
 
-    logger = logging.getLogger(__name__)
     logger.debug("flatpak-builder-lint version: %s", __version__)
 
     exit_code = 0
