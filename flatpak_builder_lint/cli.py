@@ -164,7 +164,7 @@ def run_checks(
                 exceptions = get_user_exceptions(user_exceptions_path, appid)
                 logger.debug("Using user exceptions: %s", exceptions)
             else:
-                exceptions = domainutils.get_remote_exceptions_flathub(appid)
+                exceptions = domainutils.get_remote_exceptions_github(appid)
                 logger.debug("Using remote exceptions: %s", exceptions)
 
             if not exceptions:
