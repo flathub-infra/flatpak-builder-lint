@@ -61,10 +61,11 @@ class AppIDCheck(Check):
             if domainutils.is_app_on_flathub_summary(appid):
                 return
             if appid.startswith(domainutils.CODE_HOSTS):
-                if domainutils.get_proj_url(appid) is None:
+                proj_url = domainutils.get_proj_url(appid)
+                if proj_url is None:
                     self.errors.add("appid-url-check-internal-error")
                     return
-                url = f"https://{domainutils.get_proj_url(appid)}"
+                url = f"https://{proj_url}"
                 ok, resp = domainutils.check_url(url, strict=True)
                 if not ok:
                     self.errors.add("appid-url-not-reachable")
@@ -73,10 +74,11 @@ class AppIDCheck(Check):
                         message += f" | {resp}"
                     self.info.add(message)
             else:
-                if domainutils.get_domain(appid) is None:
+                domain_from_appid = domainutils.get_domain(appid)
+                if domain_from_appid is None:
                     self.errors.add("appid-url-check-internal-error")
                     return
-                url_https = f"https://{domainutils.get_domain(appid)}"
+                url_https = f"https://{domain_from_appid}"
                 ok, resp = domainutils.check_url(url_https, strict=False)
                 if not ok:
                     self.errors.add("appid-url-not-reachable")
