@@ -2,13 +2,16 @@ import errno
 import json
 import os
 from collections import defaultdict
+from functools import cache
+from types import MappingProxyType
 
 from gi.repository import GLib
 
 from . import config
 
 
-def parse_metadata(builddir: str) -> dict[str, str | dict[str, set[str]]]:
+@cache
+def parse_metadata(builddir: str) -> MappingProxyType[str, str | dict[str, set[str]]]:
     if not os.path.exists(builddir):
         raise OSError(errno.ENOENT, f"No such build directory: {builddir}")
 
@@ -87,7 +90,7 @@ def parse_metadata(builddir: str) -> dict[str, str | dict[str, set[str]]]:
     if key_file.has_group("Extra Data"):
         metadata["extra-data"] = "yes"
 
-    return metadata
+    return MappingProxyType(metadata)
 
 
 def infer_appid(path: str) -> str | None:
