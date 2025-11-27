@@ -6347,5 +6347,8 @@
     },
     "org.kde.hana": {
         "finish-args-home-filesystem-access": "Needs to save images in an user defined folder"
+    },
+    "tech.keyforge.keyforge_master": {
+        "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
     }
 }
