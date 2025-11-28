@@ -3986,7 +3986,6 @@
     "menu.kando.Kando": {
         "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher",
         "finish-args-host-ro-filesystem-access": "Required for listing installed applications and icon themes",
-        "finish-args-home-ro-filesystem-access": "Required for listing installed applications and icon themes",
         "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name"
     },
     "io.github.flattool.Ignition": {
