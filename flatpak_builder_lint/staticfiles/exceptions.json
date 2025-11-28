@@ -3985,7 +3985,9 @@
     },
     "menu.kando.Kando": {
         "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher",
-        "finish-args-kwin-talk-name": "Predates the linter rule"
+        "finish-args-host-ro-filesystem-access": "Required for listing installed applications and icon themes",
+        "finish-args-home-ro-filesystem-access": "Required for listing installed applications and icon themes",
+        "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name"
     },
     "io.github.flattool.Ignition": {
         "finish-args-unnecessary-xdg-config-autostart-create-access": "This app's purpose is to manage autostart entries",
