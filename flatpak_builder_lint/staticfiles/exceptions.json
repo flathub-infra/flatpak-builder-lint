@@ -4799,6 +4799,9 @@
     "chat.iamb.iamb": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "chat.simplex.simplex": {
+        "finish-args-home-filesystem-access": "Allows the users to send/save files from/to their home directory"
+    },
     "cn.apipost.apipost": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
