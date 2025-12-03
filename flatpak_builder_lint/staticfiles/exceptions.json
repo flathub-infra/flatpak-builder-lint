@@ -6198,5 +6198,9 @@
     },
     "org.kde.hana": {
         "finish-args-home-filesystem-access": "Needs to save images in an user defined folder"
+    },
+    "com.bilingify.readest": {
+        "finish-args-talk-name-org.com_bilingify_readest.SingleInstance": "Predates the linter rule",
+        "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Predates the linter rule"
     }
 }
