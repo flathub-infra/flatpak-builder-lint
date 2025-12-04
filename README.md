@@ -35,7 +35,7 @@ if the app is meant to be published on Flathub or already exists on
 Flathub. These exceptions, once published, can be viewed by doing:
 
 ```sh
-curl -s https://flathub.org/api/v2/exceptions/my.app.id|jq
+curl -s 'https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/HEAD/flatpak_builder_lint/staticfiles/exceptions.json'|jq '.["my.app.id"]'
 ```
 
 ### Local exceptions
