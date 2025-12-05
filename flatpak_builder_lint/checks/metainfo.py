@@ -2,6 +2,9 @@ import glob
 import os
 import tempfile
 
+from ruamel.yaml import YAML
+from ruamel.yaml.error import YAMLError
+
 from .. import appstream, builddir, config, ostree
 from . import Check
 
@@ -44,7 +47,7 @@ class MetainfoCheck(Check):
             return
 
         for file in metainfo_files:
-            metainfo_validation = appstream.validate(file, "--no-net")
+            metainfo_validation = appstream.validate(file, "--no-net", "--format", "yaml")
             if metainfo_validation["returncode"] != 0:
                 self.errors.add("appstream-failed-validation")
                 self.info.add(
@@ -54,14 +57,31 @@ class MetainfoCheck(Check):
 
                 for err in metainfo_validation["stderr"].splitlines():
                     self.appstream.add(err.strip())
-                stdout: list[str] = list(
-                    filter(
-                        lambda x: x.startswith(("E:", "W:")),
-                        metainfo_validation["stdout"].splitlines()[:-1],
-                    )
-                )
-                for out in stdout:
-                    self.appstream.add(out.strip())
+
+                yaml = YAML()
+
+                try:
+                    validation_data = yaml.load(metainfo_validation["stdout"])
+                    filename = validation_data.get("File", file)
+                    issues = validation_data.get("Issues", [])
+                    for issue in issues:
+                        severity = issue.get("severity", "").lower()
+                        if severity in ("warning", "error"):
+                            sev_prefix = "W" if severity == "warning" else "E"
+                            tag = issue.get("tag")
+                            line = issue.get("line")
+                            explanation = issue.get("explanation")
+                            parts = [sev_prefix, filename]
+                            if tag:
+                                parts.append(tag.strip())
+                            if line:
+                                parts.append(str(line).strip())
+                            message = ":".join(parts)
+                            if explanation:
+                                message += f" {explanation.strip()}"
+                            self.appstream.add(message.strip())
+                except YAMLError as e:
+                    self.appstream.add(f"Failed to parse appstream validate YAML output: {e}")
 
             if not appstream.metainfo_components(file):
                 self.errors.add("metainfo-missing-component-tag")

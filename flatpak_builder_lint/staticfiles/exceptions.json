@@ -670,7 +670,6 @@
     },
     "com.github.qarmin.czkawka": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.github.qarmin.szyszka": {
@@ -1005,8 +1004,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.dspy": {
-        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
     },
     "org.freedesktop.Bustle": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -1230,7 +1228,6 @@
     },
     "com.syntevo.SmartSynchronize": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.ulduzsoft.Birdtray": {
@@ -2034,7 +2031,8 @@
         "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used"
     },
     "com.discordapp.DiscordCanary": {
-        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update"
+        "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update",
+        "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used"
     },
     "com.hunterwittenborn.Celeste": {
         "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
@@ -2953,10 +2951,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
-    "org.sauerbraten.Sauerbraten": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "org.shadered.SHADERed": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -3763,7 +3757,6 @@
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
     "xyz.splashmapper.Splash": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "xyz.stuerz.BilligSweeper": {
@@ -4798,6 +4791,9 @@
     },
     "chat.iamb.iamb": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
+    },
+    "chat.simplex.simplex": {
+        "finish-args-home-filesystem-access": "Allows the users to send/save files from/to their home directory"
     },
     "cn.apipost.apipost": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6198,5 +6194,12 @@
     },
     "io.github.d0ksan8.zen-app-manager": {
         "finish-args-unnecessary-xdg-config-autostart-rw-access": "Startup manager needs direct access to manage autostart entries"
+    },
+    "tech.keyforge.keyforge_master": {
+        "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
+    },
+    "com.bilingify.readest": {
+        "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Required because Tauri hard-codes DBus service names and replaces dots with underscores"
+
     }
 }
