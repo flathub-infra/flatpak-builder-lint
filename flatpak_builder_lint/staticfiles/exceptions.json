@@ -6197,7 +6197,6 @@
         "finish-args-home-filesystem-access": "Needs to save images in an user defined folder"
     },
     "io.github.d0ksan8.zen-app-manager": {
-        "finish-args-unnecessary-xdg-config-autostart-rw-access": "Startup manager needs direct access to manage autostart entries",
-        "finish-args-unnecessary-xdg-data-autostart-rw-access": "Startup manager needs direct access to manage autostart entries"
+        "finish-args-unnecessary-xdg-config-autostart-rw-access": "Startup manager needs direct access to manage autostart entries"
     }
 }
