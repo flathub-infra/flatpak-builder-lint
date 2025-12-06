@@ -17,36 +17,8 @@ def validate(path: str, *args: str) -> SubprocessResult:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
 
-    overrides = {
-        "all-categories-ignored": "error",
-        "category-invalid": "error",
-        "cid-desktopapp-is-not-rdns": "error",
-        "cid-domain-not-lowercase": "info",
-        "cid-has-number-prefix": "error",
-        "cid-missing-affiliation-gnome": "error",
-        "cid-rdns-contains-hyphen": "error",
-        "component-name-too-long": "info",
-        "content-rating-missing": "error",
-        "description-has-plaintext-url": "info",
-        "desktop-app-launchable-omitted": "error",
-        "desktop-file-not-found": "error",
-        "developer-id-invalid": "info",
-        "developer-id-missing": "error",
-        "invalid-child-tag-name": "error",
-        "metainfo-filename-cid-mismatch": "error",
-        "metainfo-legacy-path": "error",
-        "metainfo-multiple-components": "error",
-        "name-has-dot-suffix": "info",
-        "releases-info-missing": "error",
-        "summary-too-long": "info",
-        "unknown-tag": "error",
-        "app-categories-missing": "info",
-    }
-
-    overrides_value = ",".join([f"{k}={v}" for k, v in overrides.items()])
-
     cmd = subprocess.run(
-        ["appstreamcli", "validate", f"--override={overrides_value}", *args, path],
+        ["appstreamcli", "validate", *args, path],
         capture_output=True,
         check=False,
     )
