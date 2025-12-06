@@ -13,6 +13,7 @@
   <url type="homepage">https://example.org</url>
   <description>
     <p>An example desktop application</p>
+    <p>A random link in description allowed by Flathub Appstream https://example.com/</p>
   </description>
   <screenshots>
     <screenshot type="default">
