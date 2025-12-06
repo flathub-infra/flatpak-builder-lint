@@ -6200,6 +6200,5 @@
     },
     "com.bilingify.readest": {
         "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Required because Tauri hard-codes DBus service names and replaces dots with underscores"
-
     }
 }
