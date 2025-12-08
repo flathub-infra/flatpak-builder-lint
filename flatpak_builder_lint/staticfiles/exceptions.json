@@ -2095,8 +2095,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.kde.kamoso": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kanagram": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2430,7 +2429,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.rosegardenmusic.rosegarden": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.sourcepole.kadas": {
@@ -3216,7 +3214,6 @@
         "finish-args-login1-talk-name": "Predates the linter rule"
     },
     "cc.retroshare.retroshare-gui": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "ch.openboard.OpenBoard": {
@@ -3546,9 +3543,6 @@
         "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds",
         "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
     },
-    "org.b3log.siyuan": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "org.bunkus.mkvtoolnix-gui": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -3621,7 +3615,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.karapulse.Karapulse": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.kde.skrooge": {
@@ -5005,12 +4998,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
-    "com.xnview.XnConvert": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "com.xnview.XnRetro": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "com.yacreader.YACReader": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -6202,7 +6189,7 @@
         "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Required because Tauri hard-codes DBus service names and replaces dots with underscores"
     },
     "io.github.jmberesford.Retrom": {
-      "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
-      "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
+        "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
+        "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
     }
 }
