@@ -6130,6 +6130,13 @@
         "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
         "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
     },
+    "io.github.dummerle.rare": {
+        "finish-args-home-filesystem-access": "needed for the default location to install games in",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "to create application shortcuts for games",
+        "finish-args-unnecessary-xdg-data-umu-ro-access": "to search for Steam compatibility tools managed by umu-launcher",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "to search for Steam compatibility tools managed by Steam and create shortcuts in Steam's library",
+        "finish-args-flatpak-spawn-access": "Required to run Steam Linux Runtime based or host-native Steam compatibility tools (SteamRT/Proton) on the host"
+    },
     "io.sourceforge.xtrkcad_fork.xtrkcad": {
         "finish-args-home-filesystem-access": "Needed since the app reads/writes track plans stored anywhere on users home directory"
     },
