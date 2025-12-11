@@ -6195,5 +6195,8 @@
     },
     "com.teamspeak.Teakspeak": {
         "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Teamspeak will crash when audio or hotkey settings are opened"
+    },
+    "io.github.alamahant.BinauralPlayer": {
+        "appid-url-not-reachable": "GitHub is being wonky atm"
     }
 }
