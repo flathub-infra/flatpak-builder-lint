@@ -6196,5 +6196,122 @@
     },
     "io.github.alamahant.BinauralPlayer": {
         "appid-url-not-reachable": "GitHub is being wonky atm"
+    },
+        "org.kde.atlantik": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.bomber": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.bovo": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.granatier": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kapman": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.katomic": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kblackbox": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kblocks": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kbounce": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kbreakout": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kdiamond": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kfourinline": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kgoldrunner": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kigo": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.killbots": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kiriki": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kjumpingcube": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.klickety": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.klines": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kmahjongg": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kmines": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.knavalbattle": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.knetwalk": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.knights": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kolf": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kollision": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.konquest": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kpat": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kreversi": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kshisen": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.ksirk": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.ksnakeduel": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.ksquares": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.ksudoku": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.ktuberling": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.kubrick": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.lskat": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.palapeli": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "org.kde.picmi": {
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
     }
 }
