@@ -1,4 +1,10 @@
 {
+    "io.github.nikelaz.CTLDash": {
+        "finish-args-systemd1-talk-name": "Needed to list, monitor, and control user systemd services (start, stop, restart operations on user services).",
+        "finish-args-systemd1-system-talk-name": "Needed to communicate with systemd system daemon via D-Bus to list, monitor, and control system-wide systemd services.",
+        "finish-args-arbitrary-dbus-access": "Need both system and session D-Bus access to manage both system-level and user-level systemd services through the org.freedesktop.systemd1 interface.",
+        "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs) when running as Flatpak, as these operations require escaping the sandbox to interact with the host's systemd."
+    },
     "org.vassalengine.vassal": {
         "finish-args-home-filesystem-access": "Needed to browse external game module files and saved games folders"
     },
