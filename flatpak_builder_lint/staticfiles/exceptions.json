@@ -1569,6 +1569,9 @@
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "org.kde.kjournaldbrowser": {
+        "finish-args-host-var-access": "required for read access to system journal log database"
+    },
     "org.kde.konsole": {
         "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
