@@ -6154,10 +6154,7 @@
         "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
         "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
     },
-    "io.github.alamahant.BinauralPlayer": {
-        "appid-url-not-reachable": "GitHub is being wonky atm"
-    },
-        "org.kde.atlantik": {
+    "org.kde.atlantik": {
         "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
     },
     "org.kde.bomber": {
