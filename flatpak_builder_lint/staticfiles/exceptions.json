@@ -6278,5 +6278,8 @@
     },
     "org.kde.picmi": {
         "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "com.evepreview.manager": {
+        "finish-args-own-name-wildcard-org.kde": "Needed for tray icon support with rust crate ksni"
     }
 }
