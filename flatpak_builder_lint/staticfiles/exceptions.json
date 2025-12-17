@@ -6278,5 +6278,8 @@
     },
     "org.kde.picmi": {
         "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "eu.binjr.binjr": {
+        "finish-args-host-filesystem-access": "Application loads source files (logs, csv, rrd) from any location the user requires and writes saved workspace in arbitrary location in user's home or and mounted filesystems"
     }
 }
