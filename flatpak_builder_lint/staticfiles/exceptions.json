@@ -2327,9 +2327,6 @@
     "org.kde.amarok": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "org.kde.kopete": {
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.skanlite": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
