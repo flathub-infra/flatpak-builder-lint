@@ -6278,5 +6278,8 @@
     },
     "org.kde.picmi": {
         "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
+    },
+    "dev.tony4.subscribi": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
 }
