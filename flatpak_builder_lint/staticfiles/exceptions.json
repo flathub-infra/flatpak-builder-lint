@@ -887,7 +887,8 @@
     },
     "chat.delta.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "chat.schildi.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
