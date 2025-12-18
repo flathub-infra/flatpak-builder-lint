@@ -2327,9 +2327,6 @@
     "org.kde.amarok": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "org.kde.kopete": {
-        "appstream-missing-developer-name": "grandfathered due to unannounced linter changes"
-    },
     "org.kde.skanlite": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -6281,5 +6278,8 @@
     },
     "eu.binjr.binjr": {
         "finish-args-host-filesystem-access": "Application loads source files (logs, csv, rrd) from any location the user requires and writes saved workspace in arbitrary location in user's home or and mounted filesystems"
+    },
+    "dev.tony4.subscribi": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
 }
