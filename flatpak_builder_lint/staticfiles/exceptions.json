@@ -6278,5 +6278,9 @@
     },
     "dev.tony4.subscribi": {
         "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+    },
+    "io.github.epasveer.seer": {
+        "finish-args-flatpak-spawn-access": "Seer needs to launch the gdb binary that is on the host system.",
+        "finish-args-host-filesystem-access": "Seer needs to access the executable being debugged on the host system. Plus source files."
     }
 }
