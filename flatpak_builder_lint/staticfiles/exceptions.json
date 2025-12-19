@@ -6279,4 +6279,7 @@
     "dev.tony4.subscribi": {
         "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
+    "dev.invrs.oxide": {
+        "finish-args-home-filesystem-access": "Needed to access game directories which can be located anywhere in the home directory"
+    }
 }
