@@ -184,8 +184,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.regextester": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.avojak.paint-spill": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -273,8 +272,7 @@
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "com.github.dahenson.agenda": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dail8859.NotepadNext": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -658,7 +656,6 @@
     },
     "com.github.philip_scott.spice-up": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.PintaProject.Pinta": {
@@ -1290,7 +1287,6 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "dev.goats.xivlauncher": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.lapce.lapce": {
@@ -3629,7 +3625,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.tug.texworks": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.tuxemon.Tuxemon": {
