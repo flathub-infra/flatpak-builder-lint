@@ -2,7 +2,8 @@
     "io.github.nikelaz.CTLDash": {
         "finish-args-systemd1-talk-name": "Needed to list, and control (start, stop, restart, enable, disable) systemd user services.",
         "finish-args-systemd1-system-talk-name": "Needed to list and control (start, stop, restart, enable, disable) systemd system services.",
-        "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs), as these operations require escaping the sandbox to interact with the host's systemd."
+        "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs), as these operations require escaping the sandbox to interact with the host's systemd.",
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
     "org.vassalengine.vassal": {
         "finish-args-home-filesystem-access": "Needed to browse external game module files and saved games folders"
