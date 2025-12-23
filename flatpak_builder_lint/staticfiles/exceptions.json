@@ -1,4 +1,8 @@
 {
+    "edu.mit.Scratch": {
+        "module-module_name-source-md5-deprecated": "The MD5 checksum is used only for media-related checksums and is not critically important.",
+        "module-scratch-desktop-source-md5-deprecated": "The MD5 checksum is used only for media-related checksums and is not critically important." 
+    }
     "io.gitlab.zulfian1732.jollpi-text-editor": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
