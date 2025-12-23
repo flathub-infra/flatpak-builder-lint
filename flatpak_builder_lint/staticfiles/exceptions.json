@@ -5086,6 +5086,10 @@
     "io.github.benini.scid": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "io.github.benjamimgois.goverlay": {
+        "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
+        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
+    },    
     "io.github.bothlab.pomidaq": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
