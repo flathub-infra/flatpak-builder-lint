@@ -3319,9 +3319,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "in.srev.guiscrcpy": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "io.gdevelop.ide": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
