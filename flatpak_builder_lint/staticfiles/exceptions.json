@@ -2917,9 +2917,6 @@
     "org.solarus_games.solarus.Launcher": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.sparkleshare.SparkleShare": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "org.tabos.maxcontrol": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
