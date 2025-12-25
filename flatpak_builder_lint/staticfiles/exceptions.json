@@ -3466,9 +3466,6 @@
     "net.sourceforge.kmidimon": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "net.studio08.xbplay": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "net.unvanquished.Unvanquished": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
