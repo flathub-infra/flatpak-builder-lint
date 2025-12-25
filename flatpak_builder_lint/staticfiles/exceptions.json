@@ -1,8 +1,12 @@
 {
+    "io.gitlab.zulfian1732.jollpi-text-editor": {
+        "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
+    },
     "io.github.nikelaz.CTLDash": {
         "finish-args-systemd1-talk-name": "Needed to list, and control (start, stop, restart, enable, disable) systemd user services.",
         "finish-args-systemd1-system-talk-name": "Needed to list and control (start, stop, restart, enable, disable) systemd system services.",
-        "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs), as these operations require escaping the sandbox to interact with the host's systemd."
+        "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs), as these operations require escaping the sandbox to interact with the host's systemd.",
+        "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
     },
     "org.vassalengine.vassal": {
         "finish-args-home-filesystem-access": "Needed to browse external game module files and saved games folders"
@@ -184,8 +188,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.artemanufrij.regextester": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.avojak.paint-spill": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -273,8 +276,7 @@
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "com.github.dahenson.agenda": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.dail8859.NotepadNext": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -658,7 +660,6 @@
     },
     "com.github.philip_scott.spice-up": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.PintaProject.Pinta": {
@@ -1290,7 +1291,6 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "dev.goats.xivlauncher": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.lapce.lapce": {
@@ -1346,8 +1346,11 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
     },
     "io.github.dummerle.rare": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-flatpak-spawn-access": "Required to run Steam Linux Runtime based or host-native Steam compatibility tools (SteamRT/Proton) on the host",
+        "finish-args-home-filesystem-access": "needed for the default location to install games in",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "to create application shortcuts for games",
+        "finish-args-unnecessary-xdg-data-umu-ro-access": "to search for Steam compatibility tools managed by umu-launcher",
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "to search for Steam compatibility tools managed by Steam and create shortcuts in Steam's library"
     },
     "io.github.ezQuake": {
         "appid-code-hosting-too-few-components": "the app predates this linter rule"
@@ -3629,7 +3632,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.tug.texworks": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.tuxemon.Tuxemon": {
@@ -5084,6 +5086,10 @@
     "io.github.benini.scid": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "io.github.benjamimgois.goverlay": {
+        "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
+        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
+    },    
     "io.github.bothlab.pomidaq": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -6259,5 +6265,12 @@
     "io.github.epasveer.seer": {
         "finish-args-flatpak-spawn-access": "Seer needs to launch the gdb binary that is on the host system.",
         "finish-args-host-filesystem-access": "Seer needs to access the executable being debugged on the host system. Plus source files."
+    },
+    "org.pvermeer.WebAppHub": {
+        "finish-args-flatpak-system-folder-access": "Used to fetch the icons of system installed flatpak browsers.",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Used to fetch the icons of user installed flatpak browsers.",
+        "finish-args-flatpak-spawn-access": "This is needed to fetch installed browser information and to run the created Web App from this application.",
+        "finish-args-unnecessary-xdg-data-applications-create-access": "Used to create and delete owned desktop files for web apps.",
+        "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui."
     }
 }
