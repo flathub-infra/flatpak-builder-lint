@@ -1197,10 +1197,6 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "com.leinardi.gwe": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.leinardi.gx52": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
