@@ -570,9 +570,6 @@
     "com.github.mdh34.hackup": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
-    "com.github.mdh34.quickdocs": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-    },
     "com.github.mgropp.PdfJumbler": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
