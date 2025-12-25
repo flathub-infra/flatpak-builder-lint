@@ -3647,9 +3647,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "sh.cider.Cider": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "space.fips.Fips": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
