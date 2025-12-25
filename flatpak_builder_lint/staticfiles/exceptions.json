@@ -567,9 +567,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
     },
-    "com.github.mdh34.hackup": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-    },
     "com.github.mgropp.PdfJumbler": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
