@@ -154,10 +154,6 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.github.amikha1lov.RecApp": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.github.Anuken.Mindustry": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
