@@ -1825,10 +1825,6 @@
         "finish-args-flatpak-spawn-access": "required to start VLC flatpak to view videos and live streams",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.github.fsobolev.TimeSwitch": {
-        "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host",
-        "finish-args-login1-system-talk-name": "Predates the linter rule"
-    },
     "de.schmidhuberj.tubefeeder": {
         "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
         "finish-args-unnecessary-xdg-data-tubefeeder-create-access": "the app predates this linter rule"
