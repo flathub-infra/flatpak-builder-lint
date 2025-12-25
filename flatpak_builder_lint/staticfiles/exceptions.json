@@ -2036,10 +2036,6 @@
         "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update",
         "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used"
     },
-    "com.hunterwittenborn.Celeste": {
-        "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
     "us.zoom.Zoom": {
         "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
