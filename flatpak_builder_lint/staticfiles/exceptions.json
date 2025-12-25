@@ -302,6 +302,7 @@
         "finish-args-flatpak-spawn-access": "required to handle unsupported MIME types and URLs"
     },
     "com.github.donadigo.appeditor": {
+        "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for creating, reading, modifying, and deleting .desktop files in xdg-data/applications",
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
