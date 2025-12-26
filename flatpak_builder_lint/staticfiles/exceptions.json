@@ -154,10 +154,6 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.github.amikha1lov.RecApp": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.github.Anuken.Mindustry": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
@@ -567,12 +563,6 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
-    },
-    "com.github.mdh34.hackup": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-    },
-    "com.github.mdh34.quickdocs": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.mgropp.PdfJumbler": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1204,10 +1194,6 @@
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "com.leinardi.gwe": {
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.leinardi.gx52": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1836,10 +1822,6 @@
         "finish-args-flatpak-spawn-access": "required to start VLC flatpak to view videos and live streams",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.github.fsobolev.TimeSwitch": {
-        "finish-args-flatpak-spawn-access": "required to execute user-defined commands on the host",
-        "finish-args-login1-system-talk-name": "Predates the linter rule"
-    },
     "de.schmidhuberj.tubefeeder": {
         "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
         "finish-args-unnecessary-xdg-data-tubefeeder-create-access": "the app predates this linter rule"
@@ -2042,10 +2024,6 @@
     "com.discordapp.DiscordCanary": {
         "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update",
         "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used"
-    },
-    "com.hunterwittenborn.Celeste": {
-        "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "us.zoom.Zoom": {
         "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
@@ -2733,9 +2711,6 @@
     "org.gnome.Characters": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.gnome.Cheese": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.gnome.ColorViewer": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -2923,9 +2898,6 @@
     },
     "org.solarus_games.solarus.Launcher": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "org.sparkleshare.SparkleShare": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.tabos.maxcontrol": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3329,9 +3301,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "in.srev.guiscrcpy": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "io.gdevelop.ide": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -3478,9 +3447,6 @@
     },
     "net.sourceforge.kmidimon": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "net.studio08.xbplay": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "net.unvanquished.Unvanquished": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3662,9 +3628,6 @@
     "sa.sy.bluerecorder": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "sh.cider.Cider": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "space.fips.Fips": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
