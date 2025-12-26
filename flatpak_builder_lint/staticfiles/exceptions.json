@@ -689,8 +689,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.raibtoffoletto.litteris": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.rajsolai.response": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -714,7 +713,6 @@
     },
     "com.github.robertsanseries.ciano": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.rogercrocker.badabib": {
@@ -879,8 +877,7 @@
     },
     "chat.delta.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule",
-        "finish-args-login1-system-talk-name": "Needed to handle resume from sleep"
+        "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "chat.schildi.desktop": {
         "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
@@ -2594,10 +2591,6 @@
     "me.sanchezrodriguez.passes": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "net.bartkessels.getit": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "net.danigm.loop": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -2605,7 +2598,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "net.mediaarea.AVIMetaEdit": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
@@ -2722,7 +2714,6 @@
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.eog": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.Evolution": {
@@ -4032,7 +4023,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.denemo.Denemo": {
-        "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.expresslrs.ExpressLRSConfigurator": {
@@ -5053,7 +5043,7 @@
     "io.github.benjamimgois.goverlay": {
         "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
         "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
-    },    
+    },
     "io.github.bothlab.pomidaq": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
