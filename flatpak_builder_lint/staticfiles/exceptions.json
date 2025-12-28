@@ -5042,7 +5042,8 @@
     },
     "io.github.benjamimgois.goverlay": {
         "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
-        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
+        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files",
+        "finish-args-flatpak-appdata-folder-access": "Needed for reading Steam and other applications’ MangoHud configuration"
     },
     "io.github.bothlab.pomidaq": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
