@@ -17,10 +17,15 @@ def validate(path: str, *args: str) -> SubprocessResult:
     if not os.path.isfile(path):
         raise FileNotFoundError("AppStream file not found")
 
+    env = os.environ.copy()
+    env["LANGUAGE"] = "C"
+    env["LC_ALL"] = "C"
+
     cmd = subprocess.run(
         ["appstreamcli", "validate", *args, path],
         capture_output=True,
         check=False,
+        env=env,
     )
 
     ret: SubprocessResult = {

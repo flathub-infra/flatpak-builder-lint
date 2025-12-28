@@ -70,6 +70,10 @@ class DesktopfileCheck(Check):
 
         for file in desktop_files:
             if os.path.exists(f"{desktopfiles_path}/{file}"):
+                env = os.environ.copy()
+                env["LANGUAGE"] = "C"
+                env["LC_ALL"] = "C"
+
                 cmd = subprocess.run(
                     [
                         "desktop-file-validate",
@@ -80,6 +84,7 @@ class DesktopfileCheck(Check):
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     check=False,
+                    env=env,
                 )
                 if cmd.returncode != 0:
                     self.errors.add("desktop-file-failed-validation")

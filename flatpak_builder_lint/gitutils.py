@@ -96,6 +96,10 @@ def get_repo_tree_size(path: str) -> int:
     if not is_git_directory(path):
         return 0
 
+    env = os.environ.copy()
+    env["LANGUAGE"] = "C"
+    env["LC_ALL"] = "C"
+
     try:
         result = subprocess.run(
             ["git", "ls-tree", "-r", "-l", "HEAD"],
@@ -103,6 +107,7 @@ def get_repo_tree_size(path: str) -> int:
             capture_output=True,
             text=True,
             check=True,
+            env=env,
         )
         total = 0
         for line in result.stdout.splitlines():
