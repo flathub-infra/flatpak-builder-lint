@@ -51,8 +51,8 @@ class MetainfoCheck(Check):
             if metainfo_validation["returncode"] != 0:
                 self.errors.add("appstream-failed-validation")
                 self.info.add(
-                    f"appstream-failed-validation: Metainfo file {file} has failed"
-                    + " validation. Please see the errors in appstream block"
+                    f"appstream-failed-validation: Metainfo file {os.path.basename(file)} has"
+                    + " failed validation. Please see the errors in appstream block"
                 )
 
                 for err in metainfo_validation["stderr"].splitlines():

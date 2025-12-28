@@ -89,7 +89,7 @@ class DesktopfileCheck(Check):
                 if cmd.returncode != 0:
                     self.errors.add("desktop-file-failed-validation")
                     self.info.add(
-                        f"desktop-file-failed-validation: Desktop file: {file}"
+                        f"desktop-file-failed-validation: Desktop file: {os.path.basename(file)}"
                         + " has failed validation. Please see the errors in desktopfile block"
                     )
                     for p in cmd.stdout.decode("utf-8").split(f"{file}:")[1:]:
