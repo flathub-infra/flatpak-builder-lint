@@ -121,8 +121,8 @@ class MetainfoCheck(Check):
                     self.errors.add("no-exportable-icon-installed")
                     self.info.add(
                         f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
-                        + " were found in /app/share/icons/hicolor/$size/apps"
-                        + " or /app/share/icons/hicolor/scalable/apps"
+                        + " were found in $FLATPAK_DEST/share/icons/hicolor/$size/apps"
+                        + " or $FLATPAK_DEST/share/icons/hicolor/scalable/apps"
                     )
 
                 launchable = appstream.get_launchable(appstream_path)
@@ -145,7 +145,7 @@ class MetainfoCheck(Check):
                     self.errors.add("appstream-launchable-file-missing")
                     self.info.add(
                         f"appstream-launchable-file-missing: The launchable file {launchable[0]}"
-                        + " was not found in /app/share/applications"
+                        + " was not found in $FLATPAK_DEST/share/applications"
                     )
                     return
 

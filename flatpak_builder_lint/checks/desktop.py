@@ -57,15 +57,15 @@ class DesktopfileCheck(Check):
                 self.errors.add("no-exportable-icon-installed")
                 self.info.add(
                     f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
-                    + " were found in /app/share/icons/hicolor/$size/apps"
-                    + " or /app/share/icons/hicolor/scalable/apps"
+                    + " were found in $FLATPAK_DEST/share/icons/hicolor/$size/apps"
+                    + " or $FLATPAK_DEST/share/icons/hicolor/scalable/apps"
                 )
 
             if not len(desktop_files) > 0:
                 self.errors.add("desktop-file-not-installed")
                 self.info.add(
                     f"desktop-file-not-installed: No desktop file matching {appid}"
-                    + " was found in /app/share/applications"
+                    + " was found in $FLATPAK_DEST/share/applications"
                 )
 
         for file in desktop_files:

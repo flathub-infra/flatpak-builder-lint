@@ -42,7 +42,7 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-metainfo-missing")
             self.info.add(
                 f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
-                + " /app/share/metainfo or /app/share/appdata"
+                + " $FLATPAK_DEST/share/metainfo or $FLATPAK_DEST/share/appdata"
             )
             return
 
