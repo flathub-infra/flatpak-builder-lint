@@ -67,7 +67,7 @@ class MetainfoCheck(Check):
                     for issue in issues:
                         severity = issue.get("severity", "").lower()
                         if severity in ("warning", "error"):
-                            sev_prefix = "W" if severity == "warning" else "E"
+                            sev_prefix = "E"
                             tag = issue.get("tag")
                             line = issue.get("line")
                             explanation = issue.get("explanation")
