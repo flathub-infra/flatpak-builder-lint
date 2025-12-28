@@ -1792,7 +1792,8 @@
         "finish-args-unnecessary-xdg-data-gnome-background-properties-create-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
     },
     "me.amankhanna.opendeck": {
-        "finish-args-flatpak-spawn-access": "host shell access required for running user-provided commands and also to start plugins using Wine and Node"
+        "finish-args-flatpak-spawn-access": "host shell access required for running user-provided commands and also to start plugins using Wine and Node",
+        "finish-args-own-name-org.opendeck.SingleInstance": "the Tauri single instance plugin publishes this service to advertise the current instance to new instances"
     },
     "me.timschneeberger.GalaxyBudsClient": {
         "finish-args-own-name-wildcard-org.kde": "The used version of the toolkit Avalonia only supports legacy KDE system tray icons: https://github.com/AvaloniaUI/Avalonia/issues/13782"
