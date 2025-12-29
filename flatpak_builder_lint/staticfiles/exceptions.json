@@ -6203,6 +6203,9 @@
         "finish-args-flatpak-spawn-access": "Seer needs to launch the gdb binary that is on the host system.",
         "finish-args-host-filesystem-access": "Seer needs to access the executable being debugged on the host system. Plus source files."
     },
+    "io.github.antimicrox.antimicrox": {
+        "finish-args-contains-both-x11-and-wayland": "Required for proper handling of button mappings using XTest. See: https://github.com/AntiMicroX/antimicrox/issues/1201"
+    },
     "org.pvermeer.WebAppHub": {
         "finish-args-flatpak-system-folder-access": "Used to fetch the icons of system installed flatpak browsers.",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Used to fetch the icons of user installed flatpak browsers.",
