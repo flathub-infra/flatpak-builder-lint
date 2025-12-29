@@ -70,6 +70,18 @@ class MetainfoCheck(Check):
             if aps_ctype not in config.FLATHUB_APPSTREAM_TYPES_APPS:
                 return
 
+            if (
+                config.is_flathub_new_submission_build_pipeline()
+                and appstream.is_latest_release_prerelease(appstream_path)
+            ):
+                latest_rel = appstream.get_latest_release_version(appstream_path)
+                self.errors.add("appstream-latest-release-is-prerelease")
+                self.info.add(
+                    f"appstream-latest-release-is-prerelease: The latest release tag '{latest_rel}'"
+                    + " was detected to be a pre-release which is not allowed for"
+                    + " Flathub stable remote"
+                )
+
             if not appstream.is_developer_name_present(appstream_path):
                 self.errors.add("appstream-missing-developer-name")
                 self.info.add(

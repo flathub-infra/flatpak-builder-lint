@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>org.flathub.appstream_prerelease</id>
+  <name>Example</name>
+  <summary>Example Application</summary>
+  <url type="homepage">https://example.org</url>
+  <developer_name>Flathub</developer_name>
+  <description>
+    <p>This is an example</p>
+  </description>
+  <provides>
+    <binary>foo</binary>
+  </provides>
+  <releases>
+    <release version="0.4.0alpha" date="2024-07-01"/>
+    <release version="0.3.0" date="2024-01-06"/>
+  </releases>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <content_rating type="oars-1.1"/>
+</component>

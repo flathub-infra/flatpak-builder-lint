@@ -7,6 +7,7 @@ import tempfile
 from collections.abc import Generator
 
 import pytest
+from pytest import MonkeyPatch
 
 from flatpak_builder_lint import checks, cli
 
@@ -578,3 +579,22 @@ def test_builddir_home_host_access() -> None:
     found_errors = set(ret["errors"])
     for e in ("finish-args-home-filesystem-access", "finish-args-host-filesystem-access"):
         assert e not in found_errors
+
+
+def test_builddir_appstream_prerelease(monkeypatch: MonkeyPatch) -> None:
+    testdir = "tests/builddir/appstream-prerelease"
+
+    monkeypatch.setenv("REPO", "https://github.com/flathub/flathub")
+
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream_prerelease.xml")
+    ret = run_checks(testdir)
+
+    found_errors = set(ret["errors"])
+    assert "appstream-latest-release-is-prerelease" in found_errors
+
+    monkeypatch.delenv("REPO", raising=False)
+
+    ret = run_checks(testdir)
+    found_errors = set(ret["errors"])
+    assert "appstream-latest-release-is-prerelease" not in found_errors
