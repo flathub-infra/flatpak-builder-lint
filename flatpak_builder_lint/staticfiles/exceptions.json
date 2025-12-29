@@ -4930,8 +4930,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.mrquantumoff.mcmodpackmanager": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-own-name-org.dev_mrquantumoff_mcmodpackmanager.SingleInstance": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.paullee.scraterpreter.Scrapec": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6069,9 +6068,6 @@
     },
     "tech.keyforge.keyforge_master": {
         "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
-    },
-    "com.bilingify.readest": {
-        "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Required because Tauri hard-codes DBus service names and replaces dots with underscores"
     },
     "io.github.jmberesford.Retrom": {
         "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
