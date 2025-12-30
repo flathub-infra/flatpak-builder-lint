@@ -1,4 +1,8 @@
 {
+    {
+        "finish-args-portal-talk-name": "The application uses PyGObject (Gio/GLib) and functions such as Gtk.show_uri and file/icon management, which in the Flatpak environment require access to the org.freedesktop.portal.Desktop portal to ensure the compatibility and security of desktop operations (URI opening, file chooser, notifications, etc.) within the sandbox.",
+        "finish-args-host-filesystem-access": "My launcher application must index and display all applications and icons available at both the system and user levels, including those installed via Flatpak, Snap, AppImage, and other non-standard methods."
+    },
     "io.gitlab.zulfian1732.jollpi-text-editor": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
