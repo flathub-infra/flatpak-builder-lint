@@ -6209,5 +6209,8 @@
         "finish-args-flatpak-spawn-access": "This is needed to fetch installed browser information and to run the created Web App from this application.",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Used to create and delete owned desktop files for web apps.",
         "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui."
+    },
+    "io.github.ergolyam.Drosophila": {
+        "finish-args-flatpak-spawn-access": "This is necessary so that Yggdrasil can be started from root via pkexec and create a TUN."
     }
 }
