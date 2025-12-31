@@ -42,7 +42,7 @@ class MetainfoCheck(Check):
             self.errors.add("appstream-metainfo-missing")
             self.info.add(
                 f"appstream-metainfo-missing: No metainfo file for {appid} was found in"
-                + " /app/share/metainfo or /app/share/appdata"
+                + " $FLATPAK_DEST/share/metainfo or $FLATPAK_DEST/share/appdata"
             )
             return
 
@@ -51,8 +51,8 @@ class MetainfoCheck(Check):
             if metainfo_validation["returncode"] != 0:
                 self.errors.add("appstream-failed-validation")
                 self.info.add(
-                    f"appstream-failed-validation: Metainfo file {file} has failed"
-                    + " validation. Please see the errors in appstream block"
+                    f"appstream-failed-validation: Metainfo file {os.path.basename(file)} has"
+                    + " failed validation. Please see the errors in appstream block"
                 )
 
                 for err in metainfo_validation["stderr"].splitlines():
@@ -67,7 +67,7 @@ class MetainfoCheck(Check):
                     for issue in issues:
                         severity = issue.get("severity", "").lower()
                         if severity in ("warning", "error"):
-                            sev_prefix = "W" if severity == "warning" else "E"
+                            sev_prefix = "E"
                             tag = issue.get("tag")
                             line = issue.get("line")
                             explanation = issue.get("explanation")

@@ -83,7 +83,12 @@ def show_manifest(filename: str) -> MappingProxyType[str, Any]:
         ["flatpak-builder", "--show-manifest", filename],
         capture_output=True,
         check=False,
-        env={**os.environ, "G_MESSAGES_PREFIXED": "all"},
+        env={
+            **os.environ,
+            "LANGUAGE": "C",
+            "LC_ALL": "C",
+            "G_MESSAGES_PREFIXED": "all",
+        },
     )
 
     stderr_s = ret.stderr.decode("utf-8")

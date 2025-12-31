@@ -70,6 +70,18 @@ class MetainfoCheck(Check):
             if aps_ctype not in config.FLATHUB_APPSTREAM_TYPES_APPS:
                 return
 
+            if (
+                config.is_flathub_new_submission_build_pipeline()
+                and appstream.is_latest_release_prerelease(appstream_path)
+            ):
+                latest_rel = appstream.get_latest_release_version(appstream_path)
+                self.errors.add("appstream-latest-release-is-prerelease")
+                self.info.add(
+                    f"appstream-latest-release-is-prerelease: The latest release tag '{latest_rel}'"
+                    + " was detected to be a pre-release which is not allowed for"
+                    + " Flathub stable remote"
+                )
+
             if not appstream.is_developer_name_present(appstream_path):
                 self.errors.add("appstream-missing-developer-name")
                 self.info.add(
@@ -121,8 +133,8 @@ class MetainfoCheck(Check):
                     self.errors.add("no-exportable-icon-installed")
                     self.info.add(
                         f"no-exportable-icon-installed: No PNG or SVG icons named by {appid}"
-                        + " were found in /app/share/icons/hicolor/$size/apps"
-                        + " or /app/share/icons/hicolor/scalable/apps"
+                        + " were found in $FLATPAK_DEST/share/icons/hicolor/$size/apps"
+                        + " or $FLATPAK_DEST/share/icons/hicolor/scalable/apps"
                     )
 
                 launchable = appstream.get_launchable(appstream_path)
@@ -145,7 +157,7 @@ class MetainfoCheck(Check):
                     self.errors.add("appstream-launchable-file-missing")
                     self.info.add(
                         f"appstream-launchable-file-missing: The launchable file {launchable[0]}"
-                        + " was not found in /app/share/applications"
+                        + " was not found in $FLATPAK_DEST/share/applications"
                     )
                     return
 

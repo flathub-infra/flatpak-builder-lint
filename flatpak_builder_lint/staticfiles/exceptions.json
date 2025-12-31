@@ -234,7 +234,6 @@
     },
     "com.github.calo001.fondo": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.github.calo001.luna": {
@@ -300,8 +299,6 @@
     "com.github.donadigo.appeditor": {
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for creating, reading, modifying, and deleting .desktop files in xdg-data/applications",
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.dosbox-staging": {
@@ -1491,8 +1488,6 @@
     },
     "org.gabmus.unifydmin": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-ssh-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.Lollypop": {
@@ -2637,9 +2632,6 @@
     "net.sourceforge.electrip.Electrip": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "net.sourceforge.Fillets": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "net.sourceforge.projectM": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -4001,9 +3993,6 @@
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
-    "io.github.tfuxu.Halftone": {
-        "finish-args-host-tmp-access": "Predates the linter rule"
-    },
     "io.neovim.nvim": {
         "finish-args-host-tmp-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -4916,9 +4905,6 @@
     "de.fabrik19.mos-Launcher": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "de.finnik.PassVault": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "de.flose.Kochbuch": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -4944,8 +4930,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.mrquantumoff.mcmodpackmanager": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-own-name-org.dev_mrquantumoff_mcmodpackmanager.SingleInstance": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "dev.paullee.scraterpreter.Scrapec": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5042,7 +5027,8 @@
     },
     "io.github.benjamimgois.goverlay": {
         "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
-        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
+        "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files",
+        "finish-args-flatpak-appdata-folder-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration"
     },
     "io.github.bothlab.pomidaq": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6086,9 +6072,6 @@
     },
     "tech.keyforge.keyforge_master": {
         "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
-    },
-    "com.bilingify.readest": {
-        "finish-args-own-name-org.com_bilingify_readest.SingleInstance": "Required because Tauri hard-codes DBus service names and replaces dots with underscores"
     },
     "io.github.jmberesford.Retrom": {
         "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
