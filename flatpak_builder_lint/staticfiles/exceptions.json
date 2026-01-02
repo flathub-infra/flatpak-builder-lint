@@ -473,8 +473,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Johnn3y.Forklift": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.joseexposito.touche": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1666,9 +1665,6 @@
     "com.adobe.Flash-Player-Projector": {
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
-    "com.albiononline.AlbionOnline": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.amazon.Workspaces": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
@@ -2400,9 +2396,6 @@
     "com.ozmartians.VidCutter": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "com.realm667.Wolfenstein_Blade_of_Agony": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "com.rosegardenmusic.rosegarden": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -3214,7 +3207,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.supermodel3.Supermodel": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
@@ -5624,9 +5616,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.tomviz.Tomviz": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "org.turbowarp.TurboWarp": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.upscayl.Upscayl": {
