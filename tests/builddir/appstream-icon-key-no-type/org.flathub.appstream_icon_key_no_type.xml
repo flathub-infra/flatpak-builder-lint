@@ -13,6 +13,8 @@
   <developer id="flathub.org">
     <name>Flathub</name>
   </developer>
+  <url type="homepage">https://example.org/</url>
+  <url type="vcs-browser">https://github.com/flathub/example</url>
   <launchable type="desktop-id">org.flathub.appstream_icon_key_no_type.desktop</launchable>
   <icon type="cached" width="48" height="48">org.flathub.appstream_icon_key_no_type.png</icon>
   <icon type="cached" width="64" height="64">org.flathub.appstream_icon_key_no_type.png</icon>

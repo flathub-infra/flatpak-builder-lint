@@ -387,10 +387,12 @@ def test_builddir_broken_icon() -> None:
         "appid-url-check-internal-error",
     }
     found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
     for e in errors:
         assert e in found_errors
     for n in not_founds:
         assert n not in found_errors
+    assert "appstream-missing-vcs-browser-url" in found_warnings
 
 
 def test_builddir_broken_remote_icon() -> None:
@@ -425,7 +427,9 @@ def test_builddir_appstream_icon_key_no_type() -> None:
     create_catalogue_icon(testdir, "org.flathub.appstream_icon_key_no_type.png")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
+    found_warnings = set(ret["warnings"])
     assert "appstream-icon-key-no-type" in found_errors
+    assert "appstream-missing-vcs-browser-url" not in found_warnings
 
 
 def test_min_success_metadata() -> None:
