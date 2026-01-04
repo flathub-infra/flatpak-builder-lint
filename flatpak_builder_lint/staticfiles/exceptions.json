@@ -1,4 +1,7 @@
 {
+    "org.kiwix.desktop": {
+        "finish-args-host-ro-filesystem-access": "The app is a ZIM file reader intended to open (but not write) ZIM files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations."
+    },
     "io.gitlab.zulfian1732.jollpi-text-editor": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
