@@ -3,9 +3,13 @@ import re
 import subprocess
 from typing import TypedDict, cast
 
+import gi
 from lxml import etree
 
 from . import config
+
+gi.require_version("AppStream", "1.0")
+from gi.repository import AppStream  # noqa: E402
 
 
 class SubprocessResult(TypedDict):
@@ -80,7 +84,7 @@ def is_developer_name_present(path: str) -> bool:
 
 
 def is_project_license_present(path: str) -> bool:
-    return is_present(path, "//project_license/text()")
+    return get_project_license(path) is not None
 
 
 def has_icon_key(path: str) -> bool:
@@ -121,6 +125,15 @@ def is_latest_release_prerelease(path: str) -> bool:
     )
 
     return bool(prerel_re.search(version))
+
+
+def is_free_license(path: str) -> bool:
+    project_license = get_project_license(path)
+    return bool(project_license and AppStream.license_is_free_license(project_license))
+
+
+def is_vcs_browser_url_present(path: str) -> bool:
+    return is_present(path, "//url[@type='vcs-browser']/text()")
 
 
 # List returns
@@ -168,3 +181,8 @@ def get_latest_release_version(path: str) -> str | None:
     )
 
     return versions[latest_idx]
+
+
+def get_project_license(path: str) -> str | None:
+    licenses = xpath_list(path, "//project_license/text()")
+    return licenses[0] if licenses else None

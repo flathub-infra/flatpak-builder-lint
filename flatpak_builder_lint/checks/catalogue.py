@@ -98,6 +98,15 @@ class MetainfoCheck(Check):
                     + " captions in the Metainfo file"
                 )
 
+            if appstream.is_free_license(
+                appstream_path
+            ) and not appstream.is_vcs_browser_url_present(appstream_path):
+                self.warnings.add("appstream-missing-vcs-browser-url")
+                self.info.add(
+                    "appstream-missing-vcs-browser-url: Please consider adding a vcs-browser"
+                    + " URL to the Metainfo file"
+                )
+
             svg_icon_list = []
             wrong_svgs = []
             if os.path.exists(svg_icon_path):

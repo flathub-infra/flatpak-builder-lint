@@ -177,7 +177,6 @@
     },
     "com.github.artemanufrij.playmymusic": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.github.artemanufrij.playmyvideos": {
@@ -473,8 +472,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.Johnn3y.Forklift": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.joseexposito.touche": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1666,9 +1664,6 @@
     "com.adobe.Flash-Player-Projector": {
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
-    "com.albiononline.AlbionOnline": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.amazon.Workspaces": {
         "flathub-json-automerge-enabled": "Predates the linter rule"
     },
@@ -2401,9 +2396,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
-    "com.realm667.Wolfenstein_Blade_of_Agony": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "com.rosegardenmusic.rosegarden": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -2821,9 +2813,6 @@
     "org.kekikakademi.ntvHaber": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.libsdl.Maelstrom": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.mapeditor.Tiled": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2841,7 +2830,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.openttd.OpenTTD": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.processing.processingide": {
@@ -3214,7 +3202,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.supermodel3.Supermodel": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
@@ -4216,9 +4203,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.pypyrev.linuxdcpp": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "com.rtosta.zapzap": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.sayonara_player.Sayonara": {
@@ -5624,9 +5608,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.tomviz.Tomviz": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "org.turbowarp.TurboWarp": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.upscayl.Upscayl": {
