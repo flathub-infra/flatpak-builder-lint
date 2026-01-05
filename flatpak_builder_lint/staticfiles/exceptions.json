@@ -1,4 +1,7 @@
 {
+    "ai.opencode.opencode": {
+        "finish-args-host-filesystem-access": "Needed to access and modify projects outside the sandbox"
+    },
     "io.gitlab.zulfian1732.jollpi-text-editor": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
