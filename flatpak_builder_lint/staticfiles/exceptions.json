@@ -177,7 +177,6 @@
     },
     "com.github.artemanufrij.playmymusic": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.github.artemanufrij.playmyvideos": {
@@ -2814,9 +2813,6 @@
     "org.kekikakademi.ntvHaber": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.libsdl.Maelstrom": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.mapeditor.Tiled": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2834,7 +2830,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.openttd.OpenTTD": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.processing.processingide": {
@@ -4208,9 +4203,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.pypyrev.linuxdcpp": {
-        "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "com.rtosta.zapzap": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.sayonara_player.Sayonara": {
