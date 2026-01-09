@@ -316,8 +316,7 @@
         "finish-args-contains-both-x11-and-wayland": "optional wayland support"
     },
     "com.github.elth0r0.iqpuzzle": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.emmanueltouzery.cigale": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -2431,9 +2430,6 @@
     "de.wwwtech.ColorMate": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "de.zwarf.picplanner": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "eu.ad5001.LogarithmPlotter": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -2444,8 +2440,7 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "info.bibletime.BibleTime": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "info.olasagasti.revelation": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2616,9 +2611,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "net.runelite.RuneLite": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "net.sourceforge.Chessx": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "net.sourceforge.electrip.Electrip": {
@@ -2843,9 +2835,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "org.quassel_irc.QuasselClient": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.quetoo.Quetoo": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -5057,9 +5046,6 @@
     "io.github.jchempaint.JChemPaint": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.github.lruzicka.Needly": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "io.github.manisandro.gImageReader": {
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-own-name-wildcard-org.gnome.gimagereader": "Predates the linter rule"
@@ -5694,9 +5680,7 @@
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "io.github.giantpinkrobots.varia": {
-        "finish-args-autostart-filesystem-access": "Predates the linter rule",
-        "finish-args-login1-system-talk-name": "Predates the linter rule",
-        "finish-args-own-name-io.github.giantpinkrobots.varia-tray": "Predates the linter rule"
+        "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "info.cemu.Cemu": {
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
