@@ -222,8 +222,6 @@
     },
     "com.github.bluesabre.darkbar": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-autostart-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "com.github.buddhi1980.mandelbulber2": {
@@ -392,8 +390,7 @@
         "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flathub/issues/3557"
     },
     "com.github.gyunaev.spivak": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.hluk.copyq": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -993,8 +990,7 @@
     },
     "org.gnome.Contacts": {
         "finish-args-unnecessary-xdg-data-pixmaps-create-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-cache-evolution-ro-access": "the app predates this linter rule, used for evolution data server",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "finish-args-unnecessary-xdg-cache-evolution-ro-access": "the app predates this linter rule, used for evolution data server"
     },
     "org.gnome.dspy": {
         "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -2532,7 +2528,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.phastmike.tags": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "io.github.qwersyk.Newelle": {
@@ -2630,9 +2625,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "net.sourceforge.projectM": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "net.sourceforge.Teo": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -2686,7 +2678,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.Calendar": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "org.gnome.Characters": {
@@ -2826,9 +2817,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.nickvision.cavalier": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "org.openclonk.OpenClonk": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.openmw.OpenMW": {
@@ -3408,7 +3396,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "net.sourceforge.Lifeograph": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "net.sourceforge.dmidiplayer": {
