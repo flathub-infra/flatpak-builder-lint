@@ -1,4 +1,7 @@
 {
+    "com.sejda.Sejda": {
+        "finish-args-home-filesystem-access": "Required to access or store the application license"
+    },
     "org.vanillaos.ApxGUI": {
         "finish-args-flatpak-spawn-access": "Needed to execute Distrobox commands on the host"
     },
