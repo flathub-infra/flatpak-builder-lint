@@ -1,4 +1,7 @@
 {
+    "com.infinipaint.infinipaint": {
+        "finish-args-home-filesystem-access": "Needed to save project files outside of standard directories."
+    },
     "org.vanillaos.ApxGUI": {
         "finish-args-flatpak-spawn-access": "Needed to execute Distrobox commands on the host"
     },
