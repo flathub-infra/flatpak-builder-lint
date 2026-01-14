@@ -5453,6 +5453,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.kde.haruna": {
+        "finish-args-unnecessary-xdg-data-Trash-rw-access": "required for access to Trash until Portal support is added",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
