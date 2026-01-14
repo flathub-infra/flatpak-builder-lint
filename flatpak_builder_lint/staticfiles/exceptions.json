@@ -1439,7 +1439,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
-        "finish-args-login1-talk-name": "Predates the linter rule"
+        "finish-args-login1-talk-name": "Predates the linter rule",
+        "finish-args-home-filesystem-access": "RetroDECK needs to access to wherever the user is storing the retrodeck folder, discussed here: https://github.com/flathub/net.retrodeck.retrodeck/issues/181"
     },
     "net.veloren.veloren": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
