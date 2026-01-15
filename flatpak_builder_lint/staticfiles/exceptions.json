@@ -1143,8 +1143,9 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "com.google.AndroidStudio": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Needed to browse project files",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG"
     },
     "com.jetbrains.CLion": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1161,14 +1162,14 @@
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.IntelliJ-IDEA-Community": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
-        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Needed to browse project files",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG"
     },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-has-socket-gpg-agent": "Predates the linter rule",
-        "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Needed to browse project files",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG"
     },
     "com.jetbrains.PhpStorm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1178,7 +1179,9 @@
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.WebStorm": {
-        "finish-args-home-filesystem-access": "Needed to browse project files"
+        "finish-args-home-filesystem-access": "Needed to browse project files",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG"
     },
     "com.leinardi.gst": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
