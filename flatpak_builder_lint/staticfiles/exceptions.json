@@ -4924,6 +4924,9 @@
     "edu.stanford.protege": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+   "edu.stanford.protege.ProtegeDesktop": {
+        "finish-args-home-filesystem-access": "The Java platform does not support native file choosers nor file access portals, so it is necessary to open and edit ontology files."
+    },
     "ee.ria.qdigidoc4": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
