@@ -3667,6 +3667,9 @@
     "dev.lunarsrl.NovaMusic": {
         "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     },
+    "net.fhannenheim.musicfetch": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+    },
     "org.gnome.Tomboy": {
         "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule"
     },
