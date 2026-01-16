@@ -409,8 +409,7 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.huluti.Coulr": {
-        "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appid-uses-code-hosting-domain": "app-id predates this linter rule"
     },
     "com.github.huluti.Curtail": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1240,7 +1239,6 @@
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "com.visualstudio.code.insiders": {
-        "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-has-socket-ssh-auth": "Predates the linter rule",
@@ -1443,9 +1441,6 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-login1-talk-name": "Predates the linter rule"
-    },
-    "net.veloren.veloren": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.cockpit_project.CockpitClient": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule"
@@ -1745,11 +1740,7 @@
     "com.tencent.WeChat": {
         "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
     },
-    "com.ticktick.TickTick": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "com.viber.Viber": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.botfather.Botfather": {
@@ -1797,7 +1788,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.geogebra.GeoGebra": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -1837,8 +1827,7 @@
         "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "io.github.ImEditor": {
-        "appid-code-hosting-too-few-components": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appid-code-hosting-too-few-components": "app-id predates this linter rule"
     },
     "io.github.OpenToonz": {
         "appid-code-hosting-too-few-components": "app-id predates this linter rule",
@@ -2015,7 +2004,6 @@
     },
     "us.zoom.Zoom": {
         "finish-args-own-name-wildcard-org.kde": "Initial import, outdated Qt, still uses legacy StatusNotifier implementation",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.kde.SymbolEditor": {
@@ -2729,7 +2717,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Loupe": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.meld": {
@@ -2788,7 +2775,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.TextEditor": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.gnome.Totem": {
@@ -2857,7 +2843,6 @@
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "org.shadered.SHADERed": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.solarus_games.solarus.Launcher": {
@@ -3162,8 +3147,6 @@
     "com.microsoft.EdgeDev": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
-        "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
     "com.milesalan.mepo": {
@@ -3236,9 +3219,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "eu.ototu.Quteqoin": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "eu.planete_kraus.Tarot": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
@@ -3277,10 +3257,6 @@
     "io.github.dbchoco.Salawat": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "io.github.dweymouth.supersonic": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-host-tmp-access": "Predates the linter rule"
     },
     "io.github.gerryferdinandus.bittorrent-tracker-editor": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5963,9 +5939,6 @@
     },
     "org.clementine_player.Clementine": {
         "finish-args-own-name-org.kde.StatusNotifierItem-2-2": "Predates the linter rule"
-    },
-    "org.gmusicbrowser.gmusicbrowser": {
-        "finish-args-own-name-org.gmusicbrowser": "Predates the linter rule"
     },
     "org.gpodder.gpodder-adaptive": {
         "finish-args-own-name-wildcard-org.gpodder": "Predates the linter rule"
