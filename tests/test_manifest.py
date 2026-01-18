@@ -354,6 +354,13 @@ def test_manifest_modules_git_disallowed() -> None:
     for e in errors:
         assert e in found_errors
 
+    warnings = {
+        "module-module3-source-git-no-commit-with-tag",
+    }
+    found_warnings = set(ret["warnings"])
+    for w in warnings:
+        assert w in found_warnings
+
 
 def test_manifest_exceptions() -> None:
     ret = run_checks("tests/manifests/exceptions.json", enable_exceptions=True)
