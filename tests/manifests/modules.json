@@ -25,6 +25,10 @@
                     "type": "archive",
                     "url": "https://example.com/foo.tar.gz",
                     "sha1": "deadbeef"
+                },
+                {
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }
