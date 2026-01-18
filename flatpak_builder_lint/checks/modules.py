@@ -54,6 +54,10 @@ class ModuleCheck(Check):
                 self.errors.add(f"module-{module_name}-source-git-no-tag-commit-branch")
                 return
 
+            if tag and not commit:
+                self.warnings.add(f"module-{module_name}-source-git-no-commit-with-tag")
+                return
+
             if branch and not _is_git_commit_hash(branch):
                 self.errors.add(f"module-{module_name}-source-git-branch")
 
