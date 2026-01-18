@@ -317,12 +317,15 @@ def test_manifest_finish_args_empty() -> None:
     assert "finish-args-not-defined" in found_errors
 
 
-def test_manifest_modules() -> None:
+def test_manifest_modules(monkeypatch: MonkeyPatch) -> None:
     errors = {
         "module-module1-source-sha1-deprecated",
         "module-module1-cleanup-debug",
+        "module-module1-source-dir-not-allowed",
     }
 
+    # Source dir not allowed only in flathub context.
+    monkeypatch.setenv("REPO", "https://github.com/flathub/org.flatpak.Builder")
     ret = run_checks("tests/manifests/modules.json")
     found_errors = set(ret["errors"])
 
