@@ -6160,5 +6160,13 @@
         "finish-args-flatpak-spawn-access": "This is needed to fetch installed browser information and to run the created Web App from this application.",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Used to create and delete owned desktop files for web apps.",
         "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui."
+    },
+    "io.github.alyraffauf.Switchyard": {
+      "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
+      "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to discover the icons/desktop files of user level flatpak browsers.",
+      "finish-args-flatpak-system-folder-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
+      "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
+      "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
+      "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages."
     }
 }
