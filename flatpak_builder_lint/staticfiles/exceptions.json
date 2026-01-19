@@ -2178,7 +2178,8 @@
         "finish-args-own-name-org.kde.kalendarac": "Kalendarc is the reminder deamon",
         "finish-args-own-name-wildcard-org.kde.pim": "Merkuro is part of the KDE PIM suite",
         "finish-args-own-name-org.kde.pimsettingexporter": "Use Akonadi settings exporter",
-        "finish-args-own-name-org.kde.sieveeditor": "use shared sieve editor from KMail"
+        "finish-args-own-name-org.kde.sieveeditor": "use shared sieve editor from KMail",
+        "finish-args-own-name-org.kde.accountwizard": "use account wizard to configure account"
     },
     "org.kde.konversation": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
