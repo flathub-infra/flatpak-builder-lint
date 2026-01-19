@@ -1003,7 +1003,6 @@
     "org.gnome.Builder": {
         "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-flatpak-user-folder-access": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -2543,8 +2542,7 @@
         "finish-args-flatpak-system-folder-access": "Predates the linter rule"
     },
     "io.liri.Calculator": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.mgba.mGBA": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3322,7 +3320,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.liri.Text": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "io.mpv.Mpv": {
@@ -3508,9 +3505,6 @@
     "org.openmsx.openMSX": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "org.pjbroad.EternallandsClient": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.polymc.PolyMC": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -4647,9 +4641,6 @@
     "codes.loers.Karlender": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.abisource.AbiWord": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "com.bambulab.BambuStudio": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -4906,7 +4897,7 @@
     "edu.stanford.protege": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-   "edu.stanford.protege.ProtegeDesktop": {
+    "edu.stanford.protege.ProtegeDesktop": {
         "finish-args-home-filesystem-access": "The Java platform does not support native file choosers nor file access portals, so it is necessary to open and edit ontology files."
     },
     "ee.ria.qdigidoc4": {
