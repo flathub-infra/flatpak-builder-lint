@@ -3735,7 +3735,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.github.lawstorant.boxflat": {
-        "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name"
+        "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name",
+        "finish-args-own-name-wildcard-org.kde": "Can't use libappindicator with GTK4"
     },
     "menu.kando.Kando": {
         "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher",
