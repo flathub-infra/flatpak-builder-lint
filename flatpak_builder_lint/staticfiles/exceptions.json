@@ -6163,6 +6163,6 @@
     },
     "io.github.linx_systems.ClamUI": {
         "finish-args-host-filesystem-access": "Required for File Manager Context integrations",
-        "finish-args-flatpak-spawn-access": "Required to invoke the ClamAV scanner (clamdscan) from the host system for virus scanning operations."
+        "finish-args-flatpak-spawn-access": "Required to invoke the ClamAV Daemon scanner (clamdscan) from the host system for better virus scanning operation performance."
      }
 }
