@@ -6164,5 +6164,13 @@
     "io.github.linx_systems.ClamUI": {
         "finish-args-host-filesystem-access": "Required for File Manager Context integrations",
         "finish-args-flatpak-spawn-access": "Required to invoke the ClamAV Daemon scanner (clamdscan) from the host system for better virus scanning operation performance."
-     }
+    },
+    "io.github.alyraffauf.Switchyard": {
+      "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
+      "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to discover the icons/desktop files of user level flatpak browsers.",
+      "finish-args-flatpak-system-folder-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
+      "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
+      "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
+      "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages."
+    }
 }
