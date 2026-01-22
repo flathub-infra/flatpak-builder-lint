@@ -6150,5 +6150,8 @@
         "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
         "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages."
+    },
+    "io.scottlabs.reManager": {
+        "finish-args-ssh-filesystem-access": "Read-only access to ~/.ssh is required to load SSH keys for connecting to devices over SSH"
     }
 }
