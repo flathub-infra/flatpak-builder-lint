@@ -35,7 +35,7 @@ requires-python = "<4.0,>=3.10"
 dependencies = [
     "jsonschema<5.0.0,>=4.23.0",
     "requests>=2.32.4,<3",
-    "lxml<6.0.0,>=5.3.0",
+    "lxml<7.0.0,>=5.3.0",
     "sentry-sdk<3.0.0,>=2.8.0",
     "PyGObject==3.48.2",
     "requests-cache<2.0.0,>=1.2.1",
@@ -54,14 +54,14 @@ flatpak-builder-lint = "flatpak_builder_lint.cli:main"
 
 [dependency-groups]
 dev = [
-    "pytest<9.0.0,>=8.3.3",
+    "pytest<10.0.0,>=8.3.3",
     "pytest-xdist>=3.8.0,<4.0.0",
     "mypy<2.0.0,>=1.11.2",
     "ruff<1.0.0,>=0.6.7",
-    "pre-commit<4.0.0,>=3.8.0",
+    "pre-commit<5.0.0,>=3.8.0",
     "types-requests<3.0.0.0,>=2.32.0.20240914",
     "types-jsonschema<5.0.0.0,>=4.23.0.20240813",
-    "types-lxml<2025.0.0,>=2024.9.16",
+    "types-lxml<2027.0.0,>=2024.9.16",
     "PyGObject-stubs<3.0.0,>=2.11.0",
 ]
 
