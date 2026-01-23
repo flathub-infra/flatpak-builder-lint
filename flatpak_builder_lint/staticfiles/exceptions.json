@@ -6143,6 +6143,10 @@
         "finish-args-unnecessary-xdg-data-applications-create-access": "Used to create and delete owned desktop files for web apps.",
         "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui."
     },
+    "io.github.linx_systems.ClamUI": {
+        "finish-args-host-filesystem-access": "Required for File Manager Context integrations",
+        "finish-args-flatpak-spawn-access": "Required to invoke the ClamAV Daemon scanner (clamdscan) from the host system for better virus scanning operation performance."
+    },
     "io.github.alyraffauf.Switchyard": {
         "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to discover the icons/desktop files of user level flatpak browsers.",
