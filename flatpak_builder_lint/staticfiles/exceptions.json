@@ -96,7 +96,6 @@
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
         "finish-args-host-var-access": "Predates the linter rule",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "com.apifox.Apifox": {
@@ -1180,9 +1179,7 @@
         "finish-args-has-socket-ssh-auth": "Predates the linter rule"
     },
     "com.jetbrains.WebStorm": {
-        "finish-args-home-filesystem-access": "Needed to browse project files",
-        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
-        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG"
+        "finish-args-home-filesystem-access": "Needed to browse project files"
     },
     "com.leinardi.gst": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -2287,9 +2284,6 @@
         "finish-args-kwin-talk-name": "Predates the linter rule",
         "finish-args-plasmashell-talk-name": "Predates the linter rule"
     },
-    "org.kde.ktechlab": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.kde.krusader": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -2528,7 +2522,6 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "io.github.RodZill4.Material-Maker": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.thiefmd.themegenerator": {
@@ -2609,9 +2602,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "net.redeclipse.RedEclipse": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
-    "net.runelite.RuneLite": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "net.sourceforge.electrip.Electrip": {
@@ -2724,9 +2714,6 @@
     "org.gnome.meld": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "org.gnome.moserial": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.gnome.Music": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3176,9 +3163,6 @@
     "com.shatteredpixel.shatteredpixeldungeon": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
-    "com.slugchess.SlugChess": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "com.supermodel3.Supermodel": {
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
@@ -3528,7 +3512,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.synfig.SynfigStudio": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.tropy.Tropy": {
@@ -6015,8 +5998,7 @@
         "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
     },
     "io.github.jmberesford.Retrom": {
-        "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
-        "finish-args-home-filesystem-access": "many users place/install games and portable emulators/applications that Retrom must manage in arbitrary locations in the home directory"
+        "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host"
     },
     "io.sourceforge.xtrkcad_fork.xtrkcad": {
         "finish-args-home-filesystem-access": "Needed since the app reads/writes track plans stored anywhere on users home directory"
@@ -6162,11 +6144,11 @@
         "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui."
     },
     "io.github.alyraffauf.Switchyard": {
-      "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
-      "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to discover the icons/desktop files of user level flatpak browsers.",
-      "finish-args-flatpak-system-folder-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
-      "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
-      "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
-      "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages."
+        "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to discover the icons/desktop files of user level flatpak browsers.",
+        "finish-args-flatpak-system-folder-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
+        "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
+        "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages."
     }
 }
