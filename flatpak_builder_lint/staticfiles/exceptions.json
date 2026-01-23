@@ -4137,7 +4137,8 @@
     },
     "com.nextcloud.desktopclient.nextcloud": {
         "finish-args-host-filesystem-access": "Predates the linter rule",
-        "finish-args-own-name-com.nextcloudgmbh.Nextcloud": "Predates the linter rule"
+        "finish-args-own-name-com.nextcloudgmbh.Nextcloud": "Predates the linter rule",
+        "finish-args-xdg-config-autostart-rw-access": "Required for autostart support until portal is properly supported"
     },
     "com.nitrokey.nitrokey-app": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
