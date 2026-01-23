@@ -21,7 +21,7 @@ def generate_exceptions(
     app_ids: set[str], exceptions: set[str], reason: str
 ) -> dict[str, dict[str, str]]:
     reason = reason if reason else "Predates the linter rule"
-    return {app: {ex: reason for ex in exceptions} for app in app_ids}
+    return {app: dict.fromkeys(exceptions, reason) for app in app_ids}
 
 
 def main(appid: str, exceptions: set[str], reason: str) -> None:

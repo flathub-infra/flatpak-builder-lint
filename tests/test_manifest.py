@@ -447,7 +447,7 @@ def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     for err in errors:
         assert err in found_errors
 
-    from flatpak_builder_lint import gitutils, manifest
+    from flatpak_builder_lint import gitutils, manifest  # noqa: PLC0415
 
     manifest.show_manifest.cache_clear()
     gitutils.is_git_directory.cache_clear()

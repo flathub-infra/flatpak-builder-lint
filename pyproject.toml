@@ -34,10 +34,10 @@ readme = "README.md"
 requires-python = "<4.0,>=3.10"
 dependencies = [
     "jsonschema<5.0.0,>=4.23.0",
-    "requests<3.0.0,>=2.32.2",
+    "requests>=2.32.4,<3",
     "lxml<6.0.0,>=5.3.0",
     "sentry-sdk<3.0.0,>=2.8.0",
-    "PyGObject<4.0.0,>=3.48.2",
+    "PyGObject==3.48.2",
     "requests-cache<2.0.0,>=1.2.1",
     "ruamel.yaml<1.0.0,>=0.18.14",
     "publicsuffixlist>=1.0.2.20250802,<2",
@@ -123,7 +123,6 @@ ignore = [
   "PLR0913",
   "PLR0915",
   "S105",
-  "S320",
   "S607",
   "S603",
 ]
