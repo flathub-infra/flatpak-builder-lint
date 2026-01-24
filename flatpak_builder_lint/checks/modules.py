@@ -58,7 +58,11 @@ class ModuleCheck(Check):
                 return
 
             if tag and not commit:
-                self.warnings.add(f"module-{module_name}-source-git-no-commit-with-tag")
+                err_s = f"module-{module_name}-source-git-no-commit-with-tag"
+                if config.is_flathub_new_submission_build_pipeline():
+                    self.errors.add(err_s)
+                else:
+                    self.warnings.add(err_s)
                 return
 
             if branch and not _is_git_commit_hash(branch):
