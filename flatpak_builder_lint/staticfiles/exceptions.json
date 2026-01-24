@@ -1431,7 +1431,8 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "module-lutris_wrapper-source-dir-not-allowed": "Predates the linter rule"
     },
     "net.retrodeck.retrodeck": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
@@ -1638,14 +1639,17 @@
     },
     "org.chromium.Chromium": {
         "finish-args-contains-both-x11-and-wayland": "optional wayland support",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "module-chromium-source-dir-not-allowed": "Predates the linter rule"
     },
     "net.scribus.Scribus": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "com.valvesoftware.Steam": {
         "finish-args-contains-both-x11-and-wayland": "not every game supports wayland",
-        "finish-args-own-name-wildcard-com.steampowered": "Predates the linter rule"
+        "finish-args-own-name-wildcard-com.steampowered": "Predates the linter rule",
+        "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule",
+        "module-platform-bootstrap-source-dir-not-allowed": "Predates the linter rule"
     },
     "org.inkscape.Inkscape": {
         "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "Access xdg-config/gtk-3.0 for bookmarks",
@@ -3289,7 +3293,8 @@
         "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
         "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
         "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "module-chromium-source-dir-not-allowed": "Predates the linter rule"
     },
     "io.itch.doctorm64.skippybot": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3384,7 +3389,8 @@
         "finish-args-own-name-wildcard-org.mozilla.floorp": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for manually creating application .desktop files for Floorp's Web Apps feature",
         "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds",
-        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
+        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission",
+        "module-floorp-source-dir-not-allowed": "Predates the linter rule"
     },
     "org.bunkus.mkvtoolnix-gui": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",

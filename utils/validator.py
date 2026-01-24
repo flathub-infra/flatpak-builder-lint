@@ -53,6 +53,7 @@ EXP_PREFIX = (
     "appid-unprefixed-bundled-extension-*",
     "finish-args-own-name-*",
     "finish-args-*-filesystem-access",
+    "module-*-source-dir-not-allowed",
 )
 
 
