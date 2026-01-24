@@ -1881,7 +1881,8 @@
     "com.dec05eba.gpu_screen_recorder": {
         "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn to capture a monitor on AMD/Intel GPUs",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-host-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule",
+        "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name"
     },
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "finish-args-unnecessary-xdg-config-autostart-create-access": "the app predates this linter rule",
