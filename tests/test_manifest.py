@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import tempfile
 from collections.abc import Generator
+from unittest.mock import MagicMock, patch
 
 import pytest
 from _pytest.monkeypatch import MonkeyPatch
@@ -57,6 +58,34 @@ def change_to_tmpdir(tmp_testdir: str) -> Generator[None, None, None]:
     os.chdir(original_dir)
 
 
+@pytest.fixture(autouse=True)
+def mock_domainutils() -> Generator[dict[str, MagicMock], None, None]:
+    with (
+        patch("flatpak_builder_lint.domainutils.check_url") as mock_check_url,
+        patch("flatpak_builder_lint.domainutils.is_app_on_flathub_summary") as mock_is_on_flathub,
+        patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub") as mock_get_eol,
+        patch(
+            "flatpak_builder_lint.domainutils.get_remote_exceptions_github"
+        ) as mock_exceptions_gh,
+        patch(
+            "flatpak_builder_lint.domainutils.get_remote_exceptions_flathub"
+        ) as mock_exceptions_fh,
+    ):
+        mock_check_url.return_value = (True, None)
+        mock_is_on_flathub.return_value = False
+        mock_get_eol.return_value = {"org.gnome.Sdk//40"}
+        mock_exceptions_gh.return_value = set()
+        mock_exceptions_fh.return_value = set()
+
+        yield {
+            "check_url": mock_check_url,
+            "is_app_on_flathub_summary": mock_is_on_flathub,
+            "get_eol_runtimes_on_flathub": mock_get_eol,
+            "get_remote_exceptions_github": mock_exceptions_gh,
+            "get_remote_exceptions_flathub": mock_exceptions_fh,
+        }
+
+
 def run_checks(filename: str, enable_exceptions: bool = False) -> dict[str, str | list[str]]:
     checks.Check.errors = set()
     checks.Check.warnings = set()
@@ -81,40 +110,114 @@ def test_appid_too_many_cpts() -> None:
     assert {"appid-too-many-components-for-app"} == errors
 
 
-def test_appid_url_not_reachable() -> None:
-    for i in (
-        "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.foo.bar.json",
-        "tests/manifests/domain_checks/io.github.ghost.bar.json",
-        "tests/manifests/domain_checks/io.gitlab.wwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/ch.wwwwww.bar.json",
-        "tests/manifests/domain_checks/org.gnome.gitlab.wwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/org.freedesktop.gitlab.wwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/io.frama.wwwwwwwwwwwww.bar.json",
-        "tests/manifests/domain_checks/page.codeberg.wwwwwwwwwwwww.foo.json",
-    ):
-        ret = run_checks(i)
+def test_appid_url_not_reachable(mock_domainutils: dict[str, MagicMock]) -> None:
+    mock_domainutils["check_url"].return_value = (False, "Status: 404 | Body: Not Found")
+    mock_domainutils["is_app_on_flathub_summary"].return_value = False
+
+    test_cases = [
+        (
+            "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.bar.json",
+            "https://github.com/wwwwwwwwwwwww/bar",
+        ),
+        (
+            "tests/manifests/domain_checks/io.github.wwwwwwwwwwwww.foo.bar.json",
+            "https://github.com/wwwwwwwwwwwww/foo",
+        ),
+        ("tests/manifests/domain_checks/io.github.ghost.bar.json", "https://github.com/ghost/bar"),
+        (
+            "tests/manifests/domain_checks/io.gitlab.wwwwwwwwwwwww.bar.json",
+            "https://gitlab.com/wwwwwwwwwwwww/bar",
+        ),
+        (
+            "tests/manifests/domain_checks/io.sourceforge.wwwwwwwwwwwwwwww.bar.json",
+            "https://sourceforge.net/projects/wwwwwwwwwwwwwwww/",
+        ),
+        ("tests/manifests/domain_checks/ch.wwwwww.bar.json", "https://wwwwww.ch"),
+        (
+            "tests/manifests/domain_checks/org.gnome.gitlab.wwwwwwwwwwwww.bar.json",
+            "https://gitlab.gnome.org/wwwwwwwwwwwww/bar",
+        ),
+        (
+            "tests/manifests/domain_checks/org.freedesktop.gitlab.wwwwwwwwwwwww.bar.json",
+            "https://gitlab.freedesktop.org/wwwwwwwwwwwww/bar",
+        ),
+        (
+            "tests/manifests/domain_checks/io.frama.wwwwwwwwwwwww.bar.json",
+            "https://framagit.org/wwwwwwwwwwwww/bar",
+        ),
+        (
+            "tests/manifests/domain_checks/page.codeberg.wwwwwwwwwwwww.foo.json",
+            "https://codeberg.org/wwwwwwwwwwwww/foo",
+        ),
+    ]
+
+    for manifest_file, expected_url in test_cases:
+        mock_domainutils["check_url"].reset_mock()
+
+        ret = run_checks(manifest_file)
         errors = set(ret["errors"])
-        assert "appid-url-not-reachable" in errors
+
+        assert "appid-url-not-reachable" in errors, f"Failed for {manifest_file}"
+
+        mock_domainutils["check_url"].assert_called_once()
+        actual_url = mock_domainutils["check_url"].call_args[0][0]
+        assert actual_url == expected_url, (
+            f"Expected {expected_url}, got {actual_url} for {manifest_file}"
+        )
 
 
-def test_appid_url_is_reachable() -> None:
-    for i in (
-        "tests/manifests/domain_checks/io.github.flatpak.flatpak.json",
-        "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
-        "tests/manifests/domain_checks/org.gnome.design.VectorSlicer.json",
-        # "tests/manifests/domain_checks/org.freedesktop.gitlab.drm_hwcomposer.drm-hwcomposer.json",
-        # "tests/manifests/domain_checks/io.frama.flopedt.FlOpEDT.json",
-        "tests/manifests/domain_checks/page.codeberg.forgejo.code-of-conduct.json",
-        #        "tests/manifests/domain_checks/io.sourceforge.xampp.bar.json",
-    ):
-        ret = run_checks(i)
-        assert "errors" not in ret
+def test_appid_url_is_reachable(mock_domainutils: dict[str, MagicMock]) -> None:
+    mock_domainutils["check_url"].return_value = (True, None)
+    mock_domainutils["is_app_on_flathub_summary"].return_value = False
+
+    test_cases = [
+        (
+            "tests/manifests/domain_checks/io.github.flatpak.flatpak.json",
+            "https://github.com/flatpak/flatpak",
+        ),
+        (
+            "tests/manifests/domain_checks/org.gnome.gitlab.YaLTeR.Identity.json",
+            "https://gitlab.gnome.org/YaLTeR/Identity",
+        ),
+        (
+            "tests/manifests/domain_checks/org.gnome.design.VectorSlicer.json",
+            "https://gnome.org",
+        ),
+        (
+            "tests/manifests/domain_checks/org.freedesktop.gitlab.drm_hwcomposer.drm-hwcomposer.json",
+            "https://gitlab.freedesktop.org/drm-hwcomposer/drm-hwcomposer",
+        ),
+        (
+            "tests/manifests/domain_checks/io.frama.flopedt.FlOpEDT.json",
+            "https://framagit.org/flopedt/FlOpEDT",
+        ),
+        (
+            "tests/manifests/domain_checks/page.codeberg.forgejo.code-of-conduct.json",
+            "https://codeberg.org/forgejo/code-of-conduct",
+        ),
+        (
+            "tests/manifests/domain_checks/io.sourceforge.xampp.bar.json",
+            "https://sourceforge.net/projects/xampp/",
+        ),
+    ]
+
+    for manifest_file, expected_url in test_cases:
+        mock_domainutils["check_url"].reset_mock()
+
+        ret = run_checks(manifest_file)
+
+        assert "errors" not in ret, f"Unexpected errors for {manifest_file}: {ret.get('errors')}"
+        mock_domainutils["check_url"].assert_called_once()
+        actual_url = mock_domainutils["check_url"].call_args[0][0]
+        assert actual_url == expected_url, (
+            f"Expected {expected_url}, got {actual_url} for {manifest_file}"
+        )
 
 
-def test_appid_on_flathub() -> None:
-    # encom.eu.org does not exist
+def test_appid_on_flathub(mock_domainutils: dict[str, MagicMock]) -> None:
+    mock_domainutils["is_app_on_flathub_summary"].return_value = True
+
+    # encom.eu.org does not exist, but since it's "on flathub", no check happens
     ret = run_checks("tests/manifests/domain_checks/org.eu.encom.spectral.json")
     assert "errors" not in ret
 
