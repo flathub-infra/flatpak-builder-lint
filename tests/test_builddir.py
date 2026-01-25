@@ -5,6 +5,7 @@ import shutil
 import struct
 import tempfile
 from collections.abc import Generator
+from unittest.mock import MagicMock, patch
 
 import pytest
 from pytest import MonkeyPatch
@@ -149,6 +150,34 @@ def change_to_tmpdir(tmp_testdir: str) -> Generator[None, None, None]:
     os.chdir(original_dir)
 
 
+@pytest.fixture(autouse=True)
+def mock_domainutils() -> Generator[dict[str, MagicMock], None, None]:
+    with (
+        patch("flatpak_builder_lint.domainutils.check_url") as mock_check_url,
+        patch("flatpak_builder_lint.domainutils.is_app_on_flathub_summary") as mock_is_on_flathub,
+        patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub") as mock_get_eol,
+        patch(
+            "flatpak_builder_lint.domainutils.get_remote_exceptions_github"
+        ) as mock_exceptions_gh,
+        patch(
+            "flatpak_builder_lint.domainutils.get_remote_exceptions_flathub"
+        ) as mock_exceptions_fh,
+    ):
+        mock_check_url.return_value = (True, None)
+        mock_is_on_flathub.return_value = False
+        mock_get_eol.return_value = {"org.freedesktop.Platform//18.08", "org.gnome.Sdk//40"}
+        mock_exceptions_gh.return_value = set()
+        mock_exceptions_fh.return_value = set()
+
+        yield {
+            "check_url": mock_check_url,
+            "is_app_on_flathub_summary": mock_is_on_flathub,
+            "get_eol_runtimes_on_flathub": mock_get_eol,
+            "get_remote_exceptions_github": mock_exceptions_gh,
+            "get_remote_exceptions_flathub": mock_exceptions_fh,
+        }
+
+
 def run_checks(filename: str) -> dict[str, str | list[str]]:
     checks.Check.errors = set()
     checks.Check.warnings = set()
@@ -163,7 +192,10 @@ def test_builddir_appid() -> None:
     assert "appstream-metainfo-missing" in found_errors
 
 
-def test_builddir_url_not_reachable() -> None:
+def test_builddir_url_not_reachable(mock_domainutils: dict[str, MagicMock]) -> None:
+    mock_domainutils["check_url"].return_value = (False, "Status: 404 | Body: Not Found")
+    mock_domainutils["is_app_on_flathub_summary"].return_value = False
+
     ret = run_checks("tests/builddir/wrong-rdns-appid")
     found_errors = set(ret["errors"])
     assert "appid-url-not-reachable" in found_errors
@@ -427,9 +459,9 @@ def test_builddir_appstream_icon_key_no_type() -> None:
     create_catalogue_icon(testdir, "org.flathub.appstream_icon_key_no_type.png")
     ret = run_checks(testdir)
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
+    found_warnings = ret.get("warnings", [])
     assert "appstream-icon-key-no-type" in found_errors
-    assert "appstream-missing-vcs-browser-url" not in found_warnings
+    assert found_warnings == []
 
 
 def test_min_success_metadata() -> None:
@@ -551,7 +583,11 @@ def test_builddir_wrong_elf_arch() -> None:
         assert e in found_errors
 
 
-def test_builddir_appstream_manifest_url_unreachable() -> None:
+def test_builddir_appstream_manifest_url_unreachable(
+    mock_domainutils: dict[str, MagicMock],
+) -> None:
+    mock_domainutils["check_url"].return_value = (False, "Status: 404 | Body: Not Found")
+
     testdir = "tests/builddir/appstream-manifest-url-unreachable"
     move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
