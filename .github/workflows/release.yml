@@ -16,8 +16,8 @@ jobs:
     timeout-minutes: 20
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
     steps:
-        # 4.2.2
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # 6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
           ref: 'master'
@@ -47,8 +47,8 @@ jobs:
 
       - name: Trigger workflow in org.flatpak.Builder repository
         if: steps.check_job.outputs.run == 'true'
-        # 3.0.0
-        uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0
+        # 4.0.1
+        uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697
         with:
           repository: flathub/org.flatpak.Builder
           event-type: trigger-workflow
@@ -57,8 +57,8 @@ jobs:
 
       - name: Trigger workflow in flathub-infra/actions-images
         if: steps.check_job.outputs.run == 'true'
-        # 3.0.0
-        uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0
+        # 4.0.1
+        uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697
         with:
           repository: flathub-infra/actions-images
           event-type: trigger-workflow
