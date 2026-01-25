@@ -41,6 +41,41 @@
                     "commit": "1234567890abcdef1234567890abcdef12345678"
                 }
             ]
+        },
+        {
+            "name": "module5",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://example.com/foo.git",
+                    "commit": "deadbeef",
+                    "dest": "foo_src"
+                },
+                {
+                    "type": "git",
+                    "url": "https://example.com/bar.git",
+                    "commit": "deadbeef"
+                }
+            ]
+        },
+        {
+            "name": "module6",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://example.com/foo.git",
+                    "commit": "deadbeef",
+                    "dest": "foo_src"
+                },
+                {
+                    "type": "git",
+                    "url": "https://example.com/bar.git",
+                    "commit": "deadbeef",
+                    "dest": "bar_src"
+                }
+            ]
         }
     ]
 }
