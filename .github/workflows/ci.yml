@@ -28,8 +28,8 @@ jobs:
       exceptions: ${{ steps.filter.outputs.exceptions }}
       force_ci: ${{ steps.force.outputs.value }}
     steps:
-        # 4.2.2
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # 6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -74,13 +74,13 @@ jobs:
       - changes
     if: ${{ needs.changes.outputs.force_ci == 'true' || needs.changes.outputs.exceptions == 'true' }}
     steps:
-        # 4.2.2
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # 6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
 
-        # 5.4.0
-      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        # 6.2.0
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -134,13 +134,13 @@ jobs:
           timeout 5 free -h --giga || true
           timeout 60 sudo du -xh --max-depth=3 / 2>/dev/null | sort -rh | head -40 || true
 
-        # 4.2.2
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # 6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
 
-        # 5.4.0
-      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        # 6.2.0
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -158,10 +158,10 @@ jobs:
             gir1.2-appstream-1.0 ostree
 
       - name: Install uv
-        # 5.4.0
-        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174
+        # 7.2.0
+        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b
         with:
-          version: "0.7.5"
+          version: "0.9.21"
           enable-cache: true
           cache-dependency-glob: |
             **/uv.lock
@@ -216,8 +216,8 @@ jobs:
         run: |
           flatpak-builder --show-manifest build/org.flatpak.Builder/org.flatpak.Builder.json >> build/org.flatpak.Builder/org.flatpak.Builder-cache.json
 
-        # 4.2.2
-      - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
+        # 5.0.2
+      - uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7
         with:
           path: ${{ github.workspace }}/cache/.flatpak-builder
           key: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
