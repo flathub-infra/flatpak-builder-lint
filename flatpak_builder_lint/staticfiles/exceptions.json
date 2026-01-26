@@ -3146,9 +3146,6 @@
     "com.milesalan.mepo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
-    "com.modrinth.ModrinthApp": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
     "com.mousepawmedia.omission": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
@@ -3257,9 +3254,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "io.github.hermitdemschoenenleben.linien": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
-    "io.github.ja2_stracciatella.JA2-Stracciatella": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "io.github.jacalz.rymdport": {
