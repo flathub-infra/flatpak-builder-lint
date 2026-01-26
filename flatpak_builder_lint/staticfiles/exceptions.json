@@ -6158,5 +6158,8 @@
     },
     "io.scottlabs.reManager": {
         "finish-args-ssh-filesystem-access": "Read-only access to ~/.ssh is required to load SSH keys for connecting to devices over SSH"
+    },
+    "br.gov.fazenda.receita.gcap2026": {
+        "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
     }
 }
