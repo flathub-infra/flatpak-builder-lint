@@ -6165,5 +6165,8 @@
     },
     "br.gov.fazenda.receita.gcap2026": {
         "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
+    },
+    "io.github.dyslechtchitect.tfcbm": {
+        "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
     }
 }
