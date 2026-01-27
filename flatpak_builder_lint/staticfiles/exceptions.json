@@ -56,6 +56,10 @@
         "finish-args-flatpak-appdata-folder-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
     },
+    "io.github.focustimerhq.FocusTimer": {
+        "finish-args-flatpak-spawn-access": "Allows user to run custom commands",
+        "finish-args-login1-system-talk-name": "Used for locking the screen and for detecting when it gets locked"
+    },
     "io.github.rfrench3.scopebuddy-gui": {
         "finish-args-unnecessary-xdg-config-scopebuddy-create-access": "This program needs to be able to create and modify xdg-config/scopebuddy/scb.conf (edit config of host Scopebuddy)"
     },
