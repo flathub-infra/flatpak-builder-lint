@@ -768,7 +768,8 @@
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
         "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
-        "finish-args-flatpak-system-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+        "finish-args-portal-impl-permissionstore-talk-name": "Predates the linter rule, needed to modify dynamic permissions"
     },
     "com.github.tenderowl.frog": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule"
