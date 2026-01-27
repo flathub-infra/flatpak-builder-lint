@@ -49,6 +49,7 @@ EXP_PREFIX = (
     "module-*-source-git-*",
     "module-*-checker-tracks-commits",
     "finish-args-arbitrary-*-access",
+    "finish-args-portal-impl-*",
     "finish-args-unnecessary-*-access",
     "appid-unprefixed-bundled-extension-*",
     "finish-args-own-name-*",
