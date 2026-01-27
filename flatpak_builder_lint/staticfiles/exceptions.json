@@ -2,6 +2,9 @@
     "com.sublimehq.SublimeText": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
+    "net.sourceforge.Chessx": {
+        "finish-args-host-filesystem-access": "This app requires home access to import/export the save files."
+    },    
     "org.vanillaos.ApxGUI": {
         "finish-args-flatpak-spawn-access": "Needed to execute Distrobox commands on the host"
     },
