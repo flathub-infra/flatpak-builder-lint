@@ -6169,5 +6169,8 @@
     },
     "io.github.dyslechtchitect.tfcbm": {
         "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
+    },
+    "io.github.vadi2.postured": {                                                                                                                                                                                                                               
+      "finish-args-login1-talk-name": "Requires login1 access to detect screen lock state for auto-pause feature for privacy protection"                                                                                                                                             
     }
 }
