@@ -1182,6 +1182,12 @@
     "com.jetbrains.WebStorm": {
         "finish-args-home-filesystem-access": "Needed to browse project files"
     },
+    "com.jiosphere.JioSphere": {
+        "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
+        "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
+        "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+    },
     "com.leinardi.gst": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
