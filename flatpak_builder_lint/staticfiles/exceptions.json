@@ -6170,5 +6170,9 @@
     },
     "io.github.dyslechtchitect.tfcbm": {
         "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
+    },
+    "io.github.strikerx3.ymir": {
+        "finish-args-host-ro-filesystem-access": "Required to load Roms correctly which where split into multiple bin tracks..",
+        "finish-args-home-filesystem-access": "Required in order to allow writing config files and custom files for loading of Sega Saturn IPL's."
     }
 }
