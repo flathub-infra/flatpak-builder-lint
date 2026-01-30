@@ -1229,6 +1229,7 @@
     },
     "com.unity.UnityHub": {
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor",
+        "finish-args-contains-both-x11-and-wayland": "x11 is needed to start the editor from the hub with > 3.12.0, wayland is necessary to start the hub (which starts the editor); with just fallback-x11 the editor fails to start entirely",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
