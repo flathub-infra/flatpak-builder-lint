@@ -6173,6 +6173,6 @@
     },
     "io.github.strikerx3.ymir": {
         "finish-args-host-ro-filesystem-access": "Required to load Roms correctly which where split into multiple bin tracks.",
-        "finish-args-home-filesystem-access": "Required in order to allow writing config files and custom files for loading of Sega Saturn IPL's."
+        "finish-args-home-filesystem-access": "Required in order to allow writing config files and custom files for loading of Sega Saturn IPL's. Also needed to load external game files and saved games folders"
     }
 }
