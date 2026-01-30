@@ -5740,6 +5740,7 @@
         "finish-args-home-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.mpc_qt.mpc-qt": {
+        "finish-args-unnecessary-xdg-data-Trash-rw-access": "required for access to Trash until Portal support is added",
         "finish-args-home-ro-filesystem-access": "Predates the linter rule",
         "finish-args-contains-both-x11-and-wayland": "The app supports both X11 and Wayland through a Tweaks setting"
     },
