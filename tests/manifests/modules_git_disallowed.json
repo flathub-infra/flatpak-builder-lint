@@ -46,6 +46,22 @@
                     "branch": "foobarfoo"
                 }
             ]
+        },
+        {
+            "name": "module6",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://example.com/foo.git",
+                    "commit": "deadbeef"
+                },
+                {
+                    "type": "git",
+                    "url": "https://example.com/bar.git",
+                    "commit": "deadbeef"
+                }
+            ]
         }
     ]
 }

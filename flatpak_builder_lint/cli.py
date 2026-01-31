@@ -88,21 +88,34 @@ def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str
     if not results:
         return
 
+    OMITTED_ANNOTATIONS = {
+        "appstream-failed-validation",
+    }
+
     info: dict[str, str] = {
         k.strip(): v.strip()
         for entry in results.get("info", [])
         if ": " in entry
         for k, v in [entry.split(": ", 1)]
+        if k.strip() not in OMITTED_ANNOTATIONS
     }
 
-    for level, prefix in [("errors", "::error::"), ("warnings", "::warning::")]:
-        msg_type = level[:-1]
-        for msg in results.get(level, []):
-            detail = f"Details: {info.get(msg)}" if msg in info else ""
-            print(f"{prefix}{msg!r} {msg_type} found in linter {artifact_type} check. {detail}")  # noqa: T201
+    for msg in results.get("errors", []):
+        if msg in OMITTED_ANNOTATIONS:
+            continue
+
+        detail = f"Details: {info.get(msg)}" if msg in info else ""
+        print(f"::error::{msg!r} error found in linter {artifact_type} check. {detail}")  # noqa: T201
 
     for line in results.get("appstream", []):
         print(f"::error::Appstream: {line.strip()!r}")  # noqa: T201
+
+    for msg in results.get("warnings", []):
+        if msg in OMITTED_ANNOTATIONS:
+            continue
+
+        detail = f"Details: {info.get(msg)}" if msg in info else ""
+        print(f"::warning::{msg!r} warning found in linter {artifact_type} check. {detail}")  # noqa: T201
 
     if help_msg := results.get("message"):
         print(f"::notice::💡 {help_msg}")  # noqa: T201

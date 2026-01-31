@@ -21,6 +21,34 @@ def _get_bundled_extensions_not_prefixed_with_appid(manifest: Mapping[str, Any])
 
 
 class ModuleCheck(Check):
+    def check_stacked_git_source(
+        self,
+        module_name: str,
+        sources: list[dict[str, Any]],
+    ) -> None:
+        git_dests: dict[str, list[str]] = {}
+
+        for source in sources:
+            if source.get("type") != "git":
+                continue
+
+            dest = source.get("dest", ".")
+            url = source.get("url")
+
+            if url:
+                git_dests.setdefault(dest, []).append(url)
+
+        error_id = f"module-{module_name}-multiple-git-sources-stacked"
+
+        for _, urls in git_dests.items():
+            if len(urls) > 1:
+                self.errors.add(error_id)
+                self.info.add(
+                    f"{error_id}: The module is stacking multiple git sources "
+                    "in the same destination. Consider separating them or using "
+                    "'dest' to unstack the sources."
+                )
+
     def check_source(self, module_name: str, source: dict[str, str]) -> None:
         source_type = source.get("type")
         dest_filename = source.get("dest-filename")
@@ -37,6 +65,9 @@ class ModuleCheck(Check):
             if source.get("md5"):
                 self.errors.add(f"module-{module_name}-source-md5-deprecated")
 
+        if source_type == "dir" and config.is_flathub_pipeline():
+            self.errors.add(f"module-{module_name}-source-dir-not-allowed")
+
         if source_type == "git":
             commit = source.get("commit")
             branch = source.get("branch")
@@ -52,6 +83,14 @@ class ModuleCheck(Check):
 
             if not any([commit, branch, tag]):
                 self.errors.add(f"module-{module_name}-source-git-no-tag-commit-branch")
+                return
+
+            if tag and not commit:
+                err_s = f"module-{module_name}-source-git-no-commit-with-tag"
+                if config.is_flathub_new_submission_build_pipeline():
+                    self.errors.add(err_s)
+                else:
+                    self.warnings.add(err_s)
                 return
 
             if branch and not _is_git_commit_hash(branch):
@@ -73,6 +112,9 @@ class ModuleCheck(Check):
                     self.errors.add(f"module-{name}-autotools-non-release-build")
 
         if sources := module.get("sources"):
+            if name := module.get("name"):
+                self.check_stacked_git_source(name, sources)
+
             for source in sources:
                 if name := module.get("name"):
                     self.check_source(name, source)
