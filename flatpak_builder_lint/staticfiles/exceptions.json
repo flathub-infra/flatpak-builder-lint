@@ -6174,7 +6174,7 @@
     "io.github.sourcegit_scm.sourcegit": {
         "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
         "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
-        "finish-args-home-filesystem-access": "Needed to access Git repositories",
-        "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
+        "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config",
+        "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it and other symlinks. Such as pinentry"
     }
 }
