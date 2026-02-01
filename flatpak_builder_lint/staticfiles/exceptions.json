@@ -6170,5 +6170,10 @@
     },
     "io.github.dyslechtchitect.tfcbm": {
         "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
+    },
+    "io.github.sourcegit_scm.sourcegit": {
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
     }
 }
