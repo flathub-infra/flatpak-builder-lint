@@ -6172,5 +6172,8 @@
         "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
         "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
         "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
+    },
+    "io.github.qarmin.krokiet": {
+        "finish-args-host-filesystem-access": "The app contains multiple file-based tools (e.g., finding duplicates, identifying largest files, checking invalid extensions). These functions require access to arbitrary paths, including home directories and external locations and some users use them on system files."
     }
 }
