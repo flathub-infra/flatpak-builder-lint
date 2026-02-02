@@ -3386,8 +3386,7 @@
         "finish-args-own-name-wildcard-org.mozilla.floorp": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for manually creating application .desktop files for Floorp's Web Apps feature",
         "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds",
-        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission",
-        "module-floorp-source-dir-not-allowed": "Predates the linter rule"
+        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
     },
     "org.bunkus.mkvtoolnix-gui": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
