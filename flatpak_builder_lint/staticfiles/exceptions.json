@@ -5789,8 +5789,7 @@
     "io.github.totoshko88.RustConn": {
         "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
         "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
-  	"finish-args-flatpak-spawn-access": "Required to launch host commands (xfreerdp, wlfreerdp, vncviewer, ssh, remote-viewer) for remote connections",
-  	"finish-args-unnecessary-xdg-config-rustconn-create-access": "Required for persistent storage of connection profiles and application settings"
+  	"finish-args-flatpak-spawn-access": "Required to launch host commands (xfreerdp, wlfreerdp, vncviewer, ssh, remote-viewer) for remote connections"
     },
     "io.github.rimsort.RimSort": {
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the workshop rimworld file in Steam"
