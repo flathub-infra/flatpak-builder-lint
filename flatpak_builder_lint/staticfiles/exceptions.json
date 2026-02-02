@@ -3504,7 +3504,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.scummvm.ScummVM": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.signal.Signal": {
@@ -4990,8 +4989,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.foldynl.QLog": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-own-name-org.freedesktop.secrets": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.fralonra.PpdEditor": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
