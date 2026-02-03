@@ -4729,7 +4729,8 @@
         "finish-args-own-name-wildcard-org.freedesktop.ReserveDevice1": "Predates the linter rule"
     },
     "com.one_ware.OneWare": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-flatpak-spawn-access": "Required to allow the restart app button work after updating or removing extensions"
     },
     "com.openwall.John": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
