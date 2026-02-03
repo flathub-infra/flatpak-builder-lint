@@ -6173,7 +6173,7 @@
         "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
         "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
     },
-    "com.one-ware.OneWare": {
+    "com.one_ware.OneWare": {
         "finish-args-flatpak-spawn-access": "Required to allow the restart app button work after updating or removing extensions"
     }
 }
