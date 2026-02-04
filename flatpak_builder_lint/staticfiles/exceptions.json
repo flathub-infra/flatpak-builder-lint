@@ -1182,6 +1182,11 @@
     "com.jetbrains.WebStorm": {
         "finish-args-home-filesystem-access": "Needed to browse project files"
     },
+    "com.jiosphere.JioSphere": {
+        "finish-args-dconf-talk-name": "It can read desktop environment settings (via dconf) such as system theme, font, proxy, and UI preferences, ensuring the browser integrates correctly with the host Linux desktop",
+        "finish-args-direct-dconf-path": "It can directly read specific dconf configuration paths needed for desktop integration (theme, fonts, proxy, accessibility) when D-Bus access alone is insufficient.",
+        "finish-args-desktopfile-filesystem-access": "It is required so that it can read and interact with its installed .desktop file to correctly support default-browser registration, app launching, and desktop integration."
+    },
     "com.leinardi.gst": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
