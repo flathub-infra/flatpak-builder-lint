@@ -1182,6 +1182,11 @@
     "com.jetbrains.WebStorm": {
         "finish-args-home-filesystem-access": "Needed to browse project files"
     },
+    "com.jiosphere.JioSphere": {
+        "finish-args-dconf-talk-name": "It can read desktop environment settings (via dconf) such as system theme, font, proxy, and UI preferences, ensuring the browser integrates correctly with the host Linux desktop",
+        "finish-args-direct-dconf-path": "It can directly read specific dconf configuration paths needed for desktop integration (theme, fonts, proxy, accessibility) when D-Bus access alone is insufficient.",
+        "finish-args-desktopfile-filesystem-access": "It is required so that it can read and interact with its installed .desktop file to correctly support default-browser registration, app launching, and desktop integration."
+    },
     "com.leinardi.gst": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1229,6 +1234,7 @@
     },
     "com.unity.UnityHub": {
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor",
+        "finish-args-contains-both-x11-and-wayland": "x11 is needed to start the editor from the hub with > 3.12.0, wayland is necessary to start the hub (which starts the editor); with just fallback-x11 the editor fails to start entirely",
         "finish-args-host-filesystem-access": "Predates the linter rule",
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
@@ -3385,8 +3391,7 @@
         "finish-args-own-name-wildcard-org.mozilla.floorp": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for manually creating application .desktop files for Floorp's Web Apps feature",
         "finish-args-unnecessary-xdg-data-icons-create-access": "Needed as Floorp's Web Apps feature downloads and installs icons for each website that the user adds",
-        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission",
-        "module-floorp-source-dir-not-allowed": "Predates the linter rule"
+        "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
     },
     "org.bunkus.mkvtoolnix-gui": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
@@ -3462,7 +3467,6 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.kde.skrooge": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.mamedev.MAME": {
@@ -3504,7 +3508,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.scummvm.ScummVM": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.signal.Signal": {
@@ -4990,8 +4993,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.foldynl.QLog": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-own-name-org.freedesktop.secrets": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.github.fralonra.PpdEditor": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5418,6 +5420,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.kde.haruna": {
+        "finish-args-unnecessary-xdg-data-Trash-rw-access": "required for access to Trash until Portal support is added",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
@@ -6171,6 +6174,11 @@
         "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
     },
     "io.github.vadi2.postured": {                                                                                                                                                                                                                               
-      "finish-args-login1-talk-name": "Requires login1 access to detect screen lock state for auto-pause feature for privacy protection"                                                                                                                                             
+      "finish-args-login1-talk-name": "Requires login1 access to detect screen lock state for auto-pause feature for privacy protection"
+    },
+    "io.github.sourcegit_scm.sourcegit": {
+        "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
+        "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+        "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
     }
 }
