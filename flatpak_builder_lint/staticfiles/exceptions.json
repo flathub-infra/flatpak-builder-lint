@@ -29,7 +29,9 @@
         "finish-args-flatpak-system-talk-name": "Required to communicate with the Flatpak system service (org.freedesktop.Flatpak) to manage both user and system-level Flatpak installations.",
         "finish-args-flatpak-system-folder-access": "Read-only access to /var/lib/flatpak is required to list and display information about system-installed Flatpak applications.",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Read-only access to XDG_DATA_HOME/flatpak is required to list and display information about user-installed Flatpak applications.",
-        "finish-args-unnecessary-xdg-data-applications-ro-access": "Read-only access to XDG_DATA_HOME/applications is required to display desktop entries and application metadata for installed Flatpak applications."
+        "finish-args-unnecessary-xdg-data-applications-ro-access": "Read-only access to XDG_DATA_HOME/applications is required to display desktop entries and application metadata for installed Flatpak applications.",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.mfat.sshpilot": {
         "finish-args-has-socket-ssh-auth": "Needs host SSH agent for seamless key-based SSH; app implements secure retrieval of secrets from keychain and adding them to ssh-agent for use.",
@@ -1016,7 +1018,8 @@
         "finish-args-host-ro-filesystem-access": "Predates the linter rule",
         "finish-args-unnecessary-xdg-data-gtk-doc-ro-access": "Manuals requires access to locally installed documentation",
         "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
-        "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation"
+        "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "app.devsuite.Ptyxis": {
         "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host",
@@ -1108,12 +1111,14 @@
         "finish-args-flatpak-spawn-access": "needed to access host dconf configuration",
         "finish-args-unnecessary-xdg-config-dconf-rw-access": "needed to access host dconf configuration at launch time",
         "finish-args-direct-dconf-path": "needed to access host dconf configuration",
-        "finish-args-dconf-talk-name": "needed to access host dconf configuration"
+        "finish-args-dconf-talk-name": "needed to access host dconf configuration",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "org.altlinux.Tuner": {
         "finish-args-unnecessary-xdg-config-dconf-rw-access": "needed to access host dconf configuration at launch time",
         "finish-args-direct-dconf-path": "needed to access host dconf configuration",
-        "finish-args-dconf-talk-name": "needed to access host dconf configuration"
+        "finish-args-dconf-talk-name": "needed to access host dconf configuration",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "cc.nift.nsm": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1230,7 +1235,8 @@
         "finish-args-contains-both-x11-and-wayland": "Optional Wayland support",
         "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
         "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "com.unity.UnityHub": {
         "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor",
@@ -1384,7 +1390,9 @@
     },
     "io.github.realmazharhussain.GdmSettings": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-unnecessary-xdg-config-monitors.xml-ro-access": "required for 'apply current display settings to GDM' feature"
+        "finish-args-unnecessary-xdg-config-monitors.xml-ro-access": "required for 'apply current display settings to GDM' feature",
+        "finish-args-host-os-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "io.github.shiftey.Desktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1412,7 +1420,8 @@
     },
     "io.podman_desktop.PodmanDesktop": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "io.stoplight.studio": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -1460,7 +1469,8 @@
     },
     "org.cryptomator.Cryptomator": {
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "org.flatpak.Builder": {
         "*": "used by flathub infra",
@@ -1636,13 +1646,15 @@
     "com.google.Chrome": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule"
+        "finish-args-direct-dconf-path": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "com.google.ChromeDev": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
-        "finish-args-direct-dconf-path": "Predates the linter rule"
+        "finish-args-direct-dconf-path": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "org.chromium.Chromium": {
         "finish-args-contains-both-x11-and-wayland": "optional wayland support",
@@ -1714,7 +1726,8 @@
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "com.skype.Client": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1774,7 +1787,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "io.wavebox.Wavebox": {
-        "flathub-json-automerge-enabled": "Predates the linter rule"
+        "flathub-json-automerge-enabled": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "jp.yvt.OpenSpades": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -1896,7 +1910,9 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Needs to read desktop files",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-autostart-filesystem-access": "Predates the linter rule"
+        "finish-args-autostart-filesystem-access": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "page.codeberg.JakobDev.jdMinecraftLauncher": {
         "finish-args-unnecessary-xdg-data-applications-create-access": "jdMinecraftLauncher creates .desktop files in share/applications",
@@ -1941,7 +1957,8 @@
     },
     "page.codeberg.JakobDev.jdDBusDebugger": {
         "finish-args-arbitrary-dbus-access": "It's a D-Bus Debugger",
-        "finish-args-host-tmp-access": "Predates the linter rule"
+        "finish-args-host-tmp-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "com.pojtinger.felicitas.Multiplex": {
         "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC",
@@ -1952,7 +1969,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-flatpak-user-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-user-folder-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "io.github.jean28518.Linux-Assistant": {
         "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers",
@@ -1986,7 +2004,9 @@
         "finish-args-flatpak-spawn-access": "Run strace on the Host",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Needs to read desktop files",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs to read desktop files",
-        "finish-args-flatpak-system-folder-access": "Predates the linter rule"
+        "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.dvlv.boxbuddyrs": {
         "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host",
@@ -2330,7 +2350,8 @@
     },
     "page.codeberg.JakobDev.jdMacroPlayer": {
         "finish-args-flatpak-spawn-access": "Run ydotoold on the Host",
-        "finish-args-host-tmp-access": "Predates the linter rule"
+        "finish-args-host-tmp-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "com.brave.Browser": {
         "flathub-json-automerge-enabled": "Predates the linter rule",
@@ -2338,7 +2359,8 @@
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
         "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "app.lith.Lith": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2904,7 +2926,9 @@
         "finish-args-unnecessary-xdg-data-Steam-rw-access": "Needed to detect and make changes to games installed through Steam.",
         "finish-args-flatpak-appdata-folder-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
         "finish-args-flatpak-system-folder-access": "Needed to read the OpenMW install folder when it is installed as a system Flatpak.",
-        "finish-args-flatpak-user-folder-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak."
+        "finish-args-flatpak-user-folder-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak.",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings.",
@@ -3148,7 +3172,8 @@
     "com.microsoft.EdgeDev": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "flathub-json-automerge-enabled": "Predates the linter rule",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "com.milesalan.mepo": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
@@ -3602,7 +3627,8 @@
     "ru.yandex.Browser": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
         "finish-args-direct-dconf-path": "Predates the linter rule",
-        "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
+        "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "io.github.vikdevelop.SaveDesktop": {
         "finish-args-dconf-talk-name": "Predates the linter rule",
@@ -3665,7 +3691,9 @@
         "finish-args-unnecessary-xdg-data-Steam-ro-access": "Required to list games in system Steam",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to list .desktop files on the host",
         "finish-args-login1-system-talk-name": "Predates the linter rule",
-        "finish-args-own-name-io.github.wivrn.Server": "Predates the linter rule"
+        "finish-args-own-name-io.github.wivrn.Server": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "finish-args-not-defined": "This provides an extension point only",
@@ -3727,7 +3755,8 @@
     },
     "menu.kando.Kando": {
         "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher",
-        "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name"
+        "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.flattool.Ignition": {
         "finish-args-unnecessary-xdg-config-autostart-create-access": "This app's purpose is to manage autostart entries",
@@ -3735,7 +3764,9 @@
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needed to be able to see the list of .desktop files associated with installed flatpaks, to be able to autostart them",
         "finish-args-unnecessary-xdg-data-applications-ro-access": "Needed to be able to see the list of .desktop files for user-installed applications, to be able to autostart them",
         "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-        "finish-args-host-var-access": "Predates the linter rule"
+        "finish-args-host-var-access": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "net.imaginaryinfinity.Squiid": {
         "finish-args-not-defined": "Is a command line application"
@@ -3997,7 +4028,9 @@
     "io.github.plrigaux.sysd-manager": {
         "finish-args-host-var-access": "Predates the linter rule",
         "finish-args-systemd1-talk-name": "Predates the linter rule",
-        "finish-args-systemd1-system-talk-name": "Predates the linter rule"
+        "finish-args-systemd1-system-talk-name": "Predates the linter rule",
+        "finish-args-host-os-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     },
     "io.github.rafaelfassi.QLogExplorer": {
         "finish-args-host-var-access": "Predates the linter rule",
@@ -5212,7 +5245,9 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "net.odamex.Odamex": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "net.poedit.Poedit": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5502,7 +5537,8 @@
     "org.opencpn.OpenCPN": {
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-systemd1-system-talk-name": "Predates the linter rule",
-        "finish-args-login1-system-talk-name": "Predates the linter rule"
+        "finish-args-login1-system-talk-name": "Predates the linter rule",
+        "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule"
     },
     "org.openscad.OpenSCAD": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5870,7 +5906,8 @@
         "finish-args-login1-system-talk-name": "Predates the linter rule"
     },
     "io.github.streetpea.Chiaki4deck": {
-        "finish-args-login1-system-talk-name": "Predates the linter rule"
+        "finish-args-login1-system-talk-name": "Predates the linter rule",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "net.jami.Jami": {
         "finish-args-login1-system-talk-name": "Predates the linter rule"
@@ -5975,7 +6012,8 @@
         "finish-args-host-var-access": "read .desktop files of applications installed on the system",
         "finish-args-flatpak-system-folder-access": "read .desktop files of Flatpak applications installed on the system",
         "finish-args-unnecessary-xdg-data-flatpak-ro-access": "read .desktop files of Flatpak applications installed by the user",
-        "finish-args-unnecessary-xdg-data-applications-create-access": "batch save updated .desktop files to organise applications between the menus of different desktop environments"
+        "finish-args-unnecessary-xdg-data-applications-create-access": "batch save updated .desktop files to organise applications between the menus of different desktop environments",
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
     "io.github.Querz.mcaselector": {
         "finish-args-flatpak-appdata-folder-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
@@ -6007,7 +6045,8 @@
         "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
     },
     "io.github.jmberesford.Retrom": {
-        "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host"
+        "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host",
+        "finish-args-host-os-filesystem-access": "Predates the linter rule"
     },
     "io.sourceforge.xtrkcad_fork.xtrkcad": {
         "finish-args-home-filesystem-access": "Needed since the app reads/writes track plans stored anywhere on users home directory"
@@ -6177,5 +6216,8 @@
         "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
         "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
         "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
+    },
+    "com.moonlight_stream.Moonlight": {
+        "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     }
 }
