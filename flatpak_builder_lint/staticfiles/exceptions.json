@@ -6219,5 +6219,8 @@
     },
     "com.moonlight_stream.Moonlight": {
         "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
+    },
+    "fr.arnaudmichel.launcherstudio": {
+        "finish-args-unnecessary-xdg-data-applications-create-access": "The core functionality of this app is to create and manage .desktop files (launchers) for the user."
     }
 }
