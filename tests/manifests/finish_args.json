@@ -16,6 +16,8 @@
         "--filesystem=xdg-config/kdeglobals:ro",
         "--filesystem=~/.themes:ro",
         "--filesystem=home/.icons",
+        "--filesystem=host-etc",
+        "--filesystem=host-os",
         "--filesystem=host-root",
         "--filesystem=~/.fonts:create",
         "--talk-name=org.flathub.finish_args",

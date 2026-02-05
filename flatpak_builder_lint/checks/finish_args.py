@@ -161,7 +161,9 @@ class FinishArgsCheck(Check):
                         + f" access to {resv_dir} which is reserved internally for Flatpak"
                     )
 
-            matched = re.fullmatch(r"^(home|host|host-root|~/?)(:rw|:create|:ro)?$", fs)
+            matched = re.fullmatch(
+                r"^(home|host|host-root|host-etc|host-os|~/?)(:rw|:create|:ro)?$", fs
+            )
             if matched:
                 path = matched.group(1)
                 mode = matched.group(2)
