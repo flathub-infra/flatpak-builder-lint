@@ -370,7 +370,6 @@
     },
     "com.github.gijsgoudzwaard.image-optimizer": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.git_cola.git-cola": {
@@ -2066,9 +2065,6 @@
     "org.kde.filelight": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.kde.gcompris": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.kde.index": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2219,9 +2215,6 @@
     "org.kde.krename": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-filesystem-access": "Predates the linter rule"
-    },
-    "org.kde.kronometer": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.kruler": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2703,9 +2696,6 @@
     "org.gnome.ColorViewer": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.gnome.Connections": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.gnome.Devhelp": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
@@ -3113,7 +3103,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "ar.com.tuxguitar.TuxGuitar": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "at.priv.toastfreeware.ConfClerk": {
@@ -3379,9 +3368,6 @@
     "net.mullvad.MullvadBrowser": {
         "finish-args-login1-system-talk-name": "Predates the linter rule",
         "finish-args-own-name-wildcard-org.mozilla.mullvadbrowser": "Predates the linter rule"
-    },
-    "net.pioneerspacesim.Pioneer": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "net.rpdev.OpenTodoList": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
