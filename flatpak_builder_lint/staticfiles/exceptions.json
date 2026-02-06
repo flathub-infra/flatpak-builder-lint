@@ -1879,7 +1879,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.blinken": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
     },
     "org.kde.cantor": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1955,7 +1956,8 @@
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.kde.khangman": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+        "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
     },
     "org.kde.kig": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
