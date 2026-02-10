@@ -6206,7 +6206,8 @@
     "fr.arnaudmichel.launcherstudio": {
         "finish-args-unnecessary-xdg-data-applications-create-access": "The core functionality of this app is to create and manage .desktop files (launchers) for the user.",
         "finish-args-flatpak-system-folder-access": "Required to read .desktop files of Flatpak applications installed on the system to manage them.",
-        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them."
+        "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them.",
+        "finish-args-home-ro-filesystem-access": "Required to load application icons located in arbitrary paths within the user's home directory (e.g. ~/.local/share, AppImages, downloads)."
     },
     "io.github.hkdb.Aerion": {
         "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
