@@ -4478,7 +4478,8 @@
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
     "com.rustdesk.RustDesk": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-contains-both-x11-and-wayland": "x11 socket is required for cursor image capture on the controlled side, wayland socket is required for native wayland protocol support"
     },
     "com.scanoss.sbom-workbench": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
