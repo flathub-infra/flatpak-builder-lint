@@ -1,6 +1,5 @@
 {
     "io.github.hakandundar34coding.system-monitoring-center": {
-        "finish-args-contains-both-x11-and-wayland": "The application has an old GUI library (tkinter) and this library requires x11 for windowing",
         "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS",
         "finish-args-host-ro-filesystem-access": "The application is a system monitor. For system monitoring, several files (systemd service files, process information in '/proc' folder, etc.) of host OS are read"
     },
