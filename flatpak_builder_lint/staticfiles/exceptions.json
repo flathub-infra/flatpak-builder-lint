@@ -1,4 +1,9 @@
 {
+    "io.github.hakandundar34coding.system-monitoring-center": {
+        "finish-args-contains-both-x11-and-wayland": "The application has an old GUI library (tkinter) and this library requires x11 for windowing",
+        "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS",
+        "finish-args-host-ro-filesystem-access": "The application is a system monitor. For system monitoring, several files (systemd service files, process information in '/proc' folder, etc.) of host OS are read"
+    },
     "com.sublimehq.SublimeText": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
     },
