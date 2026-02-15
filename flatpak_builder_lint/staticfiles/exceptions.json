@@ -4996,7 +4996,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.cubocore.CoreRenamer": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.cubocore.CoreShot": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
