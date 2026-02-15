@@ -1957,9 +1957,6 @@
     "org.kde.khangman": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.kde.kid3": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.kde.kig": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
@@ -2453,8 +2450,7 @@
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
     "org.davmail.DavMail": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
     "org.eclipse.iot.fourdiac.Ide": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3316,9 +3312,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "uk.me.doof.Lander": {
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-    },
-    "website.i2pd.i2pd": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "xyz.hyperplay.HyperPlay": {
@@ -4406,9 +4399,6 @@
     "com.hostbuf.FinalShell": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "com.icanblink.blink": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
     "com.inform7.IDE": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
@@ -5102,9 +5092,6 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.jamovi.jamovi": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
-    },
-    "org.jflap.JFLAP": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.jupyter.JupyterLab": {
