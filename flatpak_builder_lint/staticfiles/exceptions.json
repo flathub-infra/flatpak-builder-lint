@@ -4996,7 +4996,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.cubocore.CoreRenamer": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Requires host filesystem access because renaming is technically a directory-level write operation; since the Flatpak file portal only grants access to individual files rather than their parent folders, the sandbox prevents the app from modifying the directory entry to finalize a name change."
     },
     "org.cubocore.CoreShot": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
