@@ -4,7 +4,7 @@
     <id>org.flathub.appstream_unsupported_ctype</id>
     <name>Example Console</name>
     <summary>Example Console Application</summary>
-    <url type="homepage">https://example.org</url>
+    <url type="homepage">https://www.google.com/</url>
     <developer_name>Flathub</developer_name>
     <description>
       <p>This is an example</p>

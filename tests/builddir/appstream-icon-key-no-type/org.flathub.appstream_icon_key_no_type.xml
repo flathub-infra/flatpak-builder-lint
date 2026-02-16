@@ -13,7 +13,7 @@
   <developer id="flathub.org">
     <name>Flathub</name>
   </developer>
-  <url type="homepage">https://example.org/</url>
+  <url type="homepage">https://www.google.com/</url>
   <url type="vcs-browser">https://github.com/flathub/example</url>
   <launchable type="desktop-id">org.flathub.appstream_icon_key_no_type.desktop</launchable>
   <icon type="cached" width="48" height="48">org.flathub.appstream_icon_key_no_type.png</icon>
@@ -23,7 +23,7 @@
   <icon type="remote" width="128" height="128">https://example.org/icon2.png</icon>
   <icon type="remote" width="128" height="128">https://dl.flathub.org/media/org/flathub/appstream_broken_icon/7934ba328ca1b4a3f35dade2bbc3073e/icons/128x128/org.flathub.appstream_broken_icon.png</icon>
   <icon type="stock">org.flathub.appstream_icon_key_no_type</icon>
-  <url type="homepage">https://example.org</url>
+  <url type="homepage">https://www.google.com/</url>
   <screenshots>
     <screenshot type="default">
       <caption>A test caption</caption>

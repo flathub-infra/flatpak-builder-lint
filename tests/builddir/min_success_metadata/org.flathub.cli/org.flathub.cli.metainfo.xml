@@ -16,7 +16,7 @@
   <developer id="org.flathub">
     <name>Flathub</name>
   </developer>
-  <url type="homepage">https://example.org</url>
+  <url type="homepage">https://www.google.com/</url>
   <provides>
     <binary>foo</binary>
   </provides>

@@ -7,7 +7,7 @@
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <developer_name>Flathub</developer_name>
-  <url type="homepage">https://example.org/</url>
+  <url type="homepage">https://www.google.com/</url>
   <launchable type="desktop-id">com.github.flathub.appdata-quality.desktop</launchable>
     <description>
     <p>Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo Foo</p>

@@ -10,7 +10,7 @@
   <name>Foo Bar</name>
   <developer_name>Flathub</developer_name>
   <summary>Foo foo foo foo</summary>
-  <url type="homepage">https://example.org</url>
+  <url type="homepage">https://www.google.com/</url>
   <description>
     <p>An example desktop application</p>
   </description>

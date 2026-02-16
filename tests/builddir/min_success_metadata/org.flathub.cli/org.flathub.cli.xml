@@ -15,7 +15,7 @@
     <description xml:lang="fr">
       <p>Il s'agit d'un exemple d'application console pour effectuer des vérifications dans le linter afin qu'elles réussissent toujours. C'est pour le linter seulement.</p>
     </description>
-    <url type="homepage">https://example.org</url>
+    <url type="homepage">https://www.google.com/</url>
     <provides>
       <binary>foo</binary>
     </provides>
