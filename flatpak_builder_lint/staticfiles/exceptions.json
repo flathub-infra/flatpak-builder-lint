@@ -4977,8 +4977,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.cubocore.CoreImage": {
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-host-ro-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "After image is edited, the app needs to write the modified file back to its original location, so requires host access. Also to get all the images in the same directory and allow users to view between all of them."
     },
     "org.cubocore.CoreInfo": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
