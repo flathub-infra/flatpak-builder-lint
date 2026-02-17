@@ -1,7 +1,6 @@
 {
     "io.github.hakandundar34coding.system-monitoring-center": {
-        "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS",
-        "finish-args-host-etc-ro-filesystem-access": "The application is a system monitor. For system monitoring, several files (process, user information, etc.) of host OS are read"
+        "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS"
     },
     "com.sublimehq.SublimeText": {
         "finish-args-host-filesystem-access": "The app is a text editor intended to open and edit arbitrary files on the user's system. Host filesystem access is required to allow opening files outside of sandboxed locations, similar to other text editors."
