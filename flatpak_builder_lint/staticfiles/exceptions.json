@@ -5860,4 +5860,8 @@
     "io.github.hkdb.Aerion": {
         "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
     }
+    {
+    "io.github.jalaucapstones.pacman-recreation": {
+        "appid-url-not-reachable": "The actual GitHub repo is https://github.com/JalaU-Capstones/pacman-recreation with capital letters and hyphen in username; lowercase variant does not exist but the domain is controlled by the developer."
+    }
 }
