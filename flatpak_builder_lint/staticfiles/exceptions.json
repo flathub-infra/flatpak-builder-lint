@@ -4353,6 +4353,9 @@
     "codes.loers.Karlender": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "com.abisource.AbiWord": {
+        "finish-args-home-filesystem-access": "Doesn't use portals"
+    },
     "com.bambulab.BambuStudio": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
