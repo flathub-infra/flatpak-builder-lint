@@ -5864,5 +5864,10 @@
     },
     "io.github.hkdb.Aerion": {
         "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
+    },
+    "org.ecosia.Browser": {
+        "finish-args-direct-dconf-path": "Predates the linter rule",
+        "finish-args-dconf-talk-name": "Predates the linter rule",
+        "finish-args-host-etc-filesystem-access": "Predates the linter rule"
     }
 }
