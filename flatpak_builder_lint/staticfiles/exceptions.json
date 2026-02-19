@@ -5862,5 +5862,8 @@
     },
     "io.github.hkdb.Aerion": {
         "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
+    },
+    "fr.quentium.stacer": {
+        "finish-args-unnecessary-xdg-config-autostart-rw-access": "Stacer needs access to manage user autostart entries in Startup Apps section of the app"
     }
 }
