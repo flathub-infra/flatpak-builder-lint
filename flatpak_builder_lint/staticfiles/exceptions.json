@@ -5866,8 +5866,7 @@
         "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
     },
     "org.ecosia.Browser": {
-        "finish-args-direct-dconf-path": "needed to access host dconf configuration",
-        "finish-args-dconf-talk-name": "needed to access host dconf configuration",
-        "finish-args-host-etc-filesystem-access": "needed to access certificates and font configuration"
+        "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
+        "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
     }
 }
