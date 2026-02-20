@@ -4979,7 +4979,7 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "org.cubocore.CoreFM": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-host-filesystem-access": "Requries host access to browse all the files in the entire filesystem."
     },
     "org.cubocore.CoreHunt": {
         "finish-args-host-ro-filesystem-access": "Able to read the filesystem to find files",
