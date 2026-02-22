@@ -453,7 +453,6 @@
     },
     "com.github.kmwallio.thiefmd": {
         "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.github.KRTirtho.Spotube": {
@@ -2515,9 +2514,6 @@
     "org.gnome.gThumb": {
         "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
     },
-    "org.gnome.HexGL": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-    },
     "org.gnome.Loupe": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
     },
@@ -2631,7 +2627,6 @@
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
     "org.remmina.Remmina": {
-        "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
         "finish-args-flatpak-spawn-access": "Needed to launch programs on the host specified by the user",
         "flathub-json-automerge-enabled": "Predates the linter rule",
         "finish-args-dconf-talk-name": "Predates the linter rule",
@@ -3825,7 +3820,6 @@
         "finish-args-flatpak-system-folder-access": "This app requires read-only access to the hosts' /var/lib/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
         "finish-args-flatpak-user-folder-access": "This app requires read-only access to the hosts' ~/.local/share/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
         "finish-args-host-var-access": "This app requires read-only access to the hosts' /var/lib/snapd/desktop/applications directory in order to allow users to add snaps to the applications launched on startup.",
-        "finish-args-autostart-filesystem-access": "Predates the linter rule",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
         "finish-args-host-ro-filesystem-access": "Predates the linter rule"
     },
