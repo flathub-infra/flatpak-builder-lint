@@ -4357,6 +4357,9 @@
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-own-name-org.qemu": "Predates the linter rule"
     },
+    "com.abisource.AbiWord": {
+        "finish-args-home-filesystem-access": "Doesn't use portals"
+    },
     "com.bespokesynth.BespokeSynth": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
