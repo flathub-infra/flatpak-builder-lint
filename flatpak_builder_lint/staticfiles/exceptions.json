@@ -5848,6 +5848,9 @@
         "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
         "finish-args-unnecessary-xdg-config-git-create-access": "Needed to read git config"
     },
+    "io.github.alper_han.crossmacro": {
+        "finish-args-kwin-talk-name": "Required to talk to a KWin script for tracking cursor position on KDE Wayland"
+    },
     "com.moonlight_stream.Moonlight": {
         "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
