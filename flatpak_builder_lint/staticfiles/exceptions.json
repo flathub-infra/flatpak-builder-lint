@@ -4975,6 +4975,9 @@
     "org.cubocore.CoreFM": {
         "finish-args-host-filesystem-access": "Requries host access to browse all the files in the entire filesystem."
     },
+    "cc.cubocore.CoreGarage": {
+        "finish-args-home-filesystem-access": "Accessing the cubocore apps shared setting file in ./home/config folder, and make it if has not been created yet."
+    },
     "org.cubocore.CoreHunt": {
         "finish-args-host-ro-filesystem-access": "Able to read the filesystem to find files",
         "finish-args-home-filesystem-access": "Predates the linter rule"
