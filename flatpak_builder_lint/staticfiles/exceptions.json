@@ -4765,6 +4765,9 @@
     "io.github.picocrypt.Picocrypt": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
+    "io.github.picocrypt_ng.Picocrypt-NG": {
+        "finish-args-home-filesystem-access": "Needed to encrypt and decrypt user-selected files and folders anywhere in the home directory, including keyfiles."
+    },
     "io.github.ra3xdh.qucs_s": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
