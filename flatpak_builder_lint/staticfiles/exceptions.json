@@ -1607,6 +1607,9 @@
     "com.tencent.WeChat": {
         "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
     },
+    "com.tencent.wemeet": {
+        "finish-args-contains-both-x11-and-wayland": "This app only runs on x11 but needs wayland socket to support share screen"
+    },
     "com.viber.Viber": {
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
     },
