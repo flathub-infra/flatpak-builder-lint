@@ -5878,5 +5878,8 @@
     "org.ecosia.Browser": {
         "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
         "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
+    },
+    "io.github.martinrotter.rssguard": {
+        "finish-args-unnecessary-xdg-config-autostart-rw-access": "Required for the built-in autostart toggle."
     }
 }
