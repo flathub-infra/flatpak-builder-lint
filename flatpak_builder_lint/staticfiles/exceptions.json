@@ -5863,6 +5863,10 @@
     "io.github.alper_han.crossmacro": {
         "finish-args-kwin-talk-name": "Required to talk to a KWin script for tracking cursor position on KDE Wayland"
     },
+    "ca.vtrlx.Telepipe": {
+        "finish-args-flatpak-spawn-access": "The app's intended use is to run commands on the host machine, similar to a terminal",
+        "finish-args-home-filesystem-access": "The app's builtin 'cd' command needs access to the filesystem to be able to navigate it using paths entered by the user."
+    },
     "com.moonlight_stream.Moonlight": {
         "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
