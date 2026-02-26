@@ -332,6 +332,7 @@ def test_manifest_finish_args() -> None:
         "finish-args-host-os-filesystem-access",
         "finish-args-host-etc-filesystem-access",
         "finish-args-metadata-key",
+        "finish-args-contains-inherit-wayland-socket",
     }
 
     expected_absents = {

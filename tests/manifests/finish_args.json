@@ -26,6 +26,7 @@
         "--talk-name=org.freedesktop.impl.portal.PermissionStore",
         "--own-name=org.mpris.MediaPlayer2.org.flathub.finish_args",
         "--socket=session-bus",
+        "--socket=inherit-wayland-socket",
         "--socket=wayland",
         "--socket=x11",
         "--socket=fallback-x11",

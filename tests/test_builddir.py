@@ -243,6 +243,7 @@ def test_builddir_finish_args() -> None:
         "finish-args-host-root-filesystem-access",
         "finish-args-host-os-filesystem-access",
         "finish-args-host-etc-filesystem-access",
+        "finish-args-contains-inherit-wayland-socket",
     }
 
     expected_absents = {

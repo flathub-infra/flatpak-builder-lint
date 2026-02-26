@@ -31,6 +31,9 @@ class FinishArgsCheck(Check):
         if isinstance(init_ver, str):
             flatpak_version = init_ver.split(";", 1)[0]
 
+        if "inherit-wayland-socket" in finish_args["socket"]:
+            self.errors.add("finish-args-contains-inherit-wayland-socket")
+
         if "x11" in finish_args["socket"] and "fallback-x11" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-fallback")
 
