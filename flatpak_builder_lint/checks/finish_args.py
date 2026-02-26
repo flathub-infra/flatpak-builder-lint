@@ -531,6 +531,9 @@ class FinishArgsCheck(Check):
                 split = arg.split("=")
                 key = split[0].removeprefix("--")
                 value = "=".join(split[1:])
+                if key == "metadata" and not value.startswith("X-DConf=migrate-path=/"):
+                    self.errors.add("finish-args-metadata-key")
+                    continue
                 if key == "require-version":
                     key = "required-flatpak"
                 if key == "nodevice":

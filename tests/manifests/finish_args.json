@@ -50,6 +50,7 @@
         "--talk-name=org.freedesktop.systemd1",
         "--own-name=org.kde.KWin",
         "--system-talk-name=org.kde.plasmashell",
-        "--system-own-name=org.freedesktop.login1"
+        "--system-own-name=org.freedesktop.login1",
+        "--metadata=Context=sockets=x11;"
     ]
 }
