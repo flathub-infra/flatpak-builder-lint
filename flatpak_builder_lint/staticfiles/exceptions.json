@@ -3845,6 +3845,8 @@
         "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work.",
         "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Required for MangoHud to detect the settings file."
+        "finish-args-flatpak-spawn-access": "Required for running Steam games."
+        "finish-args-flatpak-appdata-folder-access": "Required for detecting Steam games and icons."
     },
     "app.getclipboard.Clipboard": {
         "finish-args-host-filesystem-access": "Predates the linter rule"
