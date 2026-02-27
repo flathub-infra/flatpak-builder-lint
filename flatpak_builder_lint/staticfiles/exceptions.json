@@ -4989,7 +4989,7 @@
     },
     "cc.cubocore.CoreGarage": {
         "finish-args-unnecessary-xdg-config-cubocore-create-access": "For having access to the CSuite config",
-        "finish-args-unnecessary-xdg-config-mimeapps-list-access": "For changing default apps"
+        "finish-args-unnecessary-xdg-config-mimeapps.list-rw-access": "For changing default apps"
     },
     "org.cubocore.CoreHunt": {
         "finish-args-host-ro-filesystem-access": "Able to read the filesystem to find files",
