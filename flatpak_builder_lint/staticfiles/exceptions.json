@@ -5882,5 +5882,9 @@
     "org.ecosia.Browser": {
         "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
         "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
+    },
+    "io.github.switch_bros.SteamLibraryManager": {
+        "finish-args-unnecessary-xdg-data-Steam-rw-access": "App reads and writes Steam's local files: collections (cloud-storage JSON), localconfig.vdf, appinfo.vdf (metadata editor), and shortcuts.vdf (external games)",
+        "finish-args-flatpak-appdata-folder-access": "Read-write access to Flatpak Steam's data directory for users with Steam installed as Flatpak"
     }
 }
