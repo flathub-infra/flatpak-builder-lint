@@ -21,7 +21,7 @@ jobs:
       - name: Purge exceptions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python utils/validator.py --purge-from-issue 750
+        run: python utils/validator.py --purge-from-issue 915
 
       - name: Validate
         run: python utils/validator.py
