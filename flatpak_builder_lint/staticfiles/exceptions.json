@@ -5440,6 +5440,7 @@
     },
     "io.github.mpc_qt.mpc-qt": {
         "finish-args-home-ro-filesystem-access": "Predates the linter rule",
+        "finish-args-login1-system-talk-name": "Needed to be able to Hibernate, Suspend and PowerOff after playback",
         "finish-args-contains-both-x11-and-wayland": "The app supports both X11 and Wayland through a Tweaks setting"
     },
     "io.github.punesemu.puNES": {
