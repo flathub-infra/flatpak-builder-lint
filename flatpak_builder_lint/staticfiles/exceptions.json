@@ -2,6 +2,9 @@
     "ai.opencode.opencode": {
         "finish-args-home-filesystem-access": "Needed to access and modify projects outside the sandbox"
     },
+    "io.github.kmwallio.ultimateslice": {
+        "finish-args-home-filesystem-access": "The app is a video editor opening XML project files. The XML references other files that may not have been opened in the sandbox."
+    },
     "io.github.hakandundar34coding.system-monitoring-center": {
         "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS"
     },
