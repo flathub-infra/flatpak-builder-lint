@@ -5875,6 +5875,9 @@
         "finish-args-kwin-talk-name": "Required to talk to a KWin script for tracking cursor position on KDE Wayland",
         "finish-args-flatpak-spawn-access": "Required for optional Wayland Quick Setup via flatpak-spawn + pkexec to apply per-session input ACLs."
     },
+    "ca.vtrlx.Telepipe": {
+        "finish-args-flatpak-spawn-access": "The app's intended use is to run commands on the host machine, similar to a terminal"
+    },
     "com.moonlight_stream.Moonlight": {
         "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
     },
