@@ -35,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     exit_code = 0
     for filename in args.filenames:
         with open(filename) as f:
-            merge_data = json.load(f, object_pairs_hook=lambda pairs: merge_duplicates(pairs))
+            merge_data = json.load(f, object_pairs_hook=merge_duplicates)
             if merge_data:
                 if not save_file(filename, merge_data):
                     exit_code = 1
