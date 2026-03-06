@@ -4474,7 +4474,8 @@
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
     "com.reqable.Reqable": {
-        "finish-args-home-filesystem-access": "Predates the linter rule"
+        "finish-args-home-filesystem-access": "Predates the linter rule",
+        "finish-args-own-name-com.reqable.linux": "Needed when running the app"
     },
     "com.richwhitehouse.BigPEmu": {
         "finish-args-home-filesystem-access": "Predates the linter rule",
