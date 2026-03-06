@@ -344,7 +344,7 @@ def get_proj_url(appid: str) -> str | None:
                 url = f"gitlab.com/{second_cpt}/{third_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
-                demangled.insert(len(demangled), appid.split(".")[-1])
+                demangled.insert(len(demangled), appid.rsplit(".", maxsplit=1)[-1])
                 proj = "/".join(demangled)
                 url = f"gitlab.com/{proj}"
 
@@ -354,7 +354,7 @@ def get_proj_url(appid: str) -> str | None:
                 url = f"framagit.org/{second_cpt}/{third_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][2:]]
-                demangled.insert(len(demangled), appid.split(".")[-1])
+                demangled.insert(len(demangled), appid.rsplit(".", maxsplit=1)[-1])
                 proj = "/".join(demangled)
                 url = f"framagit.org/{proj}"
 
@@ -366,7 +366,7 @@ def get_proj_url(appid: str) -> str | None:
                 url = f"gitlab.gnome.org/{third_cpt}/{fourth_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]
-                demangled.insert(len(demangled), appid.split(".")[-1])
+                demangled.insert(len(demangled), appid.rsplit(".", maxsplit=1)[-1])
                 proj = "/".join(demangled)
                 url = f"gitlab.gnome.org/{proj}"
 
@@ -376,7 +376,7 @@ def get_proj_url(appid: str) -> str | None:
                 url = f"gitlab.freedesktop.org/{third_cpt}/{fourth_cpt}"
             else:
                 demangled = [demangle(i) for i in appid.split(".")[:-1][3:]]
-                demangled.insert(len(demangled), appid.split(".")[-1])
+                demangled.insert(len(demangled), appid.rsplit(".", maxsplit=1)[-1])
                 proj = "/".join(demangled)
                 url = f"gitlab.freedesktop.org/{proj}"
 
