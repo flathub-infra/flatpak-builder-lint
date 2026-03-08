@@ -2168,9 +2168,7 @@
     },
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host",
-        "finish-args-home-filesystem-access": "Predates the linter rule",
-        "finish-args-full-home-cache-access":"required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox",
-        "finish-args-flatpak-appdata-folder-access":"required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox",
+        "finish-args-home-filesystem-access": "Predates the linter rule",        
         "finish-args-host-tmp-access":"required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox"
     },
     "page.kramo.Cartridges": {
