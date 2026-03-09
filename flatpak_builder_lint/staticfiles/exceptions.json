@@ -4987,6 +4987,9 @@
     "org.cubocore.CoreFM": {
         "finish-args-host-filesystem-access": "Requries host access to browse all the files in the entire filesystem."
     },
+    "cc.cubocore.CorePins": {
+        "finish-args-unnecessary-xdg-config-cubocore-create-access": "For having access to the CSuite config"
+    },
     "cc.cubocore.CoreGarage": {
         "finish-args-unnecessary-xdg-config-cubocore-create-access": "For having access to the CSuite config",
         "finish-args-unnecessary-xdg-config-mimeapps-list-access": "For changing default apps"
