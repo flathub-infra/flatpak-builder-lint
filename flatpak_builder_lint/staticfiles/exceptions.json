@@ -5857,5 +5857,8 @@
     "org.ecosia.Browser": {
         "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
         "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
+    },
+    "com.moulberry.PandoraLauncher": {
+        "finish-args-contains-both-x11-and-wayland": "older versions of minecraft don't work on pure wayland and may need x11"
     }
 }
