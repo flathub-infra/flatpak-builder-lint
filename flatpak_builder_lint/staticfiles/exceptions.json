@@ -3047,6 +3047,7 @@
         "finish-args-dconf-talk-name": "Access host dconf for proxy resolution",
         "finish-args-direct-dconf-path": "Access host dconf for proxy resolution",
         "finish-args-host-tmp-access": "Access host tmp for MPRIS media cover art",
+        "finish-args-unnecessary-xdg-data-pki-rw-access": "Access host NSS Shared DB",
         "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
         "module-chromium-source-dir-not-allowed": "Predates the linter rule"
     },
