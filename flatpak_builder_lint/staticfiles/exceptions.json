@@ -2162,7 +2162,7 @@
     },
     "com.core447.StreamController": {
         "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host",
-        "finish-args-home-filesystem-access": "Predates the linter rule",        
+        "finish-args-home-filesystem-access": "Predates the linter rule",
         "finish-args-flatpak-appdata-folder-access": "required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox"
     },
     "page.kramo.Cartridges": {
@@ -5857,5 +5857,9 @@
     "org.ecosia.Browser": {
         "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
         "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
+    },
+    "dev.mariinkys.Cedilla": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files",
+        "finish-args-home-filesystem-access": "Needed since the app reads/writes markdown files stored anywhere on users home directory"
     }
 }
