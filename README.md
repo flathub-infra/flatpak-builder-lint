@@ -298,6 +298,7 @@ options:
   -h, --help            Show this help message and exit
   --version             Show the version number and exit
   --exceptions          Skip errors added to exceptions. Exceptions must be submitted to Flathub
+  --exceptions-repo     Repo key for remote exception lookups from Flathub. Omitting merges all repo keys; supplying a value merges '*' and that key.
   --user-exceptions     Path to a JSON file with exceptions
   --appid               Override the app ID with this app ID
   --cwd                 Override the path parameter with the current working directory
