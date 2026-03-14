@@ -6,6 +6,7 @@ import re
 import subprocess
 import sys
 from collections.abc import Sequence
+from typing import Any
 
 
 def normalize_error_arg(s: str) -> str:
@@ -71,8 +72,8 @@ def check_prefix_coverage(known: set[str]) -> list[str]:
     return missing
 
 
-def check_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[str, str]]:
-    d: dict[str, dict[str, str]] = {}
+def check_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    d: dict[str, Any] = {}
     for key, val in pairs:
         if key in d:
             raise ValueError(f"Duplicate key(s) found: {key}")
@@ -80,7 +81,7 @@ def check_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[
     return d
 
 
-def purge_exception(filename: str, exc_name: str) -> bool:
+def purge_exception(filename: str, exc_name: str, repo: str | None) -> bool:
     if not os.path.exists(filename):
         print(f"File not found: {filename}")  # noqa: T201
         return False
@@ -89,9 +90,12 @@ def purge_exception(filename: str, exc_name: str) -> bool:
     modified = False
     keys_to_delete = []
     for app_id, entries in data.items():
-        if exc_name in entries:
-            del entries[exc_name]
-            modified = True
+        for r in list(entries.keys()) if repo is None else [repo, "*"]:
+            if r in entries and exc_name in entries[r]:
+                del entries[r][exc_name]
+                modified = True
+                if not entries[r]:
+                    del entries[r]
         if not entries:
             keys_to_delete.append(app_id)
             modified = True
@@ -259,6 +263,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("filenames", nargs="*", help="Input filenames")
     parser.add_argument("--purge", metavar="EXCEPTION", help="Remove an exception from the file")
     parser.add_argument(
+        "--repo",
+        type=str,
+        default=None,
+        help="Repo key to target for purge operations (default: purge from all repo keys)",
+    )
+    parser.add_argument(
         "--purge-unknown-ids",
         action="store_true",
         help="Remove app IDs in exceptions file that are not present in Flathub's list",
@@ -296,10 +306,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                     continue
 
                 for exc_name in exceptions:
-                    if exc_name in data[app_id]:
-                        del data[app_id][exc_name]
-                        file_modified = True
-                        print(f"Purged '{exc_name}' from {app_id} in {filename}")  # noqa: T201
+                    for r in list(data[app_id].keys()) if args.repo is None else [args.repo, "*"]:
+                        if r in data[app_id] and exc_name in data[app_id][r]:
+                            del data[app_id][r][exc_name]
+                            file_modified = True
+                            print(f"Purged '{exc_name}' from {app_id}/{r} in {filename}")  # noqa: T201
+                            if not data[app_id][r]:
+                                del data[app_id][r]
 
                 if app_id in data and not data[app_id]:
                     del data[app_id]
@@ -317,7 +330,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         exc = args.purge
         modified_any = False
         for filename in args.filenames:
-            if purge_exception(filename, exc):
+            if purge_exception(filename, exc, args.repo):
                 modified_any = True
         return 0 if modified_any else 1
 
@@ -346,8 +359,23 @@ def main(argv: Sequence[str] | None = None) -> int:
             exit_code = 1
             continue
 
+        for app_id, entries in data.items():
+            if any(isinstance(v, str) for v in entries.values()):
+                print(  # noqa: T201
+                    f"{filename}: {app_id}: flat exception structure is not allowed, "
+                    f"migrate to repo-keyed structure"
+                )
+                exit_code = 1
+
+        if exit_code:
+            continue
+
         found_exceptions = {
-            j for i in data.values() for j in i if not any(match_prefix(j, p) for p in EXP_PREFIX)
+            j
+            for i in data.values()
+            for repo_exceptions in i.values()
+            for j in repo_exceptions
+            if not any(match_prefix(j, p) for p in EXP_PREFIX)
         } - {
             "*",
             "appid-filename-mismatch",
