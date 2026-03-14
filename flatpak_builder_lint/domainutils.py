@@ -230,7 +230,7 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
 
 @cache
-def get_remote_exceptions_flathub(appid: str) -> set[str]:
+def get_remote_exceptions_flathub(appid: str, exceptions_repo: str | None) -> set[str]:
     url = f"{config.FLATHUB_API_URL}/exceptions/{appid}"
     try:
         # exception updates should be reflected immediately
@@ -242,8 +242,21 @@ def get_remote_exceptions_flathub(appid: str) -> set[str]:
         )
         logger.debug("Response headers for %s: %s", url, dict(r.headers))
         if r.status_code == 200 and r.headers.get("Content-Type") == "application/json":
-            logger.debug("Loaded remote exceptions from %s: %s", url, set(r.json()))
-            return set(r.json())
+            app_exceptions = r.json().get(appid, {})
+            if exceptions_repo:
+                result = set(app_exceptions.get(exceptions_repo, {}).keys()) | set(
+                    app_exceptions.get("*", {}).keys()
+                )
+            else:
+                result = {k for v in app_exceptions.values() for k in v}
+            logger.debug(
+                "Loaded remote exceptions for %s (repo key: %s) from %s: %s",
+                appid,
+                exceptions_repo,
+                url,
+                result,
+            )
+            return result
     except requests.exceptions.RequestException as e:
         logger.debug(
             "Request exception when fetching exceptions for %s: %s: %s", appid, type(e).__name__, e
@@ -253,7 +266,7 @@ def get_remote_exceptions_flathub(appid: str) -> set[str]:
 
 
 @cache
-def get_remote_exceptions_github(appid: str) -> set[str]:
+def get_remote_exceptions_github(appid: str, exceptions_repo: str | None) -> set[str]:
     url = (
         f"{config.GITHUB_CONTENT_CDN}/{config.LINTER_FULL_REPO}/"
         f"HEAD/flatpak_builder_lint/staticfiles/exceptions.json"
@@ -266,13 +279,21 @@ def get_remote_exceptions_github(appid: str) -> set[str]:
         )
         logger.debug("Response headers for %s: %s", url, dict(r.headers))
         if r.status_code == 200 and r.headers.get("Content-Type", "").startswith("text/plain"):
+            app_exceptions = r.json().get(appid, {})
+            if exceptions_repo:
+                result = set(app_exceptions.get(exceptions_repo, {}).keys()) | set(
+                    app_exceptions.get("*", {}).keys()
+                )
+            else:
+                result = {k for v in app_exceptions.values() for k in v}
             logger.debug(
-                "Loaded remote exceptions for %s from %s: %s",
+                "Loaded remote exceptions for %s (repo key: %s) from %s: %s",
                 appid,
+                exceptions_repo,
                 url,
-                set(r.json().get(appid, {}).keys()),
+                result,
             )
-            return set(r.json().get(appid, {}).keys())
+            return result
     except requests.exceptions.RequestException as e:
         logger.debug(
             "Request exception when fetching exceptions for %s: %s: %s", appid, type(e).__name__, e
