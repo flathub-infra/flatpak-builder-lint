@@ -330,8 +330,16 @@ jobs:
 
       - name: Check app override
         run: |
+          echo '{
+            "org.flathub.exceptions": [
+              "appid-filename-mismatch",
+              "toplevel-no-command",
+              "flathub-json-deprecated-i386-arch-included"
+            ]
+          }' > tests/cli/app_override_exceptions.json
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            --appid org.flathub.exceptions --exceptions manifest tests/cli/appid.json
+            --exceptions --user-exceptions tests/cli/app_override_exceptions.json \
+            --appid org.flathub.exceptions manifest tests/cli/appid.json
 
       - name: Check ref override
         run: |
