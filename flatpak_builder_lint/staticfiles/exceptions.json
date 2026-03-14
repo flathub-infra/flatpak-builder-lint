@@ -5857,5 +5857,8 @@
     "org.ecosia.Browser": {
         "finish-args-direct-dconf-path": "dconf access is required for proxy resolution support",
         "finish-args-dconf-talk-name": "dconf access is required for proxy resolution support"
+    },
+    "dev.mariinkys.Cedilla": {
+        "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
     }
 }
