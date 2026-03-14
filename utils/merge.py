@@ -3,12 +3,16 @@ import json
 from typing import Any
 
 
-def merge_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[str, str]]:
-    d: dict[str, dict[str, str]] = {}
+def merge_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    d: dict[str, Any] = {}
     for key, val in pairs:
         if key in d:
             if isinstance(d[key], dict):
-                d[key].update(val)
+                for repo, exceptions in val.items():
+                    if repo in d[key] and isinstance(d[key][repo], dict):
+                        d[key][repo].update(exceptions)
+                    else:
+                        d[key][repo] = exceptions
         else:
             d[key] = val
     return d
