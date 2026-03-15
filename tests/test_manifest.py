@@ -1,99 +1,20 @@
 import os
-import shutil
-import subprocess
-import tempfile
-from collections.abc import Generator
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
 from _pytest.monkeypatch import MonkeyPatch
 
-from flatpak_builder_lint import checks, cli
-
-
-def create_git_repo(path: str) -> None:
-    subprocess.run(["git", "init"], cwd=path, check=True)
-    subprocess.run(["git", "config", "user.name", "Test User"], cwd=path, check=True)
-    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=path, check=True)
-    subprocess.run(["git", "add", "."], cwd=path, check=True)
-    subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=path, check=True)
-    subprocess.run(
-        [
-            "git",
-            "remote",
-            "add",
-            "origin",
-            "https://github.com/flathub-infra/flatpak-builder-lint.git",
-        ],
-        cwd=path,
-        check=True,
-    )
-
-
-def set_git_remote_url(path: str, new_url: str) -> None:
-    subprocess.run(["git", "remote", "remove", "origin"], cwd=path, check=False)
-    subprocess.run(["git", "remote", "add", "origin", new_url], cwd=path, check=True)
-
-
-def create_file(path: str, size_mb: int = 10) -> None:
-    filepath = os.path.join(path, "file.txt")
-    with open(filepath, "wb") as f:
-        f.seek(size_mb * 1024 * 1024 - 1)
-        f.write(b"\0")
+from tests.testlib import create_git_repo, create_large_file, run_checks, set_git_remote_url
 
 
 @pytest.fixture(scope="module")
-def tmp_testdir() -> Generator[str, None, None]:
-    with tempfile.TemporaryDirectory() as tmpdir:
-        targetdir = os.path.join(tmpdir, "tests", "manifests")
-        shutil.copytree("tests/manifests", targetdir, symlinks=True)
-        yield tmpdir
+def tests_subdir() -> str:
+    return "manifests"
 
 
-@pytest.fixture(autouse=True)
-def change_to_tmpdir(tmp_testdir: str) -> Generator[None, None, None]:
-    original_dir = os.getcwd()
-    os.chdir(tmp_testdir)
-    yield
-    os.chdir(original_dir)
-
-
-@pytest.fixture(autouse=True)
-def mock_domainutils() -> Generator[dict[str, MagicMock], None, None]:
-    with (
-        patch("flatpak_builder_lint.domainutils.check_url") as mock_check_url,
-        patch("flatpak_builder_lint.domainutils.is_app_on_flathub_summary") as mock_is_on_flathub,
-        patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub") as mock_get_eol,
-        patch(
-            "flatpak_builder_lint.domainutils.get_remote_exceptions_github"
-        ) as mock_exceptions_gh,
-        patch(
-            "flatpak_builder_lint.domainutils.get_remote_exceptions_flathub"
-        ) as mock_exceptions_fh,
-    ):
-        mock_check_url.return_value = (True, None)
-        mock_is_on_flathub.return_value = False
-        mock_get_eol.return_value = {"org.gnome.Sdk//40"}
-        mock_exceptions_gh.return_value = set()
-        mock_exceptions_fh.return_value = set()
-
-        yield {
-            "check_url": mock_check_url,
-            "is_app_on_flathub_summary": mock_is_on_flathub,
-            "get_eol_runtimes_on_flathub": mock_get_eol,
-            "get_remote_exceptions_github": mock_exceptions_gh,
-            "get_remote_exceptions_flathub": mock_exceptions_fh,
-        }
-
-
-def run_checks(filename: str, enable_exceptions: bool = False) -> dict[str, str | list[str]]:
-    checks.Check.errors = set()
-    checks.Check.warnings = set()
-    checks.Check.jsonschema = set()
-    checks.Check.appstream = set()
-    checks.Check.desktopfile = set()
-    checks.Check.info = set()
-    return cli.run_checks("manifest", filename, enable_exceptions)
+@pytest.fixture(scope="module")
+def eol_runtimes() -> set[str]:
+    return {"org.gnome.Sdk//40"}
 
 
 def test_appid_too_few_cpts() -> None:
@@ -551,7 +472,7 @@ def test_manifest_eol_runtime() -> None:
 
 def test_manifest_in_git_repo(tmp_testdir: str) -> None:
     repo_path = os.path.abspath(os.path.join(tmp_testdir, "tests", "manifests", "git-repo-checks"))
-    create_file(repo_path, 30)
+    create_large_file(repo_path, 30)
     create_git_repo(repo_path)
     ret = run_checks("tests/manifests/git-repo-checks/git-repo-checks.json")
     found_errors = set(ret["errors"])
