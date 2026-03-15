@@ -242,6 +242,12 @@ To avoid cleanup run as:
 NO_CLEAN_UP=1 ./tests/flatmanager.sh
 ```
 
+Integration tests are best suited to be run in CI
+
+```
+uv run pytest -m integration -vvv
+```
+
 To write tests for manifest checks, recreate a minimal Flatpak builder
 manifest with the cases to check against and put it in `tests/manifests`.
 Then add the test using it (or modify the existing tests) in
