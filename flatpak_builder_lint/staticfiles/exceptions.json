@@ -6550,7 +6550,7 @@
         }
     },
     "com.abisource.AbiWord": {
-        "*": {
+        "stable": {
             "finish-args-home-filesystem-access": "Doesn't use portals"
         }
     },
