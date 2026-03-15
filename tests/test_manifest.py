@@ -89,6 +89,10 @@ def mock_domainutils() -> Generator[dict[str, MagicMock], None, None]:
 def run_checks(filename: str, enable_exceptions: bool = False) -> dict[str, str | list[str]]:
     checks.Check.errors = set()
     checks.Check.warnings = set()
+    checks.Check.jsonschema = set()
+    checks.Check.appstream = set()
+    checks.Check.desktopfile = set()
+    checks.Check.info = set()
     return cli.run_checks("manifest", filename, enable_exceptions)
 
 

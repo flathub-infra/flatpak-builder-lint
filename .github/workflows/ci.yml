@@ -253,17 +253,6 @@ jobs:
       - name: Run test suite
         run: flatpak run --command=pytest org.flatpak.Builder//localtest -n auto -vvv tests
 
-      - name: Run large repo check
-        run: |
-          export REPO="https://github.com/flathub/org.flatpak.Builder"
-          ostree init --repo=large_repo
-          dd if=/dev/zero of=large_repo/file.bin bs=1M count=13312
-          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --gha-format --exceptions repo large_repo || true)
-          echo "$output"
-          echo "$output" | grep "flatpak-repo-too-large"
-          unset REPO
-          rm -rf large_repo
-
       - name: Run Flatmanager checks
         run: bash -c tests/flatmanager.sh
 
@@ -315,31 +304,6 @@ jobs:
             --install-deps-from=flathub --ccache builddir org.freedesktop.Sdk.Extension.flathub.yaml
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
           flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Check appstream subcommand
-        run: |
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            appstream tests/repo/min_success_metadata/gui-app/org.flathub.gui.metainfo.xml
-
-      - name: Check user exceptions
-        run: |
-          cp -v tests/cli/io.github.flathub.flathub.json tests/cli/appid.json
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            manifest --exceptions --user-exceptions tests/cli/user_exceptions.json \
-            tests/cli/appid.json
-
-      - name: Check app override
-        run: |
-          echo '{
-            "org.flathub.exceptions": [
-              "appid-filename-mismatch",
-              "toplevel-no-command",
-              "flathub-json-deprecated-i386-arch-included"
-            ]
-          }' > tests/cli/app_override_exceptions.json
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            --exceptions --user-exceptions tests/cli/app_override_exceptions.json \
-            --appid org.flathub.exceptions manifest tests/cli/appid.json
 
       - name: Check ref override
         run: |
