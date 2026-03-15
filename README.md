@@ -124,8 +124,9 @@ You may need to pass `:Z` if your distro is using SELinux like so
 
 Installing flatpak-builder-lint locally with [uv][uv] or pip is
 not recommended unless for development purposes. It depends on patches
-that are found in the `org.flatpak.Builder` flatpak package
-and on external tools.
+that are found in Flathub's fork of [appstream](https://github.com/flathub-infra/appstream/tree/flathub),
+[flatpak](https://github.com/flathub-infra/flatpak/tree/flathub) and
+[flatpak-builder](https://github.com/flathub-infra/flatpak-builder/tree/flathub).
 
 ## Contributing
 
@@ -244,7 +245,7 @@ NO_CLEAN_UP=1 ./tests/flatmanager.sh
 
 Integration tests are best suited to be run in CI
 
-```
+```sh
 uv run pytest -m integration -vvv
 ```
 
