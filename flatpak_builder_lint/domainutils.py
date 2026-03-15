@@ -420,7 +420,9 @@ def get_domain(appid: str) -> str | None:
         psl = PublicSuffixList()
         if psl.is_private(fqdn):
             logger.debug("Using PSL to determine domain for appid: %s", appid)
-            domain = demangle(psl.privatesuffix(fqdn))
+            short_domain = psl.privatesuffix(fqdn)
+            if short_domain:
+                domain = short_domain
         else:
             domain = ".".join(reversed([demangle(i) for i in appid.split(".")[:-1]])).lower()
 
