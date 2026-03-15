@@ -63,17 +63,16 @@ def get_local_exceptions(appid: str, exceptions_repo: str | None) -> set[str]:
     with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid, {})
-        if ret:
-            logger.debug(
-                "Loaded local exceptions for %s (repo key: %s): %s",
-                appid,
-                exceptions_repo,
-                set(ret),
-            )
-            if exceptions_repo:
-                result = set(ret.get(exceptions_repo, {}).keys()) | set(ret.get("*", {}).keys())
-            else:
-                result = {k for v in ret.values() for k in v}
+        if exceptions_repo:
+            result = set(ret.get(exceptions_repo, {}).keys()) | set(ret.get("*", {}).keys())
+        else:
+            result = {k for v in ret.values() for k in v}
+        logger.debug(
+            "Loaded local exceptions for %s (repo key: %s): %s",
+            appid,
+            exceptions_repo,
+            result,
+        )
 
     return result
 
