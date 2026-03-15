@@ -35,7 +35,9 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 
 def setup_logging(debug: bool = False) -> None:
-    if debug:
+    debug_env = os.getenv("FLATPAK_BUILDER_LINT", "").lower() == "debug"
+
+    if debug or debug_env:
         logging.basicConfig(
             level=logging.CRITICAL + 1,
             format="%(asctime)s %(levelname)s:%(name)s:%(funcName)s: %(message)s",
