@@ -1944,6 +1944,7 @@
             "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime",
             "finish-args-unnecessary-xdg-data-Steam-create-access": "Uses shared installation for Proton builds",
             "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Access shared MangoHud configuration files",
+            "finish-args-unnecessary-xdg-cache-lutris-create-access": "Access to Lutris cache directory",
             "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "module-lutris_wrapper-source-dir-not-allowed": "Predates the linter rule"
