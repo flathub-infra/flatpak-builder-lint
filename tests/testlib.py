@@ -1,9 +1,11 @@
+import configparser
 import glob
 import gzip
 import os
 import shutil
 import struct
 import subprocess
+import tempfile
 from typing import Any
 
 from flatpak_builder_lint import checks, cli
@@ -152,11 +154,72 @@ def create_large_file(path: str, size_mb: int = 10) -> None:
         f.write(b"\0")
 
 
-def run_checks(
-    path: str,
-    check_type: str = "manifest",
-    enable_exceptions: bool = False,
-) -> dict[str, Any]:
+def read_ref_from_metadata(builddir: str) -> str:
+    metadata_path = os.path.join(builddir, "metadata")
+    cfg = configparser.RawConfigParser()
+    cfg.read(metadata_path)
+
+    if cfg.has_section("Application"):
+        section, prefix = "Application", "app"
+    elif cfg.has_section("Runtime"):
+        section, prefix = "Runtime", "runtime"
+    else:
+        raise ValueError(
+            f"metadata file {metadata_path!r} has neither [Application] nor [Runtime] section"
+        )
+
+    appid = cfg.get(section, "name")
+
+    arch = None
+    if cfg.has_option(section, "runtime"):
+        parts = cfg.get(section, "runtime").split("/")
+        if len(parts) == 3:
+            arch = parts[1]
+
+    if not arch:
+        arch = subprocess.run(
+            ["flatpak", "--default-arch"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    return f"{prefix}/{appid}/{arch}/stable"
+
+
+def commit_to_repo(builddir: str, repo_path: str) -> None:
+    ref = read_ref_from_metadata(builddir)
+
+    arch = ref.split("/")[2]
+
+    subprocess.run(
+        ["ostree", "init", f"--repo={repo_path}", "--mode=archive-z2"],
+        check=True,
+        capture_output=True,
+    )
+    subprocess.run(
+        ["ostree", "commit", f"--repo={repo_path}", f"--branch={ref}", builddir],
+        check=True,
+        capture_output=True,
+    )
+
+    screenshots_src = os.path.join(builddir, "screenshots")
+    if os.path.isdir(screenshots_src):
+        subprocess.run(
+            [
+                "ostree",
+                "commit",
+                f"--repo={repo_path}",
+                "--canonical-permissions",
+                f"--branch=screenshots/{arch}",
+                screenshots_src,
+            ],
+            check=True,
+            capture_output=True,
+        )
+
+
+def _reset_check_state() -> None:
     checks.Check.errors = set()
     checks.Check.warnings = set()
     checks.Check.jsonschema = set()
@@ -165,7 +228,23 @@ def run_checks(
     checks.Check.info = set()
     checks.Check.repo_primary_refs = set()
 
+
+def run_checks(
+    path: str,
+    check_type: str = "manifest",
+    tmp_root: str | None = None,
+    enable_exceptions: bool = False,
+) -> dict[str, Any]:
+    _reset_check_state()
+
     if check_type == "builddir":
         return cli.run_checks("builddir", path)
 
-    return cli.run_checks("manifest", path, enable_exceptions)
+    if check_type == "manifest":
+        return cli.run_checks("manifest", path, enable_exceptions)
+
+    assert tmp_root is not None, "tmp_root required for repo checks"
+    with tempfile.TemporaryDirectory(dir=tmp_root) as repo_tmp:
+        repo_path = os.path.join(repo_tmp, "repo")
+        commit_to_repo(path, repo_path)
+        return cli.run_checks("repo", repo_path)
