@@ -24,6 +24,11 @@ EXCEPTIONS_DATA = {
 
 
 @pytest.fixture(autouse=True)
+def mock_domainutils() -> None:
+    pass
+
+
+@pytest.fixture(autouse=True)
 def reset_checks() -> None:
     checks.Check.errors = set()
     checks.Check.warnings = set()
