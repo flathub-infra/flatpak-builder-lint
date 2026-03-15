@@ -363,11 +363,13 @@ def test_eol_runtime(check_type: str, tmp_testdir: str) -> None:
     assert "runtime-is-eol-org.freedesktop.Platform-18.08" in set(ret["warnings"])
 
 
-def test_wrong_elf_arch(check_type: str, tmp_testdir: str) -> None:
+# ELF check is disabled for repo check
+# in flatpak_builder_lint/checks/elfarch.py
+def test_wrong_elf_arch(tmp_testdir: str) -> None:
     testdir = "tests/builddir/wrong-elf-arch"
     create_elf(testdir, "aarch64")
     create_elf(testdir, "riscv64", "test2.elf")
-    ret = rc(testdir, check_type, tmp_testdir)
+    ret = rc(testdir, "builddir", tmp_testdir)
     found_errors = set(ret["errors"])
     assert "elf-arch-multiple-found" in found_errors
     assert "elf-arch-not-found" in found_errors
