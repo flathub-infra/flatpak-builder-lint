@@ -3043,11 +3043,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.kde.ktimetracker": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.kde.ktorrent": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -3572,28 +3567,24 @@
     },
     "net.mediaarea.DVAnalyzer": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "net.mediaarea.MediaConch": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "net.mediaarea.MOVMetaEdit": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "net.mediaarea.QCTools": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -4476,7 +4467,6 @@
     },
     "in.cinny.Cinny": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -6982,11 +6972,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "fr.inria.corese.CoreseGui": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "info.puredata.Pd": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -7348,11 +7333,6 @@
         }
     },
     "io.mango3d.LycheeSlicer": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.osdn.simplesok": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
