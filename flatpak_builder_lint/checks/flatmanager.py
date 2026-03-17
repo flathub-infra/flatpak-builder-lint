@@ -42,10 +42,12 @@ class FlatManagerCheck(Check):
             if not flatmgr_token:
                 raise RuntimeError("No flat-manager token configured")
 
-            headers = {
-                "Authorization": f"Bearer {flatmgr_token}",
-                "Content-Type": "application/json",
-            }
+            headers = domainutils.request_headers(
+                {
+                    "Authorization": f"Bearer {flatmgr_token}",
+                    "Content-Type": "application/json",
+                }
+            )
 
             flat_mgr_extended_api = f"{flatmgr_url}/api/v1/build/{build_id}/extended"
             r = requests.get(

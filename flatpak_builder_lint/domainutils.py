@@ -1,5 +1,6 @@
 import logging
 import os
+import platform
 from functools import cache
 from importlib.resources import files
 from typing import Any
@@ -9,7 +10,7 @@ import requests
 from publicsuffixlist import PublicSuffixList  # type: ignore[import-untyped]
 from requests_cache import CachedSession
 
-from . import config, staticfiles
+from . import __version__, config, staticfiles
 
 gi.require_version("OSTree", "1.0")
 from gi.repository import GLib, OSTree  # noqa: E402
@@ -36,6 +37,13 @@ CACHEFILE = os.path.join(config.CACHEDIR, "requests_cache")
 os.makedirs(config.CACHEDIR, exist_ok=True)
 
 session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
+
+
+def request_headers(headers: dict[str, Any]) -> dict[str, Any]:
+    _app = f"FlatpakBuilderLint/{__version__} ({config.LINTER_FULL_REPO})"
+    _sys = f"{platform.system()}; {platform.release()}"
+    _lib = f"Python/{platform.python_version()} Requests/{requests.__version__}"
+    return {"user-agent": f"{_app} ({_sys}) {_lib}"} | headers
 
 
 def filter_request_headers(headers: dict[str, Any]) -> dict[str, Any]:
@@ -67,7 +75,7 @@ def fetch_summary_bytes(url: str) -> bytes:
             url,
             allow_redirects=False,
             timeout=REQUEST_TIMEOUT,
-            headers={"Accept-Encoding": None},
+            headers=request_headers({"Accept-Encoding": None}),
         )
         logger.debug(
             "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
@@ -202,7 +210,13 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
     resp_info = None
     try:
-        with requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT, stream=True) as r:
+        with requests.get(
+            url,
+            allow_redirects=False,
+            timeout=REQUEST_TIMEOUT,
+            stream=True,
+            headers=request_headers({}),
+        ) as r:
             logger.debug(
                 "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
             )
@@ -235,7 +249,10 @@ def get_remote_exceptions_flathub(appid: str, exceptions_repo: str | None) -> se
     try:
         # exception updates should be reflected immediately
         r = requests.get(
-            url, allow_redirects=False, timeout=REQUEST_TIMEOUT, headers={"Accept-Encoding": None}
+            url,
+            allow_redirects=False,
+            timeout=REQUEST_TIMEOUT,
+            headers=request_headers({"Accept-Encoding": None}),
         )
         logger.debug(
             "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
@@ -273,7 +290,9 @@ def get_remote_exceptions_github(appid: str, exceptions_repo: str | None) -> set
     )
     try:
         # exception updates should be reflected immediately
-        r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
+        r = requests.get(
+            url, allow_redirects=False, timeout=REQUEST_TIMEOUT, headers=request_headers({})
+        )
         logger.debug(
             "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
         )

@@ -45,10 +45,12 @@ def report_stale_exceptions(appid: str, stale_exceptions: set[str]) -> bool:
         logger.debug("No GITHUB_TOKEN found, cannot report stale exceptions")
         return False
 
-    headers = {
-        "Authorization": f"token {github_token}",
-        "Accept": "application/vnd.github.v3+json",
-    }
+    headers = domainutils.request_headers(
+        {
+            "Authorization": f"token {github_token}",
+            "Accept": "application/vnd.github.v3+json",
+        }
+    )
 
     try:
         url_issues = f"{config.GITHUB_API}/repos/{config.LINTER_FULL_REPO}/issues"
