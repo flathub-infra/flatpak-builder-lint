@@ -416,7 +416,7 @@ def get_domain(appid: str) -> str | None:
     elif appid.startswith("org.freedesktop.") and not appid.startswith("org.freedesktop.gitlab."):
         domain = "freedesktop.org"
     else:
-        fqdn = ".".join(reversed(appid.split("."))).lower()
+        fqdn = ".".join(reversed([demangle(i) for i in appid.split(".")])).lower()
         psl = PublicSuffixList()
         if psl.is_private(fqdn):
             logger.debug("Using PSL to determine domain for appid: %s", appid)
