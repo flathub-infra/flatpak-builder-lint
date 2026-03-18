@@ -9024,5 +9024,10 @@
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
+    },
+    "org.zdoom.UZDoom": {
+        "stable": {
+            "appid-url-not-reachable": "Bot protection rejects linter's requests, checked manually for submission"
+        }
     }
 }
