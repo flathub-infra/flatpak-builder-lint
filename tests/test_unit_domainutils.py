@@ -82,6 +82,9 @@ class TestGetDomain:
     def test_hyphenated(self) -> None:
         assert domainutils.get_domain("com.example_example.App") == "example-example.com"
 
+    def test_leading_digit(self) -> None:
+        assert domainutils.get_domain("com._1example.App") == "1example.com"
+
     def test_invalid_raises(self) -> None:
         with pytest.raises(Exception):
             domainutils.get_domain("com")
