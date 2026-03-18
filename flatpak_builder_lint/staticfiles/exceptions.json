@@ -5146,6 +5146,7 @@
     "io.scottlabs.reManager": {
         "stable": {
             "finish-args-ssh-filesystem-access": "Read-only access to ~/.ssh is required to load SSH keys for connecting to devices over SSH"
+            "finish-args-has-socket-ssh-auth": "Access for SSH agent to connect to devices over SSH"
         }
     },
     "io.seamly.seamly2d": {
