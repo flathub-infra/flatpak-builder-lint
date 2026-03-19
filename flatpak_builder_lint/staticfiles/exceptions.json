@@ -182,6 +182,11 @@
             "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
         }
     },
+    "br.gov.fazenda.receita.irpf2026": {
+        "stable": {
+            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
+        }
+    },
     "ca._0ldsk00l.Nestopia": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
