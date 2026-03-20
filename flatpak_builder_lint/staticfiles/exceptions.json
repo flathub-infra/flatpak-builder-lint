@@ -4965,6 +4965,11 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.gitlab.ilshat_ishdavletov.Gitpulsar": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2"
+        }
+    },
     "io.gitlab.librewolf-community": {
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
