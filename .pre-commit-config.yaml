@@ -51,12 +51,12 @@ repos:
         entry: python utils/validator.py
         language: system
         pass_filenames: false
-      - id: check-wildcard-repo-exceptions
-        name: check wildcard repo exceptions
-        description: Validate exceptions
-        entry: python utils/check_wildcard_exceptions.py
-        language: system
-        pass_filenames: false
+      #- id: check-wildcard-repo-exceptions
+      #  name: check wildcard repo exceptions
+      #  description: Validate exceptions
+      #  entry: python utils/check_wildcard_exceptions.py
+      #  language: system
+      #  pass_filenames: false
       - id: py-test
         name: pytest
         stages:

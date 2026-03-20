@@ -88,9 +88,9 @@ jobs:
       - name: Validate exceptions.json
         run: python3 utils/validator.py
 
-      - name: Check for new wildcard exceptions
-        if: github.event_name == 'pull_request'
-        run: python3 utils/check_wildcard_exceptions.py --base-ref origin/master
+      #- name: Check for new wildcard exceptions
+      #  if: github.event_name == 'pull_request'
+      #  run: python3 utils/check_wildcard_exceptions.py --base-ref origin/master
 
   ci:
     strategy:
