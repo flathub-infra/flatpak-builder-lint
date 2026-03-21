@@ -4965,7 +4965,7 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
-    "io.gitlab.ilshat_ishdavletov.Gitpulsar": {
+    "io.gitlab.ilshat_apps.Gitpulsar": {
         "stable": {
             "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2"
         }
