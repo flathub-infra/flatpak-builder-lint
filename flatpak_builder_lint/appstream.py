@@ -1,3 +1,4 @@
+import gzip
 import os
 import re
 import subprocess
@@ -46,7 +47,11 @@ def parse_xml(path: str) -> etree._ElementTree:
     if not os.path.isfile(path):
         raise FileNotFoundError(f"XML file not found: {path}")
     try:
-        return etree.parse(path)
+        if path.endswith(".gz"):
+            with gzip.open(path, "rb") as f:
+                return etree.parse(f)
+        else:
+            return etree.parse(path)
     except etree.XMLSyntaxError as e:
         raise RuntimeError(f"XML syntax error in {path}: {e}") from None
 
