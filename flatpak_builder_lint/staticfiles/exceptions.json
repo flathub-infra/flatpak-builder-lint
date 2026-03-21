@@ -334,7 +334,8 @@
     },
     "codes.merritt.Nyrna": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
+            "finish-args-flatpak-spawn-access": "required to access and change process status on the host",
+            "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting window info"
         }
     },
     "com.abagames.rRootage": {
