@@ -3900,7 +3900,6 @@
     },
     "io.github.dyegoaurelio.simple-wireplumber-gui": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-unnecessary-xdg-config-wireplumber-create-access": "this program creates config files in xdg-config/wireplumber"
         }
     },
@@ -3974,11 +3973,6 @@
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
             "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
-        }
-    },
-    "io.github.fizzyizzy05.binary": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "io.github.flattool.Ignition": {
@@ -6712,11 +6706,6 @@
         }
     },
     "org.gnome.SoundRecorder": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.SwellFoop": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
