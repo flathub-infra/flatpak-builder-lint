@@ -3,12 +3,16 @@ import json
 from typing import Any
 
 
-def merge_duplicates(pairs: list[tuple[str, dict[str, str]]]) -> dict[str, dict[str, str]]:
-    d: dict[str, dict[str, str]] = {}
+def merge_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    d: dict[str, Any] = {}
     for key, val in pairs:
         if key in d:
             if isinstance(d[key], dict):
-                d[key].update(val)
+                for repo, exceptions in val.items():
+                    if repo in d[key] and isinstance(d[key][repo], dict):
+                        d[key][repo].update(exceptions)
+                    else:
+                        d[key][repo] = exceptions
         else:
             d[key] = val
     return d
@@ -35,7 +39,7 @@ def main(argv: list[str] | None = None) -> int:
     exit_code = 0
     for filename in args.filenames:
         with open(filename) as f:
-            merge_data = json.load(f, object_pairs_hook=lambda pairs: merge_duplicates(pairs))
+            merge_data = json.load(f, object_pairs_hook=merge_duplicates)
             if merge_data:
                 if not save_file(filename, merge_data):
                     exit_code = 1

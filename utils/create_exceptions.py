@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+from typing import Any
 
 
 def read_appid(id_input: str) -> set[str]:
@@ -18,13 +19,16 @@ def read_appid(id_input: str) -> set[str]:
 
 
 def generate_exceptions(
-    app_ids: set[str], exceptions: set[str], reason: str
-) -> dict[str, dict[str, str]]:
+    app_ids: set[str],
+    exceptions: set[str],
+    reason: str,
+    repo: str,
+) -> dict[str, Any]:
     reason = reason if reason else "Predates the linter rule"
-    return {app: dict.fromkeys(exceptions, reason) for app in app_ids}
+    return {app: {repo: dict.fromkeys(exceptions, reason)} for app in app_ids}
 
 
-def main(appid: str, exceptions: set[str], reason: str) -> None:
+def main(appid: str, exceptions: set[str], reason: str, repo: str) -> None:
     reason = reason if reason else "Predates the linter rule"
 
     app_ids = read_appid(appid)
@@ -32,7 +36,7 @@ def main(appid: str, exceptions: set[str], reason: str) -> None:
     if not exceptions:
         raise ValueError("No exceptions provided")
 
-    data = generate_exceptions(app_ids, exceptions, reason)
+    data = generate_exceptions(app_ids, exceptions, reason, repo)
     print(json.dumps(data, sort_keys=True, indent=4))  # noqa: T201
 
 
@@ -53,9 +57,15 @@ if __name__ == "__main__":
         help="Input error code to create exception. Can be used multiple times",
     )
     parser.add_argument(
+        "--repo",
+        help="Target Flathub repo to use when looking up remote exception key",
+        type=str,
+        default="*",
+    )
+    parser.add_argument(
         "--reason",
         type=str,
         help="Input optional reason string",
     )
     args = parser.parse_args()
-    main(args.appid, set(args.exception), args.reason)
+    main(args.appid, set(args.exception), args.reason, args.repo)

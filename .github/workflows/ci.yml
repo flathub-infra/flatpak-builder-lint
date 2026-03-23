@@ -77,6 +77,7 @@ jobs:
         # 6.0.2
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
+          fetch-depth: 0
           persist-credentials: false
 
         # 6.2.0
@@ -86,6 +87,10 @@ jobs:
 
       - name: Validate exceptions.json
         run: python3 utils/validator.py
+
+      #- name: Check for new wildcard exceptions
+      #  if: github.event_name == 'pull_request'
+      #  run: python3 utils/check_wildcard_exceptions.py --base-ref origin/master
 
   ci:
     strategy:
@@ -248,120 +253,11 @@ jobs:
       - name: Run test suite
         run: flatpak run --command=pytest org.flatpak.Builder//localtest -n auto -vvv tests
 
-      - name: Run large repo check
-        run: |
-          export REPO="https://github.com/flathub/org.flatpak.Builder"
-          ostree init --repo=large_repo
-          dd if=/dev/zero of=large_repo/file.bin bs=1M count=13312
-          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --gha-format --exceptions repo large_repo || true)
-          echo "$output"
-          echo "$output" | grep "flatpak-repo-too-large"
-          unset REPO
-          rm -rf large_repo
-
       - name: Run Flatmanager checks
         run: bash -c tests/flatmanager.sh
 
-      - name: Sanity check on a GUI application
-        run: |
-          cd tests/repo/min_success_metadata/gui-app
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.gui.yaml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
-            --arch=${{ env.FP_ARCH }} \
-            --mirror-screenshots-url=https://dl.flathub.org/media \
-            --compose-url-policy=full \
-            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
-          mkdir -p builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Sanity check on a console application
-        run: |
-          cd tests/repo/min_success_metadata/console-app
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.cli.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flathub.cli.metainfo.xml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
-            --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" --repo=repo \
-            --install-deps-from=flathub --ccache builddir org.flathub.cli.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Sanity check on a baseapp
-        run: |
-          cd tests/repo/min_success_metadata/baseapp
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flathub.BaseApp.yaml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --install-deps-from=flathub --ccache builddir org.flathub.BaseApp.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Sanity check on an extension
-        run: |
-          cd tests/repo/min_success_metadata/extension
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.freedesktop.Sdk.Extension.flathub.yaml
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --install-deps-from=flathub --ccache builddir org.freedesktop.Sdk.Extension.flathub.yaml
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
-
-      - name: Check appstream subcommand
-        run: |
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            appstream tests/repo/min_success_metadata/gui-app/org.flathub.gui.metainfo.xml
-
-      - name: Check user exceptions
-        run: |
-          cp -v tests/cli/io.github.flathub.flathub.json tests/cli/appid.json
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            manifest --exceptions --user-exceptions tests/cli/user_exceptions.json \
-            tests/cli/appid.json
-
-      - name: Check app override
-        run: |
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest \
-            --appid org.flathub.exceptions --exceptions manifest tests/cli/appid.json
-
-      - name: Check ref override
-        run: |
-          mkdir -p tests/cli/gui-app
-          cp tests/repo/min_success_metadata/gui-app/org.flathub.gui.* tests/cli/gui-app
-          cd tests/cli/gui-app
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --mirror-screenshots-url=https://dl.flathub.org/media \
-            --compose-url-policy=full \
-            --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
-          sed -i "s/org\.flathub\.gui/com\.foo\.bar/g" org.flathub.gui.metainfo.xml org.flathub.gui.yaml org.flathub.gui.desktop
-          cp -vf org.flathub.gui.desktop com.foo.bar.desktop
-          # Break the desktop file to raise an error
-          sed -i '/^Exec=/d' com.foo.bar.desktop
-          cp -vf org.flathub.gui.metainfo.xml com.foo.bar.metainfo.xml
-          cp -vf org.flathub.gui.png com.foo.bar.png
-          dbus-run-session flatpak run org.flatpak.Builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
-            --repo=repo --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
-            --mirror-screenshots-url=https://dl.flathub.org/media \
-            --compose-url-policy=full \
-            --install-deps-from=flathub --ccache builddir-2 org.flathub.gui.yaml
-          mkdir -p builddir/files/foo builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
-          ostree refs --repo=repo
-          flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions --ref app/org.flathub.gui/${{ env.FP_ARCH }}/master repo repo
-          output=$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo || true)
-          if echo "$output" | grep -q '"desktop-file-exec-key-absent"'; then
-            echo "PASS"
-          else
-            echo "FAIL: $output"
-            exit 1
-          fi
+      - name: Run integration tests
+        run: uv run pytest -m integration -vvv
 
   docker-call:
     permissions:

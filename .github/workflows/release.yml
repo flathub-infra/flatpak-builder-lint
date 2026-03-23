@@ -6,7 +6,11 @@ on:
     types: [completed]
     branches: [master]
   workflow_dispatch:
-
+    inputs:
+      commit:
+        description: 'Commit SHA to check out and release'
+        required: true
+        type: string
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -14,18 +18,27 @@ jobs:
       contents: read
       actions: read
     timeout-minutes: 20
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master' }}
+    if: |
+      ${{
+        github.repository == 'flathub-infra/flatpak-builder-lint' && (
+          (github.event_name == 'workflow_dispatch') ||
+          (github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/master')
+        )
+      }}
     steps:
         # 6.0.2
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
+          fetch-depth: 0
           persist-credentials: false
-          ref: 'master'
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.commit || 'master' }}
 
       - name: Check last commit message
         id: check_commit
         run: |
-          if git log -1 --pretty=%B | grep -E "\[release\]"; then
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "is_release=true" >> "$GITHUB_OUTPUT"
+          elif git log -1 --pretty=%B | grep -E "\[release\]"; then
             echo "is_release=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -33,16 +46,20 @@ jobs:
         if: steps.check_commit.outputs.is_release == 'true'
         id: check_job
         run: |
-          job_status=$(gh run view ${{ github.event.workflow_run.id }} --json jobs --jq '.jobs[] | select(.name=="docker-call / docker-manifest") | .conclusion')
-          echo "Status: $job_status"
-          if [ "$job_status" == "success" ]; then
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            job_status=$(gh run view ${{ github.event.workflow_run.id }} --json jobs --jq '.jobs[] | select(.name=="docker-call / docker-manifest") | .conclusion')
+            echo "Status: $job_status"
+            if [ "$job_status" == "success" ]; then
+              echo "run=true" >> "$GITHUB_OUTPUT"
+            fi
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delay for 2 minutes
-        if: steps.check_job.outputs.run == 'true'
+        if: steps.check_job.outputs.run == 'true' && github.event_name != 'workflow_dispatch'
         run: sleep 120
 
       - name: Trigger workflow in org.flatpak.Builder repository
@@ -52,7 +69,7 @@ jobs:
         with:
           repository: flathub/org.flatpak.Builder
           event-type: trigger-workflow
-          client-payload: '{"sha": "${{ github.sha }}"}'
+          client-payload: "{\"sha\": \"${{ github.event_name == 'workflow_dispatch' && inputs.commit || github.sha }}\"}"
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
       - name: Trigger workflow in flathub-infra/actions-images

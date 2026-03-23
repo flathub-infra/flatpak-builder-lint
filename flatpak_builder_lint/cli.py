@@ -1,12 +1,12 @@
 import argparse
 import importlib
-import importlib.resources
 import json
 import logging
 import os
 import pkgutil
 import sys
 import textwrap
+from importlib.resources import files
 from types import MappingProxyType
 from typing import Any
 
@@ -35,7 +35,9 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 
 def setup_logging(debug: bool = False) -> None:
-    if debug:
+    debug_env = os.getenv("FLATPAK_BUILDER_LINT", "").lower() == "debug"
+
+    if debug or debug_env:
         logging.basicConfig(
             level=logging.CRITICAL + 1,
             format="%(asctime)s %(levelname)s:%(name)s:%(funcName)s: %(message)s",
@@ -58,16 +60,23 @@ def _filter(info: set[str], excepts: set[str]) -> list[str]:
     return list(final)
 
 
-def get_local_exceptions(appid: str) -> set[str]:
-    with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
+def get_local_exceptions(appid: str, exceptions_repo: str | None) -> set[str]:
+    result: set[str] = set()
+    with files(staticfiles).joinpath("exceptions.json").open("r", encoding="utf-8") as f:
         exceptions = json.load(f)
-        ret = exceptions.get(appid, [])
+        ret = exceptions.get(appid, {})
+        if exceptions_repo:
+            result = set(ret.get(exceptions_repo, {}).keys()) | set(ret.get("*", {}).keys())
+        else:
+            result = {k for v in ret.values() for k in v}
+        logger.debug(
+            "Loaded local exceptions for %s (repo key: %s): %s",
+            appid,
+            exceptions_repo,
+            result,
+        )
 
-    if ret:
-        logger.debug("Loaded local exceptions for %s: %s", appid, set(ret))
-        return set(ret)
-
-    return set()
+    return result
 
 
 def get_user_exceptions(file: str, appid: str) -> set[str]:
@@ -128,6 +137,7 @@ def run_checks(
     appid: str | None = None,
     user_exceptions_path: str | None = None,
     enable_janitor_exceptions: bool = False,
+    exceptions_repo: str | None = None,
 ) -> dict[str, str | list[str]]:
     stale_exceptions: set[str] | None = None
 
@@ -177,11 +187,11 @@ def run_checks(
                 exceptions = get_user_exceptions(user_exceptions_path, appid)
                 logger.debug("Using user exceptions: %s", exceptions)
             else:
-                exceptions = domainutils.get_remote_exceptions_github(appid)
+                exceptions = domainutils.get_remote_exceptions_github(appid, exceptions_repo)
                 logger.debug("Using remote exceptions: %s", exceptions)
 
             if not exceptions:
-                exceptions = get_local_exceptions(appid)
+                exceptions = get_local_exceptions(appid, exceptions_repo)
                 logger.debug("Falling back to local exceptions: %s", exceptions)
 
         if exceptions:
@@ -263,6 +273,15 @@ def main() -> int:
         action="store_true",
     )
     parser.add_argument(
+        "--exceptions-repo",
+        help=(
+            "Repo key for remote exception lookups from Flathub. "
+            "Omitting merges all repo keys; supplying a value merges '*' and that key."
+        ),
+        type=str,
+        metavar="",
+    )
+    parser.add_argument(
         "--user-exceptions",
         help="Path to a JSON file with exceptions",
         type=str,
@@ -338,6 +357,7 @@ def main() -> int:
             args.appid,
             args.user_exceptions,
             args.janitor_exceptions,
+            args.exceptions_repo,
         ):
             if "errors" in results:
                 exit_code = 1

@@ -124,8 +124,9 @@ You may need to pass `:Z` if your distro is using SELinux like so
 
 Installing flatpak-builder-lint locally with [uv][uv] or pip is
 not recommended unless for development purposes. It depends on patches
-that are found in the `org.flatpak.Builder` flatpak package
-and on external tools.
+that are found in Flathub's fork of [appstream](https://github.com/flathub-infra/appstream/tree/flathub),
+[flatpak](https://github.com/flathub-infra/flatpak/tree/flathub) and
+[flatpak-builder](https://github.com/flathub-infra/flatpak-builder/tree/flathub).
 
 ## Contributing
 
@@ -242,6 +243,12 @@ To avoid cleanup run as:
 NO_CLEAN_UP=1 ./tests/flatmanager.sh
 ```
 
+Integration tests are best suited to be run in CI
+
+```sh
+uv run pytest -m integration -vvv
+```
+
 To write tests for manifest checks, recreate a minimal Flatpak builder
 manifest with the cases to check against and put it in `tests/manifests`.
 Then add the test using it (or modify the existing tests) in
@@ -298,6 +305,7 @@ options:
   -h, --help            Show this help message and exit
   --version             Show the version number and exit
   --exceptions          Skip errors added to exceptions. Exceptions must be submitted to Flathub
+  --exceptions-repo     Repo key for remote exception lookups from Flathub. Omitting merges all repo keys; supplying a value merges '*' and that key.
   --user-exceptions     Path to a JSON file with exceptions
   --appid               Override the app ID with this app ID
   --cwd                 Override the path parameter with the current working directory
