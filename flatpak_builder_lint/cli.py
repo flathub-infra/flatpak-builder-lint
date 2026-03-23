@@ -1,12 +1,12 @@
 import argparse
 import importlib
-import importlib.resources
 import json
 import logging
 import os
 import pkgutil
 import sys
 import textwrap
+from importlib.resources import files
 from types import MappingProxyType
 from typing import Any
 
@@ -62,7 +62,7 @@ def _filter(info: set[str], excepts: set[str]) -> list[str]:
 
 def get_local_exceptions(appid: str, exceptions_repo: str | None) -> set[str]:
     result: set[str] = set()
-    with importlib.resources.open_text(staticfiles, "exceptions.json") as f:
+    with files(staticfiles).joinpath("exceptions.json").open("r", encoding="utf-8") as f:
         exceptions = json.load(f)
         ret = exceptions.get(appid, {})
         if exceptions_repo:

@@ -334,7 +334,8 @@
     },
     "codes.merritt.Nyrna": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
+            "finish-args-flatpak-spawn-access": "required to access and change process status on the host",
+            "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting window info"
         }
     },
     "com.abagames.rRootage": {
@@ -3899,7 +3900,6 @@
     },
     "io.github.dyegoaurelio.simple-wireplumber-gui": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-unnecessary-xdg-config-wireplumber-create-access": "this program creates config files in xdg-config/wireplumber"
         }
     },
@@ -3973,11 +3973,6 @@
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
             "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
-        }
-    },
-    "io.github.fizzyizzy05.binary": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "io.github.flattool.Ignition": {
@@ -4965,7 +4960,7 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
-    "io.gitlab.ilshat_ishdavletov.Gitpulsar": {
+    "io.gitlab.ilshat_apps.gitpulsar": {
         "stable": {
             "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2",
             "finish-args-has-socket-ssh-auth": "Git GUI that needs SSH agent access for push/pull/fetch operations over SSH"
@@ -6712,11 +6707,6 @@
         }
     },
     "org.gnome.SoundRecorder": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.SwellFoop": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
