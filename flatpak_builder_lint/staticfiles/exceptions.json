@@ -4967,7 +4967,8 @@
     },
     "io.gitlab.ilshat_ishdavletov.Gitpulsar": {
         "stable": {
-            "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2"
+            "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2",
+            "finish-args-has-socket-ssh-auth": "Git GUI that needs SSH agent access for push/pull/fetch operations over SSH"
         }
     },
     "io.gitlab.librewolf-community": {
