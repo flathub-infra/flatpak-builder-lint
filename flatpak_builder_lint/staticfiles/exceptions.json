@@ -4765,13 +4765,12 @@
     "io.github.opennumismat.open-numismat": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
     },
-    "io.github.orcaslicer.OrcaSlicer": {
+    "com.orcaslicer.OrcaSlicer": {
         "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
         "finish-args-flatpak-spawn-access": "the app predates this linter rule",
         "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
         "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
-        "finish-args-own-name-wildcard-com.softfever3d.orca-slicer": "Predates the linter rule"
-
+        "finish-args-flatpak-appdata-folder-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
     },
     "io.github.pemsley.coot": {
         "finish-args-home-filesystem-access": "Predates the linter rule"
