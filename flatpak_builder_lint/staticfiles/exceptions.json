@@ -5193,6 +5193,11 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "it.andreafontana.hideout": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Encryption utility that needs to save encrypted/decrypted output files in the same location as the source files."
+        }
+    },
     "it.cuteworks.pacmanlogviewer": {
         "stable": {
             "finish-args-host-var-access": "Predates the linter rule"
