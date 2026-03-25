@@ -5479,6 +5479,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "net.lockbook.Lockbook": {
+        "stable": {
+            "flathub-json-automerge-enabled": "QA is performed upstream prior to a GH release automation."
+        }
+    },
     "net.lugsole.bible_gui": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
