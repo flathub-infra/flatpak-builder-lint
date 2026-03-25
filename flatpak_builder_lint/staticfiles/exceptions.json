@@ -7432,9 +7432,8 @@
     },
     "com.orcaslicer.OrcaSlicer": {
         "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
-        "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-        "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-        "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
+        "finish-args-flatpak-spawn-access": "OrcaSlicer supports user-configured post-processing tools (Python/shell script or executable) run against exported G-code",
+        "finish-args-contains-both-x11-and-wayland": "OrcaSlicer uses OpenGL rendering 3d models. Need it to get around X11 and Wayland issues",
         "finish-args-flatpak-appdata-folder-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
     },
     "org.kde.kolourpaint": {
