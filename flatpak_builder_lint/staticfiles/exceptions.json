@@ -544,11 +544,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.chowdsp.BYOD": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.BYOD": "Predates the linter rule"
-        }
-    },
     "com.cinecred.cinecred": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2589,11 +2584,6 @@
     "com.termius.Termius": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
-        }
-    },
-    "com.thewavewarden.Odin2": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Odin2": "Predates the linter rule"
         }
     },
     "com.thincast.client": {
@@ -5650,11 +5640,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "net.sonobus.SonoBus": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.SonoBus": "Predates the linter rule"
-        }
-    },
     "net.sourceforge.GrandOrgue": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6940,7 +6925,6 @@
     },
     "org.guitarix.Guitarix": {
         "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Guitarix": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8383,19 +8367,9 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.stochas.Stochas": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Stochas": "Predates the linter rule"
-        }
-    },
     "org.sugarlabs.MusicBlocks": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.surge_synth_team.surge-xt": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Surge-XT": "Predates the linter rule"
         }
     },
     "org.swi_prolog.swipl": {

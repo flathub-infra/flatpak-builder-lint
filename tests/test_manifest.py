@@ -366,6 +366,10 @@ def test_manifest_modules(monkeypatch: MonkeyPatch) -> None:
         "appid-unprefixed-bundled-extension-org.flathub.modules.BundledExtension"
         not in found_errors
     )
+    assert (
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.sample"
+        not in found_errors
+    )
     for i in errors:
         assert i in found_errors
 
