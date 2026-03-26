@@ -5978,6 +5978,11 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
+    "org.cosmic_utils.enroll": {
+        "stable": {
+           "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write app configuration"
+        }
+    },
     "org.cryptomator.Cryptomator": {
         "*": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
