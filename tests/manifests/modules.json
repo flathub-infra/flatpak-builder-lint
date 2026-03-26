@@ -1,6 +1,10 @@
 {
     "app-id": "org.flathub.modules",
     "add-extensions": {
+        "org.freedesktop.LinuxAudio.Plugins.sample": {
+            "directory": "extensions/Plugins",
+            "bundle": true
+        },
         "org.flathub.modules.BundledExtension": {
             "directory": "foo/bar",
             "bundle": true
