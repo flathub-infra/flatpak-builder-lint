@@ -8778,6 +8778,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "re.fossplant.pbtk": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Required to spawn Chrome or Chromium for access to the Chrome Devtools Protocol (CDP)"
+        }
+    },
     "re.sonny.Commit": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
