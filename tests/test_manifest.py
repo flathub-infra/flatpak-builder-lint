@@ -258,6 +258,9 @@ def test_manifest_finish_args() -> None:
         "finish-args-host-etc-filesystem-access",
         "finish-args-metadata-key",
         "finish-args-contains-inherit-wayland-socket",
+        "finish-args-unnecessary-appid-own-name",
+        "finish-args-unnecessary-appid-mpris-own-name",
+        "finish-args-mpris-flatpak-id-talk-name",
     }
 
     expected_absents = {

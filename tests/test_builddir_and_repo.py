@@ -84,6 +84,9 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         "finish-args-host-os-filesystem-access",
         "finish-args-host-etc-filesystem-access",
         "finish-args-contains-inherit-wayland-socket",
+        "finish-args-unnecessary-appid-own-name",
+        "finish-args-unnecessary-appid-mpris-own-name",
+        "finish-args-mpris-flatpak-id-talk-name",
     }
     expected_absents = {
         "finish-args-has-nodevice-shm",

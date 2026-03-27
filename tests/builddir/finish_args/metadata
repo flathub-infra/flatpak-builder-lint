@@ -15,6 +15,7 @@ org.gnome.*=own
 org.kde.*=own
 org.freedesktop.Flatpak=talk
 org.flathub.finish_args=own
+org.mpris.MediaPlayer2.org.flathub.finish_args.*=talk
 org.kde.StatusNotifierItem=own
 org.gtk.vfs=talk
 org.freedesktop.DBus.foo=talk
