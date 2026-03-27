@@ -125,6 +125,13 @@ class FinishArgsCheck(Check):
                 if fs == "xdg-config/kdeglobals:ro":
                     continue
 
+                if (
+                    appid
+                    and (appid.startswith(("org.cosmic_utils.", "io.github.cosmic_utils.")))
+                    and _fs_value_matches_prefix(fs, "xdg-config/cosmic")
+                ):
+                    continue
+
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
                     mode_src = next(i for i in modes if fs.endswith(i))
