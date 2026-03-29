@@ -9007,5 +9007,11 @@
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
+    },
+    "io.github.ebkr.r2modman": {
+        "*": {
+            "finish-args-flatpak-spawn-access": "Required to launch Steam games on the Steam Deck when in game mode",
+            "finish-args-flatpak-appdata-folder-access": "Required to detect the Steam Flatpak and the games located in the default Steam library location"
+        }
     }
 }
