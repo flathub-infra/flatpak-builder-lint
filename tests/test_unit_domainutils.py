@@ -1,6 +1,14 @@
+import socket
+
 import pytest
+from urllib3.util import connection as urllib3_connection
 
 from flatpak_builder_lint import domainutils
+
+
+class TestIPv4OnlyResolution:
+    def test_allowed_gai_family_uses_ipv4(self) -> None:
+        assert urllib3_connection.allowed_gai_family() == socket.AF_INET
 
 
 class TestDemangle:

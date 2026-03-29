@@ -544,11 +544,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.chowdsp.BYOD": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.BYOD": "Predates the linter rule"
-        }
-    },
     "com.cinecred.cinecred": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2591,11 +2586,6 @@
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
         }
     },
-    "com.thewavewarden.Odin2": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Odin2": "Predates the linter rule"
-        }
-    },
     "com.thincast.client": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -2673,7 +2663,8 @@
             "finish-args-contains-both-x11-and-wayland": "not every game supports wayland",
             "finish-args-own-name-wildcard-com.steampowered": "Predates the linter rule",
             "module-platform-bootstrap-source-dir-not-allowed": "Predates the linter rule",
-            "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule"
+            "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Needed for mangojuice to work"
         }
     },
     "com.valvesoftware.Steam.CompatibilityTool.Proton-GE": {
@@ -3535,7 +3526,8 @@
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work.",
             "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Required for MangoHud to detect the settings file."
+            "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Required by MangoHud to detect the settings file.",
+            "finish-args-own-name-wildcard-com.steampowered": "Required by umu-launcher to access the Steam Runtime's pressure-vessel."
         }
     },
     "io.github.Fndroid.clash_for_windows": {
@@ -4962,7 +4954,8 @@
     },
     "io.gitlab.ilshat_apps.gitpulsar": {
         "stable": {
-            "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2"
+            "finish-args-home-filesystem-access": "Git GUI that needs to open and browse Git repositories in user home directory via libgit2",
+            "finish-args-has-socket-ssh-auth": "Git GUI that needs SSH agent access for push/pull/fetch operations over SSH"
         }
     },
     "io.gitlab.librewolf-community": {
@@ -5190,6 +5183,11 @@
     "io.webtorrent.WebTorrent": {
         "stable": {
             "finish-args-host-tmp-access": "Predates the linter rule"
+        }
+    },
+    "it.andreafontana.hideout": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Encryption utility that needs to save encrypted/decrypted output files in the same location as the source files."
         }
     },
     "it.cuteworks.pacmanlogviewer": {
@@ -5473,6 +5471,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "net.lockbook.Lockbook": {
+        "stable": {
+            "flathub-json-automerge-enabled": "QA is performed upstream prior to a GH release automation."
+        }
+    },
     "net.lugsole.bible_gui": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -5637,11 +5640,6 @@
     "net.sonic_pi.SonicPi": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "net.sonobus.SonoBus": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.SonoBus": "Predates the linter rule"
         }
     },
     "net.sourceforge.GrandOrgue": {
@@ -5980,6 +5978,11 @@
     "org.coolero.Coolero": {
         "*": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        }
+    },
+    "org.cosmic_utils.enroll": {
+        "stable": {
+           "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write app configuration"
         }
     },
     "org.cryptomator.Cryptomator": {
@@ -6809,6 +6812,18 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.gnome.Manuals": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
+            "finish-args-flatpak-system-folder-access": "application uses libflatpak to install SDK documentation",
+            "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
+            "finish-args-flatpak-user-folder-access": "application uses libflatpak to install SDK documentation",
+            "finish-args-host-os-ro-filesystem-access": "Reads documentations installed in the Host system",
+            "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation",
+            "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
+            "finish-args-unnecessary-xdg-data-gtk-doc-ro-access": "Manuals requires access to locally installed documentation"
+        }
+    },
     "org.gnome.meld": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -6929,7 +6944,6 @@
     },
     "org.guitarix.Guitarix": {
         "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Guitarix": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8377,19 +8391,9 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.stochas.Stochas": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Stochas": "Predates the linter rule"
-        }
-    },
     "org.sugarlabs.MusicBlocks": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.surge_synth_team.surge-xt": {
-        "stable": {
-            "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.Surge-XT": "Predates the linter rule"
         }
     },
     "org.swi_prolog.swipl": {

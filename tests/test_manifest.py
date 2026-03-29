@@ -258,6 +258,9 @@ def test_manifest_finish_args() -> None:
         "finish-args-host-etc-filesystem-access",
         "finish-args-metadata-key",
         "finish-args-contains-inherit-wayland-socket",
+        "finish-args-unnecessary-appid-own-name",
+        "finish-args-unnecessary-appid-mpris-own-name",
+        "finish-args-mpris-flatpak-id-talk-name",
     }
 
     expected_absents = {
@@ -364,6 +367,10 @@ def test_manifest_modules(monkeypatch: MonkeyPatch) -> None:
     assert "appid-unprefixed-bundled-extension-org.flathub.example.BundledExtension" in found_errors
     assert (
         "appid-unprefixed-bundled-extension-org.flathub.modules.BundledExtension"
+        not in found_errors
+    )
+    assert (
+        "appid-unprefixed-bundled-extension-org.freedesktop.LinuxAudio.Plugins.sample"
         not in found_errors
     )
     for i in errors:

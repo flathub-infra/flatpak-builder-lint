@@ -135,7 +135,8 @@ class ModuleCheck(Check):
     def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         if manifest:
             for ext in _get_bundled_extensions_not_prefixed_with_appid(manifest):
-                self.errors.add(f"appid-unprefixed-bundled-extension-{ext}")
+                if not ext.startswith("org.freedesktop.LinuxAudio.Plugins."):
+                    self.errors.add(f"appid-unprefixed-bundled-extension-{ext}")
 
         if modules := manifest.get("modules"):
             for module in modules:

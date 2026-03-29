@@ -125,6 +125,13 @@ class FinishArgsCheck(Check):
                 if fs == "xdg-config/kdeglobals:ro":
                     continue
 
+                if (
+                    appid
+                    and (appid.startswith(("org.cosmic_utils.", "io.github.cosmic_utils.")))
+                    and _fs_value_matches_prefix(fs, "xdg-config/cosmic")
+                ):
+                    continue
+
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
                     mode_src = next(i for i in modes if fs.endswith(i))
@@ -362,25 +369,43 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-host-var-access")
 
         for own_name in finish_args["own-name"]:
+            handled = False
             if appid:
                 if own_name == appid or (
                     own_name.startswith(appid) and own_name[len(appid)] == "."
                 ):
-                    continue
+                    self.errors.add("finish-args-unnecessary-appid-own-name")
+                    self.info.add(
+                        "finish-args-unnecessary-appid-own-name: This is granted by default"
+                    )
+                    handled = True
                 if own_name.startswith("org.mpris.MediaPlayer2."):
-                    continue
+                    mpris_prefix = f"org.mpris.MediaPlayer2.{appid}"
+                    if own_name == mpris_prefix or (
+                        own_name.startswith(mpris_prefix) and own_name[len(mpris_prefix)] == "."
+                    ):
+                        self.errors.add("finish-args-unnecessary-appid-mpris-own-name")
+                        self.info.add(
+                            "finish-args-unnecessary-appid-mpris-own-name: This is granted "
+                            + "by default"
+                        )
+                        handled = True
+                    else:
+                        # Skip further checks for MPRIS subnames
+                        handled = True
 
-            if own_name.endswith(".*"):
-                own_name_prefix, own_name_name = "wildcard", own_name[:-2]
-                own_name_err_string = (
-                    f"finish-args-own-name-"
-                    f"{own_name_prefix + '-' if own_name_prefix else ''}"
-                    f"{own_name_name}"
-                )
-                self.errors.add(own_name_err_string)
-            else:
-                own_name_err_string = f"finish-args-own-name-{own_name}"
-                self.errors.add(own_name_err_string)
+            if not handled:
+                if own_name.endswith(".*"):
+                    own_name_prefix, own_name_name = "wildcard", own_name[:-2]
+                    own_name_err_string = (
+                        f"finish-args-own-name-"
+                        f"{own_name_prefix + '-' if own_name_prefix else ''}"
+                        f"{own_name_name}"
+                    )
+                    self.errors.add(own_name_err_string)
+                else:
+                    own_name_err_string = f"finish-args-own-name-{own_name}"
+                    self.errors.add(own_name_err_string)
 
         if finish_args.get("none-name"):
             self.errors.add("finish-args-uses-no-talk-name")
@@ -392,10 +417,24 @@ class FinishArgsCheck(Check):
             # session bus policy
             # > The application can own the bus name or names (as well as all the above)
             # https://github.com/flatpak/flatpak/pull/5582#discussion_r1384797147
-            if appid and (
-                talk_name == appid or (talk_name.startswith(appid) and talk_name[len(appid)] == ".")
-            ):
-                self.errors.add("finish-args-unnecessary-appid-talk-name")
+            if appid:
+                if talk_name == appid or (
+                    talk_name.startswith(appid) and talk_name[len(appid)] == "."
+                ):
+                    self.errors.add("finish-args-unnecessary-appid-talk-name")
+                    self.info.add(
+                        "finish-args-unnecessary-appid-talk-name: This is granted by default"
+                    )
+                if talk_name.startswith("org.mpris.MediaPlayer2."):
+                    mpris_prefix = f"org.mpris.MediaPlayer2.{appid}"
+                    if talk_name == mpris_prefix or (
+                        talk_name.startswith(mpris_prefix) and talk_name[len(mpris_prefix)] == "."
+                    ):
+                        self.errors.add("finish-args-mpris-flatpak-id-talk-name")
+                        self.info.add(
+                            "finish-args-mpris-flatpak-id-talk-name: This is granted "
+                            + "by default"
+                        )
             if talk_name == "org.freedesktop.*":
                 self.errors.add("finish-args-wildcard-freedesktop-talk-name")
             if talk_name == "org.gnome.*":
@@ -434,8 +473,6 @@ class FinishArgsCheck(Check):
                     "finish-args-incorrect-secret-service-talk-name: The name is in lower case"
                     + " org.freedesktop.secrets"
                 )
-            if appid and talk_name == f"org.mpris.MediaPlayer2.{appid}":
-                self.errors.add("finish-args-mpris-flatpak-id-talk-name")
             if talk_name.startswith("org.freedesktop.impl.portal."):
                 cpt = talk_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-talk-name")

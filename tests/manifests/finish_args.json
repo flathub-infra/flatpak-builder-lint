@@ -24,6 +24,8 @@
         "--own-name=org.flathub.finish_args",
         "--own-name=org.kde.StatusNotifierItem",
         "--talk-name=org.freedesktop.impl.portal.PermissionStore",
+        "--own-name=org.flathub.finish_args.*",
+        "--talk-name=org.mpris.MediaPlayer2.org.flathub.finish_args",
         "--own-name=org.mpris.MediaPlayer2.org.flathub.finish_args",
         "--socket=session-bus",
         "--socket=inherit-wayland-socket",

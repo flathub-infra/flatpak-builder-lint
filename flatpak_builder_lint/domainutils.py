@@ -1,5 +1,6 @@
 import logging
 import os
+import socket
 from functools import cache
 from importlib.resources import files
 from typing import Any
@@ -8,6 +9,7 @@ import gi
 import requests
 from publicsuffixlist import PublicSuffixList  # type: ignore[import-untyped]
 from requests_cache import CachedSession
+from urllib3.util import connection as urllib3_connection
 
 from . import config, staticfiles
 
@@ -34,6 +36,13 @@ REQUEST_TIMEOUT = (10, 60)
 CACHEFILE = os.path.join(config.CACHEDIR, "requests_cache")
 
 os.makedirs(config.CACHEDIR, exist_ok=True)
+
+
+def _ipv4_only_allowed_gai_family() -> socket.AddressFamily:
+    return socket.AF_INET
+
+
+urllib3_connection.allowed_gai_family = _ipv4_only_allowed_gai_family
 
 session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
 
