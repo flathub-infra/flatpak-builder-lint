@@ -39,11 +39,6 @@
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule"
         }
     },
-    "app.drey.Warp": {
-        "*": {
-            "finish-args-login1-system-talk-name": "Predates the linter rule"
-        }
-    },
     "app.freelens.Freelens": {
         "*": {
             "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
@@ -196,7 +191,6 @@
     },
     "ca.desrt.dconf-editor": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-dconf-talk-name": "Predates the linter rule",
             "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -2613,7 +2607,6 @@
     },
     "com.tutanota.Tutanota": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -3221,11 +3214,6 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
-    "eu.ad5001.LogarithmPlotter": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "eu.betterbird.Betterbird": {
         "*": {
             "finish-args-gnupg-filesystem-access": "Predates the linter rule",
@@ -3817,11 +3805,6 @@
     "io.github.cosmic_utils.Examine": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
-        }
-    },
-    "io.github.cosmic_utils.camera": {
-        "stable": {
-            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read the system theme and write app configuration files"
         }
     },
     "io.github.ctlcltd.e2se": {
@@ -5280,11 +5263,6 @@
             "finish-args-unnecessary-xdg-data-gnome-background-properties-create-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
         }
     },
-    "me.iepure.devtoolbox": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "me.kozec.syncthingtk": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5729,11 +5707,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "net.unvanquished.Unvanquished": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "net.waterfox.waterfox": {
         "stable": {
             "finish-args-own-name-wildcard-org.mozilla.waterfox": "Predates the linter rule"
@@ -5982,7 +5955,7 @@
     },
     "org.cosmic_utils.enroll": {
         "stable": {
-           "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write app configuration"
+            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write app configuration"
         }
     },
     "org.cryptomator.Cryptomator": {
@@ -6297,6 +6270,7 @@
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "stable": {
             "appstream-metainfo-missing": "This provides an extension point only",
+            "appstream-missing-appinfo-file": "This provides an extension point only",
             "finish-args-not-defined": "This provides an extension point only",
             "toplevel-no-command": "This provides an extension point only"
         }
@@ -7980,7 +7954,6 @@
     },
     "org.musicbrainz.Picard": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
