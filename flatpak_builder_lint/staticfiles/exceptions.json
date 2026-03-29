@@ -6297,6 +6297,7 @@
     "org.freedesktop.LinuxAudio.BaseExtension": {
         "stable": {
             "appstream-metainfo-missing": "This provides an extension point only",
+            "appstream-missing-appinfo-file": "This provides an extension point only",
             "finish-args-not-defined": "This provides an extension point only",
             "toplevel-no-command": "This provides an extension point only"
         }
