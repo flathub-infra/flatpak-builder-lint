@@ -9007,5 +9007,12 @@
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
+    },
+    "com.orcaslicer.OrcaSlicer": {
+        "stable": {
+            "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
+            "finish-args-flatpak-spawn-access": "OrcaSlicer supports user-configured post-processing tools (Python/shell script or executable) run against exported G-code",
+            "finish-args-flatpak-appdata-folder-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
+        }
     }
 }
