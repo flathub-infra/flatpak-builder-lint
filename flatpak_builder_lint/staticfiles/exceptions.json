@@ -4761,7 +4761,10 @@
     "io.github.totoshko88.RustConn": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
-            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections"
+            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
+            "finish-args-flatpak-appdata-folder-access": "Read-only access to Bitwarden desktop app data for SSH agent socket",
+            "finish-args-gnupg-filesystem-access": "Read-only access to GPG agent socket for alternative SSH agent authentication (KeePassXC, GPG-based SSH keys)"
+
         }
     },
     "io.github.trevorsandy.LPub3D": {
