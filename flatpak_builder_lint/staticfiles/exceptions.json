@@ -4883,7 +4883,7 @@
     },
     "io.github.kyuyrii.zordeer": {
         "stable": {
-            "finish-args-home-filesystem-access": "This is necessary for the UMU launcher to correctly access the files and folders in the $HOME folder. Access via the Document Portal is not sufficient."
+            "finish-args-home-filesystem-access": "The UMU launcher needs direct access to function. Using the Document Portal prevents it from working."
         }
     },
     "io.gitlab.Goodvibes": {
