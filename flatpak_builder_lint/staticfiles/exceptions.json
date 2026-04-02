@@ -4902,6 +4902,11 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "io.github.kyuyrii.zordeer": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Predates the linter rule"
+        }
+    },
     "io.gitlab.Goodvibes": {
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule"
