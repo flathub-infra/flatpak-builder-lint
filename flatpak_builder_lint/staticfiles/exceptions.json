@@ -4701,6 +4701,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.stephanecouturier.Katalog": {
+    "stable": {
+        "finish-args-host-filesystem-access": "Katalog is a file catalog manager that indexes files from arbitrary storage locations. Users point catalogs at any path on the system including external drives, NAS, and removable media mounted anywhere on the host filesystem."
+        }
+    },
     "io.github.streetpea.Chiaki4deck": {
         "stable": {
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
