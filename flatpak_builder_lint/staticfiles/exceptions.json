@@ -9,11 +9,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "app.bluebubbles.BlueBubbles": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "app.devsuite.Manuals": {
         "stable": {
             "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
@@ -195,11 +190,6 @@
             "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "ca.edestcroix.Recordbox": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "ca.littlesvr.asunder": {
@@ -739,7 +729,6 @@
     "com.github.Bleuzen.FFaudioConverter": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -2127,11 +2116,6 @@
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.mattjakeman.ExtensionManager": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.microsoft.AzureStorageExplorer": {
@@ -4155,8 +4139,7 @@
             "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps",
             "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
             "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
-            "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so it can manage them",
-            "finish-args-portal-impl-permissionstore-talk-name": "Needed to modify dynamic permissions"
+            "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so it can manage them"
         }
     },
     "io.github.kotatogram": {
@@ -4699,6 +4682,11 @@
     "io.github.stella_emu.Stella": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
+        }
+    },
+    "io.github.stephanecouturier.Katalog": {
+        "stable": {
+            "finish-args-host-filesystem-access": "Katalog is a file catalog manager that indexes files from arbitrary storage locations. Users point catalogs at any path on the system including external drives, NAS, and removable media mounted anywhere on the host filesystem."
         }
     },
     "io.github.streetpea.Chiaki4deck": {
@@ -5958,11 +5946,6 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
-    "org.cosmic_utils.enroll": {
-        "stable": {
-            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write app configuration"
-        }
-    },
     "org.cryptomator.Cryptomator": {
         "*": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
@@ -6583,7 +6566,6 @@
     },
     "org.gnome.Keysign": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-gnupg-filesystem-access": "Predates the linter rule"
         }
     },
@@ -9016,7 +8998,6 @@
     "com.orcaslicer.OrcaSlicer": {
         "stable": {
             "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
-            "finish-args-flatpak-spawn-access": "OrcaSlicer supports user-configured post-processing tools (Python/shell script or executable) run against exported G-code",
             "finish-args-flatpak-appdata-folder-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
         }
     }
