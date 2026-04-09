@@ -7924,7 +7924,7 @@
     },
     "org.mozilla.thunderbird": {
         "*": {
-            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption",
+            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption"
         }
     },
     "org.mozilla.thunderbird_esr": {
