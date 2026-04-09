@@ -7922,6 +7922,17 @@
             "finish-args-own-name-wildcard-org.mozilla.firefox_beta": "Predates the linter rule"
         }
     },
+    "org.mozilla.thunderbird": {
+        "*": {
+            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption"
+        }
+    },
+    "org.mozilla.thunderbird_esr": {
+        "stable": {
+            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption",
+            "finish-args-own-name-org.mozilla.thunderbird": "Thunderbird ESR uses the same dbus name as monthly release"
+        }
+    },
     "org.musescore.MuseScore": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
