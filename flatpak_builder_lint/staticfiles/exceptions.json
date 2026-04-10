@@ -9009,7 +9009,7 @@
     },
     "org.cvfosammmm.Lemma": {
         "stable": {
-            "finish-args-host-filesystem-access": "Required importing markdown files with images and attachments, only the main file can be accessed through the portal."
+            "finish-args-home-filesystem-access": "Required importing markdown files with images and attachments, only the main file can be accessed through the portal."
         }
     }
 }
