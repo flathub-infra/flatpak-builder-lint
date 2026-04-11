@@ -7927,6 +7927,17 @@
             "finish-args-own-name-wildcard-org.mozilla.firefox_beta": "Predates the linter rule"
         }
     },
+    "org.mozilla.thunderbird": {
+        "*": {
+            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption"
+        }
+    },
+    "org.mozilla.thunderbird_esr": {
+        "stable": {
+            "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption",
+            "finish-args-own-name-org.mozilla.thunderbird": "Thunderbird ESR uses the same dbus name as monthly release"
+        }
+    },
     "org.musescore.MuseScore": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -8999,6 +9010,11 @@
         "stable": {
             "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
             "finish-args-flatpak-appdata-folder-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
+        }
+    },
+    "org.cvfosammmm.Lemma": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Required importing markdown files with images and attachments, only the main file can be accessed through the portal."
         }
     }
 }
