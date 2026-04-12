@@ -3193,6 +3193,12 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
+    "es.gob.afirma": {
+        "stable": {
+            "finish-args-host-filesystem-access": "It must sign arbitrary documents from any location the user specifies, write the signed output back to those paths, and serve a local HTTPS server for browser integration with government web portals. Document paths cannot be predicted or restricted in advance, making broad filesystem access a functional requirement.",
+            "appid-url-not-reachable": "The app ID es.gob.afirma is used by upstream and cannot be changed. It follows the reverse-DNS convention for gob.es, a domain owned and operated by the Spanish Government, however the specific subdomain afirma.gob.es does not exist. The official upstream is published by the Spanish Government at https://firmaelectronica.gob.es/ciudadanos/descargas."
+        }
+    },
     "eu.betterbird.Betterbird": {
         "*": {
             "finish-args-gnupg-filesystem-access": "Predates the linter rule",
