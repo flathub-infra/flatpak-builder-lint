@@ -4875,6 +4875,11 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "io.github.kyuyrii.zordeer": {
+        "stable": {
+            "finish-args-home-filesystem-access": "The UMU launcher needs direct access to function. Using the Document Portal prevents it from working."
+        }
+    },
     "io.gitlab.Goodvibes": {
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule"
