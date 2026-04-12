@@ -2062,11 +2062,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.ktechpit.orion": {
-        "stable": {
-            "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
     "com.lablicate.OpenChrom": {
         "stable": {
             "finish-args-host-tmp-access": "Predates the linter rule"
@@ -4334,11 +4329,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.github.nate_xyz.Resonance": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "io.github.nearinfinitybrowser.nearinfinity": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -4371,11 +4361,6 @@
         }
     },
     "io.github.nokse22.teleprompter": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "io.github.nokse22.ultimate-tic-tac-toe": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
@@ -6083,8 +6068,6 @@
     },
     "org.eclipse.iot.fourdiac.Ide": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-dconf-talk-name": "Predates the linter rule",
             "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -6597,7 +6580,6 @@
     },
     "org.gnome.Notes": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8836,7 +8818,6 @@
     },
     "se.manyver.Manyverse": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
         }
     },
