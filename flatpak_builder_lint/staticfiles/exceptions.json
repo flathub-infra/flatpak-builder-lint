@@ -2062,11 +2062,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.ktechpit.orion": {
-        "stable": {
-            "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
     "com.lablicate.OpenChrom": {
         "stable": {
             "finish-args-host-tmp-access": "Predates the linter rule"
@@ -3196,6 +3191,12 @@
     "es.estoes.wallpaperDownloader": {
         "stable": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+        }
+    },
+    "es.gob.afirma": {
+        "stable": {
+            "finish-args-host-filesystem-access": "It must sign arbitrary documents from any location the user specifies, write the signed output back to those paths, and serve a local HTTPS server for browser integration with government web portals. Document paths cannot be predicted or restricted in advance, making broad filesystem access a functional requirement.",
+            "appid-url-not-reachable": "The app ID es.gob.afirma is used by upstream and cannot be changed. It follows the reverse-DNS convention for gob.es, a domain owned and operated by the Spanish Government, however the specific subdomain afirma.gob.es does not exist. The official upstream is published by the Spanish Government at https://firmaelectronica.gob.es/ciudadanos/descargas."
         }
     },
     "eu.betterbird.Betterbird": {
@@ -4334,11 +4335,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.github.nate_xyz.Resonance": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "io.github.nearinfinitybrowser.nearinfinity": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -4371,11 +4367,6 @@
         }
     },
     "io.github.nokse22.teleprompter": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "io.github.nokse22.ultimate-tic-tac-toe": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
@@ -6088,8 +6079,6 @@
     },
     "org.eclipse.iot.fourdiac.Ide": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-dconf-talk-name": "Predates the linter rule",
             "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -6602,7 +6591,6 @@
     },
     "org.gnome.Notes": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8841,7 +8829,6 @@
     },
     "se.manyver.Manyverse": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
         }
     },
