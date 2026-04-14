@@ -4541,8 +4541,7 @@
     },
     "io.github.rafaelfassi.QLogExplorer": {
         "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-host-var-access": "Predates the linter rule"
+            "finish-args-host-ro-filesystem-access": "Depending on the distribution and the specific application, log files may be located in several different folders of the host"
         }
     },
     "io.github.randovania.Randovania": {
