@@ -3269,7 +3269,8 @@
             "finish-args-flatpak-system-folder-access": "Required to read .desktop files of Flatpak applications installed on the system to manage them.",
             "finish-args-home-ro-filesystem-access": "Required to load application icons located in arbitrary paths within the user's home directory (e.g. ~/.local/share, AppImages, downloads).",
             "finish-args-unnecessary-xdg-data-applications-create-access": "The core functionality of this app is to create and manage .desktop files (launchers) for the user.",
-            "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them."
+            "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them.",
+            "finish-args-network-access": "Required to search and download Lucide icons from the Iconify API when the user customizes their launchers."
         }
     },
     "fr.dwightstudio.JArmEmu": {
