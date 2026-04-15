@@ -3627,6 +3627,15 @@
             "finish-args-unnecessary-xdg-data-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin Mii and game/mod data files"
         }
     },
+    "io.github.traciges.asus-hub": {
+        "stable": {
+            "finish-args-has-dev-input": "Required for evdev input device access to detect touchpad gestures on ASUS laptops",
+            "finish-args-kwin-talk-name": "Required for KWin D-Bus integration to query active window state on KDE Plasma",
+            "finish-args-plasmashell-talk-name": "Required for Plasma Shell D-Bus access to display notifications and interact with the desktop",
+            "finish-args-own-name-org.kde.StatusNotifierItem-2-1": "Required to register a system tray icon via the StatusNotifierItem protocol",
+            "finish-args-flatpak-spawn-access": "Required for flatpak-spawn --host to apply hardware settings (fan curves, power profiles) via asusd/supergfxctl on the host"
+        }
+    },
     "io.github.TransmissionRemoteGtk": {
         "stable": {
             "appid-code-hosting-too-few-components": "app-id predates this linter rule"
