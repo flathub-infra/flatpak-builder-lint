@@ -8397,8 +8397,8 @@
     "org.telegram.desktop": {
         "*": {
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-            "external-gitmodule-url-found": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule",
+            "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated",
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
