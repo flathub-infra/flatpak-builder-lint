@@ -3973,6 +3973,14 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.forkgram.tdesktop": {
+        "stable": {
+            "flathub-json-automerge-enabled": "Telegram enforces client version cutoffs; stale builds lose server connectivity",
+            "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
+            "module-tde2e-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
+            "module-tg_owt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag"
+        }
+    },
     "io.github.fralonra.PpdEditor": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
