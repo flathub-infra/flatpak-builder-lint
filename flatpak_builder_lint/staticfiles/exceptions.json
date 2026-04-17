@@ -7922,7 +7922,7 @@
     "org.mozilla.thunderbird_esr": {
         "stable": {
             "finish-args-gnupg-filesystem-access": "Use GnuPG for email encryption",
-            "finish-args-own-name-org.mozilla.thunderbird": "Thunderbird ESR uses the same dbus name as monthly release"
+            "finish-args-own-name-wildcard-org.mozilla.thunderbird": "Thunderbird ESR uses the same dbus name as monthly release"
         }
     },
     "org.musescore.MuseScore": {
