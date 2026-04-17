@@ -5185,6 +5185,12 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
+    "it.mijorus.simba": {
+        "stable": {
+             "finish-args-flatpak-spawn-access": "Required to interact with the Samba daemon and write the smb.con file",
+             "finish-args-host-filesystem-access": "Required to read system files",
+        }
+    },
     "it.mijorus.gearlever": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu",
