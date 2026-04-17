@@ -2940,6 +2940,12 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "de.wwwtech.gitte": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Software needs unrestricted access to git repositories as well as ~/.git* files, and, if the user desires and configures to, also to ~/.ssh",
+            "finish-args-has-socket-ssh-auth": "Required to use the ssh transport for git repositories"
+        }
+    },
     "de.z_ray.OptimusUI": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Requires use of prime-select, nvidia-prime-select or fedora-prime-select on the host; Furthermore it requires access to /etc/os-release on the host to determine the real host distribution to use the correct prime tool and enable / disable features in the UI"
