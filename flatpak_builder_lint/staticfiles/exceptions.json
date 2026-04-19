@@ -8115,6 +8115,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.projecttick.MeshMC": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+        }
+    },
     "org.purei.Play": {
         "stable": {
             "finish-args-home-ro-filesystem-access": "Predates the linter rule",
