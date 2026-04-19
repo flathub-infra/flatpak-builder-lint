@@ -8117,7 +8117,7 @@
     },
     "org.projecttick.MeshMC": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "finish-args-contains-both-x11-and-wayland": "Minecraft currently needs X11/Xwayland compatibility on some systems. Without X11 access, the launched game process can fail during GLFW initialization with X11: The DISPLAY environment variable is missing, while Wayland support is still needed for the Qt launcher environment."
         }
     },
     "org.purei.Play": {
