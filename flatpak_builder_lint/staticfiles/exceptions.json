@@ -3660,11 +3660,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "io.github.aerocyber.sitemarker": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "io.github.aganzha.Stage": {
         "stable": {
             "finish-args-has-socket-gpg-agent": "Predates the linter rule",
@@ -3829,11 +3824,6 @@
         }
     },
     "io.github.dida_code.OpstaKultura": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "io.github.diegoivan.pdf_metadata_editor": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
@@ -5180,26 +5170,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "it.mijorus.collector": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "it.mijorus.gearlever": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Required to extract some large AppImages into the /tmp directory: the tmpfs under /run/user/1000 might be too small"
-        }
-    },
-    "it.mijorus.smile": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "it.mijorus.whisper": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "it.mq1.TinyWiiBackupManager": {
@@ -8675,7 +8650,6 @@
     },
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "stable": {
-            "finish-args-autostart-filesystem-access": "Predates the linter rule",
             "finish-args-flatpak-system-folder-access": "Predates the linter rule",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
