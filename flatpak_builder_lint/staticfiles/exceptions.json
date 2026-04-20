@@ -4696,7 +4696,8 @@
     },
     "io.github.swordpuffin.rewaita": {
         "stable": {
-            "finish-args-autostart-filesystem-access": "Needed for manually creating an autostart file with specific parameters which cannot be done through Libportal"
+            "finish-args-autostart-filesystem-access": "Needed for manually creating an autostart file with specific parameters which cannot be done through Libportal",
+            "finish-args-flatpak-appdata-folder-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory"
         }
     },
     "io.github.swordpuffin.wardrobe": {
