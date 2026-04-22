@@ -8992,5 +8992,10 @@
         "stable": {
             "finish-args-home-filesystem-access": "Required importing markdown files with images and attachments, only the main file can be accessed through the portal."
         }
+    },
+    "com.chirpmyradio.chirp": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Requred for importing and exporting files from the app due to it lacking xdg portals support."
+        }
     }
 }
