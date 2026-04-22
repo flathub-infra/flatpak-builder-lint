@@ -2925,7 +2925,6 @@
     },
     "de.schmidhuberj.tubefeeder": {
         "*": {
-            "finish-args-flatpak-spawn-access": "Spawn arbitrary video player",
             "finish-args-unnecessary-xdg-data-tubefeeder-create-access": "the app predates this linter rule"
         }
     },
