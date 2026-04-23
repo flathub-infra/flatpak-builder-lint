@@ -3108,7 +3108,9 @@
     },
     "dev.qwery.AddWater": {
         "*": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-unnecessary-xdg-config-mozilla-rw-access": "Needed to install theme to Firefox profiles stored in xdg-config",
+            "finish-args-unnecessary-xdg-config-librewolf-rw-access": "Needed to install theme to Librewolf profiles stored in xdg-config"
         }
     },
     "dev.restfox.Restfox": {
