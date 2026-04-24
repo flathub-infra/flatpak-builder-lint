@@ -4288,6 +4288,10 @@
             "finish-args-unnecessary-xdg-data-DiscordCanary-rw-access": "Needed to patch Discord Canary",
             "finish-args-unnecessary-xdg-data-DiscordDevelopment-rw-access": "Needed to patch Discord Development",
             "finish-args-unnecessary-xdg-data-DiscordPTB-rw-access": "Needed to patch Discord PTB",
+            "finish-args-unnecessary-xdg-config-discord-rw-access": "Needed to patch Discord",
+            "finish-args-unnecessary-xdg-config-discordcanary-rw-access": "Needed to patch Discord Canary",
+            "finish-args-unnecessary-xdg-config-discorddevelopment-rw-access": "Needed to patch Discord Development",
+            "finish-args-unnecessary-xdg-config-discordptb-rw-access": "Needed to patch Discord PTB",
             "finish-args-unnecessary-xdg-data-flatpak-create-access": "Needed to set permission overrides",
             "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needed to patch Flatpak installations of Discord"
         }
