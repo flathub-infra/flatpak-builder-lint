@@ -88,3 +88,4 @@ def get_lint_flags() -> set[str]:
 
 
 DEBUG = "debug" in get_lint_flags()
+SKIP_EOLRUNTIME_CHECKS = "skip-eol-runtime-checks" in get_lint_flags()
