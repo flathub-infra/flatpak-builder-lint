@@ -7,6 +7,18 @@ from _pytest.monkeypatch import MonkeyPatch
 from tests.testlib import create_git_repo, create_large_file, run_checks, set_git_remote_url
 
 
+@pytest.fixture(autouse=True)
+def mock_runtime_data(monkeypatch: MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub",
+        lambda: set(),
+    )
+    monkeypatch.setattr(
+        "flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub",
+        lambda: set(),
+    )
+
+
 @pytest.fixture(scope="module")
 def tests_subdir() -> str:
     return "manifests"
@@ -486,6 +498,30 @@ def test_manifest_eol_runtime(mock_active: MagicMock, mock_eol: MagicMock) -> No
     ret = run_checks("tests/manifests/eol_runtime.json")
     found_errors = ret["errors"]
     assert "runtime-is-eol-org.gnome.Sdk-40" in found_errors
+
+
+@patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub")
+@patch("flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub")
+def test_manifest_runtime_update_available(
+    mock_active: MagicMock,
+    mock_eol: MagicMock,
+) -> None:
+    mock_eol.return_value = set()
+
+    mock_active.return_value = {
+        "org.gnome.Platform//45",
+        "org.gnome.Platform//46",
+        "org.gnome.Sdk//45",
+        "org.gnome.Sdk//46",
+    }
+
+    ret = run_checks("tests/manifests/eol_runtime.json")
+
+    found_warnings = set(ret.get("warnings", []))
+    found_errors = set(ret.get("errors", []))
+
+    assert "runtime-update-available-to-org.gnome.Sdk-46" in found_warnings
+    assert "runtime-is-eol-org.gnome.Sdk-40" not in found_errors
 
 
 def test_manifest_in_git_repo(tmp_testdir: str) -> None:
