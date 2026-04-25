@@ -36,7 +36,7 @@ run_test() {
 
     export FLAT_MANAGER_BUILD_ID=0 FLAT_MANAGER_URL=http://localhost:9001 FLAT_MANAGER_TOKEN=foo
     local result
-    result="$(flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo \
+    result="$(flatpak run --env=FLATPAK_BUILDER_LINT=skip-eol-runtime-checks --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo \
         | jq -r '.errors|.[]' | xargs)"
 
     if [ -z "$expected_error" ]; then

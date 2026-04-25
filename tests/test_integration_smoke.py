@@ -25,7 +25,14 @@ def _find_builder() -> str | None:
 
 BUILDER = _find_builder()
 LINT = (
-    ["flatpak", "run", "--filesystem=/tmp", "--command=flatpak-builder-lint", BUILDER]
+    [
+        "flatpak",
+        "run",
+        "--filesystem=/tmp",
+        "--env=FLATPAK_BUILDER_LINT=skip-eol-runtime-checks",
+        "--command=flatpak-builder-lint",
+        BUILDER,
+    ]
     if BUILDER
     else []
 )

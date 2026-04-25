@@ -4,7 +4,7 @@ from collections import defaultdict
 from collections.abc import Callable, Mapping
 from typing import Any
 
-from .. import builddir, domainutils, ostree
+from .. import builddir, config, domainutils, ostree
 from . import Check
 
 
@@ -155,6 +155,9 @@ class EolRuntimeCheck(Check):
         return True, latest
 
     def _validate(self, runtime_ref: str) -> None:
+        if config.SKIP_EOLRUNTIME_CHECKS:
+            return
+
         splits = runtime_ref.split("/")
         comp_ref = f"{splits[0]}//{splits[2]}"
         eols_runtimes = domainutils.get_eol_runtimes_on_flathub()
