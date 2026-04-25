@@ -81,3 +81,10 @@ def is_flatmgr_pipeline() -> bool:
 
 def is_flathub_pipeline() -> bool:
     return is_flathub_build_pipeline() or is_flatmgr_pipeline()
+
+
+def get_lint_flags() -> set[str]:
+    return {f.strip() for f in os.getenv("FLATPAK_BUILDER_LINT", "").lower().split(",")}
+
+
+DEBUG = "debug" in get_lint_flags()
