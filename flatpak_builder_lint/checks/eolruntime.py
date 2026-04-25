@@ -137,11 +137,35 @@ class EolRuntimeCheck(Check):
 
         return bool(offset >= lapse_threshold)
 
+    def _has_runtime_update(
+        self, comp_ref: str, active_runtimes: set[str]
+    ) -> tuple[bool, str | None]:
+        if "//" not in comp_ref:
+            return False, None
+
+        latest = self._get_latest_runtime_version(comp_ref, active_runtimes)
+        if latest is None:
+            return False, None
+
+        _, current = comp_ref.split("//", 1)
+
+        if current == latest:
+            return False, None
+
+        return True, latest
+
     def _validate(self, runtime_ref: str) -> None:
         splits = runtime_ref.split("/")
         comp_ref = f"{splits[0]}//{splits[2]}"
         eols_runtimes = domainutils.get_eol_runtimes_on_flathub()
         active_runtimes = domainutils.get_active_runtimes_on_flathub()
+
+        update_available, latest_branch = self._has_runtime_update(comp_ref, active_runtimes)
+
+        if update_available and latest_branch:
+            update_msg = f"runtime-update-available-to-{splits[0]}-{latest_branch}"
+            self.warnings.add(update_msg)
+            self.info.add(f"{update_msg}: Please consider updating to the latest version")
 
         if comp_ref in eols_runtimes:
             base_msg = f"runtime-is-eol-{splits[0]}-{splits[2]}"
