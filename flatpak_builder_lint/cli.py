@@ -99,6 +99,7 @@ def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str
 
     OMITTED_ANNOTATIONS = {
         "appstream-failed-validation",
+        "desktop-file-failed-validation",
     }
 
     info: dict[str, str] = {
@@ -118,6 +119,12 @@ def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str
 
     for line in results.get("appstream", []):
         print(f"::error::Appstream: {line.strip()!r}")  # noqa: T201
+
+    for line in results.get("desktopfile", []):
+        print(f"::error::Desktop file: {line.strip()!r}")  # noqa: T201
+
+    for line in results.get("jsonschema", []):
+        print(f"::error::JSON schema: {line.strip()!r}")  # noqa: T201
 
     for msg in results.get("warnings", []):
         if msg in OMITTED_ANNOTATIONS:
