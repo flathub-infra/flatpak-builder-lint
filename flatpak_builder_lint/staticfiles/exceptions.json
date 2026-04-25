@@ -3715,6 +3715,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.avomar.dev-toolbox": {
+        "stable": {
+            "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
+        }
+    },
     "io.github.bcpierce00.unison": {
         "stable": {
             "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files",
