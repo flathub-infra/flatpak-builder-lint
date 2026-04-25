@@ -179,7 +179,15 @@ class EolRuntimeCheck(Check):
         runtime_id = manifest.get("runtime")
         runtime_br = manifest.get("runtime-version")
 
-        if runtime_id is None or runtime_br is None:
+        if runtime_id is None:
+            return
+
+        if runtime_br is None and "//" in runtime_id:
+            rid, rbr = runtime_id.split("//", 1)
+            if rid and rbr:
+                runtime_br = rbr
+
+        if runtime_br is None:
             return
 
         runtime_ref = f"{runtime_id}/x86_64/{runtime_br}"
