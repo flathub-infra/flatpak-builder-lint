@@ -5262,6 +5262,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "me.spaceinbox.swiftynotes": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Notes app stores each note as a plain markdown file; users select their notes library directory and commonly point it at cloud-synced folders (Syncthing, Nextcloud, Dropbox, custom rclone mounts) outside standard XDG locations so notes stay in sync across devices"
+        }
+    },
     "me.timschneeberger.GalaxyBudsClient": {
         "stable": {
             "finish-args-own-name-wildcard-org.kde": "The used version of the toolkit Avalonia only supports legacy KDE system tray icons: https://github.com/AvaloniaUI/Avalonia/issues/13782"
