@@ -154,8 +154,13 @@ class EolRuntimeCheck(Check):
 
         return True, latest
 
-    def _validate(self, runtime_ref: str) -> None:
+    def _validate(self, appid: str, runtime_ref: str, is_extension: bool) -> None:
         if config.SKIP_EOLRUNTIME_CHECKS:
+            return
+
+        is_baseapp = appid.endswith(config.FLATHUB_BASEAPP_IDENTIFIER)
+
+        if is_extension or is_baseapp:
             return
 
         splits = runtime_ref.split("/")
@@ -179,8 +184,14 @@ class EolRuntimeCheck(Check):
             self.info.add(f"{base_msg}: Please update to a supported runtime version")
 
     def check_manifest(self, manifest: Mapping[str, Any]) -> None:
+        appid = manifest.get("id")
+
+        if not appid:
+            return
+
         runtime_id = manifest.get("runtime")
         runtime_br = manifest.get("runtime-version")
+        is_extension = manifest.get("build-extension", False)
 
         if runtime_id is None:
             return
@@ -194,14 +205,20 @@ class EolRuntimeCheck(Check):
             return
 
         runtime_ref = f"{runtime_id}/x86_64/{runtime_br}"
-        self._validate(runtime_ref)
+        self._validate(appid, runtime_ref, is_extension)
 
     def check_build(self, path: str) -> None:
+        appid, ref_type = builddir.infer_appid(path), builddir.infer_type(path)
+
+        if not (appid and ref_type):
+            return
+
         runtime_ref = builddir.get_runtime(path)
+
         if not runtime_ref:
             return
 
-        self._validate(runtime_ref)
+        self._validate(appid, runtime_ref, ref_type != "app")
 
     def check_repo(self, path: str) -> None:
         self._populate_refs(path)
@@ -210,10 +227,11 @@ class EolRuntimeCheck(Check):
             return
 
         for ref in refs:
+            appid = ref.split("/")[1]
             with tempfile.TemporaryDirectory() as tmpdir:
                 ostree.extract_subpath(path, ref, "/metadata", tmpdir)
                 runtime_ref = builddir.get_runtime(tmpdir)
                 if not runtime_ref:
                     return
 
-                self._validate(runtime_ref)
+                self._validate(appid, runtime_ref, False)
