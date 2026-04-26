@@ -5418,11 +5418,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "net.longturn.freeciv21": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "net.lockbook.Lockbook": {
         "stable": {
             "flathub-json-automerge-enabled": "QA is performed upstream prior to a GH release automation."
@@ -5836,11 +5831,6 @@
         }
     },
     "org.blender.Blender": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.bluej.BlueJ": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -7461,7 +7451,6 @@
     },
     "org.kde.krename": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8565,11 +8554,6 @@
     "org.zaproxy.ZAP": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.zdoom.UZDoom": {
-        "*": {
-            "finish-args-flatpak-appdata-folder-access": "UZDoom can automatically detect required data for supported games from Steam installations"
         }
     },
     "org.zim_wiki.Zim": {
