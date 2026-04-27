@@ -234,8 +234,14 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
             )
             return False, resp_info
     except requests.exceptions.RequestException as e:
+        resp_info = " | ".join(
+            [
+                f"Request exception: {type(e).__name__}",
+                f"Message: {e}",
+            ]
+        )
         logger.debug("Request exception when fetching %s: %s: %s", url, type(e).__name__, e)
-        return False, None
+        return False, resp_info
 
 
 @cache
