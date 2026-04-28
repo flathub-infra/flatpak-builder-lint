@@ -9003,5 +9003,10 @@
         "stable": {
             "finish-args-home-filesystem-access": "Requred for importing and exporting files from the app due to it lacking xdg portals support."
         }
+    },
+    "gov.nasa.giss.Panoply": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Required for importing and exporting files from the app due to it lacking xdg portals support."
+        }
     }
 }
