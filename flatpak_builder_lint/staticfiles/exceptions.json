@@ -8570,6 +8570,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.zdoom.UZDoom": {
+        "*": {
+            "finish-args-flatpak-appdata-folder-access": "UZDoom can automatically detect required data for supported games from Steam installations"
+        }
+    },
     "org.zim_wiki.Zim": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
