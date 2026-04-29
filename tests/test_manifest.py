@@ -217,10 +217,15 @@ def test_manifest_appid_too_few_cpts() -> None:
 def test_manifest_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
+        "flathub-json-eol-rebase-target-not-on-flathub",
     }
 
-    ret = run_checks("tests/manifests/flathub_json.json")
-    found_errors = set(ret["errors"])
+    with patch(
+        "flatpak_builder_lint.checks.flathub_json.domainutils.get_all_flatpak_ids_on_flathub",
+        return_value={"org.example.foo"},
+    ):
+        ret = run_checks("tests/manifests/flathub_json.json")
+        found_errors = set(ret["errors"])
 
     assert errors.issubset(found_errors)
 

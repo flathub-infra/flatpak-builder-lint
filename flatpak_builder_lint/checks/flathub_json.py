@@ -2,7 +2,7 @@ import tempfile
 from collections.abc import Mapping
 from typing import Any
 
-from .. import builddir, config, ostree
+from .. import builddir, config, domainutils, ostree
 from . import Check
 
 
@@ -42,8 +42,11 @@ class FlathubJsonCheck(Check):
         if automerge:
             self.errors.add("flathub-json-automerge-enabled")
 
-        if eol_rebase and not eol:
-            self.errors.add("flathub-json-eol-rebase-without-message")
+        if eol_rebase:
+            if not eol:
+                self.errors.add("flathub-json-eol-rebase-without-message")
+            if eol_rebase not in domainutils.get_all_flatpak_ids_on_flathub():
+                self.errors.add("flathub-json-eol-rebase-target-not-on-flathub")
 
         if only_arches is not None and not isinstance(only_arches, bool) and len(only_arches) == 0:
             self.errors.add("flathub-json-only-arches-empty")

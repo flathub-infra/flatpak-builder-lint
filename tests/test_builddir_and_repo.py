@@ -140,7 +140,13 @@ def test_finish_args_missing(check_type: str, tmp_testdir: str) -> None:
 def test_flathub_json(check_type: str, tmp_testdir: str) -> None:
     testdir = "tests/builddir/flathub_json"
     move_files(testdir)
-    ret = rc(testdir, check_type, tmp_testdir)
+
+    with patch(
+        "flatpak_builder_lint.checks.flathub_json.domainutils.get_all_flatpak_ids_on_flathub",
+        return_value={"org.example.foo"},
+    ):
+        ret = rc(testdir, check_type, tmp_testdir)
+
     assert "flathub-json-skip-appstream-check" in set(ret["errors"])
 
 
