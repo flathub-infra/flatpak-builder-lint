@@ -1,0 +1,328 @@
+{
+    "app-id": "org.gnome.Totem",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "48",
+    "sdk": "org.gnome.Sdk",
+    "command": "totem",
+    "finish-args": [
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=fallback-x11",
+        /* Wayland access */
+        "--socket=wayland",
+        /* OpenGL access */
+        "--device=dri",
+        /* DVD playback */
+        "--device=all",
+        /* Needs to talk to the network: */
+        "--share=network",
+        /* Online accounts support */
+        "--talk-name=org.gnome.OnlineAccounts",
+        /* Avahi */
+        "--system-talk-name=org.freedesktop.Avahi",
+        /* Play sounds */
+        "--socket=pulseaudio",
+        /* Browse user's Videos directory and Downloads */
+        "--filesystem=xdg-videos",
+        "--filesystem=xdg-download",
+        /* Access DVDs */
+        "--filesystem=/run/media",
+        "--filesystem=/media",
+        /* Browse gvfs */
+        "--talk-name=org.gtk.vfs.*",
+        "--filesystem=xdg-run/gvfs", "--filesystem=xdg-run/gvfsd",
+        /* Migrate DConf settings from the host */
+        "--metadata=X-DConf=migrate-path=/org/gnome/Totem/",
+        /* screensaver plugin */
+        "--talk-name=org.gnome.ScreenSaver",
+        /* screenshot plugin */
+        "--filesystem=xdg-pictures",
+        /* save-file plugin */
+        "--talk-name=org.gnome.Nautilus",
+        /* MPRIS plugin */
+        "--own-name=org.mpris.MediaPlayer2.totem",
+        /* im-status plugin */
+        "--talk-name=org.gnome.SessionManager",
+        /* Codecs extension */
+        "--env=GST_PLUGIN_PATH=/app/lib/codecs/lib/gstreamer-1.0",
+        /* Disable runtime GStreamer plugins */
+        "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0",
+        /* totem-pl-parser extension */
+        "--env=PATH=/app/lib/totem-pl-parser/bin/:/app/lib/codecs/bin/:/app/bin:/usr/bin",
+        "--env=TOTEM_PL_PARSER_VIDEOSITE_SCRIPT_DIR=/app/lib/totem-pl-parser/bin/",
+        "--env=PYTHONPATH=/app/lib/totem-pl-parser/site-packages"
+    ],
+    "add-extensions": {
+        "org.gnome.Totem.Codecs": {
+            "directory": "lib/codecs",
+            "add-ld-path": "lib",
+            "bundle" : true,
+            "autodelete" : true
+        },
+        "org.gnome.Totem.Videosite": {
+            "directory": "lib/totem-pl-parser",
+            "merge-dirs": "lib;bin;site-packages",
+            "add-ld-path": "lib",
+            "subdirectories": true,
+            "autodelete" : true
+        }
+    },
+    "cleanup": [ "/include", "/share/bash-completion", "/share/doc", "/lib/*.la" ],
+    "modules": [
+        {
+            "name": "pygobject",
+            "buildsystem": "meson",
+            "config-opts": [ "-Dtests=false" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/pygobject/3.50/pygobject-3.50.0.tar.xz",
+                    "sha256": "8d836e75b5a881d457ee1622cae4a32bcdba28a0ba562193adb3bbb472472212"
+                }
+            ]
+        },
+        {
+            "name": "libpeas",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libpeas.git",
+                    "commit": "7f245fa5158204621c3469756a951b68a651c4fe",
+                    "tag": "libpeas-1.36.0"
+                }
+            ]
+        },
+        {
+            "name": "totem-pl-parser",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/totem-pl-parser.git",
+                    "tag": "V_3_26_6",
+                    "commit": "1431f520fb82f98873c3870f2bbe8eba4d0e670a"
+                }
+            ],
+            "cleanup": [ "/include" ],
+            "post-install": [
+                "mkdir /app/lib/totem-pl-parser"
+            ]
+        },
+        {
+            "name": "librest",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dsoup2=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/rest/0.9/rest-0.9.1.tar.xz",
+                    "sha256": "9266a5c10ece383e193dfb7ffb07b509cc1f51521ab8dad76af96ed14212c2e3",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "rest"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "grilo",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Denable-gtk-doc=false",
+                "-Denable-grl-net=true",
+                "-Denable-grl-pls=true",
+                "-Dsoup3=true"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/grilo.git",
+                    "tag": "grilo-0.3.19"
+                }
+            ],
+            "cleanup": [ "/include" ]
+        },
+        {
+            "name": "gom",
+            "buildsystem": "meson",
+            "config-opts": [ "-Denable-introspection=false" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gom.git",
+                    "commit": "26816b74a29b9d2d8dc169ed2f9649a4a159bc7c",
+                    "tag": "0.4"
+                }
+            ]
+        },
+        {
+            "name": "tracker",
+            "buildsystem": "meson",
+            "cleanup" : [ "/lib/tracker-3.0/trackertestutils" ],
+            "config-opts" : [
+                "-Ddocs=false",
+                "-Dman=false",
+                "-Dsystemd_user_services=false",
+                "-Dbash_completion=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/tracker.git",
+                    "tag": "3.4.1"
+                }
+            ]
+        },
+        {
+            "name": "tracker-miners",
+            "cleanup": [ "/bin", "/etc" ],
+            "buildsystem": "meson",
+            "config-opts" : [
+                "-Dman=false",
+                "-Dminer_fs=true",
+                "-Dminer_rss=false",
+                "-Dsystemd_user_services=false",
+                "-Dwriteback=false",
+                "-Ddomain_prefix=org.gnome.Totem",
+                "-Dminer_fs_cache_location=$XDG_CACHE_HOME/totem/miner/files",
+                "-Ddefault_index_recursive_dirs=['&VIDEOS']",
+                "-Ddefault_index_single_dirs=['&DOWNLOAD']"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git",
+                    "tag": "3.4.1"
+                }
+            ]
+        },
+        {
+            "name": "libmediaart",
+            "cleanup": [ "/bin", "/etc", "/libexec" ],
+            "buildsystem": "meson",
+            "config-opts": [ "-Dimage_library=gdk-pixbuf" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libmediaart.git",
+                    "commit": "69b4176bccb8032180fd8d48bb8b035c60acd203",
+                    "tag": "1.9.6"
+                }
+            ]
+        },
+        {
+            "name": "avahi",
+            "cleanup": [ "/bin/*avahi*", "share/man/man1/*avahi*" ],
+            "config-opts": [
+                "--with-distro=none",
+                "--enable-gobject",
+                "--enable-shared",
+                "--disable-static",
+                "--with-xml=expat",
+                "--disable-libdaemon",
+                "--disable-libevent",
+                "--disable-core-docs",
+                "--disable-manpages",
+                "--disable-mono",
+                "--disable-qt3",
+                "--disable-qt4",
+                "--disable-qt5",
+                "--disable-python",
+                "--disable-gtk",
+                "--disable-gtk3"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://avahi.org/download/avahi-0.8.tar.gz",
+                    "sha256": "060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda"
+                }
+            ]
+        },
+        /* XXX Remove the Lua sources we won't use */
+        {
+            "name": "grilo-plugins",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Denable-filesystem=yes",
+                "-Denable-optical-media=yes",
+                "-Denable-youtube=no",
+                "-Denable-bookmarks=yes",
+                "-Denable-lua-factory=yes",
+                "-Denable-metadata-store=yes",
+                "-Denable-tracker=no",
+                "-Denable-tracker3=yes",
+                "-Denable-local-metadata=yes",
+                "-Denable-dleyna=yes",
+                "-Denable-thetvdb=yes",
+                "-Denable-tmdb=yes",
+                "-Denable-freebox=yes",
+                "-Ddleyna-service-name=org.gnome.Totem.dleyna-server"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/grilo-plugins.git",
+                    "tag": "grilo-plugins-0.3.17"
+                }
+            ],
+            "cleanup": [ "/include" ]
+        },
+        {
+            "name": "flatpak-xdg-utils",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
+                    "tag": "1.0.6"
+                }
+            ]
+        },
+        {
+            "name": "gnome-desktop",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Ddebug_tools=true",
+                "-Dudev=disabled",
+                "-Dlegacy_library=true",
+                "-Dbuild_gtk4=false",
+                "-Ddesktop_docs=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gnome-desktop.git",
+                    "commit": "97c0344b3ba955bb6f6fe74ca03cc399a81acaa5",
+                    "tag": "44.0"
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-Work-around-https-github.com-flatpak-flatpak-issues-.patch"
+                }
+            ]
+        },
+        {
+            "name": "totem",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/totem.git",
+                    "tag": "43.2"
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-backend-Remove-support-for-installing-codecs-on-dema.patch"
+                }
+            ]
+        }
+    ],
+    "cleanup-commands" : [
+        "mv /app/lib/libdvd*.*so* /app/lib/liba52*.*so* /app/lib/codecs/lib/",
+        "mv /app/lib/libass.*so* /app/lib/codecs/lib/",
+        "mkdir -p /app/lib/ffmpeg"
+    ]
+}
