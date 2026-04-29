@@ -4068,7 +4068,7 @@
     "io.github.intoolswetrust.JSignPdf": {
         "*": {
             "finish-args-home-filesystem-access": "A Java app that doesn't support XDG portals and needs access to user's PDFs to sign"
-        }    
+        }
     },
     "io.github.iptux_src.iptux": {
         "*": {
@@ -8881,6 +8881,13 @@
     "surf.deckr.deckr": {
         "stable": {
             "appid-url-not-reachable": "Request is returning 403, https://github.com/flathub/flathub/pull/5529#issuecomment-2325455509"
+        }
+    },
+    "systems.fracture.launcher": {
+        "stable": {
+            "finish-args-dconf-talk-name": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut",
+            "finish-args-direct-dconf-path": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut",
+            "finish-args-only-wayland": "this program doesn't have x11 support"
         }
     },
     "tech.keyforge.keyforge_master": {
