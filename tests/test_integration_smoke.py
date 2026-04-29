@@ -29,7 +29,7 @@ LINT = (
         "flatpak",
         "run",
         "--filesystem=/tmp",
-        "--env=FLATPAK_BUILDER_LINT=skip-eol-runtime-checks",
+        "--env=FLATPAK_BUILDER_LINT=skip-eol-runtime-checks,skip-policy-enforcement",
         "--command=flatpak-builder-lint",
         BUILDER,
     ]

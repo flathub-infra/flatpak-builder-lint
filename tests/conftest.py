@@ -1,12 +1,14 @@
 import os
 import shutil
 import tempfile
-from collections.abc import Generator
+from collections.abc import Generator, Iterator
+from datetime import date
 from unittest.mock import MagicMock, patch
 
 import pytest
 
 from flatpak_builder_lint import checks
+from flatpak_builder_lint.policy import TimedSeverityPolicy
 
 
 @pytest.fixture(autouse=True)
@@ -98,3 +100,19 @@ def mock_domainutils(
 @pytest.fixture(params=["builddir", "repo"])
 def check_type(request: pytest.FixtureRequest) -> str:
     return str(request.param)
+
+
+@pytest.fixture(autouse=True)
+def freeze_policy() -> Iterator[None]:
+    original = TimedSeverityPolicy.is_enforced
+
+    def wrapper(self: TimedSeverityPolicy, today: date | None = None) -> bool:
+        if today is not None:
+            return original(self, today)
+        return False
+
+    with patch(
+        "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
+        new=wrapper,
+    ):
+        yield
