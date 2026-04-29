@@ -581,6 +581,38 @@ def test_manifest_yaml() -> None:
     assert "manifest-invalid-yaml" not in found_errors
 
 
+def test_manifest_json() -> None:
+    invalid_path = "tests/manifests/json/invalid/org.gnome.Totem.json"
+    valid_path = "tests/manifests/json/valid/org.kde.peruse.json"
+
+    with patch(
+        "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
+        return_value=False,
+    ):
+        ret = run_checks(invalid_path)
+
+        assert "manifest-invalid-json" in ret["warnings"]
+        assert "manifest-invalid-json" not in ret.get("errors", set())
+
+        info = ret["info"]
+        assert any("manifest-invalid-json:" in msg for msg in info)
+        assert any("will become an error after" in msg for msg in info)
+
+    with patch(
+        "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
+        return_value=True,
+    ):
+        ret = run_checks(invalid_path)
+
+        assert "manifest-invalid-json" in ret["errors"]
+        assert "manifest-invalid-json" not in ret.get("warnings", set())
+
+    ret = run_checks(valid_path)
+
+    assert "manifest-invalid-json" not in ret.get("errors", set())
+    assert "manifest-invalid-json" not in ret.get("warnings", set())
+
+
 def test_manifest_build_network_access(monkeypatch: MonkeyPatch) -> None:
     monkeypatch.setenv("REPO", "https://github.com/flathub/org.flatpak.Builder")
     ret = run_checks("tests/manifests/network_access.json")

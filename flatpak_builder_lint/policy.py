@@ -43,3 +43,9 @@ class TimedSeverityPolicy:
             check.warnings.add(self.code)
 
         check.info.add(msg)
+
+
+JSON_INVALID = TimedSeverityPolicy(
+    code="manifest-invalid-json",
+    promotion_date=date(2026, 12, 31),
+)

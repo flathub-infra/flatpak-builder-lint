@@ -1,0 +1,463 @@
+{
+    "id": "org.kde.peruse",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-24.08",
+    "sdk": "org.kde.Sdk",
+    "command": "peruse",
+    "rename-icon": "peruse",
+    "finish-args": [
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--system-talk-name=org.freedesktop.UDisks2",
+        "--talk-name=org.kde.kcookiejar5"
+    ],
+    "cleanup": [
+        "*.a",
+        ".la",
+        "/etc",
+        "/include",
+        "/lib/*.la",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/mkspecs",
+        "/share/doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "/share/qlogging-categories5"
+    ],
+    "modules": [
+        {
+            "name": "okular",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DBUILD_TESTING=OFF",
+                "-DOKULAR_UI=mobile",
+                "-DFORCE_NOT_REQUIRED_DEPENDENCIES=CHM"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/release-service/23.08.5/src/okular-23.08.5.tar.xz",
+                    "sha256": "d5d51f69b176a250907ee70e8f97143fc9d705cee3ef7ff448626c8a529ce364",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 8763,
+                        "stable-only": true,
+                        "url-template": "https://download.kde.org/stable/release-service/$version/src/okular-$version.tar.xz",
+                        "versions": {
+                            "<": "24.02.0"
+                        }
+                    }
+                }
+            ],
+            "modules": [
+                {
+                    "name": "gnustep-make",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/gnustep/tools-make/archive/make-2_9_3.tar.gz",
+                            "sha256": "aad12caecb0398b099f3b8b0282cecc3f01a9f371200641b2e1e535ae6ee2543",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 1220,
+                                "stable-only": true,
+                                "url-template": "https://github.com/gnustep/tools-make/archive/make-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "gnustep",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/gnustep/libs-base/archive/refs/tags/base-1_31_1.tar.gz",
+                            "sha256": "612e4415efc486c9e7017b00b28b0e122dc739d29b8e5d57ce79bf1a86a9862b",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 9105,
+                                "stable-only": true,
+                                "url-template": "https://github.com/gnustep/libs-base/archive/refs/tags/base-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "unarchiver",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "cd XADMaster && make -j $FLATPAK_BUILDER_N_JOBS -f Makefile.linux",
+                        "install -Dm755 XADMaster/unar XADMaster/lsar -t /app/bin/"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://cdn.theunarchiver.com/downloads/TheUnarchiverSource.zip",
+                            "sha256": "ac4cedf9b49375c0f805bda010fa03629d05ab283a0a8e35bf2dd01ae477e0a1",
+                            "strip-components": 0
+                        },
+                        {
+                            "type": "shell",
+                            "commands": [
+                                "sed -s -i 's#/usr/include/GNUstep#/app/include#g' */Makefile.linux"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "discount",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "./configure.sh --prefix=/app --enable-all-features --with-fenced-code --shared",
+                        "sed -e 's|/sbin/ldconfig|/sbin/ldconfig -n|' -i librarian.sh",
+                        "make install"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/Orc/discount/archive/v3.0.1.2.tar.gz",
+                            "sha256": "4ea6cc8782c6508b3051c469ed7a1b6ca20b023c2a0c26ccd9c83bc7e61dfc16",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 12139,
+                                "stable-only": true,
+                                "url-template": "https://github.com/Orc/discount/archive/v$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "boost",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=system",
+                        "./b2 -j $FLATPAK_BUILDER_N_JOBS install"
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://archives.boost.io/release/1.90.0/source/boost_1_90_0.tar.gz",
+                            "sha256": "5e93d582aff26868d581a52ae78c7d8edf3f3064742c6e77901a1f18a437eea9",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 6845,
+                                "stable-only": true,
+                                "url-template": "https://archives.boost.io/release/$version/source/boost_${version0}_${version1}_${version2}.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "libzip",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://libzip.org/download/libzip-1.11.4.tar.xz",
+                            "sha256": "8a247f57d1e3e6f6d11413b12a6f28a9d388de110adc0ec608d893180ed7097b",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 10649,
+                                "stable-only": true,
+                                "url-template": "https://libzip.org/download/libzip-$version.tar.xz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ebook-tools",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://downloads.sourceforge.net/project/ebook-tools/ebook-tools/0.2.2/ebook-tools-0.2.2.tar.gz",
+                            "sha256": "cbc35996e911144fa62925366ad6a6212d6af2588f1e39075954973bbee627ae",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 17771,
+                                "stable-only": true,
+                                "url-template": "https://downloads.sourceforge.net/project/ebook-tools/ebook-tools/$version/ebook-tools-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "djvulibre",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://downloads.sourceforge.net/djvu/djvulibre-3.5.29.tar.gz",
+                            "sha256": "d3b4b03ae2bdca8516a36ef6eb27b777f0528c9eda26745d9962824a3fdfeccf",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 10159,
+                                "stable-only": true,
+                                "url-template": "http://downloads.sourceforge.net/djvu/djvulibre-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ghostscript",
+                    "config-opts": [
+                        "--disable-cups",
+                        "--without-tesseract"
+                    ],
+                    "make-args": [
+                        "so"
+                    ],
+                    "make-install-args": [
+                        "soinstall"
+                    ],
+                    "cleanup": [
+                        "/share/ghostscript/*/doc/",
+                        "/share/ghostscript/*/examples"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10070/ghostscript-10.07.0.tar.gz",
+                            "sha256": "ed6ea62022e3f4d5a6569b6efc9361b63a6d118bfcad8f0beb897c37885b5cad",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 1157,
+                                "stable-only": true,
+                                "url-template": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${major}0$minor$patch/ghostscript-$version.tar.gz"
+                            }
+                        },
+                        {
+                            "type": "shell",
+                            "commands": [
+                                "cp -p /usr/share/automake-*/config.{sub,guess} freetype/builds/unix/",
+                                "cp -p /usr/share/automake-*/config.{sub,guess} ijs/",
+                                "cp -p /usr/share/automake-*/config.{sub,guess} jpeg/",
+                                "cp -p /usr/share/automake-*/config.{sub,guess} libpng/",
+                                "cp -p /usr/share/automake-*/config.{sub,guess} lcms2mt/",
+                                "cp -p /usr/share/automake-*/config.{sub,guess} tiff/config/",
+                                "rm -rf libpng/pngread.c"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "libspectre",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz",
+                            "sha256": "55a7517cd3572bd2565df0cf450944a04d5273b279ebb369a895391957f0f960",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 1724,
+                                "stable-only": true,
+                                "url-template": "http://libspectre.freedesktop.org/releases/libspectre-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "poppler-data",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz",
+                            "sha256": "c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 3687,
+                                "stable-only": true,
+                                "url-template": "https://poppler.freedesktop.org/poppler-data-$version.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "poppler",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "config-opts": [
+                        "-DBUILD_GTK_TESTS=OFF",
+                        "-DBUILD_QT5_TESTS=OFF",
+                        "-DBUILD_CPP_TESTS=OFF",
+                        "-DENABLE_UTILS=OFF",
+                        "-DENABLE_CPP=OFF",
+                        "-DENABLE_GLIB=OFF",
+                        "-DENABLE_QT6=OFF"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://poppler.freedesktop.org/poppler-26.04.0.tar.xz",
+                            "sha256": "b0955163114af96bc0106f68cb24daf973a629462453d8b82775f81b0d4e0693",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 3686,
+                                "stable-only": true,
+                                "url-template": "https://poppler.freedesktop.org/poppler-$version.tar.xz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "exiv2",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/Exiv2/exiv2/releases/download/v0.27.6/exiv2-0.27.6-Source.tar.gz",
+                            "sha256": "4c192483a1125dc59a3d70b30d30d32edace9e14adf52802d2f853abf72db8a6",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 769,
+                                "stable-only": true,
+                                "url-template": "https://github.com/Exiv2/exiv2/releases/download/v$version/exiv2-$version-Source.tar.gz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pcre",
+                    "config-opts": [
+                        "--enable-unicode-properties"
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://prdownloads.sourceforge.net/pcre/pcre-8.45.tar.bz2",
+                            "sha256": "4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 2610,
+                                "stable-only": true,
+                                "url-template": "http://prdownloads.sourceforge.net/pcre/pcre-$version.tar.bz2"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "kjs",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.kde.org/stable/frameworks/5.116/portingAids/kjs-5.116.0.tar.xz",
+                            "sha256": "9fb4f33e31d5b31eb6449311c1c61acaa968d42419252c0ab9dccb1f5fd9e1b7"
+                        }
+                    ]
+                },
+                {
+                    "name": "khtml",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.kde.org/stable/frameworks/5.116/portingAids/khtml-5.116.0.tar.xz",
+                            "sha256": "8921fb41be1b1f8bd3498a8c45bd955eff752b188ae67b50f3dd8c22592bcc8e"
+                        }
+                    ]
+                },
+                {
+                    "name": "libkexiv2",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.kde.org/stable/release-service/25.08.3/src/libkexiv2-25.08.3.tar.xz",
+                            "sha256": "0806898554b62a6f834d33bb481923d82bde91b1692ba7b146fec94b9a503d03",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 8763,
+                                "stable-only": true,
+                                "url-template": "https://download.kde.org/stable/release-service/$version/src/libkexiv2-$version.tar.xz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "kdegraphics-mobipocket",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.kde.org/stable/release-service/25.04.3/src/kdegraphics-mobipocket-25.04.3.tar.xz",
+                            "sha256": "12f66c78d190867c1c994f650f1409c87bde0fd592911ad3a475b7502045f3d3",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 8763,
+                                "stable-only": true,
+                                "url-template": "https://download.kde.org/stable/release-service/$version/src/kdegraphics-mobipocket-$version.tar.xz",
+                                "versions": {
+                                    "<": "25.08.0"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "cups",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "./configure --disable-systemd --enable-threads --enable-gnutls",
+                        "gcc berkeley/lpr.c -o /app/bin/lpr -I . -lcups"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz",
+                            "sha256": "0339587204b4f9428dd0592eb301dec0bf9ea6ea8dce5d9690d56be585aba92d",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 380,
+                                "stable-only": true,
+                                "url-template": "https://github.com/OpenPrinting/cups/releases/download/v$version/cups-$version-source.tar.gz"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "peruse",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/peruse/peruse-1.80.tar.xz",
+                    "sha256": "c674959ca176d236f1568156e35036d8d65655952bcbf17b1be4ece4d2ba3351",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 375045,
+                        "stable-only": true,
+                        "url-template": "https://download.kde.org/stable/peruse/peruse-$version.tar.xz"
+                    }
+                },
+                {
+                    "type": "patch",
+                    "path": "fix-appdata.patch"
+                }
+            ]
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 from collections.abc import Mapping
 from typing import Any
 
-from .. import config
+from .. import config, policy
 from . import Check
 
 
@@ -11,6 +11,13 @@ class TopLevelCheck(Check):
         if yaml_failed:
             self.errors.add("manifest-invalid-yaml")
             self.info.add(f"manifest-invalid-yaml: {yaml_failed}")
+
+        json_failed = manifest.get("x-manifest-json-failed")
+        if json_failed:
+            policy.JSON_INVALID.apply(
+                self,
+                f"manifest-invalid-json: {json_failed}",
+            )
 
         unknown_propeties = manifest.get("x-manifest-unknown-properties")
 
