@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 from functools import cache
+from glob import glob
 from types import MappingProxyType
 from typing import Any
 
@@ -63,6 +64,27 @@ def get_key_lineno(manifest_path: str, key: str) -> int | None:
     return None
 
 
+def validate_manifest_files(filename: str) -> list[str]:
+    yaml_errors: list[str] = []
+
+    base_dir = os.path.dirname(os.path.abspath(filename))
+    yaml = YAML(typ="safe")
+
+    yaml_paths = glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True) + glob(
+        os.path.join(base_dir, "**", "*.yml"), recursive=True
+    )
+
+    for path in sorted(yaml_paths):
+        try:
+            with open(path) as f:
+                yaml.load(f)
+        except YAMLError as err:
+            rel_path = os.path.relpath(path, base_dir)
+            yaml_errors.append(f"{rel_path}: {format_yaml_error(err).strip()}")
+
+    return yaml_errors
+
+
 # json-glib supports non-standard syntax like // comments. Bail out and
 # delegate parsing to flatpak-builder. This also gives us an easy support
 # for modules stored in external files.
@@ -71,13 +93,7 @@ def show_manifest(filename: str) -> MappingProxyType[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
-    yaml_err: str | None = None
-    if os.path.basename(filename).lower().endswith((".yaml", ".yml")):
-        try:
-            with open(filename) as f:
-                YAML(typ="safe").load(f)
-        except YAMLError as err:
-            yaml_err = format_yaml_error(err).strip()
+    yaml_errors = validate_manifest_files(filename)
 
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename],
@@ -136,8 +152,8 @@ def show_manifest(filename: str) -> MappingProxyType[str, Any]:
     if json_warnings:
         manifest_json["x-manifest-json-warnings"] = json_warnings
 
-    if yaml_err:
-        manifest_json["x-manifest-yaml-failed"] = yaml_err
+    if yaml_errors:
+        manifest_json["x-manifest-yaml-failed"] = yaml_errors
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
     git_toplevel = gitutils.get_git_toplevel(manifest_basedir)

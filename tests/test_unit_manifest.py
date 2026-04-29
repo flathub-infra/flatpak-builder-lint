@@ -1,21 +1,25 @@
+from pathlib import Path
 from typing import Any
-
-from ruamel.yaml.error import YAMLError
 
 from flatpak_builder_lint import manifest
 
 
-class TestFormatYamlError:
-    def test_strips_suppression_hints(self) -> None:
-        err = YAMLError(
-            "bad yaml\n  To suppress this check see https://yaml.dev/\n  https://yaml.dev/"
-        )
+class TestValidateManifestFiles:
+    def test_valid_yaml(self, tmp_path: Path) -> None:
+        (tmp_path / "a.yaml").write_text("key: value\n")
 
-        result = manifest.format_yaml_error(err)
+        yaml_errors = manifest.validate_manifest_files(str(tmp_path / "a.yaml"))
 
-        assert "To suppress" not in result
-        assert "https://yaml.dev" not in result
-        assert "bad yaml" in result
+        assert yaml_errors == []
+
+    def test_invalid_yaml(self, tmp_path: Path) -> None:
+        bad_yaml = tmp_path / "bad.yaml"
+        bad_yaml.write_text("key: [1, 2\n")
+
+        yaml_errors = manifest.validate_manifest_files(str(bad_yaml))
+
+        assert len(yaml_errors) == 1
+        assert "bad.yaml" in yaml_errors[0]
 
 
 class TestGetKeyLineno:
