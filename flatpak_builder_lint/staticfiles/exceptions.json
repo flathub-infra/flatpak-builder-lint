@@ -8648,7 +8648,8 @@
     },
     "page.codeberg.JakobDev.jdPermissionStoreEdit": {
         "stable": {
-            "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs acccess to xdg-data/flatpak/db"
+            "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs acccess to xdg-data/flatpak/db",
+            "finish-args-portal-impl-permissionstore-talk-name": "Needs to mdoify the permission store"
         }
     },
     "page.codeberg.JakobDev.jdProcessFileWatcher": {
