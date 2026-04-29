@@ -573,10 +573,10 @@ def test_manifest_json_warnings() -> None:
 
 
 def test_manifest_yaml() -> None:
-    ret = run_checks("tests/manifests/yaml/manfiest-invalid.yml")
+    ret = run_checks("tests/manifests/yaml/invalid/manfiest-invalid.yml")
     found_errors = ret["errors"]
     assert "manifest-invalid-yaml" in found_errors
-    ret = run_checks("tests/manifests/yaml/manfiest-valid.yml")
+    ret = run_checks("tests/manifests/yaml/valid/manfiest-valid.yml")
     found_errors = ret["errors"]
     assert "manifest-invalid-yaml" not in found_errors
 
