@@ -129,8 +129,20 @@ def get_refs_from_summary(url: str) -> set[str]:
 
 
 @cache
+def get_flatpak_ids_from_summary(url: str) -> set[str]:
+    return {ref.split("/")[1] for ref in get_refs_from_summary(url)}
+
+
+@cache
 def get_appids_from_summary(url: str) -> set[str]:
     return {ref.split("/")[1] for ref in get_refs_from_summary(url) if ref.startswith("app/")}
+
+
+@cache
+def get_all_flatpak_ids_on_flathub() -> set[str]:
+    return get_flatpak_ids_from_summary(
+        f"{config.FLATHUB_STABLE_REPO_URL}/summary"
+    ) | get_flatpak_ids_from_summary(f"{config.FLATHUB_BETA_REPO_URL}/summary")
 
 
 @cache
