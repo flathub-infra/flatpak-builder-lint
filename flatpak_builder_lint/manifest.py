@@ -64,8 +64,9 @@ def get_key_lineno(manifest_path: str, key: str) -> int | None:
     return None
 
 
-def validate_manifest_files(filename: str) -> list[str]:
+def validate_manifest_files(filename: str) -> tuple[list[str], list[str]]:
     yaml_errors: list[str] = []
+    json_errors: list[str] = []
 
     base_dir = os.path.dirname(os.path.abspath(filename))
     yaml = YAML(typ="safe")
@@ -73,6 +74,7 @@ def validate_manifest_files(filename: str) -> list[str]:
     yaml_paths = glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True) + glob(
         os.path.join(base_dir, "**", "*.yml"), recursive=True
     )
+    json_paths = glob(os.path.join(base_dir, "**", "*.json"), recursive=True)
 
     for path in sorted(yaml_paths):
         try:
@@ -81,8 +83,15 @@ def validate_manifest_files(filename: str) -> list[str]:
         except YAMLError as err:
             rel_path = os.path.relpath(path, base_dir)
             yaml_errors.append(f"{rel_path}: {format_yaml_error(err).strip()}")
+    for path in sorted(json_paths):
+        try:
+            with open(path) as f:
+                json.load(f)
+        except json.JSONDecodeError as err:
+            rel_path = os.path.relpath(path, base_dir)
+            json_errors.append(f"{rel_path}: {err.msg} (line {err.lineno}, column {err.colno})")
 
-    return yaml_errors
+    return yaml_errors, json_errors
 
 
 # json-glib supports non-standard syntax like // comments. Bail out and
@@ -93,7 +102,7 @@ def show_manifest(filename: str) -> MappingProxyType[str, Any]:
     if not os.path.exists(filename):
         raise OSError(errno.ENOENT, f"No such manifest file: {filename}")
 
-    yaml_errors = validate_manifest_files(filename)
+    yaml_errors, json_errors = validate_manifest_files(filename)
 
     ret = subprocess.run(
         ["flatpak-builder", "--show-manifest", filename],
@@ -154,6 +163,9 @@ def show_manifest(filename: str) -> MappingProxyType[str, Any]:
 
     if yaml_errors:
         manifest_json["x-manifest-yaml-failed"] = yaml_errors
+
+    if json_errors:
+        manifest_json["x-manifest-json-failed"] = json_errors
 
     manifest_basedir = os.path.dirname(os.path.abspath(filename))
     git_toplevel = gitutils.get_git_toplevel(manifest_basedir)
