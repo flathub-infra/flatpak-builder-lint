@@ -4068,7 +4068,7 @@
     "io.github.intoolswetrust.JSignPdf": {
         "*": {
             "finish-args-home-filesystem-access": "A Java app that doesn't support XDG portals and needs access to user's PDFs to sign"
-        }
+        }    
     },
     "io.github.iptux_src.iptux": {
         "*": {
