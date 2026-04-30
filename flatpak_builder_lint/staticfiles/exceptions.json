@@ -8886,8 +8886,7 @@
     "systems.fracture.launcher": {
         "stable": {
             "finish-args-dconf-talk-name": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut",
-            "finish-args-direct-dconf-path": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut",
-            "finish-args-only-wayland": "this program doesn't have x11 support"
+            "finish-args-direct-dconf-path": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut"
         }
     },
     "tech.keyforge.keyforge_master": {
