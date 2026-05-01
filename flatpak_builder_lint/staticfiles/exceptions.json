@@ -3964,6 +3964,11 @@
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.fidele007.akkhara": {
+        "stable": {
+            "finish-args-own-name-com.fidele007.akkhara": "The app requires this access to run"
+        }
+    },
     "io.github.focustimerhq.FocusTimer": {
         "stable": {
             "finish-args-login1-system-talk-name": "Used for locking the screen and for detecting when it gets locked"
