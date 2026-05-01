@@ -491,6 +491,11 @@
             "finish-args-unnecessary-xdg-data-Trash-rw-access": "Needs direct trash access, doesn't use portal"
         }
     },
+    "com.clustta.clustta": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Version control tool requiring direct access to user-chosen project directories"
+        }
+    },
     "com.carpeludum.KegaFusion": {
         "stable": {
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
