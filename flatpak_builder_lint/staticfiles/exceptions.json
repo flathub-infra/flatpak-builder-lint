@@ -1985,7 +1985,8 @@
         "stable": {
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
+            "finish-args-host-filesystem-access": "Predates the linter rule",
+            "finish-args-contains-both-x11-and-wayland": "Rider uses Wayland but some capabilities needs X11, like Avalonia development"
         }
     },
     "com.jetbrains.RustRover": {
