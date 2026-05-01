@@ -8883,6 +8883,12 @@
             "appid-url-not-reachable": "Request is returning 403, https://github.com/flathub/flathub/pull/5529#issuecomment-2325455509"
         }
     },
+    "systems.fracture.launcher": {
+        "stable": {
+            "finish-args-dconf-talk-name": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut",
+            "finish-args-direct-dconf-path": "Application uses dconf to check keyboard shortcuts and add a keyboard shortcut"
+        }
+    },
     "tech.keyforge.keyforge_master": {
         "*": {
             "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
