@@ -199,7 +199,6 @@
     },
     "ca.parallel_launcher.ParallelLauncher": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-login1-talk-name": "Predates the linter rule"
         }
@@ -744,7 +743,6 @@
     },
     "com.github.Flacon": {
         "stable": {
-            "appid-code-hosting-too-few-components": "app-id predates this linter rule",
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -1756,8 +1754,7 @@
     },
     "com.gitlab.coringao.JAG": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.gitlab.coringao.cavestory-nx": {
@@ -4073,7 +4070,7 @@
     "io.github.intoolswetrust.JSignPdf": {
         "*": {
             "finish-args-home-filesystem-access": "A Java app that doesn't support XDG portals and needs access to user's PDFs to sign"
-        }    
+        }
     },
     "io.github.iptux_src.iptux": {
         "*": {
@@ -5049,7 +5046,6 @@
     },
     "io.mgba.mGBA": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -5707,7 +5703,6 @@
     },
     "net.werwolv.ImHex": {
         "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
@@ -8581,9 +8576,6 @@
         }
     },
     "org.zdoom.UZDoom": {
-        "stable": {
-            "finish-args-flatpak-appdata-folder-access": "UZDoom can automatically detect required data for supported games from Steam installations"
-        },
         "beta": {
             "finish-args-flatpak-appdata-folder-access": "UZDoom can automatically detect required data for supported games from Steam installations"
         }
