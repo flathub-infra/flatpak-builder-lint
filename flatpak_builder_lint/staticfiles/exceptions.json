@@ -9018,5 +9018,10 @@
         "stable": {
             "finish-args-home-filesystem-access": "Required for importing and exporting files from the app due to it lacking xdg portals support."
         }
+    },
+    "com.ledger.wallet": {
+        "stable": {
+            "finish-args-only-wayland": "This program doesn't support x11."
+        }
     }
 }
