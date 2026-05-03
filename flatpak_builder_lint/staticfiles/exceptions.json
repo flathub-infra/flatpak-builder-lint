@@ -4762,7 +4762,9 @@
     "io.github.totoshko88.RustConn": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
-            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections"
+            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
+            "finish-args-flatpak-spawn-access": "Needed to launch host binaries (ssh, xfreerdp, vncviewer, remote-viewer, picocom) via flatpak-spawn --host since they are unavailable inside the sandbox"
+
         }
     },
     "io.github.trevorsandy.LPub3D": {
