@@ -3720,6 +3720,16 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.arijanj.Mimic": {
+        "stable": {
+            "finish-args-host-os-ro-filesystem-access": "Needs access to /usr/share/applications to view applications, /usr/share/icons and /usr/share/pixmaps to render icons",
+            "finish-args-arbitrary-xdg-config-create-access": "Writing mimeapps.list if it doesn't exist",
+            "finish-args-desktopfile-filesystem-access": "For listing applications installed in ~/.local/share/applications",
+            "finish-args-flatpak-system-folder-access": "For listing Flatpak applications",
+            "finish-args-flatpak-user-folder-access": "For listing user Flatpak application",
+            "finish-args-host-var-access": "For listing Flatpak and snapd applications"
+        }
+    },
     "io.github.avomar.dev-toolbox": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
