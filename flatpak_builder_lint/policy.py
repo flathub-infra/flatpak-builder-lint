@@ -15,6 +15,7 @@ class CheckLike(Protocol):
 class TimedSeverityPolicy:
     code: str
     promotion_date: date
+    extra_info_msg: str | None = None
 
     def is_enforced(self, today: date | None = None) -> bool:
         if config.SKIP_POLICY_ENFORCEMENT:
@@ -42,6 +43,9 @@ class TimedSeverityPolicy:
             msg = f"{init_msg}: '{days_left}' day{'s' if days_left != 1 else ''} remaining)."
         else:
             msg = f"{init_msg})."
+
+        if self.extra_info_msg:
+            msg += f" {self.extra_info_msg}"
 
         return msg
 

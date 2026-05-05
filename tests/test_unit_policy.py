@@ -57,3 +57,28 @@ class TestTimedSeverityPolicy:
         assert "test-code" in check.errors
         assert "test-code" not in check.warnings
         assert any("message" in m for m in check.info)
+
+    def test_format_message_with_extra_info(self) -> None:
+        policy = TimedSeverityPolicy(
+            "test-code",
+            date(2026, 12, 31),
+            extra_info_msg="Additional context here.",
+        )
+
+        msg = policy.format_message("base message", today=date(2026, 12, 30))
+        assert msg == (
+            "base message (will become an error after '31 December 2026 UTC': '1' day remaining)."
+            " Additional context here."
+        )
+
+    def test_apply_includes_extra_info(self) -> None:
+        policy = TimedSeverityPolicy(
+            "test-code",
+            date(2026, 12, 31),
+            extra_info_msg="Extra info.",
+        )
+        check = DummyCheck()
+
+        policy.apply(check, "message", today=date(2026, 12, 30))
+
+        assert any("Extra info." in m for m in check.info)
