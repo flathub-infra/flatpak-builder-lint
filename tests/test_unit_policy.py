@@ -27,14 +27,13 @@ class TestTimedSeverityPolicy:
 
     def test_promotion_date_str(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))
-        assert policy.promotion_date_str() == "31 December 2026 (UTC)"
+        assert policy.promotion_date_str() == "31 December 2026 UTC"
 
     def test_format_message(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))
-
         msg = policy.format_message("base message")
-        assert "base message" in msg
-        assert "31 December 2026 (UTC)" in msg
+
+        assert msg == ("base message (will become an error after '31 December 2026 UTC').")
 
     def test_apply_before_cutoff(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))

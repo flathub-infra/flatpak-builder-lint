@@ -29,10 +29,10 @@ class TimedSeverityPolicy:
 
     def promotion_date_str(self) -> str:
         d = self.promotion_date
-        return f"{d.day} {d.strftime('%B %Y')} (UTC)"
+        return f"{d.day} {d.strftime('%B %Y')} UTC"
 
     def format_message(self, base: str) -> str:
-        return f"{base} (will become an error after {self.promotion_date_str()})"
+        return f"{base} (will become an error after '{self.promotion_date_str()}')."
 
     def apply(self, check: Any, base_message: str, today: date | None = None) -> None:
         msg = self.format_message(base_message)
