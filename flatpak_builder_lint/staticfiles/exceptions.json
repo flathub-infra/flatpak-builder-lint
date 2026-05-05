@@ -4763,8 +4763,7 @@
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
             "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
-            "finish-args-flatpak-spawn-access": "Needed to launch host binaries (ssh, xfreerdp, vncviewer, remote-viewer, picocom) via flatpak-spawn --host since they are unavailable inside the sandbox"
-
+            "finish-args-flatpak-spawn-access": "Local Shell feature opens an interactive host shell session via flatpak-spawn --host for user-initiated terminal access"
         }
     },
     "io.github.trevorsandy.LPub3D": {
