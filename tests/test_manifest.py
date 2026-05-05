@@ -610,6 +610,7 @@ def test_manifest_json() -> None:
         assert any("manifest-invalid-json:" in msg for msg in info)
         assert any("will become an error after" in msg for msg in info)
         assert any("'1' day remaining" in msg for msg in info)
+        assert any("Manifest must be valid JSON per RFC 7159" in msg for msg in info)
 
     mock_datetime = MagicMock()
     mock_datetime.now.return_value = fixed_today
