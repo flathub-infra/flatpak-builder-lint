@@ -3006,6 +3006,12 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "dev.lonecloud.gerbil": {
+        "stable": {
+            "finish-args-host-filesystem-access": "required to access LLM model files and the KoboldCpp binary, which users may store anywhere on their filesystem",
+            "finish-args-flatpak-spawn-access": "required to run host monitoring commands (nvidia-smi, rocm-smi, top) to display real-time GPU/CPU metrics during inference"
+        }
+    },
     "dev.geopjr.Turntable": {
         "stable": {
             "finish-args-flatpak-appdata-folder-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
