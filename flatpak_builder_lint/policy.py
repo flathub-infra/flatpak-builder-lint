@@ -31,11 +31,22 @@ class TimedSeverityPolicy:
         d = self.promotion_date
         return f"{d.day} {d.strftime('%B %Y')} UTC"
 
-    def format_message(self, base: str) -> str:
-        return f"{base} (will become an error after '{self.promotion_date_str()}')."
+    def format_message(self, base: str, today: date | None = None) -> str:
+        if today is None:
+            today = datetime.now(timezone.utc).date()
+
+        init_msg = f"{base} (will become an error after '{self.promotion_date_str()}'"
+
+        if not self.is_enforced(today):
+            days_left = (self.promotion_date - today).days
+            msg = f"{init_msg}: '{days_left}' day{'s' if days_left != 1 else ''} remaining)."
+        else:
+            msg = f"{init_msg})."
+
+        return msg
 
     def apply(self, check: Any, base_message: str, today: date | None = None) -> None:
-        msg = self.format_message(base_message)
+        msg = self.format_message(base_message, today)
 
         if self.is_enforced(today):
             check.errors.add(self.code)

@@ -31,9 +31,12 @@ class TestTimedSeverityPolicy:
 
     def test_format_message(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))
-        msg = policy.format_message("base message")
 
-        assert msg == ("base message (will become an error after '31 December 2026 UTC').")
+        msg = policy.format_message("base message", today=date(2026, 12, 30))
+
+        assert msg == (
+            "base message (will become an error after '31 December 2026 UTC': '1' day remaining)."
+        )
 
     def test_apply_before_cutoff(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))
@@ -43,7 +46,7 @@ class TestTimedSeverityPolicy:
 
         assert "test-code" in check.warnings
         assert "test-code" not in check.errors
-        assert any("message" in m for m in check.info)
+        assert any("'1' day remaining" in m for m in check.info)
 
     def test_apply_after_cutoff(self) -> None:
         policy = TimedSeverityPolicy("test-code", date(2026, 12, 31))
