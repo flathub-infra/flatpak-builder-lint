@@ -7,6 +7,8 @@ from typing import Any
 from .. import builddir, config, domainutils, ostree
 from . import Check
 
+LAPSE_THRESHOLD: int = 3
+
 
 class EolRuntimeCheck(Check):
     def _get_latest_runtime_verdict(self, active_runtimes: set[str]) -> dict[str, str]:
@@ -94,7 +96,7 @@ class EolRuntimeCheck(Check):
         return abs(abs(maj2 - maj1) * 100 + abs(min2 - min1))
 
     def _is_eol_by_n_versions(
-        self, comp_ref: str, active_runtimes: set[str], lapse_threshold: int = 3
+        self, comp_ref: str, active_runtimes: set[str], lapse_threshold: int = LAPSE_THRESHOLD
     ) -> None | bool:
         if "//" not in comp_ref:
             return None
@@ -173,7 +175,7 @@ class EolRuntimeCheck(Check):
         if update_available and latest_branch:
             update_msg = f"runtime-update-available-to-{splits[0]}-{latest_branch}"
             self.warnings.add(update_msg)
-            self.info.add(f"{update_msg}: Please consider updating to the latest version")
+            self.info.add(f"{update_msg}: Please consider updating to the latest runtime version")
 
         if comp_ref in eols_runtimes:
             base_msg = f"runtime-is-eol-{splits[0]}-{splits[2]}"
@@ -181,7 +183,11 @@ class EolRuntimeCheck(Check):
                 self.errors.add(base_msg)
                 return
             self.warnings.add(base_msg)
-            self.info.add(f"{base_msg}: Please update to a supported runtime version")
+            self.info.add(
+                f"{base_msg}: Please consider updating to a supported runtime version. "
+                f"This will be promoted to an error if it falls behind by "
+                f"{LAPSE_THRESHOLD} consecutive runtime versions."
+            )
 
     def check_manifest(self, manifest: Mapping[str, Any]) -> None:
         appid = manifest.get("id")
