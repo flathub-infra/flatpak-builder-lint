@@ -143,20 +143,6 @@ class FinishArgsCheck(Check):
                         "finish-args-insufficient-required-flatpak: finish-args has"
                         + " 'input' or 'usb' device but 'require-version' is not >=1.16.0"
                     )
-                if dev == "input":
-                    self.errors.add("finish-args-has-dev-input")
-                    self.info.add(
-                        "finish-args-has-dev-input: This permissions is not backwards"
-                        + " compatible with a supported Flatpak release 1.14.x and"
-                        + " requires an exception"
-                    )
-                if dev == "usb":
-                    self.errors.add("finish-args-has-dev-usb")
-                    self.info.add(
-                        "finish-args-has-dev-input: This permissions is not backwards"
-                        + " compatible with a supported Flatpak release 1.14.x and"
-                        + " requires an exception"
-                    )
 
         modes = (":ro", ":rw", ":create")
         xdgdirs = ("xdg-data", "xdg-config", "xdg-cache")
