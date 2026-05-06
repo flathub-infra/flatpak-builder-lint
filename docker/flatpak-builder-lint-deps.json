@@ -178,30 +178,6 @@
             ]
         },
         {
-            "name": "python3-sentry-sdk",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"sentry-sdk\" --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/9a/3c/c17fb3ca2d9c3acff52e30b309f538586f9f5b9c9cf454f3845fc9af4881/certifi-2026.2.25-py3-none-any.whl",
-                    "sha256": "027692e4402ad994f1c42e52a4997a9763c646b73e4096e4d5d6db8af1d6f0fa"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/4e/5b/cbc2bb9569f03c8e15d928357e7e6179e5cfab45544a3bbac8aec4caf9be/sentry_sdk-2.50.0-py2.py3-none-any.whl",
-                    "sha256": "0ef0ed7168657ceb5a0be081f4102d92042a125462d1d1a29277992e344e749e"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/39/08/aaaad47bc4e9dc8c725e68f9d04865dbcb2052843ff09c97b08904852d84/urllib3-2.6.3-py3-none-any.whl",
-                    "sha256": "bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4"
-                }
-            ]
-        },
-        {
             "name": "python3-ruamel.yaml",
             "buildsystem": "simple",
             "build-commands": [

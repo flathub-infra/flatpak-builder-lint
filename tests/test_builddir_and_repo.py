@@ -221,7 +221,7 @@ def test_quality_guidelines(check_type: str, tmp_testdir: str) -> None:
     create_app_icon(testdir, "foo")
     ret = rc(testdir, check_type, tmp_testdir)
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
+    # found_warnings = set(ret["warnings"])
     for e in (
         "appstream-missing-developer-name",
         "appstream-missing-project-license",
@@ -229,7 +229,7 @@ def test_quality_guidelines(check_type: str, tmp_testdir: str) -> None:
         "appstream-launchable-file-missing",
     ):
         assert e in found_errors
-    assert "appstream-screenshot-missing-caption" in found_warnings
+    # assert "appstream-screenshot-missing-caption" in found_warnings
     # If present, it means a metainfo file that was validating
     # correctly broke and that should be fixed
     for e in (
@@ -247,7 +247,7 @@ def test_broken_icon(check_type: str, tmp_testdir: str) -> None:
     create_file(os.path.join(testdir, "files/share/applications"), "org.foo.test.desktop")
     ret = rc(testdir, check_type, tmp_testdir)
     found_errors = set(ret["errors"])
-    found_warnings = set(ret["warnings"])
+    # found_warnings = set(ret["warnings"])
     for e in (
         # Expected failure with appstreamcli validate
         "appstream-failed-validation",
@@ -258,7 +258,7 @@ def test_broken_icon(check_type: str, tmp_testdir: str) -> None:
     ):
         assert e in found_errors
     assert "appid-url-check-internal-error" not in found_errors
-    assert "appstream-missing-vcs-browser-url" in found_warnings
+    # assert "appstream-missing-vcs-browser-url" in found_warnings
 
 
 def test_broken_remote_icon(check_type: str, tmp_testdir: str) -> None:

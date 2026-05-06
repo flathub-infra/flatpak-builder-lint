@@ -10,8 +10,6 @@ from importlib.resources import files
 from types import MappingProxyType
 from typing import Any
 
-import sentry_sdk
-
 from . import (
     __version__,
     appstream,
@@ -25,9 +23,6 @@ from . import (
     staticfiles,
 )
 
-if sentry_dsn := os.getenv("SENTRY_DSN"):
-    sentry_sdk.init(sentry_dsn)
-
 logger = logging.getLogger(__name__)
 
 for plugin_info in pkgutil.iter_modules(checks.__path__):
@@ -35,14 +30,33 @@ for plugin_info in pkgutil.iter_modules(checks.__path__):
 
 
 def setup_logging(debug: bool = False) -> None:
+    log_format = "%(asctime)s %(levelname)s:%(name)s:%(funcName)s: %(message)s"
+
     if debug or config.DEBUG:
         logging.basicConfig(
             level=logging.CRITICAL + 1,
-            format="%(asctime)s %(levelname)s:%(name)s:%(funcName)s: %(message)s",
+            format=log_format,
         )
         logging.getLogger("flatpak_builder_lint").setLevel(logging.DEBUG)
     else:
-        logging.disable(logging.CRITICAL)
+        log_path = os.path.join(
+            os.environ.get("XDG_STATE_HOME", os.path.expanduser("~/.local/state")),
+            "flatpak_builder_lint",
+            "linter.log",
+        )
+        log_dir = os.path.dirname(log_path)
+        os.makedirs(log_dir, exist_ok=True)
+        if os.path.isfile(log_path):
+            os.remove(log_path)
+        file_handler = logging.FileHandler(log_path, mode="a", encoding="utf-8")
+        file_handler.setFormatter(logging.Formatter(log_format))
+        logging.basicConfig(
+            level=logging.CRITICAL + 1,
+            format=log_format,
+            handlers=[file_handler],
+            force=True,
+        )
+        logging.getLogger("flatpak_builder_lint").setLevel(logging.DEBUG)
 
 
 def _filter(info: set[str], excepts: set[str]) -> list[str]:
@@ -338,7 +352,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--debug",
-        help="Enable debug logging",
+        help="Enable debug logging to console",
         action="store_true",
     )
 

@@ -9012,7 +9012,8 @@
     },
     "com.chirpmyradio.chirp": {
         "stable": {
-            "finish-args-home-filesystem-access": "Requred for importing and exporting files from the app due to it lacking xdg portals support."
+            "finish-args-home-filesystem-access": "Required for importing and exporting files from the app due to it lacking xdg portals support.",
+            "appid-url-not-reachable": "Required due to project website blocking bots using Cloudflare"
         }
     },
     "gov.nasa.giss.Panoply": {

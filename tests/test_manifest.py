@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -585,9 +586,20 @@ def test_manifest_json() -> None:
     invalid_path = "tests/manifests/json/invalid/org.gnome.Totem.json"
     valid_path = "tests/manifests/json/valid/org.kde.peruse.json"
 
-    with patch(
-        "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
-        return_value=False,
+    fixed_today = datetime(2026, 12, 30, tzinfo=timezone.utc)
+
+    mock_datetime = MagicMock()
+    mock_datetime.now.return_value = fixed_today
+
+    with (
+        patch(
+            "flatpak_builder_lint.policy.datetime",
+            mock_datetime,
+        ),
+        patch(
+            "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
+            return_value=False,
+        ),
     ):
         ret = run_checks(invalid_path)
 
@@ -597,10 +609,21 @@ def test_manifest_json() -> None:
         info = ret["info"]
         assert any("manifest-invalid-json:" in msg for msg in info)
         assert any("will become an error after" in msg for msg in info)
+        assert any("'1' day remaining" in msg for msg in info)
+        assert any("Manifest(s) must be valid JSON per RFC 7159" in msg for msg in info)
 
-    with patch(
-        "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
-        return_value=True,
+    mock_datetime = MagicMock()
+    mock_datetime.now.return_value = fixed_today
+
+    with (
+        patch(
+            "flatpak_builder_lint.policy.datetime",
+            mock_datetime,
+        ),
+        patch(
+            "flatpak_builder_lint.policy.TimedSeverityPolicy.is_enforced",
+            return_value=True,
+        ),
     ):
         ret = run_checks(invalid_path)
 

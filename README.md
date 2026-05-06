@@ -23,8 +23,7 @@ and the repo checks are run on Flathub infrastructure.
 The last two are created when [building the application](https://docs.flathub.org/docs/for-app-authors/submission#build-and-install)
 with the proper arguments to Flatpak Builder.
 
-Some checks may require network connectivity. Sentry integration is used
-only if `SENTRY_DSN` environment variable is set.
+Some checks may require network connectivity.
 
 ## Exceptions
 
@@ -312,7 +311,7 @@ options:
   --ref                 Override the primary ref detection with this ref
   --gha-format          Use GitHub Actions annotations in CI
   --janitor-exceptions  Enable reporting of stale exceptions to linter repository
-  --debug               Enable debug logging
+  --debug               Enable debug logging to console
 
 Please report any issues at https://github.com/flathub-infra/flatpak-builder-lint
 ```
