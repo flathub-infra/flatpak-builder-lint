@@ -63,5 +63,5 @@ class TimedSeverityPolicy:
 JSON_INVALID = TimedSeverityPolicy(
     code="manifest-invalid-json",
     promotion_date=date(2026, 12, 31),
-    extra_info_msg="Manifest must be valid JSON per RFC 7159",
+    extra_info_msg="Manifest(s) must be valid JSON per RFC 7159",
 )
