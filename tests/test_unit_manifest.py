@@ -4,6 +4,69 @@ from typing import Any
 from flatpak_builder_lint import manifest
 
 
+class TestCollectSubManifests:
+    def test_no_string_modules_returns_empty(self, tmp_path: Path) -> None:
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": [{"name": "inline"}]}')
+
+        result = manifest.collect_sub_manifests(str(main))
+
+        assert result == []
+
+    def test_string_module_collected(self, tmp_path: Path) -> None:
+        sub = tmp_path / "sub.json"
+        sub.write_text('{"name": "mod"}')
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.json"]}')
+
+        result = manifest.collect_sub_manifests(str(main))
+
+        assert str(sub.resolve()) in result
+
+    def test_missing_sub_manifest_skipped(self, tmp_path: Path) -> None:
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["nonexistent.json"]}')
+
+        result = manifest.collect_sub_manifests(str(main))
+
+        assert result == []
+
+    def test_circular_reference_does_not_loop(self, tmp_path: Path) -> None:
+        a = tmp_path / "a.json"
+        b = tmp_path / "b.json"
+        a.write_text('{"modules": ["b.json"]}')
+        b.write_text('{"modules": ["a.json"]}')
+
+        result = manifest.collect_sub_manifests(str(a))
+
+        assert str(b.resolve()) in result
+
+    def test_yaml_sub_manifest_collected(self, tmp_path: Path) -> None:
+        sub = tmp_path / "sub.yaml"
+        sub.write_text("name: mod\n")
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.yaml"]}')
+
+        result = manifest.collect_sub_manifests(str(main))
+
+        assert str(sub.resolve()) in result
+
+    def test_nested_sub_manifests(self, tmp_path: Path) -> None:
+        sub_dir = tmp_path / "shared"
+        sub_dir.mkdir()
+        deep = sub_dir / "deep.json"
+        deep.write_text('{"name": "deep"}')
+        sub = tmp_path / "sub.json"
+        sub.write_text('{"modules": ["shared/deep.json"]}')
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.json"]}')
+
+        result = manifest.collect_sub_manifests(str(main))
+
+        assert str(sub.resolve()) in result
+        assert str(deep.resolve()) in result
+
+
 class TestValidateManifestFiles:
     def test_valid_yaml(self, tmp_path: Path) -> None:
         (tmp_path / "a.yaml").write_text("key: value\n")
@@ -51,6 +114,66 @@ class TestValidateManifestFiles:
 
         assert len(yaml_errors) == 2
         assert len(json_errors) == 2
+
+    def test_json_with_block_comments(self, tmp_path: Path) -> None:
+        main = tmp_path / "main.json"
+        sub = tmp_path / "sub.json"
+        sub.write_text('/* a comment */\n{"name": "mod"}')
+        main.write_text('{"modules": ["sub.json"]}')
+
+        yaml_errors, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert yaml_errors == []
+        assert len(json_errors) == 1
+        assert "sub.json" in json_errors[0]
+
+    def test_sub_manifest_collected_and_validated(self, tmp_path: Path) -> None:
+        sub = tmp_path / "sub.json"
+        sub.write_text('{"name": "mod"}')
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.json"]}')
+
+        yaml_errors, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert yaml_errors == []
+        assert json_errors == []
+
+    def test_invalid_sub_manifest_reported(self, tmp_path: Path) -> None:
+        sub = tmp_path / "sub.json"
+        sub.write_text('{"name": bad}')
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.json"]}')
+
+        yaml_errors, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert yaml_errors == []
+        assert len(json_errors) == 1
+        assert "sub.json" in json_errors[0]
+
+    def test_nested_sub_manifests_collected(self, tmp_path: Path) -> None:
+        sub_dir = tmp_path / "shared"
+        sub_dir.mkdir()
+        subsub = sub_dir / "deep.json"
+        subsub.write_text('{"name": "deep-mod"}')
+        sub = tmp_path / "sub.json"
+        sub.write_text('{"modules": ["shared/deep.json"]}')
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": ["sub.json"]}')
+
+        yaml_errors, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert yaml_errors == []
+        assert json_errors == []
+
+    def test_fallback_to_glob_when_no_sub_manifests(self, tmp_path: Path) -> None:
+        (tmp_path / "bad.json").write_text("{bad}")
+        main = tmp_path / "main.json"
+        main.write_text('{"modules": [{"name": "inline-mod"}]}')
+
+        _, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert len(json_errors) >= 1
+        assert any("bad.json" in e for e in json_errors)
 
 
 class TestGetKeyLineno:

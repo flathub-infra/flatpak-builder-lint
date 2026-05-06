@@ -15,6 +15,87 @@ from ruamel.yaml.error import YAMLError
 from . import config, gitutils
 
 
+def load_json_glib_manifest(path: str) -> dict[str, Any] | None:
+    if not os.path.isfile(path):
+        return None
+
+    manifest: dict[str, Any] | None
+
+    def _strip_comments(text: str) -> str:
+        result = []
+        i = 0
+        n = len(text)
+        while i < n:
+            if text[i] == '"':
+                result.append(text[i])
+                i += 1
+                while i < n:
+                    ch = text[i]
+                    result.append(ch)
+                    if ch == "\\" and i + 1 < n:
+                        i += 1
+                        result.append(text[i])
+                    elif ch == '"':
+                        break
+                    i += 1
+                i += 1
+            elif text[i : i + 2] == "/*":
+                i += 2
+                while i < n and text[i : i + 2] != "*/":
+                    i += 1
+                i += 2
+            else:
+                result.append(text[i])
+                i += 1
+        return "".join(result)
+
+    with open(path) as f:
+        try:
+            manifest = json.loads(_strip_comments(f.read()))
+        except json.JSONDecodeError:
+            return None
+
+    return manifest
+
+
+def collect_sub_manifests(filename: str) -> list[str]:
+    yaml = YAML(typ="safe")
+    visited: set[str] = set()
+    result: list[str] = []
+
+    def _load(path: str) -> dict[str, Any] | None:
+        manifest: dict[str, Any] | None
+        if path.endswith((".yaml", ".yml")):
+            try:
+                with open(path) as f:
+                    manifest = yaml.load(f)
+            except YAMLError:
+                return None
+        else:
+            manifest = load_json_glib_manifest(path)
+
+        return manifest
+
+    def _collect(manifest_path: str) -> None:
+        abs_path = os.path.abspath(manifest_path)
+        if abs_path in visited:
+            return
+        visited.add(abs_path)
+        data = _load(abs_path)
+        if not isinstance(data, dict):
+            return
+        base_dir = os.path.dirname(abs_path)
+        for module in data.get("modules", []):
+            if isinstance(module, str):
+                sub_abs = os.path.abspath(os.path.join(base_dir, module))
+                if os.path.isfile(sub_abs):
+                    result.append(sub_abs)
+                    _collect(sub_abs)
+
+    _collect(filename)
+    return list(set(result))
+
+
 def format_yaml_error(e: YAMLError) -> str:
     err_type = f"{type(e).__module__}.{type(e).__name__}"
     msg = " ".join(
@@ -67,29 +148,34 @@ def get_key_lineno(manifest_path: str, key: str) -> int | None:
 def validate_manifest_files(filename: str) -> tuple[list[str], list[str]]:
     yaml_errors: list[str] = []
     json_errors: list[str] = []
-
-    base_dir = os.path.dirname(os.path.abspath(filename))
     yaml = YAML(typ="safe")
+    base_dir = os.path.dirname(os.path.abspath(filename))
+    sub_manifests = collect_sub_manifests(filename)
 
-    yaml_paths = glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True) + glob(
-        os.path.join(base_dir, "**", "*.yml"), recursive=True
-    )
-    json_paths = glob(os.path.join(base_dir, "**", "*.json"), recursive=True)
+    if not sub_manifests:
+        sub_manifests = (
+            glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True)
+            + glob(os.path.join(base_dir, "**", "*.yml"), recursive=True)
+            + glob(os.path.join(base_dir, "**", "*.json"), recursive=True)
+        )
 
-    for path in sorted(yaml_paths):
-        try:
-            with open(path) as f:
-                yaml.load(f)
-        except YAMLError as err:
-            rel_path = os.path.relpath(path, base_dir)
-            yaml_errors.append(f"{rel_path}: {format_yaml_error(err).strip()}")
-    for path in sorted(json_paths):
-        try:
-            with open(path) as f:
-                json.load(f)
-        except json.JSONDecodeError as err:
-            rel_path = os.path.relpath(path, base_dir)
-            json_errors.append(f"{rel_path}: {err.msg} (line {err.lineno}, column {err.colno})")
+    manifests_to_validate = {*sub_manifests, os.path.abspath(filename)}
+
+    for manifest_path in sorted(manifests_to_validate):
+        if os.path.exists(manifest_path):
+            try:
+                if manifest_path.endswith((".yaml", ".yml")):
+                    with open(manifest_path) as f:
+                        yaml.load(f)
+                else:
+                    with open(manifest_path) as f:
+                        json.loads(f.read())
+            except YAMLError as err:
+                rel_path = os.path.relpath(manifest_path, base_dir)
+                yaml_errors.append(f"{rel_path}: {format_yaml_error(err).strip()}")
+            except json.JSONDecodeError as err:
+                rel_path = os.path.relpath(manifest_path, base_dir)
+                json_errors.append(f"{rel_path}: {err.msg} (line {err.lineno}, column {err.colno})")
 
     return yaml_errors, json_errors
 
