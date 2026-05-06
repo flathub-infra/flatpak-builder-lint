@@ -4903,6 +4903,12 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "io.github.kyuyrii.meganimus": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Required for .desktop files to use the actual file path selected by the user.",
+            "finish-args-flatpak-appdata-folder-access": "Required for .desktop files to use the actual file path selected by the user."
+        }
+    },
     "io.github.kyuyrii.zordeer": {
         "stable": {
             "finish-args-home-filesystem-access": "The UMU launcher needs direct access to function. Using the Document Portal prevents it from working."
