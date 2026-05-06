@@ -10,8 +10,6 @@ from importlib.resources import files
 from types import MappingProxyType
 from typing import Any
 
-import sentry_sdk
-
 from . import (
     __version__,
     appstream,
@@ -24,9 +22,6 @@ from . import (
     ostree,
     staticfiles,
 )
-
-if sentry_dsn := os.getenv("SENTRY_DSN"):
-    sentry_sdk.init(sentry_dsn)
 
 logger = logging.getLogger(__name__)
 
