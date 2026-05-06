@@ -1,5 +1,6 @@
 import errno
 import json
+import logging
 import os
 import re
 import subprocess
@@ -14,9 +15,12 @@ from ruamel.yaml.error import YAMLError
 
 from . import config, gitutils
 
+logger = logging.getLogger(__name__)
+
 
 def load_json_glib_manifest(path: str) -> dict[str, Any] | None:
     if not os.path.isfile(path):
+        logger.debug("Failed to find manifest: %s", path)
         return None
 
     manifest: dict[str, Any] | None
@@ -52,7 +56,8 @@ def load_json_glib_manifest(path: str) -> dict[str, Any] | None:
     with open(path) as f:
         try:
             manifest = json.loads(_strip_comments(f.read()))
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as err:
+            logger.debug("Failed to parse manifest %s: %s", path, err)
             return None
 
     return manifest
@@ -69,7 +74,8 @@ def collect_sub_manifests(filename: str) -> list[str]:
             try:
                 with open(path) as f:
                     manifest = yaml.load(f)
-            except YAMLError:
+            except YAMLError as err:
+                logger.debug("Failed to parse manifest %s: %s", path, err)
                 return None
         else:
             manifest = load_json_glib_manifest(path)
@@ -83,6 +89,9 @@ def collect_sub_manifests(filename: str) -> list[str]:
         visited.add(abs_path)
         data = _load(abs_path)
         if not isinstance(data, dict):
+            logger.debug(
+                "Not collecting sub-manifests from the non-dict manifest %s", manifest_path
+            )
             return
         base_dir = os.path.dirname(abs_path)
         for module in data.get("modules", []):
@@ -153,6 +162,7 @@ def validate_manifest_files(filename: str) -> tuple[list[str], list[str]]:
     sub_manifests = collect_sub_manifests(filename)
 
     if not sub_manifests:
+        logger.debug("Failed to collect sub-manifests by parsing, falling back to a recursive scan")
         sub_manifests = (
             glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True)
             + glob(os.path.join(base_dir, "**", "*.yml"), recursive=True)
