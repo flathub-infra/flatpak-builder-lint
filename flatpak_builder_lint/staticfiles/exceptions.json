@@ -4306,7 +4306,8 @@
             "finish-args-unnecessary-xdg-config-discorddevelopment-rw-access": "Needed to patch Discord Development",
             "finish-args-unnecessary-xdg-config-discordptb-rw-access": "Needed to patch Discord PTB",
             "finish-args-unnecessary-xdg-data-flatpak-create-access": "Needed to set permission overrides",
-            "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needed to patch Flatpak installations of Discord"
+            "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needed to patch Flatpak installations of Discord",
+            "finish-args-flatpak-appdata-folder-access": "Needed to patch Flatpak installations of Discord"
         }
     },
     "io.github.mpc_qt.mpc-qt": {
