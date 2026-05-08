@@ -593,6 +593,14 @@ class FinishArgsCheck(Check):
                 if key == "device-if":
                     key = "device"
                     value = f"if:{value}"
+                if key == "share-if":
+                    key = "share"
+                    value = f"if:{value}"
+                if key == "allow":
+                    key = "features"
+                if key == "allow-if":
+                    key = "features"
+                    value = f"if:{value}"
                 fa[key].add(value)
 
         self._validate(appid, fa)
