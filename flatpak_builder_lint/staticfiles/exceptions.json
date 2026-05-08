@@ -4762,7 +4762,8 @@
     "io.github.totoshko88.RustConn": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
-            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections"
+            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
+            "finish-args-flatpak-spawn-access": "Needed to support full Local Shell features"
         }
     },
     "io.github.trevorsandy.LPub3D": {
