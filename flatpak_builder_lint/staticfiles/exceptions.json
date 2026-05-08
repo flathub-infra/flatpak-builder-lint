@@ -3714,7 +3714,7 @@
         }
     },
     "io.github.antimicrox.antimicrox": {
-        "stable": {
+        "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
