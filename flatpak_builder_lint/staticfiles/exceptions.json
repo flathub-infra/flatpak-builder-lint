@@ -537,7 +537,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    {
     "com.codemouse92.timecard": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
