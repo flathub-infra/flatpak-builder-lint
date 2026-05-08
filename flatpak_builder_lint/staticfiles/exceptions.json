@@ -4707,6 +4707,12 @@
             "finish-args-login1-system-talk-name": "Predates the linter rule"
         }
     },
+    "io.github.ForWard_Technologies_LLC.Pylux": {
+        "stable": {
+            "finish-args-host-os-ro-filesystem-access": "Requires read-only access to host-os to load Vulkan GPU drivers from the host filesystem, necessary for hardware-accelerated video decoding on Steam Deck and other Linux systems",
+            "finish-args-login1-system-talk-name": "Requires org.freedesktop.login1 to inhibit system sleep and screensaver during active remote play streaming sessions"
+        }
+    },
     "io.github.subhra74.Muon": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
