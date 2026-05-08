@@ -21,6 +21,7 @@ class TestCollectSubManifests:
 
         result = manifest.collect_sub_manifests(str(main))
 
+        assert result is not None
         assert str(sub.resolve()) in result
 
     def test_missing_sub_manifest_skipped(self, tmp_path: Path) -> None:
@@ -39,6 +40,7 @@ class TestCollectSubManifests:
 
         result = manifest.collect_sub_manifests(str(a))
 
+        assert result is not None
         assert str(b.resolve()) in result
 
     def test_yaml_sub_manifest_collected(self, tmp_path: Path) -> None:
@@ -49,6 +51,7 @@ class TestCollectSubManifests:
 
         result = manifest.collect_sub_manifests(str(main))
 
+        assert result is not None
         assert str(sub.resolve()) in result
 
     def test_nested_sub_manifests(self, tmp_path: Path) -> None:
@@ -63,6 +66,7 @@ class TestCollectSubManifests:
 
         result = manifest.collect_sub_manifests(str(main))
 
+        assert result is not None
         assert str(sub.resolve()) in result
         assert str(deep.resolve()) in result
 
@@ -165,15 +169,25 @@ class TestValidateManifestFiles:
         assert yaml_errors == []
         assert json_errors == []
 
-    def test_fallback_to_glob_when_no_sub_manifests(self, tmp_path: Path) -> None:
+    def test_fallback_to_glob_when_sub_manifest_collection_fails(self, tmp_path: Path) -> None:
         (tmp_path / "bad.json").write_text("{bad}")
+
+        main = tmp_path / "main.json"
+        main.write_text("{invalid json}")
+
+        _, json_errors = manifest.validate_manifest_files(str(main))
+
+        assert any("bad.json" in e for e in json_errors)
+
+    def test_no_fallback_when_main_manifest_has_no_submanifests(self, tmp_path: Path) -> None:
+        (tmp_path / "bad.json").write_text("{bad}")
+
         main = tmp_path / "main.json"
         main.write_text('{"modules": [{"name": "inline-mod"}]}')
 
         _, json_errors = manifest.validate_manifest_files(str(main))
 
-        assert len(json_errors) >= 1
-        assert any("bad.json" in e for e in json_errors)
+        assert json_errors == []
 
 
 class TestGetKeyLineno:
