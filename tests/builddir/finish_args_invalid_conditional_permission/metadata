@@ -1,0 +1,6 @@
+[Application]
+name=org.flathub.invalid_conditional_permission
+runtime=org.freedesktop.Platform/x86_64/23.08
+
+[Context]
+shared=network;if:network:true;

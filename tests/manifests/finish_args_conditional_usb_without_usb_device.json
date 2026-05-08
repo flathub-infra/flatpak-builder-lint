@@ -1,0 +1,6 @@
+{
+    "app-id": "org.flathub.conditional_usb_without_usb_device",
+    "finish-args": [
+        "--device-if=all:!has-usb-device"
+    ]
+}
