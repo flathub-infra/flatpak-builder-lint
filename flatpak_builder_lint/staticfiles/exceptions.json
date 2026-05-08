@@ -537,6 +537,13 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    {
+  "com.codemouse92.timecard": {
+        "*": {
+            "finish-args-host-filesystem-access": "Predates the linter rule"
+        }
+    },
+    },
     "com.core447.StreamController": {
         "stable": {
             "finish-args-flatpak-appdata-folder-access": "required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox",
@@ -4762,8 +4769,7 @@
     "io.github.totoshko88.RustConn": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication",
-            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections",
-            "finish-args-flatpak-spawn-access": "Needed to support full Local Shell features"
+            "finish-args-ssh-filesystem-access": "Needed to manage SSH keys and configurations for connections"
         }
     },
     "io.github.trevorsandy.LPub3D": {
