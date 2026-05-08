@@ -1,0 +1,6 @@
+[Application]
+name=org.flathub.conditional_input_without_input_device
+runtime=org.freedesktop.Platform/x86_64/23.08
+
+[Context]
+devices=all;if:all:!has-input-device;

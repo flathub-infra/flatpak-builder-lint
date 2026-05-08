@@ -1,0 +1,6 @@
+{
+    "app-id": "org.flathub.invalid_conditional_permission",
+    "finish-args": [
+        "--share-if=network:true"
+    ]
+}

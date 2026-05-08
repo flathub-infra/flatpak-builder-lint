@@ -31,6 +31,42 @@ class FinishArgsCheck(Check):
         if isinstance(init_ver, str):
             flatpak_version = init_ver.split(";", 1)[0]
 
+        allowed_cond_perms = {
+            "if:all:!has-input-device": "fallback-dev-input-to-dev-all",
+            "if:all:!has-usb-device": "fallback-dev-usb-to-dev-all",
+            "if:usb:!has-usb-portal": "fallback-dev-usb-to-usb-portal",
+        }
+
+        cond_perms = {
+            cond
+            for section in ("socket", "share", "device", "features")
+            for cond in finish_args.get(section, [])
+            if cond.startswith("if:") and cond.count(":") == 2
+        }
+
+        invalid_cond_perms = cond_perms - allowed_cond_perms.keys()
+
+        for perm in invalid_cond_perms:
+            self.errors.add(
+                f"finish-args-conditional-permission-not-allowed-{perm.replace(':', '-')}"
+            )
+
+        present_cond_perm_idents = {
+            allowed_cond_perms[perm] for perm in cond_perms if perm in allowed_cond_perms
+        }
+
+        if (
+            "fallback-dev-input-to-dev-all" in present_cond_perm_idents
+            and "input" not in finish_args["device"]
+        ):
+            self.errors.add("finish-args-conditional-permission-input-no-restriction")
+
+        if (
+            "fallback-dev-usb-to-dev-all" in present_cond_perm_idents
+            and "usb" not in finish_args["device"]
+        ):
+            self.errors.add("finish-args-conditional-permission-usb-no-restriction")
+
         if "inherit-wayland-socket" in finish_args["socket"]:
             self.errors.add("finish-args-contains-inherit-wayland-socket")
 
@@ -81,7 +117,14 @@ class FinishArgsCheck(Check):
             if dev.startswith("!"):
                 dv = dev.removeprefix("!")
                 self.errors.add(f"finish-args-has-nodevice-{dv}")
-            if dev in ("input", "usb"):
+
+            skip_checks = (
+                (dev == "input" and "fallback-dev-input-to-dev-all" in present_cond_perm_idents)
+                or (dev == "usb" and "fallback-dev-usb-to-dev-all" in present_cond_perm_idents)
+                or (dev == "usb" and "fallback-dev-usb-to-usb-portal" in present_cond_perm_idents)
+            )
+
+            if dev in ("input", "usb") and not skip_checks:
                 if "required-flatpak" not in finish_args:
                     self.errors.add("finish-args-no-required-flatpak")
                     self.info.add(

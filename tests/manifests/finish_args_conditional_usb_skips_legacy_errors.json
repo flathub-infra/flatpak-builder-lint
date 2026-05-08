@@ -1,0 +1,7 @@
+{
+    "app-id": "org.flathub.conditional_usb_skips_legacy_errors",
+    "finish-args": [
+        "--device=usb",
+        "--device-if=all:!has-usb-device"
+    ]
+}

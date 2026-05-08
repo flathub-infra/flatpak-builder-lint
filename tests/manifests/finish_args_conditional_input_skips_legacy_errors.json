@@ -1,0 +1,7 @@
+{
+    "app-id": "org.flathub.conditional_input_skips_legacy_errors",
+    "finish-args": [
+        "--device=input",
+        "--device-if=all:!has-input-device"
+    ]
+}

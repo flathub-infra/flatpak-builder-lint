@@ -1,0 +1,6 @@
+{
+    "app-id": "org.flathub.conditional_input_without_input_device",
+    "finish-args": [
+        "--device-if=all:!has-input-device"
+    ]
+}
