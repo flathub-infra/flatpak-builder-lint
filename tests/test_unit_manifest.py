@@ -57,7 +57,7 @@ class TestCollectSubManifests:
         deep = sub_dir / "deep.json"
         deep.write_text('{"name": "deep"}')
         sub = tmp_path / "sub.json"
-        sub.write_text('{"modules": ["shared/deep.json"]}')
+        sub.write_text('{"modules": [{"name": "outer", "modules": ["shared/deep.json"]}]}')
         main = tmp_path / "main.json"
         main.write_text('{"modules": ["sub.json"]}')
 

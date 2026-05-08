@@ -94,12 +94,17 @@ def collect_sub_manifests(filename: str) -> list[str]:
             )
             return
         base_dir = os.path.dirname(abs_path)
-        for module in data.get("modules", []):
+        _collect_modules(data.get("modules", []), base_dir)
+
+    def _collect_modules(modules: list[str], base_dir: str) -> None:
+        for module in modules:
             if isinstance(module, str):
                 sub_abs = os.path.abspath(os.path.join(base_dir, module))
                 if os.path.isfile(sub_abs):
                     result.append(sub_abs)
                     _collect(sub_abs)
+            elif isinstance(module, dict):
+                _collect_modules(module.get("modules", []), base_dir)
 
     _collect(filename)
     return list(set(result))
