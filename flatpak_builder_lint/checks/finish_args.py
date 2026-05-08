@@ -47,9 +47,9 @@ class FinishArgsCheck(Check):
         invalid_cond_perms = cond_perms - allowed_cond_perms.keys()
 
         for perm in invalid_cond_perms:
-            self.errors.add(
-                f"finish-args-conditional-permission-not-allowed-{perm.replace(':', '-')}"
-            )
+            normalized = perm.replace("!", "not-").replace(":", "-")
+
+            self.errors.add(f"finish-args-conditional-permission-not-allowed-{normalized}")
 
         present_cond_perm_idents = {
             allowed_cond_perms[perm] for perm in cond_perms if perm in allowed_cond_perms
