@@ -63,10 +63,11 @@ def load_json_glib_manifest(path: str) -> dict[str, Any] | None:
     return manifest
 
 
-def collect_sub_manifests(filename: str) -> list[str]:
+def collect_sub_manifests(filename: str) -> list[str] | None:
     yaml = YAML(typ="safe")
     visited: set[str] = set()
     result: list[str] = []
+    parse_failed = False
 
     def _load(path: str) -> dict[str, Any] | None:
         manifest: dict[str, Any] | None
@@ -83,11 +84,16 @@ def collect_sub_manifests(filename: str) -> list[str]:
         return manifest
 
     def _collect(manifest_path: str) -> None:
+        nonlocal parse_failed
         abs_path = os.path.abspath(manifest_path)
         if abs_path in visited:
             return
         visited.add(abs_path)
         data = _load(abs_path)
+        if data is None:
+            if abs_path == os.path.abspath(filename):
+                parse_failed = True
+            return
         if not isinstance(data, dict):
             logger.debug(
                 "Not collecting sub-manifests from the non-dict manifest %s", manifest_path
@@ -107,7 +113,7 @@ def collect_sub_manifests(filename: str) -> list[str]:
                 _collect_modules(module.get("modules", []), base_dir)
 
     _collect(filename)
-    return list(set(result))
+    return None if parse_failed else list(set(result))
 
 
 def format_yaml_error(e: YAMLError) -> str:
@@ -166,7 +172,7 @@ def validate_manifest_files(filename: str) -> tuple[list[str], list[str]]:
     base_dir = os.path.dirname(os.path.abspath(filename))
     sub_manifests = collect_sub_manifests(filename)
 
-    if not sub_manifests:
+    if sub_manifests is None:
         logger.debug("Failed to collect sub-manifests by parsing, falling back to a recursive scan")
         sub_manifests = (
             glob(os.path.join(base_dir, "**", "*.yaml"), recursive=True)
