@@ -3523,6 +3523,11 @@
             "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
         }
     },
+    "io.github.ForWard_Technologies_LLC.Pylux": {
+        "new-pr": {
+            "finish-args-login1-system-talk-name": "Required to receive the PrepareForSleep signal from logind so active streaming sessions can be cleanly torn down before the system suspends. Idle inhibit is handled via org.freedesktop.portal.Inhibit which needs no manifest permission; login1 is used solely for the PrepareForSleep signal which has no portal equivalent."
+        }
+    },
     "io.github.ImEditor": {
         "*": {
             "appid-code-hosting-too-few-components": "app-id predates this linter rule"
