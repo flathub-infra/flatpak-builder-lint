@@ -3524,8 +3524,8 @@
         }
     },
     "io.github.ForWard_Technologies_LLC.Pylux": {
-        "new-pr": {
-            "finish-args-login1-system-talk-name": "Required to receive the PrepareForSleep signal from logind so active streaming sessions can be cleanly torn down before the system suspends. Idle inhibit is handled via org.freedesktop.portal.Inhibit which needs no manifest permission; login1 is used solely for the PrepareForSleep signal which has no portal equivalent."
+        "*": {
+            "finish-args-login1-system-talk-name": "Needed for the PrepareForSleep signal from logind to cleanly tear down active streaming sessions on suspend. No portal equivalent exists for this signal."
         }
     },
     "io.github.ImEditor": {
