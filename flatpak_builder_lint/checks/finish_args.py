@@ -22,6 +22,52 @@ def _fs_value_matches_prefix(input_path: str, prefix: str, subdirs: bool = True)
     return re.match(pattern, input_path) is not None
 
 
+def _subdir_fs_error(
+    fs: str,
+    prefixes: tuple[str, ...],
+    error_prefix: str,
+) -> str:
+    for prefix in prefixes:
+        if fs.startswith(prefix):
+            components = [comp.replace(" ", "-") for comp in fs[len(prefix) :].split("/") if comp]
+
+            suffix = "-" + "-".join(components) if components else ""
+
+            return f"{error_prefix}{suffix}-access"
+
+    return f"{error_prefix}-access"
+
+
+def _flatpak_appdata_error(fs: str) -> str:
+    return _subdir_fs_error(
+        fs,
+        (
+            "~/.var/app/",
+            "home/.var/app/",
+        ),
+        "finish-args-flatpak-appdata-folder",
+    )
+
+
+def _flatpak_system_folder_error(fs: str) -> str:
+    return _subdir_fs_error(
+        fs,
+        ("/var/lib/flatpak/",),
+        "finish-args-flatpak-system-folder",
+    )
+
+
+def _flatpak_user_folder_error(fs: str) -> str:
+    return _subdir_fs_error(
+        fs,
+        (
+            "~/.local/share/flatpak/",
+            "home/.local/share/flatpak/",
+        ),
+        "finish-args-flatpak-user-folder",
+    )
+
+
 class FinishArgsCheck(Check):
     def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
         init_ver = finish_args.get("required-flatpak")
@@ -351,7 +397,7 @@ class FinishArgsCheck(Check):
                     "home/.var/app",
                 )
             ):
-                self.errors.add("finish-args-flatpak-appdata-folder-access")
+                self.errors.add(_flatpak_appdata_error(fs))
 
             if any(
                 _fs_value_matches_prefix(fs, prefix)
@@ -381,7 +427,7 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-incorrect-theme-folder-permission")
 
             if _fs_value_matches_prefix(fs, "/var/lib/flatpak"):
-                self.errors.add("finish-args-flatpak-system-folder-access")
+                self.errors.add(_flatpak_system_folder_error(fs))
 
             if any(
                 _fs_value_matches_prefix(fs, prefix)
@@ -390,7 +436,7 @@ class FinishArgsCheck(Check):
                     "home/.local/share/flatpak",
                 )
             ):
-                self.errors.add("finish-args-flatpak-user-folder-access")
+                self.errors.add(_flatpak_user_folder_error(fs))
 
             if _fs_value_matches_prefix(fs, "/tmp"):  # noqa: S108
                 self.errors.add("finish-args-host-tmp-access")

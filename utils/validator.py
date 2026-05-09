@@ -43,6 +43,12 @@ def scan_exceptions() -> set[str]:
 KNOWN_EXCEPTIONS = scan_exceptions() | {
     "finish-args-own-name-",
     "finish-args-unnecessary-foo-access",
+    "finish-args-flatpak-appdata-folder-access",
+    "finish-args-flatpak-appdata-folder-",
+    "finish-args-flatpak-system-folder-",
+    "finish-args-flatpak-system-folder-access",
+    "finish-args-flatpak-user-folder-access",
+    "finish-args-flatpak-user-folder-",
 }
 
 EXP_PREFIX = (
@@ -56,6 +62,9 @@ EXP_PREFIX = (
     "finish-args-own-name-*",
     "finish-args-*-filesystem-access",
     "module-*-source-dir-not-allowed",
+    "finish-args-flatpak-appdata-folder-*",
+    "finish-args-flatpak-system-folder-*",
+    "finish-args-flatpak-user-folder-*",
 )
 
 
