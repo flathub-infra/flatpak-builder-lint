@@ -100,6 +100,8 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-appid-mpris-own-name",
         "finish-args-mpris-flatpak-id-talk-name",
+        "finish-args-flatpak-appdata-folder-foo-access",
+        "finish-args-flatpak-user-folder-foo-access",
     }
     expected_absents = {
         "finish-args-has-nodevice-shm",
