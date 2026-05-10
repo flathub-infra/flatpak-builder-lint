@@ -3524,7 +3524,7 @@
         }
     },
     "io.github.ForWard_Technologies_LLC.Pylux": {
-        "*": {
+        "stable": {
             "finish-args-login1-system-talk-name": "Needed for the PrepareForSleep signal from logind to cleanly tear down active streaming sessions on suspend. No portal equivalent exists for this signal."
         }
     },
