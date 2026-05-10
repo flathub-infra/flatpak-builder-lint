@@ -3715,7 +3715,7 @@
     },
     "io.github.antimicrox.antimicrox": {
         "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Required until https://github.com/flatpak/xdg-desktop-portal-gtk/issues/191 is fixed"
         }
     },
     "io.github.avomar.dev-toolbox": {
