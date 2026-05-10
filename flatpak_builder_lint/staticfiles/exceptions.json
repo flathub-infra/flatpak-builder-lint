@@ -3551,6 +3551,11 @@
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.steam-steam-access": "Predates the linter rule"
         }
     },
+    "io.github.ForWard_Technologies_LLC.Pylux": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Needed for the PrepareForSleep signal from logind to cleanly tear down active streaming sessions on suspend. No portal equivalent exists for this signal."
+        }
+    },
     "io.github.ImEditor": {
         "*": {
             "appid-code-hosting-too-few-components": "app-id predates this linter rule"
