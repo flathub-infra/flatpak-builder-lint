@@ -3723,11 +3723,14 @@
     "io.github.arijanj.Mimic": {
         "stable": {
             "finish-args-host-os-ro-filesystem-access": "Needs access to /usr/share/applications to view applications, /usr/share/icons and /usr/share/pixmaps to render icons",
+            "finish-args-host-var-access": "For listing Flatpak and snapd applications",
             "finish-args-arbitrary-xdg-config-create-access": "Writing mimeapps.list if it doesn't exist",
             "finish-args-desktopfile-filesystem-access": "For listing applications installed in ~/.local/share/applications",
-            "finish-args-flatpak-system-folder-access": "For listing Flatpak applications",
-            "finish-args-flatpak-user-folder-access": "For listing user Flatpak application",
-            "finish-args-host-var-access": "For listing Flatpak and snapd applications"
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "For listing Flatpak apps",
+            "finish-args-flatpak-system-folder-exports-share-icons-ro-access": "For accessing Flatpak app icons (symlink directory)"
+            "finish-args-flatpak-system-folder-app-ro-access": "For accessing Flatpak app icons (symlink targets)",
+            "finish-args-flatpak-user-folder-exports-share-applications-ro-access": "For listing user-installed Flatpak apps",
+            "finish-args-flatpak-user-folder-exports-share-icons-ro-access": "For accessing user-installed Flatpak app icons"
         }
     },
     "io.github.avomar.dev-toolbox": {
