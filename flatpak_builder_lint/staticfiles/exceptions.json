@@ -9117,5 +9117,11 @@
         "stable": {
             "finish-args-home-filesystem-access": "Required for importing and exporting files from the app due to it lacking xdg portals support."
         }
+    },
+    "org.nuicpp.nui_sftp": {
+        "stable": {
+            "finish-args-host-filesystem-access": "SFTP client needs direct access to user-chosen local paths outside home (removable media, /mnt, /srv, project trees) for transfer, sync, and directory-watch operations. FileChooser portal is used where the user picks individual files, but background transfers and watched directories need persistent access to the chosen paths.",
+            "finish-args-has-socket-ssh-auth": "Required to use the user's running SSH agent for public-key authentication against remote hosts (the standard mechanism for yubikey/gpg-agent/passphrase-protected keys)."
+        }
     }
 }
