@@ -12,9 +12,9 @@
     "app.devsuite.Manuals": {
         "stable": {
             "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
-            "finish-args-flatpak-user-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-rw-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation",
             "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
@@ -29,7 +29,7 @@
     },
     "app.drey.KeyRack": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "the app predates this linter rule"
         }
@@ -84,7 +84,7 @@
     "app.twintaillauncher.ttl": {
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Application can create .desktop file shortcuts for games... literally can not write those files without access to the folder",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Application can write Steam shortcuts to its shortcuts.vdf file and it needs this to access flatpak Steam"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Application can write Steam shortcuts to its shortcuts.vdf file and it needs this to access flatpak Steam"
         }
     },
     "app.vup.Vup": {
@@ -140,8 +140,8 @@
     "best.ellie.StartupConfiguration": {
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-app:ro-access": "This app requires read-only access to the hosts' /var/lib/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
-            "finish-args-flatpak-user-folder-app:ro-access": "This app requires read-only access to the hosts' ~/.local/share/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
+            "finish-args-flatpak-system-folder-app-ro-access": "This app requires read-only access to the hosts' /var/lib/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
+            "finish-args-flatpak-user-folder-app-ro-access": "This app requires read-only access to the hosts' ~/.local/share/flatpak/exports/share/{applications,icons} directories in order to allow users to add them to the applications launched on startup.",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "This app requires read-only access to the hosts' /var/lib/snapd/desktop/applications directory in order to allow users to add snaps to the applications launched on startup.",
             "finish-args-unnecessary-xdg-config-autostart-create-access": "This app requires access to the hosts' ~/.config/autostart directory in create mode in order to manage applications launched on startup."
@@ -371,7 +371,7 @@
     },
     "com.arviceblot.eso-addon-manager": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
     "com.atlauncher.ATLauncher": {
@@ -464,7 +464,7 @@
     },
     "com.borgbase.Vorta": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
@@ -617,7 +617,7 @@
     "com.eduke32.EDuke32": {
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
     "com.endlessm.photos": {
@@ -772,7 +772,7 @@
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
     "com.github.Murmele.Gittyup": {
@@ -815,7 +815,7 @@
     "com.github._0negal.Viper": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -1338,10 +1338,10 @@
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-rw-access": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -1410,7 +1410,7 @@
     "com.github.petebuffon.yafc": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:ro-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-ro-access": "Predates the linter rule"
         }
     },
     "com.github.phase1geo.minder": {
@@ -1575,7 +1575,7 @@
     "com.github.tchx84.Flatseal": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
             "finish-args-portal-impl-permissionstore-talk-name": "Predates the linter rule, needed to modify dynamic permissions",
             "finish-args-unnecessary-xdg-data-flatpak-create-access": "https://github.com/flathub/flatpak-builder-lint/issues/51",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "https://github.com/flathub/flatpak-builder-lint/issues/51"
@@ -1830,11 +1830,11 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-flatpak-system-folder-app-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-app-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-exports-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-overrides-:rw-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-exports-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-overrides-rw-access": "Predates the linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
@@ -1870,7 +1870,7 @@
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Access shared MangoHud configuration files",
             "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime"
         }
@@ -2257,8 +2257,8 @@
     },
     "com.outerwildsmods.owmods_gui": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-OuterWildsModManager-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Outer-Wilds-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-OuterWildsModManager-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Outer-Wilds-rw-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
@@ -2468,11 +2468,11 @@
     },
     "com.steamgriddb.SGDBoop": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-appcache-librarycache:rw-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-config-loginusers.vdf:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-userdata:rw-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-registry.vdf:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-app-com.valvesoftware.Steam:ro-access": "Read-only access to /var/lib/flatpak/app/com.valvesoftware.Steam to check whether Steam Flatpak is installed",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-appcache-librarycache-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-config-loginusers.vdf-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-userdata-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-registry.vdf-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-com.valvesoftware.Steam-ro-access": "Read-only access to /var/lib/flatpak/app/com.valvesoftware.Steam to check whether Steam Flatpak is installed",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
@@ -2611,7 +2611,7 @@
     },
     "com.ulduzsoft.Birdtray": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.mozilla.Thunderbird-.thunderbird-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-org.mozilla.Thunderbird-.thunderbird-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
@@ -2747,11 +2747,11 @@
     },
     "com.vysp3r.ProtonPlus": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-io.github.fastrizwaan.WineZGUI-data-winezgui-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-io.github.fastrizwaan.WineZGUI-data-winezgui-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "required to install and manage compatibility-runtimes on the host",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -3020,18 +3020,18 @@
     },
     "dev.geopjr.Turntable": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-app.zen_browser.zen-data-firefox-mpris-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-ca.edestcroix.Recordbox-data-Recordbox-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-com.github.neithern.g4music-cache-com.github.neithern.g4music-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-com.github.taiko2k.tauonmb-cache-TauonMusicBox-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-io.bassi.Amberol-cache-amberol-covers-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-io.github.nokse22.high-tide-cache-images:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-data-firefox-mpris-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-one.ablaze.floorp-data-firefox-mpris-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-org.gnome.Lollypop-cache-lollypop-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-org.gnome.Rhythmbox3-cache-rhythmbox-album-art-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-firefox-mpris-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-data-firefox-mpris-:ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-app.zen_browser.zen-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-ca.edestcroix.Recordbox-data-Recordbox-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-com.github.neithern.g4music-cache-com.github.neithern.g4music-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-com.github.taiko2k.tauonmb-cache-TauonMusicBox-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-io.bassi.Amberol-cache-amberol-covers-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-io.github.nokse22.high-tide-cache-images-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-one.ablaze.floorp-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-org.gnome.Lollypop-cache-lollypop-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-org.gnome.Rhythmbox3-cache-rhythmbox-album-art-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients",
             "finish-args-freedesktop-dbus-talk-name": "Required to gather and update the list of all available MPRIS clients",
             "finish-args-full-home-cache-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
@@ -3134,12 +3134,12 @@
     },
     "dev.qwery.AddWater": {
         "*": {
-            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-.librewolf-:rw-access": "Needed to install theme to Flatpak'ed Firefox",
-            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-config-librewolf-librewolf-:rw-access": "Needed to install theme to Flatpak'ed Firefox",
-            "finish-args-flatpak-appdata-folder-net.waterfox.waterfox-.waterfox:rw-access": "Needed to install theme to Flatpak'ed Firefox",
-            "finish-args-flatpak-appdata-folder-one.ablaze.floorp-.floorp-:rw-access": "Needed to install theme to Flatpak'ed Firefox",
-            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-:rw-access": "Needed to install theme to Flatpak'ed Firefox",
-            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-config-mozilla-firefox-:rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-.librewolf-rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-config-librewolf-librewolf-rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-net.waterfox.waterfox-.waterfox-rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-one.ablaze.floorp-.floorp-rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-rw-access": "Needed to install theme to Flatpak'ed Firefox",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-config-mozilla-firefox-rw-access": "Needed to install theme to Flatpak'ed Firefox",
             "finish-args-unnecessary-xdg-config-mozilla-rw-access": "Needed to install theme to Firefox profiles stored in xdg-config",
             "finish-args-unnecessary-xdg-config-librewolf-rw-access": "Needed to install theme to Librewolf profiles stored in xdg-config"
         }
@@ -3304,7 +3304,7 @@
     },
     "fr.arnaudmichel.launcherstudio": {
         "stable": {
-            "finish-args-flatpak-system-folder-exports-share-applications:ro-access": "Required to read .desktop files of Flatpak applications installed on the system to manage them.",
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "Required to read .desktop files of Flatpak applications installed on the system to manage them.",
             "finish-args-home-ro-filesystem-access": "Required to load application icons located in arbitrary paths within the user's home directory (e.g. ~/.local/share, AppImages, downloads).",
             "finish-args-unnecessary-xdg-data-applications-create-access": "The core functionality of this app is to create and manage .desktop files (launchers) for the user.",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them."
@@ -3358,7 +3358,7 @@
     },
     "gg.minion.Minion": {
         "*": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
     "im.dino.Dino": {
@@ -3447,7 +3447,7 @@
     },
     "io.blockloader.BlockLoader": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule"
         }
     },
     "io.botfather.Botfather": {
@@ -3470,7 +3470,7 @@
     },
     "io.edcd.EDMarketConnector": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-compatdata-359320-pfx-drive_c-users-steamuser-Saved\\-Games-Frontier\\-Developments-Elite\\-Dangerous-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-compatdata-359320-pfx-drive_c-users-steamuser-Saved\\-Games-Frontier\\-Developments-Elite\\-Dangerous-rw-access": "Predates the linter rule"
         }
     },
     "io.enpass.Enpass": {
@@ -3548,7 +3548,7 @@
     },
     "io.github.Foldex.AdwSteamGtk": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.steam-steam-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.steam-steam-rw-access": "Predates the linter rule"
         }
     },
     "io.github.ForWard_Technologies_LLC.Pylux": {
@@ -3623,13 +3623,13 @@
     },
     "io.github.Querz.mcaselector": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-ch.tlaun.TL-data-game-.minecraft-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-ch.tlaun.TL-data-game-versions-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-com.atlauncher.ATLauncher-data-instances-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-com.lunarclient.LunarClient-.minecraft-saves-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-com.mojang.Minecraft-.minecraft-saves-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-org.polymc.PolyMC-data-PolyMC-instances-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
-            "finish-args-flatpak-appdata-folder-org.prismlauncher.PrismLauncher-data-PrismLauncher-instances-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
+            "finish-args-flatpak-appdata-folder-ch.tlaun.TL-data-game-.minecraft-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-ch.tlaun.TL-data-game-versions-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-com.atlauncher.ATLauncher-data-instances-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-com.lunarclient.LunarClient-.minecraft-saves-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-com.mojang.Minecraft-.minecraft-saves-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-org.polymc.PolyMC-data-PolyMC-instances-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications",
+            "finish-args-flatpak-appdata-folder-org.prismlauncher.PrismLauncher-data-PrismLauncher-instances-rw-access": "To open and edit Minecraft worlds files under launchers packages as Flatpak applications"
         }
     },
     "io.github.Rangi42.polished-map": {
@@ -3670,8 +3670,8 @@
     },
     "io.github.TeamWheelWizard.WheelWizard": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-config-dolphin-emu:create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
-            "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-data-dolphin-emu:create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
+            "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-config-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
+            "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-data-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
             "finish-args-flatpak-spawn-access": "this program needs to be able to run host commands as specified in the manifest's wrapper scripts to support Flatpak and native Dolphin installations",
             "finish-args-unnecessary-xdg-config-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin config files (e.g. for graphics settings)",
             "finish-args-unnecessary-xdg-data-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin Mii and game/mod data files"
@@ -3690,7 +3690,7 @@
     },
     "io.github.accessory.minus_games_gui": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.openwinecomponents.umu.umu-launcher:rw-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-org.openwinecomponents.umu.umu-launcher-rw-access": "Predates the linter rule"
         }
     },
     "io.github.achetagames.epic_asset_manager": {
@@ -3778,7 +3778,7 @@
     },
     "io.github.bcpierce00.unison": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Unison must be able to sync all the user's data or config files",
+            "finish-args-flatpak-appdata-folder-rw-access": "Unison must be able to sync all the user's data or config files",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -3790,7 +3790,7 @@
     },
     "io.github.benjamimgois.goverlay": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:rw-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration",
             "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
             "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
         }
@@ -3955,7 +3955,7 @@
     },
     "io.github.everestapi.Olympus": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-steamapps-common-Celeste-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-steamapps-common-Celeste-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -3984,20 +3984,20 @@
     "io.github.fastrizwaan.WineCharm": {
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.playonlinux.PlayOnLinux4-data-PlayOnLinux-wineprefix:ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
-            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles:ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
-            "finish-args-flatpak-appdata-folder-io.github.fastrizwaan.WineZGUI-data-winezgui-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
-            "finish-args-flatpak-appdata-folder-org.phoenicis.playonlinux-.Phoenicis-containers-wineprefix:ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
-            "finish-args-flatpak-appdata-folder-org.winehq.Wine-data-wine:ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires."
+            "finish-args-flatpak-appdata-folder-com.playonlinux.PlayOnLinux4-data-PlayOnLinux-wineprefix-ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
+            "finish-args-flatpak-appdata-folder-io.github.fastrizwaan.WineZGUI-data-winezgui-rw-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
+            "finish-args-flatpak-appdata-folder-org.phoenicis.playonlinux-.Phoenicis-containers-wineprefix-ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires.",
+            "finish-args-flatpak-appdata-folder-org.winehq.Wine-data-wine-ro-access": "Access the data directories of WineZGUI (same author) rw for to list WineZGUI scripts in WineCharm, and read-only access for wine, bottles, playonlinux, Phoenicis,  for copying runners and prefixes if/when user requires."
         }
     },
     "io.github.fastrizwaan.WineZGUI": {
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.playonlinux.PlayOnLinux4-data-PlayOnLinux-wineprefix-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-org.phoenicis.playonlinux-.Phoenicis-containers-wineprefix-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-org.winehq.Wine-data-wine-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.playonlinux.PlayOnLinux4-data-PlayOnLinux-wineprefix-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-org.phoenicis.playonlinux-.Phoenicis-containers-wineprefix-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-org.winehq.Wine-data-wine-rw-access": "Predates the linter rule"
         }
     },
     "io.github.flattool.Ignition": {
@@ -4015,10 +4015,10 @@
     "io.github.flattool.Warehouse": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host",
-            "finish-args-flatpak-system-folder-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-ro-access": "Predates the linter rule",
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
         }
     },
@@ -4073,9 +4073,9 @@
     },
     "io.github.giantpinkrobots.flatsweep": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-app:ro-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-app-ro-access": "Predates the linter rule"
         }
     },
     "io.github.giantpinkrobots.varia": {
@@ -4157,9 +4157,9 @@
     },
     "io.github.jardon.Outlet": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Needs access to user data of other apps so that it can remove leftover data",
+            "finish-args-flatpak-appdata-folder-rw-access": "Needs access to user data of other apps so that it can remove leftover data",
             "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps",
-            "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
+            "finish-args-flatpak-system-folder-rw-access": "Needs access to system-wide flatpak installation so that it can manage them",
             "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it"
         }
     },
@@ -4214,9 +4214,9 @@
     },
     "io.github.kolunmi.Bazaar": {
         "*": {
-            "finish-args-flatpak-appdata-folder-access": "Needs access to user data of other apps so that it can remove leftover data",
+            "finish-args-flatpak-appdata-folder-rw-access": "Needs access to user data of other apps so that it can remove leftover data",
             "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps",
-            "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
+            "finish-args-flatpak-system-folder-rw-access": "Needs access to system-wide flatpak installation so that it can manage them",
             "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
             "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so it can manage them"
         }
@@ -4255,7 +4255,7 @@
     },
     "io.github.limo_app.limo": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-access": "Predates the linter rule. Required for accessing apps installed to the default directory by Flatpak Steam",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule. Required for accessing apps installed to the default directory by Flatpak Steam",
             "finish-args-flatpak-spawn-access": "Required for running user defined modding tools, which take the form of arbitrary commands to be run on the host",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -4268,14 +4268,14 @@
     },
     "io.github.loot.loot": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic:ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-compatdata-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam:ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-appdata-folder-org.openmw.OpenMW-config-openmw-openmw.cfg-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-appdata-folder-org.openmw.OpenMW-data-openmw:ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
-            "finish-args-flatpak-system-folder-app-org.openmw.OpenMW:ro-access": "Needed to read the OpenMW install folder when it is installed as a system Flatpak.",
-            "finish-args-flatpak-user-folder-app-org.openmw.OpenMW:ro-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak.",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-rw-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-compatdata-rw-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-appdata-folder-org.openmw.OpenMW-config-openmw-openmw.cfg-rw-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-appdata-folder-org.openmw.OpenMW-data-openmw-ro-access": "Needed to detect and make changes to games installed through Steam and Heroic Games Launcher.",
+            "finish-args-flatpak-system-folder-app-org.openmw.OpenMW-ro-access": "Needed to read the OpenMW install folder when it is installed as a system Flatpak.",
+            "finish-args-flatpak-user-folder-app-org.openmw.OpenMW-ro-access": "Needed to read the OpenMW install folder when it is installed as a user Flatpak.",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-heroic-ro-access": "Needed to detect games installed through Heroic Games Launcher.",
@@ -4293,9 +4293,9 @@
     "io.github.maddecoder.Classic-RBDOOM-3-BFG": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-ro-access": "Predates the linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -4374,8 +4374,8 @@
             "finish-args-unnecessary-xdg-config-discordptb-rw-access": "Needed to patch Discord PTB",
             "finish-args-unnecessary-xdg-data-flatpak-create-access": "Needed to set permission overrides",
             "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needed to patch Flatpak installations of Discord",
-            "finish-args-flatpak-appdata-folder-com.discordapp.Discord-access": "Needed to patch Flatpak installations of Discord",
-            "finish-args-flatpak-appdata-folder-com.discordapp.DiscordCanary-access": "Needed to patch Flatpak installations of Discord"
+            "finish-args-flatpak-appdata-folder-com.discordapp.Discord-rw-access": "Needed to patch Flatpak installations of Discord",
+            "finish-args-flatpak-appdata-folder-com.discordapp.DiscordCanary-rw-access": "Needed to patch Flatpak installations of Discord"
         }
     },
     "io.github.mpc_qt.mpc-qt": {
@@ -4526,9 +4526,9 @@
     },
     "io.github.philipk.boilr": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:rw-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing the shortcuts file in Steam, this is the purpose of BoilR",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required for showing which other Flatpaks are installed, so a shortcut can be added easly to Steam",
@@ -4572,7 +4572,7 @@
     "io.github.pol_rivero.github-desktop-plus": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Needed to spawn external text editors and terminals.",
-            "finish-args-flatpak-system-folder-app:ro-access": "Needed to check which text editors the user has installed as flatpaks.",
+            "finish-args-flatpak-system-folder-app-ro-access": "Needed to check which text editors the user has installed as flatpaks.",
             "finish-args-has-socket-gpg-agent": "Needed to sign commits with GPG.",
             "finish-args-has-socket-ssh-auth": "Needed to clone repositories using SSH.",
             "finish-args-host-filesystem-access": "Needed to read and modify files in git repos outside of sandbox."
@@ -4639,7 +4639,7 @@
     },
     "io.github.randovania.Randovania": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.ryujinx.Ryujinx-config-Ryujinx-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-org.ryujinx.Ryujinx-config-Ryujinx-rw-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-Ryujinx-rw-access": "required to export a randomizer to the host's Ryujinx settings"
         }
     },
@@ -4697,7 +4697,7 @@
     },
     "io.github.santiagocezar.maniatic-launcher": {
         "*": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Sonic-Mania-:ro-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Sonic-Mania-ro-access": "Predates the linter rule"
         }
     },
     "io.github.sgsaenger.vipster": {
@@ -4714,7 +4714,7 @@
     "io.github.shiftey.Desktop": {
         "stable": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
             "finish-args-has-socket-gpg-agent": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -4786,9 +4786,9 @@
     "io.github.swordpuffin.rewaita": {
         "stable": {
             "finish-args-autostart-filesystem-access": "Needed for manually creating an autostart file with specific parameters which cannot be done through Libportal",
-            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-.librewolf-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory",
-            "finish-args-flatpak-appdata-folder-net.waterfox.waterfox-.waterfox-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory",
-            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory"
+            "finish-args-flatpak-appdata-folder-io.gitlab.librewolf-community-.librewolf-rw-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory",
+            "finish-args-flatpak-appdata-folder-net.waterfox.waterfox-.waterfox-rw-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-rw-access": "Needs to generate a Firefox css theme for any package format of Firefox, including Flatpak. The theme must be placed in Firefox's appdata directory"
         }
     },
     "io.github.swordpuffin.wardrobe": {
@@ -4804,7 +4804,7 @@
     },
     "io.github.theforceengine.tfe": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Dark-Forces-Game:ro-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Dark-Forces-Game-ro-access": "Predates the linter rule"
         }
     },
     "io.github.thetumultuousunicornofdarkness.cpu-x": {
@@ -4882,7 +4882,7 @@
             "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
             "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-app:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-app-ro-access": "Predates the linter rule",
             "finish-args-full-home-config-access": "Predates the linter rule",
             "finish-args-full-home-local-share-access": "Predates the linter rule",
             "finish-args-incorrect-theme-folder-permission": "Specifically meant to save desktop settings",
@@ -4917,7 +4917,7 @@
     },
     "io.github.wivrn.wivrn": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:ro-access": "Required to list games in Steam flatpak",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-ro-access": "Required to list games in Steam flatpak",
             "finish-args-flatpak-spawn-access": "Required to launch games on the host",
             "finish-args-host-etc-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
@@ -5095,7 +5095,7 @@
     },
     "io.kopia.KopiaUI": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -5127,8 +5127,8 @@
     "io.missioncenter.MissionCenter": {
         "stable": {
             "finish-args-flatpak-spawn-access": "access to /proc is required in order to list running processes and their respective resource usage; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-ro-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-systemd1-system-talk-name": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "read-only access to xdg-data/flatpak{,/exports/share} is required to query installed apps on the system and present the ones that are running to the user; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
@@ -5137,7 +5137,7 @@
     "io.mpv.Mpv": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-io.mpv.Mpv-config-mpv-scripts:create-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-io.mpv.Mpv-config-mpv-scripts-create-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule",
             "module-luajit-checker-tracks-commits": "Tracks stable branch commits, doesn't have releases",
@@ -5397,7 +5397,7 @@
     },
     "net.blumia.pineapple-steam-recording-exporter": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam:ro-access": "To access and export video recordings under the Steam client packaged as Flatpak applications"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-ro-access": "To access and export video recordings under the Steam client packaged as Flatpak applications"
         }
     },
     "net.cebix.basilisk": {
@@ -5445,19 +5445,19 @@
     "net.davidotek.pupgui2": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-GamesConfig-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-gog_store-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-sideload_apps-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-store_cache-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-tools-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-legendary-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-runners-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-config-lutris:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-pga.db:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runners-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runtime-dxvk-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runtime-vkd3d-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-GamesConfig-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-gog_store-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-sideload_apps-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-store_cache-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-tools-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-legendary-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-runners-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-config-lutris-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-pga.db-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runners-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runtime-dxvk-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-data-lutris-runtime-vkd3d-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
@@ -5539,7 +5539,7 @@
     "net.lutris.Lutris": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime",
@@ -5609,8 +5609,8 @@
     "net.nokyan.Resources": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-ro-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to detect user-wide installed Flatpak applications by searching for .desktop files"
@@ -5651,7 +5651,7 @@
     "net.retrodeck.retrodeck": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:rw-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-login1-talk-name": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "SteamOS is the primary target of the application and it does not ship an xsettings daemon or xdg-desktop-portal-gtk: https://github.com/ValveSoftware/SteamOS/issues/803",
@@ -5930,7 +5930,7 @@
     },
     "org.bleachbit.BleachBit": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
@@ -6428,7 +6428,7 @@
     "org.freefilesync.FreeFileSync": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -6552,8 +6552,8 @@
         "*": {
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-rw-access": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -6576,7 +6576,7 @@
     },
     "org.gnome.DejaDup": {
         "*": {
-            "finish-args-flatpak-appdata-folder-access": "Users would expect that a full home backup would include flatpak application configuration and data",
+            "finish-args-flatpak-appdata-folder-rw-access": "Users would expect that a full home backup would include flatpak application configuration and data",
             "finish-args-flatpak-spawn-access": "Required to spawn fusermount, mounting the user's backup via FUSE",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -6771,7 +6771,7 @@
     },
     "org.gnome.World.PikaBackup": {
         "*": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
@@ -6781,7 +6781,7 @@
     },
     "org.gnome.baobab": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -6851,9 +6851,9 @@
     "org.gnome.Manuals": {
         "stable": {
             "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
-            "finish-args-flatpak-system-folder-access": "application uses libflatpak to install SDK documentation",
+            "finish-args-flatpak-system-folder-rw-access": "application uses libflatpak to install SDK documentation",
             "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
-            "finish-args-flatpak-user-folder-access": "application uses libflatpak to install SDK documentation",
+            "finish-args-flatpak-user-folder-rw-access": "application uses libflatpak to install SDK documentation",
             "finish-args-host-os-ro-filesystem-access": "Reads documentations installed in the Host system",
             "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation",
             "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
@@ -7003,7 +7003,7 @@
             "finish-args-arbitrary-xdg-config-rw-access": "save and restore desktop environment theme configuration stored in configuration files",
             "finish-args-dconf-talk-name": "save and restore desktop environment theme configuration stored in GSettings dconf backend",
             "finish-args-direct-dconf-path": "save and restore desktop environment theme configuration stored in GSettings dconf backend",
-            "finish-args-flatpak-system-folder-exports-share-applications:ro-access": "read .desktop files of Flatpak applications installed on the system",
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "read .desktop files of Flatpak applications installed on the system",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "read .desktop files of applications installed on the system",
             "finish-args-unnecessary-xdg-config-autostart-create-access": "install autostart programs to restore themes on desktop login, with additional features required beyond those provided by the background portal",
@@ -7134,9 +7134,9 @@
     },
     "org.kde.discover": {
         "beta": {
-            "finish-args-flatpak-appdata-folder-access": "Needs access to settings and user data of other apps ",
+            "finish-args-flatpak-appdata-folder-rw-access": "Needs access to settings and user data of other apps ",
             "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install apps",
-            "finish-args-flatpak-system-folder-access": "Needs access to system-wide flatpak installation so that it can manage them",
+            "finish-args-flatpak-system-folder-rw-access": "Needs access to system-wide flatpak installation so that it can manage them",
             "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
             "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation so that it can manage them"
         }
@@ -7144,7 +7144,7 @@
     "org.kde.dolphin": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -8159,7 +8159,7 @@
     },
     "org.pegasus_frontend.Pegasus": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
@@ -8223,7 +8223,7 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-access": "Used to create isolated profile folder for flatpak browsers. For some flatpak browsers it's necessary to create a directory in their sandbox for profile isolation. For some browsers it's used to update the isolated profile config for a minimal ui.",
             "finish-args-flatpak-spawn-access": "This is needed to fetch installed browser information and to run the created Web App from this application.",
-            "finish-args-flatpak-system-folder-app:ro-access": "Used to fetch the icons of system installed flatpak browsers.",
+            "finish-args-flatpak-system-folder-app-ro-access": "Used to fetch the icons of system installed flatpak browsers.",
             "finish-args-unnecessary-xdg-data-applications-create-access": "Used to create and delete owned desktop files for web apps.",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Used to fetch the icons of user installed flatpak browsers."
         }
@@ -8408,7 +8408,7 @@
     },
     "org.sonic3air.Sonic3AIR": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Sega-Classics-uncompressed-ROMs-Sonic_Knuckles_wSonic3.bin:ro-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Sega-Classics-uncompressed-ROMs-Sonic_Knuckles_wSonic3.bin-ro-access": "Predates the linter rule"
         }
     },
     "org.spyder_ide.spyder": {
@@ -8712,7 +8712,7 @@
     },
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
             "finish-args-flatpak-system-folder-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs access to the Flatpak directory"
@@ -8740,9 +8740,9 @@
     "page.codeberg.JakobDev.jdProcessFileWatcher": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Run strace on the Host",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share-applications:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share-icons:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-icons-ro-access": "Predates the linter rule",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-applications-ro-access": "Needs to read desktop files",
@@ -8751,9 +8751,9 @@
     },
     "page.codeberg.JakobDev.jdSimpleAutostart": {
         "stable": {
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share-applications:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-share-icons:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-share-icons-ro-access": "Predates the linter rule",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-autostart-create-access": "the app predates this linter rule",
@@ -8809,16 +8809,16 @@
     },
     "page.kramo.Cartridges": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-legendary-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-io.itch.itch-config-itch-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-org.libretro.RetroArch-config-retroarch-:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-legendary-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-data-bottles-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-io.itch.itch-config-itch-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-org.libretro.RetroArch-config-retroarch-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "required to launch games on the host",
-            "finish-args-flatpak-system-folder-app:ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports:ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-exports-ro-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "access to xdg-data/flatpak/app and exports is needed to import games installed as user flatpaks"
         }
@@ -9063,7 +9063,7 @@
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam:rw-access": "Predates the linter rule"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
     "xyz.rescribe.rescribe": {
@@ -9099,7 +9099,7 @@
     "com.orcaslicer.OrcaSlicer": {
         "stable": {
             "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
-            "finish-args-flatpak-appdata-folder-io.github.orcaslicer.OrcaSlicer:ro-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
+            "finish-args-flatpak-appdata-folder-io.github.orcaslicer.OrcaSlicer-ro-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.orcaslicer.OrcaSlicer) for migration from old app-id"
         }
     },
     "org.cvfosammmm.Lemma": {

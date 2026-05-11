@@ -68,9 +68,9 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         "finish-args-freedesktop-dbus-talk-name",
         "finish-args-freedesktop-dbus-system-talk-name",
         "finish-args-x11-without-ipc",
-        "finish-args-flatpak-user-folder-access",
+        "finish-args-flatpak-user-folder-rw-access",
         "finish-args-host-tmp-access",
-        "finish-args-flatpak-appdata-folder-access",
+        "finish-args-flatpak-appdata-folder-rw-access",
         "finish-args-host-var-access",
         "finish-args-legacy-icon-folder-permission",
         "finish-args-legacy-font-folder-permission",
@@ -100,8 +100,8 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-appid-mpris-own-name",
         "finish-args-mpris-flatpak-id-talk-name",
-        "finish-args-flatpak-appdata-folder-foo-access",
-        "finish-args-flatpak-user-folder-foo-access",
+        "finish-args-flatpak-appdata-folder-foo-rw-access",
+        "finish-args-flatpak-user-folder-foo-rw-access",
     }
     expected_absents = {
         "finish-args-has-nodevice-shm",

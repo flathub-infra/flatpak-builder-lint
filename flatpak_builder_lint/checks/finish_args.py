@@ -27,15 +27,27 @@ def _subdir_fs_error(
     prefixes: tuple[str, ...],
     error_prefix: str,
 ) -> str:
+    suffix_mode = "-rw"
+
+    if fs.endswith(":ro"):
+        suffix_mode = "-ro"
+        fs = fs[:-3]
+    elif fs.endswith(":create"):
+        suffix_mode = "-create"
+        fs = fs[:-7]
+    elif fs.endswith(":rw"):
+        suffix_mode = "-rw"
+        fs = fs[:-3]
+
     for prefix in prefixes:
         if fs.startswith(prefix):
             components = [comp.replace(" ", "-") for comp in fs[len(prefix) :].split("/") if comp]
 
             suffix = "-" + "-".join(components) if components else ""
 
-            return f"{error_prefix}{suffix}-access"
+            return f"{error_prefix}{suffix}{suffix_mode}-access"
 
-    return f"{error_prefix}-access"
+    return f"{error_prefix}{suffix_mode}-access"
 
 
 def _flatpak_appdata_error(fs: str) -> str:
