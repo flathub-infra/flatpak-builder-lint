@@ -5596,7 +5596,7 @@
         }
     },
     "net.mullvad.MullvadBrowser": {
-        "stable": {
+        "*": {
             "finish-args-login1-system-talk-name": "Predates the linter rule",
             "finish-args-own-name-wildcard-org.mozilla.mullvadbrowser": "Predates the linter rule"
         }
