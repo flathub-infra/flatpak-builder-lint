@@ -538,8 +538,8 @@
         }
     },
     "com.codemouse92.timecard": {
-        "*": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
+        "stable": {
+            "finish-args-host-filesystem-access": "required to allow the user to store and retrieve logs and configuration files in existing locations in their home directory"
         }
     },
     "com.core447.StreamController": {
