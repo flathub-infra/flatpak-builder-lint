@@ -3032,7 +3032,7 @@
             "finish-args-flatpak-appdata-folder-org.gnome.Rhythmbox3-cache-rhythmbox-album-art-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-appdata-folder-org.mozilla.firefox-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
-            "finish-args-flatpak-system-folder-access": "Required to read .desktop files and icons for listing MPRIS clients",
+            "finish-args-flatpak-system-folder-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
             "finish-args-freedesktop-dbus-talk-name": "Required to gather and update the list of all available MPRIS clients",
             "finish-args-full-home-cache-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
             "finish-args-host-tmp-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
@@ -3581,7 +3581,7 @@
     "io.github.N3kosempai.klia-store": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Klia Store is a Flatpak application manager that needs to execute flatpak commands on the host system using flatpak-spawn to install, update, and manage other Flatpak applications.",
-            "finish-args-flatpak-system-folder-access": "Read-only access to /var/lib/flatpak is required to list and display information about system-installed Flatpak applications.",
+            "finish-args-flatpak-system-folder-ro-access": "Read-only access to /var/lib/flatpak is required to list and display information about system-installed Flatpak applications.",
             "finish-args-flatpak-system-talk-name": "Required to communicate with the Flatpak system service (org.freedesktop.Flatpak) to manage both user and system-level Flatpak installations.",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
@@ -3725,7 +3725,7 @@
     "io.github.alyraffauf.Switchyard": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system.",
-            "finish-args-flatpak-system-folder-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
+            "finish-args-flatpak-system-folder-ro-access": "Required to discover the icons/desktop files of system level flatpak browsers.",
             "finish-args-host-ro-filesystem-access": "Required to discover icons/desktop files for native system packages.",
             "finish-args-host-var-access": "Required to discover icons/desktop files for snap packages.",
             "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to discover icons/desktop files for user level packages.",
@@ -3764,11 +3764,11 @@
             "finish-args-host-var-access": "For listing Flatpak and snapd applications",
             "finish-args-arbitrary-xdg-config-create-access": "Writing mimeapps.list if it doesn't exist",
             "finish-args-desktopfile-filesystem-access": "For listing applications installed in ~/.local/share/applications",
-            "finish-args-flatpak-system-folder-exports-share-applications:ro-access": "For listing Flatpak apps",
-            "finish-args-flatpak-system-folder-exports-share-icons:ro-access": "For accessing Flatpak app icons (symlink directory)",
-            "finish-args-flatpak-system-folder-app:ro-access": "For accessing Flatpak app icons (symlink targets)",
-            "finish-args-flatpak-user-folder-exports-share-applications:ro-access": "For listing user-installed Flatpak apps",
-            "finish-args-flatpak-user-folder-exports-share-icons:ro-access": "For accessing user-installed Flatpak app icons"
+            "finish-args-flatpak-system-folder-app-ro-access": "For listing Flatpak apps",
+            "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "For listing Flatpak apps",
+            "finish-args-flatpak-system-folder-exports-share-icons-ro-access": "For listing Flatpak apps",
+            "finish-args-flatpak-user-folder-exports-share-applications-ro-access": "For listing user-installed Flatpak apps",
+            "finish-args-flatpak-user-folder-exports-share-icons-ro-access": "For listing user-installed Flatpak apps"
         }
     },
     "io.github.avomar.dev-toolbox": {
@@ -3790,7 +3790,7 @@
     },
     "io.github.benjamimgois.goverlay": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications’ MangoHud configuration",
             "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
             "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
         }
@@ -3974,7 +3974,7 @@
         "stable": {
             "finish-args-autostart-filesystem-access": "Predates the linter rule",
             "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-applications-rw-access": "This program needs read-write access to xdg-data/applications",
@@ -4002,7 +4002,7 @@
     },
     "io.github.flattool.Ignition": {
         "stable": {
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-host-etc-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
@@ -4880,8 +4880,8 @@
         "*": {
             "finish-args-dconf-talk-name": "Predates the linter rule",
             "finish-args-direct-dconf-path": "Predates the linter rule",
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-flatpak-user-folder-app-ro-access": "Predates the linter rule",
             "finish-args-full-home-config-access": "Predates the linter rule",
             "finish-args-full-home-local-share-access": "Predates the linter rule",
@@ -5944,7 +5944,7 @@
     },
     "org.bluesabre.MenuLibre": {
         "stable": {
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-applications-create-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications"
@@ -6398,15 +6398,15 @@
     },
     "org.freedesktop.appstream-glib": {
         "stable": {
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-ro-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "org.freedesktop.appstream.cli": {
         "stable": {
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-user-folder-ro-access": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -8713,8 +8713,8 @@
     "page.codeberg.JakobDev.jdFlatpakSnapshot": {
         "stable": {
             "finish-args-flatpak-appdata-folder-rw-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Needs access to the Flatpak directory"
         }
     },
@@ -8796,9 +8796,9 @@
     },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-appdata-folder-ro-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-flatpak-spawn-access": "for reading environment variables on the host system",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-mimeapps.list-create-access": "for reading and updating mimetypes in xdg-config/mimeapps.list",
@@ -8856,7 +8856,7 @@
     "re.sonny.Junction": {
         "stable": {
             "finish-args-flatpak-spawn-access": "required to launch apps",
-            "finish-args-flatpak-system-folder-access": "Predates the linter rule",
+            "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-applications-ro-access": "required to list apps",
