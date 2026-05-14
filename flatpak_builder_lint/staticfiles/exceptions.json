@@ -5597,8 +5597,8 @@
     },
     "net.mullvad.MullvadBrowser": {
         "*": {
-            "finish-args-login1-system-talk-name": "Predates the linter rule",
-            "finish-args-own-name-wildcard-org.mozilla.mullvadbrowser": "Predates the linter rule"
+            "finish-args-login1-system-talk-name": "To monitor the system sleep status during playback",
+            "finish-args-own-name-wildcard-org.mozilla.mullvadbrowser": "The Flatpak is not named using the Flathub non-compliant name that the upstream sets in the application"
         }
     },
     "net.natesales.Aviator": {
