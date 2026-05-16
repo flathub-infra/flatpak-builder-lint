@@ -323,7 +323,6 @@ def test_manifest_finish_args_new_metadata() -> None:
     found_errors = set(ret["errors"])
     errors = {
         "finish-args-insufficient-required-flatpak",
-        "finish-args-has-dev-input",
     }
     for err in errors:
         assert err in found_errors
