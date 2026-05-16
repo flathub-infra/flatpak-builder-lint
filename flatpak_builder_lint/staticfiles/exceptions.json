@@ -9124,5 +9124,11 @@
             "finish-args-host-filesystem-access": "SFTP client needs direct access to user-chosen local paths outside home (removable media, /mnt, /srv, project trees) for transfer, sync, and directory-watch operations. FileChooser portal is used where the user picks individual files, but background transfers and watched directories need persistent access to the chosen paths.",
             "finish-args-has-socket-ssh-auth": "Required to use the user's running SSH agent for public-key authentication against remote hosts (the standard mechanism for yubikey/gpg-agent/passphrase-protected keys)."
         }
+    },
+    "io.github.ebkr.r2modman": {
+        "*": {
+            "finish-args-flatpak-spawn-access": "Required to launch Steam games on the Steam Deck when in game mode",
+            "finish-args-host-filesystem-access": "Required to detect installed games and mod files across host and Steam library locations"
+        }
     }
 }
