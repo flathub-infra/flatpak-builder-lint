@@ -9127,8 +9127,9 @@
     },
     "io.github.ebkr.r2modman": {
         "*": {
-            "finish-args-flatpak-spawn-access": "Required to launch Steam games on the Steam Deck when in game mode",
-            "finish-args-host-filesystem-access": "Required to detect installed games and mod files across host and Steam library locations"
+            "finish-args-flatpak-spawn-access": "Required to launch Steam games on the Steam Deck in game mode",
+            "finish-args-host-filesystem-access": "Required to resolve Steam install locations and user installed games",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to resolve the Steam install location from the Flatpak Steam directory (which isnt covered by host access)"
         }
     }
 }
