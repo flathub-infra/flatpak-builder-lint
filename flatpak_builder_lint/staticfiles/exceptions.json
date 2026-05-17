@@ -2764,7 +2764,6 @@
     },
     "com.wings3d.WINGS": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -3791,7 +3790,7 @@
     },
     "io.github.benjamimgois.goverlay": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications’ MangoHud configuration",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration",
             "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
             "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
         }
@@ -3812,12 +3811,6 @@
     "io.github.bothlab.pomidaq": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.github.brunoherbelin.Vimix": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule",
-            "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
     "io.github.cboxdoerfer.FSearch": {
@@ -7229,11 +7222,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.kde.kamoso": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.kde.kanagram": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -8179,11 +8167,6 @@
     "org.pitivi.Pitivi": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.plomgrading.PlomClient": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.polymc.PolyMC": {
