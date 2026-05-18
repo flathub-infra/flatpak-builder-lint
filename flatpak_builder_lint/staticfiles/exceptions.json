@@ -3356,6 +3356,12 @@
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write to system configuration files"
         }
     },
+    "gay.brie.CheesePaper": {
+        "stable": {
+            "finish-args-unnecessary-xdg-config-cheese-paper-rw-access": "Users may need to access the settings directory (e.g., adding dictionaries)",
+            "finish-args-unnecessary-xdg-data-cheese-paper-rw-access": "Users may need to access the data directory (e.g., collecting logs, unignoring words"
+        }
+    },
     "gg.minion.Minion": {
         "*": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
