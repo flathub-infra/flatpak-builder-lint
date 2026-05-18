@@ -5495,6 +5495,12 @@
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
+    "net.huangyuhui.hmcl": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "JavaFX application requires both X11 and Wayland sockets to function correctly",
+            "appid-url-not-reachable": "The correct url is hmcl.huangyuhui.net."
+        }
+    },
     "net.imaginaryinfinity.Squiid": {
         "stable": {
             "finish-args-not-defined": "Is a command line application"
