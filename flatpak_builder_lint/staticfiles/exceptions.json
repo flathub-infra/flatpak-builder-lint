@@ -562,6 +562,11 @@
             "finish-args-kwin-talk-name": "Required to talk to a KWin script for getting the focused window name"
         }
     },
+    "com.dekomote.vermouth": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Required for umu and Proton to run the games, scan for runtimes and retroarch cores"
+        }
+    },
     "com.devolutions.remotedesktopmanager": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
