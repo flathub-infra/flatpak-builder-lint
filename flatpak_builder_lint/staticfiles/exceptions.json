@@ -5793,6 +5793,11 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
+    "net.windower.Lumoria": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Wine/Proton have issues running game under sandbox, occasionally settings get reset due to launcher bugs. SteamOS xdg-document-portal process takes up all CPU when installing and hangs device if outside of sandbox."
+        }
+    },
     "net.wz2100.wz2100": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
