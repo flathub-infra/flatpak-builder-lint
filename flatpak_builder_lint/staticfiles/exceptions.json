@@ -9115,7 +9115,7 @@
     },
     "org.tahoma2d.Tahoma2D": {
         "stable": {
-            "finish-args-host-filesystem-access": "Tahoma2D is regularly used in conjunction with other drawing or imagining applications and must be able to import and/or write image files whereever it needs to so it can be shared by other software involved in their animation pipeline."
+            "finish-args-host-filesystem-access": "Tahoma2D is regularly used in conjunction with other drawing or imagining applications and must be able to import and/or write image files whereever it needs to so it can be shared by other software involved in their animation pipeline. Additionally, some image and audio files require ffmpeg or rhubarb and users need to set the location of these executables in preferences for use by the application."
         }
     }
 }
