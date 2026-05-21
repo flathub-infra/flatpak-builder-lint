@@ -1,4 +1,9 @@
 {
+    "ai.lemonade_server.Lemonade": {
+        "stable": {
+            "finish-args-unnecessary-xdg-cache-huggingface-rw-access": "Lemonade is a local LLM server; this reuses the user's existing ~/.cache/huggingface so multi-gigabyte models already downloaded by other tools (huggingface_hub, transformers, llama.cpp) are not re-downloaded into the sandbox's private cache. Access is scoped to the huggingface subdirectory."
+        }
+    },
     "ai.opencode.opencode": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to access and modify projects outside the sandbox"
