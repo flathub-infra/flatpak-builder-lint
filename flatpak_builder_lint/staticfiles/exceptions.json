@@ -568,7 +568,8 @@
     },
     "com.devolutions.remotedesktopmanager": {
         "stable": {
-            "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+            "finish-args-has-socket-ssh-auth": "Predates the linter rule",
+            "finish-args-flatpak-spawn-access": "Required for Local Terminal and PowerShell to spawn host shells."
         }
     },
     "com.diffingo.fwbackups": {
