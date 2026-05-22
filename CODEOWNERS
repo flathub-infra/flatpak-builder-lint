@@ -1,1 +1,3 @@
-/staticfiles/exceptions.json @flathub-infra/reviewers
+* @bbhtt @barthalion
+
+/flatpak_builder_lint/staticfiles/exceptions.json @flathub-infra/admins
