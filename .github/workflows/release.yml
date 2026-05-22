@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       commit:
-        description: 'Commit SHA to check out and release'
+        description: 'Commit SHA or branch to check out and release'
         required: false
         default: master
         type: string
@@ -24,13 +24,30 @@ jobs:
           persist-credentials: false
           ref: ${{ inputs.commit }}
 
+      - name: Resolve ref to commit SHA
+        id: resolve
+        env:
+          INPUT_COMMIT: ${{ inputs.commit }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          sha="$(git rev-parse --verify "${INPUT_COMMIT}^{commit}")"
+
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Resolved object is not a full commit SHA: $sha" >&2
+            exit 1
+          fi
+
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
       - name: Trigger workflow in org.flatpak.Builder repository
         # 4.0.1
         uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697
         with:
           repository: flathub/org.flatpak.Builder
           event-type: trigger-workflow
-          client-payload: "{\"sha\": \"${{ inputs.commit }}\"}"
+          client-payload: "{\"sha\": \"${{ steps.resolve.outputs.sha }}\"}"
           token: ${{ secrets.LINTER_TRIGGER_WORKFLOW_TOKEN }}
 
       - name: Trigger workflow in flathub-infra/actions-images
