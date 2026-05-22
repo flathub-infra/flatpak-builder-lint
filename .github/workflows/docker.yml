@@ -20,6 +20,7 @@ jobs:
             platform: arm64
     runs-on: ${{matrix.os}}
     timeout-minutes: 180
+    if: github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master'
     concurrency:
       group: ${{matrix.os}}-${{ github.ref }}-docker
       cancel-in-progress: true
@@ -57,6 +58,7 @@ jobs:
 
         # 6.0.2
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        if: github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master'
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -100,12 +102,13 @@ jobs:
           flatpak run org.flatpak.Builder --show-manifest --show-manifest \
             docker/org.flatpak.Builder/org.flatpak.Builder.json >> docker/org.flatpak.Builder/org.flatpak.Builder-cache.json
 
-        # 5.0.2
-      - uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7
+      # 5.0.5
+      - uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae
         with:
           path: ${{ github.workspace }}/docker-cache/.flatpak-builder
           key: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-
 
       - name: Set Flatpak arch
         run: |
@@ -123,7 +126,7 @@ jobs:
           cd docker/org.flatpak.Builder/
           dbus-run-session flatpak run org.flatpak.Builder \
             --state-dir="$GITHUB_WORKSPACE/docker-cache/.flatpak-builder" \
-            --arch=${{ env.FP_ARCH }} --verbose --user \
+            --arch="$FP_ARCH" --verbose --user \
             --force-clean --ccache --install-deps-from=flathub \
             --default-branch=localtest \
             --install \
@@ -152,12 +155,12 @@ jobs:
         run: |
           cd tests/repo/min_success_metadata/gui-app
           dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --force-clean --repo=repo \
-            --arch=${{ env.FP_ARCH }} \
+            --arch="$FP_ARCH" \
             --mirror-screenshots-url=https://dl.flathub.org/media \
             --compose-url-policy=full \
             --install-deps-from=flathub --ccache builddir org.flathub.gui.yaml
           mkdir -p builddir/files/share/app-info/media
-          ostree commit --repo=repo --canonical-permissions --branch=screenshots/${{ env.FP_ARCH }} builddir/files/share/app-info/media
+          ostree commit --repo=repo --canonical-permissions --branch=screenshots/"$FP_ARCH" builddir/files/share/app-info/media
           docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} manifest /mnt/org.flathub.gui.yaml
           docker run -v $(pwd):/mnt --rm ghcr.io/${{ github.repository }}:latest-${{ matrix.platform }} repo /mnt/repo
 
@@ -212,6 +215,13 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # 5.0.5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae
+        if: github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master'
+        with:
+          path: ${{ github.workspace }}/docker-cache/.flatpak-builder
+          key: ${{ runner.os }}-${{ matrix.platform }}-docker-flatpak-builder-${{ hashFiles('docker/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
 
   docker-manifest:
     if: ${{ github.event_name != 'pull_request' }}

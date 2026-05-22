@@ -168,6 +168,7 @@ jobs:
         with:
           version: "0.9.21"
           enable-cache: true
+          save-cache: ${{ github.ref == 'refs/heads/master' }}
           cache-dependency-glob: |
             **/uv.lock
             **/pyproject.toml
@@ -221,12 +222,13 @@ jobs:
         run: |
           flatpak-builder --show-manifest build/org.flatpak.Builder/org.flatpak.Builder.json >> build/org.flatpak.Builder/org.flatpak.Builder-cache.json
 
-        # 5.0.2
-      - uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7
+      # 5.0.5
+      - uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae
         with:
           path: ${{ github.workspace }}/cache/.flatpak-builder
           key: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-
 
       - name: Set Flatpak arch
         run: |
@@ -243,7 +245,7 @@ jobs:
         run: |
           cd build/org.flatpak.Builder
           flatpak-builder --verbose --user --force-clean \
-            --arch=${{ env.FP_ARCH }} \
+            --arch="$FP_ARCH" \
             --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
             --install-deps-from=flathub --default-branch=localtest \
             --ccache --keep-build-dirs --install builddir \
@@ -258,6 +260,13 @@ jobs:
 
       - name: Run integration tests
         run: uv run pytest -m integration -vvv
+
+      # 5.0.5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae
+        if: github.repository == 'flathub-infra/flatpak-builder-lint' && github.ref == 'refs/heads/master'
+        with:
+          path: ${{ github.workspace }}/cache/.flatpak-builder
+          key: ${{ runner.os }}-${{ matrix.platform }}-ci-flatpak-builder-${{ hashFiles('build/org.flatpak.Builder/org.flatpak.Builder-cache.json') }}
 
   docker-call:
     permissions:

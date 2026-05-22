@@ -1,0 +1,6 @@
+exceptions:
+  - all:
+      - base-branch: ["^master$"]
+      - changed-files:
+          - any-glob-to-any-file:
+              - flatpak_builder_lint/staticfiles/exceptions.json

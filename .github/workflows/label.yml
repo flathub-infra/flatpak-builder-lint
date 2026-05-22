@@ -16,14 +16,11 @@ jobs:
   label:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: write
     steps:
-      - name: Add exceptions label
-        run: |
-          if ! gh pr view --json labels -q '.labels[].name' "$PR_NUM"|grep -qE "^exceptions$"; then
-            gh pr edit "$PR_NUM" --add-label "exceptions"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          PR_NUM: ${{ github.event.pull_request.number || github.event.issue.number }}
+      # 6.1.0
+      - uses: actions/labeler@f27b608878404679385c85cfa523b85ccb86e213
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: true
