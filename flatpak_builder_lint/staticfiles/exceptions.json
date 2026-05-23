@@ -8654,7 +8654,7 @@
     },
     "org.zdoom.UZDoom": {
         "beta": {
-            "finish-args-flatpak-appdata-folder-access": "UZDoom can automatically detect required data for supported games from Steam installations"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-steamapps-ro-access": "UZDoom can automatically detect required data for supported games from Steam installations"
         }
     },
     "org.zim_wiki.Zim": {
