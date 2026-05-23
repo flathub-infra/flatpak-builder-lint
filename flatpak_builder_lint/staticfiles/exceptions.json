@@ -4889,6 +4889,11 @@
             "finish-args-legacy-icon-folder-permission": "Specifically meant to save desktop settings"
         }
     },
+    "io.github.voltkraft.immich-folder-watch": {
+      "*": {
+          "finish-args-own-name-wildcard-org.kde": "StatusNotifierItem tray integration for Avalonia."
+      }
+   },
     "io.github.voxelcubes.deepqt": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
