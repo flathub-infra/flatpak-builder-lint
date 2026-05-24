@@ -539,7 +539,6 @@
     },
     "com.core447.StreamController": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-access": "required to allow the app to show the mpris artworks of media playing in other Flatpaks, e.g. Firefox",
             "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -1922,11 +1921,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.itextpdf.RUPS": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.jagex.RuneScape": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -2329,8 +2323,6 @@
     },
     "com.prusa3d.PrusaSlicer": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-own-name-wildcard-com.prusa3d.prusaslicer": "Predates the linter rule"
@@ -7200,7 +7192,6 @@
     },
     "org.kde.index": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
