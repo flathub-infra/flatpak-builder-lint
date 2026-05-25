@@ -4917,7 +4917,8 @@
             "finish-args-unnecessary-xdg-config-openvr-create-access": "Required to set the current OpenVR runtime",
             "finish-args-unnecessary-xdg-config-openxr-create-access": "Required to set the current OpenXR runtime",
             "finish-args-unnecessary-xdg-data-Steam-ro-access": "Required to list games in system Steam",
-            "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to list .desktop files on the host"
+            "finish-args-unnecessary-xdg-data-applications-ro-access": "Required to list .desktop files on the host",
+            "finish-args-unnecessary-xdg-data-dev.slimevr.SlimeVR-rw-access": "Required to connect to Steam version of SlimeVR"
         }
     },
     "io.github.woelper.Oculante": {
