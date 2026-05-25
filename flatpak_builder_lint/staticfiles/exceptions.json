@@ -7828,6 +7828,11 @@
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
+    "org.koderoots.chatqt": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Requires use of OpenCode and Pi agent access on the host"
+        }
+    },
     "org.ksnip.ksnip": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule",
