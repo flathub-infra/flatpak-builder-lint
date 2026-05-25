@@ -8176,6 +8176,11 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.praat.Praat": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Scripts need to be able to access arbitrary files to programmatically analyze sounds stored on the computer."
+        }
+    }
     "org.previewqt.PreviewQt": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
