@@ -4746,6 +4746,11 @@
             "finish-args-host-filesystem-access": "needed to access and modify projects outside of sandbox"
         }
     },
+    "io.github.sorguido.dataflow-procurement-software": {
+        "stable": {
+            "finish-args-home-filesystem-access": "DataFlow is a desktop procurement application that must preserve compatibility with its native Linux and Windows builds. XDG-only permissions were tested and caused an alternative sandboxed database to be created, breaking expected database persistence across restarts. The application manages SQLite database persistence, exports, backups, attachments, templates, and user-selected files. For the 2.3.0 Flatpak package, home access is required to preserve desktop-native behavior without application-level path handling changes."
+        }
+    },
     "io.github.sourcegit_scm.sourcegit": {
         "*": {
             "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
