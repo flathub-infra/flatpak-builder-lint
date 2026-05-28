@@ -8246,8 +8246,7 @@
     },
     "org.quetoo.Quetoo": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
         }
     },
     "org.qxmledit.QXmlEdit": {
