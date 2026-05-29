@@ -5069,6 +5069,11 @@
             "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
         }
     },
+    "io.itch.nordup.TheGates": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "The app spawns two separate Godot processes: a trusted launcher UI and a renderer process that loads untrusted remote world content. The launcher requires X11/XWayland because of native-Wayland UI bugs in Godot, while the renderer is deliberately run on native Wayland (--display-driver wayland) to isolate untrusted content from the rest of the session. fallback-x11 cannot satisfy this: on a Wayland session it hides the X11 socket, but the launcher needs X11 concurrently with the renderer's Wayland, so both sockets are required at the same time."
+        }
+    },
     "io.jamulus.Jamulus": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
