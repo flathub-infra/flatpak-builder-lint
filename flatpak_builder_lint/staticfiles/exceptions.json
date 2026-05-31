@@ -379,7 +379,7 @@
         }
     },
     "com.axantum.xecrets.ez": {
-        "*": {
+        "stable": {
             "finish-args-host-filesystem-access": "Probes, creates, renames sibling files in bulk and non-interactively, i.e. 'file.txt <=> 'file-txt.axx', 'file (1).txt' etc."
         }
     },
