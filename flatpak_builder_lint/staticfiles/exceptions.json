@@ -5872,6 +5872,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.atheme.audacious": {
+        "*": {
+            "finish-args-host-tmp-access": "Predates the linter rule"
+        }
+    },    
     "org.audacityteam.Audacity": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule",
