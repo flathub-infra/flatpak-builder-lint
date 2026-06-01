@@ -378,6 +378,12 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
+    "com.axantum.xecrets.ez": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Probes, creates, renames sibling files in bulk and non-interactively, i.e. 'foo.txt <=> 'foo-txt.axx', 'foo (1).txt' etc.",
+            "finish-args-host-tmp-access": "Probes, creates, renames sibling files in bulk and non-interactively, i.e. 'foo.txt <=> 'foo-txt.axx', 'foo (1).txt' etc."
+        }
+    },
     "com.axosoft.GitKraken": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
