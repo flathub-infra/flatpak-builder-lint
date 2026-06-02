@@ -437,7 +437,14 @@
         "stable": {
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
             "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access",
-            "finish-args-login1-system-talk-name": "System talk access is needed to enable biometric / polkit unlock"
+            "finish-args-login1-system-talk-name": "System talk access is needed to enable biometric / polkit unlock",
+            "finish-args-flatpak-appdata-folder-com.google.Chrome-config-google-chrome-NativeMessagingHosts-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-flatpak-appdata-folder-org.chromium.Chromium-config-chromium-NativeMessagingHosts-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-flatpak-appdata-folder-com.microsoft.Edge-config-microsoft-edge-NativeMessagingHosts-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-unnecessary-xdg-config-microsoft-edge-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-unnecessary-xdg-config-chromium-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-unnecessary-xdg-config-google-chrome-rw-access": "Needed to enable shared unlock / biometric unlock browser integration."
         }
     },
     "com.bitwig.BitwigStudio": {
