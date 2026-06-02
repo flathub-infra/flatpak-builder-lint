@@ -436,8 +436,8 @@
     "com.bitwarden.desktop": {
         "stable": {
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Predates the linter rule"
+            "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access",
+            "finish-args-login1-system-talk-name": "System talk access is needed to enable biometric / polkit unlock"
         }
     },
     "com.bitwig.BitwigStudio": {
