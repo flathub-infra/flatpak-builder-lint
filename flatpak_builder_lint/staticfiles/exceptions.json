@@ -2813,11 +2813,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "de.akaflieg_freiburg.cavok.add_hours_and_minutes": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "de.akaflieg_freiburg.enroute": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2945,11 +2940,6 @@
     "de.schmidhuberj.tubefeeder": {
         "*": {
             "finish-args-unnecessary-xdg-data-tubefeeder-create-access": "the app predates this linter rule"
-        }
-    },
-    "de.unifreiburg.ellipticcurve": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "de.willuhn.Jameica": {
@@ -4101,11 +4091,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "io.github.hedge_dev.hedgemodmanager": {
-        "stable": {
-            "finish-args-desktopfile-filesystem-access": "Predates the linter rule"
-        }
-    },
     "io.github.hkdb.Aerion": {
         "stable": {
             "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
@@ -4124,11 +4109,6 @@
     "io.github.insilmaril.vym": {
         "*": {
             "finish-args-own-name-org.insilmaril.vym-2": "Predates the linter rule"
-        }
-    },
-    "io.github.intoolswetrust.JSignPdf": {
-        "*": {
-            "finish-args-home-filesystem-access": "A Java app that doesn't support XDG portals and needs access to user's PDFs to sign"
         }
     },
     "io.github.iptux_src.iptux": {
@@ -8925,7 +8905,6 @@
     },
     "space.fips.Fips": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
