@@ -6781,7 +6781,8 @@
     "org.gnome.gedit": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
+            "finish-args-host-filesystem-access": "Predates the linter rule",
+            "finish-args-has-dev-usb": "Needed for access to removable disks due to custom open/save dialog"
         }
     },
     "org.gnome.gitg": {
