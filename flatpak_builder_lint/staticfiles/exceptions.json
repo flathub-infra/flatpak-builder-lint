@@ -6934,6 +6934,11 @@
             "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
         }
     },
+    "org.kde.kbackup": {
+        "stable": {
+            "finish-args-host-filesystem-access": "Required for backing up files outside the flatpak container"
+        }
+    },
     "org.kde.kbibtex": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
