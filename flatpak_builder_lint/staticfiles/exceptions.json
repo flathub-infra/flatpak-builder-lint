@@ -574,7 +574,8 @@
     },
     "com.dekomote.vermouth": {
         "stable": {
-            "finish-args-home-filesystem-access": "Required for umu and Proton to run the games, scan for runtimes and retroarch cores"
+            "finish-args-home-filesystem-access": "Required for umu and Proton to run the games, scan for runtimes and retroarch cores",
+            "finish-args-contains-both-x11-and-wayland": "A lot of Linux games, still use SDL<2 bundled which lacks wayland driver. Proton runtime has experimental wayland support only."
         }
     },
     "com.devolutions.remotedesktopmanager": {
