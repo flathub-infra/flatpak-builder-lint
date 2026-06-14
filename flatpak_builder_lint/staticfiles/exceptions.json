@@ -1693,8 +1693,7 @@
     "com.github.wwmm.pulseeffects": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.github.wwmm.pulseeffects.plugin.lsp-plugins": {
@@ -2573,11 +2572,6 @@
     "com.termius.Termius": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
-        }
-    },
-    "com.thincast.client": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.tic80.TIC_80": {
@@ -5043,11 +5037,6 @@
     "io.itch.azagaya.Laigter": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.itch.doctorm64.skippybot": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "io.itch.itch": {
