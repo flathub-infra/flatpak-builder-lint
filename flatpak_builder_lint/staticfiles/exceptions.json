@@ -5299,6 +5299,11 @@
             "finish-args-unnecessary-xdg-data-gnome-background-properties-create-access": "https://github.com/dusansimic/dynamic-wallpaper/issues/5"
         }
     },
+    "me.fouquet.Stencil": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Stencil is a batch file renaming utility. The document portal provides no rename operation, so direct home filesystem access is required to rename files in place"
+    	}
+    },
     "me.kozec.syncthingtk": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
