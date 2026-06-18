@@ -9051,7 +9051,9 @@
     "com.orcaslicer.OrcaSlicer": {
         "stable": {
             "finish-args-home-filesystem-access": "OrcaSlicer needs persistent access to model files, recent projects, and G-code export across arbitrary user directories",
-            "finish-args-flatpak-appdata-folder-io.github.softfever.OrcaSlicer-ro-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.softfever.OrcaSlicer) for migration from old app-id"
+            "finish-args-flatpak-appdata-folder-io.github.softfever.OrcaSlicer-ro-access": "Read-only access to legacy config/cache directory (~/.var/app/io.github.softfever.OrcaSlicer) for migration from old app-id",
+            "finish-args-contains-both-x11-and-wayland": "The app supports Wayland, but currently, the GUI freezes and becomes unresponsive when using --socket=wayland and --socket=fallback-x11 simultaneously."
+
         }
     },
     "org.cvfosammmm.Lemma": {
