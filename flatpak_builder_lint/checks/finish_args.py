@@ -187,8 +187,8 @@ class FinishArgsCheck(Check):
                     self.errors.add("finish-args-no-required-flatpak")
                     self.info.add(
                         "finish-args-no-required-flatpak: finish-args has 'input' or 'usb'"
-                        + " device but no minimum Flatpak version. Use 'all' for backwards"
-                        + " compat or specify '--require-version='"
+                        + " device but no minimum Flatpak version. Use conditional"
+                        + " permissions or specify '--require-version='"
                     )
                 if flatpak_version is not None and not AppStream.vercmp_test_match(
                     flatpak_version,
