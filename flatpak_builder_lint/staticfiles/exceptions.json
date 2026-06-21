@@ -9,18 +9,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "app.devsuite.Manuals": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation",
-            "finish-args-flatpak-system-folder-rw-access": "Predates the linter rule",
-            "finish-args-flatpak-system-talk-name": "application uses libflatpak install SDK documentation",
-            "finish-args-flatpak-user-folder-rw-access": "Predates the linter rule",
-            "finish-args-host-os-ro-filesystem-access": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-data-devhelp-ro-access": "Manuals requires access to locally installed documentation",
-            "finish-args-unnecessary-xdg-data-doc-ro-access": "Manuals requires access to locally installed documentation",
-            "finish-args-unnecessary-xdg-data-gtk-doc-ro-access": "Manuals requires access to locally installed documentation"
-        }
-    },
     "app.devsuite.Ptyxis": {
         "stable": {
             "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host",
@@ -55,11 +43,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "app.logorrr.LogoRRR": {
-        "stable": {
-            "finish-args-host-ro-filesystem-access": "Predates the linter rule"
-        }
-    },
     "app.opencomic.OpenComic": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -85,11 +68,6 @@
         "stable": {
             "finish-args-desktopfile-filesystem-access": "Application can create .desktop file shortcuts for games... literally can not write those files without access to the folder",
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Application can write Steam shortcuts to its shortcuts.vdf file and it needs this to access flatpak Steam"
-        }
-    },
-    "app.vup.Vup": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "app.xemu.xemu": {
@@ -285,13 +263,6 @@
     "chat.rocket.RocketChat": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "chat.schildi.desktop": {
-        "*": {
-            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "chat.simplex.simplex": {
@@ -637,12 +608,6 @@
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
         }
     },
-    "com.endlessm.photos": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.expidusos.file_manager": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -769,12 +734,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.github.JannikHv.Gydl": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "com.github.KRTirtho.Spotube": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -799,12 +758,6 @@
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
-    "com.github.Murmele.scram": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.PintaProject.Pinta": {
@@ -866,11 +819,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.github.alexhuntley.Plots": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
     "com.github.appadeia.Taigo": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -890,13 +838,6 @@
     "com.github.arshubham.gitignore": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
-    "com.github.artemanufrij.graphui": {
-        "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.artemanufrij.playmymusic": {
@@ -945,12 +886,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.github.bjaraujo.Bombermaaan": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "com.github.buddhi1980.mandelbulber2": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -963,19 +898,8 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.github.calo001.fondo": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.github.calo001.luna": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
-    "com.github.cassidyjames.dippi": {
-        "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
@@ -1059,11 +983,6 @@
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
-    "com.github.elth0r0.iqpuzzle": {
-        "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
     "com.github.emmanueltouzery.cigale": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1097,11 +1016,6 @@
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
-    "com.github.fries1234.ncsa-mosaic": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
     "com.github.gabutakut.gabutdm": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1111,11 +1025,6 @@
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.github.giacomogroppi.writernote-qt": {
-        "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.gijsgoudzwaard.image-optimizer": {
@@ -1193,12 +1102,6 @@
     "com.github.iortcw.iortcw": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
-    "com.github.iwalton3.jellyfin-media-player": {
-        "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-login1-system-talk-name": "Predates the linter rule"
         }
     },
     "com.github.iwalton3.jellyfin-mpv-shim": {
@@ -1562,11 +1465,6 @@
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
-    "com.github.skullernet.q2pro": {
-        "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
     "com.github.skylot.jadx": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1609,12 +1507,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.github.theironrobin.siglo": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "com.github.themix_project.Oomox": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
@@ -1623,11 +1515,6 @@
     },
     "com.github.tmewett.BrogueCE": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
-        }
-    },
-    "com.github.treagod.spectator": {
-        "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
@@ -1742,12 +1629,6 @@
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
-    "com.gitlab.Murmele.UDPLogger": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.gitlab.adnan338.Invoicer": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
@@ -1783,12 +1664,6 @@
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.gitlab.davem.ClamTk": {
-        "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "com.gitlab.guillermop.MasterKey": {
@@ -1841,40 +1716,6 @@
             "finish-args-own-name-com.gopeed.gopeed": "Predates the linter rule"
         }
     },
-    "com.hack_computer.Clubhouse": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-arbitrary-dbus-access": "https://github.com/flathub/flathub/pull/1873/files#r500116002",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-flatpak-system-folder-app-ro-access": "Predates the linter rule",
-            "finish-args-flatpak-system-folder-exports-ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-app-ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-exports-ro-access": "Predates the linter rule",
-            "finish-args-flatpak-user-folder-overrides-rw-access": "Predates the linter rule",
-            "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule",
-            "finish-args-host-var-access": "Predates the linter rule",
-            "finish-args-own-name-com.endlessm.GameStateService": "Predates the linter rule",
-            "finish-args-own-name-com.hack_computer.GameStateService": "Predates the linter rule",
-            "finish-args-own-name-com.hack_computer.HackSoundServer": "Predates the linter rule",
-            "finish-args-own-name-com.hack_computer.HackToolbox": "Predates the linter rule"
-        }
-    },
-    "com.hack_computer.OperatingSystemApp": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "com.hack_computer.Sidetrack": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "com.haysell.pos": {
-        "*": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.helix_editor.Helix": {
         "stable": {
             "finish-args-flatpak-spawn-access": "required to access language servers installed on host",
@@ -1899,11 +1740,6 @@
     "com.hostbuf.FinalShell": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.humatarayici.od": {
-        "stable": {
-            "finish-args-own-name-wildcard-org.mozilla.huma": "Predates the linter rule"
         }
     },
     "com.icons8.Lunacy": {
@@ -2097,11 +1933,6 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
-    "com.librumreader.librum": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "com.logseq.Logseq": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
@@ -2151,16 +1982,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.milesalan.mepo": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.ml4w.dotfilesinstaller": {
-        "stable": {
-            "finish-args-home-filesystem-access": "As the app is a dotfiles management tool, access to the home directory is required for the application's core functionality."
-        }
-    },
     "com.mongodb.Compass": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -2169,12 +1990,6 @@
     "com.moonlight_stream.Moonlight": {
         "*": {
             "finish-args-host-os-ro-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.mousepawmedia.omission": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
         }
     },
     "com.mtkennerly.madamiru": {
@@ -2204,11 +2019,6 @@
         }
     },
     "com.nitrokey.nitrokey-app": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "com.nolimitconnect.NoLimitConnect": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -2289,11 +2099,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "com.pixelomer.ShijimaQt": {
-        "stable": {
-            "finish-args-kwin-talk-name": "Predates the linter rule"
-        }
-    },
     "com.playonlinux.PlayOnLinux4": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -2347,11 +2152,6 @@
     "com.qq.QQ": {
         "stable": {
             "finish-args-login1-system-talk-name": "Predates the linter rule"
-        }
-    },
-    "com.quexten.Goldwarden": {
-        "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
     "com.raggesilver.BlackBox": {
@@ -2812,14 +2612,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "de.allotropia.ZetaOffice": {
-        "*": {
-            "finish-args-host-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-de.allotropia.ZetaOfficeIpc0": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-config-fontconfig-ro-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/111> 'GTK bookmarks do not appear in the flatpak version of LibreOffice' in the org.libreoffice.LibreOffice app from which this app derives",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "This was added to fix <https://github.com/flathub/org.libreoffice.LibreOffice/issues/136> 'fontconfig user configuration' in the org.libreoffice.LibreOffice app from which this app derives"
-        }
-    },
     "de.bforartists.Bforartists": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule",
@@ -3042,12 +2834,6 @@
     "dev.jamiethalacker.window_painter": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "dev.k8slens.OpenLens": {
-        "*": {
-            "finish-args-has-socket-ssh-auth": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Predates the linter rule"
         }
     },
     "dev.lapce.lapce": {
@@ -3478,11 +3264,6 @@
             "finish-args-direct-dconf-path": "Predates the linter rule"
         }
     },
-    "io.frappe.books": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "io.gdevelop.ide": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
@@ -3529,11 +3310,6 @@
             "finish-args-own-name-wildcard-com.steampowered": "Required by umu-launcher to access the Steam Runtime's pressure-vessel."
         }
     },
-    "io.github.Fndroid.clash_for_windows": {
-        "*": {
-            "finish-args-login1-system-talk-name": "Predates the linter rule"
-        }
-    },
     "io.github.Foldex.AdwSteamGtk": {
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.steam-steam-rw-access": "Predates the linter rule"
@@ -3542,11 +3318,6 @@
     "io.github.ForWard_Technologies_LLC.Pylux": {
         "stable": {
             "finish-args-login1-system-talk-name": "Needed for the PrepareForSleep signal from logind to cleanly tear down active streaming sessions on suspend. No portal equivalent exists for this signal."
-        }
-    },
-    "io.github.ImEditor": {
-        "*": {
-            "appid-code-hosting-too-few-components": "app-id predates this linter rule"
         }
     },
     "io.github.JakubMelka.Pdf4qt": {
@@ -3903,16 +3674,6 @@
             "finish-args-unnecessary-xdg-config-wireplumber-create-access": "this program creates config files in xdg-config/wireplumber"
         }
     },
-    "io.github.dyslechtchitect.tfcbm": {
-        "*": {
-            "finish-args-home-ro-filesystem-access": "Required in order to copy files of URI paths arriving from clipboard events."
-        }
-    },
-    "io.github.dzheremi2.lexi": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
     "io.github.dzheremi2.lrcmake-gtk": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -4120,11 +3881,6 @@
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
-    "io.github.janbar.noson": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "io.github.jardon.Outlet": {
@@ -4960,14 +4716,6 @@
             "appid-code-hosting-too-few-components": "the app predates this linter rule"
         }
     },
-    "io.gitlab.Turtlico": {
-        "*": {
-            "appid-code-hosting-too-few-components": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
     "io.gitlab.android_translation_layer.BaseApp": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5302,7 +5050,7 @@
     "me.fouquet.Stencil": {
         "stable": {
             "finish-args-home-filesystem-access": "Stencil is a batch file renaming utility. The document portal provides no rename operation, so direct home filesystem access is required to rename files in place"
-    	}
+        }
     },
     "me.kozec.syncthingtk": {
         "*": {
@@ -5735,11 +5483,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "net.sourceforge.paulstretch": {
-        "*": {
-            "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
     "net.sourceforge.qtpfsgui.LuminanceHDR": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -5919,11 +5662,6 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-data-applications-create-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "MenuLibre manages desktop file entries. It needs to create desktop files in xdg-data/applications"
-        }
-    },
-    "org.buhocms.BuhoCMS": {
-        "*": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
     "org.bunkus.mkvtoolnix-gui": {
@@ -6385,11 +6123,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.freedesktop.dabrain34.GstPipelineStudio": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "org.freedesktop.fwupd": {
         "stable": {
             "finish-args-login1-system-talk-name": "Predates the linter rule"
@@ -6550,12 +6283,6 @@
             "finish-args-flatpak-spawn-access": "Required to spawn fusermount, mounting the user's backup via FUSE",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.gnome.Devhelp": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
     "org.gnome.Evince": {
@@ -6729,11 +6456,6 @@
             "finish-args-login1-system-talk-name": "Predates the linter rule"
         }
     },
-    "org.gnome.Tomboy": {
-        "*": {
-            "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule"
-        }
-    },
     "org.gnome.Totem": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -6902,11 +6624,6 @@
             "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Godot will fail to start up in Wayland sessions as X11 is still the default."
         }
     },
-    "org.goldendict.GoldenDict": {
-        "stable": {
-            "module-goldendict-source-git-branch": "Needed for x-checker as upstream does not tag releaases."
-        }
-    },
     "org.gottcode.FocusWriter": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -7017,11 +6734,6 @@
     "org.jreleaser.cli": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.jupyter.JupyterLab": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.karapulse.Karapulse": {
@@ -7217,11 +6929,6 @@
     "org.kde.katomic": {
         "stable": {
             "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
-        }
-    },
-    "org.kde.kbackup": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Required for backing up files outside the flatpak container"
         }
     },
     "org.kde.kbibtex": {
@@ -7796,11 +7503,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.kekikakademi.ntvHaber": {
-        "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.kicad.KiCad": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -7873,12 +7575,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.linux_hardware.hw-probe": {
-        "stable": {
-            "finish-args-host-ro-filesystem-access": "Predates the linter rule",
-            "finish-args-host-var-access": "Predates the linter rule"
-        }
-    },
     "org.linuxshowplayer.LinuxShowPlayer": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools",
@@ -7909,11 +7605,6 @@
     "org.mapeditor.Tiled": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.mattbas.Glaxnimate": {
-        "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
@@ -7955,14 +7646,6 @@
     "org.mosh.mosh": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule"
-        }
-    },
-    "org.mozilla.Thunderbird": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "fallbacks to wayland on non-x11 system",
-            "finish-args-gnupg-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-wildcard-org.mozilla.thunderbird": "Predates the linter rule",
-            "finish-args-own-name-wildcard-org.mozilla.thunderbird_beta": "Predates the linter rule"
         }
     },
     "org.mozilla.firefox": {
@@ -8327,12 +8010,6 @@
             "finish-args-login1-system-talk-name": "Predates the linter rule"
         }
     },
-    "org.sil.Bloom": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule",
-            "finish-args-host-tmp-access": "Predates the linter rule"
-        }
-    },
     "org.sil.dictionary-app-builder": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -8437,11 +8114,6 @@
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated",
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
-        }
-    },
-    "org.telesculptor.TeleSculptor": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.tenacityaudio.Tenacity": {
@@ -8633,22 +8305,10 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.zirael.bkchem.BKChem": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "org.zotero.Zotero": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-own-name-wildcard-org.mozilla.zotero": "Predates the linter rule"
-        }
-    },
-    "org.zrythm.Zrythm": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-host-ro-filesystem-access": "Predates the linter rule",
-            "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
     "page.codeberg.Imaginer.Imaginer": {
@@ -8799,11 +8459,6 @@
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "pro.vpup.vpuppr": {
-        "*": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "re.sonny.Commit": {
