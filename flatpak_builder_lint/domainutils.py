@@ -3,7 +3,7 @@ import os
 import socket
 from functools import cache
 from importlib.resources import files
-from typing import Any
+from typing import Any, cast
 
 import gi
 import requests
@@ -42,7 +42,7 @@ def _ipv4_only_allowed_gai_family() -> socket.AddressFamily:
     return socket.AF_INET
 
 
-urllib3_connection.allowed_gai_family = _ipv4_only_allowed_gai_family
+urllib3_connection.allowed_gai_family = cast(Any, _ipv4_only_allowed_gai_family)
 
 session = CachedSession(CACHEFILE, backend="sqlite", expire_after=3600)
 
