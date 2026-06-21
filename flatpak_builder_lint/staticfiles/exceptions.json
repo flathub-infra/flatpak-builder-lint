@@ -3551,7 +3551,8 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Needed for reading Steam and other applications\u2019 MangoHud configuration",
             "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
-            "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files"
+            "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files",
+            "finish-args-unnecessary-xdg-config-vkSumi-rw-access": "Needed for reading vkSumi config files"
         }
     },
     "io.github.bkbilly.lnxlink": {
