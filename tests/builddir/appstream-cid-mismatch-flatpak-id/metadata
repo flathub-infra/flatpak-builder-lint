@@ -1,4 +1,3 @@
 [Application]
 name=org.flathub.appstream-cid-mismatch-flatpak-id
 runtime=org.freedesktop.Platform/x86_64/23.08
-

@@ -1,4 +1,3 @@
 [Application]
 name=com.github.flathub.svg_screenshot
 runtime=org.freedesktop.Platform/x86_64/23.08
-
