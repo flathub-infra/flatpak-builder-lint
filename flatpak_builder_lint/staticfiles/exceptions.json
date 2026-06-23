@@ -6155,6 +6155,7 @@
     "org.gabmus.hydrapaper": {
         "stable": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
+            "finish-args-direct-dconf-path": "Predates the linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
         }
     },
