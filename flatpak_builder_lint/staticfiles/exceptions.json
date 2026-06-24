@@ -38,6 +38,11 @@
             "finish-args-unnecessary-xdg-data-typst-ro-access": "Well known common location of the user's Typst packages in the @local namespace"
         }
     },
+    "app.legcord.Legcord": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Running through native Wayland instead of X11 causes issues for a considerable number of users, but Wayland access is still needed for pipewire screen capturing"
+        }
+    },
     "app.lith.Lith": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
