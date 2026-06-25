@@ -2812,6 +2812,8 @@
             "finish-args-flatpak-appdata-folder-org.gnome.Rhythmbox3-cache-rhythmbox-album-art-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-firefox-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-appdata-folder-org.mozilla.firefox-data-firefox-mpris-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-io.m51.Gelly-cache-io.m51.Gelly-album-art-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
+            "finish-args-flatpak-appdata-folder-com.pocoguy.Muse-cache-mixtapes-ro-access": "Required to read the local MPRIS artUrl files from flatpak MPRIS clients",
             "finish-args-flatpak-system-folder-ro-access": "Required to read .desktop files and icons for listing MPRIS clients",
             "finish-args-freedesktop-dbus-talk-name": "Required to gather and update the list of all available MPRIS clients",
             "finish-args-full-home-cache-access": "Required to read the local MPRIS artUrl files from some MPRIS clients",
