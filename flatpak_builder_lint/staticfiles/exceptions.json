@@ -415,7 +415,9 @@
             "finish-args-flatpak-appdata-folder-org.mozilla.firefox-.mozilla-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
             "finish-args-unnecessary-xdg-config-microsoft-edge-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
             "finish-args-unnecessary-xdg-config-chromium-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
-            "finish-args-unnecessary-xdg-config-google-chrome-rw-access": "Needed to enable shared unlock / biometric unlock browser integration."
+            "finish-args-unnecessary-xdg-config-google-chrome-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-unnecessary-xdg-config-BraveSoftware-rw-access": "Needed to enable shared unlock / biometric unlock browser integration.",
+            "finish-args-unnecessary-xdg-config-vivaldi-rw-access": "Needed to enable shared unlock / biometric unlock browser integration."
         }
     },
     "com.bitwig.BitwigStudio": {
