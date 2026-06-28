@@ -2293,11 +2293,6 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "com.stremio.Stremio": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "The window is able to be create under wayland but this app uses CEF (Chromium Embedded Framework) which requires acccess to X11"
-        }
-    },
     "com.strlen.TreeSheets": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -5969,11 +5964,6 @@
             "finish-args-own-name-com.secondlife.ViewerAppAPIService": "Predates the linter rule"
         }
     },
-    "org.flameshot.Flameshot": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "org.flathub.exceptions": {
         "*": {
             "appid-filename-mismatch": "required as I like pies",
@@ -6559,7 +6549,6 @@
     },
     "org.gnome.meld": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
