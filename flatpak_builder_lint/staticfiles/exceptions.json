@@ -8241,6 +8241,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.waywallen.waywallen": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-rw-access": "Required to allow user to use wallpapers downloaded in steam workshop"
+        }
+    },
     "org.wezfurlong.wezterm": {
         "stable": {
             "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
