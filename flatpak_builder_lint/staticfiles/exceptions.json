@@ -3410,6 +3410,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.saigkill.lifechart": {
+        "stable": {
+             "finish-args-systemd1-talk-name": "App requires systemd user timer management for medication and evening reminders. Uses D-Bus API (LinkUnitFiles, StartUnit) instead of direct systemctl access."
+        }
+    },
     "io.github.Soundux": {
         "stable": {
             "appid-code-hosting-too-few-components": "app-id predates this linter rule",
