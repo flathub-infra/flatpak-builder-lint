@@ -5670,6 +5670,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.catacombing.charon": {
+        "stable": {
+            "finish-args-only-wayland": "this program doesn't have x11 support"
+        }
+    },
     "org.catacombing.kumo": {
         "stable": {
             "finish-args-only-wayland": "this program doesn't have x11 support"
