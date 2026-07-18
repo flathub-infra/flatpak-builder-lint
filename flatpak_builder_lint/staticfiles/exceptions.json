@@ -4694,6 +4694,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.zoutmax.FifineControlDeck": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "macro keypad controller: user-configured key actions (launch apps, run commands, hotkeys via host ydotool/xdotool, media/volume via playerctl/wpctl) run on the host, like com.core447.StreamController"
+        }
+    },
     "io.github.zyedidia.micro": {
         "stable": {
             "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator",
