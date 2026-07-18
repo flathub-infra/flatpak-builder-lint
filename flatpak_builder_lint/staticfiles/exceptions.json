@@ -617,7 +617,8 @@
     },
     "com.fightcade.Fightcade": {
         "*": {
-            "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
+            "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function",
+            "finish-args-unnecessary-xdg-config-mimeapps.list-ro-access": "Read-only access to the host's mimeapps.list is used solely to detect a conflicting non-Flatpak Fightcade install at startup, by checking whether the fcade:// URL-scheme default handler is one other than the Flatpak's own com.fightcade.Fightcade.fcade-quark.desktop, then warn the user, since running both installs breaks fcade:// challenge-URL launching (flathub/com.fightcade.Fightcade#126). No files are written or executed."
         }
     },
     "com.flashforge.FlashPrint": {
