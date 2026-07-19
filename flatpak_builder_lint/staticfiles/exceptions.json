@@ -3219,7 +3219,6 @@
     },
     "io.botfather.Botfather": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -3551,7 +3550,6 @@
     "io.github.bkbilly.lnxlink": {
         "stable": {
             "finish-args-host-tmp-access": "Predates the linter rule",
-            "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-login1-system-talk-name": "Predates the linter rule",
             "finish-args-systemd1-system-talk-name": "Predates the linter rule"
         }
