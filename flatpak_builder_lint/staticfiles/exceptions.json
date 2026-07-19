@@ -564,6 +564,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.dygma.bazecor": {
+        "stable": {
+            "finish-args-host-etc-ro-filesystem-access": "Required to alert users if /etc/udev/rules.d/60-dygma.rules is missing/outdated and instruct the user to manually add/update it"
+        }
+    },
     "com.dingtalk.DingTalk": {
         "stable": {
             "finish-args-own-name-wildcard-org.kde": "Still uses legacy StatusNotifier implementation"
