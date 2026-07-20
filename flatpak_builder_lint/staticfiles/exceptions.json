@@ -5143,7 +5143,8 @@
     "net.cozic.joplin_desktop": {
         "*": {
             "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-joplin-desktop-create-access": "Joplin hardcodes its config path outside XDG_CONFIG_HOME and creates the directory on first run"
         }
     },
     "net.daase.journable": {
