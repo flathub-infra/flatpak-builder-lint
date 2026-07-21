@@ -532,6 +532,12 @@
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.danklinux.dankcalendar": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Local calendars use ICS directories chosen anywhere under the user's home.",
+            "finish-args-login1-system-talk-name": "Watch PrepareForSleep so reminders fire correctly after suspend."
+        }
+    },
     "com.darhon.syncbackup": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
