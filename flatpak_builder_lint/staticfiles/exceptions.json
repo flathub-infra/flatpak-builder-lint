@@ -8750,10 +8750,10 @@
     },
     "io.tether.QVAC.Workbench": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+          "flathub-json-automerge-enabled": "Convenience and easy to automate the whole deployment process"
         },
         "beta": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+          "flathub-json-automerge-enabled": "Convenience and easy to automate the whole deployment process"
         }
 
     }
