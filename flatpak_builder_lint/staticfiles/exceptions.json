@@ -3346,6 +3346,12 @@
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Read-only access to XDG_DATA_HOME/flatpak is required to list and display information about user-installed Flatpak applications."
         }
     },
+    "io.github.ntman.PerDeviceEQ": {
+        "*": {
+            "finish-args-unnecessary-xdg-config-wireplumber-create-access": "The app installs a per-user WirePlumber hook (one conf.d fragment under ~/.config/wireplumber) with explicit user consent; WirePlumber reads only host paths, so the app's own sandboxed config home cannot work. The fragment carries provenance and removal instructions in its header.",
+            "finish-args-unnecessary-xdg-config-per-device-eq-create-access": "One shared profile store for every incarnation of the app: the Flatpak, the distro RPM and a bare checkout read and write the same ~/.config/per-device-eq, so a user switching packaging keeps their measured EQ profiles."
+        }
+    },
     "io.github.OkuBrowser.oku": {
         "stable": {
             "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system",
