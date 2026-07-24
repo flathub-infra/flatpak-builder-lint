@@ -7677,6 +7677,11 @@
             "finish-args-own-name-wildcard-org.mozilla.thunderbird": "Thunderbird ESR uses the same dbus name as monthly release"
         }
     },
+    "org.mpz_player.mpz": {
+        "stable": {
+            "finish-args-host-filesystem-access": "Folder-based music player: users add arbitrary directories (external drives, NFS-shares, etc) which mpz reads, watches for changes (QFileSystemModel, inotify), plus there is built-in tag editor and playlists export"
+        }
+    },
     "org.musescore.MuseScore": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
