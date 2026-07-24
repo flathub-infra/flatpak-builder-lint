@@ -3607,6 +3607,11 @@
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
+    "io.github.cosmic_utils.camera": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "System bus access to org.freedesktop.login1 (logind Inhibit) keeps idle lock and suspend from interrupting an active camera session"
+        }
+    },
     "io.github.cosmic_utils.Examine": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host"
