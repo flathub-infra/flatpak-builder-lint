@@ -4673,6 +4673,13 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.wyze3306.BedrockOnLinux": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "The GUI crashes with an unset $DISPLAY under --socket=fallback-x11 in pure-Wayland sessions. --socket=x11 is required alongside --socket=wayland.",
+            "finish-args-flatpak-spawn-access": "The game runs through umu-launcher & Steam Linux Runtime, which spawns its sub-sandbox via the Flatpak portal",
+            "finish-args-unnecessary-xdg-data-bedrock-on-linux-ro-access": "One-time read-only access to the pre-Flatpak data directory for migrating existing installs. The app atomically copies it to private XDG storage before writing. This permission is transitional and will be removed in a later release."
+        }
+    },
     "io.github.xiaoyifang.goldendict_ng": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
