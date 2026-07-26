@@ -3273,6 +3273,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.AllanChain.sane-break": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Needed for detecting idle inhibitors and account them as activity instead of idle."
+        }
+    },
     "io.github.Archeb.opentrace": {
         "stable": {
             "finish-args-flatpak-spawn-access": "This app uses org.freedesktop.Flatpak to provide ability to run nexttrace with cap_net_raw, which is necessary for a traceroute app"
