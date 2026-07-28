@@ -7679,7 +7679,7 @@
     },
     "org.mpz_player.mpz": {
         "stable": {
-            "finish-args-host-filesystem-access": "Folder-based music player: users add arbitrary directories (external drives, NFS-shares, etc) which mpz reads, watches for changes (QFileSystemModel, inotify), plus there is built-in tag editor and playlists export"
+            "finish-args-home-filesystem-access": "Folder-based music player: reads and watches user-picked music dirs recursively (QFileSystemModel, inotify), which portals cannot do; also tag editing and playlist export"
         }
     },
     "org.musescore.MuseScore": {
