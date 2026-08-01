@@ -8753,5 +8753,12 @@
             "finish-args-host-filesystem-access": "SFTP client needs direct access to user-chosen local paths outside home (removable media, /mnt, /srv, project trees) for transfer, sync, and directory-watch operations. FileChooser portal is used where the user picks individual files, but background transfers and watched directories need persistent access to the chosen paths.",
             "finish-args-has-socket-ssh-auth": "Required to use the user's running SSH agent for public-key authentication against remote hosts (the standard mechanism for yubikey/gpg-agent/passphrase-protected keys)."
         }
-    }
+    },
+    "io.github.isaacangello.waydroidbinds": {
+        "stable": {
+          "finish-args-host-filesystem-access": "this application needs to access folders chosen by the user to be linked to a waydroid container installed on the host, and the Flatpak installation maintains compatibility with most distributions, increasing the application's reach.",
+          "finish-args-flatpak-spawn-access": "as this application needs to configure waydroid settings on the host and some waydroid options need elevated privileges, this option is used for user interaction to run host processes",
+          "finish-args-contains-both-x11-and-wayland": "option required to maintain compatibility with x11 and wayland"
+        }
+  }    
 }
