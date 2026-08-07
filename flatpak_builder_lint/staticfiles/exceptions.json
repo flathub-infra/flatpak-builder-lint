@@ -5541,6 +5541,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "no.mifi.losslesscut": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Video editor that writes its export output into the same directory as the source file. The Electron app does not use the document portal for these paths, so exports of files outside the XDG directories are staged as hidden .xdp-* files that are never renamed, while the app reports success and the user sees no output."
+        }
+    },
     "one.ablaze.floorp": {
         "stable": {
             "finish-args-own-name-wildcard-org.mozilla.floorp": "Predates the linter rule",
