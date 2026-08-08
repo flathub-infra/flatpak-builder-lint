@@ -3307,7 +3307,8 @@
             "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work.",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-MangoHud-ro-access": "Required by MangoHud to detect the settings file.",
-            "finish-args-own-name-wildcard-com.steampowered": "Required by umu-launcher to access the Steam Runtime's pressure-vessel."
+            "finish-args-own-name-wildcard-com.steampowered": "Required by umu-launcher to access the Steam Runtime's pressure-vessel.",
+            "finish-args-flatpak-spawn-access": "Required to relaunch this app's own id via 'flatpak run' as a separate sandbox instance for the optional tray helper; a plain child process makes the systray draw a duplicate icon."
         }
     },
     "io.github.Foldex.AdwSteamGtk": {
