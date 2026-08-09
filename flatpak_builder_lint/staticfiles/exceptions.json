@@ -6190,7 +6190,6 @@
     },
     "org.garudalinux.firedragon": {
         "*": {
-            "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
             "finish-args-own-name-wildcard-org.mozilla.firedragon": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
         }
@@ -8052,11 +8051,6 @@
     "org.skytemple.SkyTemple": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.solarus_games.solarus.Launcher": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.sonic3air.Sonic3AIR": {
