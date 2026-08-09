@@ -6233,7 +6233,7 @@
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config."
+            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "For reading desktop theme and gtk bookmarks."
         }
     },
     "org.gitfourchette.gitfourchette": {
