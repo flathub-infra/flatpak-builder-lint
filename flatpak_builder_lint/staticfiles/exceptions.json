@@ -8759,5 +8759,10 @@
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Required because iced's clipboard library (arboard) currently requires wayland-data-control, and currently needs access to the x11 socket for fallback when wayland-data-control is not available."
         }
+    },
+    "me.chocolateimage.graphics-creator": {
+        "stable": {
+            "finish-args-host-filesystem-access": "Loads assets from locations in home or mounted directories specified in project files."
+        }
     }
 }
