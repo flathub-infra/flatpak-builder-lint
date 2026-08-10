@@ -8759,5 +8759,10 @@
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Required because iced's clipboard library (arboard) currently requires wayland-data-control, and currently needs access to the x11 socket for fallback when wayland-data-control is not available."
         }
+    },
+    "io.github.idescriptor.iDescriptor": {
+        "stable": {
+            "finish-args-host-var-access": "Required to connect to wireless devices, usbmuxd doesn't handle/recognize wireless devices on Linux and Windows."
+        }
     }
 }
