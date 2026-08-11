@@ -1,4 +1,12 @@
 {
+    "nz.net.jonesie.Costree": {
+        "stable": {
+            "finish-args-host-filesystem-access": "CosTree is a disk usage analyzer that needs to scan, rename, and delete arbitrary files anywhere on disk, not just its own sandbox or home directory -- same justification org.gnome.baobab has for this exception",
+            "finish-args-flatpak-appdata-folder-rw-access": "Lets CosTree also measure other Flatpak apps' data directories, consistent with org.gnome.baobab",
+            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write libcosmic's cosmic_config app settings, consistent with com.vkhitrin.cosmicding and dev.edfloreshz.CosmicTweaks",
+            "finish-args-flatpak-spawn-access": "Uses flatpak-spawn --host to launch cosmic-files/xdg-open on the host for the right-click Open action, since these can not be resolved as sandboxed binaries"
+        }
+    },
     "ai.opencode.opencode": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to access and modify projects outside the sandbox"
