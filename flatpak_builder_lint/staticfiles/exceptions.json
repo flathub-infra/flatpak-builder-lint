@@ -275,6 +275,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "cn.eeo.ClassIn": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Needed because the proprietary Qt-based file picker cannot access through symlinks, and allow users to select files from the root of their home directory."
+        }
+    },
     "cn.ottercorp.xivlaunchercn": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -734,9 +739,10 @@
         }
     },
     "com.github.IsmaelMartinez.teams_for_linux": {
-        "stable": {
+        "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule",
+            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -3582,6 +3588,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.chnapy.pkvault": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-org.chnapy.pkvault-ro-access": "Migrate data from old PKVault version installed from flatpak file, required to avoid user data loss"
+        }
+    },
     "io.github.ciromattia.kcc": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6232,7 +6243,7 @@
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-GIMP-create-access": "GIMP config always used",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-rw-access": "gtk-3.0 and GIMP config."
+            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "For reading desktop theme and gtk bookmarks."
         }
     },
     "org.gitfourchette.gitfourchette": {
@@ -8746,6 +8757,16 @@
         "stable": {
             "finish-args-host-filesystem-access": "SFTP client needs direct access to user-chosen local paths outside home (removable media, /mnt, /srv, project trees) for transfer, sync, and directory-watch operations. FileChooser portal is used where the user picks individual files, but background transfers and watched directories need persistent access to the chosen paths.",
             "finish-args-has-socket-ssh-auth": "Required to use the user's running SSH agent for public-key authentication against remote hosts (the standard mechanism for yubikey/gpg-agent/passphrase-protected keys)."
+        }
+    },
+    "org.squidowl.halloy": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Required because iced's clipboard library (arboard) currently requires wayland-data-control, and currently needs access to the x11 socket for fallback when wayland-data-control is not available."
+        }
+    },
+    "io.github.idescriptor.iDescriptor": {
+        "stable": {
+            "finish-args-host-var-access": "Required to connect to wireless devices, usbmuxd doesn't handle/recognize wireless devices on Linux and Windows."
         }
     }
 }
