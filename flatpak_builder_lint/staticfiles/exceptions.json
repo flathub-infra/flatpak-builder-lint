@@ -3583,6 +3583,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.chnapy.pkvault": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-org.chnapy.pkvault-ro-access": "Migrate data from old PKVault version installed from flatpak file, required to avoid user data loss"
+        }
+    },
     "io.github.ciromattia.kcc": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
