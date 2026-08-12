@@ -275,6 +275,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "cn.eeo.ClassIn": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Needed because the proprietary Qt-based file picker cannot access through symlinks, and allow users to select files from the root of their home directory."
+        }
+    },
     "cn.ottercorp.xivlaunchercn": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
