@@ -626,7 +626,8 @@
     },
     "com.fightcade.Fightcade": {
         "*": {
-            "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
+            "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function",
+            "finish-args-unnecessary-xdg-config-mimeapps.list-ro-access": "Read-only access to the host's mimeapps.list is used solely to detect a conflicting non-Flatpak Fightcade install at startup, by checking whether the fcade:// URL-scheme default handler is one other than the Flatpak's own com.fightcade.Fightcade.fcade-quark.desktop, then warn the user, since running both installs breaks fcade:// challenge-URL launching (flathub/com.fightcade.Fightcade#126). No files are written or executed."
         }
     },
     "com.flashforge.FlashPrint": {
@@ -740,7 +741,7 @@
         }
     },
     "com.github.IsmaelMartinez.teams_for_linux": {
-        "stable": {
+        "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
@@ -3589,6 +3590,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.chnapy.pkvault": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-org.chnapy.pkvault-ro-access": "Migrate data from old PKVault version installed from flatpak file, required to avoid user data loss"
+        }
+    },
     "io.github.ciromattia.kcc": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -6197,7 +6203,6 @@
     },
     "org.garudalinux.firedragon": {
         "*": {
-            "finish-args-desktopfile-filesystem-access": "Predates the linter rule",
             "finish-args-own-name-wildcard-org.mozilla.firedragon": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Needed for Breeze, etc. to use their colour scheme - upstream Firefox permission"
         }
@@ -8061,11 +8066,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.solarus_games.solarus.Launcher": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.sonic3air.Sonic3AIR": {
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Sega-Classics-uncompressed-ROMs-Sonic_Knuckles_wSonic3.bin-ro-access": "Predates the linter rule"
@@ -8764,6 +8764,11 @@
     "org.squidowl.halloy": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Required because iced's clipboard library (arboard) currently requires wayland-data-control, and currently needs access to the x11 socket for fallback when wayland-data-control is not available."
+        }
+    },
+    "io.github.idescriptor.iDescriptor": {
+        "stable": {
+            "finish-args-host-var-access": "Required to connect to wireless devices, usbmuxd doesn't handle/recognize wireless devices on Linux and Windows."
         }
     }
 }
