@@ -277,7 +277,8 @@
     },
     "cn.eeo.ClassIn": {
         "stable": {
-            "finish-args-home-filesystem-access": "Needed because the proprietary Qt-based file picker cannot access through symlinks, and allow users to select files from the root of their home directory."
+            "finish-args-home-filesystem-access": "Needed because the proprietary Qt-based file picker cannot access through symlinks, and allow users to select files from the root of their home directory.",
+            "flathub-json-automerge-enabled":"Allow merging of autobot PRs to keep ClassIn updated (uses extra-data with external link)"
         }
     },
     "cn.ottercorp.xivlaunchercn": {
