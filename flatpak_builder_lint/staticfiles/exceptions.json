@@ -2371,8 +2371,11 @@
         }
     },
     "com.termius.Termius": {
-        "stable": {
-            "finish-args-has-socket-ssh-auth": "Predates the linter rule"
+        "*": {
+            "finish-args-has-socket-ssh-auth": "Predates the linter rule",
+            "finish-args-host-filesystem-access": "The Termius app includes an SFTP feature that allows users to manage files (uploading, downloading, deleting, and editing) both locally and on remote servers. This functionality requires access to the host filesystem.",
+            "finish-args-host-root-filesystem-access": "The Termius app includes an SFTP feature that allows users to manage files (uploading, downloading, deleting, and editing) both locally and on remote servers. This functionality requires access to the host root filesystem.",
+            "finish-args-flatpak-spawn-access": "The Termius app includes a terminal emulator feature that allows users to run commands on the host system. To provide the same functionality as the native terminal, it needs to spawn the user's shell on the host system."
         }
     },
     "com.tic80.TIC_80": {
