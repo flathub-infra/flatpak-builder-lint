@@ -4147,6 +4147,12 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.muchobliged.SimpleDoomLauncher": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "The app can launch Flatpak versions of Doom ports",
+            "finish-args-home-filesystem-access": "The app needs to be able to get access to files that weren't selected by user, like from config import"
+        }
+    },
     "io.github.muse_sequencer.Muse": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
