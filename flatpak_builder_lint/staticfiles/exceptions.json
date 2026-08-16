@@ -742,8 +742,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -1041,8 +1040,7 @@
     },
     "com.github.gijsgoudzwaard.image-optimizer": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.git_cola.git-cola": {
@@ -1314,8 +1312,7 @@
     },
     "com.github.nrittsti.NTag": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.ojubaorg.Othman": {
@@ -4892,7 +4889,6 @@
     "io.otsaloma.gaupol": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
