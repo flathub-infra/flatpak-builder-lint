@@ -5041,7 +5041,8 @@
         "stable": {
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule",
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule",
+	    "finish-args-own-name-org.freedesktop.StatusNotifierItem-2-1": "Needed in order for the obsidian-tray plugin to work on KDE systems: https://github.com/flathub/md.obsidian.Obsidian/issues/555"
         }
     },
     "me.ahola.aphototoollibre": {
