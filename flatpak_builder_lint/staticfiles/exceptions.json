@@ -2794,6 +2794,12 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+	"dev.fishies.godl": {
+        "stable": {
+            "finish-args-host-filesystem-access": "needed to access and modify projects outside of sandbox",
+			"finish-args-flatpak-spawn-access": "needed to spawn Godot"
+        }
+    },
     "dev.gbstudio.gb-studio": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
