@@ -2432,7 +2432,7 @@
     },
     "com.usebottles.bottles": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
+            "finish-args-contains-both-x11-and-wayland": "App uses Wayland, and wine installations inside of it can use X11",
             "module-vmtouch-checker-tracks-commits": "Module is unmaintained for 2 years",
             "finish-args-unnecessary-xdg-data-umu-create-access": "Uses shared installation for the umu runtime"
         }
