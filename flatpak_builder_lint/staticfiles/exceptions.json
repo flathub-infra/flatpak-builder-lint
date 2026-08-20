@@ -8777,5 +8777,12 @@
         "stable": {
             "finish-args-host-var-access": "Required to connect to wireless devices, usbmuxd doesn't handle/recognize wireless devices on Linux and Windows."
         }
-    }
+    },
+	"moe.nomm.Nomm": {
+    	"stable": {
+        	"finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to be able to mod games on Steam's Flatpak version.",
+			"finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
+			"finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
+    	}
+	}
 }
