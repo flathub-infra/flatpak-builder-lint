@@ -490,7 +490,7 @@
     },
     "com.cassidyjames.butler": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "finish-args-flatpak-spawn-access": "Required to restart itself after changing hardware acceleration settings"
         }
     },
     "com.cassidyjames.plausible": {
