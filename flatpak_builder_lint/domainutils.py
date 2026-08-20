@@ -3,6 +3,7 @@ import os
 import socket
 from functools import cache
 from importlib.resources import files
+from json import JSONDecodeError
 from typing import Any, cast
 
 import gi
@@ -257,6 +258,62 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
 
 @cache
+def _get_manual_verification_domains() -> dict[str, str]:
+    url = (
+        f"{config.GITHUB_CONTENT_CDN}/{config.FLATHUB_WEBSITE_FULL_REPO}/"
+        "HEAD/backend/app/staticfiles/manual_verifications.json"
+    )
+    try:
+        r = requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT)
+        logger.debug(
+            "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
+        )
+        logger.debug("Response headers for %s: %s", url, dict(r.headers))
+        if r.status_code != 200:
+            logger.debug(
+                "Failed to fetch manual verification domains from %s. Status: %s",
+                url,
+                r.status_code,
+            )
+            return {}
+
+        try:
+            payload = r.json()
+        except JSONDecodeError as e:
+            logger.debug(
+                "Invalid JSON when fetching manual verification domains from %s: %s: %s",
+                url,
+                type(e).__name__,
+                e,
+            )
+            return {}
+
+        if not isinstance(payload, dict):
+            logger.debug("Invalid manual verification domains payload from %s", url)
+            return {}
+
+        result = {
+            appid: domain.lower()
+            for appid, domain in payload.items()
+            if isinstance(appid, str)
+            and appid
+            and isinstance(domain, str)
+            and domain
+        }
+        logger.debug("Loaded manual verification domains from %s: %s", url, result)
+        return result
+    except requests.exceptions.RequestException as e:
+        logger.debug(
+            "Request exception when fetching manual verification domains from %s: %s: %s",
+            url,
+            type(e).__name__,
+            e,
+        )
+
+    return {}
+
+
+@cache
 def get_remote_exceptions_flathub(appid: str, exceptions_repo: str | None) -> set[str]:
     url = f"{config.FLATHUB_API_URL}/exceptions/{appid}"
     try:
@@ -434,6 +491,8 @@ def get_proj_url(appid: str) -> str | None:
 def get_domain(appid: str) -> str | None:
     if not (appid.startswith(CODE_HOSTS) or appid.count(".") >= 2):
         raise Exception("Invalid input")
+    if domain := _get_manual_verification_domains().get(appid):
+        return domain
 
     domain = None
     if appid.startswith("org.gnome.") and not appid.startswith("org.gnome.gitlab."):
