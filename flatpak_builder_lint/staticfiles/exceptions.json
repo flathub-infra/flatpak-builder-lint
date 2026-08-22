@@ -3883,7 +3883,8 @@
     },
     "io.github.ilya_zlobintsev.LACT": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "Required to set up the host service for GPU control."
+            "finish-args-flatpak-spawn-access": "Required to set up the host service for GPU control.",
+            "finish-args-systemd1-system-talk-name": "Required to set up and manage the host service for GPU control."
         }
     },
     "io.github.insilmaril.vym": {
