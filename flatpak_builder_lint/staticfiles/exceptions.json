@@ -4059,6 +4059,11 @@
             "finish-args-own-name-wildcard-org.gnome.gimagereader": "Predates the linter rule"
         }
     },
+    "io.github.marcelogomes90.FileCrate": {
+        "stable": {
+            "finish-args-unnecessary-xdg-config-cosmic-ro-access": "File Crate is a libcosmic application and requires read-only access to the host's ~/.config/cosmic directory to follow the host COSMIC theme; without this permission, the Flatpak falls back to an incorrect theme."
+        }
+    },
     "io.github.marco_calautti.DeltaPatcher": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
