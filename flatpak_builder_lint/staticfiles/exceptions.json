@@ -3432,6 +3432,13 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
+    "io.github.ScarletPachydermDev.Gridge": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Needs flatpak-spawn --host to restart Steam on the host after creating/updating non-Steam shortcuts, and to detect/launch natively-installed Steam and Microsoft Edge",
+            "finish-args-flatpak-appdata-folder-rw-access": "Needs ~/.var/app access broader than a single app because Flatpak filesystem grants are bound at sandbox creation time: a grant scoped to one app's data folder never becomes visible if that app wasn't installed yet when the sandbox started, which breaks first-run onboarding (installing Steam/Edge as Flatpaks from within Gridge itself). Confirmed by testing the narrower per-app grant and reproducing the failure.",
+            "finish-args-unnecessary-xdg-data-Steam-rw-access": "Needed for native (non-Flatpak) Steam installs at ~/.local/share/Steam -- confirmed by testing removal: ~/.steam/steam is a symlink into this directory, and Flatpak filesystem grants don't make a symlink's target visible unless the target itself is separately granted."
+        }
+    },
     "io.github.Sunderland93.sway-input-config": {
         "stable": {
             "finish-args-unnecessary-xdg-config-sway-rw-access": "Required to access Sway configuration on host"
