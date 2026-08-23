@@ -4059,6 +4059,11 @@
             "finish-args-own-name-wildcard-org.gnome.gimagereader": "Predates the linter rule"
         }
     },
+    "io.github.marcelogomes90.FileCrate": {
+        "stable": {
+            "finish-args-host-filesystem-access": "File Crate is an archive manager: it opens, creates and extracts archives wherever the user keeps them, and receives plain host paths from Wayland drag-and-drop that the document portal never exported and the file chooser portal cannot cover. Host access also keeps large archives off the document portal's FUSE mount, which otherwise dominates the cost of every read and write."
+        }
+    },
     "io.github.marco_calautti.DeltaPatcher": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
