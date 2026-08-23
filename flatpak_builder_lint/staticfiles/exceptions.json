@@ -4709,6 +4709,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.yelanxin.OxiTide": {
+        "*": {
+            "finish-args-own-name-wildcard-org.freedesktop.ReserveDevice1": "ALSA direct output uses the freedesktop ReserveDevice1 protocol: the app owns org.freedesktop.ReserveDevice1.Audio<card> to take a sound card exclusively from PipeWire/PulseAudio"
+        }
+    },
     "io.github.yuxshao.ptcollab": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
