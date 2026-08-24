@@ -4,6 +4,7 @@ GITHUB_API = "https://api.github.com"
 GITHUB_CONTENT_CDN = "https://raw.githubusercontent.com"
 
 LINTER_FULL_REPO = "flathub-infra/flatpak-builder-lint"
+FLATHUB_WEBSITE_FULL_REPO = "flathub-infra/website"
 
 FLATHUB_REPO_BASE_URL = "https://dl.flathub.org"
 FLATHUB_API_URL = "https://flathub.org/api/v2"
