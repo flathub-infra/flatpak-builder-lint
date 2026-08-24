@@ -3871,6 +3871,12 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.heri_anggara.GitBraid": {
+        "*": {
+            "finish-args-has-socket-ssh-auth": "Needed to fetch, pull and push over SSH remotes",
+            "finish-args-home-filesystem-access": "Version control tool requiring direct access to user-chosen project directories"
+        }
+    },
     "io.github.hkdb.Aerion": {
         "stable": {
             "finish-args-login1-system-talk-name": "Aerion as an email client needs to detect system sleep/wake via logind to trigger immediate mail sync after resume"
