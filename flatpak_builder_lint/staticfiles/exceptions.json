@@ -2605,6 +2605,15 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
+    "cx.modal.TestCenter": {
+        "*": {
+            "finish-args-flatpak-appdata-folder-rw-access": "Needs access to user data of other apps to remove leftover data",
+            "finish-args-flatpak-system-talk-name": "Talks to the system-wide flatpak dbus address in order to query existence of flatpaks and send installation commands to it",
+            "finish-args-flatpak-spawn-access": "Required to run systemd-sysext and related tools on the host",
+            "finish-args-unnecessary-xdg-data-flatpak-rw-access": "Needs access to user-wide flatpak installation to list and manage apps",
+            "finish-args-flatpak-system-folder-rw-access": "Needs access to system-wide flatpak installation to list and manage apps"
+        }
+    },
     "cz.zeropage.Formiko": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
