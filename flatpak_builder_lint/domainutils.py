@@ -295,10 +295,7 @@ def _get_manual_verification_domains() -> dict[str, str]:
         result = {
             appid: domain.lower()
             for appid, domain in payload.items()
-            if isinstance(appid, str)
-            and appid
-            and isinstance(domain, str)
-            and domain
+            if isinstance(appid, str) and appid and isinstance(domain, str) and domain
         }
         logger.debug("Loaded manual verification domains from %s: %s", url, result)
         return result

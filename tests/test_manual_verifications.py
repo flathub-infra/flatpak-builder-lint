@@ -34,9 +34,7 @@ def test_get_manual_verification_domains() -> None:
 
         result = domainutils._get_manual_verification_domains()
 
-    assert result == {
-        "mx.unam.fciencias.aztlan.GTrophies": "aztlan.fciencias.unam.mx"
-    }
+    assert result == {"mx.unam.fciencias.aztlan.GTrophies": "aztlan.fciencias.unam.mx"}
     mock_get.assert_called_once_with(
         "https://raw.githubusercontent.com/flathub-infra/website/HEAD/"
         "backend/app/staticfiles/manual_verifications.json",
