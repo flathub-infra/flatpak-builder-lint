@@ -8785,5 +8785,11 @@
 			"finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
 			"finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
     	}
+	},
+	"io.github.seinedkoda.kisel": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
+            "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
+        }
 	}
 }
