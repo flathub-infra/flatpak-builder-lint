@@ -8282,7 +8282,8 @@
     },
     "org.waywallen.waywallen": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-rw-access": "Required to allow user to use wallpapers downloaded in steam workshop"
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-data-Steam-rw-access": "Required to allow user to use wallpapers downloaded in steam workshop",
+			"finish-args-login1-system-talk-name": "Required to exit when user logout and stop renderer when user lockscreen"
         }
     },
     "org.wezfurlong.wezterm": {
