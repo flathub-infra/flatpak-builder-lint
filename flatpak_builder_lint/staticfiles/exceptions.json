@@ -741,7 +741,8 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule",
+            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
         }
     },
     "com.github.KRTirtho.Spotube": {
