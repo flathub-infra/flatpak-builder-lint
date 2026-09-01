@@ -2777,7 +2777,7 @@
     },
     "dev.eden_emu.eden": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing",
+            "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing"
         }
     },
     "dev.edfloreshz.Calculator": {
