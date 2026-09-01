@@ -2775,6 +2775,11 @@
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
         }
     },
+    "dev.eden_emu.eden": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing",
+        }
+    },
     "dev.edfloreshz.Calculator": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
