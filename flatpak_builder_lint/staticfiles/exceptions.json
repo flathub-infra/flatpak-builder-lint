@@ -1046,6 +1046,7 @@
     "com.github.git_cola.git-cola": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+            "finish-args-contains-both-x11-and-wayland": "Needed for gitk subprocesses",
             "finish-args-has-socket-gpg-agent": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
