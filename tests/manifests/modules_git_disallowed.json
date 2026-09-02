@@ -60,6 +60,19 @@
                     "type": "git",
                     "url": "https://example.com/bar.git",
                     "commit": "deadbeef"
+                },
+                {
+                    "type": "file",
+                    "url": "https://github.com/user/project/raw/refs/heads/my_branch/somefile"
+                }
+            ]
+        },
+        {
+            "name": "module7",
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://raw.githubusercontent.com/user/project/refs/heads/my_other_branch/somefile"
                 }
             ]
         }
