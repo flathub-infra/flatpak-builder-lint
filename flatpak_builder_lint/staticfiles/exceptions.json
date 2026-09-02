@@ -7812,6 +7812,12 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.openrgb.OpenRGB": {
+        "*": {
+            "finish-args-host-etc-ro-filesystem-access": "Required to alert users if /etc/udev/rules.d/60-openrgb.rules is missing and instruct tue suer to manually add it",
+            "finish-args-host-ro-filesystem-access": "Required to alert users if /usr/lib/udev/rules.d/60-openrgb.rules is missing and instruct tue suer to manually add it"
+        }
+    },
     "org.openscad.OpenSCAD": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
