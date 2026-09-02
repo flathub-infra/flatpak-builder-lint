@@ -5877,7 +5877,8 @@
     },
     "org.dpsoftware.FireflyLuciferin": {
         "stable": {
-            "finish-args-kwin-talk-name": "Predates the linter rule"
+            "finish-args-kwin-talk-name": "Used for StatusNotifierItem/AppIndicator and to detect NightLight status via DBUS.",
+            "finish-args-contains-both-x11-and-wayland": "JavaFX requires X11, GStreamer along with Pipewiresrc requires Wayland."
         }
     },
     "org.dune3d.dune3d": {
