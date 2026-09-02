@@ -8795,5 +8795,10 @@
             "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
             "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
         }
+    },
+    "com.onekeepass.OneKeePass": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Takes a logind delay inhibitor and listens for PrepareForSleep to encrypt the open database's decrypted content before the system suspends, so a hibernation image cannot contain plaintext secrets. There is no portal equivalent: the Inhibit portal can block a suspend but gives no notification that one is starting."
+        }
     }
 }
