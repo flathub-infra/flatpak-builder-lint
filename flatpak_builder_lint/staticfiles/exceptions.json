@@ -5175,8 +5175,7 @@
     },
     "net.cozic.joplin_desktop": {
         "*": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
+            "external-gitmodule-url-found": "Predates the linter rule"
         }
     },
     "net.daase.journable": {
