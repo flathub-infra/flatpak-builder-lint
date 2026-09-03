@@ -8487,6 +8487,11 @@
             "finish-args-unnecessary-xdg-config-dconf-rw-access": "needed to access host dconf configuration at launch time"
         }
     },
+    "page.wisha.platen": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-org.onlyoffice.desktopeditors-data-onlyoffice-desktopeditors-recover-ro-access": "Required so equations in OnlyOffice can be pasted back to Platen to recover formula"
+        }
+    },
     "party.supertux.supertuxparty": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
