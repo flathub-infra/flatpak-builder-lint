@@ -1773,6 +1773,11 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
+    "com.inochi2d.inochi-session": {
+        "*": {
+            "finish-args-home-filesystem-access": "Append or modify tracking configuration to model files"
+        }
+    },
     "com.interversehq.qView": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
