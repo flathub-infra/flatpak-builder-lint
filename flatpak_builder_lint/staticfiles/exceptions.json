@@ -8795,5 +8795,10 @@
             "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
             "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
         }
+    },
+    "me.proton.Pass": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
+        }
     }
 }
