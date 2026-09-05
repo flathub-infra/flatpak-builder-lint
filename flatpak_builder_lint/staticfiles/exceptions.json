@@ -4095,6 +4095,13 @@
             "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
         }
     },
+    "io.github.michelet76.CosmicExtCheatsheet": {
+        "stable": {
+            "finish-args-host-os-ro-filesystem-access": "COSMIC ships its keyboard shortcut defaults as a data file in /usr/share/cosmic on the host. Displaying the user's effective shortcuts is the entire purpose of this app, and Flatpak reserves /usr inside the sandbox, so read-only host-os access is the only way to read that file; XDG_DATA_DIRS is extended with /run/host/usr/share so the configuration library finds it at its host location. Without it the app could only show custom bindings and would be useless. Nothing on the host is written.",
+            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "The app registers its global shortcut by writing one entry into the COSMIC compositor's custom shortcut file under ~/.config/cosmic, which the compositor watches and reloads immediately. This is the same mechanism COSMIC Settings uses, and xdg-desktop-portal-cosmic has no GlobalShortcuts interface, so there is no portal alternative. The app only ever adds, updates or removes its own entry, re-reads the file immediately before writing, and refuses to write at all if any entry fails to parse, so other shortcuts cannot be lost.",
+            "finish-args-flatpak-spawn-access": "Rows in the cheatsheet can be clicked to run the shortcut they document, for example opening a terminal or the app library or changing the volume. Those commands come from the compositor's own system-action configuration and belong to the host session; they do not exist inside the sandbox. They are handed to flatpak-spawn --host so they run exactly as the compositor would run them. Only commands already configured in the user's COSMIC shortcut configuration are ever executed."
+        }
+    },
     "io.github.microgamercz.piki": {
         "stable": {
             "finish-args-plasmashell-talk-name": "Predates the linter rule"
