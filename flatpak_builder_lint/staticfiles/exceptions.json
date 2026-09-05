@@ -8800,5 +8800,5 @@
         "*": {
             "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
         }
-    },
+    }
 }
