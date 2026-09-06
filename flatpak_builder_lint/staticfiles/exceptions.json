@@ -8802,3 +8802,8 @@
         }
     }
 }
+"io.github.security_research_project.Tml": {
+  "stable": {
+    "finish-args-unnecessary-xdg-data-applications-create-access": "Required for creating, reading, modifying, and deleting .desktop files in xdg-data/applications"
+  }
+},
