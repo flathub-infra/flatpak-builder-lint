@@ -3792,6 +3792,11 @@
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.killown.flux": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Flux is a desktop file manager requiring direct filesystem access to browse, search, and manage files in the user home directory."
+        }
+    },
     "io.github.focustimerhq.FocusTimer": {
         "stable": {
             "finish-args-login1-system-talk-name": "Used for locking the screen and for detecting when it gets locked"
