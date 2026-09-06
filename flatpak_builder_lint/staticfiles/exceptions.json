@@ -85,11 +85,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "ar.com.softwareperonista.Rockarrolla": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "ar.com.tuxguitar.TuxGuitar": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -741,8 +736,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -3058,9 +3052,7 @@
     },
     "eu.skribisto.skribisto": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-wildcard-com.druide.antidote": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "eu.vcmi.VCMI": {
@@ -8494,7 +8486,6 @@
     },
     "pm.mirko.Atoms": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
