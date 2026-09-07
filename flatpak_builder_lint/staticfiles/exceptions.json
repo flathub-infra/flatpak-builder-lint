@@ -8802,5 +8802,10 @@
             "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
             "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
         }
+    },
+    "io.github.skater1808.undo": {
+        "stable": {
+            "finish-args-home-filesystem-access": "CLI tool that tracks filesystem changes made by user commands. Needs home access to read/write snapshots in ~/.undo/ and access files modified by tracked commands."
+        }
     }
 }
