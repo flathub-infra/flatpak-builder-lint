@@ -8802,5 +8802,10 @@
             "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
             "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
         }
+    },
+    "io.github.kallaballa.PlanV4D": {
+        "*": {
+            "appid-url-not-reachable": "GitHub repo is Plan-V4D (mixed case with hyphens), linter lowercases to planv4d which 404s"
+        }
     }
 }
