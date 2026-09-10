@@ -8794,7 +8794,9 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to be able to mod games on Steam's Flatpak version.",
             "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
-            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
+            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."¸
+            "finish-args-flatpak-appdata-folder-dev.eden_emu.eden-rw-access": "Required to be able to mod games on Eden's Flatpak Version.",
+            "finish-args-flatpak-appdata-folder-io.github.loot.loot-ro-access": "Required to be able to better mod Bethesda games."
         }
     },
     "io.github.seinedkoda.kisel": {
