@@ -3539,6 +3539,11 @@
             "finish-args-home-filesystem-access": "Required until https://github.com/flatpak/xdg-desktop-portal-gtk/issues/191 is fixed"
         }
     },
+    "io.github.aradar46.Dictator": {
+        "stable": {
+            "finish-args-only-wayland": "Binds a global shortcut through the GlobalShortcuts portal, which requires a Wayland surface handle; the app exits with an error on X11"
+        }
+    },
     "io.github.arijanj.Mimic": {
         "stable": {
             "finish-args-host-os-ro-filesystem-access": "Needs access to /usr/share/applications to view applications, /usr/share/icons and /usr/share/pixmaps to render icons",
