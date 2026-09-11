@@ -1986,6 +1986,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.modrinth.ModrinthApp": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Required for the app to launch older versions of Minecraft pre-26.3 that require X11."
+        }
+    },
     "com.mongodb.Compass": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
