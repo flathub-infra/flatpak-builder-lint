@@ -73,6 +73,9 @@ def mock_domainutils(
         return
     with (
         patch("flatpak_builder_lint.domainutils.check_url") as mock_check_url,
+        patch(
+            "flatpak_builder_lint.domainutils._get_manual_verification_domains"
+        ) as mock_manual_verifications,
         patch("flatpak_builder_lint.domainutils.is_app_on_flathub_summary") as mock_is_on_flathub,
         patch("flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub") as mock_get_eol,
         patch(
@@ -83,6 +86,7 @@ def mock_domainutils(
         ) as mock_exceptions_fh,
     ):
         mock_check_url.return_value = (True, None)
+        mock_manual_verifications.return_value = {}
         mock_is_on_flathub.return_value = False
         mock_get_eol.return_value = eol_runtimes
         mock_exceptions_gh.return_value = set()
@@ -90,6 +94,7 @@ def mock_domainutils(
 
         yield {
             "check_url": mock_check_url,
+            "_get_manual_verification_domains": mock_manual_verifications,
             "is_app_on_flathub_summary": mock_is_on_flathub,
             "get_eol_runtimes_on_flathub": mock_get_eol,
             "get_remote_exceptions_github": mock_exceptions_gh,
