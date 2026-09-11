@@ -3575,8 +3575,7 @@
             "finish-args-unnecessary-xdg-config-MangoHud-rw-access": "Needed for reading MangoHud config files",
             "finish-args-unnecessary-xdg-config-vkBasalt-rw-access": "Needed for reading vkBasalt config files",
             "finish-args-unnecessary-xdg-config-vkSumi-rw-access": "Needed for reading vkSumi config files",
-            "finish-args-unnecessary-xdg-config-lsfg-vk-create-access": "Needed for reading and writing lsfg-vk config files",
-            "finish-args-unnecessary-xdg-data-vulkan-create-access": "Needed for installing user-space Vulkan layers"
+            "finish-args-unnecessary-xdg-config-lsfg-vk-create-access": "Needed for reading and writing lsfg-vk config files"
         }
     },
     "io.github.bkbilly.lnxlink": {
