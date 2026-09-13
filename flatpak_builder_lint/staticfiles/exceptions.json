@@ -2314,7 +2314,8 @@
     },
     "com.super_productivity.SuperProductivity": {
         "stable": {
-            "finish-args-home-ro-filesystem-access": "Predates the linter rule"
+            "finish-args-home-ro-filesystem-access": "Predates the linter rule",
+            "flathub-json-automerge-enabled": "Verified app; allow flathubbot to merge stable upstream release updates after successful CI"
         }
     },
     "com.supermodel3.Supermodel": {
