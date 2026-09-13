@@ -4122,6 +4122,11 @@
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
+    "io.github.mlm_games.mages": {
+      "stable": {
+        "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
+      }
+    },
     "io.github.moonlight_mod.moonlight-installer": {
         "stable": {
             "finish-args-unnecessary-xdg-config-moonlight-mod-create-access": "Patches are stored here, needs to be accessible from all patched Discord instances",
