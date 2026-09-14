@@ -2962,6 +2962,12 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
+    "dev.sramek.clocks": {
+        "stable": {
+            "finish-args-unnecessary-xdg-config-autostart-create-access": "The Background portal is not implemented on COSMIC, so this app writes its own autostart entry there as a fallback in order to run its alarm service at login.",
+            "finish-args-unnecessary-xdg-config-cosmic-ro-access": "Required to read the system theme and listen for config changes in the host."
+        }
+    },
     "dev.storyapps.starc": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
