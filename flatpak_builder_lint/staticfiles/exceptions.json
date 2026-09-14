@@ -38,6 +38,14 @@
             "finish-args-unnecessary-xdg-data-typst-ro-access": "Well known common location of the user's Typst packages in the @local namespace"
         }
     },
+    "app.liten.Gram" {
+        "stable": {
+            "finish-args-home-filesystem-access": "To launch common paths from the terminal",
+            "finish-args-flatpak-spawn-access": "To access debuggers, linters and other programming tools" 
+        }    
+    
+    }
+    
     "app.lith.Lith": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
