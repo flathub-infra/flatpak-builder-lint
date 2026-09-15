@@ -2577,6 +2577,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.xnview.XnConvert": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Batch image converter: adds whole folders and writes the converted files next to the source files. Files picked through the document portal come as /run/user/<uid>/doc/ paths, which breaks folder input and output-to-source-folder. Same permission as com.xnview.XnViewMP, whose batch convert module does the same job."
+        }
+    },
     "com.xnview.XnViewMP": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
