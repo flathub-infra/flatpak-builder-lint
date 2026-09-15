@@ -8720,6 +8720,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "xyz.froststrap.Froststrap": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Froststrap installs, updates and launches the Sober Flatpak on the host via flatpak-spawn; core functionality, no portal covers this"
+        }
+    },
     "xyz.hyperplay.HyperPlay": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
