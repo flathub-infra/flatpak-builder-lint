@@ -8818,8 +8818,7 @@
     },
     "io.github.foxstudio201.dinoisekai": {
         "stable": {
-            "finish-args-home-filesystem-access": "Minecraft launcher needs full home access to manage .minecraft directory and allow users to choose game directories anywhere in HOME",
-            "appid-url-not-reachable": "GitHub username foxstudio-201 contains a hyphen which is not allowed in reverse-DNS appid, so appid uses foxstudio201 and repo is dinoisekailauncher not dinoisekai"
+            "finish-args-home-filesystem-access": "Minecraft launcher needs full home access to manage .minecraft directory and allow users to choose game directories anywhere in HOME"
         }
     }
 }
