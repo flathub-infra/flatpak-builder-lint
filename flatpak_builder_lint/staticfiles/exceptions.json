@@ -2782,6 +2782,17 @@
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
         }
     },
+    "dev.creeperkatze.full-steam-ahead": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Needed to run host commands when scanning for games, and so non-Steam shortcuts can launch when Steam itself is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Full Steam Ahead reads and writes Steam's shortcuts, grid artwork, and collections files to add non-Steam games",
+            "finish-args-flatpak-appdata-folder-net.lutris.Lutris-ro-access": "Used to read Lutris's game database when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-ro-access": "Used to read Heroic's installed-games metadata when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-com.usebottles.bottles-ro-access": "Used to read Bottles' configuration when it is installed as a Flatpak",
+            "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing Steam's shortcuts, artwork, and collections files when it is installed natively",
+            "finish-args-unnecessary-xdg-data-lutris-ro-access": "Required for reading Lutris's game database when it is installed natively"
+        }
+    },
     "dev.eden_emu.eden": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing"
