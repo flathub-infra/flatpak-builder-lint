@@ -8722,7 +8722,7 @@
     },
     "xyz.froststrap.Froststrap": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "Froststrap installs, updates and launches the Sober Flatpak on the host via flatpak-spawn; core functionality, no portal covers this"
+            "finish-args-flatpak-spawn-access": "Froststrap installs, updates and launches the Sober Flatpak on the host via flatpak-spawn"
         }
     },
     "xyz.hyperplay.HyperPlay": {
