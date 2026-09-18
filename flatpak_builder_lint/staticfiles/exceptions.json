@@ -5719,6 +5719,12 @@
             "finish-args-only-wayland": "this program doesn't have x11 support"
         }
     },
+    "org.chipass.ChiPass": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "the password manager must know when the screen is locked to lock the database",
+            "finish-args-has-socket-ssh-auth": "the password manager can store SSH keys and add/remove them with SSH agent"
+        }
+    },
     "org.chrisoft.qmidiplayer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
