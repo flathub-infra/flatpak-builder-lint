@@ -85,11 +85,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "ar.com.softwareperonista.Rockarrolla": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "ar.com.tuxguitar.TuxGuitar": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -742,8 +737,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -3064,9 +3058,7 @@
     },
     "eu.skribisto.skribisto": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-wildcard-com.druide.antidote": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "eu.vcmi.VCMI": {
@@ -3454,7 +3446,6 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-config-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
             "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-data-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
-            "finish-args-flatpak-spawn-access": "this program needs to be able to run host commands as specified in the manifest's wrapper scripts to support Flatpak and native Dolphin installations",
             "finish-args-unnecessary-xdg-config-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin config files (e.g. for graphics settings)",
             "finish-args-unnecessary-xdg-data-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin Mii and game/mod data files"
         }
@@ -4104,11 +4095,6 @@
     "io.github.mhogomchungu.sirikali": {
         "stable": {
             "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
-        }
-    },
-    "io.github.microgamercz.piki": {
-        "stable": {
-            "finish-args-plasmashell-talk-name": "Predates the linter rule"
         }
     },
     "io.github.mightycreak.Diffuse": {
@@ -7737,11 +7723,6 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "org.neverball.Neverball": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.nickvision.cavalier": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -8512,7 +8493,6 @@
     },
     "pm.mirko.Atoms": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
