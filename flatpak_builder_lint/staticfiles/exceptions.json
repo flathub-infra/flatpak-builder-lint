@@ -245,7 +245,8 @@
     },
     "chat.delta.desktop": {
         "*": {
-            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
+            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
+            "finish-args-login1-system-talk-name": "Detect resume from sleep (suspend) to immediately check for new messages"
         }
     },
     "chat.iamb.iamb": {
@@ -1984,6 +1985,11 @@
     "com.mikrotik.WinBox": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
+        }
+    },
+    "com.modrinth.ModrinthApp": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Required for the app to launch older versions of Minecraft pre-26.3 that require X11."
         }
     },
     "com.mongodb.Compass": {
@@ -3791,6 +3797,11 @@
             "finish-args-flatpak-system-folder-ro-access": "Predates the linter rule",
             "finish-args-flatpak-user-folder-ro-access": "Predates the linter rule",
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
+        }
+    },
+    "io.github.killown.flux": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Flux is a desktop file manager requiring direct filesystem access to browse, search, and manage files in the user home directory."
         }
     },
     "io.github.focustimerhq.FocusTimer": {
@@ -8795,13 +8806,20 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to be able to mod games on Steam's Flatpak version.",
             "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
-            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
+            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version.",
+            "finish-args-flatpak-appdata-folder-dev.eden_emu.eden-rw-access": "Required to be able to mod games on Eden's Flatpak Version.",
+            "finish-args-flatpak-appdata-folder-io.github.loot.loot-ro-access": "Required to be able to better mod Bethesda games."
         }
     },
     "io.github.seinedkoda.kisel": {
         "stable": {
             "finish-args-home-filesystem-access": "Required for correct execution of UMU-launcher and Proton, and for access to user configurations.",
             "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
+        }
+    },
+    "me.proton.Pass": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
         }
     }
 }
