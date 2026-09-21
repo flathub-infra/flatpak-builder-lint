@@ -2098,6 +2098,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.p1security.diagng": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "DiagNG being a specialized, low-level hardware interfacing tool, it uses the \"flatpak-spawn\" command in order to spawn a D-Bus system service called diagmond that allows to perform privileged operations (communication with baseband diagnostic USB and TTY pseudo-serial port interfaces), for which a Polkit authorization is granted by the user on an individual basis. This authorization is also used to spawn a Wireshark instance when using the OTA RRC log-to-PCAP capture feature, which is core functionality of the software, and query the version of Wireshark installed on the system."
+        }
+    },
     "com.pinegrow.Pinegrow": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
