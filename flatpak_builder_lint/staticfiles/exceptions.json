@@ -4766,7 +4766,8 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
