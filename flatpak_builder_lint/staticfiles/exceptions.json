@@ -85,11 +85,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "ar.com.softwareperonista.Rockarrolla": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "ar.com.tuxguitar.TuxGuitar": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -245,7 +240,8 @@
     },
     "chat.delta.desktop": {
         "*": {
-            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
+            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
+            "finish-args-login1-system-talk-name": "Detect resume from sleep (suspend) to immediately check for new messages"
         }
     },
     "chat.iamb.iamb": {
@@ -741,8 +737,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -3063,9 +3058,7 @@
     },
     "eu.skribisto.skribisto": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-wildcard-com.druide.antidote": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "eu.vcmi.VCMI": {
@@ -3134,11 +3127,6 @@
         }
     },
     "fr.natron.Natron": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "fr.nytuo.cosmiccomics": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -3797,6 +3785,11 @@
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.killown.flux": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Flux is a desktop file manager requiring direct filesystem access to browse, search, and manage files in the user home directory."
+        }
+    },
     "io.github.focustimerhq.FocusTimer": {
         "stable": {
             "finish-args-login1-system-talk-name": "Used for locking the screen and for detecting when it gets locked"
@@ -4098,11 +4091,6 @@
     "io.github.mhogomchungu.sirikali": {
         "stable": {
             "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
-        }
-    },
-    "io.github.microgamercz.piki": {
-        "stable": {
-            "finish-args-plasmashell-talk-name": "Predates the linter rule"
         }
     },
     "io.github.mightycreak.Diffuse": {
@@ -4779,7 +4767,8 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
@@ -5981,11 +5970,6 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
-    "org.feichtmeier.Musicpod": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "org.ferdium.Ferdium": {
         "*": {
             "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
@@ -6464,11 +6448,6 @@
         }
     },
     "org.gnome.Rhythmbox3": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.Shotwell": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
@@ -7731,11 +7710,6 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "org.neverball.Neverball": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.nickvision.cavalier": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -8506,7 +8480,6 @@
     },
     "pm.mirko.Atoms": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
