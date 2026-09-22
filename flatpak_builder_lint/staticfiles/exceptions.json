@@ -4887,6 +4887,13 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "io.openrct2.OpenRCT2": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-RollerCoaster-Tycoon-Classic-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon Classic for auto-detection",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-RollerCoaster-Tycoon-Deluxe-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon Deluxe for auto-detection",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Rollercoaster-Tycoon-2-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon 2 for auto-detection"
+        }
+    },
     "io.ossia.score": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
