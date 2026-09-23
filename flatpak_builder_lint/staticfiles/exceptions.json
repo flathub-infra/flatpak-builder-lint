@@ -2654,6 +2654,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "de.gonicus.bubbles": {
+        "*": {
+            "finish-args-only-wayland": "X11 support would be a non-minor code change, potentially with differences in UX and runtime behavior"
+        }
+    },
     "de.gonicus.gonnect": {
         "*": {
             "finish-args-unnecessary-xdg-data-evolution-ro-access": "EDS exposes avatar images here, and GOnnect likes to display them on incoming calls."
