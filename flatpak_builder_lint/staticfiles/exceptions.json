@@ -2318,6 +2318,11 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.surfshark.Surfshark": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Daemon needs logind Inhibit and PrepareForShutdown to disconnect the VPN on OS shutdown. No portal exposes this signal."
+        }
+    },
     "com.sweethome3d.Sweethome3d": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
