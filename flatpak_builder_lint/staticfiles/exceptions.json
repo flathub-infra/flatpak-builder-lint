@@ -85,11 +85,6 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-    "ar.com.softwareperonista.Rockarrolla": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "ar.com.tuxguitar.TuxGuitar": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -2324,6 +2319,11 @@
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.surfshark.Surfshark": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Daemon needs logind Inhibit and PrepareForShutdown to disconnect the VPN on OS shutdown. No portal exposes this signal."
+        }
+    },
     "com.sweethome3d.Sweethome3d": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
@@ -2653,6 +2653,11 @@
     "de.flose.Kochbuch": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
+        }
+    },
+    "de.gonicus.bubbles": {
+        "*": {
+            "finish-args-only-wayland": "X11 support would be a non-minor code change, potentially with differences in UX and runtime behavior"
         }
     },
     "de.gonicus.gonnect": {
@@ -3064,9 +3069,7 @@
     },
     "eu.skribisto.skribisto": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-own-name-wildcard-com.druide.antidote": "Predates the linter rule"
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "eu.vcmi.VCMI": {
@@ -3135,11 +3138,6 @@
         }
     },
     "fr.natron.Natron": {
-        "stable": {
-            "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "fr.nytuo.cosmiccomics": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
@@ -3454,7 +3452,6 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-config-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
             "finish-args-flatpak-appdata-folder-org.DolphinEmu.dolphin-emu-data-dolphin-emu-create-access": "this program needs to be able to access the Dolphin Flatpak's config and data directories for configuration and Mii/mod management",
-            "finish-args-flatpak-spawn-access": "this program needs to be able to run host commands as specified in the manifest's wrapper scripts to support Flatpak and native Dolphin installations",
             "finish-args-unnecessary-xdg-config-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin config files (e.g. for graphics settings)",
             "finish-args-unnecessary-xdg-data-dolphin-emu-rw-access": "this program needs to be able to read and modify host Dolphin Mii and game/mod data files"
         }
@@ -3798,6 +3795,11 @@
             "finish-args-host-etc-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.killown.flux": {
+        "stable": {
+            "finish-args-home-filesystem-access": "Flux is a desktop file manager requiring direct filesystem access to browse, search, and manage files in the user home directory."
+        }
+    },
     "io.github.focustimerhq.FocusTimer": {
         "stable": {
             "finish-args-login1-system-talk-name": "Used for locking the screen and for detecting when it gets locked"
@@ -3813,6 +3815,7 @@
             "flathub-json-automerge-enabled": "Telegram enforces client version cutoffs; stale builds lose server connectivity",
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
+            "module-tdesktop_rust-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tg_owt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag"
         }
     },
@@ -3988,6 +3991,7 @@
             "flathub-json-automerge-enabled": "Predates the linter rule",
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
+            "module-tdesktop_rust-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
     },
@@ -4099,11 +4103,6 @@
     "io.github.mhogomchungu.sirikali": {
         "stable": {
             "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
-        }
-    },
-    "io.github.microgamercz.piki": {
-        "stable": {
-            "finish-args-plasmashell-talk-name": "Predates the linter rule"
         }
     },
     "io.github.mightycreak.Diffuse": {
@@ -4785,7 +4784,8 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
@@ -4903,6 +4903,13 @@
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-host-tmp-access": "Predates the linter rule"
+        }
+    },
+    "io.openrct2.OpenRCT2": {
+        "stable": {
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-RollerCoaster-Tycoon-Classic-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon Classic for auto-detection",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-RollerCoaster-Tycoon-Deluxe-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon Deluxe for auto-detection",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-.local-share-Steam-steamapps-common-Rollercoaster-Tycoon-2-ro-access": "Read-only access to Flatpak Steam installation of RollerCoaster Tycoon 2 for auto-detection"
         }
     },
     "io.ossia.score": {
@@ -5719,6 +5726,12 @@
             "finish-args-only-wayland": "this program doesn't have x11 support"
         }
     },
+    "org.chipass.ChiPass": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "the password manager must know when the screen is locked to lock the database",
+            "finish-args-has-socket-ssh-auth": "the password manager can store SSH keys and add/remove them with SSH agent"
+        }
+    },
     "org.chrisoft.qmidiplayer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
@@ -5985,11 +5998,6 @@
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "org.feichtmeier.Musicpod": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.ferdium.Ferdium": {
@@ -6470,11 +6478,6 @@
         }
     },
     "org.gnome.Rhythmbox3": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.Shotwell": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
@@ -7737,11 +7740,6 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "org.neverball.Neverball": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "org.nickvision.cavalier": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -8155,6 +8153,7 @@
             "flathub-json-automerge-enabled": "Predates the linter rule",
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated",
+            "module-tdesktop_rust-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
     },
@@ -8512,7 +8511,6 @@
     },
     "pm.mirko.Atoms": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
