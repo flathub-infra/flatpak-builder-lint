@@ -737,8 +737,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -4123,9 +4122,9 @@
         }
     },
     "io.github.mlm_games.mages": {
-      "stable": {
-        "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
-      }
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
+        }
     },
     "io.github.moonlight_mod.moonlight-installer": {
         "stable": {
@@ -4784,8 +4783,7 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
@@ -5901,8 +5899,7 @@
     },
     "org.dpsoftware.FireflyLuciferin": {
         "stable": {
-            "finish-args-kwin-talk-name": "Used for StatusNotifierItem/AppIndicator and to detect NightLight status via DBUS.",
-            "finish-args-contains-both-x11-and-wayland": "JavaFX requires X11, GStreamer along with Pipewiresrc requires Wayland."
+            "finish-args-kwin-talk-name": "Used for StatusNotifierItem/AppIndicator and to detect NightLight status via DBUS."
         }
     },
     "org.dune3d.dune3d": {
