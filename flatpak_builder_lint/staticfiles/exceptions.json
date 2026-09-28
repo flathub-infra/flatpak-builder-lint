@@ -7969,6 +7969,11 @@
             "flathub-json-automerge-enabled": "Verified application"
         }
     },
+    "org.qtpass.QtPass": {
+        "stable": {
+            "finish-args-has-socket-gpg-agent": "QtPass uses the host GPG agent to encrypt and decrypt password-store entries"
+        }
+    },
     "org.quelea.Quelea": {
         "*": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
