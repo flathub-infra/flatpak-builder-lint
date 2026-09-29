@@ -1,4 +1,10 @@
 {
+
+    "io.github.mfat.jottr": {
+        "*": {
+            "finish-args-host-filesystem-access": "Needed to display and modify files outside the sandbox"
+        }
+    },
     "ai.opencode.opencode": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to access and modify projects outside the sandbox"
