@@ -5180,6 +5180,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "net.blip.Blip": {
+        "stable": {
+            "finish-args-home-ro-filesystem-access": "Required to let users resume transfers for copy-pasted and drag-and-dropped files and folders across app restarts."
+        }
+    },
     "net.blumia.pineapple-pictures": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
