@@ -3153,6 +3153,11 @@
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to read and write to system configuration files"
         }
     },
+    "fyi.soltfrfr.NightmareEditor": {
+        "*": {
+            "finish-args-flatpak-appdata-folder-org.azahar_emu.Azahar-data-azahar_emu-rw-access": "Nightmare Editor has the capability of deploying its mods directly into the Azahar load directory, and hence needs the permissions to do so."
+        }
+    },
     "gg.minion.Minion": {
         "*": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Predates the linter rule"
