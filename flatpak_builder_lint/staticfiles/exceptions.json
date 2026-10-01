@@ -1863,6 +1863,8 @@
     },
     "com.jetbrains.WebStorm": {
         "stable": {
+            "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
+            "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
             "finish-args-home-filesystem-access": "Needed to browse project files"
         }
     },
