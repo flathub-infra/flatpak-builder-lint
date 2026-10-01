@@ -32,6 +32,7 @@ CODE_HOSTS = (
 )
 
 REQUEST_TIMEOUT = (10, 60)
+USER_AGENT = f"{requests.utils.default_user_agent()} (flatpak-builder-lint)"
 
 
 CACHEFILE = os.path.join(config.CACHEDIR, "requests_cache")
@@ -224,7 +225,13 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
     resp_info = None
     try:
-        with requests.get(url, allow_redirects=False, timeout=REQUEST_TIMEOUT, stream=True) as r:
+        with requests.get(
+            url,
+            allow_redirects=False,
+            timeout=REQUEST_TIMEOUT,
+            stream=True,
+            headers={"User-Agent": USER_AGENT},
+        ) as r:
             logger.debug(
                 "Request headers for %s: %s", url, filter_request_headers(dict(r.request.headers))
             )
