@@ -7940,6 +7940,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.projecttick.MeshMC": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "Minecraft runs natively on Wayland; however, this changed in version 26.3, triggered by the transition to SDL3. While X11 support should remain for compatibility and older versions, the Wayland socket must now be added. Without it, Minecraft will not run stably."
+        }
+    },
     "org.purei.Play": {
         "stable": {
             "finish-args-home-ro-filesystem-access": "Predates the linter rule",
