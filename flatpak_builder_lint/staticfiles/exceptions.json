@@ -4354,7 +4354,8 @@
             "finish-args-host-os-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-systemd1-system-talk-name": "Predates the linter rule",
-            "finish-args-systemd1-talk-name": "Predates the linter rule"
+            "finish-args-systemd1-talk-name": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-systemd-rw-access": "Needed to allow users to edit theirs systemd user unit files"
         }
     },
     "io.github.pol_rivero.github-desktop-plus": {
