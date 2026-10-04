@@ -1,5 +1,4 @@
 {
-
     "io.github.mfat.jottr": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to display and modify files outside the sandbox"
@@ -743,8 +742,7 @@
     "com.github.IsmaelMartinez.teams_for_linux": {
         "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
-            "finish-args-login1-system-talk-name": "Electron's powerMonitor needs PrepareForSleep from login1 for its resume handlers; no portal exposes this signal."
+            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "com.github.KRTirtho.Spotube": {
@@ -4136,9 +4134,9 @@
         }
     },
     "io.github.mlm_games.mages": {
-      "stable": {
-        "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
-      }
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
+        }
     },
     "io.github.moonlight_mod.moonlight-installer": {
         "stable": {
@@ -4213,11 +4211,6 @@
         }
     },
     "io.github.nelson_lang.Nelson": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.github.nest_desktop.nest-desktop": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -4807,8 +4800,7 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
@@ -4949,7 +4941,6 @@
     "io.otsaloma.nfoview": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -5929,8 +5920,7 @@
     },
     "org.dpsoftware.FireflyLuciferin": {
         "stable": {
-            "finish-args-kwin-talk-name": "Used for StatusNotifierItem/AppIndicator and to detect NightLight status via DBUS.",
-            "finish-args-contains-both-x11-and-wayland": "JavaFX requires X11, GStreamer along with Pipewiresrc requires Wayland."
+            "finish-args-kwin-talk-name": "Used for StatusNotifierItem/AppIndicator and to detect NightLight status via DBUS."
         }
     },
     "org.dune3d.dune3d": {
@@ -8840,9 +8830,7 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to be able to mod games on Steam's Flatpak version.",
             "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
-            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version.",
-            "finish-args-flatpak-appdata-folder-dev.eden_emu.eden-rw-access": "Required to be able to mod games on Eden's Flatpak Version.",
-            "finish-args-flatpak-appdata-folder-io.github.loot.loot-ro-access": "Required to be able to better mod Bethesda games."
+            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
         }
     },
     "io.github.seinedkoda.kisel": {
