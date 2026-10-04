@@ -21,6 +21,7 @@ def reset_check_state() -> Generator[None, None, None]:
     checks.Check.desktopfile = set()
     checks.Check.info = set()
     checks.Check.repo_primary_refs = set()
+    checks.Check.review_findings = set()
     yield
     checks.ALL.clear()
     checks.ALL.extend(original_all)
@@ -31,6 +32,7 @@ def reset_check_state() -> Generator[None, None, None]:
     checks.Check.desktopfile = set()
     checks.Check.info = set()
     checks.Check.repo_primary_refs = set()
+    checks.Check.review_findings = set()
 
 
 @pytest.fixture(scope="module")
