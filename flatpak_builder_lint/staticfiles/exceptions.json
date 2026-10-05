@@ -38,6 +38,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "app.inkdrop.Inkdrop": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Detect resume from sleep to sync notes"
+        }
+    },
     "app.katvan.Katvan": {
         "stable": {
             "finish-args-unnecessary-xdg-data-typst-ro-access": "Well known common location of the user's Typst packages in the @local namespace"
