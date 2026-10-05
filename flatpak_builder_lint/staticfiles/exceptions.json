@@ -2099,6 +2099,11 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "com.overwolf.curseforge": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Required to launch Minecraft: versions 26.3 and newer use SDL3 and need the Wayland socket to run stably, while older versions require X11."
+        }
+    },
     "com.oyajun.ColorCode": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
