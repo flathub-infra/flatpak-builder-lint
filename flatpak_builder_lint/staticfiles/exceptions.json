@@ -3335,6 +3335,12 @@
             "finish-args-ssh-filesystem-access": "This app's main functionality is to edit ssh connections located in ~/.ssh/config"
         }
     },
+    "io.github.bujjuisabee.shimelinux": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "The Wayland environment uses native Wayland surfaces, so it requires wayland. fallback-x11 causes a crash due to a HeadlessException from Java Swing, so it requires x11.",
+            "finish-args-kwin-talk-name": "The KDE environment uses a KWin script to provide an optional, opt-in feature where Shimeji can interact with windows, mimicking the behavior of the Windows application it is based on."
+        }
+    },
     "io.github.Cockatrice.cockatrice": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
