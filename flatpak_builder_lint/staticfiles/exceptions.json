@@ -8866,5 +8866,14 @@
         "*": {
             "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
         }
+    },
+    "com.stremio.Stremio": {
+        "*": {
+            "finish-args-host-os-filesystem-access": "Required to open streams in an external player",
+            "finish-args-flatpak-spawn-access": "Required to open streams in an external player installed as flatpak",
+            "finish-args-flatpak-system-folder-app-org.videolan.vlc-ro-access": "Required to open streams in VLC installed as flatpak",
+            "finish-args-flatpak-system-folder-app-io.mpv.MPV-ro-access": "Required to open streams in MPV installed as flatpak",
+            "finish-args-flatpak-system-folder-app-io.github.celluloid_player.Celluloid-ro-access": "Required to open streams in Celluloid installed as flatpak"
+        }
     }
 }
