@@ -1,4 +1,9 @@
 {
+    "io.github.c9dev.penguin-mail": {
+        "stable": {
+            "finish-args-gnupg-filesystem-access": "Needed to read ~/.gnupg for encryption/decryption and also signing and verifying of emails with OpenPGP and S/MIME, also stores/writes the certs that came with the message into the keyring"
+        }
+    },
     "io.github.mfat.jottr": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to display and modify files outside the sandbox"
