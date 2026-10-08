@@ -1806,8 +1806,6 @@
     },
     "com.jetbrains.DataGrip": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-has-socket-gpg-agent": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
