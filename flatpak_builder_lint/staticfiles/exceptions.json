@@ -2735,8 +2735,9 @@
     },
     "de.philippun1.turtle": {
         "stable": {
-            "finish-args-has-socket-ssh-auth": "Predates the linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
+            "finish-args-has-socket-gpg-agent": "Needed to sign and verify Git commits with GPG",
+            "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+            "finish-args-host-filesystem-access": "Needed to access Git repositories outside the sandbox"
         }
     },
     "de.renew.Renew": {
