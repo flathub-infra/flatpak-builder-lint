@@ -3124,6 +3124,7 @@
         "stable": {
             "finish-args-flatpak-system-folder-exports-share-applications-ro-access": "Required to read .desktop files of Flatpak applications installed on the system to manage them.",
             "finish-args-home-ro-filesystem-access": "Required to load application icons located in arbitrary paths within the user's home directory (e.g. ~/.local/share, AppImages, downloads).",
+            "finish-args-host-os-ro-filesystem-access": "Required to read the host system's .desktop files in /usr/share/applications (exposed as /run/host/usr/share/applications) so users can inspect system launchers and create user overrides of them in ~/.local/share/applications.",
             "finish-args-unnecessary-xdg-data-applications-create-access": "The core functionality of this app is to create and manage .desktop files (launchers) for the user.",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Required to read .desktop files of Flatpak applications installed by the user to manage them."
         }
