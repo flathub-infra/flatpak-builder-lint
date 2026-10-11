@@ -2804,6 +2804,8 @@
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Full Steam Ahead reads and writes Steam's shortcuts, grid artwork, and collections files to add non-Steam games",
             "finish-args-flatpak-appdata-folder-net.lutris.Lutris-ro-access": "Used to read Lutris's game database when it is installed as a Flatpak",
             "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-ro-access": "Used to read Heroic's installed-games metadata when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-io.itch.itch-ro-access": "Used to read itch's installed-games database when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-io.github.sharkwouter.Minigalaxy-ro-access": "Used to read MiniGalaxy's configuration to find its games folder when it is installed as a Flatpak",
             "finish-args-flatpak-appdata-folder-com.usebottles.bottles-ro-access": "Used to read Bottles' configuration when it is installed as a Flatpak",
             "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing Steam's shortcuts, artwork, and collections files when it is installed natively",
             "finish-args-unnecessary-xdg-data-lutris-ro-access": "Required for reading Lutris's game database when it is installed natively"
