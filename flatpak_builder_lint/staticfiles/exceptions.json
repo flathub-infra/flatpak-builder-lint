@@ -5384,8 +5384,6 @@
     },
     "net.mediaarea.MediaInfo": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -5655,11 +5653,6 @@
     "org.adishatz.syncpasswd": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.aegisub.Aegisub": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.altlinux.Tuner": {
@@ -6437,11 +6430,6 @@
     "org.gnome.Logs": {
         "stable": {
             "finish-args-host-var-access": "Predates the linter rule"
-        }
-    },
-    "org.gnome.Lollypop": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "org.gnome.Loupe": {
