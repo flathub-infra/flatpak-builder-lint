@@ -2420,8 +2420,9 @@
     },
     "com.ulduzsoft.Birdtray": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.mozilla.Thunderbird-.thunderbird-rw-access": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "finish-args-flatpak-appdata-folder-org.mozilla.thunderbird-.thunderbird-rw-access": "Access email directory of Thunderbird in order to read unread email count and display it in the tray icon",
+            "finish-args-flatpak-appdata-folder-org.mozilla.thunderbird_esr-.thunderbird-rw-access": "Access email directory of Thunderbird ESR in order to read unread email count and display it in the tray icon",
+            "finish-args-flatpak-spawn-access": "Ability to run Thunderbird on Birdtray start or from the tray icon context menu"
         }
     },
     "com.ultimaker.cura": {
