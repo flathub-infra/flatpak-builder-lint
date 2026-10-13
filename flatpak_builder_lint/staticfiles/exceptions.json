@@ -1,5 +1,4 @@
 {
-
     "io.github.mfat.jottr": {
         "*": {
             "finish-args-home-filesystem-access": "Needed to display and modify files outside the sandbox"
@@ -37,6 +36,11 @@
     "app.getclipboard.Clipboard": {
         "stable": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
+        }
+    },
+    "app.inkdrop.Inkdrop": {
+        "stable": {
+            "finish-args-login1-system-talk-name": "Detect resume from sleep to sync notes"
         }
     },
     "app.katvan.Katvan": {
@@ -1802,8 +1806,6 @@
     },
     "com.jetbrains.DataGrip": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-has-socket-gpg-agent": "Predates the linter rule",
             "finish-args-has-socket-ssh-auth": "Predates the linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule"
@@ -1863,6 +1865,8 @@
     },
     "com.jetbrains.WebStorm": {
         "stable": {
+            "finish-args-has-socket-gpg-agent": "Needed to sign Git commits with GPG",
+            "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
             "finish-args-home-filesystem-access": "Needed to browse project files"
         }
     },
@@ -2416,8 +2420,9 @@
     },
     "com.ulduzsoft.Birdtray": {
         "stable": {
-            "finish-args-flatpak-appdata-folder-org.mozilla.Thunderbird-.thunderbird-rw-access": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "finish-args-flatpak-appdata-folder-org.mozilla.thunderbird-.thunderbird-rw-access": "Access email directory of Thunderbird in order to read unread email count and display it in the tray icon",
+            "finish-args-flatpak-appdata-folder-org.mozilla.thunderbird_esr-.thunderbird-rw-access": "Access email directory of Thunderbird ESR in order to read unread email count and display it in the tray icon",
+            "finish-args-flatpak-spawn-access": "Ability to run Thunderbird on Birdtray start or from the tray icon context menu"
         }
     },
     "com.ultimaker.cura": {
@@ -2731,8 +2736,9 @@
     },
     "de.philippun1.turtle": {
         "stable": {
-            "finish-args-has-socket-ssh-auth": "Predates the linter rule",
-            "finish-args-host-filesystem-access": "Predates the linter rule"
+            "finish-args-has-socket-gpg-agent": "Needed to sign and verify Git commits with GPG",
+            "finish-args-has-socket-ssh-auth": "Needed to clone Git repositories using SSH",
+            "finish-args-host-filesystem-access": "Needed to access Git repositories outside the sandbox"
         }
     },
     "de.renew.Renew": {
@@ -2791,6 +2797,16 @@
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "needs access to xdg-config/gtk-3.0 for theming, does not support portals"
+        }
+    },
+    "dev.creeperkatze.full-steam-ahead": {
+        "stable": {
+            "finish-args-flatpak-spawn-access": "Needed to run host commands when scanning for games, and so non-Steam shortcuts can launch when Steam itself is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Full Steam Ahead reads and writes Steam's shortcuts, grid artwork, and collections files to add non-Steam games",
+            "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-ro-access": "Used to read Heroic's installed-games metadata when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-io.itch.itch-ro-access": "Used to read itch's installed-games database when it is installed as a Flatpak",
+            "finish-args-flatpak-appdata-folder-io.github.sharkwouter.Minigalaxy-ro-access": "Used to read MiniGalaxy's configuration to find its games folder when it is installed as a Flatpak",
+            "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing Steam's shortcuts, artwork, and collections files when it is installed natively"
         }
     },
     "dev.eden_emu.eden": {
@@ -3316,6 +3332,12 @@
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for testing ssh connections (Located in HostEditor)",
             "finish-args-ssh-filesystem-access": "This app's main functionality is to edit ssh connections located in ~/.ssh/config"
+        }
+    },
+    "io.github.bujjuisabee.shimelinux": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "The Wayland environment uses native Wayland surfaces, so it requires wayland. fallback-x11 causes a crash due to a HeadlessException from Java Swing, so it requires x11.",
+            "finish-args-kwin-talk-name": "The KDE environment uses a KWin script to provide an optional, opt-in feature where Shimeji can interact with windows, mimicking the behavior of the Windows application it is based on."
         }
     },
     "io.github.Cockatrice.cockatrice": {
@@ -4135,9 +4157,9 @@
         }
     },
     "io.github.mlm_games.mages": {
-      "stable": {
-        "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
-      }
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
+        }
     },
     "io.github.moonlight_mod.moonlight-installer": {
         "stable": {
@@ -4212,11 +4234,6 @@
         }
     },
     "io.github.nelson_lang.Nelson": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.github.nest_desktop.nest-desktop": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
@@ -4353,7 +4370,8 @@
             "finish-args-host-os-filesystem-access": "Predates the linter rule",
             "finish-args-host-var-access": "Predates the linter rule",
             "finish-args-systemd1-system-talk-name": "Predates the linter rule",
-            "finish-args-systemd1-talk-name": "Predates the linter rule"
+            "finish-args-systemd1-talk-name": "Predates the linter rule",
+            "finish-args-unnecessary-xdg-config-systemd-rw-access": "Needed to allow users to edit theirs systemd user unit files"
         }
     },
     "io.github.pol_rivero.github-desktop-plus": {
@@ -4947,7 +4965,6 @@
     "io.otsaloma.nfoview": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
@@ -7941,6 +7958,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.projecttick.MeshMC": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "Minecraft runs natively on Wayland; however, this changed in version 26.3, triggered by the transition to SDL3. While X11 support should remain for compatibility and older versions, the Wayland socket must now be added. Without it, Minecraft will not run stably."
+        }
+    },
     "org.purei.Play": {
         "stable": {
             "finish-args-home-ro-filesystem-access": "Predates the linter rule",
@@ -8833,9 +8855,7 @@
         "stable": {
             "finish-args-flatpak-appdata-folder-com.valvesoftware.Steam-rw-access": "Required to be able to mod games on Steam's Flatpak version.",
             "finish-args-flatpak-appdata-folder-com.heroicgameslauncher.hgl-config-heroic-ro-access": "Required to be able to mod games on Heroic's Flatpak version.",
-            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version.",
-            "finish-args-flatpak-appdata-folder-dev.eden_emu.eden-rw-access": "Required to be able to mod games on Eden's Flatpak Version.",
-            "finish-args-flatpak-appdata-folder-io.github.loot.loot-ro-access": "Required to be able to better mod Bethesda games."
+            "finish-args-flatpak-appdata-folder-io.github.ryubing.Ryujinx-config-Ryujinx-rw-access": "Required to be able to mod games on Ryubing's Flatpak Version."
         }
     },
     "io.github.seinedkoda.kisel": {

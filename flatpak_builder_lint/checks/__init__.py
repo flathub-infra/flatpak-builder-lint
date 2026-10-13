@@ -22,6 +22,7 @@ class Check(metaclass=CheckMeta):
     desktopfile: ClassVar[set[str]] = set()
     info: ClassVar[set[str]] = set()
     repo_primary_refs: ClassVar[set[str]] = set()
+    review_findings: ClassVar[set[tuple[str, str | None, str, str]]] = set()
 
     def _populate_refs(self, repo: str) -> None:
         if not Check.repo_primary_refs:
