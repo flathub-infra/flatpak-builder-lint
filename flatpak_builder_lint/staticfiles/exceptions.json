@@ -4759,9 +4759,9 @@
     },
         "io.github.wyze3306.BedrockOnLinux": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "The launcher window works on Wayland, but the game runs through Wine's X11 driver even in a Wayland session (Wine's Wayland driver is still experimental), so X11 cannot be a fallback only."
+            "finish-args-contains-both-x11-and-wayland": "The launcher window works on Wayland, but the game runs through Wine's X11 driver even in a Wayland session so X11 cannot be a fallback only"
         }
-    }
+    },
     "io.github.xiaoyifang.goldendict_ng": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
