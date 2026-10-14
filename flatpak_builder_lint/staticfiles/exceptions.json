@@ -3577,6 +3577,11 @@
             "finish-args-host-filesystem-access": "Predates the linter rule"
         }
     },
+    "io.github.andunieee.twain": {
+        "*": {
+            "finish-args-home-filesystem-access": "Needs to display files in whatever code directory it is launched in"
+        }
+    },
     "io.github.anil_e.Codd": {
         "stable": {
             "finish-args-has-socket-ssh-auth": "Needed for SSH agent authentication in PostgreSQL tunnel connections"
