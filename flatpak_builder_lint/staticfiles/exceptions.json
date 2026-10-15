@@ -2880,7 +2880,7 @@
     "dev.heppen.webapps": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "For COSMIC desktop environment",
-            "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for creating desktop entries for webapps by hand",
+            "finish-args-unnecessary-xdg-data-applications-create-access": "Needed for creating desktop entries for webapps by hand (https://github.com/flatpak/xdg-desktop-portal/issues/2172)",
             "finish-args-host-ro-filesystem-access": "Reading what browser is currently installed, for future webapps",
             "finish-args-unnecessary-xdg-data-flatpak-ro-access": "Reading installed browsers via flatpak user, for future webapps",
             "finish-args-flatpak-system-folder-ro-access": "Reading installed browsers via flatpak system, for future webapps"
