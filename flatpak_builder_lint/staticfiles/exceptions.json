@@ -1781,7 +1781,7 @@
     },
     "com.inochi2d.inochi-session": {
         "*": {
-            "finish-args-home-filesystem-access": "Append or modify tracking configuration to model files"
+            "finish-args-home-filesystem-access": "Append or modify tracking configuration to model files. This is needed due to a bug which will be resolved in a future version of the application, and this permission will be removed then."
         }
     },
     "com.interversehq.qView": {
