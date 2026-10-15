@@ -6,6 +6,7 @@ import requests
 from urllib3.util import connection as urllib3_connection
 
 from flatpak_builder_lint import domainutils
+from flatpak_builder_lint.domainutils import check_url
 
 
 class TestIPv4OnlyResolution:
@@ -15,7 +16,7 @@ class TestIPv4OnlyResolution:
 
 class TestCheckURL:
     def test_user_agent(self) -> None:
-        domainutils.check_url.cache_clear()
+        check_url.cache_clear()
         with patch("requests.get") as mock_get:
             response = mock_get.return_value.__enter__.return_value
             response.status_code = 200
@@ -23,7 +24,7 @@ class TestCheckURL:
             response.request.headers = {}
             response.headers = {}
 
-            result = domainutils.check_url("https://example.com")
+            result = check_url("https://example.com")
 
         assert result == (True, None)
         assert mock_get.call_args.kwargs["headers"] == {
