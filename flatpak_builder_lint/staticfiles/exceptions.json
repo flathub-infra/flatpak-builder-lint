@@ -2614,6 +2614,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "com.yanklog.YankLog": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Clipboard manager: background clipboard monitoring on GNOME Wayland only works through XWayland, since GNOME has no data-control protocol. fallback-x11 captures nothing there."
+        }
+    },
     "com.zerobrane.studio": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
