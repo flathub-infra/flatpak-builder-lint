@@ -300,8 +300,6 @@ def _review_finding(code: str, ref: str | None, category: str, raw: str) -> dict
     return {
         "rule_code": code,
         "ref": ref,
-        "explanation": f"Permission review: {category} {raw}. "
-        "Explain why this access is needed; moderators may reject it.",
         "affected_permissions": [
             {"category": category, "value": value, "access_mode": mode, "bus": bus, "raw": raw}
         ],
