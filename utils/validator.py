@@ -20,6 +20,7 @@ def normalize_error_arg(s: str) -> str:
 
 def scan_exceptions() -> set[str]:
     pattern = re.compile(r"self\.errors\.add\(\s*(.*?)\s*\)")
+    review_pattern = re.compile(r"self\._review\(\s*([fFrR]{0,2}\"[^\"]*\")")
     exceptions = set()
 
     for root, _, files in os.walk("."):
@@ -28,12 +29,15 @@ def scan_exceptions() -> set[str]:
                 path = os.path.join(root, filename)
                 try:
                     with open(path, encoding="utf-8") as f:
-                        for line in f:
-                            m = pattern.search(line)
-                            if m:
-                                raw = m.group(1).strip()
-                                normalized = normalize_error_arg(raw)
-                                exceptions.add(normalized)
+                        content = f.read()
+                    for line in content.splitlines():
+                        m = pattern.search(line)
+                        if m:
+                            raw = m.group(1).strip()
+                            normalized = normalize_error_arg(raw)
+                            exceptions.add(normalized)
+                    for m in review_pattern.finditer(content):
+                        exceptions.add(normalize_error_arg(m.group(1)))
                 except (UnicodeDecodeError, OSError):
                     continue
 

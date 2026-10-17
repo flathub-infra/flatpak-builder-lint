@@ -104,6 +104,21 @@ def test_appid_url_not_reachable(mock_domainutils: dict[str, MagicMock]) -> None
         )
 
 
+def test_appid_url_uses_manual_verification_domain(
+    mock_domainutils: dict[str, MagicMock],
+) -> None:
+    mock_domainutils["_get_manual_verification_domains"].return_value = {
+        "ch.wwwwww.bar": "aztlan.fciencias.unam.mx"
+    }
+
+    ret = run_checks("tests/manifests/domain_checks/ch.wwwwww.bar.json")
+
+    assert "errors" not in ret
+    mock_domainutils["check_url"].assert_called_once_with(
+        "https://aztlan.fciencias.unam.mx", strict=False
+    )
+
+
 def test_appid_url_is_reachable(mock_domainutils: dict[str, MagicMock]) -> None:
     mock_domainutils["check_url"].return_value = (True, None)
     mock_domainutils["is_app_on_flathub_summary"].return_value = False

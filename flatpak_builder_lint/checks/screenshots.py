@@ -120,8 +120,9 @@ class ScreenshotsCheck(Check):
 
     def check_repo(self, path: str) -> None:
         self._populate_refs(path)
-        refs = self.repo_primary_refs
-        refs.update({r for r in ostree.get_refs(path, None) if r.startswith("screenshots/")})
+        refs = self.repo_primary_refs | {
+            r for r in ostree.get_refs(path, None) if r.startswith("screenshots/")
+        }
         app_refs = {ref for ref in refs if ref.startswith("app/") and len(ref.split("/")) == 4}
         if not app_refs:
             return

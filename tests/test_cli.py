@@ -9,6 +9,7 @@ from unittest.mock import patch
 import pytest
 
 from flatpak_builder_lint import checks
+from flatpak_builder_lint.checks.finish_args import FinishArgsCheck
 from flatpak_builder_lint.cli import (
     _filter,
     main,
@@ -396,3 +397,81 @@ class TestMainArgParsing:
                 ]
             )
         assert "app/com.example.App/x86_64/stable" in checks.Check.repo_primary_refs
+
+
+SELECTED = {
+    "finish-args-unnecessary-xdg-data-typst-ro-access",
+    "finish-args-contains-inherit-wayland-socket",
+    "finish-args-login1-system-talk-name",
+}
+RETAINED = {
+    "finish-args-reserved-app",
+    "finish-args-contains-both-x11-and-fallback",
+    "finish-args-incorrect-dbus-gvfs",
+}
+FINISH_ARGS = [
+    "--filesystem=xdg-data/typst:ro",
+    "--socket=inherit-wayland-socket",
+    "--system-talk-name=org.freedesktop.login1",
+    "--filesystem=/app",
+    "--socket=x11",
+    "--socket=fallback-x11",
+    "--talk-name=org.gtk.vfs",
+]
+
+
+class TestPermissionReview:
+    def _lint(self, tmp_path: Any, exceptions: set[str] | None = None, **kwargs: Any) -> Any:
+        payload = MappingProxyType({"id": "com.example.App", "finish-args": FINISH_ARGS})
+        report_path = tmp_path / "report.json"
+        orig_all = checks.ALL[:]
+        checks.ALL[:] = [FinishArgsCheck]
+        try:
+            with (
+                patch("flatpak_builder_lint.cli.manifest.show_manifest", return_value=payload),
+                patch("flatpak_builder_lint.cli.manifest.infer_appid", return_value=payload["id"]),
+                patch("flatpak_builder_lint.cli.get_local_exceptions", return_value=exceptions),
+                patch(
+                    "flatpak_builder_lint.cli.domainutils.get_remote_exceptions_github",
+                    return_value=set(),
+                ),
+            ):
+                results = run_checks(
+                    "manifest",
+                    "/fake",
+                    enable_exceptions=exceptions is not None,
+                    review_report=str(report_path),
+                    **kwargs,
+                )
+        finally:
+            checks.ALL[:] = orig_all
+        return results, json.loads(report_path.read_text())
+
+    def test_default_mode_keeps_selected_codes_as_errors(self, tmp_path: Any) -> None:
+        results, _ = self._lint(tmp_path)
+        assert set(results["errors"]) >= SELECTED | RETAINED
+
+    def test_review_mode_only_retained_codes_fail(self, tmp_path: Any) -> None:
+        results, _ = self._lint(tmp_path, permission_review=True)
+        assert set(results["errors"]) >= RETAINED
+        assert set(results["errors"]).isdisjoint(SELECTED)
+        assert set(results["warnings"]) >= SELECTED
+
+    @pytest.mark.parametrize("exceptions", [{"finish-args-login1-system-talk-name"}, {"*"}])
+    def test_report_ignores_exceptions(self, tmp_path: Any, exceptions: set[str]) -> None:
+        _, report = self._lint(tmp_path, exceptions)
+        assert {f["rule_code"] for f in report["review_findings"]} == SELECTED
+
+    def test_report_describes_affected_permissions(self, tmp_path: Any) -> None:
+        _, report = self._lint(tmp_path)
+        assert report["app_id"] == "com.example.App"
+        assert report["artifacts"] == []
+        assert sorted(
+            (p["category"], p["value"], p["access_mode"], p["bus"])
+            for f in report["review_findings"]
+            for p in f["affected_permissions"]
+        ) == [
+            ("filesystem", "xdg-data/typst", "ro", None),
+            ("socket", "inherit-wayland-socket", None, None),
+            ("system-talk-name", "org.freedesktop.login1", None, "system"),
+        ]

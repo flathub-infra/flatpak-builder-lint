@@ -1,14 +1,35 @@
 import socket
+from unittest.mock import patch
 
 import pytest
+import requests
 from urllib3.util import connection as urllib3_connection
 
 from flatpak_builder_lint import domainutils
+from flatpak_builder_lint.domainutils import check_url
 
 
 class TestIPv4OnlyResolution:
     def test_allowed_gai_family_uses_ipv4(self) -> None:
         assert urllib3_connection.allowed_gai_family() == socket.AF_INET
+
+
+class TestCheckURL:
+    def test_user_agent(self) -> None:
+        check_url.cache_clear()
+        with patch("requests.get") as mock_get:
+            response = mock_get.return_value.__enter__.return_value
+            response.status_code = 200
+            response.ok = True
+            response.request.headers = {}
+            response.headers = {}
+
+            result = check_url("https://example.com")
+
+        assert result == (True, None)
+        assert mock_get.call_args.kwargs["headers"] == {
+            "User-Agent": f"{requests.utils.default_user_agent()} (flatpak-builder-lint)"
+        }
 
 
 class TestDemangle:
