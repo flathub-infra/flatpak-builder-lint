@@ -8897,5 +8897,10 @@
         "*": {
             "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
         }
+    },
+    "io.github.heathcliff26.turbo-clicker": {
+        "stable": {
+            "finish-args-own-name-wildcard-org.kde": "The Slint framework does not allow specifying a static name for tray icon DBus communication."
+        }
     }
 }
