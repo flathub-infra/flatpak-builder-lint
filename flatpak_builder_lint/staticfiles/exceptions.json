@@ -1855,7 +1855,6 @@
     },
     "com.jetbrains.Rider": {
         "stable": {
-            "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-host-filesystem-access": "Predates the linter rule",
             "finish-args-contains-both-x11-and-wayland": "Rider uses Wayland but some capabilities needs X11, like Avalonia development"
@@ -2375,7 +2374,6 @@
     },
     "com.teamspeak.TeamSpeak": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Teamspeak will crash when audio or hotkey settings are opened",
             "finish-args-unnecessary-xdg-config-TeamSpeak-rw-access": "TeamSpeak 6 plugins installation directory."
         }
     },
@@ -3565,11 +3563,6 @@
         "stable": {
             "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-home-ro-filesystem-access": "Predates the linter rule"
-        }
-    },
-    "io.github.am2r_community_developers.Atomic": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "io.github.amit9838.mousam": {
@@ -4763,7 +4756,7 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
-        "io.github.wyze3306.BedrockOnLinux": {
+    "io.github.wyze3306.BedrockOnLinux": {
         "stable": {
             "finish-args-contains-both-x11-and-wayland": "The launcher window works on Wayland, but the game runs through Wine's X11 driver even in a Wayland session so X11 cannot be a fallback only"
         }
@@ -4846,8 +4839,7 @@
         "stable": {
             "appid-code-hosting-too-few-components": "the app predates this linter rule",
             "finish-args-own-name-wildcard-io.gitlab.firefox": "Predates the linter rule",
-            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule",
-            "finish-args-unnecessary-xdg-config-gtk-3.0-ro-access": "Allows theme detection by reading the user's GTK 3 configuration"
+            "finish-args-own-name-wildcard-io.gitlab.librewolf": "Predates the linter rule"
         }
     },
     "io.gitlab.liferooter.TextPieces": {
@@ -5409,8 +5401,6 @@
     },
     "net.mediaarea.MediaInfo": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule",
             "finish-args-host-ro-filesystem-access": "Predates the linter rule"
         }
     },
@@ -5680,11 +5670,6 @@
     "org.adishatz.syncpasswd": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.aegisub.Aegisub": {
-        "stable": {
-            "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
     "org.altlinux.Tuner": {
@@ -6463,11 +6448,6 @@
     "org.gnome.Logs": {
         "stable": {
             "finish-args-host-var-access": "Predates the linter rule"
-        }
-    },
-    "org.gnome.Lollypop": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "org.gnome.Loupe": {
