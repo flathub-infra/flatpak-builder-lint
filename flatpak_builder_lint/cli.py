@@ -158,7 +158,6 @@ def run_checks(
     enable_janitor_exceptions: bool = False,
     exceptions_repo: str | None = None,
     permission_review: bool = False,
-    review_report: str | None = None,
 ) -> dict[str, str | list[str]]:
     stale_exceptions: set[str] | None = None
 
@@ -184,24 +183,9 @@ def run_checks(
         if (check_method := getattr(check, check_method_name, None)) and callable(check_method):
             check_method(check_method_arg)
 
-    if review_report:
-        report = {
-            "schema_version": 1,
-            "linter_version": __version__,
-            "kind": kind,
-            "app_id": appid[0] if appid else infer_appid_func(path),
-            "artifacts": [
-                {"ref": ref, "commit": ostree.open_ostree_repo(path).resolve_rev(ref, False)[1]}
-                for ref in sorted(checks.Check.repo_primary_refs if kind == "repo" else [])
-            ],
-            "review_findings": [_review_finding(*f) for f in checks.Check.review_findings],
-        }
-        with open(review_report, "w", encoding="utf-8") as report_file:
-            json.dump(report, report_file, indent=2)
-
     errors, warnings, info = checks.Check.errors, checks.Check.warnings, checks.Check.info
     if permission_review:
-        moved = {finding[0] for finding in checks.Check.review_findings}
+        moved = set(checks.Check.review_findings)
         errors, warnings = errors - moved, warnings | moved
         info = {line for line in info if line.split(":", 1)[0] not in moved}
 
@@ -285,25 +269,6 @@ def run_checks(
         results["message"] = help_text
 
     return results
-
-
-def _review_finding(code: str, ref: str | None, category: str, raw: str) -> dict[str, Any]:
-    value, mode = raw, None
-    if category == "filesystem":
-        head, _, suffix = raw.rpartition(":")
-        value, mode = (
-            (head, suffix) if suffix in ("ro", "rw", "create") else (raw.rstrip(":"), "rw")
-        )
-    bus = {"own-name": "session", "talk-name": "session", "system-talk-name": "system"}.get(
-        category
-    )
-    return {
-        "rule_code": code,
-        "ref": ref,
-        "affected_permissions": [
-            {"category": category, "value": value, "access_mode": mode, "bus": bus, "raw": raw}
-        ],
-    }
 
 
 def main() -> int:
@@ -401,7 +366,6 @@ def main() -> int:
         help="Enable debug logging to console",
         action="store_true",
     )
-    parser.add_argument("--review-report", help="Write a permission review report to PATH")
     parser.add_argument(
         "--permission-review",
         help="Report reviewable permission findings as warnings instead of errors",
@@ -430,7 +394,6 @@ def main() -> int:
             args.janitor_exceptions,
             args.exceptions_repo,
             args.permission_review,
-            args.review_report,
         ):
             if "errors" in results:
                 exit_code = 1

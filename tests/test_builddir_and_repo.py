@@ -1,4 +1,3 @@
-import json
 import os
 from typing import Any
 from unittest.mock import MagicMock, patch
@@ -6,16 +5,13 @@ from unittest.mock import MagicMock, patch
 import pytest
 from pytest import MonkeyPatch
 
-from flatpak_builder_lint import cli
 from tests.testlib import (
-    commit_to_repo,
     create_app_icon,
     create_catalogue,
     create_catalogue_icon,
     create_elf,
     create_file,
     move_files,
-    read_ref_from_metadata,
     run_checks,
 )
 
@@ -333,26 +329,6 @@ def test_min_success_metadata(check_type: str, tmp_testdir: str) -> None:
         "appstream-flathub-manifest-url-not-reachable",
     ):
         assert n not in found_errors
-
-
-def test_repo_review_report_lists_only_primary_refs(tmp_testdir: str) -> None:
-    testdir = "tests/builddir/min_success_metadata/org.flathub.gui"
-    move_files(testdir)
-    create_catalogue(testdir, "org.flathub.gui.xml")
-    create_app_icon(testdir, "org.flathub.gui.png")
-    create_catalogue_icon(testdir, "org.flathub.gui.png")
-    create_file(os.path.join(testdir, "screenshots"), "org.flathub.gui-screenshot.png")
-    repo_path = os.path.join(tmp_testdir, "repo")
-    report_path = os.path.join(tmp_testdir, "report.json")
-    commit_to_repo(testdir, repo_path)
-
-    cli.run_checks("repo", repo_path, review_report=report_path)
-
-    with open(report_path, encoding="utf-8") as f:
-        report = json.load(f)
-    assert [artifact["ref"] for artifact in report["artifacts"]] == [
-        read_ref_from_metadata(testdir)
-    ]
 
 
 def test_aps_cid_mismatch_flatpak_id(check_type: str, tmp_testdir: str) -> None:
