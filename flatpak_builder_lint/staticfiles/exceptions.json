@@ -8193,6 +8193,11 @@
             "finish-args-home-filesystem-access": "Predates the linter rule"
         }
     },
+    "org.subtitld.Subtitld": {
+        "stable": {
+            "finish-args-home-filesystem-access": "A project refers to its video, audio and subtitle files by path, wherever they are; reopening it needs to read them again without a file chooser for each."
+        }
+    },
     "org.sugarlabs.MusicBlocks": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
