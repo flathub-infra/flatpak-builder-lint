@@ -5257,12 +5257,6 @@
             "finish-args-arbitrary-xdg-data-rw-access": "The app creates and removes desktop files in ~/.local/share/applications."
         }
     },
-    "net.cozic.joplin_desktop": {
-        "*": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-home-filesystem-access": "Predates the linter rule"
-        }
-    },
     "net.daase.journable": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
