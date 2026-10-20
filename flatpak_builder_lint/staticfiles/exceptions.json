@@ -2844,6 +2844,11 @@
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
         }
     },
+    "dev.edfloreshz.WritingTools": {
+        "stable": {
+            "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
+        }
+    },
     "dev.ensoft.ecode": {
         "stable": {
             "finish-args-flatpak-spawn-access": "required to access language servers, linters and formatters installed on host",
