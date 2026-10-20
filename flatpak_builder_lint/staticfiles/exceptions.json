@@ -5722,6 +5722,11 @@
             "finish-args-host-tmp-access": "Predates the linter rule"
         }
     },
+    "org.atheme.audacious": {
+        "*": {
+            "finish-args-contains-both-x11-and-wayland": "Required for the Winamp Classic Skins to work"
+        }
+    },
     "org.avidemux.Avidemux": {
         "*": {
             "finish-args-host-filesystem-access": "Predates the linter rule"
