@@ -3863,6 +3863,7 @@
     },
     "io.github.forkgram.tdesktop": {
         "stable": {
+            "finish-args-login1-system-talk-name": "Clear wallet secrets on sleep",
             "flathub-json-automerge-enabled": "Telegram enforces client version cutoffs; stale builds lose server connectivity",
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
@@ -8231,6 +8232,7 @@
     "org.telegram.desktop": {
         "*": {
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
+            "finish-args-login1-system-talk-name": "Clear wallet secrets on sleep",
             "flathub-json-automerge-enabled": "Predates the linter rule",
             "module-qt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag",
             "module-tde2e-checker-tracks-commits": "Manually updated",
