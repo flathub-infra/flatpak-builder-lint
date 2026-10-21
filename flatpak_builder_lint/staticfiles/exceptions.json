@@ -4713,6 +4713,14 @@
             "finish-args-legacy-icon-folder-permission": "Specifically meant to save desktop settings"
         }
     },
+    "io.github.vinceecniv.vito": {
+        "stable": {
+            "finish-args-host-os-ro-filesystem-access": "detect environment for portals.conf to avoid showing non-functional gnome shortcut portal on first start. path cant be more restricted for flatpak.",
+            "finish-args-only-wayland": "typing and clipboard only work through wayland tools. for x11 users there is an appimage",
+            "finish-args-unnecessary-xdg-config-xdg-desktop-portal-ro-access": "can hold users portals.conf which would overrule system pref",
+            "finish-args-unnecessary-xdg-data-xdg-desktop-portal-ro-access": "can hold users portals.conf which would overrule system pref"
+        }
+    },
     "io.github.voxelcubes.deepqt": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
