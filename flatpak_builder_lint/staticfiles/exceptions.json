@@ -4713,6 +4713,14 @@
             "finish-args-legacy-icon-folder-permission": "Specifically meant to save desktop settings"
         }
     },
+    "io.github.vinceecniv.vito": {
+        "stable": {
+            "finish-args-host-os-ro-filesystem-access": "Reads only the host's portals.conf (/run/host/usr/share/xdg-desktop-portal and /run/host/etc/xdg-desktop-portal) to see which backend serves GlobalShortcuts; narrower /usr and /etc paths are rejected as reserved",
+            "finish-args-only-wayland": "Wayland-only by design: text is typed via wtype and copied via wl-copy, which have no X11 path; X11 users are pointed to the AppImage",
+            "finish-args-unnecessary-xdg-config-xdg-desktop-portal-ro-access": "Reads the user's portals.conf overrides, which take precedence over the host files, to detect the GlobalShortcuts backend",
+            "finish-args-unnecessary-xdg-data-xdg-desktop-portal-ro-access": "Reads the user's portals.conf overrides, which take precedence over the host files, to detect the GlobalShortcuts backend"
+        }
+    },
     "io.github.voxelcubes.deepqt": {
         "stable": {
             "finish-args-home-filesystem-access": "Predates the linter rule"
