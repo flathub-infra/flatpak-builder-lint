@@ -15,4 +15,6 @@ ENV GI_TYPELIB_PATH=/app/lib/girepository-1.0
 
 ADD org.flatpak.Builder/builddir/files /app
 
+RUN fc-cache -fs
+
 ENTRYPOINT ["/app/bin/flatpak-builder-lint"]
