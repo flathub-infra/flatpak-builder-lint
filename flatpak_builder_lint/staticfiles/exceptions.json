@@ -1,14 +1,4 @@
 {
-    "app.devsuite.Ptyxis": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "application requires ptyxis-agent for PTY setup on host"
-        }
-    },
-    "app.freelens.Freelens": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
-        }
-    },
     "app.lith.Lith": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -17,16 +7,6 @@
     "app.organicmaps.desktop": {
         "*": {
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
-        }
-    },
-    "app.rednotebook.RedNotebook": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "at.priv.toastfreeware.ConfClerk": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "br.app.pw3270.terminal": {
@@ -44,29 +24,14 @@
             "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
         }
     },
-    "ca.desrt.dconf-editor": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "ca.parallel_launcher.ParallelLauncher": {
         "stable": {
             "finish-args-login1-talk-name": "Predates the linter rule"
         }
     },
-    "ca.vtrlx.Telepipe": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "The app's intended use is to run commands on the host machine, similar to a terminal"
-        }
-    },
     "cc.arduino.arduinoide": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "ch.openboard.OpenBoard": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "ch.tlaun.TL": {
@@ -79,34 +44,9 @@
             "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
         }
     },
-    "chat.quadrix.Quadrix": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "chat.rocket.RocketChat": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "cn.eeo.ClassIn": {
         "stable": {
             "flathub-json-automerge-enabled": "Allow merging of autobot PRs to keep ClassIn updated (uses extra-data with external link)"
-        }
-    },
-    "codes.merritt.Nyrna": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to access and change process status on the host"
-        }
-    },
-    "com.abagames.rRootage": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.adamcake.Bolt": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "some games support wayland and some don't"
         }
     },
     "com.adilhanney.ricochlime": {
@@ -139,37 +79,23 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "com.bishwasaha.Koncentro": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app needs to run commands to change proxy settings on the host"
-        }
-    },
     "com.bitwarden.desktop": {
         "stable": {
-            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
+            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
         }
     },
     "com.bixense.PasswordCalculator": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.bladecoder.adventure-editor": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.borgbase.Vorta": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
         }
     },
     "com.brave.Browser": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
@@ -185,46 +111,21 @@
     },
     "com.chatterino.chatterino": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.chez.GrafX2": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.core447.StreamController": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to allow plugins to open apps on the host"
-        }
-    },
-    "com.dec05eba.gpu_screen_recorder": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn to capture a monitor on AMD/Intel GPUs"
-        }
-    },
-    "com.devolutions.remotedesktopmanager": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required for Local Terminal and PowerShell to spawn host shells."
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.diffingo.fwbackups": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required to backup and restore installed packages"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.discordapp.Discord": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
     "com.discordapp.DiscordCanary": {
         "beta": {
-            "finish-args-contains-both-x11-and-wayland": "The client currently crashes if --socket=wayland and --socket=fallback-x11 are used",
             "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients are forced to update"
         }
     },
@@ -251,16 +152,6 @@
     "com.frac_tion.teleport": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "com.freerdp.FreeRDP": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.georgefb.quickaccess": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "com.getpostman.Postman": {
@@ -325,14 +216,12 @@
     },
     "com.github.Matoking.protontricks": {
         "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.Murmele.Gittyup": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.PintaProject.Pinta": {
@@ -434,8 +323,7 @@
     },
     "com.github.babluboy.bookworm": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.bcedu.valasimplehttpserver": {
@@ -486,8 +374,7 @@
     },
     "com.github.d4nj1.tlpui": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.dahenson.agenda": {
@@ -513,14 +400,12 @@
     },
     "com.github.devalien.workspaces": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.dimkr.gplaces": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required to handle unsupported MIME types and URLs"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.donadigo.appeditor": {
@@ -586,8 +471,7 @@
     },
     "com.github.git_cola.git-cola": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Needed for gitk subprocesses"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.gmg137.netease-cloud-music-gtk": {
@@ -608,8 +492,7 @@
     "com.github.hluk.copyq": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.github.hopsan.Hopsan": {
@@ -680,8 +563,7 @@
     },
     "com.github.johnfactotum.Foliate": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.johnfactotum.QuickLookup": {
@@ -753,8 +635,7 @@
     "com.github.maoschanz.DynamicWallpaperEditor": {
         "stable": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.github.maoschanz.drawing": {
@@ -770,8 +651,7 @@
     },
     "com.github.marktext.marktext": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.mgropp.PdfJumbler": {
@@ -787,14 +667,12 @@
     },
     "com.github.mtkennerly.ludusavi": {
         "*": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.muriloventuroso.easyssh": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.github.muriloventuroso.givemelyrics": {
@@ -1115,8 +993,7 @@
     },
     "com.github.ztefn.haguichi": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
     "com.gitlab.ColinDuquesnoy.MellowPlayer": {
@@ -1176,25 +1053,9 @@
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
-    "com.google.Chrome": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "com.google.ChromeDev": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "com.helix_editor.Helix": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to access language servers installed on host"
-        }
-    },
-    "com.heroicgameslauncher.hgl": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "com.icons8.Lunacy": {
@@ -1215,30 +1076,17 @@
     },
     "com.jetbrains.CLion": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "external-gitmodule-url-found": "Predates the linter rule"
         }
     },
     "com.jetbrains.PhpStorm": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "external-gitmodule-url-found": "Predates the linter rule"
         }
     },
     "com.jetbrains.PyCharm-Professional": {
         "stable": {
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
-        }
-    },
-    "com.jetbrains.Rider": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Rider uses Wayland but some capabilities needs X11, like Avalonia development"
-        }
-    },
-    "com.jetpackduba.Gitnuro": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to access external terminal emulators and run external credentials managers for Git"
         }
     },
     "com.jgraph.drawio.desktop": {
@@ -1248,67 +1096,27 @@
     },
     "com.leinardi.gst": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.leinardi.gx52": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.logseq.Logseq": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.lunarclient.LunarClient": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "com.mastermindzh.tidal-hifi": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.mattermost.Desktop": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "com.microsoft.Edge": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "com.modrinth.ModrinthApp": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required for the app to launch older versions of Minecraft pre-26.3 that require X11."
-        }
-    },
-    "com.notepadqq.Notepadqq": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "com.obsproject.Studio": {
         "*": {
-            "external-gitmodule-url-found": "Flatpak are published by upstream from their own repo",
-            "finish-args-flatpak-spawn-access": "Required for the virtual camera feature"
-        }
-    },
-    "com.opera.Opera": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.overwolf.curseforge": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required to launch Minecraft: versions 26.3 and newer use SDL3 and need the Wayland socket to run stably, while older versions require X11."
+            "external-gitmodule-url-found": "Flatpak are published by upstream from their own repo"
         }
     },
     "com.oyajun.ColorCode": {
@@ -1321,54 +1129,14 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "com.pojtinger.felicitas.Multiplex": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to execute external copies of MPV and control them via IPC"
-        }
-    },
-    "com.pot_app.pot": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "com.prusa3d.PrusaSlicer": {
         "*": {
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
         }
     },
-    "com.raggesilver.BlackBox": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.ranfdev.DistroShelf": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "needed to run distrobox commands and manage containers"
-        }
-    },
-    "com.rawtherapee.RawTherapee": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "com.redis.RedisInsight": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "com.revolutionarygamesstudio.ThriveLauncher": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.rioterm.Rio": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator"
-        }
-    },
-    "com.shatteredpixel.shatteredpixeldungeon": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "com.steamgriddb.SGDBoop": {
@@ -1381,52 +1149,23 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "com.syntevo.SmartSynchronize": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.tencent.wemeet": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "This app only runs on x11 but needs wayland socket to support share screen"
-        }
-    },
     "com.tominlab.wonderpen": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "com.ulaa.Ulaa": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Optional Wayland support"
-        }
-    },
-    "com.ulduzsoft.Birdtray": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Ability to run Thunderbird on Birdtray start or from the tray icon context menu"
-        }
-    },
     "com.ultimaker.cura": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.unity.UnityHub": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "x11 is needed to start the editor from the hub with > 3.12.0, wayland is necessary to start the hub (which starts the editor); with just fallback-x11 the editor fails to start entirely",
-            "finish-args-flatpak-spawn-access": "needed to spawn the flatpaked version of vscode from the editor"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "com.usebottles.bottles": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "App uses Wayland, and wine installations inside of it can use X11",
             "module-vmtouch-checker-tracks-commits": "Module is unmaintained for 2 years"
         }
     },
     "com.valvesoftware.Steam": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "not every game supports wayland",
             "module-platform-bootstrap-source-dir-not-allowed": "Predates the linter rule",
             "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule"
         }
@@ -1436,109 +1175,14 @@
             "manifest-file-is-symlink": "Predates the linter rule"
         }
     },
-    "com.viber.Viber": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.visualstudio.code": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.visualstudio.code.insiders": {
-        "beta": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.vivaldi.Vivaldi": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "com.vscodium.codium": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "com.vscodium.codium-insiders": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "needed to spawn several tools and command from host like podman, toolbox, compilers, etc"
-        }
-    },
-    "com.vysp3r.ProtonPlus": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to install and manage compatibility-runtimes on the host"
-        }
-    },
-    "com.xnview.XnViewMP": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "com.zquestclassic.ZQuest": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "cx.modal.TestCenter": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Required to run systemd-sysext and related tools on the host"
-        }
-    },
-    "de.gonicus.bubbles": {
-        "*": {
-            "finish-args-only-wayland": "X11 support would be a non-minor code change, potentially with differences in UX and runtime behavior"
-        }
-    },
-    "de.klayout.KLayout": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "de.mediathekview.MediathekView": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to start VLC flatpak to view videos and live streams"
-        }
-    },
     "de.philippun1.Snoop": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "de.willuhn.Jameica": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "de.z_ray.OptimusUI": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Requires use of prime-select, nvidia-prime-select or fedora-prime-select on the host; Furthermore it requires access to /etc/os-release on the host to determine the real host distribution to use the correct prime tool and enable / disable features in the UI"
-        }
-    },
-    "dev.boxi.Boxi": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "dev.creeperkatze.full-steam-ahead": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to run host commands when scanning for games, and so non-Steam shortcuts can launch when Steam itself is installed as a Flatpak"
-        }
-    },
-    "dev.eden_emu.eden": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing"
-        }
-    },
-    "dev.ensoft.ecode": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to access language servers, linters and formatters installed on host"
-        }
-    },
-    "dev.fishies.godl": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "needed to spawn Godot"
         }
     },
     "dev.geopjr.Turntable": {
@@ -1550,21 +1194,6 @@
     "dev.jamiethalacker.window_painter": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "dev.lapce.lapce": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "dev.lizardbyte.app.Sunshine": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "needed to start applications"
-        }
-    },
-    "dev.neovide.neovide": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to allow spawning neovim on the host, terminal emulating, tools and command from host like podman, toolbox, compilers, etc"
         }
     },
     "dev.overlayed.Overlayed": {
@@ -1589,38 +1218,12 @@
     },
     "dev.storyapps.starc": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "dev.zed.Zed": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "application won't open without this permission set; also needed to spawn several tools and commands from the host"
-        }
-    },
-    "dev.zed.Zed-Preview": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "application won't open without this permission set; also needed to spawn several tools and commands from the host"
-        }
-    },
-    "engineer.atlas.Nyxt": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required access to external tools since Nyxt ecosystem expects to rely heavily on them"
-        }
-    },
-    "es.estoes.wallpaperDownloader": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "es.gob.afirma": {
         "stable": {
             "appid-url-not-reachable": "The app ID es.gob.afirma is used by upstream and cannot be changed. It follows the reverse-DNS convention for gob.es, a domain owned and operated by the Spanish Government, however the specific subdomain afirma.gob.es does not exist. The official upstream is published by the Spanish Government at https://firmaelectronica.gob.es/ciudadanos/descargas."
-        }
-    },
-    "eu.planete_kraus.Tarot": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "eu.quelltext.open_chakra_toning": {
@@ -1638,24 +1241,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "fr.fgrabenstaetter.DigitalAssets": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "im.fluffychat.Fluffychat": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "im.nheko.Nheko": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "im.riot.Riot": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "info.olasagasti.revelation": {
@@ -1676,46 +1264,6 @@
     "io.exodus.Exodus": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "io.gdevelop.ide": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.github.Archeb.opentrace": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "This app uses org.freedesktop.Flatpak to provide ability to run nexttrace with cap_net_raw, which is necessary for a traceroute app"
-        }
-    },
-    "io.github.bujjuisabee.shimelinux": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "The Wayland environment uses native Wayland surfaces, so it requires wayland. fallback-x11 causes a crash due to a HeadlessException from Java Swing, so it requires x11."
-        }
-    },
-    "io.github.DenysMb.Kontainer": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
-        }
-    },
-    "io.github.Faugus.faugus-launcher": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Without socket=X11 Winetricks doesn't work on Wayland and without socket=wayland the Wine Wayland driver doesn't work."
-        }
-    },
-    "io.github.MakovWait.Godots": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "flatpak-spawn is needed for blender and external code editors"
-        }
-    },
-    "io.github.N3kosempai.klia-store": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Klia Store is a Flatpak application manager that needs to execute flatpak commands on the host system using flatpak-spawn to install, update, and manage other Flatpak applications."
-        }
-    },
-    "io.github.OkuBrowser.oku": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system"
         }
     },
     "io.github.OpenToonz": {
@@ -1739,44 +1287,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "io.github.TeamWheelWizard.WheelWizard": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "this program supports Wayland but also depends on the Dolphin Emulator, which currently forces the use of X11, so not having X11 would break regular usage of the application"
-        }
-    },
     "io.github.TransmissionRemoteGtk": {
         "stable": {
             "appid-code-hosting-too-few-components": "app-id predates this linter rule"
-        }
-    },
-    "io.github.Youda008.DoomRunner": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to execute external game engines"
-        }
-    },
-    "io.github.achetagames.epic_asset_manager": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.github.aggalex.Wineglass": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.github.alper_han.crossmacro": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required for optional Wayland Quick Setup via flatpak-spawn + pkexec to apply per-session input ACLs."
-        }
-    },
-    "io.github.alyraffauf.Switchyard": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to launch browsers the user has installed on their system."
-        }
-    },
-    "io.github.am2r_community_developers.AM2RLauncher": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "io.github.amit9838.mousam": {
@@ -1787,16 +1300,6 @@
     "io.github.arijanj.Mimic": {
         "stable": {
             "finish-args-arbitrary-xdg-config-create-access": "Writing mimeapps.list if it doesn't exist"
-        }
-    },
-    "io.github.cloose.CuteMarkEd": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.github.congard.qnvsm": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "io.github.dida_code.OpstaKultura": {
@@ -1814,29 +1317,9 @@
             "appid-code-hosting-too-few-components": "app-id predates this linter rule"
         }
     },
-    "io.github.dummerle.rare": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Required to run Steam Linux Runtime based or host-native Steam compatibility tools (SteamRT/Proton) on the host"
-        }
-    },
-    "io.github.dvlv.boxbuddyrs": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Requires use of Distrobox on the host"
-        }
-    },
-    "io.github.epasveer.seer": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Seer needs to launch the gdb binary that is on the host system."
-        }
-    },
     "io.github.erkin.ponysay": {
         "stable": {
             "finish-args-not-defined": "Terminal only, predates the linter"
-        }
-    },
-    "io.github.everestapi.Olympus": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to be able to launch the modded Celeste game outside of the flatpak sandbox"
         }
     },
     "io.github.ezQuake": {
@@ -1846,8 +1329,7 @@
     },
     "io.github.flattool.Warehouse": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "Required to manage Flatpaks on the host"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "io.github.forkgram.tdesktop": {
@@ -1859,64 +1341,14 @@
             "module-tg_owt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag"
         }
     },
-    "io.github.giantpinkrobots.bootqt": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "io.github.gopher64.gopher64": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "io.github.hakandundar34coding.system-monitoring-center": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "The application is a system monitor. For monitoring and managing system, several commands (mostly ls, cat, systemctl, renice, ps, nmcli) are run on host OS"
-        }
-    },
     "io.github.ihhub.Fheroes2": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "io.github.ilya_zlobintsev.LACT": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to set up the host service for GPU control."
-        }
-    },
-    "io.github.jacalz.rymdport": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.github.jardon.Outlet": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps"
-        }
-    },
-    "io.github.jean28518.Linux-Assistant": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to get information about the os and execute host commands e.g. like the package managers"
-        }
-    },
-    "io.github.jeffshee.Hidamari": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.github.jliljebl.Flowblade": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.github.jmberesford.Retrom": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app is a launcher for other arbitrary applications configured by the user and requires the ability to spawn external processes on the host"
-        }
-    },
-    "io.github.kolunmi.Bazaar": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install and launch apps"
         }
     },
     "io.github.kotatogram": {
@@ -1936,29 +1368,9 @@
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
     },
-    "io.github.lawstorant.boxflat": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Required for automatic per-game preset application based on process name"
-        }
-    },
     "io.github.limads.Queries": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "io.github.limo_app.limo": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required for running user defined modding tools, which take the form of arbitrary commands to be run on the host"
-        }
-    },
-    "io.github.linx_systems.ClamUI": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to invoke the ClamAV Daemon scanner (clamdscan) from the host system for better virus scanning operation performance."
-        }
-    },
-    "io.github.maddecoder.Classic-RBDOOM-3-BFG": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "io.github.martinrotter.textosaurus": {
@@ -1966,40 +1378,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.github.mfat.sshpilot": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "The app is basically a terminal emulator with extra options for SSH. Users expect host shell access weh opening a local terminal tab."
-        }
-    },
-    "io.github.mhogomchungu.sirikali": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "this app is a front end to gocryptfs,securefs and cryfs. These tools do folder based encryption and they depend on fusermount located at /bin to mount and unmount their file systems"
-        }
-    },
-    "io.github.mightycreak.Diffuse": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "io.github.mki1967.mki3dgame": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.github.mlm_games.mages": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Mages uses Compose Desktop/JCEF on stock OpenJDK, requiring X11 for the AWT-based UI, while Wayland socket access is required for functional screen sharing on Wayland. Using fallback-x11 prevents the application from launching correctly on Wayland."
-        }
-    },
-    "io.github.mpc_qt.mpc-qt": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "The app supports both X11 and Wayland through a Tweaks setting"
-        }
-    },
-    "io.github.mpobaschnig.Vaults": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "io.github.nate_xyz.Chromatic": {
@@ -2017,15 +1398,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "io.github.nikelaz.CTLDash": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to execute host commands (systemctl enable/disable via pkexec, and journalctl for service logs), as these operations require escaping the sandbox to interact with the host's systemd."
-        }
-    },
     "io.github.nokse22.inspector": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "Needed to execute external commands to show informations about your computer"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "io.github.nokse22.teleprompter": {
@@ -2050,16 +1425,7 @@
     },
     "io.github.pantheon_tweaks.pantheon-tweaks": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to get XDG_DATA_DIRS with flatpak-swapn to bridge host's GSettings.",
             "finish-args-legacy-icon-folder-permission": "DE tweak app"
-        }
-    },
-    "io.github.philipk.boilr": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        },
-        "beta": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "io.github.piotrek_k._2dTaskBoard": {
@@ -2067,20 +1433,9 @@
             "appid-url-not-reachable": "Repo is 2dTaskBoard but appstream expects leading underscore, manually verified"
         }
     },
-    "io.github.pol_rivero.github-desktop-plus": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to spawn external text editors and terminals."
-        }
-    },
-    "io.github.prateekmedia.appimagepool": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "io.github.qnapi": {
         "stable": {
-            "appid-code-hosting-too-few-components": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-code-hosting-too-few-components": "app-id predates this linter rule"
         }
     },
     "io.github.quodlibet.ExFalso": {
@@ -2098,36 +1453,14 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.github.realmazharhussain.GdmSettings": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "io.github.rinigus.OSMScoutServer": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
         }
     },
     "io.github.sharkwouter.Minigalaxy": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "io.github.shiftey.Desktop": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.github.shonubot.Spruce": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Allows calling host tools for size checks and safe deletions, restricted to user-selected targets."
-        }
-    },
-    "io.github.thetumultuousunicornofdarkness.cpu-x": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "access to /dev/cpu and /dev/mem is required in order to display data about CPU and memory"
         }
     },
     "io.github.thiefmd.themegenerator": {
@@ -2135,19 +1468,8 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.github.totoshko88.RustConn": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to support full Local Shell features"
-        }
-    },
-    "io.github.trigg.discover_overlay": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "io.github.ungoogled_software.ungoogled_chromium": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "module-chromium-source-dir-not-allowed": "Predates the linter rule"
         }
     },
@@ -2176,24 +1498,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "io.github.wivrn.wivrn": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to launch games on the host"
-        }
-    },
-    "io.github.wyze3306.BedrockOnLinux": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "The launcher window works on Wayland, but the game runs through Wine's X11 driver even in a Wayland session so X11 cannot be a fallback only"
-        }
-    },
     "io.github.xiaoyifang.goldendict_ng": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "io.github.zyedidia.micro": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "users may want to use it for built-in terminal emulator"
         }
     },
     "io.gitlab.Goodvibes": {
@@ -2211,40 +1518,9 @@
             "appid-code-hosting-too-few-components": "the app predates this linter rule"
         }
     },
-    "io.gitlab.liferooter.TextPieces": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required for running user-defined text actions in host environment"
-        }
-    },
-    "io.howl.Editor": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "io.itch.amcsquad.amcsquad": {
         "stable": {
             "module-amc-data-checker-tracks-commits": "Uses tag"
-        }
-    },
-    "io.itch.itch": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.jamulus.Jamulus": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "io.kapsa.drive": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to spawn fusermount3 in order to run FUSE mount on a host system"
-        }
-    },
-    "io.kinvolk.Headlamp": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "io.liri.Calculator": {
@@ -2252,14 +1528,8 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.missioncenter.MissionCenter": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "access to /proc is required in order to list running processes and their respective resource usage; see https://github.com/flathub/flathub/pull/4313#discussion_r1257263670"
-        }
-    },
     "io.mpv.Mpv": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "module-luajit-checker-tracks-commits": "Tracks stable branch commits, doesn't have releases",
             "module-x264-checker-tracks-commits": "Tracks stable branch commits, doesn't have releases"
         }
@@ -2274,29 +1544,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "io.podman_desktop.PodmanDesktop": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.qt.QtCreator": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "io.qt.qdbusviewer": {
         "stable": {
             "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
-        }
-    },
-    "io.stoplight.studio": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "io.typora.Typora": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "io.wavebox.Wavebox": {
@@ -2312,11 +1562,6 @@
             "module-tg_owt-checker-tracks-commits": "Manually updated via upstream deps file fetched from app's tag"
         }
     },
-    "it.mijorus.gearlever": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to launch AppImages that the user integrates into the system menu"
-        }
-    },
     "life.bolls.bolls": {
         "stable": {
             "finish-args-full-home-config-access": "Predates the linter rule"
@@ -2327,19 +1572,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "me.amankhanna.opendeck": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "host shell access required for running user-provided commands and also to start plugins using Wine and Node"
-        }
-    },
     "me.sanchezrodriguez.passes": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "menu.kando.Kando": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required because Kando is an app-launcher"
         }
     },
     "moe.tundra.Tundra": {
@@ -2355,22 +1590,6 @@
     "net.danigm.loop": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "net.davidotek.pupgui2": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "net.displaycal.DisplayCAL": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.hovancik.Stretchly": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "net.imaginaryinfinity.Squiid": {
@@ -2390,49 +1609,7 @@
     },
     "net.lutris.Lutris": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "module-lutris_wrapper-source-dir-not-allowed": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.AVIMetaEdit": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.BWFMetaEdit": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.DVAnalyzer": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.MOVMetaEdit": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.MediaConch": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.mediaarea.QCTools": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.nokyan.Resources": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to spawn a small executable dedicated to finding running processes in /proc"
-        }
-    },
-    "net.oz9aec.Gpredict": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "net.redeclipse.RedEclipse": {
@@ -2442,7 +1619,6 @@
     },
     "net.retrodeck.retrodeck": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-login1-talk-name": "Predates the linter rule"
         }
     },
@@ -2450,16 +1626,6 @@
         "stable": {
             "flathub-json-automerge-enabled": "Grandfather in on condition of weekly update workflow. Without automerge builds fail as branch moves to another SHA",
             "module-rpcs3-source-git-branch": "Needed for custom updater to update once a day per upstream recommendation."
-        }
-    },
-    "net.rpdev.OpenTodoList": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "net.sf.nootka": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "net.sourceforge.Teo": {
@@ -2475,11 +1641,6 @@
     "net.werwolv.ImHex": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "net.wz2100.wz2100": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "network.loki.Session": {
@@ -2507,16 +1668,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.bunkus.mkvtoolnix-gui": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.catacombing.kumo": {
-        "stable": {
-            "finish-args-only-wayland": "this program doesn't have x11 support"
-        }
-    },
     "org.chrisoft.qmidiplayer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2524,18 +1675,7 @@
     },
     "org.chromium.Chromium": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "optional wayland support",
             "module-chromium-source-dir-not-allowed": "Predates the linter rule"
-        }
-    },
-    "org.claws_mail.Claws-Mail": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.cockpit_project.CockpitClient": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "org.codeblocks.codeblocks": {
@@ -2543,39 +1683,9 @@
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
         }
     },
-    "org.contourterminal.Contour": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "org.coolero.Coolero": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "org.cryptomator.Cryptomator": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "org.davmail.DavMail": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.desktop_plus.desktop-plus": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to spawn external text editors and terminals."
-        }
-    },
-    "org.dpsoftware.FireflyLuciferin": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "JavaFX requires X11, GStreamer along with Pipewiresrc requires Wayland."
-        }
-    },
-    "org.dupot.easyflatpak": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to install then override some flatpak application (for example asking game folder for steam or lutris)"
         }
     },
     "org.easyrpg.player": {
@@ -2591,18 +1701,12 @@
     "org.fcitx.Fcitx5": {
         "stable": {
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-            "finish-args-contains-both-x11-and-wayland": "Input method daemon need to talk with both XWayland/X11/Wayland applications at the same time",
             "desktop-file-is-nodisplay": "Input method doesn't need to show in menu"
         }
     },
     "org.fedoraproject.MediaWriter": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.ferdium.Ferdium": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "org.flathub.exceptions": {
@@ -2632,11 +1736,6 @@
             "*": "used by flathub infra"
         }
     },
-    "org.freecad.FreeCAD": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Needed to launch OpenSCAD flatpak as a command-line tool for the importer."
-        }
-    },
     "org.freedesktop.Bustle": {
         "stable": {
             "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -2648,36 +1747,6 @@
             "appstream-missing-appinfo-file": "This provides an extension point only",
             "finish-args-not-defined": "This provides an extension point only",
             "toplevel-no-command": "This provides an extension point only"
-        }
-    },
-    "org.freedesktop.Piper": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.Platform.ClInfo": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.Platform.GlxInfo": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.Platform.VaInfo": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.Platform.VdpauInfo": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.Platform.VulkanInfo": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "org.freedesktop.Sdk.Extension.dmd": {
@@ -2695,34 +1764,9 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "org.freedesktop.Tuhi": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.freedesktop.adriconf": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "org.freefilesync.FreeFileSync": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.freeplane.App": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.gabmus.gfeeds": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "org.gabmus.hydrapaper": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "org.gahshomar.Gahshomar": {
@@ -2730,20 +1774,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.geeqie.Geeqie": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "org.geogebra.GeoGebra": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "org.gitfourchette.gitfourchette": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Start external merge tool via flatpak-spawn"
         }
     },
     "org.gnome.Boxes": {
@@ -2758,18 +1791,12 @@
     },
     "org.gnome.Builder": {
         "*": {
-            "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
+            "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
         }
     },
     "org.gnome.ColorViewer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.DejaDup": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Required to spawn fusermount, mounting the user's backup via FUSE"
         }
     },
     "org.gnome.Evolution": {
@@ -2782,11 +1809,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.gnome.Genius": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "org.gnome.NetworkDisplays": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -2794,15 +1816,13 @@
     },
     "org.gnome.OCRFeeder": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "finish-args-freedesktop-dbus-system-talk-name": "Predates the linter rule",
             "finish-args-freedesktop-dbus-talk-name": "Predates the linter rule"
         }
     },
     "org.gnome.OfficeRunner": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.gnome.Polari": {
@@ -2840,11 +1860,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.gnome.World.PikaBackup": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "org.gnome.dspy": {
         "stable": {
             "finish-args-arbitrary-dbus-access": "the app requires direct dbus access"
@@ -2870,61 +1885,14 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.gnome.Manuals": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "application uses libflatpak to install SDK documentation"
-        }
-    },
-    "org.gnu.emacs": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "required to access external tools since the Emacs ecosystem expects to lean heavily on them"
-        }
-    },
     "org.godotengine.Godot": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        },
-        "beta": {
-            "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Godot will fail to start up in Wayland sessions as X11 is still the default. The change this error arises from, https://github.com/flathub/org.godotengine.Godot/pull/170, predates this linter rule."
-        }
-    },
-    "org.godotengine.Godot3": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
-        }
-    },
-    "org.godotengine.Godot3Sharp": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
-        }
-    },
-    "org.godotengine.GodotSharp": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app requires flatpak-spawn access to allow external code editors to be used with it"
-        },
-        "beta": {
-            "finish-args-contains-both-x11-and-wayland": "Required as with fallback-x11 socket, Godot will fail to start up in Wayland sessions as X11 is still the default."
-        }
-    },
-    "org.hedgewars.Hedgewars": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.indii.mendingwall": {
         "stable": {
             "finish-args-arbitrary-xdg-config-rw-access": "save and restore desktop environment theme configuration stored in configuration files"
-        }
-    },
-    "org.inkscape.Inkscape": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "it can launch non-wayland UI via plugins"
-        }
-    },
-    "org.jabref.jabref": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
         }
     },
     "org.jitsi.jitsi-meet": {
@@ -2978,15 +1946,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.kde.discover": {
-        "beta": {
-            "finish-args-flatpak-spawn-access": "Runs host binaries in order to successfully install apps"
-        }
-    },
     "org.kde.dolphin": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.elisa": {
@@ -3051,8 +2013,7 @@
     },
     "org.kde.kate": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.katomic": {
@@ -3112,8 +2073,7 @@
     },
     "org.kde.kdevelop": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.kdiamond": {
@@ -3160,11 +2120,6 @@
     "org.kde.kigo": {
         "stable": {
             "flathub-json-automerge-enabled": "Enabled as this is a game with low risk and low impact for breakage with new updates"
-        }
-    },
-    "org.kde.kile": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
         }
     },
     "org.kde.killbots": {
@@ -3284,8 +2239,7 @@
     },
     "org.kde.konsole": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.konversation": {
@@ -3360,8 +2314,7 @@
     },
     "org.kde.ktouch": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.ktuberling": {
@@ -3391,8 +2344,7 @@
     },
     "org.kde.kxstitch": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.lskat": {
@@ -3402,8 +2354,7 @@
     },
     "org.kde.marble": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.minuet": {
@@ -3448,11 +2399,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.kde.qmlkonsole": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal"
-        }
-    },
     "org.kde.rocs": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3492,14 +2438,12 @@
     "org.kde.yakuake": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "required for host shell access via internal terminal",
             "finish-args-plasmashell-talk-name": "Predates the linter rule"
         }
     },
     "org.keepassxc.KeePassXC": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kekikakademi.eFatura": {
@@ -3509,8 +2453,7 @@
     },
     "org.kiwix.desktop": {
         "stable": {
-            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appid-ends-with-lowercase-desktop": "app-id predates this linter rule"
         }
     },
     "org.librepcb.LibrePCB": {
@@ -3521,11 +2464,6 @@
     "org.libretro.RetroArch": {
         "stable": {
             "finish-args-login1-talk-name": "Predates the linter rule"
-        }
-    },
-    "org.linuxshowplayer.LinuxShowPlayer": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required by CommandCue(s) to allow users to interact with external tools"
         }
     },
     "org.mapeditor.Tiled": {
@@ -3543,27 +2481,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.octave.Octave": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "org.onlyoffice.desktopeditors": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.openmsx.openMSX": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.openshot.OpenShot": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "org.otfried.Ipe": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
@@ -3571,23 +2488,11 @@
     },
     "org.pegasus_frontend.Pegasus": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "org.polymc.PolyMC": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.ppsspp.PPSSPP": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "org.prismlauncher.PrismLauncher": {
         "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
@@ -3596,19 +2501,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.projecttick.MeshMC": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Minecraft runs natively on Wayland; however, this changed in version 26.3, triggered by the transition to SDL3. While X11 support should remain for compatibility and older versions, the Wayland socket must now be added. Without it, Minecraft will not run stably."
-        }
-    },
     "org.purei.Play": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "org.pvermeer.WebAppHub": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "This is needed to fetch installed browser information and to run the created Web App from this application."
         }
     },
     "org.qbittorrent.qBittorrent": {
@@ -3618,8 +2513,7 @@
     },
     "org.qgis.qgis": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.qownnotes.QOwnNotes": {
@@ -3634,18 +2528,7 @@
     },
     "org.remmina.Remmina": {
         "*": {
-            "finish-args-flatpak-spawn-access": "Needed to launch programs on the host specified by the user",
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "org.robocode.Robocode": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.siril.Siril": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to interact with third-party applications like astrometry.net for plate solving and other astronomical image processing workflows"
         }
     },
     "org.syntalos.syntalos": {
@@ -3673,52 +2556,24 @@
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
     },
-    "org.texstudio.TeXstudio": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "org.thonny.Thonny": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "org.tuxemon.Tuxemon": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "org.ultimatepp.TheIDE": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to execute various host binaries, including compiler, debugger, and git within the application"
-        }
-    },
-    "org.vanillaos.ApxGUI": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to execute Distrobox commands on the host"
-        }
-    },
     "org.vim.Vim": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "org.vinegarhq.Vinegar": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.wezfurlong.wezterm": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "required to spawn the user's shell and other commands on the host system; it's the primary purpose of a terminal emulator",
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
     "org.winehq.Wine": {
         "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
             "toplevel-unnecessary-branch": "Wine uses a custom branch following runtime branch for historical reasons"
         }
     },
@@ -3732,12 +2587,6 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "org.zim_wiki.Zim": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule",
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
     "page.codeberg.Imaginer.Imaginer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -3748,76 +2597,9 @@
             "finish-args-arbitrary-dbus-access": "It's a D-Bus Debugger"
         }
     },
-    "page.codeberg.JakobDev.jdFlatpakSnapshot": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Needed to call flatpak to get some Information and check if a Flatpak is currently running"
-        }
-    },
-    "page.codeberg.JakobDev.jdMacroPlayer": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Run ydotoold on the Host"
-        }
-    },
-    "page.codeberg.JakobDev.jdMinecraftLauncher": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "page.codeberg.JakobDev.jdProcessFileWatcher": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Run strace on the Host"
-        }
-    },
-    "page.codeberg.JakobDev.jdSystemMonitor": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Run the Daemon outside the Flatpak"
-        }
-    },
-    "page.codeberg.JakobDev.jdTextEdit": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Neded to execute external commands"
-        }
-    },
-    "page.codeberg.dnkl.foot": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required for host shell access via host-spawn",
-            "finish-args-only-wayland": "this program doesn't have x11 support"
-        }
-    },
-    "page.codeberg.lazyt.ubpm": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "page.codeberg.libre_menu_editor.LibreMenuEditor": {
         "stable": {
-            "finish-args-flatpak-spawn-access": "for reading environment variables on the host system",
             "finish-args-arbitrary-xdg-config-create-access": "for reading and updating mimetypes in xdg-config/mimeapps.list, and creating file if not exist"
-        }
-    },
-    "page.kramo.Cartridges": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to launch games on the host"
-        }
-    },
-    "page.tesk.Refine": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "needed to access host dconf configuration"
-        }
-    },
-    "party.supertux.supertuxparty": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "pm.mirko.Atoms": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "the app predates this linter rule"
-        }
-    },
-    "re.sonny.Junction": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "required to launch apps"
         }
     },
     "rocks.koreader.KOReader": {
@@ -3825,54 +2607,14 @@
             "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
-    "ru.linux_gaming.PortProton": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "sa.sy.bluerecorder": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "se.emijoh.mpw": {
         "stable": {
             "finish-args-not-defined": "It is a command line package"
         }
     },
-    "sh.loft.devpod": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required for host shell access"
-        }
-    },
-    "studio.kx.carla": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "surf.deckr.deckr": {
         "stable": {
             "appid-url-not-reachable": "Request is returning 403, https://github.com/flathub/flathub/pull/5529#issuecomment-2325455509"
-        }
-    },
-    "tech.keyforge.keyforge_master": {
-        "*": {
-            "finish-args-flatpak-spawn-access": "Required to run 'udevadm' on the host system via flatpak-spawn for USB keyboard device detection and enumeration"
-        }
-    },
-    "tv.plex.PlexHTPC": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "ua.org.brezblock.q4wine": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
-    "uk.me.doof.Lander": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "uk.org.greenend.chiark.sgtatham.putty": {
@@ -3885,19 +2627,9 @@
             "appid-too-many-components-for-app": "Predates the linter rule"
         }
     },
-    "us.zoom.Zoom": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
-        }
-    },
     "work.openpaper.Paperwork": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "xyz.hyperplay.HyperPlay": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Predates the linter rule"
         }
     },
     "xyz.slothlife.Jogger": {
@@ -3905,29 +2637,9 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
-    "xyz.tytanium.DoorKnocker": {
-        "stable": {
-            "finish-args-flatpak-spawn-access": "Required to get/check xdg-desktop-portal version"
-        }
-    },
     "com.chirpmyradio.chirp": {
         "stable": {
             "appid-url-not-reachable": "Required due to project website blocking bots using Cloudflare"
-        }
-    },
-    "org.squidowl.halloy": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required because iced's clipboard library (arboard) currently requires wayland-data-control, and currently needs access to the x11 socket for fallback when wayland-data-control is not available."
-        }
-    },
-    "io.github.seinedkoda.kisel": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Without X11, errors occur when launching some games."
-        }
-    },
-    "me.proton.Pass": {
-        "*": {
-            "finish-args-contains-both-x11-and-wayland": "X11 access is needed for clipboard access"
         }
     }
 }
