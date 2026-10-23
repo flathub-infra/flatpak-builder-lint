@@ -2615,5 +2615,11 @@
         "stable": {
             "appid-url-not-reachable": "Required due to project website blocking bots using Cloudflare"
         }
+    },
+    "io.github.DarkPhilosophy.v": {
+        "stable": {
+            "finish-args-flatpak-user-folder-app-com.discordapp.Discord-rw-access": "Installs the Vencord loader into Discord installed as a per-user Flatpak, whose files belong to the user; the Discord Flatpak loads all of its code from /app, so no portal-reachable file can load it.",
+            "finish-args-flatpak-appdata-folder-com.discordapp.Discord-config-Vencord-create-access": "The Vencord runtime must sit next to Discord's own data so that Discord can read it from inside its sandbox without overrides."
+        }
     }
 }
