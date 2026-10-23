@@ -66,10 +66,6 @@ class ELFArchCheck(Check):
         if not (elf_arches_dict and elf_arches):
             return
 
-        if len(set(elf_arches)) >= 2:
-            self.errors.add("elf-arch-multiple-found")
-            self.info.add(f"elf-arch-multiple-found: {list(elf_arches)}")
-
         if ref_arch not in elf_arches:
             self.errors.add("elf-arch-not-found")
             self.info.add(

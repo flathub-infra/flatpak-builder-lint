@@ -436,7 +436,6 @@ def test_wrong_elf_arch(tmp_testdir: str) -> None:
     create_elf(testdir, "riscv64", "test2.elf")
     ret = rc(testdir, "builddir", tmp_testdir)
     found_errors = set(ret["errors"])
-    assert "elf-arch-multiple-found" in found_errors
     assert "elf-arch-not-found" in found_errors
 
 
