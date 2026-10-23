@@ -250,6 +250,14 @@ def test_broken_remote_icon(check_type: str, tmp_testdir: str) -> None:
     assert "metainfo-launchable-tag-wrong-value" not in found_errors
 
 
+def test_appstream_missing_launchable(check_type: str, tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-missing-launchable"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream_missing_launchable.xml")
+    ret = rc(testdir, check_type, tmp_testdir)
+    assert "metainfo-missing-launchable-tag" in set(ret["errors"])
+
+
 def test_appstream_no_icon_file(check_type: str, tmp_testdir: str) -> None:
     testdir = "tests/builddir/appstream-no-icon-file"
     move_files(testdir)

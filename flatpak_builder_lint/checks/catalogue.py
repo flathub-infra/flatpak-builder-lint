@@ -147,12 +147,12 @@ class MetainfoCheck(Check):
                     )
 
                 launchable = appstream.get_launchable(appstream_path)
-                launchable_file_path = None
 
                 if not launchable:
                     self.errors.add("metainfo-missing-launchable-tag")
-                else:
-                    launchable_file_path = os.path.join(launchable_dir, launchable[0])
+                    return
+
+                launchable_file_path = os.path.join(launchable_dir, launchable[0])
 
                 if not re.match(rf"^{appid}([-.].*)?[.]desktop$", launchable[0]):
                     self.errors.add("metainfo-launchable-tag-wrong-value")
@@ -162,7 +162,7 @@ class MetainfoCheck(Check):
                     )
                     return
 
-                if launchable_file_path is not None and not os.path.exists(launchable_file_path):
+                if not os.path.exists(launchable_file_path):
                     self.errors.add("appstream-launchable-file-missing")
                     self.info.add(
                         f"appstream-launchable-file-missing: The launchable file {launchable[0]}"

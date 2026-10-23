@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="desktop-application">
+    <id>org.flathub.appstream_missing_launchable</id>
+    <name>Foo</name>
+    <summary>Bar</summary>
+    <description>
+      <p>This is an example</p>
+    </description>
+    <metadata_license>CC0-1.0</metadata_license>
+  </component>
+</components>
