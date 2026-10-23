@@ -355,10 +355,6 @@ class FinishArgsCheck(Check):
                     "finish-args-incorrect-secret-service-talk-name: The name is in lower case"
                     + " org.freedesktop.secrets"
                 )
-            if talk_name == "org.freedesktop.login1" or talk_name.startswith(
-                "org.freedesktop.login1."
-            ):
-                self.errors.add("finish-args-login1-talk-name")
             if talk_name == "org.kde.plasmashell" or talk_name.startswith("org.kde.plasmashell."):
                 self.errors.add("finish-args-plasmashell-talk-name")
 

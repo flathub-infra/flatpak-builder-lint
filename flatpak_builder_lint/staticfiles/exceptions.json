@@ -24,11 +24,6 @@
             "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
         }
     },
-    "ca.parallel_launcher.ParallelLauncher": {
-        "stable": {
-            "finish-args-login1-talk-name": "Predates the linter rule"
-        }
-    },
     "cc.arduino.arduinoide": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1413,11 +1408,6 @@
             "finish-args-wildcard-kde-talk-name": "Required to send commands to the active dolphin window."
         }
     },
-    "io.github.onionware_github.onionmedia": {
-        "stable": {
-            "finish-args-login1-talk-name": "Predates the linter rule"
-        }
-    },
     "io.github.orontee.Argos": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
@@ -1615,11 +1605,6 @@
     "net.redeclipse.RedEclipse": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "net.retrodeck.retrodeck": {
-        "stable": {
-            "finish-args-login1-talk-name": "Predates the linter rule"
         }
     },
     "net.rpcs3.RPCS3": {
@@ -1893,11 +1878,6 @@
     "org.indii.mendingwall": {
         "stable": {
             "finish-args-arbitrary-xdg-config-rw-access": "save and restore desktop environment theme configuration stored in configuration files"
-        }
-    },
-    "org.jitsi.jitsi-meet": {
-        "stable": {
-            "finish-args-login1-talk-name": "Predates the linter rule"
         }
     },
     "org.kde.SymbolEditor": {
@@ -2370,8 +2350,7 @@
     },
     "org.kde.okular": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-login1-talk-name": "Predates the linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.palapeli": {
@@ -2459,11 +2438,6 @@
     "org.librepcb.LibrePCB": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        }
-    },
-    "org.libretro.RetroArch": {
-        "stable": {
-            "finish-args-login1-talk-name": "Predates the linter rule"
         }
     },
     "org.mapeditor.Tiled": {
