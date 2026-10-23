@@ -2824,11 +2824,6 @@
             "finish-args-unnecessary-xdg-data-Steam-rw-access": "Required for reading and writing Steam's shortcuts, artwork, and collections files when it is installed natively"
         }
     },
-    "dev.eden_emu.eden": {
-        "stable": {
-            "finish-args-contains-both-x11-and-wayland": "Required to use the x11 backend without crashing"
-        }
-    },
     "dev.edfloreshz.Calculator": {
         "stable": {
             "finish-args-unnecessary-xdg-config-cosmic-rw-access": "Required to listen for changes in the host and write app configuration files"
