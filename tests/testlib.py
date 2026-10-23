@@ -227,7 +227,6 @@ def _reset_check_state() -> None:
     checks.Check.desktopfile = set()
     checks.Check.info = set()
     checks.Check.repo_primary_refs = set()
-    checks.Check.review_findings = set()
 
 
 def run_checks(

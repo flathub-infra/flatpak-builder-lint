@@ -9,7 +9,6 @@ from unittest.mock import patch
 import pytest
 
 from flatpak_builder_lint import checks
-from flatpak_builder_lint.checks.finish_args import FinishArgsCheck
 from flatpak_builder_lint.cli import (
     _filter,
     main,
@@ -397,51 +396,3 @@ class TestMainArgParsing:
                 ]
             )
         assert "app/com.example.App/x86_64/stable" in checks.Check.repo_primary_refs
-
-
-SELECTED = {
-    "finish-args-unnecessary-xdg-data-typst-ro-access",
-    "finish-args-contains-inherit-wayland-socket",
-    "finish-args-login1-system-talk-name",
-}
-RETAINED = {
-    "finish-args-reserved-app",
-    "finish-args-contains-both-x11-and-fallback",
-    "finish-args-incorrect-dbus-gvfs",
-}
-FINISH_ARGS = [
-    "--filesystem=xdg-data/typst:ro",
-    "--socket=inherit-wayland-socket",
-    "--system-talk-name=org.freedesktop.login1",
-    "--filesystem=/app",
-    "--socket=x11",
-    "--socket=fallback-x11",
-    "--talk-name=org.gtk.vfs",
-]
-
-
-class TestPermissionReview:
-    def _lint(self, **kwargs: Any) -> Any:
-        payload = MappingProxyType({"id": "com.example.App", "finish-args": FINISH_ARGS})
-        orig_all = checks.ALL[:]
-        checks.ALL[:] = [FinishArgsCheck]
-        try:
-            with patch("flatpak_builder_lint.cli.manifest.show_manifest", return_value=payload):
-                results = run_checks(
-                    "manifest",
-                    "/fake",
-                    **kwargs,
-                )
-        finally:
-            checks.ALL[:] = orig_all
-        return results
-
-    def test_default_mode_keeps_selected_codes_as_errors(self) -> None:
-        results = self._lint()
-        assert set(results["errors"]) >= SELECTED | RETAINED
-
-    def test_review_mode_only_retained_codes_fail(self) -> None:
-        results = self._lint(permission_review=True)
-        assert set(results["errors"]) >= RETAINED
-        assert set(results["errors"]).isdisjoint(SELECTED)
-        assert set(results["warnings"]) >= SELECTED

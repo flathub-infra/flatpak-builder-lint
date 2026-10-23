@@ -157,7 +157,6 @@ def run_checks(
     user_exceptions_path: str | None = None,
     enable_janitor_exceptions: bool = False,
     exceptions_repo: str | None = None,
-    permission_review: bool = False,
 ) -> dict[str, str | list[str]]:
     stale_exceptions: set[str] | None = None
 
@@ -183,16 +182,10 @@ def run_checks(
         if (check_method := getattr(check, check_method_name, None)) and callable(check_method):
             check_method(check_method_arg)
 
-    errors, warnings, info = checks.Check.errors, checks.Check.warnings, checks.Check.info
-    if permission_review:
-        moved = set(checks.Check.review_findings)
-        errors, warnings = errors - moved, warnings | moved
-        info = {line for line in info if line.split(":", 1)[0] not in moved}
-
     results: dict[str, str | list[str]] = {}
-    if errors:
+    if errors := checks.Check.errors:
         results["errors"] = list(errors)
-    if warnings:
+    if warnings := checks.Check.warnings:
         results["warnings"] = list(warnings)
     if jsonschema := checks.Check.jsonschema:
         results["jsonschema"] = list(jsonschema)
@@ -200,7 +193,7 @@ def run_checks(
         results["appstream"] = list(appstream)
     if desktopfile := checks.Check.desktopfile:
         results["desktopfile"] = list(desktopfile)
-    if info:
+    if info := checks.Check.info:
         results["info"] = list(info)
 
     if enable_exceptions:
@@ -225,11 +218,7 @@ def run_checks(
                 enable_janitor_exceptions
                 and appid
                 and config.is_flathub_build_pipeline()
-                and (
-                    stale_raw := exceptions_janitor.get_stale_exceptions(
-                        checks.Check.errors, exceptions
-                    )
-                )
+                and (stale_raw := exceptions_janitor.get_stale_exceptions(errors, exceptions))
             ):
                 ignore_stale_exceptions: set[str] = {"appid-url-not-reachable"}
                 stale_exceptions = stale_raw - ignore_stale_exceptions
@@ -366,11 +355,6 @@ def main() -> int:
         help="Enable debug logging to console",
         action="store_true",
     )
-    parser.add_argument(
-        "--permission-review",
-        help="Report reviewable permission findings as warnings instead of errors",
-        action="store_true",
-    )
 
     args = parser.parse_args()
     setup_logging(args.debug)
@@ -393,7 +377,6 @@ def main() -> int:
             args.user_exceptions,
             args.janitor_exceptions,
             args.exceptions_repo,
-            args.permission_review,
         ):
             if "errors" in results:
                 exit_code = 1
