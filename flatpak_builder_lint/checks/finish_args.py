@@ -240,7 +240,7 @@ class FinishArgsCheck(Check):
             if re.match(r"^/run/media(?=/\w).+$", fs):
                 self.errors.add("finish-args-absolute-run-media-path")
                 self.info.add(
-                    "finish-args-absolute-home-path: finish-args has filesystem access"
+                    "finish-args-absolute-run-media-path: finish-args has filesystem access"
                     + " that is a subdirectory of /run/media"
                 )
 
