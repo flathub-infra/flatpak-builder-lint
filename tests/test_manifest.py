@@ -345,8 +345,7 @@ def test_manifest_finish_args_new_metadata() -> None:
 
 def test_manifest_finish_args_issue_wayland_x11() -> None:
     ret = run_checks("tests/manifests/finish_args-wayland-x11.json")
-    found_errors = set(ret["errors"])
-    assert "finish-args-contains-both-x11-and-wayland" in found_errors
+    assert "finish-args-contains-both-x11-and-wayland" in set(ret["warnings"])
 
 
 def test_manifest_finish_args_incorrect_secret_talk_name() -> None:
@@ -359,7 +358,6 @@ def test_manifest_display_stuff() -> None:
     absents = {
         "finish-args-fallback-x11-without-wayland",
         "finish-args-only-wayland",
-        "finish-args-contains-both-x11-and-wayland",
     }
 
     for file in (
