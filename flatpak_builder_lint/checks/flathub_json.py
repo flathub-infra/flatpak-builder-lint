@@ -9,18 +9,6 @@ from . import Check
 class FlathubJsonCheck(Check):
     arches = config.FLATHUB_SUPPORTED_ARCHES
 
-    def _check_if_extra_data(self, modules: list[dict[str, Any]]) -> bool:
-        for module in modules:
-            if sources := module.get("sources"):
-                for source in sources:
-                    if source.get("type") == "extra-data":
-                        return True
-
-            if nested_modules := module.get("modules"):
-                return self._check_if_extra_data(nested_modules)
-
-        return False
-
     def _validate(
         self,
         appid: str,
