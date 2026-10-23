@@ -149,7 +149,7 @@ class FinishArgsCheck(Check):
         if "wayland" in finish_args["socket"] and (
             "x11" not in finish_args["socket"] and "fallback-x11" not in finish_args["socket"]
         ):
-            self.errors.add("finish-args-only-wayland")
+            self.warnings.add("finish-args-only-wayland")
             self.info.add(
                 "finish-args-only-wayland: finish-args has only wayland socket"
                 + " but no x11 or fallback-x11 socket"

@@ -357,7 +357,6 @@ def test_manifest_finish_args_incorrect_secret_talk_name() -> None:
 def test_manifest_display_stuff() -> None:
     absents = {
         "finish-args-fallback-x11-without-wayland",
-        "finish-args-only-wayland",
     }
 
     for file in (
@@ -370,8 +369,7 @@ def test_manifest_display_stuff() -> None:
             assert a not in found_errors
 
     ret = run_checks("tests/manifests/display-only-wayland.json")
-    found_errors = set(ret["errors"])
-    assert "finish-args-only-wayland" in found_errors
+    assert "finish-args-only-wayland" in set(ret["warnings"])
 
 
 def test_manifest_finish_args_empty() -> None:

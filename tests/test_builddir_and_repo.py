@@ -127,7 +127,7 @@ def test_finish_args_new_metadata(check_type: str, tmp_testdir: str) -> None:
 
 
 def test_display_supported(check_type: str, tmp_testdir: str) -> None:
-    absents = {"finish-args-fallback-x11-without-wayland", "finish-args-only-wayland"}
+    absents = {"finish-args-fallback-x11-without-wayland"}
     ret = rc("tests/builddir/display-supported", check_type, tmp_testdir)
     found_errors = set(ret["errors"])
     for a in absents:
