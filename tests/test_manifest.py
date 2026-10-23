@@ -291,7 +291,7 @@ def test_manifest_finish_args() -> None:
     for a in expected_absents:
         assert a not in found_errors
     for err in found_errors:
-        assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
+        assert not err.startswith("finish-args-arbitrary-xdg-")
     assert "finish-args-flatpak-spawn-access" in set(ret["warnings"])
 
 
@@ -437,7 +437,6 @@ def test_manifest_xdg_dir_finish_arg() -> None:
         "finish-args-arbitrary-xdg-config-create-access",
         "finish-args-arbitrary-xdg-cache-create-access",
         "finish-args-arbitrary-xdg-data-create-access",
-        "finish-args-unnecessary-xdg-cache-electron-create-access",
     }
     found_errors = ret["errors"]
     for e in errors:

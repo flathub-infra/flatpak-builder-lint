@@ -139,7 +139,6 @@ class FinishArgsCheck(Check):
         xdgdirs = ("xdg-data", "xdg-config", "xdg-cache")
         for xdg_dir in xdgdirs:
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
-            regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
             for fs in finish_args["filesystem"]:
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
@@ -148,13 +147,6 @@ class FinishArgsCheck(Check):
 
                 if re.match(regexp_arbitrary, fs):
                     self.errors.add(f"finish-args-arbitrary-{xdg_dir}-{mode_suffix}-access")
-                elif xdg_dir == "xdg-cache" and re.match(regexp_unnecessary, fs):
-                    subdir = fs.split("/")[1]
-                    if subdir.endswith(modes):
-                        subdir = subdir.split(":", 1)[0]
-                    self.errors.add(
-                        f"finish-args-unnecessary-{xdg_dir}-{subdir}-{mode_suffix}-access"
-                    )
 
         for fs in finish_args["filesystem"]:
             for resv_dir in (

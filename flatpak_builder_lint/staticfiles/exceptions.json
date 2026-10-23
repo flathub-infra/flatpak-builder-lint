@@ -2603,7 +2603,6 @@
         "stable": {
             "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
             "finish-args-contains-both-x11-and-wayland": "Input method daemon need to talk with both XWayland/X11/Wayland applications at the same time",
-            "finish-args-unnecessary-xdg-cache-ibus-create-access": "Predates the linter rule",
             "desktop-file-is-nodisplay": "Input method doesn't need to show in menu"
         }
     },
@@ -2777,11 +2776,6 @@
     "org.gnome.ColorViewer": {
         "stable": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
-    "org.gnome.Contacts": {
-        "stable": {
-            "finish-args-unnecessary-xdg-cache-evolution-ro-access": "the app predates this linter rule, used for evolution data server"
         }
     },
     "org.gnome.DejaDup": {
@@ -3038,8 +3032,7 @@
     },
     "org.kde.gwenview": {
         "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
-            "finish-args-unnecessary-xdg-cache-thumbnails-rw-access": "required for thumbnail reading and generation"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
     "org.kde.isoimagewriter": {
