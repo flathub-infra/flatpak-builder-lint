@@ -19,8 +19,7 @@ def normalize_error_arg(s: str) -> str:
 
 
 def scan_exceptions() -> set[str]:
-    pattern = re.compile(r"self\.errors\.add\(\s*(.*?)\s*\)")
-    review_pattern = re.compile(r"self\._review\(\s*([fFrR]{0,2}\"[^\"]*\")")
+    pattern = re.compile(r"self\.(?:errors|warnings)\.add\(\s*(.*?)\s*\)")
     exceptions = set()
 
     for root, _, files in os.walk("."):
@@ -36,24 +35,13 @@ def scan_exceptions() -> set[str]:
                             raw = m.group(1).strip()
                             normalized = normalize_error_arg(raw)
                             exceptions.add(normalized)
-                    for m in review_pattern.finditer(content):
-                        exceptions.add(normalize_error_arg(m.group(1)))
                 except (UnicodeDecodeError, OSError):
                     continue
 
     return exceptions
 
 
-KNOWN_EXCEPTIONS = scan_exceptions() | {
-    "finish-args-own-name-",
-    "finish-args-unnecessary-foo-access",
-    "finish-args-flatpak-appdata-folder-access",
-    "finish-args-flatpak-appdata-folder-",
-    "finish-args-flatpak-system-folder-",
-    "finish-args-flatpak-system-folder-access",
-    "finish-args-flatpak-user-folder-access",
-    "finish-args-flatpak-user-folder-",
-}
+KNOWN_EXCEPTIONS = scan_exceptions()
 
 EXP_PREFIX = (
     "module-*-source-*-deprecated",
@@ -61,14 +49,9 @@ EXP_PREFIX = (
     "module-*-checker-tracks-commits",
     "finish-args-arbitrary-*-access",
     "finish-args-portal-impl-*",
-    "finish-args-unnecessary-*-access",
     "appid-unprefixed-bundled-extension-*",
-    "finish-args-own-name-*",
     "finish-args-*-filesystem-access",
     "module-*-source-dir-not-allowed",
-    "finish-args-flatpak-appdata-folder-*",
-    "finish-args-flatpak-system-folder-*",
-    "finish-args-flatpak-user-folder-*",
 )
 
 
