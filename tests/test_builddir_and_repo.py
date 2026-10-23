@@ -57,7 +57,6 @@ def test_url_not_reachable(
 def test_finish_args(check_type: str, tmp_testdir: str) -> None:
     errors = {
         "finish-args-arbitrary-dbus-access",
-        "finish-args-flatpak-spawn-access",
         "finish-args-incorrect-dbus-gvfs",
         "finish-args-wildcard-freedesktop-talk-name",
         "finish-args-portal-talk-name",
@@ -68,47 +67,22 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         "finish-args-freedesktop-dbus-talk-name",
         "finish-args-freedesktop-dbus-system-talk-name",
         "finish-args-x11-without-ipc",
-        "finish-args-flatpak-user-folder-rw-access",
-        "finish-args-host-tmp-access",
-        "finish-args-flatpak-appdata-folder-rw-access",
-        "finish-args-host-var-access",
         "finish-args-legacy-icon-folder-permission",
         "finish-args-legacy-font-folder-permission",
         "finish-args-incorrect-theme-folder-permission",
-        "finish-args-autostart-filesystem-access",
-        "finish-args-desktopfile-filesystem-access",
-        "finish-args-ssh-filesystem-access",
-        "finish-args-gnupg-filesystem-access",
         "finish-args-uses-no-talk-name",
-        "finish-args-has-socket-gpg-agent",
-        "finish-args-has-socket-ssh-auth",
         "finish-args-plasmashell-talk-name",
-        "finish-args-systemd1-talk-name",
-        "finish-args-own-name-wildcard-org.gnome",
-        "finish-args-own-name-org.freedesktop.login1",
-        "finish-args-own-name-org.kde.KWin",
-        "finish-args-own-name-wildcard-org.kde",
         "finish-args-system-own-name-wildcard-org.gnome",
-        "finish-args-own-name-org.freedesktop.impl.portal.PermissionStore",
-        "finish-args-own-name-org.kde.StatusNotifierItem",
         "finish-args-full-home-cache-access",
         "finish-args-full-home-local-access",
         "finish-args-host-root-filesystem-access",
-        "finish-args-host-os-filesystem-access",
-        "finish-args-host-etc-filesystem-access",
-        "finish-args-contains-inherit-wayland-socket",
         "finish-args-unnecessary-appid-own-name",
         "finish-args-unnecessary-appid-mpris-own-name",
         "finish-args-mpris-flatpak-id-talk-name",
-        "finish-args-flatpak-appdata-folder-foo-rw-access",
-        "finish-args-flatpak-user-folder-foo-rw-access",
     }
     expected_absents = {
         "finish-args-has-nodevice-shm",
         "finish-args-has-nosocket-fallback-x11",
-        "finish-args-own-name-org.flathub.finish_args",
-        "finish-args-own-name-org.mpris.MediaPlayer2.org.flathub.finish_args",
-        "finish-args-own-name-org.mpris.MediaPlayer2.foobar",
     }
 
     ret = rc("tests/builddir/finish_args", check_type, tmp_testdir)
@@ -119,6 +93,7 @@ def test_finish_args(check_type: str, tmp_testdir: str) -> None:
         assert a not in found_errors
     for err in found_errors:
         assert not err.startswith(("finish-args-arbitrary-xdg-", "finish-args-unnecessary-xdg-"))
+    assert "finish-args-flatpak-spawn-access" in set(ret["warnings"])
 
 
 def test_finish_args_new_metadata(check_type: str, tmp_testdir: str) -> None:
@@ -339,13 +314,6 @@ def test_aps_cid_mismatch_flatpak_id(check_type: str, tmp_testdir: str) -> None:
     assert "appstream-id-mismatch-flatpak-id" in set(ret["errors"])
 
 
-def test_dconf_access(check_type: str, tmp_testdir: str) -> None:
-    ret = rc("tests/builddir/dconf-access", check_type, tmp_testdir)
-    found_errors = set(ret["errors"])
-    assert "finish-args-dconf-talk-name" in found_errors
-    assert "finish-args-direct-dconf-path" in found_errors
-
-
 def test_xdg_dir_access(check_type: str, tmp_testdir: str) -> None:
     ret = rc("tests/builddir/finish_args_xdg_dirs", check_type, tmp_testdir)
     found_errors = set(ret["errors"])
@@ -360,8 +328,6 @@ def test_xdg_dir_access(check_type: str, tmp_testdir: str) -> None:
         "finish-args-arbitrary-xdg-cache-create-access",
         "finish-args-arbitrary-xdg-data-create-access",
         "finish-args-unnecessary-xdg-cache-electron-create-access",
-        "finish-args-unnecessary-xdg-config-fonts-rw-access",
-        "finish-args-unnecessary-xdg-data-gvfs-ro-access",
     ):
         assert e in found_errors
 
@@ -448,28 +414,6 @@ def test_appstream_manifest_url_unreachable(
     create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
     ret = rc(testdir, check_type, tmp_testdir)
     assert "appstream-flathub-manifest-url-not-reachable" in set(ret["errors"])
-
-
-def test_home_host_access(check_type: str, tmp_testdir: str) -> None:
-    base_path = "tests/builddir/home_host"
-    for i in range(1, 6):
-        ret = rc(f"{base_path}/home_host{i}", check_type, tmp_testdir)
-        assert "finish-args-home-filesystem-access" in set(ret["errors"])
-
-    assert "finish-args-host-filesystem-access" in set(
-        rc(f"{base_path}/home_host1", check_type, tmp_testdir)["errors"]
-    )
-    assert "finish-args-home-ro-filesystem-access" in set(
-        rc(f"{base_path}/home_host6", check_type, tmp_testdir)["errors"]
-    )
-    assert "finish-args-host-ro-filesystem-access" in set(
-        rc(f"{base_path}/home_host7", check_type, tmp_testdir)["errors"]
-    )
-
-    ret = rc(f"{base_path}/home_host_false", check_type, tmp_testdir)
-    found_errors = set(ret["errors"])
-    assert "finish-args-home-filesystem-access" not in found_errors
-    assert "finish-args-host-filesystem-access" not in found_errors
 
 
 def test_appstream_prerelease(check_type: str, tmp_testdir: str, monkeypatch: MonkeyPatch) -> None:

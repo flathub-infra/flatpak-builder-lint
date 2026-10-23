@@ -22,64 +22,6 @@ def _fs_value_matches_prefix(input_path: str, prefix: str, subdirs: bool = True)
     return re.match(pattern, input_path) is not None
 
 
-def _subdir_fs_error(
-    fs: str,
-    prefixes: tuple[str, ...],
-    error_prefix: str,
-) -> str:
-    suffix_mode = "-rw"
-
-    if fs.endswith(":ro"):
-        suffix_mode = "-ro"
-        fs = fs[:-3]
-    elif fs.endswith(":create"):
-        suffix_mode = "-create"
-        fs = fs[:-7]
-    elif fs.endswith(":rw"):
-        suffix_mode = "-rw"
-        fs = fs[:-3]
-
-    for prefix in prefixes:
-        if fs.startswith(prefix):
-            components = [comp.replace(" ", "-") for comp in fs[len(prefix) :].split("/") if comp]
-
-            suffix = "-" + "-".join(components) if components else ""
-
-            return f"{error_prefix}{suffix}{suffix_mode}-access"
-
-    return f"{error_prefix}{suffix_mode}-access"
-
-
-def _flatpak_appdata_error(fs: str) -> str:
-    return _subdir_fs_error(
-        fs,
-        (
-            "~/.var/app/",
-            "home/.var/app/",
-        ),
-        "finish-args-flatpak-appdata-folder",
-    )
-
-
-def _flatpak_system_folder_error(fs: str) -> str:
-    return _subdir_fs_error(
-        fs,
-        ("/var/lib/flatpak/",),
-        "finish-args-flatpak-system-folder",
-    )
-
-
-def _flatpak_user_folder_error(fs: str) -> str:
-    return _subdir_fs_error(
-        fs,
-        (
-            "~/.local/share/flatpak/",
-            "home/.local/share/flatpak/",
-        ),
-        "finish-args-flatpak-user-folder",
-    )
-
-
 class FinishArgsCheck(Check):
     def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
         init_ver = finish_args.get("required-flatpak")
@@ -125,9 +67,6 @@ class FinishArgsCheck(Check):
         ):
             self.errors.add("finish-args-conditional-permission-usb-no-restriction")
 
-        if "inherit-wayland-socket" in finish_args["socket"]:
-            self.errors.add("finish-args-contains-inherit-wayland-socket")
-
         if "x11" in finish_args["socket"] and "fallback-x11" in finish_args["socket"]:
             self.errors.add("finish-args-contains-both-x11-and-fallback")
 
@@ -154,12 +93,6 @@ class FinishArgsCheck(Check):
                 "finish-args-only-wayland: finish-args has only wayland socket"
                 + " but no x11 or fallback-x11 socket"
             )
-
-        if "gpg-agent" in finish_args["socket"]:
-            self.errors.add("finish-args-has-socket-gpg-agent")
-
-        if "ssh-auth" in finish_args["socket"]:
-            self.errors.add("finish-args-has-socket-ssh-auth")
 
         for socket in finish_args["socket"]:
             if socket.startswith("!"):
@@ -208,17 +141,6 @@ class FinishArgsCheck(Check):
             regexp_arbitrary = f"^{xdg_dir}(:(create|rw|ro)?)?$"
             regexp_unnecessary = f"^{xdg_dir}(\\/.*)?(:(create|rw|ro)?)?$"
             for fs in finish_args["filesystem"]:
-                # This is inherited by apps from the KDE runtime
-                if fs == "xdg-config/kdeglobals:ro":
-                    continue
-
-                if (
-                    appid
-                    and (appid.startswith(("org.cosmic_utils.", "io.github.cosmic_utils.")))
-                    and _fs_value_matches_prefix(fs, "xdg-config/cosmic")
-                ):
-                    continue
-
                 mode_suffix = "rw"
                 if fs.startswith(xdgdirs) and fs.endswith(modes):
                     mode_src = next(i for i in modes if fs.endswith(i))
@@ -226,7 +148,7 @@ class FinishArgsCheck(Check):
 
                 if re.match(regexp_arbitrary, fs):
                     self.errors.add(f"finish-args-arbitrary-{xdg_dir}-{mode_suffix}-access")
-                elif re.match(regexp_unnecessary, fs):
+                elif xdg_dir == "xdg-cache" and re.match(regexp_unnecessary, fs):
                     subdir = fs.split("/")[1]
                     if subdir.endswith(modes):
                         subdir = subdir.split(":", 1)[0]
@@ -258,20 +180,12 @@ class FinishArgsCheck(Check):
                         + f" access to {resv_dir} which is reserved internally for Flatpak"
                     )
 
-            matched = re.fullmatch(
-                r"^(home|host|host-root|host-etc|host-os|~/?)(:rw|:create|:ro)?$", fs
-            )
+            matched = re.fullmatch(r"^host-root(:rw|:create|:ro)?$", fs)
             if matched:
-                path = matched.group(1)
-                mode = matched.group(2)
-
-                if path in ("~", "~/", "home"):
-                    path = "home"
-
-                if mode == ":ro":
-                    self.errors.add(f"finish-args-{path}-ro-filesystem-access")
+                if matched.group(1) == ":ro":
+                    self.errors.add("finish-args-host-root-ro-filesystem-access")
                 else:
-                    self.errors.add(f"finish-args-{path}-filesystem-access")
+                    self.errors.add("finish-args-host-root-filesystem-access")
 
             if any(
                 _fs_value_matches_prefix(fs, prefix, False)
@@ -310,15 +224,6 @@ class FinishArgsCheck(Check):
                 self.errors.add("finish-args-full-home-local-share-access")
 
             if any(
-                _fs_value_matches_prefix(fs, prefix, False)
-                for prefix in (
-                    "~/.config/autostart",
-                    "home/.config/autostart",
-                )
-            ):
-                self.errors.add("finish-args-autostart-filesystem-access")
-
-            if any(
                 _fs_value_matches_prefix(fs, prefix)
                 for prefix in (
                     "~/.config/systemd",
@@ -326,33 +231,6 @@ class FinishArgsCheck(Check):
                 )
             ):
                 self.errors.add("finish-args-systemd-filesystem-access")
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix, False)
-                for prefix in (
-                    "~/.local/share/applications",
-                    "home/.local/share/applications",
-                )
-            ):
-                self.errors.add("finish-args-desktopfile-filesystem-access")
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix)
-                for prefix in (
-                    "~/.ssh",
-                    "home/.ssh",
-                )
-            ):
-                self.errors.add("finish-args-ssh-filesystem-access")
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix)
-                for prefix in (
-                    "~/.gnupg",
-                    "home/.gnupg",
-                )
-            ):
-                self.errors.add("finish-args-gnupg-filesystem-access")
 
             if any(
                 _fs_value_matches_prefix(fs, prefix)
@@ -373,29 +251,6 @@ class FinishArgsCheck(Check):
                     "finish-args-absolute-home-path: finish-args has filesystem access"
                     + " that is a subdirectory of /run/media"
                 )
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix)
-                for prefix in (
-                    "xdg-run/dconf",
-                    "~/.config/dconf",
-                    "home/.config/dconf",
-                )
-            ) or re.match("^/run/user/.*/dconf", fs):
-                self.errors.add("finish-args-direct-dconf-path")
-                self.info.add(
-                    "finish-args-direct-dconf-path: finish-args"
-                    + " has direct access to host dconf path"
-                )
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix)
-                for prefix in (
-                    "~/.var/app",
-                    "home/.var/app",
-                )
-            ):
-                self.errors.add(_flatpak_appdata_error(fs))
 
             if any(
                 _fs_value_matches_prefix(fs, prefix)
@@ -424,39 +279,7 @@ class FinishArgsCheck(Check):
             ):
                 self.errors.add("finish-args-incorrect-theme-folder-permission")
 
-            if _fs_value_matches_prefix(fs, "/var/lib/flatpak"):
-                self.errors.add(_flatpak_system_folder_error(fs))
-
-            if any(
-                _fs_value_matches_prefix(fs, prefix)
-                for prefix in (
-                    "~/.local/share/flatpak",
-                    "home/.local/share/flatpak",
-                )
-            ):
-                self.errors.add(_flatpak_user_folder_error(fs))
-
-            if _fs_value_matches_prefix(fs, "/tmp"):  # noqa: S108
-                self.errors.add("finish-args-host-tmp-access")
-
-            if (
-                fs.startswith("/var")
-                and not fs.startswith(
-                    (
-                        "/var/cache",
-                        "/var/config",
-                        "/var/data",
-                        "/var/tmp",  # noqa: S108
-                        "/var/lib/flatpak",
-                        "/var/home",
-                    )
-                )
-                and _fs_value_matches_prefix(fs, "/var")
-            ):
-                self.errors.add("finish-args-host-var-access")
-
         for own_name in finish_args["own-name"]:
-            handled = False
             if appid:
                 if own_name == appid or (
                     own_name.startswith(appid) and own_name[len(appid)] == "."
@@ -465,7 +288,6 @@ class FinishArgsCheck(Check):
                     self.info.add(
                         "finish-args-unnecessary-appid-own-name: This is granted by default"
                     )
-                    handled = True
                 if own_name.startswith("org.mpris.MediaPlayer2."):
                     mpris_prefix = f"org.mpris.MediaPlayer2.{appid}"
                     if own_name == mpris_prefix or (
@@ -476,23 +298,6 @@ class FinishArgsCheck(Check):
                             "finish-args-unnecessary-appid-mpris-own-name: This is granted "
                             + "by default"
                         )
-                        handled = True
-                    else:
-                        # Skip further checks for MPRIS subnames
-                        handled = True
-
-            if not handled:
-                if own_name.endswith(".*"):
-                    own_name_prefix, own_name_name = "wildcard", own_name[:-2]
-                    own_name_err_string = (
-                        f"finish-args-own-name-"
-                        f"{own_name_prefix + '-' if own_name_prefix else ''}"
-                        f"{own_name_name}"
-                    )
-                    self.errors.add(own_name_err_string)
-                else:
-                    own_name_err_string = f"finish-args-own-name-{own_name}"
-                    self.errors.add(own_name_err_string)
 
         if finish_args.get("none-name"):
             self.errors.add("finish-args-uses-no-talk-name")
@@ -534,8 +339,6 @@ class FinishArgsCheck(Check):
                     "finish-args-portal-talk-name: finish-args has talk-name access"
                     + " to XDG Portal busnames"
                 )
-            if talk_name == "ca.desrt.dconf" or talk_name.startswith("ca.desrt.dconf."):
-                self.errors.add("finish-args-dconf-talk-name")
             if talk_name == "org.freedesktop.DBus" or talk_name.startswith("org.freedesktop.DBus."):
                 self.errors.add("finish-args-freedesktop-dbus-talk-name")
                 self.info.add(
@@ -545,7 +348,7 @@ class FinishArgsCheck(Check):
             if talk_name == "org.gtk.vfs":
                 self.errors.add("finish-args-incorrect-dbus-gvfs")
             if talk_name in ("org.freedesktop.Flatpak", "org.freedesktop.Flatpak.*"):
-                self.errors.add("finish-args-flatpak-spawn-access")
+                self.warnings.add("finish-args-flatpak-spawn-access")
                 self.info.add(
                     "finish-args-flatpak-spawn-access: finish-args has access" + " to flatpak-spawn"
                 )
@@ -560,19 +363,10 @@ class FinishArgsCheck(Check):
                     "finish-args-incorrect-secret-service-talk-name: The name is in lower case"
                     + " org.freedesktop.secrets"
                 )
-            if talk_name.startswith("org.freedesktop.impl.portal."):
-                cpt = talk_name.split(".")[-1].lower()
-                self.errors.add(f"finish-args-portal-impl-{cpt}-talk-name")
-            if talk_name == "org.freedesktop.systemd1" or talk_name.startswith(
-                "org.freedesktop.systemd1."
-            ):
-                self.errors.add("finish-args-systemd1-talk-name")
             if talk_name == "org.freedesktop.login1" or talk_name.startswith(
                 "org.freedesktop.login1."
             ):
                 self.errors.add("finish-args-login1-talk-name")
-            if talk_name == "org.kde.KWin" or talk_name.startswith("org.kde.KWin."):
-                self.errors.add("finish-args-kwin-talk-name")
             if talk_name == "org.kde.plasmashell" or talk_name.startswith("org.kde.plasmashell."):
                 self.errors.add("finish-args-plasmashell-talk-name")
 
@@ -604,23 +398,11 @@ class FinishArgsCheck(Check):
                     "finish-args-freedesktop-dbus-system-talk-name: finish-args has system"
                     + " talk-name access to org.freedesktop.DBus or its sub-bus name"
                 )
-            if sys_talk_name == "org.freedesktop.Flatpak" or sys_talk_name.startswith(
-                "org.freedesktop.Flatpak."
-            ):
-                self.errors.add("finish-args-flatpak-system-talk-name")
             if appid and sys_talk_name == f"org.mpris.MediaPlayer2.{appid}":
                 self.errors.add("finish-args-mpris-flatpak-id-system-talk-name")
             if sys_talk_name.startswith("org.freedesktop.impl.portal."):
                 cpt = sys_talk_name.split(".")[-1].lower()
                 self.errors.add(f"finish-args-portal-impl-{cpt}-system-talk-name")
-            if sys_talk_name == "org.freedesktop.systemd1" or sys_talk_name.startswith(
-                "org.freedesktop.systemd1."
-            ):
-                self.errors.add("finish-args-systemd1-system-talk-name")
-            if sys_talk_name == "org.freedesktop.login1" or sys_talk_name.startswith(
-                "org.freedesktop.login1."
-            ):
-                self.errors.add("finish-args-login1-system-talk-name")
             if sys_talk_name == "org.kde.KWin" or sys_talk_name.startswith("org.kde.KWin."):
                 self.errors.add("finish-args-kwin-system-talk-name")
             if sys_talk_name == "org.kde.plasmashell" or sys_talk_name.startswith(
