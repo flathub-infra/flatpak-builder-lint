@@ -1673,6 +1673,11 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
+    "org.dpsoftware.FireflyLuciferin": {
+        "stable": {
+            "finish-args-systemd-filesystem-access": "Create luciferin_flatpak.service in the user systemd directory when missing, so users can manage Firefly Luciferin as a user service in headless mode."
+        }
+    },
     "org.easyrpg.player": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
