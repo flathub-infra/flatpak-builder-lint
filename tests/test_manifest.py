@@ -5,6 +5,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 from _pytest.monkeypatch import MonkeyPatch
 
+from flatpak_builder_lint.checks.finish_args import FinishArgsCheck
 from tests.testlib import create_git_repo, create_large_file, run_checks, set_git_remote_url
 
 
@@ -293,6 +294,24 @@ def test_manifest_finish_args() -> None:
     for err in found_errors:
         assert not err.startswith("finish-args-arbitrary-xdg-")
     assert "finish-args-flatpak-spawn-access" in set(ret["warnings"])
+
+
+@pytest.mark.parametrize(
+    ("filesystems", "redundant"),
+    [
+        (["home", "host"], True),
+        (["home:ro", "host:ro"], True),
+        (["home:rw", "host:rw"], True),
+        (["home:rw", "host:ro"], False),
+        (["home:ro", "host:rw"], False),
+        (["home"], False),
+        (["host"], False),
+    ],
+)
+def test_manifest_redundant_home_and_host(filesystems: list[str], redundant: bool) -> None:
+    check = FinishArgsCheck()
+    check.check_manifest({"finish-args": [f"--filesystem={fs}" for fs in filesystems]})
+    assert ("finish-args-redundant-home-and-host" in check.errors) == redundant
 
 
 def test_manifest_finish_args_fs_negative() -> None:

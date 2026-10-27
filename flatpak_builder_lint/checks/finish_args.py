@@ -135,6 +135,14 @@ class FinishArgsCheck(Check):
                         + " 'input' or 'usb' device but 'require-version' is not >=1.16.0"
                     )
 
+        pairs = (("home", "host"), ("home:ro", "host:ro"), ("home:rw", "host:rw"))
+        if any(all(k in finish_args["filesystem"] for k in p) for p in pairs):
+            self.errors.add("finish-args-redundant-home-and-host")
+            self.info.add(
+                "finish-args-redundant-home-and-host: finish-args has both host and home"
+                + " filesystem access"
+            )
+
         modes = (":ro", ":rw", ":create")
         xdgdirs = ("xdg-data", "xdg-config", "xdg-cache")
         for xdg_dir in xdgdirs:
