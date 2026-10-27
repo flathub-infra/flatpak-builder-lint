@@ -314,6 +314,37 @@ def test_manifest_redundant_home_and_host(filesystems: list[str], redundant: boo
     assert ("finish-args-redundant-home-and-host" in check.errors) == redundant
 
 
+@pytest.mark.parametrize(
+    ("devices", "redundant"),
+    [
+        (["all", "dri"], True),
+        (["all", "kvm"], True),
+        (["all"], False),
+        (["dri", "kvm"], False),
+        (["all", "shm"], False),
+        (["all", "dri", "shm"], False),
+        (["dri", "if:all:!has-input-device"], False),
+        (["all", "if:all:!has-input-device", "dri", "input"], False),
+        (["all", "if:all:!has-usb-device", "usb"], False),
+        (["all", "if:usb:!has-usb-portal", "usb"], True),
+    ],
+)
+def test_manifest_redundant_device_all(devices: list[str], redundant: bool) -> None:
+    check = FinishArgsCheck()
+    check.check_manifest(
+        {
+            "finish-args": [
+                f"--device-if={device.removeprefix('if:')}"
+                if device.startswith("if:")
+                else f"--device={device}"
+                for device in devices
+            ]
+        }
+    )
+    assert ("finish-args-redundant-device-all" in check.warnings) == redundant
+    assert "finish-args-redundant-device-all" not in check.errors
+
+
 def test_manifest_finish_args_fs_negative() -> None:
     ret = run_checks("tests/manifests/finish_args_fs_negative.json")
     found_errors = set(ret["errors"])
