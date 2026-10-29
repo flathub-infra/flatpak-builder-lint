@@ -2777,11 +2777,6 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "com.anydesk.Anydesk.desktop": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "com.axosoft.GitKraken": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -2798,11 +2793,6 @@
         }
     },
     "com.carpeludum.KegaFusion": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.dropbox.Client.desktop": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -2912,11 +2902,6 @@
         }
     },
     "com.hamrick.VueScan": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.jagex.RuneScape.desktop": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -3242,11 +3227,6 @@
         }
     },
     "io.conduktor.Conduktor": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "io.exodus.Exodus.desktop": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
