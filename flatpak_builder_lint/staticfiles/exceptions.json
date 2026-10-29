@@ -16,12 +16,14 @@
     },
     "br.gov.fazenda.receita.gcap2026": {
         "stable": {
-            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
+            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br.",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "br.gov.fazenda.receita.irpf2026": {
         "stable": {
-            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
+            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br.",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "cc.arduino.arduinoide": {
@@ -32,6 +34,12 @@
     "ch.tlaun.TL": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "chat.delta.desktop": {
@@ -116,7 +124,8 @@
     },
     "com.discordapp.Discord": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.discordapp.DiscordCanary": {
@@ -137,6 +146,12 @@
     "com.fightcade.Fightcade": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule, outdated clients cannot function"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.flashforge.FlashPrint": {
@@ -152,6 +167,12 @@
     "com.getpostman.Postman": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.github.ADBeveridge.Raider": {
@@ -958,7 +979,8 @@
     },
     "com.github.wwmm.pulseeffects.plugin.lsp-plugins": {
         "stable": {
-            "appid-uses-code-hosting-domain": "app-id predates this linter rule"
+            "appid-uses-code-hosting-domain": "app-id predates this linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.github.xournalpp.xournalpp": {
@@ -1050,12 +1072,19 @@
     },
     "com.google.ChromeDev": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.icons8.Lunacy": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.inochi2d.inochi-creator": {
@@ -1071,17 +1100,20 @@
     },
     "com.jetbrains.CLion": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule"
+            "external-gitmodule-url-found": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.jetbrains.PhpStorm": {
         "stable": {
-            "external-gitmodule-url-found": "Predates the linter rule"
+            "external-gitmodule-url-found": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.jetbrains.PyCharm-Professional": {
         "stable": {
-            "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access"
+            "finish-args-arbitrary-dbus-access": "IDEs tend to require direct dbus access",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.jgraph.drawio.desktop": {
@@ -1101,12 +1133,19 @@
     },
     "com.lunarclient.LunarClient": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.microsoft.Edge": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.obsproject.Studio": {
@@ -1163,11 +1202,23 @@
         "*": {
             "module-platform-bootstrap-source-dir-not-allowed": "Predates the linter rule",
             "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.valvesoftware.Steam.CompatibilityTool.Proton-GE": {
         "*": {
             "manifest-file-is-symlink": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.zquestclassic.ZQuest": {
@@ -1213,7 +1264,8 @@
     },
     "dev.storyapps.starc": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule",
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "es.gob.afirma": {
@@ -1762,6 +1814,12 @@
     "org.geogebra.GeoGebra": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
+        },
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "org.gnome.Boxes": {
@@ -2614,6 +2672,704 @@
     "com.chirpmyradio.chirp": {
         "stable": {
             "appid-url-not-reachable": "Required due to project website blocking bots using Cloudflare"
+        }
+    },
+    "app.curocalc.calculator": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "app.getspace.Space": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "app.paperjungle.paperjungle": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "at.vintagestory.VintageStory": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.gcap2024": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.gcap2025": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.irpf2022": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.irpf2023": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.irpf2024": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "br.gov.fazenda.receita.irpf2025": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "chat.moin.moin": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "chat.tandem.Client": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "club.zbridge.zbridge": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.VK.Messenger": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.agatanawrot.karambola": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.airtame.Client": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.almaarijstudios.pxjr": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.almaarijstudios.pxjrprof": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.aloxbook.AloxBook": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.ampl.ide": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.anydesk.Anydesk.desktop": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.axosoft.GitKraken": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.basemark.BasemarkGPU": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.bitwig.BitwigStudio": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.carpeludum.KegaFusion": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.dropbox.Client.desktop": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.MidnightmareTeddy": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.dragonsapprentice": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.fablemaker": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.frogsquash": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.missilemath": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.passage": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.tankwarriors": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.endlessnetwork.whitehouse": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.epicgames.ut2004": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.epicgames.ut99": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.frogatto.Frogatto": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.gamestarmechanic.gamestarmechanic": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.geekbench.Geekbench6": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.geeks3d.furmark": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.gesturedevelop.AirSQLiteManager": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.gitfiend.GitFiend": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.google.AndroidStudio": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.google.Chrome": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.google.EarthPro": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.hamrick.VueScan": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jagex.RuneScape.desktop": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.DataGrip": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.GoLand": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.IntelliJ-IDEA-Ultimate": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.Rider": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.RustRover": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jetbrains.WebStorm": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.jiosphere.JioSphere": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.ktechpit.torrhunt": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.ktechpit.wonderwall": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.lumarcgames.miniball": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.makemkv.MakeMKV": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.maxint.maxint": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.mikrotik.WinBox": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.mojang.Minecraft": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.nomachine.nxplayer": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.onepassword.OnePassword": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.opera.Opera": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.parsecgaming.parsec": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.pinegrow.Pinegrow": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.poweriso.PowerISO": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.pragmar.interrobot": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.recisio.karafun-premium": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.richwhitehouse.BigPEmu": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.seal_one.SealOne": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.seventhstring.Transcribe": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.slack.Slack": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.squidservers.SquidServers": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.syntevo.SmartSynchronize": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.tdameritrade.ThinkOrSwim": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.teamspeak.TeamSpeak": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.teamspeak.TeamSpeak3": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.thebrokenrail.MCPIReborn": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.ticktick.TickTick": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.todoist.Todoist": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.ulaa.Ulaa": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.unity.UnityHub": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.usebruno.Bruno": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.valvesoftware.SteamLink": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.viber.Viber": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.vivaldi.Vivaldi": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.wireframesketcher.WireframeSketcher": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.writerduet.writersolo": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.xnview.XnConvert": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.xnview.XnRetro": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.xnview.XnSketch": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.zandronum.Zandronum": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "com.zoho.Notebook": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "de.easyroam.easyroam": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "de.fabrik19.mos-Launcher": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "de.flose.Kochbuch": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "de.thejackimonster.ChuckleExpress": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "dev.hdos.HDOS": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "fm.cancel.Ripcord": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "fr.free.hxc2001.HxCFloppyEmulator.Extension.capslib": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "games.zetsubou.AnAdventurersGallantry": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "games.zetsubou.HumanityMustPerish": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "games.zetsubou.MaxMassacre": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "games.zetsubou.SablesGrimoireDemo": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "games.zetsubou.WanderNoMore": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "gg.minion.Minion": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.blockloader.BlockLoader": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.conduktor.Conduktor": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.exodus.Exodus.desktop": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.github.masterbillwoo.RiseOfThePenguinsGB": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.greenfire.Greenery": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.itch.doctorm64.skippybot": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "io.kapsa.drive": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "media.emby.EmbyServer": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.audiorelay.AudioRelay": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.blix.BlueMail": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.code_industry.MasterPDFEditor": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.corluma.Corluma": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.filebot.FileBot": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.labymod.LabyMod": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.leatherclient.LeatherClient": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "net.xmind.XMind": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "nl.lostboys.rollemup": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "org.ecosia.Browser": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "org.freedownloadmanager.Manager": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "org.jdownloader.JDownloader": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "org.mersenne.mprime": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "org.videolan.VLC.Plugin.makemkv": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "studio.assetmanager.ams": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "studio.eufonia.EufoniaClient": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "tr.gov.uyap.Editor": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        }
+    },
+    "us.zoom.Zoom": {
+        "stable": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+        },
+        "beta": {
+            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     }
 }
