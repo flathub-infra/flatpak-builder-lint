@@ -2513,6 +2513,11 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
+    "org.openomsi.openOMSI": {
+        "stable": {
+            "flathub-json-automerge-enabled": "Stable branch only publishes tested releases"
+        }
+    },
     "org.otfried.Ipe": {
         "stable": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
