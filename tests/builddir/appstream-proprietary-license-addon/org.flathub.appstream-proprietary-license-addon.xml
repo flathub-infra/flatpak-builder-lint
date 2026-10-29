@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="addon">
+    <id>org.flathub.appstream-proprietary-license-addon</id>
+    <name>Example</name>
+    <summary>Example Addon</summary>
+    <description>
+      <p>This is an example</p>
+    </description>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>LicenseRef-proprietary</project_license>
+    <extends>org.flathub.appstream-proprietary-license</extends>
+  </component>
+</components>

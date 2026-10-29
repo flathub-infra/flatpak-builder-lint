@@ -3,6 +3,7 @@ import os
 import re
 import subprocess
 from typing import TypedDict, cast
+from urllib.parse import urlparse
 
 import gi
 from lxml import etree
@@ -135,6 +136,25 @@ def is_latest_release_prerelease(path: str) -> bool:
 def is_free_license(path: str) -> bool:
     project_license = get_project_license(path)
     return bool(project_license and AppStream.license_is_free_license(project_license))
+
+
+def is_proprietary_license_without_url(path: str) -> bool:
+    project_license = get_project_license(path)
+    if not project_license:
+        return False
+    for token in re.split(r"[\s()]+", project_license):
+        name, sep, url = token.partition("=")
+        if name != "LicenseRef-proprietary":
+            continue
+        if not sep:
+            return True
+        try:
+            parsed = urlparse(url)
+        except ValueError:
+            return True
+        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+            return True
+    return False
 
 
 def is_vcs_browser_url_present(path: str) -> bool:

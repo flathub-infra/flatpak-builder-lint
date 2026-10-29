@@ -65,6 +65,14 @@ class MetainfoCheck(Check):
                     if resp:
                         self.info.add(f"appstream-flathub-manifest-url-not-reachable: {resp}")
 
+            if appstream.is_proprietary_license_without_url(appstream_path):
+                self.errors.add("appstream-proprietary-license-missing-url")
+                self.info.add(
+                    "appstream-proprietary-license-missing-url: The project_license tag uses"
+                    + " LicenseRef-proprietary without an http(s) URL to the license text."
+                    + " Please use LicenseRef-proprietary=<url>"
+                )
+
             aps_ctype = appstream.component_type(appstream_path)
 
             if aps_ctype not in config.FLATHUB_APPSTREAM_TYPES_APPS:

@@ -77,6 +77,32 @@ class TestAppstreamXml:
         p = _write_appstream(tmp_path, "<component><id>org.example.App</id></component>")
         assert appstream.is_project_license_present(p) is False
 
+    @pytest.mark.parametrize(
+        ("license_value", "expected"),
+        [
+            ("LicenseRef-proprietary", True),
+            ("LicenseRef-proprietary=", True),
+            ("LicenseRef-proprietary=not-a-url", True),
+            ("LicenseRef-proprietary=https://", True),
+            ("LicenseRef-proprietary=https://[", True),
+            ("LicenseRef-proprietary=https://:80", True),
+            ("LicenseRef-proprietary= OR MIT", True),
+            ("LicenseRef-proprietary=https://example.org/legal/", False),
+            ("LicenseRef-proprietary=https://example.org/legal/ OR MIT", False),
+            ("LicenseRef-proprietary-custom=https://example.org/legal/", False),
+            ("GPL-2.0", False),
+        ],
+    )
+    def test_is_proprietary_license_without_url(
+        self, tmp_path: Any, license_value: str, expected: bool
+    ) -> None:
+        xml = (
+            "<component><id>org.example.App</id>"
+            f"<project_license>{license_value}</project_license></component>"
+        )
+        p = _write_appstream(tmp_path, xml)
+        assert appstream.is_proprietary_license_without_url(p) is expected
+
     def test_get_project_license(self, tmp_path: Any) -> None:
         p = _write_appstream(tmp_path, MINIMAL_METAINFO)
         assert appstream.get_project_license(p) == "GPL-2.0"

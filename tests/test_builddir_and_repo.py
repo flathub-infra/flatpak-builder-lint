@@ -437,6 +437,28 @@ def test_appstream_prerelease(check_type: str, tmp_testdir: str, monkeypatch: Mo
     assert "appstream-latest-release-is-prerelease" not in set(ret["errors"])
 
 
+def test_appstream_proprietary_license_url(check_type: str, tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-proprietary-license"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream-proprietary-license.xml")
+    ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-proprietary-license-missing-url" in set(ret["errors"])
+
+    testdir = "tests/builddir/appstream-proprietary-license-with-url"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream-proprietary-license-with-url.xml")
+    ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-proprietary-license-missing-url" not in set(ret["errors"])
+
+
+def test_appstream_proprietary_license_url_addon(check_type: str, tmp_testdir: str) -> None:
+    testdir = "tests/builddir/appstream-proprietary-license-addon"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream-proprietary-license-addon.xml")
+    ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-proprietary-license-missing-url" in set(ret["errors"])
+
+
 def test_finish_args_conditional_permissions(
     check_type: str,
     tmp_testdir: str,
