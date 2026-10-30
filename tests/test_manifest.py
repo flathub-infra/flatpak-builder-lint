@@ -13,11 +13,11 @@ from tests.testlib import create_git_repo, create_large_file, run_checks, set_gi
 def mock_runtime_data(monkeypatch: MonkeyPatch) -> None:
     monkeypatch.setattr(
         "flatpak_builder_lint.domainutils.get_active_runtimes_on_flathub",
-        lambda: set(),
+        set,
     )
     monkeypatch.setattr(
         "flatpak_builder_lint.domainutils.get_eol_runtimes_on_flathub",
-        lambda: set(),
+        set,
     )
 
 

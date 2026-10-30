@@ -152,6 +152,7 @@ def print_gh_annotations(results: dict[str, str | list[str]], artifact_type: str
 def run_checks(
     kind: str,
     path: str,
+    *,
     enable_exceptions: bool = False,
     appid: str | None = None,
     user_exceptions_path: str | None = None,
@@ -376,11 +377,11 @@ def main() -> int:
         if results := run_checks(
             args.type,
             path,
-            args.exceptions,
-            args.appid,
-            args.user_exceptions,
-            args.janitor_exceptions,
-            args.exceptions_repo,
+            enable_exceptions=args.exceptions,
+            appid=args.appid,
+            user_exceptions_path=args.user_exceptions,
+            enable_janitor_exceptions=args.janitor_exceptions,
+            exceptions_repo=args.exceptions_repo,
         ):
             if "errors" in results:
                 exit_code = 1

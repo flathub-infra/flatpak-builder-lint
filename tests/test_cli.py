@@ -382,7 +382,7 @@ class TestMainArgParsing:
                     str(p),
                 ]
             )
-        assert mock_rc.call_args[0][3] == ["com.override.App"]
+        assert mock_rc.call_args.kwargs["appid"] == ["com.override.App"]
 
     def test_ref_override_sets_repo_primary_refs(self, tmp_path: Any) -> None:
         with patch("flatpak_builder_lint.cli.run_checks", return_value={}):

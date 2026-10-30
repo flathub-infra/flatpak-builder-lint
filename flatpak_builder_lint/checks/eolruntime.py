@@ -71,7 +71,7 @@ class EolRuntimeCheck(Check):
             if re.fullmatch(r"\d+", v):
                 return int(v)
             if re.fullmatch(r"\d+\.08", v):
-                return int(v.split(".")[0])
+                return int(v.split(".", 1)[0])
             return None
 
         a = parse(v1)
@@ -97,7 +97,7 @@ class EolRuntimeCheck(Check):
 
     def _is_eol_by_n_versions(
         self, comp_ref: str, active_runtimes: set[str], lapse_threshold: int = LAPSE_THRESHOLD
-    ) -> None | bool:
+    ) -> bool | None:
         if "//" not in comp_ref:
             return None
 

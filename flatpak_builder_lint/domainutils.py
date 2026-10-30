@@ -8,7 +8,7 @@ from typing import Any, cast
 
 import gi
 import requests
-from publicsuffixlist import PublicSuffixList  # type: ignore[import-untyped]
+from publicsuffixlist import PublicSuffixList
 from requests_cache import CachedSession
 from urllib3.util import connection as urllib3_connection
 

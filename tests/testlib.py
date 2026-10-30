@@ -241,7 +241,7 @@ def run_checks(
         return cli.run_checks("builddir", path)
 
     if check_type == "manifest":
-        return cli.run_checks("manifest", path, enable_exceptions)
+        return cli.run_checks("manifest", path, enable_exceptions=enable_exceptions)
 
     assert tmp_root is not None, "tmp_root required for repo checks"
     with tempfile.TemporaryDirectory(dir=tmp_root) as repo_tmp:
