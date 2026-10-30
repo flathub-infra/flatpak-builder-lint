@@ -2,9 +2,8 @@ import glob
 import logging
 import os
 import struct
-import tempfile
 
-from .. import builddir, ostree
+from .. import builddir
 from . import Check
 
 logger = logging.getLogger(__name__)
@@ -79,22 +78,3 @@ class ELFArchCheck(Check):
             return
 
         self._validate(path, stripped_ref)
-
-    def check_repo(self, path: str) -> None:
-        return
-        self._populate_refs(path)
-        refs = self.repo_primary_refs
-        if not refs:
-            return
-
-        for ref in refs:
-            stripped_ref = "/".join(ref.split("/")[1:])
-
-            with tempfile.TemporaryDirectory() as tmpdir:
-                for subdir in ("bin", "lib"):
-                    os.makedirs(os.path.join(tmpdir, subdir), exist_ok=True)
-                    ostree.extract_subpath(
-                        path, ref, f"files/{subdir}", os.path.join(tmpdir, subdir), True
-                    )
-
-                self._validate(tmpdir, stripped_ref)

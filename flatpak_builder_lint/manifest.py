@@ -69,8 +69,8 @@ def collect_sub_manifests(filename: str) -> list[str] | None:
     result: list[str] = []
     parse_failed = False
 
-    def _load(path: str) -> dict[str, Any] | None:
-        manifest: dict[str, Any] | None
+    def _load(path: str) -> object | None:
+        manifest: object
         if path.endswith((".yaml", ".yml")):
             try:
                 with open(path) as f:
@@ -102,7 +102,7 @@ def collect_sub_manifests(filename: str) -> list[str] | None:
         base_dir = os.path.dirname(abs_path)
         _collect_modules(data.get("modules", []), base_dir)
 
-    def _collect_modules(modules: list[str], base_dir: str) -> None:
+    def _collect_modules(modules: list[str | dict[str, Any]], base_dir: str) -> None:
         for module in modules:
             if isinstance(module, str):
                 sub_abs = os.path.abspath(os.path.join(base_dir, module))

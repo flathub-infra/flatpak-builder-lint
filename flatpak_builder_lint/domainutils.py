@@ -106,7 +106,7 @@ def fetch_summary_bytes(url: str) -> bytes:
             with resource_path.open("rb") as f:
                 logger.debug("Using local summary file: %s", local_summary_file)
                 return f.read()
-    except (OSError, FileNotFoundError) as e:
+    except OSError as e:
         logger.debug("Exception loading local summary file: %s: %s", type(e).__name__, e)
 
     raise Exception("Failed to load fallback local summary file")

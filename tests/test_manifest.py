@@ -235,6 +235,7 @@ def test_manifest_flathub_json() -> None:
     errors = {
         "flathub-json-skip-appstream-check",
         "flathub-json-eol-rebase-target-not-on-flathub",
+        "flathub-json-excluded-all-arches",
     }
 
     with patch(

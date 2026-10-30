@@ -26,10 +26,8 @@ class FinishArgsCheck(Check):
     def _validate(self, appid: str | None, finish_args: dict[str, set[str]]) -> None:
         init_ver = finish_args.get("required-flatpak")
         flatpak_version = None
-        if isinstance(init_ver, (set | list)):
+        if init_ver is not None:
             flatpak_version = next(iter(init_ver))
-        if isinstance(init_ver, str):
-            flatpak_version = init_ver.split(";", 1)[0]
 
         allowed_cond_perms = {
             "if:all:!has-input-device": "fallback-dev-input-to-dev-all",

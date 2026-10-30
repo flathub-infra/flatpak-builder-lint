@@ -41,7 +41,7 @@ class FlathubJsonCheck(Check):
 
         if (
             skip_arches is not None
-            and isinstance(skip_arches, set)
+            and isinstance(skip_arches, list)
             and len(set(self.arches).intersection(skip_arches)) == len(self.arches)
         ):
             self.errors.add("flathub-json-excluded-all-arches")
