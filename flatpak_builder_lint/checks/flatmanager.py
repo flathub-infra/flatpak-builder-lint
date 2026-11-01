@@ -4,6 +4,8 @@ import logging
 import os
 import shutil
 import tempfile
+from functools import cache
+from typing import Any
 
 import requests
 
@@ -15,55 +17,74 @@ REQUEST_TIMEOUT = domainutils.REQUEST_TIMEOUT
 logger = logging.getLogger(__name__)
 
 
+def _flat_manager_config() -> tuple[str, str, str] | None:
+    flathub_hooks_cfg_paths = [
+        "/run/host/etc/flathub-hooks.json",
+        "/etc/flathub-hooks.json",
+    ]
+
+    build_id = os.getenv("FLAT_MANAGER_BUILD_ID")
+    if not build_id:
+        return None
+
+    flathub_hooks_cfg = {}
+    for flathub_hooks_cfg_path in flathub_hooks_cfg_paths:
+        if os.path.exists(flathub_hooks_cfg_path):
+            with open(flathub_hooks_cfg_path) as f:
+                flathub_hooks_cfg = json.load(f)
+            break
+
+    flatmgr_url = os.getenv("FLAT_MANAGER_URL")
+    if not flatmgr_url:
+        flatmgr_url = flathub_hooks_cfg.get("flat_manager_url")
+    if not flatmgr_url:
+        raise RuntimeError("No flat-manager URL configured")
+
+    flatmgr_token = os.getenv("FLAT_MANAGER_TOKEN")
+    if not flatmgr_token:
+        flatmgr_token = flathub_hooks_cfg.get("flat_manager_token")
+    if not flatmgr_token:
+        raise RuntimeError("No flat-manager token configured")
+
+    return build_id, flatmgr_url, flatmgr_token
+
+
+@cache
+def _fetch_build_extended(build_id: str, flatmgr_url: str, flatmgr_token: str) -> Any:
+    headers = {
+        "Authorization": f"Bearer {flatmgr_token}",
+        "Content-Type": "application/json",
+    }
+    flat_mgr_extended_api = f"{flatmgr_url}/api/v1/build/{build_id}/extended"
+    r = requests.get(
+        flat_mgr_extended_api,
+        headers=headers,
+        timeout=REQUEST_TIMEOUT,
+    )
+    logger.debug(
+        "Request headers for %s: %s",
+        flat_mgr_extended_api,
+        domainutils.filter_request_headers(dict(r.request.headers)),
+    )
+    logger.debug("Response headers for %s: %s", flat_mgr_extended_api, dict(r.headers))
+
+    if r.status_code != 200:
+        raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")
+
+    return r.json()
+
+
+def get_build_extended() -> Any:
+    flat_manager_config = _flat_manager_config()
+    if flat_manager_config is None:
+        return None
+    return _fetch_build_extended(*flat_manager_config)
+
+
 class FlatManagerCheck(Check):
     def check_repo(self, path: str) -> None:
-        flathub_hooks_cfg_paths = [
-            "/run/host/etc/flathub-hooks.json",
-            "/etc/flathub-hooks.json",
-        ]
-
-        if build_id := os.getenv("FLAT_MANAGER_BUILD_ID"):
-            flathub_hooks_cfg = {}
-            for flathub_hooks_cfg_path in flathub_hooks_cfg_paths:
-                if os.path.exists(flathub_hooks_cfg_path):
-                    with open(flathub_hooks_cfg_path) as f:
-                        flathub_hooks_cfg = json.load(f)
-                    break
-
-            flatmgr_url = os.getenv("FLAT_MANAGER_URL")
-            if not flatmgr_url:
-                flatmgr_url = flathub_hooks_cfg.get("flat_manager_url")
-            if not flatmgr_url:
-                raise RuntimeError("No flat-manager URL configured")
-
-            flatmgr_token = os.getenv("FLAT_MANAGER_TOKEN")
-            if not flatmgr_token:
-                flatmgr_token = flathub_hooks_cfg.get("flat_manager_token")
-            if not flatmgr_token:
-                raise RuntimeError("No flat-manager token configured")
-
-            headers = {
-                "Authorization": f"Bearer {flatmgr_token}",
-                "Content-Type": "application/json",
-            }
-
-            flat_mgr_extended_api = f"{flatmgr_url}/api/v1/build/{build_id}/extended"
-            r = requests.get(
-                flat_mgr_extended_api,
-                headers=headers,
-                timeout=REQUEST_TIMEOUT,
-            )
-            logger.debug(
-                "Request headers for %s: %s",
-                flat_mgr_extended_api,
-                domainutils.filter_request_headers(dict(r.request.headers)),
-            )
-            logger.debug("Response headers for %s: %s", flat_mgr_extended_api, dict(r.headers))
-
-            if r.status_code != 200:
-                raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")
-
-            build_extended = r.json()
+        build_extended = get_build_extended()
+        if build_extended is not None:
             build_info = build_extended["build"]
             token_type = build_info["token_type"]
             target_repo = build_info["repo"]
