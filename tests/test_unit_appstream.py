@@ -65,6 +65,13 @@ class TestAppstreamXml:
         p = _write_appstream(tmp_path, xml)
         assert appstream.is_developer_name_present(p) is True
 
+    def test_is_developer_name_present_after_legacy_compose(self, tmp_path: Any) -> None:
+        xml = (
+            "<component><id>org.example.App</id><developer><name>Dev</name></developer></component>"
+        )
+        p = _write_appstream(tmp_path, xml)
+        assert appstream.is_developer_name_present(p) is True
+
     def test_is_developer_name_absent(self, tmp_path: Any) -> None:
         p = _write_appstream(tmp_path, "<component><id>org.example.App</id></component>")
         assert appstream.is_developer_name_present(p) is False
