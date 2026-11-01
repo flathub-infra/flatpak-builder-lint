@@ -185,7 +185,21 @@ def get_screenshot_images(path: str) -> list[str]:
 
 
 def get_manifest_key(path: str) -> list[str]:
-    return xpath_list(path, "//custom/value[@key='flathub::manifest']/text()")
+    key = "translate(@key, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"
+    return xpath_list(
+        path,
+        f"//custom/value[{key} = 'flathub::manifest']/text()"
+        f" | //metadata/value[{key} = 'flathub::manifest']/text()",
+    )
+
+
+def has_manifest_key(path: str) -> bool:
+    key = "translate(@key, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"
+    return is_present(
+        path,
+        f"//custom/value[{key} = 'flathub::manifest']"
+        f" | //metadata/value[{key} = 'flathub::manifest']",
+    )
 
 
 # String returns
