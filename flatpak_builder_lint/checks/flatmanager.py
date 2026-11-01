@@ -60,8 +60,8 @@ def is_direct_upload_build() -> bool:
     if build_extended is None:
         return False
 
-    build_info = build_extended["build"]
-    return build_info.get("token_type") == "app"
+    build_info: dict[str, Any] = build_extended["build"]
+    return bool(build_info.get("token_type") == "app")
 
 
 class FlatManagerCheck(Check):
