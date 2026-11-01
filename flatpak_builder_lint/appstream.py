@@ -84,7 +84,7 @@ def is_categories_present(path: str) -> bool:
 
 
 def is_developer_name_present(path: str) -> bool:
-    return is_present(path, "//developer[@id]/name/text()") or is_present(
+    return is_present(path, "//developer/name/text()") or is_present(
         path, "//developer_name/text()"
     )
 
