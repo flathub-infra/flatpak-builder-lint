@@ -81,6 +81,23 @@ def get_build_extended() -> Any:
     return _fetch_build_extended(*flat_manager_config)
 
 
+def is_direct_upload_build() -> bool:
+    try:
+        build_extended = get_build_extended()
+    except (requests.RequestException, OSError, RuntimeError, TypeError, ValueError):
+        logger.debug("Failed to load build provenance from flat-manager", exc_info=True)
+        return False
+
+    if not isinstance(build_extended, dict):
+        return False
+
+    build_info = build_extended.get("build")
+    if not isinstance(build_info, dict):
+        return False
+
+    return build_info.get("token_type") == "app"
+
+
 class FlatManagerCheck(Check):
     def check_repo(self, path: str) -> None:
         build_extended = get_build_extended()

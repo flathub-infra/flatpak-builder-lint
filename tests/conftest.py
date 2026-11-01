@@ -8,12 +8,14 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from flatpak_builder_lint import checks
+from flatpak_builder_lint.checks import flatmanager
 from flatpak_builder_lint.policy import TimedSeverityPolicy
 
 
 @pytest.fixture(autouse=True)
 def reset_check_state() -> Generator[None, None, None]:
     original_all = checks.ALL[:]
+    flatmanager._fetch_build_extended.cache_clear()
     checks.Check.errors = set()
     checks.Check.warnings = set()
     checks.Check.jsonschema = set()
@@ -22,6 +24,7 @@ def reset_check_state() -> Generator[None, None, None]:
     checks.Check.info = set()
     checks.Check.repo_primary_refs = set()
     yield
+    flatmanager._fetch_build_extended.cache_clear()
     checks.ALL.clear()
     checks.ALL.extend(original_all)
     checks.Check.errors = set()
