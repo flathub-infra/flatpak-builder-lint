@@ -4,97 +4,63 @@ import logging
 import os
 import shutil
 import tempfile
-from functools import cache
 from typing import Any
 
-import requests
-
-from .. import appstream, config, domainutils
+from .. import appstream, config
 from . import Check
-
-REQUEST_TIMEOUT = domainutils.REQUEST_TIMEOUT
 
 logger = logging.getLogger(__name__)
 
 
-def _flat_manager_config() -> tuple[str, str, str] | None:
-    flathub_hooks_cfg_paths = [
-        "/run/host/etc/flathub-hooks.json",
-        "/etc/flathub-hooks.json",
-    ]
+def _load_build_info(raw: str) -> dict[str, Any]:
+    try:
+        build_extended: Any = json.loads(raw)
+    except ValueError as e:
+        raise RuntimeError(f"FLAT_MANAGER_BUILD_INFO is not valid JSON: {e}") from e
 
-    build_id = os.getenv("FLAT_MANAGER_BUILD_ID")
-    if not build_id:
+    if not isinstance(build_extended, dict):
+        raise RuntimeError("FLAT_MANAGER_BUILD_INFO must be a JSON object")
+
+    build_info = build_extended.get("build")
+    if not isinstance(build_info, dict):
+        raise RuntimeError("FLAT_MANAGER_BUILD_INFO is missing the build object")
+    if not isinstance(build_info.get("repo"), str):
+        raise RuntimeError("FLAT_MANAGER_BUILD_INFO build is missing the repo name")
+
+    build_refs = build_extended.get("build_refs")
+    if not isinstance(build_refs, list):
+        raise RuntimeError("FLAT_MANAGER_BUILD_INFO is missing the build_refs list")
+    for build_ref in build_refs:
+        if not isinstance(build_ref, dict) or not isinstance(build_ref.get("ref_name"), str):
+            raise RuntimeError("FLAT_MANAGER_BUILD_INFO build_refs entries need a ref_name")
+
+    return build_extended
+
+
+def get_build_extended() -> dict[str, Any] | None:
+    if not config.is_flatmgr_pipeline():
         return None
 
-    flathub_hooks_cfg = {}
-    for flathub_hooks_cfg_path in flathub_hooks_cfg_paths:
-        if os.path.exists(flathub_hooks_cfg_path):
-            with open(flathub_hooks_cfg_path) as f:
-                flathub_hooks_cfg = json.load(f)
-            break
+    raw = os.getenv("FLAT_MANAGER_BUILD_INFO")
+    if not raw:
+        raise RuntimeError("FLAT_MANAGER_BUILD_INFO is not set in a flat-manager pipeline")
 
-    flatmgr_url = os.getenv("FLAT_MANAGER_URL")
-    if not flatmgr_url:
-        flatmgr_url = flathub_hooks_cfg.get("flat_manager_url")
-    if not flatmgr_url:
-        raise RuntimeError("No flat-manager URL configured")
-
-    flatmgr_token = os.getenv("FLAT_MANAGER_TOKEN")
-    if not flatmgr_token:
-        flatmgr_token = flathub_hooks_cfg.get("flat_manager_token")
-    if not flatmgr_token:
-        raise RuntimeError("No flat-manager token configured")
-
-    return build_id, flatmgr_url, flatmgr_token
-
-
-@cache
-def _fetch_build_extended(build_id: str, flatmgr_url: str, flatmgr_token: str) -> Any:
-    headers = {
-        "Authorization": f"Bearer {flatmgr_token}",
-        "Content-Type": "application/json",
-    }
-    flat_mgr_extended_api = f"{flatmgr_url}/api/v1/build/{build_id}/extended"
-    r = requests.get(
-        flat_mgr_extended_api,
-        headers=headers,
-        timeout=REQUEST_TIMEOUT,
-    )
-    logger.debug(
-        "Request headers for %s: %s",
-        flat_mgr_extended_api,
-        domainutils.filter_request_headers(dict(r.request.headers)),
-    )
-    logger.debug("Response headers for %s: %s", flat_mgr_extended_api, dict(r.headers))
-
-    if r.status_code != 200:
-        raise RuntimeError(f"Failed to fetch build info from flat-manager: {r.status_code}")
-
-    return r.json()
-
-
-def get_build_extended() -> Any:
-    flat_manager_config = _flat_manager_config()
-    if flat_manager_config is None:
-        return None
-    return _fetch_build_extended(*flat_manager_config)
+    return _load_build_info(raw)
 
 
 def is_direct_upload_build() -> bool:
     try:
         build_extended = get_build_extended()
-    except (requests.RequestException, OSError, RuntimeError, TypeError, ValueError):
-        logger.debug("Failed to load build provenance from flat-manager", exc_info=True)
+    except (RuntimeError, TypeError, ValueError):
+        logger.debug(
+            "Failed to load build provenance from the flat-manager pipeline", exc_info=True
+        )
         return False
 
-    if not isinstance(build_extended, dict):
+    if build_extended is None:
         return False
 
-    build_info = build_extended.get("build")
-    if not isinstance(build_info, dict):
-        return False
-
+    build_info = build_extended["build"]
     return build_info.get("token_type") == "app"
 
 
@@ -102,11 +68,11 @@ class FlatManagerCheck(Check):
     def check_repo(self, path: str) -> None:
         build_extended = get_build_extended()
         if build_extended is not None:
-            build_info = build_extended["build"]
-            token_type = build_info["token_type"]
+            build_info: dict[str, Any] = build_extended["build"]
+            token_type = build_info.get("token_type")
             target_repo = build_info["repo"]
 
-            refs = [build_ref["ref_name"] for build_ref in build_extended.get("build_refs", [])]
+            refs = [build_ref["ref_name"] for build_ref in build_extended["build_refs"]]
             arches = {ref.split("/")[2] for ref in refs if len(ref.split("/")) == 4}
 
             if token_type == "app":

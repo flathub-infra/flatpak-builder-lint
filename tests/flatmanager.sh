@@ -11,7 +11,6 @@ FILES=(
     "docker/rewrite-manifest.py"
     "docker/flatpak-builder-lint-deps.json"
     "$TEST_REPO/org.flathub.gui.yaml"
-    "tests/test_httpserver.py"
 )
 
 check_command() {
@@ -34,7 +33,8 @@ run_test() {
     local test_desc="$1"
     local expected_error="$2"
 
-    export FLAT_MANAGER_BUILD_ID=0 FLAT_MANAGER_URL=http://localhost:9001 FLAT_MANAGER_TOKEN=foo
+    export FLAT_MANAGER_BUILD_ID=0
+    export FLAT_MANAGER_BUILD_INFO='{"build":{"repo":"test","token_type":"app"},"build_refs":[{"ref_name":"app/org.flathub.gui/x86_64/test"}]}'
     local result
     result="$(flatpak run --env=FLATPAK_BUILDER_LINT=skip-eol-runtime-checks,skip-policy-enforcement --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo \
         | jq -r '.errors|.[]' | xargs)"
@@ -128,9 +128,6 @@ if ! flatpak info -r org.flatpak.Builder//localtest &> /dev/null; then
 fi
 
 cd "$TOP_DIR" || exit
-rm -vf nohup.out server.pid
-nohup python tests/test_httpserver.py &
-sleep 5
 
 cd "$TEST_REPO" || true
 run_build
@@ -162,13 +159,11 @@ fi
 run_test "Test 2" "" || exit 1
 
 cd "$TOP_DIR" || exit
-python tests/test_httpserver.py --stop
 if [ -z "${GITHUB_ACTIONS:-}" ]; then
     flatpak remove -y --noninteractive org.flatpak.Builder//localtest || true
 fi
-rm -vf nohup.out server.pid
 [ "${NO_CLEAN_UP:-0}" != "1" ] && clean_up
 
-unset FLAT_MANAGER_BUILD_ID FLAT_MANAGER_URL FLAT_MANAGER_TOKEN
+unset FLAT_MANAGER_BUILD_ID FLAT_MANAGER_BUILD_INFO
 
 echo "All tests passed. 🎉"
