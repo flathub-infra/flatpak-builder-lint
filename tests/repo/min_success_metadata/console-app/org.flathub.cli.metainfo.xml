@@ -10,7 +10,7 @@
       This is an example console-application to perform checks in the linter so that they are always successful. This is for the linter only.
     </p>
   </description>
-  <developer_name>Flathub</developer_name>
+  <developer id="org.flathub"><name>Flathub</name></developer>
   <url type="homepage">https://www.google.com/</url>
   <provides>
     <binary>foo</binary>

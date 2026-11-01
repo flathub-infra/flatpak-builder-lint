@@ -214,6 +214,36 @@ class TestAppstreamXml:
         assert len(result) == 1
         assert "flathub" in result[0]
 
+    @pytest.mark.parametrize(
+        ("container", "key", "value"),
+        [
+            ("custom", "flathub::manifest", "https://example.org/m.json"),
+            ("custom", "flathub::Manifest", "https://example.org/m.json"),
+            ("metadata", "flathub::manifest", "https://example.org/m.json"),
+        ],
+    )
+    def test_manifest_key_presence(
+        self, tmp_path: Any, container: str, key: str, value: str
+    ) -> None:
+        value_element = f'<value key="{key}">{value}</value>'
+        xml = f"<component><{container}>{value_element}</{container}></component>"
+        p = _write_appstream(tmp_path, xml)
+        assert appstream.has_manifest_key(p) is True
+        assert appstream.get_manifest_key(p) == [value]
+
+    def test_manifest_key_empty_value_is_present_without_text(self, tmp_path: Any) -> None:
+        p = _write_appstream(
+            tmp_path,
+            '<component><custom><value key="flathub::manifest"></value></custom></component>',
+        )
+        assert appstream.has_manifest_key(p) is True
+        assert appstream.get_manifest_key(p) == []
+
+    def test_manifest_key_absent(self, tmp_path: Any) -> None:
+        p = _write_appstream(tmp_path, "<component><custom></custom></component>")
+        assert appstream.has_manifest_key(p) is False
+        assert appstream.get_manifest_key(p) == []
+
     def test_is_valid_component_type_true(self, tmp_path: Any) -> None:
         p = _write_appstream(tmp_path, MINIMAL_METAINFO)
         assert appstream.is_valid_component_type(p) is True

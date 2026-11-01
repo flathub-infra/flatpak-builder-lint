@@ -4,7 +4,7 @@ import re
 import tempfile
 
 from .. import appstream, builddir, config, domainutils, ostree
-from . import Check
+from . import Check, flatmanager
 
 
 class MetainfoCheck(Check):
@@ -58,12 +58,19 @@ class MetainfoCheck(Check):
 
             manifest_key = appstream.get_manifest_key(appstream_path)
 
-            if manifest_key:
-                ok, resp = domainutils.check_url(manifest_key[0], strict=False)
-                if not ok:
-                    self.errors.add("appstream-flathub-manifest-url-not-reachable")
-                    if resp:
-                        self.info.add(f"appstream-flathub-manifest-url-not-reachable: {resp}")
+            if appstream.has_manifest_key(appstream_path):
+                if not flatmanager.is_direct_upload_build():
+                    self.errors.add("appstream-flathub-manifest-key-not-allowed")
+                    self.info.add(
+                        "appstream-flathub-manifest-key-not-allowed: The flathub::manifest tag"
+                        + " can only be set by direct uploads"
+                    )
+                elif manifest_key:
+                    ok, resp = domainutils.check_url(manifest_key[0], strict=False)
+                    if not ok:
+                        self.errors.add("appstream-flathub-manifest-url-not-reachable")
+                        if resp:
+                            self.info.add(f"appstream-flathub-manifest-url-not-reachable: {resp}")
 
             if appstream.is_proprietary_license_without_url(appstream_path):
                 self.errors.add("appstream-proprietary-license-missing-url")

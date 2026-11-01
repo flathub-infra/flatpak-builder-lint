@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components origin="flatpak" version="0.8">
+  <component type="desktop">
+    <id>org.flathub.appstream_manifest_key_absent</id>
+    <name>Foo Bar</name>
+    <summary>Foo foo foo foo</summary>
+    <developer_name>Flathub</developer_name>
+    <description><p>An example desktop application</p></description>
+    <icon type="cached" height="128" width="128">org.flathub.appstream_manifest_key_absent.png</icon>
+    <categories>
+      <category>Network</category>
+    </categories>
+    <project_license>GPL-2.0+</project_license>
+    <url type="homepage">https://www.google.com/</url>
+    <content_rating type="oars-1.1"/>
+    <releases>
+      <release timestamp="1598572800" version="1.13.2"/>
+    </releases>
+    <launchable type="desktop-id">org.flathub.appstream_manifest_key_absent.desktop</launchable>
+  </component>
+</components>

@@ -11,7 +11,7 @@
                 {
                     "type": "archive",
                     "url": "https://example.com/foo.tar.gz",
-                    "sha1": "deadbeef",
+                    "sha1": "0000000000000000000000000000000000000000",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://example.com/releases/latest",

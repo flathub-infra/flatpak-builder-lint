@@ -1,0 +1,9 @@
+[Application]
+name=org.flathub.appstream_manifest_key_absent
+runtime=org.gnome.Platform/x86_64/45
+sdk=org.gnome.Sdk/x86_64/45
+command=foo
+
+[Context]
+filesystems=xdg-download;
+

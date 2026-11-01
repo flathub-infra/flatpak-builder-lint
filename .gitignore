@@ -2,8 +2,6 @@ __pycache__
 .mypy_cache
 .pytest_cache
 .ruff_cache
-nohup.out
-server.pid
 builddir/
 flatpak_builder_lint.egg-info/
 !tests/builddir/

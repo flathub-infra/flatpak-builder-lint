@@ -1,3 +1,4 @@
+import gzip
 import os
 from typing import Any
 from unittest.mock import MagicMock, patch
@@ -34,6 +35,16 @@ def rc(
     tmp_testdir: str,
 ) -> dict[str, Any]:
     return run_checks(path, check_type, tmp_root=tmp_testdir)
+
+
+MANIFEST_URL = (
+    "https://raw.githubusercontent.com/Ghost/wwww/master/"
+    "org.flathub.appstream_manifest_url_unreachable.yml"
+)
+
+
+def manifest_url_calls(mock_check_url: MagicMock) -> list[Any]:
+    return [call for call in mock_check_url.call_args_list if MANIFEST_URL in call.args]
 
 
 def test_appid(check_type: str, tmp_testdir: str) -> None:
@@ -416,11 +427,90 @@ def test_appstream_manifest_url_unreachable(
     check_type: str, tmp_testdir: str, mock_domainutils: dict[str, MagicMock]
 ) -> None:
     mock_domainutils["check_url"].return_value = (False, "Status: 404 | Body: Not Found")
+    with patch("flatpak_builder_lint.checks.flatmanager.is_direct_upload_build", return_value=True):
+        testdir = "tests/builddir/appstream-manifest-url-unreachable"
+        move_files(testdir)
+        create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-url-not-reachable" in set(ret["errors"])
+
+
+def test_appstream_manifest_url_checked_for_direct_upload(
+    check_type: str, tmp_testdir: str, mock_domainutils: dict[str, MagicMock]
+) -> None:
+    mock_domainutils["check_url"].return_value = (True, None)
+    with patch("flatpak_builder_lint.checks.flatmanager.is_direct_upload_build", return_value=True):
+        testdir = "tests/builddir/appstream-manifest-url-unreachable"
+        move_files(testdir)
+        create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-url-not-reachable" not in set(ret.get("errors", []))
+    assert manifest_url_calls(mock_domainutils["check_url"])
+
+
+def test_appstream_manifest_key_rejected_for_non_direct_upload(
+    check_type: str, tmp_testdir: str, mock_domainutils: dict[str, MagicMock]
+) -> None:
+    with patch(
+        "flatpak_builder_lint.checks.flatmanager.is_direct_upload_build", return_value=False
+    ):
+        testdir = "tests/builddir/appstream-manifest-url-unreachable"
+        move_files(testdir)
+        create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-key-not-allowed" in set(ret["errors"])
+    assert not manifest_url_calls(mock_domainutils["check_url"])
+
+
+def test_appstream_manifest_key_mixed_case_rejected(
+    check_type: str, tmp_testdir: str, mock_domainutils: dict[str, MagicMock]
+) -> None:
     testdir = "tests/builddir/appstream-manifest-url-unreachable"
     move_files(testdir)
     create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
-    ret = rc(testdir, check_type, tmp_testdir)
-    assert "appstream-flathub-manifest-url-not-reachable" in set(ret["errors"])
+    xml_path = os.path.join(
+        testdir, "files/share/app-info/xmls/org.flathub.appstream_manifest_url_unreachable.xml.gz"
+    )
+    with gzip.open(xml_path, "rt") as f:
+        xml = f.read()
+    with gzip.open(xml_path, "wt") as f:
+        f.write(xml.replace("flathub::manifest", "flathub::Manifest"))
+
+    with patch(
+        "flatpak_builder_lint.checks.flatmanager.is_direct_upload_build", return_value=False
+    ):
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-key-not-allowed" in set(ret["errors"])
+    assert not manifest_url_calls(mock_domainutils["check_url"])
+
+
+def test_appstream_manifest_key_rejected_when_provenance_unknown(
+    check_type: str, tmp_testdir: str, mock_domainutils: dict[str, MagicMock]
+) -> None:
+    with patch(
+        "flatpak_builder_lint.checks.flatmanager.get_build_extended", return_value=None
+    ) as mock_build:
+        testdir = "tests/builddir/appstream-manifest-url-unreachable"
+        move_files(testdir)
+        create_catalogue(testdir, "org.flathub.appstream_manifest_url_unreachable.xml")
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-key-not-allowed" in set(ret["errors"])
+    assert not manifest_url_calls(mock_domainutils["check_url"])
+    assert mock_build.called
+
+
+def test_appstream_manifest_key_absent_is_allowed_for_non_direct_upload(
+    check_type: str, tmp_testdir: str
+) -> None:
+    testdir = "tests/builddir/appstream-manifest-key-absent"
+    move_files(testdir)
+    create_catalogue(testdir, "org.flathub.appstream_manifest_key_absent.xml")
+
+    with patch(
+        "flatpak_builder_lint.checks.flatmanager.is_direct_upload_build", return_value=False
+    ):
+        ret = rc(testdir, check_type, tmp_testdir)
+    assert "appstream-flathub-manifest-key-not-allowed" not in set(ret.get("errors", []))
 
 
 def test_appstream_prerelease(check_type: str, tmp_testdir: str, monkeypatch: MonkeyPatch) -> None:
