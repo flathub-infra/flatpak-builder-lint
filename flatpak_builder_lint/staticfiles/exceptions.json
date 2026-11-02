@@ -22,8 +22,7 @@
     },
     "br.gov.fazenda.receita.irpf2026": {
         "stable": {
-            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br.",
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+            "appid-url-not-reachable": "The linter tries to query fazenda.gov.br url while the available one is receita.fazenda.gov.br."
         }
     },
     "cc.arduino.arduinoide": {
@@ -34,9 +33,6 @@
     "ch.tlaun.TL": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        },
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -124,8 +120,7 @@
     },
     "com.discordapp.Discord": {
         "stable": {
-            "flathub-json-automerge-enabled": "Predates the linter rule",
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+            "flathub-json-automerge-enabled": "Predates the linter rule"
         }
     },
     "com.discordapp.DiscordCanary": {
@@ -167,9 +162,6 @@
     "com.getpostman.Postman": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        },
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -1654,11 +1646,6 @@
             "module-lutris_wrapper-source-dir-not-allowed": "Predates the linter rule"
         }
     },
-    "net.redeclipse.RedEclipse": {
-        "stable": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
-        }
-    },
     "net.rpcs3.RPCS3": {
         "stable": {
             "flathub-json-automerge-enabled": "Grandfather in on condition of weekly update workflow. Without automerge builds fail as branch moves to another SHA",
@@ -1814,9 +1801,6 @@
     "org.geogebra.GeoGebra": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
-        },
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
         },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -2704,26 +2688,6 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "br.gov.fazenda.receita.irpf2022": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "br.gov.fazenda.receita.irpf2023": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "br.gov.fazenda.receita.irpf2024": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "br.gov.fazenda.receita.irpf2025": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "chat.moin.moin": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -2735,11 +2699,6 @@
         }
     },
     "club.zbridge.zbridge": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.VK.Messenger": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -2850,17 +2809,7 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "com.frogatto.Frogatto": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "com.gamestarmechanic.gamestarmechanic": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.geekbench.Geekbench6": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -2881,9 +2830,6 @@
         }
     },
     "com.google.AndroidStudio": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -2911,15 +2857,7 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "com.jetbrains.GoLand": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "com.jetbrains.IntelliJ-IDEA-Ultimate": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -2930,11 +2868,6 @@
         }
     },
     "com.jetbrains.RustRover": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.jetbrains.WebStorm": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -3035,9 +2968,6 @@
         }
     },
     "com.slack.Slack": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -3058,19 +2988,11 @@
         }
     },
     "com.teamspeak.TeamSpeak": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        },
         "beta": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
     "com.teamspeak.TeamSpeak3": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.thebrokenrail.MCPIReborn": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -3139,11 +3061,6 @@
         }
     },
     "com.xnview.XnSketch": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "com.zandronum.Zandronum": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
@@ -3276,11 +3193,6 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "net.filebot.FileBot": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "net.labymod.LabyMod": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
@@ -3330,11 +3242,6 @@
         }
     },
     "studio.assetmanager.ams": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
-    "studio.eufonia.EufoniaClient": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
