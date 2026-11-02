@@ -30,6 +30,11 @@
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
         }
     },
+    "ch.threema.threema-desktop": {
+        "stable": {
+            "appstream-latest-release-is-prerelease": "The latest release is stable, but due to one particular missing feature still marked as beta"
+        }
+    },
     "ch.tlaun.TL": {
         "*": {
             "flathub-json-automerge-enabled": "Predates the linter rule"
