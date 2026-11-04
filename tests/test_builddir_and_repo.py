@@ -513,20 +513,6 @@ def test_appstream_manifest_key_absent_is_allowed_for_non_direct_upload(
     assert "appstream-flathub-manifest-key-not-allowed" not in set(ret.get("errors", []))
 
 
-def test_appstream_prerelease(check_type: str, tmp_testdir: str, monkeypatch: MonkeyPatch) -> None:
-    testdir = "tests/builddir/appstream-prerelease"
-    monkeypatch.setenv("REPO", "https://github.com/flathub/flathub")
-    move_files(testdir)
-    create_catalogue(testdir, "org.flathub.appstream_prerelease.xml")
-
-    ret = rc(testdir, check_type, tmp_testdir)
-    assert "appstream-latest-release-is-prerelease" in set(ret["errors"])
-
-    monkeypatch.delenv("REPO", raising=False)
-    ret = rc(testdir, check_type, tmp_testdir)
-    assert "appstream-latest-release-is-prerelease" not in set(ret["errors"])
-
-
 def test_appstream_proprietary_license_url(check_type: str, tmp_testdir: str) -> None:
     testdir = "tests/builddir/appstream-proprietary-license"
     move_files(testdir)

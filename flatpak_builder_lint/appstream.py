@@ -120,19 +120,6 @@ def is_valid_component_type(path: str) -> bool:
     return component_type(path) in config.FLATHUB_APPSTREAM_TYPES
 
 
-def is_latest_release_prerelease(path: str) -> bool:
-    version = get_latest_release_version(path)
-    if not version:
-        return False
-
-    prerel_re = re.compile(
-        r"(alpha|beta|rc|pre(?:view)?|dev(?:el)?)",
-        re.IGNORECASE,
-    )
-
-    return bool(prerel_re.search(version))
-
-
 def is_free_license(path: str) -> bool:
     project_license = get_project_license(path)
     return bool(project_license and AppStream.license_is_free_license(project_license))
@@ -203,21 +190,6 @@ def has_manifest_key(path: str) -> bool:
 
 
 # String returns
-
-
-def get_latest_release_version(path: str) -> str | None:
-    timestamps = xpath_list(path, "//releases/release[@timestamp]/@timestamp")
-    versions = xpath_list(path, "//releases/release[@timestamp]/@version")
-
-    if not timestamps or not versions:
-        return None
-
-    latest_idx = max(
-        range(len(timestamps)),
-        key=lambda i: int(timestamps[i]),
-    )
-
-    return versions[latest_idx]
 
 
 def get_project_license(path: str) -> str | None:

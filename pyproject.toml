@@ -5,6 +5,14 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 include-package-data = true
 
+[tool.pyrefly.errors]
+no-any-return = "error"
+implicit-any = "error"
+unannotated-return = "error"
+method-assign = "error"
+implicit-any-parameter = "error"
+redundant-cast = "warn"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = [
@@ -143,3 +151,8 @@ testpaths = [
 markers = [
     "integration: integration tests requiring flatpak, flatpak-builder, dbus and network",
 ]
+
+[tool.pyrefly]
+preset = "legacy"
+check-unannotated-defs = true
+infer-return-types = "never"

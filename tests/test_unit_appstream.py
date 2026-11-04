@@ -171,35 +171,6 @@ class TestAppstreamXml:
         p = _write_appstream(tmp_path, xml)
         assert appstream.all_release_has_timestamp(p) is False
 
-    def test_get_latest_release_version(self, tmp_path: Any) -> None:
-        xml = """
-            <component>
-              <releases>
-                <release version="1.0" timestamp="1600000000"/>
-                <release version="2.0" timestamp="1700000000"/>
-              </releases>
-            </component>
-        """
-        p = _write_appstream(tmp_path, xml)
-        assert appstream.get_latest_release_version(p) == "2.0"
-
-    def test_get_latest_release_version_none_when_absent(self, tmp_path: Any) -> None:
-        p = _write_appstream(tmp_path, "<component/>")
-        assert appstream.get_latest_release_version(p) is None
-
-    def test_is_latest_release_prerelease_true(self, tmp_path: Any) -> None:
-        xml = """
-            <component>
-              <releases><release version="1.0-alpha" timestamp="1700000000"/></releases>
-            </component>
-        """
-        p = _write_appstream(tmp_path, xml)
-        assert appstream.is_latest_release_prerelease(p) is True
-
-    def test_is_latest_release_prerelease_false(self, tmp_path: Any) -> None:
-        p = _write_appstream(tmp_path, MINIMAL_METAINFO)
-        assert appstream.is_latest_release_prerelease(p) is False
-
     def test_is_vcs_browser_url_present(self, tmp_path: Any) -> None:
         p = _write_appstream(tmp_path, MINIMAL_METAINFO)
         assert appstream.is_vcs_browser_url_present(p) is True
