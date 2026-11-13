@@ -80,11 +80,12 @@ class AppIDCheck(Check):
                     return
                 url_https = f"https://{domain_from_appid}"
                 ok, resp = domainutils.check_url(url_https, strict=False)
-                if not ok:
+                if not ok and not domainutils.domain_resolves(domain_from_appid):
                     self.errors.add("appid-url-not-reachable")
                     message = f"appid-url-not-reachable: Tried {url_https}"
                     if resp:
                         message += f" | {resp}"
+                    message += f" | Domain {domain_from_appid} does not resolve"
                     self.info.add(message)
 
     def check_manifest(self, manifest: Mapping[str, Any]) -> None:

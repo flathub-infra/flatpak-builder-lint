@@ -105,6 +105,21 @@ def test_appid_url_not_reachable(mock_domainutils: dict[str, MagicMock]) -> None
         )
 
 
+def test_appid_url_unreachable_but_domain_resolves(
+    mock_domainutils: dict[str, MagicMock],
+) -> None:
+    mock_domainutils["check_url"].return_value = (
+        False,
+        "Status: 403 | Body: <!DOCTYPE html><html><head><title>Just a moment...</title>",
+    )
+    mock_domainutils["domain_resolves"].return_value = True
+
+    ret = run_checks("tests/manifests/domain_checks/ch.wwwwww.bar.json")
+
+    assert "errors" not in ret
+    mock_domainutils["domain_resolves"].assert_called_once_with("wwwwww.ch")
+
+
 def test_appid_url_uses_manual_verification_domain(
     mock_domainutils: dict[str, MagicMock],
 ) -> None:

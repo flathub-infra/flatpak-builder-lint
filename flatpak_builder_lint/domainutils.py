@@ -265,6 +265,16 @@ def check_url(url: str, strict: bool = False) -> tuple[bool, str | None]:
 
 
 @cache
+def domain_resolves(domain: str) -> bool:
+    try:
+        socket.getaddrinfo(domain, None)
+    except socket.gaierror as e:
+        logger.debug("DNS resolution failed for %s: %s", domain, e)
+        return False
+    return True
+
+
+@cache
 def _get_manual_verification_domains() -> dict[str, str]:
     url = (
         f"{config.GITHUB_CONTENT_CDN}/{config.FLATHUB_WEBSITE_FULL_REPO}/"
