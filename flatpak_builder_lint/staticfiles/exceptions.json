@@ -1196,10 +1196,12 @@
             "module-steam_wrapper-source-dir-not-allowed": "Predates the linter rule"
         },
         "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+            "appstream-proprietary-license-missing-url": "Predates this linter rule",
+            "finish-args-host-root-ro-filesystem-access": "Steam's containerised client validates library folders against /run/host/root, which needs the host root exposed read-only"
         },
         "beta": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
+            "appstream-proprietary-license-missing-url": "Predates this linter rule",
+            "finish-args-host-root-ro-filesystem-access": "Steam's containerised client validates library folders against /run/host/root, which needs the host root exposed read-only"
         }
     },
     "com.valvesoftware.Steam.CompatibilityTool.Proton-GE": {
