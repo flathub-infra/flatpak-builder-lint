@@ -1,9 +1,6 @@
 {
     "io.tether.QVAC.Workbench": {
-        "stable": {
-            "flathub-json-automerge-enabled": "Peer-to-peer application requiring timely client updates for compatibility."
-        },
-        "beta": {
+        "*": {
             "flathub-json-automerge-enabled": "Peer-to-peer application requiring timely client updates for compatibility."
         }
     },
