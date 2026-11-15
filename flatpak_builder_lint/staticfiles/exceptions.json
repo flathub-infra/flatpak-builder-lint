@@ -1409,6 +1409,11 @@
             "module-tg_owt-checker-tracks-commits": "Manually updated, grandfathered"
         }
     },
+    "io.github.kyuyrii.zordeer": {
+        "stable": {
+            "finish-args-contains-both-x11-and-wayland": "Some games don't work using fallback-x11 instead of x11."
+        }
+    },
     "io.github.limads.Queries": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
