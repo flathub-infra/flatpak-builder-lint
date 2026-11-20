@@ -1,4 +1,9 @@
 {
+    "io.tether.QVAC.Workbench": {
+        "*": {
+            "flathub-json-automerge-enabled": "Peer-to-peer application requiring timely client updates for compatibility."
+        }
+    },
     "app.lith.Lith": {
         "*": {
             "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
