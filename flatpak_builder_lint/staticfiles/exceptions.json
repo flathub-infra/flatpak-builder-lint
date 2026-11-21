@@ -948,7 +948,7 @@
         }
     },
     "com.github.vkohaupt.vokoscreenNG": {
-        "stable": {
+        "*": {
             "appid-uses-code-hosting-domain": "app-id predates this linter rule"
         }
     },
