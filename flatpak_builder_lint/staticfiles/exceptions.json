@@ -2939,11 +2939,6 @@
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
         }
     },
-    "com.squidservers.SquidServers": {
-        "stable": {
-            "appstream-proprietary-license-missing-url": "Predates this linter rule"
-        }
-    },
     "com.syntevo.SmartSynchronize": {
         "stable": {
             "appstream-proprietary-license-missing-url": "Predates this linter rule"
