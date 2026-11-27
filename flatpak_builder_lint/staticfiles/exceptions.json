@@ -1840,7 +1840,8 @@
     },
     "org.gnome.Evolution": {
         "*": {
-            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule"
+            "appstream-id-mismatch-flatpak-id": "appstream-cid predates this linter rule",
+            "finish-args-has-socket-gpg-agent": "access to gpg agent to encrypt/decrypt/sign emails"
         }
     },
     "org.gnome.Geary": {
